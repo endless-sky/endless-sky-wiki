@@ -1,0 +1,6 @@
+* [Starting a new game](PlayersManual#new)
+* [Planets](PlayersManual#planets)
+* [Flying your ship](PlayersManual#navigation)
+* [Traveling to other stars](PlayersManual#travel)
+* [Upgrading your ship](PlayersManual#outfits)
+* [Combat](PlayersManual#combat)
