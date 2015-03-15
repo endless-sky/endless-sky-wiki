@@ -116,4 +116,4 @@ conversation
 
 # Apply #
 
-An "apply" entry modifies conditions instead of testing to see what they are currently equal to. The syntax is the same as the "on complete" node in a [CreatingMissions mission].
+An "apply" entry modifies conditions instead of testing to see what they are currently equal to. The syntax is the same as the "on complete" node in a [mission](CreatingMissions).
