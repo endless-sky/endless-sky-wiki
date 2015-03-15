@@ -29,11 +29,10 @@ If you want your ship to be animated, just create multiple files with the same n
 
 Making a full texture-mapped 3D model can be a lot of work, and since all the ships in this game are only shown from directly overhead and at relatively low resolution, it can be overkill. I've found that the fastest way to create good-looking ship images is to use a 3D design program (such as Blender) for rendering the shape of the ship and the basic colors of the different parts of it, but then using an image manipulation program (such as GIMP) for some post-processing.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/cruiser.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/corvette.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/firebird.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/gunboat.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/leviathan.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/mule.png)
 
 Editing images in GIMP, some easy ways to make the models look more detailed and less "artificial" include:
 
