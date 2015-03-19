@@ -2,11 +2,19 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 
 ### Playing Endless Sky
 
-* [Player's Manual](PlayersManual)
-* [Discussion Forum](http://groups.google.com/group/endless-sky)
+* [Player's manual](PlayersManual)
+* [Discussion forum](http://groups.google.com/group/endless-sky)
 
 ### Creating ships, missions, artwork, etc.
 
-* [Creating Missions](CreatingMissions)
-* [Writing Conversations](WritingConversations)
-* [Creating New Ships](CreatingShips)
+* [Help wanted](HelpWanted)
+* [Creating plugins](CreatingPlugins)
+* [Creating missions](CreatingMissions)
+* [Writing conversations](WritingConversations)
+* [Creating new ships](CreatingShips)
+
+### Compiling or modifying the source code
+
+* [Build instructions](BuildInstructions)
+* [Contributing to the code](ContributingCode)
+* [C++ style guide](http://endless-sky.github.io/styleguide/styleguide.xml)
