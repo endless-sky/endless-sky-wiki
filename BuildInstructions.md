@@ -25,9 +25,13 @@ The program will run using the "data" and "images" folders that are found in the
 
 ### Windows ###
 
-Windows development requires headers and other files to go along with the DLLs distributed with the game, and tracking down and building the right versions of those files is a pain. If you email me, I can send you a copy of all the necessary files.
+The Windows build has been tested on 64-bit Windows 7, only. You will need the CodeBlocks IDE and g++ 4.8 or higher. You can download them both together [here](http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/Windows/codeblocks-13.12mingw-setup-TDM-GCC-481.exe), or you can install g++ separately through [mingw-builds](http://sourceforge.net/projects/mingwbuilds/).
 
-Once you have the libraries, you will need to download and install CodeBlocks with a relatively recent version of the g++ compiler from MinGW (the one distributed with CodeBlocks by default may not have full C++11 support).
+If you are on 64-bit windows, a full set of development libraries are available [here](http://endless-sky.github.io/win64-dev.zip). If you don't want to have to edit the paths in the CodeBlocks file, unpack the "dev64" folder directly into `C:\`.
+
+If you are using 32-bit Windows, you'll have to track down 32-bit versions of all the libraries.
+
+You will also need `libmingw32.a` and `libopengl32.a`. Those should be included in the MinGW g++ install. If they are not in `C:\Program Files\mingw64\x86_64-w64-mingw32\lib\` you will have to adjust the paths in the CodeBlocks file.
 
 ### Mac OS X ###
 
