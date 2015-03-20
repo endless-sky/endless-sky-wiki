@@ -87,4 +87,49 @@ The "attributes" key should be followed by a list of ship attributes, which incl
 
 * `"fuel capacity"`: the amount of fuel (one jump = 100) that this ship can carry.
 
-Outfits work by adding or subtracting to these same attributes.
+Outfits work by adding or subtracting to these same attributes. The outfits list can be in any order, but for the sake of consistency its preferred order is roughly from "front to back" of the ship:
+
+* guns
+* turrets
+* generators
+* batteries
+* shields
+* cooling
+* other systems
+* thruster
+* steering
+* hyperdrive
+
+# Variants #
+
+In addition to about 40 different human ship models, each model has several "variants" that represent the different ways that an individual captain might outfit a ship. For example, one pilot might prefer being fast enough to run from a fight, and another might want to be strong enough to survive one, and fighting styles include bombarding a target with missiles or other longer-range weapons, or being able to deal maximum damage at close range.
+
+The syntax for a variant is:
+
+```
+ship <base name> <variant name>
+    ...
+```
+
+Instead of specifying all the ship's attributes, the variant should only define a list of outfits. The order of the guns and turrets must also be specified if there are two different kinds of gun outfits or turret outfits, so that it is clear which ones go in which slots. For example:
+
+```
+ship "Bastion" "Bastion (Laser)"
+	outfits
+		"Heavy Laser" 4
+		"Heavy Anti-Missile Turret"
+		"Heavy Laser Turret" 2
+		"Fusion Reactor"
+		"Supercapacitor" 4
+		"D94-YV Shield Generator"
+		"Water Coolant System"
+		"Mass Expansion"
+		"A370 Atomic Thruster"
+		"A525 Atomic Steering"
+		"Hyperdrive"
+	turret "Heavy Anti-Missile Turret"
+	turret "Heavy Laser Turret"
+	turret "Heavy Laser Turret"
+```
+
+In this case, all four guns are the same type (heavy lasers), so there is no need to specify their order, but the order of the turrets must be specified. The turret (x, y) positions need not be specified, because they are given in the original ship descriptor. By only providing the bare minimum information in the variant, we can avoid needing to update all the variants if, say, the ship sprite changes and the turret positions move.
