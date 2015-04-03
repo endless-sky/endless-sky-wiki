@@ -251,3 +251,17 @@ If you succeed in capturing a ship, some of your crew members must transfer over
 The newly captured ship will be repaired just enough that it is no longer disabled. A hit from any weapon will be enough to disable it again, so you will need to avoid combat until its shields have a chance to recharge.
 
 If a friendly ship is disabled, you can board it to repair it just enough so that it can fly again. And if your own ship is disabled, you can hail a friendly ship and ask it to repair you.
+
+##Strategy##
+
+In the preferences screen, you can enable automatic aiming and firing, allowing your ship's computer to control your weapons more precisely than you may be able to. Automatic aiming engages whenever you are firing your primary weapons and pointed roughly toward your target, and will turn your ship to track the target if possible. Especially for long-range weapons like particle cannons, you are unlikely to hit your target without the computer's help. Unfortunately, all the ships you fight have access to the same precise targeting algorithms, so fancy flying alone will not guarantee you a victory against a ship that is as strong as yours.
+
+Most of the strategy lies in how you outfit your ship. For example, suppose you are flying a sparrow. If you swap out its two beam lasers for one heavy laser (which has a slightly longer range), with a bit of fancy flying you can defeat another Sparrow by staying just outside its weapons range. Or, you can install missile launchers and destroy the enemy Sparrow from a safe distance, but then you have to pay for ammunition. Or, you might try upgrading your Sparrow's shield generator to give you a slight edge in combat: if you break away from the fight, your shields will recharge faster than your opponent's.
+
+If fighting multiple opponents, a useful strategy is to split them up by flying away (so that the faster one will reach you before the slow ones). That way you can fight them one by one. If you can't do that, your best strategy is to destroy the weakest ships first.
+
+Once you acquire escorts or get involved in the main plot line of the game, you will often be fighting with an entire fleet on your side. You can assist your fleet by acting as a diversion and drawing a large chunk of the enemy fleet away to follow you, or by going where the fighting is thickest and concentrating your fire on whichever ships the rest of the fleet is attacking. Or, you can load up your ship with anti-missile systems and just play a support role by shielding your allies from missiles. Also, some fleets include ships that will lurk on the fringes of the battle bombarding you with missiles; if you have a fast enough ship to chase them down, you can take them out before they have time to unload all their ammunition at your allies.
+
+If you are heavily damaged in a fleet vs. fleet battle, you can use your allies as shields, because you can fire past them but your enemies cannot. In particular, if an allied ship has been destroyed and is in the process of exploding, you can use it as a shield without costing your fleet anything, because that ship is already dead. Just be sure you aren't too close when the final explosion happens!
+
+If your fleet is jumping into a system where you expect a fight, hold down the jump key until all your ships are ready to jump, then release it to jump together. Otherwise, your ship will be the first to enter the system and all the enemies will concentrate their fire on you.
