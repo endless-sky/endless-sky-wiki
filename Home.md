@@ -12,6 +12,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Creating missions](CreatingMissions)
 * [Writing conversations](WritingConversations)
 * [Creating new ships](CreatingShips)
+* [Art and storytelling style](StyleGoals)
 
 ### Compiling or modifying the source code
 
