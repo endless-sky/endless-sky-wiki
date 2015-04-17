@@ -23,7 +23,7 @@ If you want your ship to be animated, just create multiple files with the same n
 * images/ship/newship-0.png
 * images/ship/newship-1.png
 
-(If there are more than 10 frames, the extensions should be "-00.png", "-01.png", etc. You can also create sprites with additive or "half-additive" blending modes by using the extension "+#.png" or "~#.png" respectively, but these blending modes look much better for projectiles or explosions than for ships.)
+(If there are more than 10 frames, the extensions should be "-00.png", "-01.png", etc. You can also create sprites with additive or "half-additive" [blending modes](BlendingModes) by using the extension "+#.png" or "~#.png" respectively, but these blending modes look much better for projectiles or explosions than for ships.)
 
 # Artistic tricks #
 
