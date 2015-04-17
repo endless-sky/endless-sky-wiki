@@ -5,6 +5,12 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Player's manual](PlayersManual)
 * [Discussion forum](http://groups.google.com/group/endless-sky)
 
+### Story
+
+* [Timeline of human space exploration](HistoricalTimeline)
+* [Regions of human space](HumanSpace)
+* [Major organizations and factions](MajorOrganizations)
+
 ### Creating ships, missions, artwork, etc.
 
 * [Help wanted](HelpWanted)
@@ -19,3 +25,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Build instructions](BuildInstructions)
 * [Contributing to the code](ContributingCode)
 * [C++ style guide](http://endless-sky.github.io/styleguide/styleguide.xml)
+
+### Descriptions of game engine technology
+
+* [Tricks for creating special blending modes](BlendingModes)
