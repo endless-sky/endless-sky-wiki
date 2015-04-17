@@ -17,6 +17,7 @@ The basic syntax of a mission description is:
 mission <name>
     name <name>
     description <text>
+    blocked <message>
     deadline (<days>)
     cargo (random | <name>) <number> (<number> (<probability>))
         illegal <fine>
@@ -135,6 +136,12 @@ description <text>
 ```
 
 This is a short description of the mission, with enough detail to make it clear to the player what they need to do to complete the mission, and what could cause the mission to fail.
+
+```html
+blocked <message>
+```
+
+This is a short message that is displayed to the player if this mission cannot be offered, but only because they do not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space").
 
 ```html
 deadline (<days>)
