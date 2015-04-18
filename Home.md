@@ -29,3 +29,4 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 ### Descriptions of game engine technology
 
 * [Tricks for creating special blending modes](BlendingModes)
+* [Using frame tweening for smooth animations](AnimationTweening)
