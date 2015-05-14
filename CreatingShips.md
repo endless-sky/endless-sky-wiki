@@ -41,7 +41,7 @@ Editing images in GIMP, some easy ways to make the models look more detailed and
 * Spray-painting dark patches at a few corners or edges can also help make the metal look reflective.
 * In the "multiply" layer, spray paint with red over the yellow or orange paint sections to make the color less uniform.
 
-If possible, try to edit the ship image at at least twice the resolution it will be saved at, in case we ever decide to update the game to support high-DPI monitors.
+To make it easier to scale the graphics to a higher resolution in the future, all ship images should be edited at at least two or three times the resolution they will be saved at, and be sure to save the final version of your 3D model, too!
 
 # Data #
 
