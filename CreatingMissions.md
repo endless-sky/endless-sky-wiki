@@ -23,7 +23,7 @@ mission <name>
         illegal <fine>
     passengers <number> (<number> (<probability>))
     invisible
-    (job | landing)
+    (job | landing | assisting | boarding)
     repeat (<number>)
     clearance (<message>)
         ...
@@ -95,7 +95,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<bunks>` = the number of passengers
 * `<passengers>` = "passenger" or "passengers"
 * `<fare>` = "a passenger" or "N passengers"
-* `<origin>` = planet where mission was offered
+* `<origin>` = planet (or ship) where mission was offered
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>`, in the `<system>` system"
@@ -177,12 +177,14 @@ invisible
 This specifies that the mission does not show up in the player's list of missions, and cannot be canceled.
 
 ```html
-(job | landing)
+(job | landing | assisting | boarding)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport. If it is a "job", it will appear only if included in the job board (which only happens if the current planet names this mission as one of its job templates).
 
 If this mission is to be shown at "landing," it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
+
+A mission shown when "assisting" or "boarding" will be shown when you repair a friendly ship or plunder a hostile ship, respectively. These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission. In either case, if the "on offer" conversation results in "launch" or "flee," the ship in question will be destroyed.
 
 ```html
 repeat (<number>)
@@ -253,7 +255,13 @@ A mission will not be offered if any of the "to fail" conditions are met, and wi
 <a name="filters"/>
 # Source and destination filters #
 
-Each mission starts on a planet, and ends on a planet, usually different from where it started. You can either specify one particular planet, or give a set of constraints that the planet must match:
+A mission can be offered from a planet or ship, but all missions must have a destination planet. For missions offered on a planet, if no destination is given that same planet is used. This can be useful for missions that should end on the same planet they start on, such as "Kill pirate ship X and return here for payment."
+
+For missions offered by a ship, you must always specify a destination, even if the mission is designed to always be "declined" - e.g. a message where the pilot thanks you for repairing them but asks for no further help.
+
+If no source is specified, the mission will be offered whenever its "to offer" conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
+
+For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match:
 
 ```html
 (source | destination) <planet>
@@ -267,8 +275,6 @@ Each mission starts on a planet, and ends on a planet, usually different from wh
     near <system> ((<min>) <max>)
     distance (<min>) <max>
 ```
-
-If no destination is specified, the destination is the same as the source planet. This can be useful for missions that should end on the same planet they start on, such as "Kill pirate ship X and return here for payment." If no source is specified, the mission will be offered whenever its "to offer" conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
 Each entry in the source or destination specification acts as a filter:
 
@@ -284,7 +290,7 @@ system <name>*
     <name>*
 ```
 
-The system must be one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but the intended use is for the NPC location filter as described later.
+The system must be one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but its intended use is for the NPC location filter as described later.
 
 ```html
 government <name>*
@@ -292,6 +298,8 @@ government <name>*
 ```
 
 The planet must be in a system owned by the given government. Again, the list can be all on one line, or multiple indented lines.
+
+If this is a source filter and the mission is being offered when "assisting" or "boarding" a ship, the government in this filter refers to the ship's government, not the government of the current star system. This allows you, for example, to create a mission that is only offered by merchant ships.
 
 ```html
 attributes <name>*
@@ -496,6 +504,8 @@ conversation
 ```
 
 This specifies that a conversation will be shown to the player at this point in the mission. When a mission is being offered, the conversation can return "accept" or "decline"; conversations can also return special values like "die" (if the conversation ends with the player dying) or "launch" (if the player should take off from the planet immediately).
+
+For missions that are offered when boarding a ship, if the conversation ends with "launch" or "flee," the ship in question will die.
 
 As with the dialogs, text substitution is done throughout the conversation.
 
