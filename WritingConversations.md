@@ -27,9 +27,9 @@ conversation (<name>)
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
 * `accept`: The player accepts this mission (if one is being offered).
-* `launch`: The mission is accepted, _and_ the player immediately takes off from this planet.
+* `launch`: The mission is accepted, _and_ the player immediately takes off from this planet (for missions offered from a planet) or the ship being boarded dies (for missions offered from a ship).
 * `decline`: The mission is declined. (This is also useful for creating conversations that appear when you land or enter a spaceport, but that are intended just to provide flavor, not to lead to a mission.)
-* `flee`: The mission is declined, _and_ the player immediately takes off from this planet.
+* `flee`: The mission is declined, _and_ the player immediately takes off from this planet (for missions offered from a planet) or the ship being boarded dies (for missions offered from a ship).
 * `defer`: The mission is declined, but it will not be marked as "offered," so it can be offered again at a later date even if it is not a repeating mission.
 * `die`: The player is killed.
 
