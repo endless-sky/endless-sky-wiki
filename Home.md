@@ -14,6 +14,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 ### Creating ships, missions, artwork, etc.
 
 * [Help wanted](HelpWanted)
+* [Development Roadmap](DevelopmentRoadmap)
 * [Creating plugins](CreatingPlugins)
 * [Creating missions](CreatingMissions)
 * [Writing conversations](WritingConversations)
