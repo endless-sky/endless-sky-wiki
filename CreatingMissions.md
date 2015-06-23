@@ -33,6 +33,8 @@ mission <name>
         <condition> (<comp> <value>)
         (has | not) <condition>
         never
+        (and | or)
+            ...
     (source | destination) <planet>
     (source | destination)
         planet <name>*
@@ -244,6 +246,8 @@ to (offer | complete | fail)
     <condition> (<comp> <value>)
     (has | not) <condition>
     never
+    (and | or)
+        ...
 ```
 
 The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. If only the condition name is given, the comparison is assumed to be "!= 0". As a special shortcut, you can write "has `<condition>`" instead of "`<condition>` != 0", or "not `<condition>`" instead of "`<condition>` == 0". The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed.
@@ -251,6 +255,18 @@ The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. If 
 Conditions can be changed when you are offered a mission or when you accept, decline, fail, or complete it, as described later in this document. You can "chain" missions together by having one depend on the "`<mission name>`: done" condition set by a previous mission. Since all your existing missions complete before new ones are offered, that condition will be set before the check is done for what new missions are available.
 
 A mission will not be offered if any of the "to fail" conditions are met, and will fail if it is active and one of those conditions changes so that it is satisfied.
+
+The condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true (e.g. you have completed mission A *or* mission B), you can use an "or" sub-clause. Within an "or" clause you can have "and" clauses and so on, allowing you to check any arbitrary logical combination. For example, if you want a mission to be offered if "(has A or (has B and has C)) and (has D)":
+
+```html
+to offer
+    or
+        has A
+        and
+            has B
+            has C
+    has D
+```
 
 <a name="filters"/>
 # Source and destination filters #
