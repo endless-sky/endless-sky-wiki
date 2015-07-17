@@ -82,6 +82,7 @@ mission <name>
         <condition> (= | += | -= | ++ | --) (value)
         (set | clear) <condition>
         event <name> (delay)
+        fail (<name>)
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -488,6 +489,7 @@ on (offer | complete | accept | decline | fail | visit | enter <system>)
     <condition> (= | += | -= | ++ | --) (value)
     (set | clear) <condition>
     event <name> (delay)
+    fail (<name>)
 ```
 
 There are seven events that can trigger a response of some sort:
@@ -561,3 +563,9 @@ event <name> (<delay>)
 ```
 
 This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now, instead of happening immediately.
+
+```html
+fail (<name>)
+```
+
+This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list.
