@@ -27,7 +27,7 @@ The program will run using the "data" and "images" folders that are found in the
 
 The Windows build has been tested on 64-bit Windows 7, only. You will need the Code::Blocks IDE and g++ 4.8 or higher. Code::Blocks is available [here](http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/Windows/codeblocks-13.12-setup.exe/download), and you can install g++ separately through [mingw-w64](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.8.5/threads-posix/seh/). **Be sure to install the "pthread" version of MinGW; the "win32-thread" one does not come with support for C++11 threading.**
 
-If you are on 64-bit windows, a full set of development libraries are available [here](http://endless-sky.github.io/win64-dev.zip). If you don't want to have to edit the paths in the Code::Blocks file, unpack the "dev64" folder directly into `C:\`. 
+If you are on 64-bit Windows, a full set of development libraries are available [here](http://endless-sky.github.io/win64-dev.zip). If you don't want to have to edit the paths in the Code::Blocks file, unpack the "dev64" folder directly into `C:\`. 
 
 If you are using 32-bit Windows, you'll have to track down 32-bit versions of all the libraries.
 
@@ -56,7 +56,7 @@ Just downloading the SDL binary won't work, because XCode 5 checks that the fram
 hg clone https://hg.libsdl.org/SDL
 open SDL/Xcode/SDL/SDL.xcodeproj
 
-Build the framework, then copy it into /Library/Frameworks. When I did this, for some reason it built to some obscure directory that I had to look up in the logs, rather than into the Release directory where you 
+Build the framework, then copy it into /Library/Frameworks. When I did this, for some reason it built to some obscure directory that I had to look up in the logs.
 
 Hopefully these will all install to the locations referenced in the project file; if not you can correct the paths.
 
