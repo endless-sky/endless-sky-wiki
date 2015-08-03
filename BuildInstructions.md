@@ -1,4 +1,4 @@
-Most of the current development work is done on Ubuntu Linux. Building the code on any Linux variant should be relatively straightforward. Building it on Windows or Mac OS X is more complicated, and these instructions for those operating systems are incomplete.
+Most of the current development work is done on Ubuntu Linux. Building the code on any Linux variant should be relatively straightforward. Building it on Windows or Mac OS X is a bit more complicated.
 
 You can get a copy of the code either using "git clone," or using the download link. How you build it will then depend on your operating system:
 
@@ -35,4 +35,31 @@ You will also need `libmingw32.a` and `libopengl32.a`. Those should be included 
 
 ### Mac OS X ###
 
-You will need to build and install libpng and libjpeg-turbo, and also install the SDL2 framework. But once those are installed, you can just open the XCode project and click the "build" button.
+To build Endless Sky you probably want the latest XCode version (I used 5.1.1). You also need to install three libraries:
+
+####libpng####
+
+http://sourceforge.net/projects/libpng/files/libpng14/
+
+Get version 1.4.13. (The version number doesn't seem to match -- XCode links to libpng14.14.dylib -- but the file name will be right).
+
+On my system, it was installed with the name libpng14.14..dylib (extra ".") and I had to rename it and fix the symlinks.
+
+####libturbojpeg####
+
+http://www.libjpeg-turbo.org/Documentation/OfficialBinaries
+
+####SDL2####
+
+Just downloading the SDL binary won't work, because XCode 5 checks that the framework is signed, and it isn't. Instead, build it from source:
+
+hg clone https://hg.libsdl.org/SDL
+open SDL/Xcode/SDL/SDL.xcodeproj
+
+Build the framework, then copy it into /Library/Frameworks. When I did this, for some reason it built to some obscure directory that I had to look up in the logs, rather than into the Release directory where you 
+
+Hopefully these will all install to the locations referenced in the project file; if not you can correct the paths.
+
+####Library paths####
+
+To create a Mac OS X binary that will work on systems other than your own, you may also need to use `install_name_tool` to modify the libraries so that their location is relative to the @rpath.
