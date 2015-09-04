@@ -41,7 +41,7 @@ Editing images in GIMP, some easy ways to make the models look more detailed and
 * Spray-painting dark patches at a few corners or edges can also help make the metal look reflective.
 * In the "multiply" layer, spray paint with red over the yellow or orange paint sections to make the color less uniform.
 
-To make it easier to scale the graphics to a higher resolution in the future, all ship images should be edited at at least two or three times the resolution they will be saved at, and be sure to save the final version of your 3D model, too!
+At a bare minimum, you should edit ship images at a large enough resolution to provide an "@2x" version for high-dpi monitors. Be sure to save the final version of your 3D model, too!
 
 # Data #
 
@@ -63,31 +63,37 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"explode"`: an effect to create when the ship is dying, and the number of them to create. These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion (e.g. `explode "small explosion" 10`).
 
-The "attributes" key should be followed by a list of ship attributes, which include:
+The "attributes" key should be followed by a list of ship attributes, ideally listed in the following order:
 
-* `"required crew"`: the number of crew members needed to operate the ship without anything failing.
+* `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Heavy Warship", "Fighter", or "Drone".
 
-* `"bunks"`: the maximum number of people on the ship, including crew and passengers.
-
-* `"drag"`: the maximum speed of the ship will be equal to "thrust" / "drag".
-
-* `"mass"`: the mass of the ship's chassis, without any outfits or cargo. The higher the mass, the more thrust is needed in order to turn or accelerate at a certain rate.
+* `"cost"`: the cost of the ship, in credits.
 
 * `"shields"`: maximum shield capacity. When a ship is hit, if it has any shields left they absorb the damage; otherwise the hull is damaged. Shields can recharge, whereas hulls generally can only be repaired when landing on a planet.
 
 * `"hull"`: maximum hull strength. A ship is disabled when either it is reduced to 10% hull, or to the minimum of 25% hull or 100. (That is, small ships are disabled at 25%, and large ones at 10%.)
 
+* `"required crew"`: the number of crew members needed to operate the ship without anything failing.
+
+* `"bunks"`: the maximum number of people on the ship, including crew and passengers.
+
+* `"mass"`: the mass of the ship's chassis, without any outfits or cargo. The higher the mass, the more thrust is needed in order to turn or accelerate at a certain rate.
+
+* `"drag"`: the maximum speed of the ship will be equal to "thrust" / "drag".
+
+* `"heat dissipation"`: how well this ship gets rid of excess heat. This should vary from .9 for tiny ships to .5 or less for large ships. For ships of a given size, it should be higher for ships with more exposed hull area or that might be expected to have higher quality construction, and lower for ships that ought to be plagued by overheating issues.
+
+* `"fuel capacity"`: the amount of fuel (one jump = 100) that this ship can carry.
+
 * `"cargo space"`: the amount of cargo that can be carried.
 
 * `"outfit space"`: the amount of outfits (weapons, generators, engines, etc.) that can be installed.
 
-* `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
-
 * `"weapon capacity"`: the amount of outfit space that can be occupied by weapons.
 
-* `"fuel capacity"`: the amount of fuel (one jump = 100) that this ship can carry.
+* `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
-Outfits work by adding or subtracting to these same attributes. The outfits list can be in any order, but for the sake of consistency its preferred order is roughly from "front to back" of the ship:
+[Outfits](CreatingOutfits) work by adding or subtracting to these same attributes. The outfits list can be in any order, but for the sake of consistency its preferred order is roughly from "front to back" of the ship:
 
 * guns
 * turrets
