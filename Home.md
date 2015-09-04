@@ -19,6 +19,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Creating missions](CreatingMissions)
 * [Writing conversations](WritingConversations)
 * [Creating new ships](CreatingShips)
+* [Creating outfits and weapons](CreatingOutfits)
 * [Creating planet sprites](PlanetSprites)
 * [Art and storytelling style](StyleGoals)
 
