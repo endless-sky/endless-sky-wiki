@@ -78,6 +78,7 @@ mission <name>
         conversation
             ...
         outfit <outfit> (<number>)
+        require <outfit>
         payment (<value>)
         <condition> (= | += | -= | ++ | --) (value)
         (set | clear) <condition>
@@ -485,6 +486,7 @@ on (offer | complete | accept | decline | fail | visit | enter <system>)
     conversation
         ...
     outfit <outfit> (<number>)
+    require <outfit>
     payment (<value>)
     <condition> (= | += | -= | ++ | --) (value)
     (set | clear) <condition>
@@ -531,11 +533,14 @@ The syntax for conversations is described [here](WritingConversations).
 
 ```html
 outfit <outfit> (<number>)
+require <outfit>
 ```
 
 At this point in the mission, the named ship outfit (or some number of them, if a number is given) is installed in the player's flagship, or placed in the player's cargo if the flagship has no outfit space for it. If the number is negative, outfits are taken away. If a mission removes outfits in its "complete" phase, it cannot be completed unless that outfit exists. This makes it possible to loan the player an outfit for the duration of a mission, or to require that the player disable a non-NPC ship and steal a particular piece of technology from it.
 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
+
+The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive.
 
 ```html
 payment (<value>)
