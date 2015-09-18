@@ -62,6 +62,8 @@ Outfits work by modifying the attributes of your ship. Many of the attributes ar
 * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel equal to .03 * sqrt("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful.
 * `required crew`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements.
 * `reverse thrust`: if your ship has reverse thrusters installed, the "back" button will apply reverse thrust instead of turning your ship.
+* `reverse thrusting energy`: energy cost per frame of reverse thrusting.
+* `reverse thrusting heat`: heat produced per frame of reverse thrusting.
 * `scan interference`: your odds of a scan of your ship discovering anything illegal you have are equal to 1 / (1 + scan interference). For example, if "scan interference" is 3 you evade 75% of scans.
 * `scram drive`: a scram drive can engage as long as your ship is moving in the direction of the target system. This value is how much your ship can be drifting relative to that vector and still be allowed to jump.
 * `shield generation`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
