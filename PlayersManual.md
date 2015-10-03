@@ -52,7 +52,7 @@ Most planets have a variety of trade goods available for sale. You can make a pr
 
 Once you have explored a system, your ship's computer remembers the commodity prices there. When you are trying to pick out a trade good to invest in, you can press the map key ('M' by default) to view your map. The systems will be color-coded according to the prices of the selected commodity. You can also click on any star system to view the exact prices of each commodity.
 
-To buy more than one ton of a given trade good at a time, you can hold down the shift key (5x), the control key (20x), or both (100x).
+To buy more than one ton of a given trade good at a time, you can hold down the shift key (5x), the control key (20x), or both (100x). For players with enormous cargo fleets, the alt / option key (500x) can be used in combination with those other keys to sell up to 50,000 tons of cargo per click.
 
 ##Job Board (J)##
 
