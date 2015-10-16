@@ -4,13 +4,13 @@ At the moment, the greatest need is for beta testers, but you can also contribut
 
 ### Non-programming tasks ###
 
-  * Audio: create a set of higher-quality sound effects, or work on better volume balancing of the current ones. The sound effects should be subtle so that they don't get annoying.
+  * [Audio](SoundsNeeded): create a set of higher-quality sound effects, or work on better volume balancing of the current ones. The sound effects should be subtle so that they don't get annoying.
 
   * Photography: contribute or find open-source photos for planet landscapes or conversation "scenes." Especially cool would be some "matte paintings" or 3D renderings of the inside of futuristic space stations.
 
-  * Creating new aliens: each species should have a different set of ships and weapons, and a story line to go with them.
+  * Creating new aliens: each species should have a different set of [ships](CreatingShips) and [weapons](CreatingOutfits), a [region of space](https://github.com/endless-sky/endless-sky-editor) that they inhabit, and a story line to go with them.
 
-  * Missions: writing new side missions either to go with the main story lines, or completely independent of them.
+  * [Missions](CreatingMissions): writing new side missions either to go with the main story lines, or completely independent of them.
 
   * Editing: fixing boring or badly written parts of the planet descriptions or mission text.
 
