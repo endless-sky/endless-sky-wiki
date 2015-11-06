@@ -250,6 +250,8 @@ If you succeed in capturing a ship, some of your crew members must transfer over
 
 The newly captured ship will be repaired just enough that it is no longer disabled. A hit from any weapon will be enough to disable it again, so you will need to avoid combat until its shields have a chance to recharge.
 
+If any of your crew members are killed while trying to capture a ship, you will owe "death benefits" to their families to compensate them for their loss (because asking your crew to fight hand to hand is more than they signed up for). The way death benefits are resolved is that you, as the captain, get two shares in the value of the ship, and each of the bereaved families gets one share. So, if you lose one crew member, you pay their family 1/3 of the captured ship's cost; if you lose 8 crew members, you will owe their families 80% of the cost. This means that capturing a ship always earns you a profit, but the profit is much smaller if you lose crew members in the process.
+
 If a friendly ship is disabled, you can board it to repair it just enough so that it can fly again. And if your own ship is disabled, you can hail a friendly ship and ask it to repair you.
 
 ##Strategy##
