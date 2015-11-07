@@ -16,7 +16,7 @@ If you are creating a human ship, it should be mostly shades of grey with some h
 
 To create a new ship sprite, just add a PNG file to the images/ship/ directory. Everything in the images directory is automatically loaded when the game launches; no need to add it to a list anywhere.
 
-For collision detection, for all images in images/ship/ and images/asteroid/, or one of their sub-folders, a [polygonal outline](CollisionDetection) is generated when the sprite is loaded. This means that it's important for your ship image to be in that folder, so the game knows that it needs to calculate its outline.
+For collision detection, for all images in images/ship/ and images/asteroid/, or one of their sub-folders, a [polygonal outline](CollisionDetection) is generated when the sprite is loaded. This means that it's important for your ship image to be in that folder, so the game knows that it needs to calculate its outline. **The folder must be named "ship", singular; "ships" will not work.**
 
 If you want your ship to be animated, just create multiple files with the same name, with "-#.png" appended:
 
