@@ -127,7 +127,7 @@ The radar display shows all objects in the current star system. Planets, space s
 * red: ships that are attacking you, or planets that will not let you land.
 * grey: disabled ships, and planets you cannot land on.
 
-The other displays next to the radar show your current navigational target (which might be either a planet to land on, or another system to jump to via hyperspace) and the currently targeted ship. By default, the back-tick key toggles between all targets in system, and the 'R' key targets the nearest hostile ship. Hold down the shift key while pressing the backtick key to toggle through your escorts, or while pressing the 'R' key to select the nearest non-hostile ship.
+The other displays next to the radar show your current navigational target (which might be either a planet to land on, or another system to jump to via hyperspace) and the currently targeted ship. By default, the 'N' key toggles between all targets in system, and the 'R' key targets the nearest hostile ship. Hold down the shift key while pressing the 'N' key to toggle through your escorts, or while pressing the 'R' key to select the nearest non-hostile ship.
 
 The only way to fire on a non-hostile ship is to choose it as your target before firing; otherwise, your shots will pass harmlessly below or above it. In general, your weapons only harm hostile ships, which is useful in close combat where friendly fire would otherwise be a concern.
 
