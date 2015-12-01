@@ -1,4 +1,4 @@
-The "issues" page here on GitHub is for tracking bugs and feature requests. When posting a new issue, please:
+The [issues page](https://github.com/endless-sky/endless-sky/issues) here on GitHub is for tracking bugs and feature requests. When posting a new issue, please:
 
 * Check to make sure it's not a duplicate of an existing issue.
 * Create a separate "issue" for each bug you are reporting and each feature you are requesting.
