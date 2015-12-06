@@ -40,7 +40,7 @@ You can return to the main menu at any time, which pauses the game, by pressing 
 
 Human beings have been living in space for more than a millennium, and there are always a hardy few who can manage to fall asleep on a space station, pretending that the plink of micro-asteroids against the hull beside them is just the sound of rain on a tin roof, and that the distant hum is something other than the sound of the only machine that keeps them breathing. But most people prefer even the most inhospitable planet to life on a station, so after the new wave of colonization in the last two centuries, nearly every planet in human space that has breathable atmosphere is home to at least one settlement.
 
-Every time you land on an inhabited world, your ship is automatically refueled and repaired. You then have several options of what to do next. (Each of the options also has a keyboard shortcut, as listed below.)
+Every time you land on an inhabited world, your ship is automatically refueled and repaired. When you first land, a description of the planet is shown. (If you switch to a different view like the bank or the trading panel, you can return to the planet description by clicking on the landscape image.) You then have several options of what to do next. Each of the options also has a keyboard shortcut, as listed below.
 
 ##Trading (T)##
 
