@@ -79,7 +79,7 @@ mission <name>
             ...
         outfit <outfit> (<number>)
         require <outfit>
-        payment (<value>)
+        payment (<base> (<multiplier>))
         <condition> (= | += | -= | ++ | --) (value)
         (set | clear) <condition>
         event <name> (delay)
@@ -487,7 +487,7 @@ on (offer | complete | accept | decline | fail | visit | enter <system>)
         ...
     outfit <outfit> (<number>)
     require <outfit>
-    payment (<value>)
+    payment (<base> (<multiplier>))
     <condition> (= | += | -= | ++ | --) (value)
     (set | clear) <condition>
     event <name> (delay)
@@ -543,14 +543,16 @@ If the outfit cannot be installed due to lack of space, a warning message will b
 The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive.
 
 ```html
-payment (<value>)
+payment (<base> (<multiplier>))
 ```
 
-If the "payment" tag appears on its own, the player is paid the default amount for this mission, which is equal to:
+This specifies the payment for a mission, which depends on the number of jumps and the amount of cargo and passengers:
 
-(# of jumps from origin to destination + 1) \* (1500 \* (# of passengers) + 150 \* (tons of cargo))
+base + multiplier * (jumps + 1) \* (10 \* (# of passengers) + (tons of cargo))
 
-If a value is given, that is the player's payment for reaching this step of the mission. Normally, a "payment" value would only be given in the "on complete" section, but you can also have a negative value to be subtracted if the player fails the mission, or you could use a "payment" to advance the player some money when they first accept a mission. If the "on complete" payment is negative, the player cannot complete the mission if they have fewer than that number of credits.
+If no base or multiplier is given, the default is base = 0, multiplier = 150. If a single value is given, it denotes a flat payment (i.e. multiplier = 0).
+
+Normally, a "payment" value would only be given in the "on complete" section, but you can also have a negative value to be subtracted if the player fails the mission, or you could use a "payment" to advance the player some money when they first accept a mission. If the "on complete" payment is negative, the player cannot complete the mission if they have fewer than that number of credits.
 
 ```html
 <condition> (= | += | -= | ++ | --) (value)
