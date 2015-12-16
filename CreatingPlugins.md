@@ -1,4 +1,4 @@
-The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](http://endless-sky.github.io/example-plugin.zip). You must create a "plugins" folder in one of two places, and install the plugin there. Depending on your operating system, the plugin should be placed in:
+The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](http://endless-sky.github.io/example-plugin.zip). You must create a "plugins" folder in one of two places, and install the plugin folder there. For each operating systems, there are two places where you can install plugins:
 
 ### Linux ###
 * /usr/share/endless-sky/plugins/
