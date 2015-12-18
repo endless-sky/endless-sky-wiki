@@ -18,7 +18,7 @@ mission <name>
     name <name>
     description <text>
     blocked <message>
-    deadline (<days>)
+    deadline (<days> (<multiplier>))
     cargo (random | <name>) <number> (<number> (<probability>))
         illegal <fine>
     passengers <number> (<number> (<probability>))
@@ -148,10 +148,12 @@ blocked <message>
 This is a short message that is displayed to the player if this mission cannot be offered, but only because they do not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space").
 
 ```html
-deadline (<days>)
+deadline (<days> (<multiplier>))
 ```
 
 The number of days you have to complete the mission. If the number of days is left out (i.e. it is just the word "deadline"), that means use the default deadline (2 days \* number of hyperspace jumps to the destination). In a saved game, the `<days>` amount is stored as an absolute date instead of a relative number, e.g. "deadline 29 1 3014".
+
+If you specify a multiplier in addition to a number of days, the deadline will be (days + multiplier \* number of hyperspace jumps to the destination). You can also combine multiple deadline statements; for example, having both an empty "deadline" statement and a "deadline 2" statement means offer the default deadline, plus two days.
 
 ```html
 cargo (random | <name>) <number> (<number> (<probability>))
