@@ -87,7 +87,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a "w
   * `random start frame`: start the animation at a random frame (e.g. so if you fire a bunch of projectiles, they won't all be pulsing through the animation in unison with each other).
   * `no repeat`: once you reach the last animation frame, stop.
   * `rewind`: when you reach the last animation frame, instead of starting over at the beginning, play the animation back in reverse.
-* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav").
+* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 * `icon`: for secondary weapons, the icon that will be shown along with this weapon's ammunition count.
 * `fire effect`: an "effect" object that will be created when this weapon fires (such as a smoke cloud from a missile launch). You can specify a number to create more than one instance of the effect.
