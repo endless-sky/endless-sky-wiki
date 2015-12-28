@@ -29,6 +29,8 @@ mission <name>
         ...
     infiltrating
     waypoint <system>
+    stopover (<planet>)
+        ...
     to (offer | complete | fail)
         <condition> (<comp> <value>)
         (has | not) <condition>
@@ -71,7 +73,7 @@ mission <name>
         fleet <name>
         fleet
             ...
-    on (offer | complete | accept | decline | fail | visit | enter <system>)
+    on (offer | complete | accept | decline | fail | visit | stopover | enter <system>)
         dialog <text>
             <text>*
         conversation <name>
@@ -103,6 +105,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>`, in the `<system>` system"
+* `<stopovers>` = a list of all stopover destinations
 * `<payment>` = "1 credit" or "N credits"
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
 * `<day>` = the deadline in conversational form ("the DDth of Month")
@@ -228,6 +231,13 @@ waypoint <system>
 ```
 
 This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited; then they disappear.
+
+```html
+stopover (<planet>)
+    ...
+```
+
+This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the source and destination filters. As with waypoints, any number of stopovers may be specified.
 
 <a name="conditions"/>
 # Conditions #
@@ -481,7 +491,7 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | fail | visit | enter <system>)
+on (offer | complete | accept | decline | fail | visit | stopover | enter <system>)
     dialog <text>
         <text>*
     conversation <name>
@@ -496,7 +506,7 @@ on (offer | complete | accept | decline | fail | visit | enter <system>)
     fail (<name>)
 ```
 
-There are seven events that can trigger a response of some sort:
+There are eight events that can trigger a response of some sort:
 
 * offer: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission.
 * complete: when the mission is completed. This is when the player gets paid.
@@ -504,6 +514,7 @@ There are seven events that can trigger a response of some sort:
 * decline: if the player decides to decline a mission.
 * fail: if the mission fails.
 * visit: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
+* stopover: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * enter `<system>`: your ship enters the given system for the first time since this mission was accepted.
 
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
