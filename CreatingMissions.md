@@ -109,7 +109,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<payment>` = "1 credit" or "N credits"
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
 * `<day>` = the deadline in conversational form ("the DDth of Month")
-* `<npc>` = the name of the first NPC in the mission description
+* `<npc>` = the name of the first ship in the last `npc` block in the mission description
 * `<first>` = your first name
 * `<last>` = your last name
 * `<ship>` = the name of your flagship
