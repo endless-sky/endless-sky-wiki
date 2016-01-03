@@ -247,9 +247,10 @@ This specifies a planet that you must visit in order to complete the mission. Th
 * `"<mission name>: offered"`, where `<mission name>` is replaced with the name of any mission. This is incremented whenever a mission is offered to you, and is used by the "repeat" check to make sure a mission is not offered too many times.
 * `"<mission name>: active"`, where `<mission name>` is replaced with the name of any mission. This is incremented when you accept a mission, and decremented when you complete, or fail it.
 * `"<mission name>: done"` is set when a mission is successfully completed.
-* `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number.
-* "reputation" is your reputation in the current system, rounded down.
+* `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number. These conditions can be changed to alter your reputation with a government.
 * "ships: `<category>`" is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone).
+* "cargo space" and "passenger space" are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
+* "net worth" is your net worth, limited to the range of +- 2 billion.
 * "combat rating" is your current combat rating (sum of the base crews of all the ships you have disabled).
 * "random" is a random number between 0 and 99. This can be used to make a mission only sometimes appear when all other conditions are met.
 
