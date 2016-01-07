@@ -41,7 +41,7 @@ User interface:
 
 Universe:
 
-- [ ] Fill the galaxy (even if some systems are not populated).
+- [ ] Fill the rest of the galaxy with various sized clusters of systems, with a jump drive needed to travel between them.
 - [ ] More alien species.
 - [ ] Random fluctuations in commodity prices.
 
