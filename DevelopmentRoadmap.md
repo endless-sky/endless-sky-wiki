@@ -1,11 +1,4 @@
-### Goals for version 0.8.0:
-
-- [x] Free Worlds plot line fully playable.
-- [x] Human and Hai space fully "populated" with planets and star systems.
-- [x] Galaxy "map" editor available for content creators.
-- [x] Basic plugin system working.
-- [x] Thoroughly beta tested on various operating systems and hardware.
-- [x] Plugin with high-DPI versions of all the graphics.
+This page gives big-picture goals for what the game will include when it is "complete." It will probably be a year or more before we reach that point; for more details about changes that are planned for upcoming releases in the interim, look at the [milestones](https://github.com/endless-sky/endless-sky/milestones) page.
 
 ### Goals for version 1.0.0:
 
