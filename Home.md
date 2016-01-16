@@ -36,3 +36,4 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Using frame tweening for smooth animations](AnimationTweening)
 * [Motion blur rendering using OpenGL shaders](MotionBlur)
 * [Polygonal collision detection algorithms](CollisionDetection)
+* [Creating an "infinite" asteroid field](TiledAsteroids)
