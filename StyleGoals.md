@@ -26,3 +26,15 @@ Nearly all the landscape images were taken right here on Planet Earth. A few of 
 It's all too common in science fiction to have the central conflict defined in very black and white terms: the noble Rebel Alliance against the evil Empire. The world of Endless Sky is a bit more nuanced. Any faction you join should feel like the good guys at first: noble goals, interesting people, etc. But as you continue to play, each faction should also have clear faults. And as the war gets more and more brutal, NPCs should be ambivalent about fighting and worried about the destruction the war is causing on all sides.
 
 The currently playable plot line (the Free Worlds) makes a few attempts at nonlinear gameplay. In particular, there are two different endings: one where you keep working for peace and reconciliation, and one where the conflict takes a more brutal turn near the end. It's nowhere near as nonlinear as I would like, though.
+
+### Alien Speech Patterns
+
+Ideally, each species should have slightly different speech patterns to indicate that they each think differently, so their thoughts sound different when translated into human language. I've done a very bad job of being consistent with that, but my basic goals are:
+
+* The Quarg occasionally use archaic language constructs, to hint that they're an ancient species (who presumably learned to talk to humans thousands of years ago and haven't kept their grammar books up to date since then).
+
+* Some Hai have better command of the human language than others (particularly the Unfettered). They make occasional grammatical errors, particularly leaving out articles or inserting the where they are not needed. (This is to hint that they speak a language like Latin that does not use articles.)
+
+* The Wanderers' language is being translated by a machine, so it occasionally supplies multiple translations for one word when the [meaning, intent] of the Wanderer word cannot be [precisely, completely] mapped into a single human word.
+
+* The Pug should sound airy, haughty, and poetic. (My inspiration was the pike in _The Once and Future King_: "Now I think it is time that you should go away, young master, for I find this conversation uninteresting and exhausting. I think you ought to go away really almost at once, in case my disillusioned mouth should suddenly determine to introduce you to my great gills, which have teeth in them also. Yes, I really think you might be wise to go away this moment. Indeed, I think you ought to put your back into it. And so, a long farewell to all my greatness...")
