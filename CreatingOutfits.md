@@ -102,6 +102,8 @@ Ordinary weapon attributes include:
 
 * `lifetime`: how long the projectile lasts before it "dies."
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
+* `burst count`: how many projectiles this weapon can fire in a row at a higher reload rate (`burst reload`). The total time in between bursts will be `burst count` * `reload`. **(v. 0.9.0)**
+* `burst reload`: how fast the weapon reloads when firing projectiles in a burst. This value must be less than the full `reload` value. **(v. 0.9.0)**
 * `homing`: How good this weapon is at seeking its target:
   * 0: no homing.
   * 1: projectile loses its homing ability if no longer facing toward the target.
