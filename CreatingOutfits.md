@@ -129,6 +129,7 @@ Ordinary weapon attributes include:
 * `heat damage`: how much heat is added to a target when struck by this projectile. If the target's shields are up, heat damage is cut in half.
 * `ion damage`: how much ionization is added to a target when struck by this projectile. If the target's shields are up, ionization is cut in half. Ionization drains energy and dissipates at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
 * `hit force`: how much thrust is applied to a ship when this projectile strikes it. If this is negative, the ship is pulled towards the projectile.
+* `piercing`: a value between 0 and 1, controlling what fraction of the weapon's damage "pierces" through shields and does direct damage to the hull instead. When the target's shields are still up, shield damage will be (1 - `piercing`) * `shield damage` and hull damage will be `piercing` * `shield damage`.
 
 ### Sales
 
