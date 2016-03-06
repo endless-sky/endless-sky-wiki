@@ -73,7 +73,7 @@ mission <name>
         fleet <name>
         fleet
             ...
-    on (offer | complete | accept | decline | fail | visit | stopover | enter <system>)
+    on (offer | complete | accept | decline | fail | visit | stopover | enter (<system>))
         dialog <text>
             <text>*
         conversation <name>
@@ -492,7 +492,7 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | fail | visit | stopover | enter <system>)
+on (offer | complete | accept | decline | fail | visit | stopover | enter (<system>))
     dialog <text>
         <text>*
     conversation <name>
@@ -509,14 +509,14 @@ on (offer | complete | accept | decline | fail | visit | stopover | enter <syste
 
 There are eight events that can trigger a response of some sort:
 
-* offer: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission.
-* complete: when the mission is completed. This is when the player gets paid.
-* accept: if the player agrees to accept a mission.
-* decline: if the player decides to decline a mission.
-* fail: if the mission fails.
-* visit: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
-* stopover: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
-* enter `<system>`: your ship enters the given system for the first time since this mission was accepted.
+* `offer`: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission.
+* `complete`: when the mission is completed. This is when the player gets paid.
+* `accept`: if the player agrees to accept a mission.
+* `decline`: if the player decides to decline a mission.
+* `fail`: if the mission fails.
+* `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
+* `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
+* `enter (<system>)`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
