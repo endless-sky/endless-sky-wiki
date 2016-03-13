@@ -26,7 +26,27 @@ As with [ships](CreatingShips), it is often easier to add texture and color vari
 
 ### Outfit attributes
 
-Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two of the same scanner, your scanning range doubles. If you install two shield generators, your shield regeneration doubles. The attributes include:
+Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two of the same scanner, your scanning range doubles. If you install two shield generators, your shield regeneration doubles.
+
+Most attributes are given as a single number, but there are a few "special" attributes:
+
+* `category`: which outfitter category to show this outfit in. The category must be one of the following:
+  * "Guns"
+  * "Turrets"
+  * "Secondary Weapons"
+  * "Ammunition"
+  * "Systems"
+  * "Power"
+  * "Engines"
+  * "Hand to Hand"
+  * "Special"
+* `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](https://github.com/endless-sky/endless-sky/wiki/CreatingShips) when the thruster is firing.
+* `"flare sound"`: for thrusters, the sound that is played when the thruster is firing.
+* `"afterburner effect"`: the [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) that is created for every frame that the afterburner is firing. Afterburner effects can last for multiple frames, leaving a trail behind the ship.
+* `"thumbnail"`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite.
+* `"description"`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
+
+The other attributes include:
 
 * `afterburner energy`: energy consumed by the afterburner in one frame.
 * `afterburner fuel`: fuel consumed by the afterburner in one frame.
@@ -90,10 +110,10 @@ An outfit that provides a weapon contains an extra set of attributes inside a "w
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 * `icon`: for secondary weapons, the icon that will be shown along with this weapon's ammunition count.
-* `fire effect`: an "effect" object that will be created when this weapon fires (such as a smoke cloud from a missile launch). You can specify a number to create more than one instance of the effect.
-* `live effect`: an effect object that will be created while the projectile is in flight. You can specify the number of times this effect will be created, on average, during the projectile's lifetime. **(v. 0.9.0)**
-* `hit effect`: an "effect" object to be created when this projectile hits something. You can specify a number to create more than one instance of the effect. You can also specify multiple different hit effects.
-* `die effect`: an "effect" object to be created if this projectile reaches the end of its lifetime without hitting anything.
+* `fire effect`: an [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) object that will be created when this weapon fires (such as a smoke cloud from a missile launch). You can specify a number to create more than one instance of the effect.
+* `live effect`: an [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) object that will be created while the projectile is in flight. You can specify the number of times this effect will be created, on average, during the projectile's lifetime. **(v. 0.9.0)**
+* `hit effect`: an [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) object to be created when this projectile hits something. You can specify a number to create more than one instance of the effect. You can also specify multiple different hit effects.
+* `die effect`: an [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) object to be created if this projectile reaches the end of its lifetime without hitting anything.
 * `submunition`: if the projectile reaches its end of life, create a new set of projectiles based on the given weapon outfit. 
 * `stream`: this tag makes a weapon fire in "stream" mode (multiple copies of this weapon take turns firing) even if it is susceptible to anti-missile. **(v. 0.9.0)**
 * `cluster`: this tag makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). **(v. 0.9.0)**
