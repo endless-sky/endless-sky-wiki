@@ -70,6 +70,7 @@ The other attributes include:
 * `heat dissipation`: outfits should not modify this. If you want an outfit to help cool off a ship, use the "cooling" attribute instead.
 * `heat generation`: how much heat this outfit generates every turn, regardless of whether it is working at full capacity or not. For example, a power generator will create its full amount of heat even if your batteries are fully charged and the energy it creates is just being thrown away.
 * `hull`: I recommend against providing outfits that give ships additional hull strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
+* `hull energy` is the extra amount of energy that hull repair draws when recharging at the full rate.
 * `hull repair rate`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
 * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
 * `illegal`: the fine, in credits, for being caught using this outfit.
@@ -86,6 +87,7 @@ The other attributes include:
 * `reverse thrusting heat`: heat produced per frame of reverse thrusting.
 * `scan interference`: your odds of a scan of your ship discovering anything illegal you have are equal to 1 / (1 + scan interference). For example, if "scan interference" is 3 you evade 75% of scans.
 * `scram drive`: a scram drive can engage as long as your ship is moving in the direction of the target system. This value is how much your ship can be drifting relative to that vector and still be allowed to jump.
+* `shield energy` is the extra amount of energy your shield generator draws when recharging at the full rate. If this is negative, recharging shields will cost less than the default 1 energy per shield unit.
 * `shield generation`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
 * `shields`: I recommend against providing outfits that give ships additional shield strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
 * `thrust`: your ship's acceleration per frame equals thrust / mass.
