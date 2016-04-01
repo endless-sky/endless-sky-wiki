@@ -162,3 +162,5 @@ ship "Bastion" "Bastion (Laser)"
 ```
 
 In this case, all four guns are the same type (heavy lasers), so there is no need to specify their order, but the order of the turrets must be specified. The turret (x, y) positions need not be specified, because they are given in the original ship descriptor. By only providing the bare minimum information in the variant, we can avoid needing to update all the variants if, say, the ship sprite changes and the turret positions move.
+
+A variant can define new weapon hardpoints, but if so **the new set of points completely replaces the old ones**. That is, if you want your new variant to have two extra guns, you'll need to copy the base ship's list of guns and turrets, and then add two more gun lines. Similarly, if you define any new engine points the old engine points are discarded. And, if you define a new bay location (drone or fighter), all previous "drone" and "fighter" locations are discarded.
