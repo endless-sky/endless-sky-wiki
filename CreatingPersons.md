@@ -1,4 +1,4 @@
-A "person" is a unique ship that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. The syntax for the definition of a person is:
+A "person" is a unique ship that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. The [syntax](https://github.com/endless-sky/endless-sky/wiki/DataFormat#grammar-specifications) for the definition of a person is:
 
 ```html
 person <name>
@@ -49,7 +49,7 @@ personality [<type>...]
     ...
 ```
 
-This defines the [personality characteristics](CreatingMissions#non-player-characters-npcs). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
+This defines the [personality characteristics](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#non-player-characters-npcs). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
 
 ```html
 system
