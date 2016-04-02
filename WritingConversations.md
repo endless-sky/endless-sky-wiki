@@ -31,6 +31,7 @@ After any text message, or in response to any choice, the conversation may jump 
 * `decline`: The mission is declined. (This is also useful for creating conversations that appear when you land or enter a spaceport, but that are intended just to provide flavor, not to lead to a mission.)
 * `flee`: The mission is declined, _and_ the player immediately takes off from this planet (for missions offered from a planet) or the ship being boarded dies (for missions offered from a ship).
 * `defer`: The mission is declined, but it will not be marked as "offered," so it can be offered again at a later date even if it is not a repeating mission.
+* `depart`: The mission is deferred, and you immediately flee.
 * `die`: The player is killed.
 
 For example:
