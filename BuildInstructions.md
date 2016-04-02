@@ -35,6 +35,8 @@ If you are using 32-bit Windows, download the [32-bit libraries](http://endless-
 
 You will also need `libmingw32.a` and `libopengl32.a`. Those should be included in the MinGW g++ install. If they are not in `C:\Program Files\mingw64\x86_64-w64-mingw32\lib\` you will have to adjust the paths in the Code::Blocks file.
 
+On Windows certain files with "~" in the file name may be spontaneously deleted by git with an "error: Invalid Path" message when pulling or merging. The solution is to set `git config core.protectNTFS false`.
+
 ### Mac OS X ###
 
 To build Endless Sky you probably want the latest XCode version (I used 5.1.1). You also need to install three libraries:
