@@ -73,7 +73,7 @@ mission <name>
         fleet <name>
         fleet
             ...
-    on (offer | complete | accept | decline | fail | visit | stopover | enter (<system>))
+    on (offer | complete | accept | decline | defer | fail | visit | stopover | enter (<system>))
         dialog <text>
             <text>*
         conversation <name>
@@ -492,7 +492,7 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | fail | visit | stopover | enter (<system>))
+on (offer | complete | accept | decline | defer | fail | visit | stopover | enter (<system>))
     dialog <text>
         <text>*
     conversation <name>
@@ -513,6 +513,7 @@ There are eight events that can trigger a response of some sort:
 * `complete`: when the mission is completed. This is when the player gets paid.
 * `accept`: if the player agrees to accept a mission.
 * `decline`: if the player decides to decline a mission.
+* `defer`: if the player decides to defer a mission.
 * `fail`: if the mission fails.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
