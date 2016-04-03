@@ -75,7 +75,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"turret"`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
 
-* `"explode"`: an effect to create when the ship is dying, and the number of them to create. These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion (e.g. `explode "small explosion" 10`).
+* `"explode"`: an effect to create when the ship is dying, and the number of them to create (e.g. `explode "small explosion" 10`). These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion where 50% of the explosion effects are generated a second time.
+
+* `"final explode"`: the same as `"explode"`, but defines an effect that is only included in the final ship explosion, not in the small explosions leading up to that. **(v. 0.9.0)**
 
 The "attributes" key should be followed by a list of ship attributes, ideally listed in the following order:
 
@@ -88,6 +90,8 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 * `"hull"`: maximum hull strength. A ship is disabled when either it is reduced to 10% hull, or to the minimum of 25% hull or 100. (That is, small ships are disabled at 25%, and large ones at 10%.)
 
 * `"required crew"`: the number of crew members needed to operate the ship without anything failing.
+
+* `"automaton"`: if set to 1, this ship is allowed to have a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. **(v. 0.9.0)**
 
 * `"bunks"`: the maximum number of people on the ship, including crew and passengers.
 
