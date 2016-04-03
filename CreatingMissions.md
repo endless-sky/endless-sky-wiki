@@ -421,26 +421,9 @@ personality <type>*
     confusion <amount>
 ```
 
-This defines the NPC "personality", using the same personality type flags as are used in fleet specifiers. The "confusion" tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
+This defines the NPC's [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The "confusion" tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
 
-The valid personality types (which can be combined) are:
-
-* pacifist: will not attack under any circumstances.
-* forbearing: will not attack unless its shields are reduced to below 90%.
-* timid: does not join other people's fights; only attacks targets that are nearby and targeting it.
-* disables: tries to disable enemy ships rather than destroying them.
-* plunders: will board and pillage enemy ships before destroying them.
-* heroic: more likely to join fights when an ally is threatened.
-* staying: never leaves the system it starts out in.
-* entering: enters its starting system via hyperspace instead of appearing there.
-* nemesis: only attacks the player's ships.
-* surveillance: scans random ships and visits random planets in system.
-* uninterested: does not follow the player's flagship around (i.e. does not behave like an escort).
-* waiting: starts out in space in the given system, then follows you.
-* derelict: starts out disabled.
-* fleeing: tries to run away from the player.
-
-In addition, if an NPC is specified as starting out in your current system and its personality is _not_ "staying" or "waiting", it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is "entering" the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship "staying" in a certain system might be a target you must locate for a bounty hunting mission. (Any ship that is not "staying" will actively seek the player out if it is in a different system.)
+If an NPC is specified as starting out in your current system and its personality is *not* "staying" or "waiting", it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is "entering" the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship "staying" in a certain system might be a target you must locate for a bounty hunting mission. (Any ship that is not "staying" will actively seek the player out if it is in a different system.)
 
 ```html
 system (<system>)
