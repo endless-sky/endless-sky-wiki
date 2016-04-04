@@ -111,8 +111,6 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
-* `"automaton"`: set this to 1 to mark the ship as an automaton, i.e. a ship that does not require any crew. Otherwise at least one crew member is needed, even if you install special outfits to reduce the "required crew" attribute to zero.
-
 There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for those attributes are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lost of ordinance) or a tiny one:
 
 * `"blast radius"` (Typical value value: (shields + hull) * .01)
