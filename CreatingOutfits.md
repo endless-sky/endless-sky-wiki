@@ -91,6 +91,7 @@ The other attributes include:
 * `shield energy` is the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `"shield generation"`.)
 * `shield generation`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
 * `shields`: I recommend against providing outfits that give ships additional shield strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
+* `solar collection`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, and you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)**
 * `thrust`: your ship's acceleration per frame equals thrust / mass.
 * `thrusting energy`: energy cost per frame of thrusting.
 * `thrusting heat`: heat generated each frame when thrusting.
