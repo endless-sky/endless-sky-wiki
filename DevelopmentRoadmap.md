@@ -25,8 +25,7 @@ Graphics:
 User interface:
 
 - [x] Allow zooming map in or out.
-- [ ] Allow zooming the main view independent of the UI zoom (and allow < 100% zoom).
-- [ ] Allow taking off in a fighter?
+- [ ] Allow zooming the main view independent of the UI zoom (and allow less than 100% zoom).
 - [ ] When boarding a ship, allow choosing between repair and plunder.
 - [ ] When boarding a ship, give control over how much fuel you transfer.
 - [ ] Support for Unicode text.
@@ -46,7 +45,7 @@ Game Engine:
 - [ ] Reverse thruster support in the combat AI.
 - [ ] More options for controlling escorts (tactical commands, hold secondary fire).
 - [ ] Better AI for missile boats that run out of ammo.
-- [ ] Weapons with salvo firing (must pause to reload for N seconds after M shots).
+- [x] Weapons with salvo firing (must pause to reload for N seconds after M shots).
 - [ ] Escape pods and other changes to support "hard core mode."
 
 Missions:
