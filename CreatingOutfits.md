@@ -99,6 +99,7 @@ The other attributes include:
 * `turning energy`:  energy cost per frame of turning.
 * `turning heat`: heat generated each frame when turning.
 * `turret mounts`: as with "gun ports", any outfit that fits in a turret hardpoint must have a value of -1 for this.
+* `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand to hand weapons and mass expansions). **(0.9.0)**
 * `weapon capacity`: set this to a negative value (generally, the same value as "outfit space") for any outfit that is a weapon. Limited weapon space is one of the ways that ship models are differentiated from each other.
 
 ### Weapon attributes
