@@ -156,7 +156,7 @@ Ordinary weapon attributes include:
 * `disruption damage`: works like ionization, adding a "shield disruption" effect that fades by 1% each frame. When disrupted, your shields only block `1 / (1 + .01 * disruption)` of weapon damage, and the rest pierces through your shields and damages your hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. **(v. 0.9.0)**
 * `slowing damage`: accumulates like ion and disruption damage, and dissipates at 1% per frame. Multiplies your ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. **(v. 0.9.0)**
 * `hit force`: how much thrust is applied to a ship when this projectile strikes it. If this is negative, the ship is pulled towards the projectile.
-* `piercing`: a value between 0 and 1, controlling what fraction of the weapon's damage "pierces" through shields and does direct damage to the hull instead. When the target's shields are still up, shield damage will be (1 - `piercing`) * `shield damage` and hull damage will be `piercing` * `shield damage`.
+* `piercing`: a value between 0 and 1, controlling what fraction of the weapon's damage "pierces" through shields and does direct damage to the hull instead. When the target's shields are still up, shield damage will be (1 - `piercing`) * `shield damage` and hull damage will be `piercing` * `hull damage`.
 
 ### Sales
 
