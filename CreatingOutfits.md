@@ -138,6 +138,7 @@ Ordinary weapon attributes include:
 * `missile strength`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
 * `anti-missile`: weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
 * `velocity`: initial velocity of the projectile, relative to whatever fired it (which may be a ship or a "parent" projectile of which this is a submunition).
+* `random velocity`: a random amount up to this number will be added to the projectile's initial velocity. **(v. 0.9.0)**
 * `acceleration`: projectile's acceleration, per frame. If this is nonzero, it should be coupled with a nonzero "drag" to limit the projectile's total speed.
 * `drag`: percent loss of speed per frame. For example, a projectile with an acceleration of 1 and a drag of .1 will have a maximum speed (acceleration / drag) of 10.
 * `turn`: If the projectile is homing, how much it is allowed to turn each frame to seek its target. Otherwise, it will *always* turn by this amount, which can be used to create spinning projectiles or other effects.
