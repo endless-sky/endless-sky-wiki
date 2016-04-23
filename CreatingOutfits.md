@@ -54,6 +54,8 @@ The other attributes include:
 * `afterburner thrust`: thrust produced by the afterburner in one frame.
 * `atmosphere scan`: not usable by the player, but indicates that the AI will treat this ship as if it wants to fly past planets to "scan" them.
 * `bunks`: additional crew / passenger space.
+* `capture attack`: this outfit can be wielded by a crew member and adds this amount to their base strength of 1 when attacking another ship's crew. Each crew member can only wield one such outfit, and they will make use of the best outfits available in each combat round.
+* `capture defense`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
 * `cargo scan`: sets the distance from which this outfit can be used to scan a ship's cargo.
 * `cargo space`: amount of cargo space that this outfit adds (if positive) or removes (if negative) from your ship.
 * `cloak`: how quickly a cloaking device cloaks or uncloaks. When cloaking, this amount is added to your cloaking each frame until you reach 1, at which point your ship is fully cloaked. The opposite happens when uncloaking.
