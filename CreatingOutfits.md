@@ -76,6 +76,7 @@ The other attributes include:
 * `hull repair rate`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
 * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
 * `illegal`: the fine, in credits, for being caught using this outfit.
+* `installable`: if set to a value below zero, this outfit cannot be installed. (**As of v. 0.9.0,** the trading panel will display these outfits as "harvested materials," and the outfitter will display a helpful message if you try to install them.)
 * `jump drive`: set this to 1 if this outfit is a jump drive.
 * `jump speed`: how slow your ship must be moving in order to jump.
 * `map`: number of star systems that are mapped by this outfit.
