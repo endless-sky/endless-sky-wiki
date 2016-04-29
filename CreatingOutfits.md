@@ -123,8 +123,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a "w
 * `hit effect`: an [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) object to be created when this projectile hits something. You can specify a number to create more than one instance of the effect. You can also specify multiple different hit effects.
 * `die effect`: an [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) object to be created if this projectile reaches the end of its lifetime without hitting anything.
 * `submunition`: if the projectile reaches its end of life, create a new set of projectiles based on the given weapon outfit. 
-* `stream`: this tag makes a weapon fire in "stream" mode (multiple copies of this weapon take turns firing) even if it is susceptible to anti-missile. **(v. 0.9.0)**
-* `cluster`: this tag makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). **(v. 0.9.0)**
+* `stream`: this tag (just the word by itself, no value following it) makes a weapon fire in "stream" mode (multiple copies of this weapon take turns firing) even if it is susceptible to anti-missile. **(v. 0.9.0)**
+* `cluster`: this tag (just the word by itself, no value following it) makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). **(v. 0.9.0)**
 
 Ordinary weapon attributes include:
 
