@@ -25,6 +25,8 @@ Nearly all the landscape images were taken right here on Planet Earth. A few of 
 
 It's all too common in science fiction to have the central conflict defined in very black and white terms: the noble Rebel Alliance against the evil Empire. The world of Endless Sky is a bit more nuanced. Any faction you join should feel like the good guys at first: noble goals, interesting people, etc. But as you continue to play, each faction should also have clear faults. And as the war gets more and more brutal, NPCs should be ambivalent about fighting and worried about the destruction the war is causing on all sides.
 
+My goal is that whatever faction you side with in any conflict, that faction should have a convincing narrative for why they are the "good guys" and their enemies are the "bad guys." So, the Free Worlds see the Republic as a decadent, corrupt government that only caters to the needs of the rich. The Republic sees the Free Worlds as a communist oligarchy masquerading as a democracy and feeding on poor people's anger. The Free Worlds see the Syndicate as a bunch of heartless, godless capitalists. And so on. Even when it comes to the most advanced species - the Pug, the Drak, etc. - there should be equally plausible narratives for them being benevolent, or not.
+
 The currently playable plot line (the Free Worlds) makes a few attempts at nonlinear gameplay. In particular, there are two different endings: one where you keep working for peace and reconciliation, and one where the conflict takes a more brutal turn near the end. It's nowhere near as nonlinear as I would like, though.
 
 ### Alien Speech Patterns
