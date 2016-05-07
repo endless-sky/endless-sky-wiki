@@ -49,7 +49,7 @@ personality [<type>...]
     ...
 ```
 
-This defines the [personality characteristics](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#non-player-characters-npcs). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
+This defines the [personality characteristics](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
 
 ```html
 system
