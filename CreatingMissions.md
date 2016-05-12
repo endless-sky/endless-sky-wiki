@@ -377,7 +377,7 @@ npc (save | kill | board | disable | "scan cargo" | "scan outfits" | evade | acc
     personality <type>*
         <type>*
         confusion <amount>
-    system <system>
+    system (<system> | destination)
     system
         system <name>*
             <name>*
@@ -426,7 +426,13 @@ This defines the NPC's [personality](https://github.com/endless-sky/endless-sky/
 If an NPC is specified as starting out in your current system and its personality is *not* "staying" or "waiting", it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is "entering" the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship "staying" in a certain system might be a target you must locate for a bounty hunting mission. (Any ship that is not "staying" will actively seek the player out if it is in a different system.)
 
 ```html
-system (<system>)
+system (<system> | destination)
+```
+
+This specifies the exact system the NPC will start in: either the named system, or the mission's destination system if the given name is literally the word "destination". (The "destination" keyword is only supported in **0.9.1 and up.**) Note that if no system is specified, either in this way or using a filter (below), the NPC will start in the current system.
+
+```html
+system
     system <name>*
         <name>*
     government <name>*
@@ -435,9 +441,7 @@ system (<system>)
     distance ((<min>) <max>)
 ```
 
-This specifies what system the NPC starts out in. If no system is specified either by name or through the "near" or "distance" child tags, the system will be the current system.
-
-The "system", "government", "near", and "distance" filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any Pirate system, or within two jumps of the current system.
+This specifies a filter for choosing what system the NPC starts out in. The "system", "government", "near", and "distance" filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any Pirate system, or within two jumps of the current system.
 
 ```html
 dialog <text>
