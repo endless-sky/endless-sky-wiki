@@ -32,7 +32,7 @@ mission <name>
     stopover (<planet>)
         ...
     to (offer | complete | fail)
-        <condition> (<comp> <value>)
+        <condition> <comp> <value>
         (has | not) <condition>
         never
         (and | or)
@@ -259,14 +259,14 @@ Conditions are checked at two times when processing a mission: when determining 
 
 ```html
 to (offer | complete | fail)
-    <condition> (<comp> <value>)
+    <condition> <comp> <value>
     (has | not) <condition>
     never
     (and | or)
         ...
 ```
 
-The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. If only the condition name is given, the comparison is assumed to be "!= 0". As a special shortcut, you can write "has `<condition>`" instead of "`<condition>` != 0", or "not `<condition>`" instead of "`<condition>` == 0". The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed.
+The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write "has `<condition>`" instead of "`<condition>` != 0", or "not `<condition>`" instead of "`<condition>` == 0". The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed.
 
 Conditions can be changed when you are offered a mission or when you accept, decline, fail, or complete it, as described later in this document. You can "chain" missions together by having one depend on the "`<mission name>`: done" condition set by a previous mission. Since all your existing missions complete before new ones are offered, that condition will be set before the check is done for what new missions are available.
 
