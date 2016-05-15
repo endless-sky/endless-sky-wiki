@@ -252,6 +252,7 @@ This specifies a planet that you must visit in order to complete the mission. Th
 * "cargo space" and "passenger space" are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
 * "net worth" is your net worth, limited to the range of +- 2 billion.
 * "combat rating" is your current combat rating (sum of the base crews of all the ships you have disabled).
+* "day", "month", and "year" are the current date, given as individual variables so you can check for holidays, etc.
 * "random" is a random number between 0 and 99. This can be used to make a mission only sometimes appear when all other conditions are met.
 
 Conditions are checked at two times when processing a mission: when determining whether the mission can be offered right now (in the "to offer" tag), and when determining whether it has been completed successfully (in the "to complete" tag):
