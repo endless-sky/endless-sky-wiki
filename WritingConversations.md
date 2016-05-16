@@ -79,7 +79,14 @@ Any line of the conversation that does not begin with one of the special keyword
 
 Each line of text can be followed by a "goto" or an endpoint. If it does not, the conversation will just proceed to whatever comes next.
 
-For the sake of indenting paragraphs correctly, every text line except for the first should begin with a single tab, inside the backticks.
+To maintain consistency across all the text in the game:
+
+* Put a [single space](https://en.wikipedia.org/wiki/Sentence_spacing) in between sentences, rather than two spaces.
+* The first paragraph of text in a mission [should not be indented](http://www.interpretationbydesign.com/?p=5125).
+* Subsequent paragraphs should be indented with a single tab character (inside the backticks).
+* Dialog should use double quotes as the first level of quotation marks, and single quotes for [nested quotations](https://en.wikipedia.org/wiki/Nested_quotation): `He said, "They told me, 'The aliens have landed.'"`
+* Use [Oxford commas](https://en.wikipedia.org/wiki/Serial_comma): `a, b, and c`, not `a, b and c`.
+* Avoid non-ASCII characters, including [curly quotes](https://en.wikipedia.org/wiki/Quotation_mark#Quotation_marks_in_English).
 
 # Name #
 
