@@ -18,18 +18,19 @@ mission <name>
     name <name>
     description <text>
     blocked <message>
-    deadline (<days> (<multiplier>))
-    cargo (random | <name>) <number> (<number> (<probability>))
+    deadline [<days> [<multiplier>]]
+    cargo (random | <name>) <number> [<number> [<probability>]]
         illegal <fine>
-    passengers <number> (<number> (<probability>))
+    passengers <number> [<number> [<probability>]]
     invisible
+    (priority | minor)
     (job | landing | assisting | boarding)
-    repeat (<number>)
-    clearance (<message>)
+    repeat [<number>]
+    clearance [<message>]
         ...
     infiltrating
     waypoint <system>
-    stopover (<planet>)
+    stopover [<planet>]
         ...
     to (offer | complete | fail)
         <condition> <comp> <value>
@@ -39,31 +40,31 @@ mission <name>
             ...
     (source | destination) <planet>
     (source | destination)
-        planet <name>*
-            <name>*
-        system <name>*
-            <name>*
-        government <name>*
-            <name>*
-        attributes <name>*
-            <name>*
-        near <system> ((<min>) <max>)
-        distance ((<min>) <max>)
-    npc (save | kill | board | disable | "scan cargo" | "scan outfits" | evade | accompany)*
+        planet <name>...
+            <name>...
+        system <name>...
+            <name>...
+        government <name>...
+            <name>...
+        attributes <name>...
+            <name>...
+        near <system> [[<min>] <max>]
+        distance [[<min>] <max>]
+    npc (save | kill | board | disable | "scan cargo" | "scan outfits" | evade | accompany)...
         government <name>
-        personality <type>*
-            <type>*
+        personality <type>...
+            <type>...
             confusion <amount>
-        system (<system>)
+        system <system>
         system
-            system <name>*
-                <name>*
-            government <name>*
-                <name>*
-            near <system> ((<min>) <max>)
-            distance (<min>) <max>
+            system <name>...
+                <name>...
+            government <name>...
+                <name>...
+            near <system> [[<min>] <max>]
+            distance [<min>] <max>
         dialog <text>
-            <text>*
+            <text>...
         conversation <name>
         conversation
             ...
@@ -73,19 +74,20 @@ mission <name>
         fleet <name>
         fleet
             ...
-    on (offer | complete | accept | decline | defer | fail | visit | stopover | enter (<system>))
+    on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
         dialog <text>
-            <text>*
+            <text>...
         conversation <name>
         conversation
             ...
-        outfit <outfit> (<number>)
+        outfit <outfit> [<number>]
         require <outfit>
-        payment (<base> (<multiplier>))
-        <condition> (= | += | -= | ++ | --) (value)
+        payment [<base> [<multiplier>]]
+        <condition> (= | += | -=) <value>
+        <condition> (++ | --)
         (set | clear) <condition>
-        event <name> (delay)
-        fail (<name>)
+        event <name> [<delay>]
+        fail [<name>]
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -151,7 +153,7 @@ blocked <message>
 This is a short message that is displayed to the player if this mission cannot be offered, but only because they do not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space").
 
 ```html
-deadline (<days> (<multiplier>))
+deadline [<days> [<multiplier>]]
 ```
 
 The number of days you have to complete the mission. If the number of days is left out (i.e. it is just the word "deadline"), that means use the default deadline (2 days \* number of hyperspace jumps to the destination). In a saved game, the `<days>` amount is stored as an absolute date instead of a relative number, e.g. "deadline 29 1 3014".
@@ -159,7 +161,7 @@ The number of days you have to complete the mission. If the number of days is le
 If you specify a multiplier in addition to a number of days, the deadline will be (days + multiplier \* number of hyperspace jumps to the destination). You can also combine multiple deadline statements; for example, having both an empty "deadline" statement and a "deadline 2" statement means offer the default deadline, plus two days.
 
 ```html
-cargo (random | <name>) <number> (<number> (<probability>))
+cargo (random | <name>) <number> [<number> [<probability>]]
     illegal <fine>
 ```
 
@@ -174,7 +176,7 @@ If three numbers are given, a random number will be chosen by adding the first n
 If the cargo is marked as "illegal," governments that care about such things will levy the given fine against you if you are caught carrying this cargo. If the fine is negative, being caught with this cargo while in flight is counted as an "atrocity" (the government that catches you immediately becomes your enemy, no matter how good your reputation was previously), and if you are caught in a spaceport with the cargo the result is a death sentence (game over).
 
 ```html
-passengers <number> (<number> (<probability>))
+passengers <number> [<number> [<probability>]]
 ```
 
 This specifies the number of passengers. As with the cargo specification, if there are two or three numbers they are used to pick a random number.
@@ -184,6 +186,14 @@ invisible
 ```
 
 This specifies that the mission does not show up in the player's list of missions, and cannot be canceled.
+
+```html
+(priority | minor)
+```
+
+If a mission is marked "priority," no missions that are not "priority" missions will be offered alongside it.
+
+If a mission is marked "minor," it will be offered only if no other missions are being offered at the same time. In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor." The "priority" marker is only used for the intro missions, to suppress all other missions while the player is just learning the ropes.
 
 ```html
 (job | landing | assisting | boarding)
@@ -196,7 +206,7 @@ If this mission is to be shown at "landing," it shows up as soon as you land ins
 A mission shown when "assisting" or "boarding" will be shown when you repair a friendly ship or plunder a hostile ship, respectively. These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission. In either case, if the "on offer" conversation results in "launch" or "flee," the ship in question will be destroyed.
 
 ```html
-repeat (<number>)
+repeat [<number>]
 ```
 
 If the word "repeat" appears by itself, this mission can be offered any number of times. If a number is given, that is the maximum number of times this mission can be offered. By default, each mission can only be offered once, so having a "repeat 1" specified is unnecessary.
@@ -204,7 +214,7 @@ If the word "repeat" appears by itself, this mission can be offered any number o
 If you want a mission to be offered any number of times but to limit the number of instances of the mission that can be active concurrently, you can decrement the "`<mission name>`: offered" condition (described below) whenever the mission is completed, failed, or declined.
 
 ```html
-clearance (<message>)
+clearance [<message>]
     ....
 ```
 
@@ -233,7 +243,7 @@ waypoint <system>
 This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited; then they disappear.
 
 ```html
-stopover (<planet>)
+stopover [<planet>]
     ...
 ```
 
@@ -298,35 +308,35 @@ For the source and destination, you can either specify one particular planet, or
 ```html
 (source | destination) <planet>
 (source | destination)
-    planet <name>*
-        <name>*
-    government <name>*
-        <name>*
-    attributes <name>*
-        <name>*
-    near <system> ((<min>) <max>)
-    distance (<min>) <max>
+    planet <name>...
+        <name>...
+    government <name>...
+        <name>...
+    attributes <name>...
+        <name>...
+    near <system> [[<min>] <max>]
+    distance [<min>] <max>
 ```
 
 Each entry in the source or destination specification acts as a filter:
 
 ```html
-planet <name>*
-    <name>*
+planet <name>...
+    <name>...
 ```
 
 This says that the planet must be one of the named planets. The list of names can either be all on one line, or split between multiple lines if it is particularly long; the subsequent lines must be indented so that they are "children" of the "planet" node. As with most of these filters, you can also have more than one "planet" entry, in which case the planet chosen must be in any one of the lists.
 
 ```html
-system <name>*
-    <name>*
+system <name>...
+    <name>...
 ```
 
 The system must be one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but its intended use is for the NPC location filter as described later.
 
 ```html
-government <name>*
-    <name>*
+government <name>...
+    <name>...
 ```
 
 The planet must be in a system owned by the given government. Again, the list can be all on one line, or multiple indented lines.
@@ -334,8 +344,8 @@ The planet must be in a system owned by the given government. Again, the list ca
 If this is a source filter and the mission is being offered when "assisting" or "boarding" a ship, the government in this filter refers to the ship's government, not the government of the current star system. This allows you, for example, to create a mission that is only offered by merchant ships.
 
 ```html
-attributes <name>*
-    <name>*
+attributes <name>...
+    <name>...
 ```
 
 The planet must have one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.).
@@ -356,13 +366,13 @@ attributes rich
 There are also ways of specifying how far the system is from a particular location, or from the current location:
 
 ```html
-near <system> ((<min>) <max>)
+near <system> [[<min>] <max>]
 ```
 
 If one number is given, the planet must be within that number of jumps from the given system (which includes the given system itself). If two numbers are given, the distance from the given system must be at least as high as the first number, and no more than the second. If no numbers are given, the planet must be in the given system or one of the systems it is linked to; this is equivalent to giving distances of 0 and 1.
 
 ```html
-distance (<min>) <max>
+distance [<min>] <max>
 ```
 
 This is the same as the "near" tag, but gives distances relative to the origin planet. (So, this tag only makes sense within a "destination" filter, not within a "source" filter or a "clearance" filter.)
@@ -373,21 +383,21 @@ This is the same as the "near" tag, but gives distances relative to the origin p
 NPCs are ships that are associated with the mission in some way. This includes friendly ships the player must protect, and hostile ships the player must fight off or destroy:
 
 ```html
-npc (save | kill | board | disable | "scan cargo" | "scan outfits" | evade | accompany)*
+npc (save | kill | board | disable | "scan cargo" | "scan outfits" | evade | accompany)...
     government <name>
-    personality <type>*
-        <type>*
+    personality <type>...
+        <type>...
         confusion <amount>
     system (<system> | destination)
     system
-        system <name>*
-            <name>*
-        government <name>*
-            <name>*
-        near <system> ((<min>) <max>)
-        distance ((<min>) <max>)
+        system <name>...
+            <name>...
+        government <name>...
+            <name>...
+        near <system> [[<min>] <max>]
+        distance [[<min>] <max>]
     dialog <text>
-        <text>*
+        <text>...
     conversation <name>
     conversation
         ...
@@ -417,8 +427,8 @@ government <name>
 This specifies what government all the ships connected to this NPC specification will have. If no government is given, they are set to the player's government, as escorts.
 
 ```html
-personality <type>*
-    <type>*
+personality <type>...
+    <type>...
     confusion <amount>
 ```
 
@@ -434,19 +444,19 @@ This specifies the exact system the NPC will start in: either the named system, 
 
 ```html
 system
-    system <name>*
-        <name>*
-    government <name>*
-        <name>*
-    near <system> ((<min>) <max>)
-    distance ((<min>) <max>)
+    system <name>...
+        <name>...
+    government <name>...
+        <name>...
+    near <system> [[<min>] <max>]
+    distance [[<min>] <max>]
 ```
 
 This specifies a filter for choosing what system the NPC starts out in. The "system", "government", "near", and "distance" filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any Pirate system, or within two jumps of the current system.
 
 ```html
 dialog <text>
-    <text>*
+    <text>...
 conversation <name>
 conversation
     ...
@@ -480,19 +490,20 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | defer | fail | visit | stopover | enter (<system>))
+on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
     dialog <text>
-        <text>*
+        <text>...
     conversation <name>
     conversation
         ...
-    outfit <outfit> (<number>)
+    outfit <outfit> [<number>]
     require <outfit>
-    payment (<base> (<multiplier>))
-    <condition> (= | += | -= | ++ | --) (value)
+    payment [<base> [<multiplier>]]
+    <condition> (= | += | -=) <value>
+    <condition> (++ | --)
     (set | clear) <condition>
-    event <name> (delay)
-    fail (<name>)
+    event <name> [<delay>]
+    fail [<name>]
 ```
 
 There are eight events that can trigger a response of some sort:
@@ -505,13 +516,13 @@ There are eight events that can trigger a response of some sort:
 * `fail`: if the mission fails.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
-* `enter (<system>)`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
+* `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
 dialog <text>
-    <text>*
+    <text>...
 ```
 
 This gives a message to be displayed in a dialog message to the user. If the trigger is "on offer", the dialog will have "accept" and "decline" buttons. Otherwise, it is a purely informational message and only an "okay" button is shown.
@@ -535,7 +546,7 @@ As with the dialogs, text substitution is done throughout the conversation.
 The syntax for conversations is described [here](WritingConversations).
 
 ```html
-outfit <outfit> (<number>)
+outfit <outfit> [<number>]
 require <outfit>
 ```
 
@@ -546,7 +557,7 @@ If the outfit cannot be installed due to lack of space, a warning message will b
 The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive.
 
 ```html
-payment (<base> (<multiplier>))
+payment [<base> [<multiplier>]]
 ```
 
 This specifies the payment for a mission, which depends on the number of jumps and the amount of cargo and passengers:
@@ -558,7 +569,8 @@ If no base or multiplier is given, the default is base = 0, multiplier = 150. If
 Normally, a "payment" value would only be given in the "on complete" section, but you can also have a negative value to be subtracted if the player fails the mission, or you could use a "payment" to advance the player some money when they first accept a mission. If the "on complete" payment is negative, the player cannot complete the mission if they have fewer than that number of credits.
 
 ```html
-<condition> (= | += | -= | ++ | --) (value)
+<condition> (= | += | -=) <value>
+<condition> (++ | --)
 (set | clear) <condition>
 ```
 
@@ -569,13 +581,13 @@ The "set" and "clear" tags are shortcuts for "= 1" and "= 0".
 To change the player's reputation or combat rating, you may alter the "reputation", "`reputation: <government>`", or "combat rating" conditions. For example, a bounty hunting mission might automatically alter your reputation on whatever planet the mission ends on ("reputation"), and a mission for the Navy might improve your reputation with the Republic but reduce your reputation with the Free Worlds.
 
 ```html
-event <name> (<delay>)
+event <name> [<delay>]
 ```
 
 This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now, instead of happening immediately.
 
 ```html
-fail (<name>)
+fail [<name>]
 ```
 
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list.
