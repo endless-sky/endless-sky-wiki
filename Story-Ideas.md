@@ -8,11 +8,11 @@ The military "strength" of each civilization also depends on how populous they a
 
 The existing aliens are grouped roughly into tiers, where a heavy warship of a civilization on one tier is a match for a light warship of the next tier up:
 
-Tier 1: Humans, Hai
-Tier 2: Wanderers, Korath
-Tier 3: Quarg
-Tier 4: Drak
-Tier ???: Pug (they have ships of different tiers depending on who they are fighting).
+* Tier 1: Humans, Hai
+* Tier 2: Wanderers, Korath
+* Tier 3: Quarg
+* Tier 4: Drak
+* Tier ???: Pug (they have ships of different tiers depending on who they are fighting).
 
 As more alien species are added, it's likely the Quarg and Drak will need to be made stronger to make room for more tiers in between.
 
