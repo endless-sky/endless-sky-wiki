@@ -5,17 +5,17 @@ A "conversation" is a series of text messages that progress differently dependin
 Each "node" of the conversation displays some text, and then either jumps immediately to another node or presents the player with a list of responses to choose between.
 
 ```html
-conversation (<name>)
+conversation [<name>]
     scene <image>
     label <name>
     <text>
-        (<endpoint> | goto <label>)
+        [<endpoint> | goto <label>]
     name
     choice
         <text>
-            (<endpoint> | goto <label>)
+            [<endpoint> | goto <label>]
         ...
-    branch <if true> (<if false>)
+    branch <if true> [<if false>]
         <conditions>
     apply
         <conditions>
