@@ -22,4 +22,4 @@ The Navy has increasingly taken to only defending the richer Paradise Worlds and
 
 Humanity is in regular contact with the Quarg, an extremely advanced alien species who inhabit a few worlds in the southeastern corner of human space. The Quarg can only live on small moons where the gravity and atmospheric pressure are far too low for human survival, which means that they are not in direct competition with humans for worlds to settle on.
 
-In terms of other alien species, there are rumors of alien marauders in the Core, and of a secretive species called the Draki who are even more advanced than the Quarg who serve as a sort of galactic police.
+In terms of other alien species, there are rumors of alien marauders in the Core, and of a secretive species called the Drak who are even more advanced than the Quarg who serve as a sort of galactic police.
