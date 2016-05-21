@@ -1,5 +1,21 @@
 Warning: this page contains spoilers. This is basically a list of plot ideas, either for side missions or for incorporation into one of the main story lines. None of this is "canon" - if you're writing a mission and you have a cooler idea than what is written here, feel free to ignore all of this.
 
+### Advanced alien civilizations
+
+Once the whole galaxy is "populated" with alien species, nearly all of them will be technologically superior to humans. For example, even if the player is flying the best ship you can get in Human / Hai space, they will be woefully outgunned when they first enter Korath space.
+
+The military "strength" of each civilization also depends on how populous they are and how focused they are on warfare. For example, the Wanderers are more technologically advanced than the Korath but have focused very little of their energy on military technology when you first encounter them. And, the Quarg are probably "stronger" than the Drak just because there are trillions of Quarg with a huge number of ships.
+
+The existing aliens are grouped roughly into tiers, where a heavy warship of a civilization on one tier is a match for a light warship of the next tier up:
+
+Tier 1: Humans, Hai
+Tier 2: Wanderers, Korath
+Tier 3: Quarg
+Tier 4: Drak
+Tier ???: Pug (they have ships of different tiers depending on who they are fighting).
+
+As more alien species are added, it's likely the Quarg and Drak will need to be made stronger to make room for more tiers in between.
+
 ### Hai diplomacy
 
 Once you discover Hai space, there should be some sort of missions that involve diplomacy with human space. One idea I had was human bankers or other corporations essentially hoping to financially exploit the Hai (who can come across as somewhat naive). Another idea was to have a Hai alien who wants to be an actor in human videos and thinks a real alien would be infinitely more popular than a human dressed up as an alien (but who maybe isn't clear on the fact that in most human films, the aliens are the enemy).
