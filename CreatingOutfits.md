@@ -84,6 +84,7 @@ The other attributes include:
 * `mass`: how much your ship's mass should change by when this outfit is installed.
 * `outfit scan`: sets the distance from which this outfit can be used to scan a ship's outfits.
 * `outfit space`: if negative, how much generic outfit space (as opposed to weapon or engine space) this outfit takes up.
+* `radar jamming`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to is `radar tracking` value divided by (1 + the ship's `radar jamming`). **(v. 0.9.1)**
 * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel equal to .03 * sqrt("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. Also starting in 0.9.0, when very close to the star even ships with no ramscoop recharge a tiny amount of fuel.
 * `required crew`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements.
 * `reverse thrust`: if your ship has reverse thrusters installed, the "back" button will apply reverse thrust instead of turning your ship.
@@ -140,6 +141,10 @@ Ordinary weapon attributes include:
   * 2: dumb homing (always try to turn to point toward the target).
   * 3: stop thrusting if you miss the target, in order to turn back towards it in a tighter loop.
   * 4: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+* `infrared tracking`: a value between 0 and 1 representing how well this projectile tracks targets based on their heat. That is, hot targets will be easier to track. **(v. 0.9.1)**
+* `optical tracking`: a value between 0 and 1 representing how well this projectile tracks objects based on their size. That is, large targets will be easier to track. **(v. 0.9.1)**
+* `radar tracking`: a value between 0 and 1 representing how well this projectile tracks targets using radar (which ships can resist if they have `radar jamming`). **(v. 0.9.1)**
+* `tracking`: a value between 0 and 1 representing a form of tracking that is constant regardless of the ship's size, heat, or radar jamming ability. **(v. 0.9.1)**
 * `missile strength`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
 * `anti-missile`: weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
 * `velocity`: initial velocity of the projectile, relative to whatever fired it (which may be a ship or a "parent" projectile of which this is a submunition).
