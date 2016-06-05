@@ -132,6 +132,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a "w
 Ordinary weapon attributes include:
 
 * `lifetime`: how long the projectile lasts before it "dies."
+* `random lifetime`: a random number of frames up to this amount will be added to each projectile's lifetime. **(v. 0.9.2)**
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 * `burst count`: how many projectiles this weapon can fire in a row at a higher reload rate (`burst reload`). The total time in between bursts will be `burst count` * `reload`. **(v. 0.9.0)**
 * `burst reload`: how fast the weapon reloads when firing projectiles in a burst. This value must be less than the full `reload` value. **(v. 0.9.0)**
