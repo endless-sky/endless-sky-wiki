@@ -81,9 +81,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"final explode"`: the same as `"explode"`, but defines an effect that is only included in the final ship explosion, not in the small explosions leading up to that. **(v. 0.9.0)**
 
-* `"never disabled"`: If this tag is included (no value need be specified for it), this ship never becomes disabled due to its hull dropping too low. This means that it cannot be plundered.
+* `"never disabled"`: If this tag is included (no value need be specified for it), this ship never becomes disabled due to its hull dropping too low. This means that it cannot be plundered. This tag is not "inherited" by variants of a ship.
 
-* `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. **(v. 0.9.0)**
+* `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. This tag is not "inherited" by variants of a ship. **(v. 0.9.0)**
 
 The "attributes" key should be followed by a list of ship attributes, ideally listed in the following order:
 
