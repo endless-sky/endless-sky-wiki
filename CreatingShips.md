@@ -39,6 +39,8 @@ If you want your ship to be animated, just create multiple files with the same n
 
 (If there are more than 10 frames, the extensions should be "-00.png", "-01.png", etc. You can also create sprites with additive or "half-additive" [blending modes](BlendingModes) by using the extension "+#.png" or "~#.png" respectively, but these blending modes look much better for projectiles or explosions than for ships.)
 
+**The sprite should have at least a one-pixel border of "empty" pixels on every side.** Otherwise, the ship outlines (shown in the targeting display and the escort icons, among other places) will not have sharp lines near those edges.
+
 # Artistic tricks #
 
 Making a full texture-mapped 3D model can be a lot of work, and since all the ships in this game are only shown from directly overhead and at relatively low resolution, it can be overkill. I've found that the fastest way to create good-looking ship images is to use a 3D design program (such as Blender) for rendering the shape of the ship and the basic colors of the different parts of it, but then using an image manipulation program (such as GIMP) for some post-processing.
