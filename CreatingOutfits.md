@@ -162,7 +162,7 @@ Ordinary weapon attributes include:
 * `firing heat`: heat produced when this weapon fires.
 * `split range`: when the projectile is within this range of its target, it will split into it submunitions. (If no target was selected when the weapon was fired, this does nothing.)
 * `trigger radius`: how close a projectile must be to a hostile target to trigger its explosion. This only makes sense to use with weapons with a "blast radius" at least as big as their "trigger radius."
-* `blast radius`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes.
+* `blast radius`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do.
 * `shield damage`: how much damage a projectile does to shields.
 * `hull damage`: how much damage a projectile does to hull.
 * `heat damage`: how much heat is added to a target when struck by this projectile. If the target's shields are up, heat damage is cut in half.
