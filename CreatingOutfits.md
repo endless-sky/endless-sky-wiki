@@ -113,11 +113,13 @@ The other attributes include:
 An outfit that provides a weapon contains an extra set of attributes inside a "weapon" block. These attributes must be placed in the "weapon" block to have any effect. If you have multiple "weapon" blocks in one outfit, they are just merged together; that doesn't make an outfit provide two different weapons. Some weapon attributes have special formats:
 
 * `sprite`: the path to the sprite, relative to the "images" folder, and not including the frame number or extension (e.g. "projectile/flamethrower", not "images/projectile/flamethrower+0.png"). The sprite field can also have "child" elements, which include:
-  * `frame rate`: animation frames per second.
-  * `start frame`: which frame to start the animation at.
+  * `frame rate` <fps>: animation frames per second.
+  * `"frame time" <ticks>`: game ticks per animation frame. A game tick is 1/60th of a second. This is an alternative way of specifying frame rate; if you specify both the last specification will be used.
+  * `"delay" <frames>`: number of animation frames to delay in between loops of the animation. For example, a four-frame animation with a delay of 4 and a frame rate of 8 FPS will play the animation for half a second, then pause for half a second, then repeat.
+  * `start frame` <frame>: which frame to start the animation at.
   * `random start frame`: start the animation at a random frame (e.g. so if you fire a bunch of projectiles, they won't all be pulsing through the animation in unison with each other).
-  * `no repeat`: once you reach the last animation frame, stop.
-  * `rewind`: when you reach the last animation frame, instead of starting over at the beginning, play the animation back in reverse.
+  * `"no repeat"`: the animation stops after it has played through once. (If "rewind" is also specified, it will play forward, then play backward, then stop.)
+  * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 * `icon`: for secondary weapons, the icon that will be shown along with this weapon's ammunition count.
