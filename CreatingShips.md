@@ -65,7 +65,15 @@ For some examples, you can look at data/ships.txt. The easiest thing to do is to
 
 The data files use indentation, like in the Python language, to define sub-entries within an entry. For example, each ship is defined by a line reading `ship "Ship Name"` with no indentation, followed by several keys indented once:
 
-* `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png").
+* `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). If the sprite is animated, the following lines can be added as a "child" of the sprite line:
+
+  * `"frame rate" <fps>`: frames per second.
+
+  * `"frame time" <ticks>`: game ticks per animation frame. A game tick is 1/60th of a second. This is an alternative way of specifying frame rate; if you specify both the last specification will be used.
+
+  * `"delay" <frames>`: number of animation frames to delay in between loops of the animation. For example, a four-frame animation with a delay of 4 and a frame rate of 8 FPS will play the animation for half a second, then pause for half a second, then repeat.
+
+  * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
 
