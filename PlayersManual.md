@@ -17,15 +17,15 @@ You are about to purchase your first ship and set out to make your fortune among
 
 As a new pilot, only a handful of ships are within your price range. Each one is suited to a slightly different personality:
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/shuttle.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png)
 
 The Shuttle is the cheapest and most versatile option. Nearly as nimble as a fighter, shuttles can easily escape from slower pirate ships and even dodge missiles, which is a good thing because they are otherwise useless in combat. Shuttles are classified as “transports” because they have relatively small cargo holds, and instead their most common use is ferrying passengers: a great way for more gregarious captains to meet interesting people while exploring the galaxy.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/star barge.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star barge@2x.png)
 
 The Star Barge is a slow ship, but with ample cargo capacity, enough to be able to take on multiple simultaneous delivery jobs. Or, a captain without much hunger for variety can earn a stable living on a Star Barge just by finding a decent trade route and running it over and over again. Unfortunately, Star Barges are a favorite target of pirates because they often carry valuable cargo and are hardly ever able to outrun their adversaries.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/sparrow.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png)
 
 The Sparrow is the cheapest interstellar ship you can buy that is designed for combat. With enough luck or skill, a Sparrow pilot can earn quick income by disabling and boarding small pirate ships... or by turning pirate and attacking civilian ships. Once you earn a reputation in combat, you can find a more steady income as an escort for merchant caravans, but even so, life at the helm of a Sparrow is risky and uncertain.
 
@@ -82,7 +82,7 @@ When you visit a spaceport, if anyone wants to offer you a mission a conversatio
 
 The degree of technological and industrial development necessary to build starships from scratch is so high that only a few planets in human space are home to active shipyards, although there are other planets that sell those ships secondhand. So, even before you are ready to buy a new ship it is worthwhile to check what each planet is selling; the ship models that are popular in one part of the galaxy may not be available in others.
 
-When buying a new ship, you can either sell your previous ship first, or buy a second ship and use either it or your previous ship as an escort. In general, having many small escorts is more cost effective than one large ship, but small escorts are more easily destroyed in combat situations where a fleet of larger ships could have survived with no casualties. If an escort is destroyed, any cargo and passengers they are carrying will be lost as well, including any mission-critical cargo that would not fit in your flagship.
+When buying a new ship, you can either sell your previous ship first, or buy a second ship and use either it or your previous ship as an escort. (You can click and drag the ship icons to reorder them; the first ship in the list is the one you will use as your flagship.) In general, having many small escorts is more cost effective than one large ship, but small escorts are more easily destroyed in combat situations where a fleet of larger ships could have survived with no casualties. If an escort is destroyed, any cargo and passengers they are carrying will be lost as well, including any mission-critical cargo that would not fit in your flagship.
 
 Some ships have space for “drones” or “fighters.” These are small attack ships that have no hyperdrives or fuel of their own; they can travel from system to system only if carried within a larger ship. This lack of hyperspace capability generally makes them much cheaper than other ships. Drones are smaller than fighters, and require no crew, whereas for each fighter, you will have to pay the salary for one additional crew member. Ships with drone or fighter bays come with the bays empty by default; you must purchase the fighters or drones ships separately.
 
@@ -99,6 +99,8 @@ Whenever you sell a ship, all the outfits that were installed in that ship are a
 ##Outfitter (O)##
 
 Many starship captains have an almost obsessive impulse to fine-tune their ships, trying to find the perfect combinations of engines, generators, and weapons. As with ships, some outfits may only be available in certain parts of the galaxy, and some particularly valuable, exotic, or illegal outfits are available only in a handful of systems. Ship outfits are described in much more detail later on in this document. As with the trading panel, in the Outfitter you can buy multiple copies of an outfit, such as ammunition, by holding down the shift key (5x), the control key (20x), or both (100x).
+
+If you have multiple ships, you can select the icons of more than one of them at once by clicking them while holding down the shift or control modifier keys. That allows you to buy or sell outfits for multiple ships simultaneously. You can also deselect all the ship icons in order to purchase outfits directly into cargo.
 
 ##Hire Crew (H)##
 
