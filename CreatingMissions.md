@@ -20,7 +20,8 @@ mission <name>
     blocked <message>
     deadline [<days> [<multiplier>]]
     cargo (random | <name>) <number> [<number> [<probability>]]
-        illegal <fine>
+        illegal <fine> [<message>]
+        stealth
     passengers <number> [<number> [<probability>]]
     invisible
     (priority | minor)
@@ -162,7 +163,8 @@ If you specify a multiplier in addition to a number of days, the deadline will b
 
 ```html
 cargo (random | <name>) <number> [<number> [<probability>]]
-    illegal <fine>
+    illegal <fine> [<message>]
+    stealth
 ```
 
 This specifies the cargo that you are carrying. If `<name>` is one of the standard commodity names defined in the "trade" data, it will be replaced by a random one of the specific names for that commodity, e.g. "Food" might be replaced by "canned fruit" or "evaporated milk".
@@ -174,6 +176,10 @@ If two amounts are given instead of one, that means that a random amount should 
 If three numbers are given, a random number will be chosen by adding the first number to a random number chosen from a negative binomial distribution with the given number of successes needed and probability. This produces numbers that are generally somewhat low but can occasionally be quite high, if you want to every once in a while have massive cargo missions, for example.
 
 If the cargo is marked as "illegal," governments that care about such things will levy the given fine against you if you are caught carrying this cargo. If the fine is negative, being caught with this cargo while in flight is counted as an "atrocity" (the government that catches you immediately becomes your enemy, no matter how good your reputation was previously), and if you are caught in a spaceport with the cargo the result is a death sentence (game over).
+
+If the fine amount in the "illegal" line is followed by another token, that token is displayed as a message when you are caught with this cargo.
+
+If the cargo is marked as "stealth," the mission will fail if you are caught with it.
 
 ```html
 passengers <number> [<number> [<probability>]]
