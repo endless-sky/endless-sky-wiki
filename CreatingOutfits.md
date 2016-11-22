@@ -48,6 +48,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 The other attributes include:
 
+* `active cooling`: amount of cooling this outfit provides when heat is at 100%, at which level it will consume its entire `cooling energy`. When heat is at 0%, no energy is consumed and no active cooling is provided.
 * `afterburner energy`: energy consumed by the afterburner in one frame.
 * `afterburner fuel`: fuel consumed by the afterburner in one frame.
 * `afterburner heat`: heat produced by the afterburner in one frame.
@@ -62,6 +63,7 @@ The other attributes include:
 * `cloaking energy`: how much energy it takes each frame to maintain cloaking.
 * `cloaking fuel`: how much fuel it takes each frame to maintain cloaking.
 * `cooling`: heat subtracted from your ship by this outfit, per frame.
+* `cooling energy`: energy consumed by `active cooling` when heat is at 100%.
 * `cost`: cost of this outfit, in credits.
 * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems.
 * `energy capacity`: how much energy your ship can store.
