@@ -54,6 +54,7 @@ The other attributes include:
 * `afterburner heat`: heat produced by the afterburner in one frame.
 * `afterburner thrust`: thrust produced by the afterburner in one frame.
 * `atmosphere scan`: not usable by the player, but indicates that the AI will treat this ship as if it wants to fly past planets to "scan" them.
+* `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on  planet, you are immediately captured and imprisoned for life.
 * `bunks`: additional crew / passenger space.
 * `capture attack`: this outfit can be wielded by a crew member and adds this amount to their base strength of 1 when attacking another ship's crew. Each crew member can only wield one such outfit, and they will make use of the best outfits available in each combat round.
 * `capture defense`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
