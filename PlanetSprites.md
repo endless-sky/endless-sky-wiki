@@ -118,7 +118,7 @@ If the pattern has too much variation from left to right, it helps to duplicate 
 
 ![final color image](http://endless-sky.github.io/images/planet/ring05.jpg)
 
-Now we need to set the transparency of the rings. Use `Filters -> Render -> Clouds -> Difference Clouds...` with the following settings to create a random black and white stripe patter that is also tilable:
+Now we need to set the transparency of the rings. Use `Filters -> Render -> Clouds -> Difference Clouds...` with the following settings to create a random black and white stripe pattern that is also tilable:
 
 ![difference cloud settings](http://endless-sky.github.io/images/planet/ring06.jpg)
 
