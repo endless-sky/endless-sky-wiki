@@ -130,7 +130,7 @@ Now, use `Layer -> Transparency -> Color to Alpha...` (selecting white or black 
 
 ![alpha image](http://endless-sky.github.io/images/planet/ring08.jpg)
 
-With a big blurry, erase the very top of the image and most of the bottom half. With a smaller eraser set to about 30% opacity, erase some "stripes" of what remains to make them more translucent than the rest:
+With a big blurry eraser, erase the very top of the image and most of the bottom half. (Halfway through doing the erasing, you may want to offset the image halfway in the X direction to make sure the edges still tile properly.) With a smaller eraser set to about 30% opacity, erase some "stripes" of what remains to make them more translucent than the rest:
 
 ![top and bottom erased](http://endless-sky.github.io/images/planet/ring09.jpg)
 
