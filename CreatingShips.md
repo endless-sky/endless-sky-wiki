@@ -87,7 +87,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"turret"`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
 
-* `(fighter | drone) [<x> <y> [over | under | left | right]]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64 over`. The coordinates can be followed by one of the four keywords given above: "over" or "under" to make the carried fighter visible over or under the ship that is carrying it, and "left" or "right" to make a bay that launches ships to the side instead of straight ahead. It is not currently possible to combine more than one of these keywords, so you cannot make a side-facing bay where the carried ship is drawn. **(v. 0.9.0)**
+* `(fighter | drone) [<x> <y> [over | under] [left | right | back]]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`. As of **(v. 0.9.3)** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
 
 * `"explode"`: an effect to create when the ship is dying, and the number of them to create (e.g. `explode "small explosion" 10`). These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion where 50% of the explosion effects are generated a second time.
 
