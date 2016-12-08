@@ -18,7 +18,7 @@ At this stage, you can also play around with "Hue/Saturation" or "Curves" to adj
 
 ![original image](http://endless-sky.github.io/images/planet/01.jpg)
 
-Select `Filter -> Map -> Map Object`, and map the image to a sphere, with no lighting, with a transparent background. You can play around with the rotation parameters to present the prettiest side of the planet, but make sure the position is left at exactly (.5, 5.)!
+Select `Filter -> Map -> Map Object`, and map the image to a sphere, with no lighting, with a transparent background. You can play around with the rotation parameters to present the prettiest side of the planet, but make sure the position is left at exactly (.5, .5)!
 
 ![original image](http://endless-sky.github.io/images/planet/02.jpg)
 
