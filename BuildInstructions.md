@@ -13,6 +13,7 @@ Use your favorite package manager to install the following (version numbers may 
 * libgl1-mesa-dev (or some other equivalent)
 * libglew-dev
 * libopenal-dev
+* libmad-dev
 
 You can then just navigate to the source code folder in a terminal and type:
 
@@ -52,6 +53,12 @@ On my system, it was installed with the name libpng14.14..dylib (extra ".") and 
 ####libturbojpeg####
 
 http://www.libjpeg-turbo.org/Documentation/OfficialBinaries
+
+####libmad####
+
+https://sourceforge.net/projects/mad/files/libmad/0.15.1b/
+
+To get it to build on Mac OS X, you may have to edit the configure script to not default to "i486" for x86 architectures. On my version of OS X gcc is also just an alias for clang, so I also had to edit the Makefile and strip out some optimization flags that the configure script filled in that only work for gcc.
 
 ####SDL2####
 
