@@ -40,7 +40,7 @@ On Windows certain files with "~" in the file name may be spontaneously deleted 
 
 ### Mac OS X ###
 
-To build Endless Sky you probably want the latest XCode version (I used 5.1.1). You also need to install three libraries:
+To build Endless Sky you probably want the latest XCode version (I used 5.1.1). You also need to install four libraries:
 
 ####libpng####
 
