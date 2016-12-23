@@ -58,7 +58,9 @@ The other attributes include:
 * `bunks`: additional crew / passenger space.
 * `capture attack`: this outfit can be wielded by a crew member and adds this amount to their base strength of 1 when attacking another ship's crew. Each crew member can only wield one such outfit, and they will make use of the best outfits available in each combat round.
 * `capture defense`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
-* `cargo scan`: sets the distance from which this outfit can be used to scan a ship's cargo.
+* ~~`cargo scan`: sets the distance from which this outfit can be used to scan a ship's cargo.~~ **(deprecated in 0.9.5)**
+* `cargo scan power`: the cargo scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(added in 0.9.5)**
+* `cargo scan speed`: The time it takes to complete a cargo scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(added in 0.9.5)**
 * `cargo space`: amount of cargo space that this outfit adds (if positive) or removes (if negative) from your ship.
 * `cloak`: how quickly a cloaking device cloaks or uncloaks. When cloaking, this amount is added to your cloaking each frame until you reach 1, at which point your ship is fully cloaked. The opposite happens when uncloaking.
 * `cloaking energy`: how much energy it takes each frame to maintain cloaking.
@@ -85,7 +87,9 @@ The other attributes include:
 * `jump speed`: how slow your ship must be moving in order to jump.
 * `map`: number of star systems that are mapped by this outfit.
 * `mass`: how much your ship's mass should change by when this outfit is installed.
-* `outfit scan`: sets the distance from which this outfit can be used to scan a ship's outfits.
+* ~~`outfit scan`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(deprecated in 0.9.5)**
+* `outfit scan power`: the outfit scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(added in 0.9.5)**
+* `outfit scan speed`: The time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(added in 0.9.5)**
 * `outfit space`: if negative, how much generic outfit space (as opposed to weapon or engine space) this outfit takes up.
 * `radar jamming`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to is `radar tracking` value divided by (1 + the ship's `radar jamming`). **(v. 0.9.1)**
 * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel equal to .03 * sqrt("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. Also starting in 0.9.0, when very close to the star even ships with no ramscoop recharge a tiny amount of fuel.
