@@ -142,4 +142,4 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 ***
 
-* 3000: The galaxy is beginning to slip into decadence, with megacorporations like the Syndicate once again gaining power. The Republic has made several unpopular decisions, including license fees on various classes of starships, and interstellar trade tariffs that weigh most heavily on low-value commodities such as food and clothing. This, combined with the Parliament structure that gives almost no voice to sparsely populated worlds, has led to an increase of anti-Republic sentiment.
+* 3000: The galaxy is beginning to slip into decadence, with megacorporations like the Syndicate once again gaining power. The Republic has made several unpopular decisions, including expensive licenses that make it hard to make a start as an independent pilot, and interstellar trade tariffs that weigh most heavily on low-value commodities such as food and clothing. This, combined with the Parliament structure that gives almost no voice to sparsely populated worlds, has led to an increase of anti-Republic sentiment.
