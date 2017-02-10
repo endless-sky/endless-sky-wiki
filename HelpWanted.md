@@ -4,7 +4,7 @@ At the moment, the greatest need is for beta testers, but you can also contribut
 
 ### Non-programming tasks ###
 
-  * [Audio](SoundsNeeded): create a set of higher-quality sound effects, or work on better volume balancing of the current ones. The sound effects should be subtle so that they don't get annoying.
+  * Audio: create a set of higher-quality sound effects, or work on better volume balancing of the current ones. The sound effects should be subtle so that they don't get annoying.
 
   * Photography: contribute or find open-source photos for planet landscapes or conversation "scenes." Especially cool would be some "matte paintings" or 3D renderings of the inside of futuristic space stations.
 
