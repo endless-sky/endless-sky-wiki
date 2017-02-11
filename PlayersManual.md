@@ -27,7 +27,7 @@ The Star Barge is a slow ship, but with ample cargo capacity, enough to be able 
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png)
 
-The Sparrow is the cheapest interstellar ship you can buy that is designed for combat. With enough luck or skill, a Sparrow pilot can earn quick income by disabling and boarding small pirate ships... or by turning pirate and attacking civilian ships. Once you earn a reputation in combat, you can find a more steady income as an escort for merchant caravans, but even so, life at the helm of a Sparrow is risky and uncertain.
+The Sparrow is the cheapest interstellar ship you can buy that is designed for combat. With enough luck or skill, a Sparrow pilot can earn quick income by disabling and boarding small pirate ships... or by turning pirate and attacking civilian ships. Once you earn a reputation in combat, you can find a more steady income as an escort for merchant caravans, but even so, life at the helm of a Sparrow is risky and uncertain. The safe way to make money in a Sparrow is by mining asteroids, which is described later.
 
 Your game is saved automatically every time you depart from an inhabited planet. Each saved game overwrites the previous one. If you want to be able to return to a specific point in time, perhaps because you are about to make a major decision or undertake a risky mission, you can save a “snapshot” of the current game. These snapshots are never overwritten or deleted unless you choose to delete them.
 
@@ -151,6 +151,14 @@ Once you have set a hyperspace route, press the hyperspace key ('J' by default) 
 If your route contains multiple links, the autopilot will remain engaged and will again slow your ship to a stop and make the jump, repeating until you either reach your destination or run out of fuel. Be careful: not every star system contains planets where you can refuel. When exploring new territory, if you only have one jump of fuel left, it is wise to land and refuel rather than hoping that your destination system will turn out to be inhabited. Your remaining fuel is displayed on the right side of the screen, in the golden bar above the atomic energy symbol: each break in the bar represents one jump of fuel. If you never want to worry about becoming stranded and out of fuel, you can invest in a ramscoop, which slowly harvests deuterium from the solar wind to replenish your tank. Of course, most passing ships are glad to help out a novice pilot who has become stranded; just talk to them ('T' key by default) and ask for help.
 
 The hyperdrive will not engage until you release the 'J' key, so if you are traveling with escorts you can hold it down to have them get ready to jump, then release it to all jump at once.
+
+#Mining Asteroids#
+
+A pilot with a good eye and steady aim can earn an income just by harvesting materials from asteroids. Most asteroids cannot be destroyed, but orbiting some distance away from certain stars you will find unusual asteroids that can be mined. Some are an obviously different color or shape, but the most lucrative elements are found in asteroids that look very similar to ordinary ones:
+
+![](https://endless-sky.github.io/images/mining.jpg)
+
+If you're flying a Sparrow or other small ship, it may take a while for your puny lasers to break open the asteroid, but if you keep at it for long enough the asteroid will explode and you can fly in to collect the fragments that it leaves behind.
 
 <a name="outfits"/>
 #Outfitting Your Ship#
