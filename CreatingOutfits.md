@@ -26,7 +26,7 @@ As with [ships](CreatingShips), it is often easier to add texture and color vari
 
 ### Outfit attributes
 
-Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two of the same scanner, your scanning range doubles. If you install two shield generators, your shield regeneration doubles.
+Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two shield generators, your shield regeneration doubles.
 
 Most attributes are given as a single number, but there are a few "special" attributes:
 
