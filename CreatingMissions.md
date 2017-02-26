@@ -107,7 +107,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<origin>` = planet (or ship) where mission was offered
 * `<planet>` = destination planet
 * `<system>` = destination system
-* `<destination>` = "`<planet>`, in the `<system>` system"
+* `<destination>` = "`<planet>` in the `<system>` system"
 * `<stopovers>` = a list of all stopover destinations
 * `<payment>` = "1 credit" or "N credits"
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
@@ -124,7 +124,7 @@ These placeholders will be substituted in any text in the following places:
 * dialog messages contained in the mission
 * conversations contained in the mission
 
-For example, the mission description might be, "Deliver `<cargo>` to `<destination>`, by `<date>`."
+For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
 
 <a name="basics"/>
 # Basic mission characteristics #
