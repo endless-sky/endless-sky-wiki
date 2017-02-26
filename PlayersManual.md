@@ -169,6 +169,8 @@ All ships need, at a bare minimum, a steering system and thruster, and a power s
 
 Each ship has a limited amount of space for outfits. In addition, ships also have a limit on the total size of weapons installed, and of engines. Some ships have ample engine space, but very little space for weapons; in other ships, the reverse is true. This means that, for example, it is not possible to replace a Sparrow&rsquo;s two small beam lasers with two massive particle cannons, even if the engines are downgraded to something smaller in order to make room.
 
+Ships and outfits depreciate (lose value) over time. Three years after you bought a ship, it will only sell for 25% of its original value. Plundered outfits and captured ships also only sell for 25% of their value.
+
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/fission.png)
 
 ##Power Sources##
@@ -267,8 +269,6 @@ The other option is the riskier one: attempting to capture the disabled ship. Th
 If you succeed in capturing a ship, some of your crew members must transfer over to it in order to pilot it. That means, in particular, that you cannot capture a ship if you only have one crew member left (i.e. yourself). If a ship has fewer than its minimum required crew, it can still fly, but its controls will intermittently become unresponsive. For example, a ship that requires 5 crew and only has 3 will only respond to controls 60% of the time, which can make it difficult for that ship to land or to fight.
 
 The newly captured ship will be repaired just enough that it is no longer disabled. A hit from any weapon will be enough to disable it again, so you will need to avoid combat until its shields have a chance to recharge.
-
-If any of your crew members are killed while trying to capture a ship, you will owe &ldquo;death benefits&rdquo; to their families to compensate them for their loss (because asking your crew to fight hand to hand is more than they signed up for). The way death benefits are resolved is that you, as the captain, get two shares in the value of the ship, and each of the bereaved families gets one share. So, if you lose one crew member, you pay their family 1/3 of the captured ship&rsquo;s cost; if you lose 8 crew members, you will owe their families 80% of the cost. This means that capturing a ship always earns you a profit, but the profit is much smaller if you lose crew members in the process.
 
 If a friendly ship is disabled, you can board it to repair it just enough so that it can fly again. And if your own ship is disabled, you can hail a friendly ship and ask it to repair you.
 
