@@ -67,6 +67,9 @@ The other attributes include:
 * `cloaking fuel`: how much fuel it takes each frame to maintain cloaking.
 * `cooling`: heat subtracted from your ship by this outfit, per frame.
 * `cooling energy`: energy consumed by `active cooling` when heat is at 100%.
+* `cooling inefficiency`: the higher this attribute is, the less effective your cooling systems are. Both active cooling and regular cooling will be multiplied by `2 + 2 / (1 + exp(i / -2)) - 4 / (1 + exp(i / -4))`, which forms the S-curve shown below. **(added in 0.9.7)**
+
+![cooling inefficiency](http://endless-sky.github.io/images/inefficiency.png)
 * `cost`: cost of this outfit, in credits.
 * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems.
 * `energy capacity`: how much energy your ship can store.
