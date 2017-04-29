@@ -40,11 +40,11 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Engines"
   * "Hand to Hand"
   * "Special"
-* `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](https://github.com/endless-sky/endless-sky/wiki/CreatingShips) when the thruster is firing.
-* `"flare sound"`: for thrusters, the sound that is played when the thruster is firing.
-* `"afterburner effect"`: the [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) that is created for every frame that the afterburner is firing. Afterburner effects can last for multiple frames, leaving a trail behind the ship.
-* `"thumbnail"`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite.
-* `"description"`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
+* `flare sprite`: for thrusters, the image that is drawn at each of the engine [hardpoints](https://github.com/endless-sky/endless-sky/wiki/CreatingShips) when the thruster is firing.
+* `flare sound`: for thrusters, the sound that is played when the thruster is firing.
+* `afterburner effect`: the [effect](https://github.com/endless-sky/endless-sky/wiki/CreatingEffects) that is created for every frame that the afterburner is firing. Afterburner effects can last for multiple frames, leaving a trail behind the ship.
+* `thumbnail`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite.
+* `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
 The other attributes include:
 
@@ -80,11 +80,12 @@ The other attributes include:
 * `heat dissipation`: outfits should not modify this. If you want an outfit to help cool off a ship, use the "cooling" attribute instead.
 * `heat generation`: how much heat this outfit generates every turn, regardless of whether it is working at full capacity or not. For example, a power generator will create its full amount of heat even if your batteries are fully charged and the energy it creates is just being thrown away.
 * `hull`: I recommend against providing outfits that give ships additional hull strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
-* `hull energy` is the amount of energy that hull repair draws when recharging at the full rate. (**Prior to v. 0.9.0,** hull repair also draws an additional amount of energy equal to `"hull repair rate"`.)
+* `hull energy` is the amount of energy that hull repair draws when recharging at the full rate. (**Prior to v. 0.9.0,** hull repair also draws an additional amount of energy equal to `hull repair rate`.)
 * `hull heat` is the amount of heat that hull repair creates when recharging at the full rate. **(v. 0.9.1)**
 * `hull repair rate`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
 * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
 * `illegal`: the fine, in credits, for being caught using this outfit.
+* `inscrutable`: if a ship has a nonzero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
 * `installable`: if set to a value below zero, this outfit cannot be installed. (**As of v. 0.9.0,** the trading panel will display these outfits as "harvested materials," and the outfitter will display a helpful message if you try to install them.)
 * `jump drive`: set this to 1 if this outfit is a jump drive.
 * `jump speed`: how slow your ship must be moving in order to jump.
@@ -103,7 +104,7 @@ The other attributes include:
 * `scan interference`: your odds of a scan of your ship discovering anything illegal you have are equal to 1 / (1 + scan interference). For example, if "scan interference" is 3 you evade 75% of scans.
 * `scram drive`: a scram drive can engage as long as your ship is moving in the direction of the target system. This value is how much your ship can be drifting relative to that vector and still be allowed to jump.
 * `self destruct`: a value between 0 and 1, representing the probability that a ship will self destruct when you try to plunder it or, after succeeding in boarding it without it self destructing, try to capture it. That is, the probability of successfully boarding a ship with self destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
-* `shield energy` is the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `"shield generation"`.)
+* `shield energy` is the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `shield generation`.)
 * `shield heat` is the amount of heat that shield generation creates when recharging at the full rate. **(v. 0.9.1)**
 * `shield generation`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
 * `shields`: I recommend against providing outfits that give ships additional shield strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
@@ -124,12 +125,12 @@ An outfit that provides a weapon contains an extra set of attributes inside a "w
 
 * `sprite`: the path to the sprite, relative to the "images" folder, and not including the frame number or extension (e.g. "projectile/flamethrower", not "images/projectile/flamethrower+0.png"). The sprite field can also have "child" elements, which include:
   * `frame rate` <fps>: animation frames per second.
-  * `"frame time" <ticks>`: game ticks per animation frame. A game tick is 1/60th of a second. This is an alternative way of specifying frame rate; if you specify both the last specification will be used.
-  * `"delay" <frames>`: number of animation frames to delay in between loops of the animation. For example, a four-frame animation with a delay of 4 and a frame rate of 8 FPS will play the animation for half a second, then pause for half a second, then repeat.
+  * `frame time`: game ticks per animation frame. A game tick is 1/60th of a second. This is an alternative way of specifying frame rate; if you specify both the last specification will be used.
+  * `delay`: number of animation frames to delay in between loops of the animation. For example, a four-frame animation with a delay of 4 and a frame rate of 8 FPS will play the animation for half a second, then pause for half a second, then repeat.
   * `start frame` <frame>: which frame to start the animation at.
   * `random start frame`: start the animation at a random frame (e.g. so if you fire a bunch of projectiles, they won't all be pulsing through the animation in unison with each other).
-  * `"no repeat"`: the animation stops after it has played through once. (If "rewind" is also specified, it will play forward, then play backward, then stop.)
-  * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
+  * `no repeat`: the animation stops after it has played through once. (If "rewind" is also specified, it will play forward, then play backward, then stop.)
+  * `rewind`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
 * `hardpoint sprite`: the sprite (which ought to be very tiny) to draw on top of the hardpoint where this weapon is installed, to show what direction the weapon is pointing in. Generally, this should only be used for turrets, because the gun hardpoints on many ships are already designed to look like guns. This sprite definition can use any of the same animation values as the ship sprite. **(v. 0.9.7)**
 * `hardpoint offset`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
