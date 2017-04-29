@@ -65,6 +65,10 @@ For some examples, you can look at data/ships.txt. The easiest thing to do is to
 
 The data files use indentation, like in the Python language, to define sub-entries within an entry. For example, each ship is defined by a line reading `ship "Ship Name"` with no indentation, followed by several keys indented once:
 
+* `"plural"`: plural version of this ship's model name. **(v. 0.9.5)**
+
+* `"noun"`: noun to use when referring to this ship, instead of "ship." For example, this can make the game refer to a ship as a "creature" or an "entity." **(v. 0.9.7)**
+
 * `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). If the sprite is animated, the following lines can be added as a "child" of the sprite line:
 
   * `"frame rate" <fps>`: frames per second.
