@@ -2,7 +2,7 @@ Most of the current development work is done on Ubuntu Linux. Building the code 
 
 You can get a copy of the code either using "git clone," or using the download link. How you build it will then depend on your operating system:
 
-### Linux ###
+## Linux ##
 
 Use your favorite package manager to install the following (version numbers may vary depending on your distribution):
 * g++
@@ -24,7 +24,7 @@ $ ./endless-sky
 
 The program will run using the "data" and "images" folders that are found in the source code folder itself. For more Linux help, consult the man page (endless-sky.6).
 
-### Windows ###
+## Windows ##
 
 The Windows build has been tested on 64-bit Windows 7, only. You will need the Code::Blocks IDE and g++ 4.8 or higher. Code::Blocks is available [here](http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/Windows/codeblocks-13.12-setup.exe/download), and you can install g++ separately through [mingw-w64](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.8.5/threads-posix/seh/). **Be sure to install the "pthread" version of MinGW; the "win32-thread" one does not come with support for C++11 threading. On 32-bit Windows, use "dwarf" exceptions, not "sjlj".** Then you'll need to tell Code::Blocks the path to the compiler programs:
 
@@ -38,11 +38,11 @@ You will also need `libmingw32.a` and `libopengl32.a`. Those should be included 
 
 On Windows certain files with "~" in the file name may be spontaneously deleted by git with an "error: Invalid Path" message when pulling or merging. The solution is to set `git config core.protectNTFS false`.
 
-### Mac OS X ###
+## Mac OS X ##
 
 To build Endless Sky you probably want the latest XCode version (I used 5.1.1). You also need to install four libraries:
 
-####libpng####
+### libpng ###
 
 http://sourceforge.net/projects/libpng/files/libpng14/
 
@@ -50,17 +50,17 @@ Get version 1.4.13. (The version number doesn't seem to match -- XCode links to 
 
 On my system, it was installed with the name libpng14.14..dylib (extra ".") and I had to rename it and fix the symlinks.
 
-####libturbojpeg####
+### libturbojpeg ###
 
 http://www.libjpeg-turbo.org/Documentation/OfficialBinaries
 
-####libmad####
+### libmad ###
 
 https://sourceforge.net/projects/mad/files/libmad/0.15.1b/
 
 To get it to build on Mac OS X, you may have to edit the configure script to not default to "i486" for x86 architectures. On my version of OS X gcc is also just an alias for clang, so I also had to edit the Makefile and strip out some optimization flags that the configure script filled in that only work for gcc.
 
-####SDL2####
+### SDL2 ###
 
 Just downloading the SDL binary won't work, because XCode 5 checks that the framework is signed, and it isn't. Instead, build it from source:
 
@@ -71,6 +71,6 @@ Build the framework, then copy it into /Library/Frameworks. When I did this, for
 
 Hopefully these will all install to the locations referenced in the project file; if not you can correct the paths.
 
-####Library paths####
+### Library paths ###
 
 To create a Mac OS X binary that will work on systems other than your own, you may also need to use `install_name_tool` to modify the libraries so that their location is relative to the @rpath.
