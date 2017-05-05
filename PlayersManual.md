@@ -16,15 +16,15 @@ You are about to purchase your first ship and set out to make your fortune among
 
 As a new pilot, only a handful of ships are within your price range. Each one is suited to a slightly different personality:
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png)
+<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png" width="100" height="140">
 
 The Shuttle is the cheapest and most versatile option. Nearly as nimble as a fighter, shuttles can easily escape from slower pirate ships and even dodge missiles, which is a good thing because they are otherwise useless in combat. Shuttles are classified as &ldquo;transports&rdquo; because they have relatively small cargo holds, and instead their most common use is ferrying passengers: a great way for more gregarious captains to meet interesting people while exploring the galaxy.<br clear="all">
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star%20barge@2x.png)
+<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star barge@2x.png" width="140" height="160">
 
 The Star Barge is a slow ship, but with ample cargo capacity, enough to be able to take on multiple simultaneous delivery jobs. Or, a captain without much hunger for variety can earn a stable living on a Star Barge just by finding a decent trade route and running it over and over again. Unfortunately, Star Barges are a favorite target of pirates because they often carry valuable cargo and are hardly ever able to outrun their adversaries.<br clear="all">
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png)
+<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png" width="140" height="160">
 
 The Sparrow is the cheapest interstellar ship you can buy that is designed for combat. With enough luck or skill, a Sparrow pilot can earn income by disabling and boarding small pirate ships... or by turning pirate and attacking civilians. Once you earn a reputation in combat, you can find a more steady income as an escort for merchant caravans, but even so, life at the helm of a Sparrow is risky and uncertain. The safe way to make money in a Sparrow is by mining asteroids, which is described later.<br clear="all">
 
