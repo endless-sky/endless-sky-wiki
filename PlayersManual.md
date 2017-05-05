@@ -1,9 +1,9 @@
-#Table of Contents
-* [Starting a new game](#new)
+# Table of Contents
+* [Starting a new game](#starting-a-new-game)
 * [Things to do while landed on a planet](#planets)
-* [Flying your ship](#navigation)
-* [Traveling to other star systems](#travel)
-* [Upgrading your ship](#outfits)
+* [Flying your ship](#flying-your-ship)
+* [Traveling to other star systems](#interstellar-travel)
+* [Upgrading your ship](#outfitting-your-ship)
 * [Combat](#combat)
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/land/city7.jpg)
@@ -12,20 +12,19 @@ To own a starship: that is the dream that has kept you sane since you began work
 
 You are about to purchase your first ship and set out to make your fortune among the stars. What happens next is up to you. Will you take on the quiet, steady work of a merchant captain? Or join the Navy and fight to keep the galaxy safe? Will you choose the glamorous life of a bounty hunter and fight pirates for a living? Or will you become a pirate yourself? Or will you journey beyond the edge of known space, seeking friends among the strange and powerful aliens that inhabit the other corners of the galaxy?
 
-<a name="new"/>
-#Starting a New Game#
+# Starting a New Game
 
 As a new pilot, only a handful of ships are within your price range. Each one is suited to a slightly different personality:
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png" width="100" height="140">
+![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png)
 
 The Shuttle is the cheapest and most versatile option. Nearly as nimble as a fighter, shuttles can easily escape from slower pirate ships and even dodge missiles, which is a good thing because they are otherwise useless in combat. Shuttles are classified as &ldquo;transports&rdquo; because they have relatively small cargo holds, and instead their most common use is ferrying passengers: a great way for more gregarious captains to meet interesting people while exploring the galaxy.<br clear="all">
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star barge@2x.png" width="140" height="160">
+![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star%20barge@2x.png)
 
 The Star Barge is a slow ship, but with ample cargo capacity, enough to be able to take on multiple simultaneous delivery jobs. Or, a captain without much hunger for variety can earn a stable living on a Star Barge just by finding a decent trade route and running it over and over again. Unfortunately, Star Barges are a favorite target of pirates because they often carry valuable cargo and are hardly ever able to outrun their adversaries.<br clear="all">
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png" width="140" height="160">
+![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png)
 
 The Sparrow is the cheapest interstellar ship you can buy that is designed for combat. With enough luck or skill, a Sparrow pilot can earn income by disabling and boarding small pirate ships... or by turning pirate and attacking civilians. Once you earn a reputation in combat, you can find a more steady income as an escort for merchant caravans, but even so, life at the helm of a Sparrow is risky and uncertain. The safe way to make money in a Sparrow is by mining asteroids, which is described later.<br clear="all">
 
@@ -35,14 +34,13 @@ You can pause the game and bring up the main menu at any time by pressing the ma
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/planet/earth.png)
 
-<a name="planets"/>
-#Planets#
+# Planets
 
 Human beings have been living in space for more than a millennium, and there are always a hardy few who can manage to fall asleep on a space station, pretending that the plink of micro-asteroids against the hull beside them is just the sound of rain on a tin roof, and that the distant hum is something other than the sound of the only machine that keeps them breathing. But most people prefer even the most inhospitable planet to life on a station, so after the new wave of colonization in the last two centuries, nearly every planet in human space that has breathable atmosphere is home to at least one settlement.
 
 Every time you land on an inhabited world, your ship is automatically refueled and repaired. When you first land, a description of the planet is shown. (If you switch to a different view like the bank or the trading panel, you can return to the planet description by clicking on the landscape image.) You then have several options of what to do next. Each of the options also has a keyboard shortcut, as listed below.
 
-##Trading (T)##
+## Trading (T)
 
 They say that to an experienced merchant, the flow of goods from star to star and planet to planet tells a story, delineating the different regions of human space: the Core, rich in resources, home to many mining planets. Beyond the Core, the Syndicate worlds of industry and manufacturing, where the flow of raw materials from the galactic East meets the overflowing population from Earth and other old, stagnant worlds. To Earth, the constant flow of merchant caravans, bringing food to feed ten billion hungry mouths. Along the galactic spiral north of Earth, the paradise planets, humanity&rsquo;s largest market for luxury goods. And farther north, the Deep, a region of ancient stars on the fringe of the galaxy, self-sufficient and isolated. Next to the Deep and even farther north, the last fringes of civilization and a scattering of anarchist and pirate worlds.
 
@@ -54,13 +52,13 @@ Once you have explored a system, your ship&rsquo;s computer remembers the commod
 
 To buy more than one ton of a given trade good at a time, you can hold down the shift key (5x), the control key (20x), or both (100x). For players with enormous cargo fleets, the alt / option key (500x) can be used in combination with those other keys to sell up to 50,000 tons of cargo per click. Or, you can just click the &ldquo;Buy All&ldquo; and &ldquo;Sell All&ldquo; buttons.
 
-##Job Board (J)##
+## Job Board (J)
 
 A few particularly wealthy people can afford to travel the galaxy on luxury cruisers or even in their own private transports, but most ordinary civilians rely on friendly merchant captains with a bunk to spare to take them where they need to go. In addition, companies and other organizations on distant worlds sometimes need a particular sort of cargo delivered. Simple jobs like these are collected and posted on the &ldquo;job board&rdquo; for anyone who wants to take them on. These jobs pay better than even the most lucrative trade route, especially if you can line up several simultaneous jobs along the same route of travel.
 
 When you click on a mission in the job board, its destination will be displayed on the map, even if it is not a system you have already explored. If you already know a route to that system, the route will be displayed; otherwise, you will need to explore the hyperspace paths in that direction until you find a route to your destination. (Or, buying local maps from the Outfitter can help you to avoid getting lost!) Systems that are the destination of any of the jobs being offered are marked with a yellow pointer, which will be dimmed out if the job requires more cargo or passenger space than you have free. Once you accept a job, it is added to your &ldquo;current missions&rdquo; list, and the marker turns blue; these markers are visible in your map whenever you bring it up.
 
-##Bank (B)##
+## Bank (B)
 
 The work of a banker is hard: spending your days writing loans to enthusiastic young pilots, knowing full well that many of them will be unable to make their mortgage payments. And worse still, some of them, along with their shiny new starships that were bought with your money, will wander into a fringe system and get turned into a rapidly expanding cloud of debris at the hands of some pirate. And then good luck getting your money back. So, bankers can&rsquo;t help but spend long, sleepless nights worrying about the fate of those young, optimistic pilots... and more importantly, the fate of the capital investments that those pilots represent. It&rsquo;s a big risk for the banks to take. Whether that justifies the exorbitant interest rates that the bankers charge is, of course, an entirely different question.
 
@@ -68,7 +66,7 @@ You start the game with a significant mortgage to pay off. Every day (that is, e
 
 If you apply for a new loan, your credit score determines the interest rate you will be offered, and your income history for the last hundred days determines the amount you can qualify for.
 
-##Space Port (P)##
+## Space Port (P)
 
 The job board works fine for offering run of the mill missions, but people who need more important or sensitive work done will generally want to speak to a captain face to face before offering the job. So, it never hurts to wander around the spaceport and see if you encounter anyone who can offer you a mission. If nothing else, exploring the spaceport will at least give you a sense of what the local culture is like. Spaceports span the gamut from towering buildings with hangars for incoming ships, to fields of packed dirt with only a few huts or a small village nearby.
 
@@ -78,7 +76,7 @@ When you visit a spaceport, if anyone wants to offer you a mission a conversatio
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/blackbird.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/hawk.png)
 
-##Shipyard (S)##
+## Shipyard (S)
 
 The degree of technological and industrial development necessary to build starships from scratch is so high that only a few planets in human space are home to active shipyards, although there are other planets that sell those ships secondhand. So, even before you are ready to buy a new ship it is worthwhile to check what each planet is selling; the ship models that are popular in one part of the galaxy may not be available in others.
 
@@ -90,13 +88,13 @@ If you trade in a ship for one with less cargo or passenger space, and then try 
 
 Whenever you sell a ship, all the outfits that were installed in that ship are available for repurchase in the outfitter until you leave the planet. This is especially handy if your old ship had a rare outfit installed and you want to transfer it to your new ship.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/quad blaster turret.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/small plasma thruster.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/quad%20blaster%20turret.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/small%20plasma%20thruster.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/breeder.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/large battery.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/meteor launcher.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/large%20battery.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/meteor%20launcher.png)
 
-##Outfitter (O)##
+## Outfitter (O)
 
 Many starship captains have an almost obsessive impulse to fine-tune their ships, trying to find the perfect combinations of engines, generators, and weapons. As with ships, some outfits may only be available in certain parts of the galaxy, and some particularly valuable, exotic, or illegal outfits are available only in a handful of systems. Ship outfits are described in much more detail later on in this document. As with the trading panel, in the Outfitter you can buy multiple copies of an outfit, such as ammunition, by holding down the shift key (5x), the control key (20x), or both (100x).
 
@@ -104,18 +102,17 @@ If you have multiple ships, you can select the icons of more than one of them at
 
 Outfits can affect your ship in a myriad of ways. You can hover the mouse over any attribute of an outfit or a ship to view a tooltip explaining how it works.
 
-##Hire Crew (H)##
+## Hire Crew (H)
 
 Extra crew serve no purpose, aside from drawing money from your bank account every day, unless you are attempting to capture another ship. When you board an enemy ship, your odds of capturing it depend on how many crew members you have. And, if you succeed in capturing the other ship, you must have enough extra crew members to pilot both ships. If a ship has fewer than the minimum number of crew, it will experience random control failures until you land on an inhabited planet (where you will automatically hire new crew to replace the ones you lost).
 
 As with the trading panel, you can hire or fire multiple extra crew members at once by holding down the shift key (5x), the control key (20x), or both (100x).
 
-##Depart (D)##
+## Depart (D)
 
 Many first-time pilots describe it in terms usually reserved for religious experiences: that moment when the thrum of the engines and the rush of atmosphere dies away, and you find yourself looking down at the world that, until that moment, you had called home. Everything you ever cared about, everything that ever made you cry, every scrap of beauty you&rsquo;ve ever seen up until now is down there, and it&rsquo;s so small you could pick it up and hold it in the palm of your hand...
 
-<a name="navigation"/>
-#Flying Your Ship#
+# Flying Your Ship
 
 When you leave the planet, you will find yourself surrounded by asteroids, planets, and maybe some other ships as well. Don&rsquo;t panic: your ship cannot collide with any of these objects, and instead it will pass safely above or below them. Asteroids do have an effect in combat, however: projectiles that collide with them are destroyed. A skilled pilot can often maneuver incoming missiles into crashing into asteroids, or can simply hide behind a large asteroid and use it as a shield. (Merchant crews operating near the fringes of human space call asteroids &ldquo;the poor man&rsquo;s anti-missile system,&rdquo; and feel much safer in systems where there are plenty of asteroids to provide cover.)
 
@@ -137,8 +134,7 @@ The only way to fire on a non-hostile ship is to choose it as your target before
 
 On the right side of the screen is the status of your own ship, including shield (blue) and armor (gold) shown in rings around the outline of your ship. Below that are three bars showing your current levels of hyperspace fuel, energy, and heat, and below that are ammunition indicators for your secondary weapons, if you have any.
 
-<a name="travel"/>
-#Interstellar Travel#
+# Interstellar Travel
 
 The hyperdrive works by propelling a ship along a hyperspace &ldquo;link&rdquo; between two star systems. The consensus among physicists is that these links are in fact not a naturally occurring phenomenon, but an artificial construct. Some believe that they are an ancient network of interstellar &ldquo;roads&rdquo; built by a species that inhabited our region of the galaxy millions of years ago. Others theorize that they are the equivalent of wheel-ruts in a well-traveled dirt road, worn into the fabric of space-time by a civilization with more advanced hyperspace technology. We do not currently know how to create more hyperspace links, and in fact we do not even know whether the links are permanent or may decay over time. No changes have been observed in the hyperspace network during the previous millennium, but much of human space was not thoroughly mapped or under close observation until recently.
 
@@ -154,7 +150,7 @@ If your route contains multiple links, the autopilot will remain engaged and wil
 
 The hyperdrive will not engage until you release the &lsquo;J&rsquo; key, so if you are traveling with escorts you can hold it down to have them get ready to jump, then release it to all jump at once. The escort icons on the bottom left of the screen will turn yellow if your escorts are not ready to jump, or red if they are unable to (for example, because they don't have enough fuel).
 
-#Mining Asteroids#
+# Mining Asteroids
 
 A pilot with a good eye and steady aim can earn an income just by harvesting materials from asteroids. Normal asteroids are indestructible, but orbiting some distance away from certain stars you will find unusual asteroids that can be mined. Some are an obviously different color or shape, but the most lucrative elements are found in asteroids that look very similar to ordinary ones:
 
@@ -162,8 +158,7 @@ A pilot with a good eye and steady aim can earn an income just by harvesting mat
 
 If you&rsquo;re flying a Sparrow or other small ship, it may take a while for your weak lasers to break open the asteroid, but if you keep at it for long enough the asteroid will explode and you can fly in to collect the fragments that it leaves behind.
 
-<a name="outfits"/>
-#Outfitting Your Ship#
+# Outfitting Your Ship
 
 All ships need, at a bare minimum, a steering system and thruster, and a power source to drive them. To travel between star systems, a ship also needs a hyperdrive. Each ship chassis also comes with some things built in. For example, all ships have a hull, and except for unmanned drones the hull will include an integrated energy shield matrix that provides defense in combat and also protects the crew from chronic exposure to cosmic radiation. Most ships also have hardpoints designed for mounting forward-facing guns or omni-directional gun turrets, and a few ships have bays for fighters and drones.
 
@@ -173,7 +168,7 @@ Ships and outfits depreciate (lose value) over time. Three years after you bough
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/fission.png)
 
-##Power Sources##
+## Power Sources
 
 On most ships, a central generator produces electricity, which is then stored in batteries until needed. The batteries allow the ship to temporarily draw more power than its generator produces, for example to fire a weapon salvo. It is possible to forgo the batteries entirely if your ship&rsquo;s instantaneous power draw will never exceed the output of its generator, but without batteries you may not be able to fire weapons like energy blasters that fire in discrete bursts instead of a continuous stream.
 
@@ -181,9 +176,9 @@ Generators come in a variety of sizes, prices, and power levels. Most small ship
 
 If your ship is short on energy, engines take priority over weapons. If the engines draw enough power, it is even possible that once your batteries are depleted you will not be able to steer and apply forward thrusters at the same time. In their stock configurations, most ships have engines and generators balanced well enough that this will not happen, but a common mistake made by rookie pilots is to install overpowered engines without having the means to drive them continuously.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/large plasma steering.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/large%20plasma%20steering.png)
 
-##Engines##
+## Engines
 
 Most human ships use either ion drives or plasma drives. Ion drives are more energy-efficient; plasma drives are more space-efficient. Plasma drives also produce more heat, so if you install them along with other outfits that generate heat, your ship may be in danger of overheating. Ion drives are the older and more mature technology, and are available throughout most of human space; plasma drives are produced by Delta V Corporation, in the galactic south, and may be hard to find in other parts of the galaxy. A few worlds in the Deep sell atomic engines, which are more powerful but also very expensive and energy-hungry.
 
@@ -193,9 +188,9 @@ Because thrusters and steering systems are sold separately, you must also balanc
 
 Your acceleration and turn rate also depend on your ship&rsquo;s mass: the bigger the ship and the more cargo it is carrying, the slower it will turn.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/large shield.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/large%20shield.png)
 
-##Hull and Shields##
+## Hull and Shields
 
 Although most pilots today think of energy shields as purely for protection in combat, they were originally designed as a defense against cosmic radiation. Later, they were strengthened enough to deflect micro-asteroids and other space debris. These early shield generators created a spherical ring around the ship, generally at some distance away from the hull because a powerful enough impact could distort the field and bend it inward.
 
@@ -203,9 +198,9 @@ That was back in the early days of interstellar travel. Today&rsquo;s integrated
 
 Instead, modern shield generators serve only to recharge the matrix, which is still a very useful function, especially if you are able to gain a brief respite from combat. Some shield generators, in fact, are so powerful that they can keep shields at full strength even when under constant fire from an energy blaster. Recharging shields takes energy, but typically much less energy than your other systems draw.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/particle cannon.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/particle%20cannon.png)
 
-##Weapons##
+## Weapons
 
 Ships can be equipped with two different types of weapons: guns and turrets. Each ship model has a fixed number of gun ports and turret mounts, but there are no constraints aside from space on what particular weapons will be mounted there.
 
@@ -219,13 +214,13 @@ The rise of anti-missile technology has prompted changes in missile design to co
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/dagger.png)
 
-##Fighters and Drones##
+## Fighters and Drones
 
 If your ship has any &ldquo;fighter bays&rdquo; or &ldquo;drone bays,&rdquo; you can purchase fighters and drones in the shipyard for it to carry. Fighters and drones do not have hyperspace capability, so if you have launched them you must recall them to your ship before entering hyperspace to a new system. Otherwise, they behave the same as ordinary escorts. If you accidentally leave a fighter behind, return to that system as soon as possible to retrieve it! The pilot will probably be very relieved to see you.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/small radiothermal.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/small%20radiothermal.png)
 
-##Heat##
+## Heat
 
 Although the vacuum of space it terribly cold, it is also a very good insulator. With no air to carry heat away, your ship relies purely on radiating it out as infrared energy. If enough heat builds up and your ship&rsquo;s internal temperature exceeds the maximum level, it will temporarily shut down until it can cool off again. Since weapons generally produce more heat than anything else, a ship may seem to be maintaining a safe temperature until it is in the thick of combat, but can then suddenly overheat and be left as a defenseless target.
 
@@ -233,8 +228,7 @@ It is highly recommended that when outfitting your ship, you pay attention to th
 
 Heat may also be used as a weapon. Pirates, in particular, are notorious for running their ships hot, and you may be able to find some weapons that heat up the target ship in addition to damaging it. For a pirate vessel coming in with all guns blazing, that little extra bit of heat may be enough to push it over the edge. Heat weapons are most effective on ships whose shields are down.
 
-<a name="combat"/>
-#Combat#
+# Combat
 
 A hundred years ago, in the golden age of the Republic, piracy had been all but eliminated. The slave trading cartels were defeated, Navy ships patrolled every system from Betelgeuse to Tarazed, and most of the remaining pirate outposts were hidden underground bases on resource-poor worlds. But a few centers of pirate activity survived, and with the recent economic downturn and expansion of colonies into new systems, the Navy is stretched too thin to patrol everywhere at once. So, in every corner of the galaxy except for the Deep, there are worlds owned entirely by pirate clans who give neither respect nor revenue to the Republic.
 
@@ -246,7 +240,7 @@ If you decide to engage in combat, strategy can be as important as brute force. 
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/sidewinder.png)
 
-##Secondary Weapons##
+## Secondary Weapons
 
 Weapons that use ammunition do not automatically fire when you press the primary fire key. Instead, you must select the weapon you want with the weapon select key (&lsquo;W&rsquo; by default) and then press the secondary firing key (&lsquo;Q&rsquo; by default) to fire it. This is because, against weaker enemies, you may not want to waste ammunition.
 
@@ -256,7 +250,7 @@ Secondary weapons also include weapons that are powered by hyperspace fuel, but 
 
 By default, any escorts you have will save money by only firing their secondary weapons when faced with an enemy fleet more powerful than your own. Their firing behavior can be adjusted in the preferences or by pressing the &ldquo;toggle ammo usage&rdquo; key (&lsquo;U&rsquo; by default).
 
-##Boarding, Plundering, and Capturing Ships##
+## Boarding, Plundering, and Capturing Ships
 
 Depending on how strong its hull is, a ship will become disabled at somewhere between 50% hull strength and 10%. By that point it only takes a few more shots to destroy them, but you may be better off leaving them behind and choosing another target. Once there are no hostile ships left in the system, you can come back and plunder disabled ships. Bear in mind that plundering a ship is a criminal act against that ship&rsquo;s government, not much better than being the one who disabled it in the first place. But if it&rsquo;s a pirate ship, no one but the pirates are going to complain.
 
@@ -272,7 +266,7 @@ The newly captured ship will be repaired just enough that it is no longer disabl
 
 If a friendly ship is disabled, you can board it to repair it just enough so that it can fly again. And if your own ship is disabled, you can hail a friendly ship and ask it to repair you.
 
-##Strategy##
+## Strategy
 
 In the preferences screen, you can enable automatic aiming and firing, allowing your ship&rsquo;s computer to control your weapons more precisely than you may be able to. Automatic aiming engages whenever you are firing your primary weapons and pointed roughly toward your target, and will turn your ship to track the target if possible. Especially for long-range weapons like particle cannons, you are unlikely to hit your target without the computer&rsquo;s help. Unfortunately, all the ships you fight have access to the same precise targeting algorithms, so fancy flying alone will not guarantee you a victory against a ship that is as strong as yours.
 
