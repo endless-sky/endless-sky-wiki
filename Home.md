@@ -4,7 +4,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 
 * [Player's manual](PlayersManual)
 * [Discussion forum](http://groups.google.com/group/endless-sky)
-* [Reporting bugs and requesting new features](CreatingIssues)
+* [Reporting bugs and requesting new features](https://github.com/endless-sky/endless-sky/blob/master/CONTRIBUTING.md)
 
 ### Story
 
