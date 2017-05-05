@@ -16,16 +16,16 @@ Graphics:
 - [ ] Replace any particularly boring landscapes.
 - [ ] Website "polls" for letting users mark graphics they don't like.
 - [ ] More planet sprites.
-- [ ] More special star types.
+- [x] More special star types.
 - [ ] Better space station sprites.
 - [ ] Better space station landscapes.
 - [ ] Portrait pictures.
-- [ ] Fill in missing outfit sprites (for alien outfits).
+- [x] Fill in missing outfit sprites (for alien outfits).
 
 User interface:
 
 - [x] Allow zooming map in or out.
-- [ ] Allow zooming the main view independent of the UI zoom (and allow less than 100% zoom).
+- [x] Allow zooming the main view independent of the UI zoom (and allow less than 100% zoom).
 - [ ] When boarding a ship, allow choosing between repair and plunder.
 - [ ] When boarding a ship, give control over how much fuel you transfer.
 - [ ] Support for Unicode text.
@@ -35,15 +35,15 @@ Universe:
 
 - [ ] Fill the rest of the galaxy with various sized clusters of systems, with a jump drive needed to travel between them.
 - [ ] More alien species.
-- [ ] Random fluctuations in commodity prices.
+- [x] Random fluctuations in commodity prices.
 
 Game Engine:
 
-- [ ] Missiles using different tracking modes (optical, infrared, radar).
+- [x] Missiles using different tracking modes (optical, infrared, radar).
 - [ ] Consider limiting how fast turrets can turn?
 - [ ] Have disabled pirates pay you a bribe to patch them up and leave them alone.
 - [ ] Reverse thruster support in the combat AI.
-- [ ] More options for controlling escorts (tactical commands, hold secondary fire).
+- [x] More options for controlling escorts (tactical commands, hold secondary fire).
 - [ ] Better AI for missile boats that run out of ammo.
 - [x] Weapons with salvo firing (must pause to reload for N seconds after M shots).
 - [ ] Escape pods and other changes to support "hard core mode."
@@ -58,8 +58,8 @@ Plugins:
 
 - [ ] Centralized website for all available plugins.
 - [ ] Better support for total overrides.
-- [ ] Viewing and editing a list of installed plugins.
-- [ ] Show plugin about text for each plugin.
+- [x] Viewing and editing a list of installed plugins.
+- [x] Show plugin about text for each plugin.
 - [ ] Downloading new plugins in-game, from a website repository.
 
 Internal:
