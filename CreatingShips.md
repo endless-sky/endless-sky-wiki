@@ -101,6 +101,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. This tag is not "inherited" by variants of a ship. **(v. 0.9.0)**
 
+The player info panel will not display properly if the total number of gun and turret hardpoints on either side of the ship is more than 12. In addition, if the total number of gun and turret hardpoints is greater than 32, the extras will not fire.
+
 The "attributes" key should be followed by a list of ship attributes, ideally listed in the following order:
 
 * `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Heavy Warship", "Fighter", or "Drone".
