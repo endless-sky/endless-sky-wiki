@@ -89,6 +89,7 @@ The other attributes include:
 * `installable`: if set to a value below zero, this outfit cannot be installed. (**As of v. 0.9.0,** the trading panel will display these outfits as "harvested materials," and the outfitter will display a helpful message if you try to install them.)
 * `jump drive`: set this to 1 if this outfit is a jump drive.
 * `jump speed`: how slow your ship must be moving in order to jump.
+* `jump fuel`: how much fuel the ship consumes when using this outfit to jump. The default is 100 for hyperdrives, 150 for scram drives, and 200 for jump drives. **(v. 0.9.7)**
 * `map`: number of star systems that are mapped by this outfit.
 * `mass`: how much your ship's mass should change by when this outfit is installed.
 * ~~`outfit scan`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(deprecated in 0.9.5)**
