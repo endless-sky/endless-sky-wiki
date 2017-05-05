@@ -20,7 +20,7 @@ As a new pilot, only a handful of ships are within your price range. Each one is
 
 The Shuttle is the cheapest and most versatile option. Nearly as nimble as a fighter, shuttles can easily escape from slower pirate ships and even dodge missiles, which is a good thing because they are otherwise useless in combat. Shuttles are classified as &ldquo;transports&rdquo; because they have relatively small cargo holds, and instead their most common use is ferrying passengers: a great way for more gregarious captains to meet interesting people while exploring the galaxy.<br clear="all">
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star barge@2x.png" width="140" height="160">
+<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star%20barge@2x.png" width="140" height="160">
 
 The Star Barge is a slow ship, but with ample cargo capacity, enough to be able to take on multiple simultaneous delivery jobs. Or, a captain without much hunger for variety can earn a stable living on a Star Barge just by finding a decent trade route and running it over and over again. Unfortunately, Star Barges are a favorite target of pirates because they often carry valuable cargo and are hardly ever able to outrun their adversaries.<br clear="all">
 
