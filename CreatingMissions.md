@@ -70,8 +70,6 @@ mission <name>
         conversation
             ...
         ship <model> <name>
-        ship <model>
-            ...
         fleet <name>
         fleet
             ...
@@ -408,8 +406,6 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
     conversation
         ...
     ship <model> <name>
-    ship <model>
-        ...
     fleet <name>
     fleet
         ...
@@ -475,13 +471,11 @@ If you want to retrieve passengers or cargo by boarding a ship, set up the missi
 
 ```html
 ship <model> <name>
-ship <model>
-    ...
 ```
 
-This specifies a single ship as an NPC. There are two possible formats. The first format says to create a generic ship of the given model type (or named variant), such as "Falcon", or "Star Barge (Armed)". In that case, the ship will have the given name.
+This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name.
 
-The second option is to give an entire ship specification, which can optionally include things like number of crew members remaining if you want to create a ship that starts out as a disabled "ghost ship."
+If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed.
 
 ```html
 fleet <name>
