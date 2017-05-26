@@ -79,8 +79,6 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
 
-* `"licenses"`: a list of names of licenses you need to buy this ship. For each `<name>` specified, the `license: <name>` condition must be set for the player to buy this ship. (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
-
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
 
 * `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
@@ -106,6 +104,8 @@ The player info panel will not display properly if the total number of gun and t
 The "attributes" key should be followed by a list of ship attributes, ideally listed in the following order:
 
 * `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Heavy Warship", "Fighter", or "Drone".
+
+* `"licenses"`: a list of names of licenses you need to buy this ship. For each `<name>` specified, the `license: <name>` condition must be set for the player to buy this ship. (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
 * `"cost"`: the cost of the ship, in credits.
 
