@@ -5,6 +5,7 @@
 * [Traveling to other star systems](#interstellar-travel)
 * [Upgrading your ship](#outfitting-your-ship)
 * [Combat](#combat)
+* [Key bindings and shortcuts](#key-bindings-and-shortcuts)
 
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/land/city7.jpg)
 
@@ -281,3 +282,80 @@ Once you acquire escorts or get involved in the main plot line of the game, you 
 If you are heavily damaged in a fleet vs. fleet battle, you can use your allies as shields, because you can fire past them but your enemies cannot. In particular, if an allied ship has been destroyed and is in the process of exploding, you can use it as a shield without costing your fleet anything, because that ship is already dead. Just be sure you aren&rsquo;t too close when the final explosion happens!
 
 If your fleet is jumping into a system where you expect a fight, hold down the jump key until all your ships are ready to jump, then release it to jump together. Otherwise, your ship will be the first to enter the system and all the enemies will concentrate their fire on you.
+
+# Key bindings and shortcuts
+
+Key bindings can be viewed and changed by clicking on the &ldquo;Preferences...&rdquo; button in the main menu. In addition, nearly every clickable button in the game has a shortcut key. To view the shortcuts, hold down the Option or Alt key, and underlines will be drawn under the shortcut letter (if any) for each button.
+
+## Default key bindings
+
+Command | Default key
+:--- | :---
+Forward thrust | Up
+Turn left | Left
+Turn right | Right
+Reverse | Down
+Fire afterburner | A
+Land on planet / station | L
+Initiate hyperspace jump | J
+Fire primary weapons | Tab
+Select secondary weapon | W
+Fire secondary weapon | Q
+Toggle cloaking device | C
+Select nearest hostile ship | R
+Select nearest ship | Shift + R
+Select next ship | N
+Select next escort | Shift + N
+Talk to selected ship | T
+Talk to selected planet | Shift + T
+Board selected ship | B
+Board disabled escort | Shift + B
+Scan selected ship | S
+Show main menu | Escape
+View star map | M
+View player info | I
+Toggle fullscreen | F11
+Deploy / recall fighters | D
+Fleet: Fight my target | F
+Fleet: Gather around me | G
+Fleet: Hold position | H
+Fleet: Toggle ammo usage | U
+
+## Keyboard shortcuts
+
+In addition to the button shortcuts, the following commands are supported:
+
+While in flight: | &nbsp;
+:--- | :---
+Select ship or planet | left click
+Board ship / land on planet | right click
+Zoom view in or out | - / + or scroll wheel
+Assign group hotkey to selected escorts | Control / Command + number key
+Select group of escorts | number key
+Select escorts within a rectangle | left click + drag
+Tell escorts to move to location | right click
+Get all escorts ready to jump | hold jump key
+
+Trading panel: | &nbsp;
+:--- | :---
+Buy | +, Return, or Space
+Sell | -, Delete, or Backspace
+Buy / sell 5x | Shift
+Buy / sell 20x | Control / Command
+Buy / sell 500x | Option / Alt
+Buy / sell all | Shift + B / S
+View commodity price map | Map key
+
+The multiplier modifiers (Shift = 5x, Command / Control = 20x, and Option / Alt = 500x) also work in the hiring panel, the shipyard, and the outfitter. And, they can be combined together - for example, Shift + Control to buy or sell 100 items at a time.
+
+Map panels: | &nbsp;
+:--- | :---
+Search (for planet, system, ship, our outfit) | F
+Rotate jump destination | J or Tab
+Add jump destination | Shift + J or Tab
+
+When viewing a list of items, you can move the selection up and down with the arrow keys.
+
+You can press Escape or Control + W to close most dialogs and panels.
+
+When being offered a special mission, pressing the map key brings up the map with the mission's destination indicated with a large white pointer.
