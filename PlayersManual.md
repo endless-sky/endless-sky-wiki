@@ -328,12 +328,12 @@ In addition to the button shortcuts, the following commands are supported:
 While in flight: | &nbsp;
 :--- | :---
 Select ship or planet | left click
-Board ship / land on planet | right click
+Board ship / land on planet | double click
 Zoom view in or out | - / + or scroll wheel
 Assign group hotkey to selected escorts | Control / Command + number key
 Select group of escorts | number key
 Select escorts within a rectangle | left click + drag
-Tell escorts to move to location | right click
+Tell escorts to move to location or target ship | right click
 Get all escorts ready to jump | hold jump key
 
 Trading panel: | &nbsp;
