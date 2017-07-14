@@ -27,7 +27,6 @@ Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/Creati
 * `fleeing`: tries to run away from the player.
 * `derelict`: starts out disabled.
 * `uninterested`: does not follow the player's flagship around (i.e. does not behave like an escort).
-* `skybound`: keeps an `uninterested` ship from landing on planets. **(v. 0.9.7)**
 
 Non-combat goals:
 
@@ -40,6 +39,7 @@ Special flags:
 
 * `escort`: this ship will show up in the player's escort list. (Use this for mission NPCs that you are supposed to accompany, for example.)
 * `target`: this ship is highlighted by making it flash in the radar, and in the target display it is labeled as a "mission target." **(v. 0.9.7)**
+* `marked`: only attacks player ships, and only player ships will attack it. **(v. 0.9.7)**
 * `mute`: this ship will not talk to you if you hail it (and therefore can't assist you, either). **(v. 0.9.7)**
 
 In addition to these flags, the personality also stores a "confusion." This is a random error that is added to a ship's targeting systems, to make it look a bit more random and organic; otherwise, all AI ships would always fire at the exact center of their target, which looks rather unrealistic. The confusion value is the maximum error in pixels, and defaults to 10. Generally I use a value of 10 for military ships, 20 for pirates, 30 for skilled merchants and 40 for ordinary merchants.
