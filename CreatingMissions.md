@@ -85,7 +85,7 @@ mission <name>
         <condition> (= | += | -=) <value>
         <condition> (++ | --)
         (set | clear) <condition>
-        event <name> [<delay>]
+        event <name> [<min delay> [<max delay>]]
         fail [<name>]
 ```
 
@@ -503,7 +503,7 @@ on (offer | complete | accept | decline | defer | fail | visit | stopover | ente
     <condition> (= | += | -=) <value>
     <condition> (++ | --)
     (set | clear) <condition>
-    event <name> [<delay>]
+    event <name> [<min delay> [<max delay>]]
     fail [<name>]
 ```
 
@@ -582,10 +582,10 @@ The "set" and "clear" tags are shortcuts for "= 1" and "= 0".
 To change the player's reputation or combat rating, you may alter the "reputation", "`reputation: <government>`", or "combat rating" conditions. For example, a bounty hunting mission might automatically alter your reputation on whatever planet the mission ends on ("reputation"), and a mission for the Navy might improve your reputation with the Republic but reduce your reputation with the Free Worlds.
 
 ```html
-event <name> [<delay>]
+event <name> [<min delay> [<max delay>]]
 ```
 
-This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now, instead of happening immediately.
+This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now, instead of happening immediately. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval.
 
 ```html
 fail [<name>]
