@@ -70,8 +70,8 @@ mission <name>
         conversation
             ...
         ship <model> <name>
-        fleet <name>
-        fleet
+        fleet <name> [<count>]
+        fleet [<count>]
             ...
     on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
         dialog <text>
@@ -406,8 +406,8 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
     conversation
         ...
     ship <model> <name>
-    fleet <name>
-    fleet
+    fleet <name> [<count>]
+    fleet [<count>]
         ...
 ```
 
@@ -478,12 +478,12 @@ This specifies a single ship as an NPC. The first argument is the model type (or
 If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed.
 
 ```html
-fleet <name>
-fleet
+fleet <name> [<count>]
+fleet [<count>]
     ...
 ```
 
-This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as  normal "fleet" data entry. Every ship in the fleet will have the requirements given in the first line (such as "kill" or "save").
+This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as  normal "fleet" data entry. Every ship in the fleet will have the requirements given in the first line (such as "kill" or "save"). Optionally, you can specify a count to create more than one copy of the fleet.
 
 <a name="triggers"/>
 # Triggers #
