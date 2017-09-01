@@ -135,7 +135,7 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
-There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for those attributes are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordinance) or a tiny one:
+There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for tier 1 ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordinance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
 * `"blast radius"` (Typical value value: (shields + hull) * .01)
 * `"shield damage"` (Typical value value: (shields + hull) * .10)
@@ -157,7 +157,7 @@ There is also one special attribute called `weapon` that defines how much damage
 
 # Variants #
 
-In addition to about 40 different human ship models, each model has several "variants" that represent the different ways that an individual captain might outfit a ship. For example, one pilot might prefer being fast enough to run from a fight, and another might want to be strong enough to survive one, and fighting styles include bombarding a target with missiles or other longer-range weapons, or being able to deal maximum damage at close range.
+In addition to nearly 60 different human ship types, each model has several "variants" that represent the different ways that an individual captain might outfit a ship. For example, one pilot might prefer being fast enough to run from a fight, and another might want to be strong enough to survive one, and fighting styles include bombarding a target with missiles or other longer-range weapons, or being able to deal maximum damage at close range.
 
 The syntax for a variant is:
 
