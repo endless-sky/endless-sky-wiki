@@ -137,10 +137,10 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 
 There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for tier 1 ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordinance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
-* `"blast radius"` (Typical value value: (shields + hull) * .01)
-* `"shield damage"` (Typical value value: (shields + hull) * .10)
-* `"hull damage"` (Typical value value: (shields + hull) * .05)
-* `"hit force"` (Typical value value: (shields + hull) * .15)
+* `"blast radius"` (Typical value: (shields + hull) * .01)
+* `"shield damage"` (Typical value: (shields + hull) * .10)
+* `"hull damage"` (Typical value: (shields + hull) * .05)
+* `"hit force"` (Typical value: (shields + hull) * .15)
 
 [Outfits](CreatingOutfits) work by adding or subtracting to these same attributes. The outfits list can be in any order, but for the sake of consistency its preferred order is roughly from "front to back" of the ship:
 
