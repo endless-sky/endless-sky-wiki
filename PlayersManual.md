@@ -99,9 +99,14 @@ Whenever you sell a ship, all the outfits that were installed in that ship are a
 
 Many starship captains have an almost obsessive impulse to fine-tune their ships, trying to find the perfect combinations of engines, generators, and weapons. As with ships, some outfits may only be available in certain parts of the galaxy, and some particularly valuable, exotic, or illegal outfits are available only in a handful of systems. Ship outfits are described in much more detail later on in this document. As with the trading panel, in the Outfitter you can buy multiple copies of an outfit, such as ammunition, by holding down the shift key (5x), the control key (20x), or both (100x).
 
-If you have multiple ships, you can select the icons of more than one of them at once by clicking them while holding down the shift or control modifier keys. That allows you to buy or sell outfits for multiple ships simultaneously. You can also deselect all the ship icons in order to purchase outfits directly into cargo.
-
 Outfits can affect your ship in a myriad of ways. You can hover the mouse over any attribute of an outfit or a ship to view a tooltip explaining how it works.
+
+If you have multiple ships, you can select the icons of more than one of them at once by clicking them while holding down the shift or control modifier keys. That allows you to buy or sell outfits for multiple ships simultaneously.  In addition, the checkboxes in the bottom left corner control what outfits are shown:
+
+&nbsp; | [x] for sale | [ ] for sale
+--- | --- | ---
+**[ ] in cargo** | Shows outfits in the currently selected ship(s) and lets you install or uninstall them. (This is the default view.) | Shows only the outfits installed in the currently selected ship(s).
+**[x] in cargo** | Lets you buy or sell outfits directly to cargo instead of installing them on a ship. | Shows only the outfits that you have in cargo, and lets you sell them.
 
 ## Hire Crew (H)
 
