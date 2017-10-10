@@ -9,7 +9,8 @@
 * [Triggers](#triggers)
 
 <a name="intro"/>
-# Introduction #
+
+# Introduction
 
 The basic syntax of a mission description is:
 
@@ -92,7 +93,8 @@ mission <name>
 Each of these parts of the mission description is described in detail below.
 
 <a name="replacement"/>
-# Text replacements #
+
+# Text replacements
 
 Certain characteristics of a mission, such as the cargo or the destination planet, may be chosen at random. In order to refer to those randomly chosen elements  in descriptive text, you can use the following placeholders:
 
@@ -125,7 +127,8 @@ These placeholders will be substituted in any text in the following places:
 For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
 
 <a name="basics"/>
-# Basic mission characteristics #
+
+# Basic mission characteristics
 
 ```html
 mission <name>
@@ -254,7 +257,8 @@ stopover [<planet>]
 This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the source and destination filters. As with waypoints, any number of stopovers may be specified.
 
 <a name="conditions"/>
-# Conditions #
+
+# Conditions
 
 "Conditions" are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes:
 
@@ -266,6 +270,9 @@ This specifies a planet that you must visit in order to complete the mission. Th
 * "cargo space" and "passenger space" are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
 * "net worth" is your net worth, limited to the range of +- 2 billion.
 * "combat rating" is your current combat rating (sum of the base crews of all the ships you have disabled).
+* "cargo attractiveness" is how attractive the size of your cargo hold(s) is to pirates. Lots of small ships are more attractive than one large one. Values for single human ships range from -2 for ships with no cargo to 8 for bulk freighters.
+* "armament deterrence" is how effective your weapons are at discouraging pirates. Values for single human ships range from 0 for unarmed ships to 8 for the Dreadnought.
+* "pirate attraction" is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * "day", "month", and "year" are the current date, given as individual variables so you can check for holidays, etc.
 * "random" is a random number between 0 and 99. This can be used to make a mission only sometimes appear when all other conditions are met.
 
@@ -299,7 +306,8 @@ to offer
 ```
 
 <a name="filters"/>
-# Source and destination filters #
+
+# Source and destination filters
 
 A mission can be offered from a planet or ship, but all missions must have a destination planet. For missions offered on a planet, if no destination is given that same planet is used. This can be useful for missions that should end on the same planet they start on, such as "Kill pirate ship X and return here for payment."
 
@@ -382,7 +390,8 @@ distance [<min>] <max>
 This is the same as the "near" tag, but gives distances relative to the origin planet. (So, this tag only makes sense within a "destination" filter, not within a "source" filter or a "clearance" filter.)
 
 <a name="npcs"/>
-# Non-Player Characters (NPCs) #
+
+# Non-Player Characters (NPCs)
 
 NPCs are ships that are associated with the mission in some way. This includes friendly ships the player must protect, and hostile ships the player must fight off or destroy:
 
@@ -486,7 +495,8 @@ fleet [<count>]
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as  normal "fleet" data entry. Every ship in the fleet will have the requirements given in the first line (such as "kill" or "save"). Optionally, you can specify a count to create more than one copy of the fleet.
 
 <a name="triggers"/>
-# Triggers #
+
+# Triggers
 
 A mission can also specify what happens at various key parts of the mission:
 
