@@ -13,7 +13,7 @@ Use your favorite package manager to install the following (version numbers may 
 * libgl1-mesa-dev (or some other equivalent)
 * libglew-dev
 * libopenal-dev
-* libmad-dev
+* libmad0-dev
 
 You can then just navigate to the source code folder in a terminal and type:
 
