@@ -24,6 +24,8 @@ mission <name>
         illegal <fine> [<message>]
         stealth
     passengers <number> [<number> [<probability>]]
+    illegal <fine> [<message>]
+    stealth
     invisible
     (priority | minor)
     (job | landing | assisting | boarding)
@@ -178,11 +180,21 @@ If two amounts are given instead of one, that means that a random amount should 
 
 If three numbers are given, a random number will be chosen by adding the first number to a random number chosen from a negative binomial distribution with the given number of successes needed and probability. This produces numbers that are generally somewhat low but can occasionally be quite high, if you want to every once in a while have massive cargo missions, for example.
 
-If the cargo is marked as "illegal," governments that care about such things will levy the given fine against you if you are caught carrying this cargo. If the fine is negative, being caught with this cargo while in flight is counted as an "atrocity" (the government that catches you immediately becomes your enemy, no matter how good your reputation was previously), and if you are caught in a spaceport with the cargo the result is a death sentence (game over).
+**Prior to v. 0.9.9**, the "illegal" and "stealth" attributes apply only to cargo and should be children of the cargo definition. Starting in 0.9.9, they are attributes of the mission itself and apply both to cargo and to passengers:
+
+```html
+illegal <fine> [<message>]
+````
+
+If the mission is marked as "illegal," governments that care about such things will levy the given fine against you if you are caught carrying its cargo (or, **starting in v. 0.9.9**, its passengers as well). If the fine is negative, being caught with this cargo while in flight is counted as an "atrocity" (the government that catches you immediately becomes your enemy, no matter how good your reputation was previously), and if you are caught in a spaceport with the cargo the result is a death sentence (game over).
 
 If the fine amount in the "illegal" line is followed by another token, that token is displayed as a message when you are caught with this cargo.
 
-If the cargo is marked as "stealth," the mission will fail if you are caught with it.
+```html
+stealth
+````
+
+If the mission is marked as "stealth," it will fail if you are caught with the mission cargo (or, **starting in v. 0.9.9**, with the passengers as well).
 
 ```html
 passengers <number> [<number> [<probability>]]
