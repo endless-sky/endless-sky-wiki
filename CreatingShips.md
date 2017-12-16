@@ -150,7 +150,7 @@ There is also one special attribute called `weapon` that defines how much damage
 * batteries
 * shields
 * cooling
-* other systems
+* outfits that don't fit any other category (expansions, scanners, hand to hand weapons, etc.)
 * thruster
 * steering
 * hyperdrive
