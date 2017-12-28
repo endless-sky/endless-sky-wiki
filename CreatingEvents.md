@@ -34,16 +34,22 @@ mission "event: war begins"
             ...
 ```
 
-To alter hyperspace links, an event can `link` or `unlink` any two systems:
+To alter hyperspace links, an event can `link` or `unlink` any two systems. An event can also set or clear the player's record of having visited a system (via the `visit <name>` and `unvisit <name>` keywords) or a single planet (`"visit planet" <name>` and `"unvisit planet" <name>`):
 
 ```
-event "antisocial"
-    unlink Sol Vega
-    unlink Sol "Alpha Centauri"
-    unlink Sol Altair
-    unlink Sol Sirius
-    unlink Sol Denebola
-    unlink Sol Caph
+event "pug invasion"
+	unlink "Zeta Aquilae" Ascella
+	unlink Rasalhague Cebalrai
+	unlink Rasalhague Ascella
+	link Deneb "Zeta Aquilae"
+	link Deneb Rasalhague
+	unvisit "Zeta Aquilae"
+	unvisit Rasalhague
+	unvisit Orvala
+	unvisit Deneb
+	unvisit Cebalrai
+	unvisit Ascella
+	unvisit Peacock
 ```
 
 In general, anything specified in an event will overwrite the previous value of that data element. (For example, specifying a new `government` replaces the previous one.)
