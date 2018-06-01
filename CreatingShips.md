@@ -73,7 +73,7 @@ Each ship can optionally specify a "thumbnail" image to be used for it in the sh
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)
 
-The size of the thumbnail should depend on the size of the ship. Drones may be 100&times;100 pixels or even smaller; capital ships can be up to 250&times;250 pixels or possibly slightly larger for unusually big ships.
+The size of the thumbnail should depend on the size of the ship. Drones may be 100&times;100 pixels or even smaller; capital ships can be up to 250&times;250 pixels or possibly slightly larger for unusually big ships. To figure out the appropriate size, find some other ships that are about the same size as your ship in the overhead view, and then make the thumbnail the same size (i.e. about the same number of non-transparent pixels) as their thumbnails.
 
 # Data #
 
