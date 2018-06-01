@@ -8,13 +8,15 @@ Because one of the first things I imagine people will want to try out when custo
 
 2. Create a new sprite, using your tool of choice. (I recommend making 3D models in [Blender](https://www.blender.org/), then adding "grunge" to the ship by post-processing in [GIMP](https://www.gimp.org/).) Save that sprite in the `images/ship/` folder of your plugin.
 
-3. Copy an existing ship definition from ships.txt into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
+3. Create a shipyard "thumbnail" for your ship, rendered from the same model.
 
-4. Use the [ship builder](http://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
+4. Copy an existing ship definition from ships.txt into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
 
-5. In the game, load that pilot and experiment with different sets of outfits until you find one you like. At this stage you can also edit your pilot file to change the ship's attributes.
+5. Use the [ship builder](http://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
 
-6. Once your ship seems well-balanced, reduce the capacities to reasonable numbers, and copy the ship definition from your pilot file into a text file in the `data/` folder of your plugin.
+6. In the game, load that pilot and experiment with different sets of outfits until you find one you like. At this stage you can also edit your pilot file to change the ship's attributes.
+
+7. Once your ship seems well-balanced, reduce the capacities to reasonable numbers, and copy the ship definition from your pilot file into a text file in the `data/` folder of your plugin.
 
 # Sprites #
 
@@ -59,6 +61,20 @@ Editing images in GIMP, some easy ways to make the models look more detailed and
 
 At a bare minimum, you should edit ship images at a large enough resolution to provide an "@2x" version for high-dpi monitors. Be sure to save the final version of your 3D model, too!
 
+# Shipyard thumbnails #
+
+Each ship can optionally specify a "thumbnail" image to be used for it in the shipyard instead of the overhead view. For consistency, thumbnail images should be rendered with the following setup:
+
+* Camera position: (12, 22, 18)
+* Camera angle: (55, 0, 150)
+* Sun angle: (0, 55, 10)
+
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/vanguard.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)
+
+The size of the thumbnail should depend on the size of the ship. Drones may be 100&times;100 pixels or even smaller; capital ships can be up to 250&times;250 pixels or possibly slightly larger for unusually big ships.
+
 # Data #
 
 For some examples, you can look at data/ships.txt. The easiest thing to do is to take an existing ship and modify it. If you don't want to change the ships.txt file, you can create a file with any name you like, define your ship there, and save it in the data directory. Each ship attributes is defined as a key name (such as "sprite") followed by (usually) one value. If a key or value has spaces in it, you must enclose it in quotation marks or it will be interpreted as two separate keys.
@@ -78,6 +94,8 @@ The data files use indentation, like in the Python language, to define sub-entri
   * `"delay" <frames>`: number of animation frames to delay in between loops of the animation. For example, a four-frame animation with a delay of 4 and a frame rate of 8 FPS will play the animation for half a second, then pause for half a second, then repeat.
 
   * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
+
+* `"thumbnail"`: the shipyard sprite.
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
 
