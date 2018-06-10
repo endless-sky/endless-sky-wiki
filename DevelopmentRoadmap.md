@@ -5,7 +5,7 @@ This page gives big-picture goals for what the game will include when it is "com
 Audio:
 
 - [ ] Ambient noise on planets.
-- [ ] Formats other than .wav.
+- [x] Formats other than .wav.
 - [ ] Higher quality sound effects.
 - [x] Better volume balancing of sound effects.
 - [ ] Background music (adapting to what's happening in the game or what system you're in).
@@ -13,12 +13,12 @@ Audio:
 Graphics:
 
 - [ ] Improved ship graphics (more detail; replace ugly models).
-- [ ] Replace any particularly boring landscapes.
+- [x] Replace any particularly boring landscapes.
 - [ ] Website "polls" for letting users mark graphics they don't like.
-- [ ] More planet sprites.
+- [x] More planet sprites.
 - [x] More special star types.
 - [ ] Better space station sprites.
-- [ ] Better space station landscapes.
+- [x] Better space station landscapes.
 - [ ] Portrait pictures.
 - [x] Fill in missing outfit sprites (for alien outfits).
 
@@ -29,7 +29,7 @@ User interface:
 - [ ] When boarding a ship, allow choosing between repair and plunder.
 - [ ] When boarding a ship, give control over how much fuel you transfer.
 - [ ] Support for Unicode text.
-- [ ] Add a "log book" with entries that are added to mark major story line events.
+- [x] Add a "log book" with entries that are added to mark major story line events.
 
 Universe:
 
@@ -40,7 +40,7 @@ Universe:
 Game Engine:
 
 - [x] Missiles using different tracking modes (optical, infrared, radar).
-- [ ] Consider limiting how fast turrets can turn?
+- [x] Consider limiting how fast turrets can turn?
 - [ ] Have disabled pirates pay you a bribe to patch them up and leave them alone.
 - [ ] Reverse thruster support in the combat AI.
 - [x] More options for controlling escorts (tactical commands, hold secondary fire).
