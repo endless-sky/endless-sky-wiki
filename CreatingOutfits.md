@@ -59,18 +59,19 @@ The other attributes include:
 * `capture attack`: this outfit can be wielded by a crew member and adds this amount to their base strength of 1 when attacking another ship's crew. Each crew member can only wield one such outfit, and they will make use of the best outfits available in each combat round.
 * `capture defense`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
 * ~~`cargo scan`: sets the distance from which this outfit can be used to scan a ship's cargo.~~ **(deprecated in 0.9.5)**
-* `cargo scan power`: the cargo scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(added in 0.9.5)**
-* `cargo scan speed`: The time it takes to complete a cargo scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(added in 0.9.5)**
+* `cargo scan power`: the cargo scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(v. 0.9.5)**
+* `cargo scan speed`: The time it takes to complete a cargo scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(v. 0.9.5)**
 * `cargo space`: amount of cargo space that this outfit adds (if positive) or removes (if negative) from your ship.
 * `cloak`: how quickly a cloaking device cloaks or uncloaks. When cloaking, this amount is added to your cloaking each frame until you reach 1, at which point your ship is fully cloaked. The opposite happens when uncloaking.
 * `cloaking energy`: how much energy it takes each frame to maintain cloaking.
 * `cloaking fuel`: how much fuel it takes each frame to maintain cloaking.
 * `cooling`: heat subtracted from your ship by this outfit, per frame.
 * `cooling energy`: energy consumed by `active cooling` when heat is at 100%.
-* `cooling inefficiency`: the higher this attribute is, the less effective your cooling systems are. Both active cooling and regular cooling will be multiplied by `2 + 2 / (1 + exp(i / -2)) - 4 / (1 + exp(i / -4))`, which forms the S-curve shown below. **(added in 0.9.7)**
+* `cooling inefficiency`: the higher this attribute is, the less effective your cooling systems are. Both active cooling and regular cooling will be multiplied by `2 + 2 / (1 + exp(i / -2)) - 4 / (1 + exp(i / -4))`, which forms the S-curve shown below. **(v. 0.9.7)**
 
 ![cooling inefficiency](http://endless-sky.github.io/images/inefficiency.png)
 * `cost`: cost of this outfit, in credits.
+* `disruption resistance`: an extra amount of shield disruption that this ship "bleeds off" every frame. **(v. 0.9.9)**
 * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems.
 * `energy capacity`: how much energy your ship can store.
 * `energy generation`: energy generated each frame. If you do not have any energy capacity, this energy does not carry over from frame to frame.
@@ -85,6 +86,7 @@ The other attributes include:
 * `hull repair rate`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
 * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
 * `illegal`: the fine, in credits, for being caught using this outfit.
+* `ion resistance`: an extra amount of ionization that this ship "bleeds off" every frame. **(v. 0.9.9)**
 * `inscrutable`: if a ship has a nonzero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
 * `installable`: if set to a value below zero, this outfit cannot be installed. (**As of v. 0.9.0,** the trading panel will display these outfits as "harvested materials," and the outfitter will display a helpful message if you try to install them.)
 * `jump drive`: set this to 1 if this outfit is a jump drive.
@@ -93,8 +95,8 @@ The other attributes include:
 * `map`: number of star systems that are mapped by this outfit.
 * `mass`: how much your ship's mass should change by when this outfit is installed.
 * ~~`outfit scan`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(deprecated in 0.9.5)**
-* `outfit scan power`: the outfit scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(added in 0.9.5)**
-* `outfit scan speed`: The time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(added in 0.9.5)**
+* `outfit scan power`: the outfit scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(v. 0.9.5)**
+* `outfit scan speed`: The time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(v. 0.9.5)**
 * `outfit space`: if negative, how much generic outfit space (as opposed to weapon or engine space) this outfit takes up.
 * `radar jamming`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to is `radar tracking` value divided by (1 + the ship's `radar jamming`). **(v. 0.9.1)**
 * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel equal to .03 * sqrt("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. Also starting in 0.9.0, when very close to the star even ships with no ramscoop recharge a tiny amount of fuel.
@@ -109,6 +111,7 @@ The other attributes include:
 * `shield heat` is the amount of heat that shield generation creates when recharging at the full rate. **(v. 0.9.1)**
 * `shield generation`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
 * `shields`: I recommend against providing outfits that give ships additional shield strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
+* `slowing resistance`: an extra amount of slowing damage that this ship "bleeds off" every frame. **(v. 0.9.9)**
 * `solar collection`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, and you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)**
 * `thrust`: your ship's acceleration per frame equals thrust / mass.
 * `thrusting energy`: energy cost per frame of thrusting.
@@ -117,7 +120,7 @@ The other attributes include:
 * `turning energy`:  energy cost per frame of turning.
 * `turning heat`: heat generated each frame when turning.
 * `turret mounts`: as with "gun ports", any outfit that fits in a turret hardpoint must have a value of -1 for this.
-* `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand to hand weapons and mass expansions). **(0.9.0)**
+* `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand to hand weapons and mass expansions). **(v. 0.9.0)**
 * `weapon capacity`: set this to a negative value (generally, the same value as "outfit space") for any outfit that is a weapon. Limited weapon space is one of the ways that ship models are differentiated from each other.
 
 ### Weapon attributes
