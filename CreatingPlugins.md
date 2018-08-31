@@ -1,7 +1,7 @@
-The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](http://endless-sky.github.io/example-plugin.zip). You must create a "plugins" folder in one of two places, and install the plugin folder there. For each operating systems, there are two places where you can install plugins:
+The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](http://endless-sky.github.io/example-plugin.zip). For each operating systems, there are two places where the game looks for plugins, but generally you should only use the second option:
 
 ### Linux ###
-* /usr/share/endless-sky/plugins/
+* /usr/share/games/endless-sky/plugins/
 * ~/.local/share/endless-sky/plugins/
 
 ### Windows ###
@@ -11,6 +11,8 @@ The easiest way to test out new content for Endless Sky is to create a plugin. A
 ### Mac OS X ###
 * Content/Resources/plugins/ (within the application bundle)
 * ~/Library/ApplicationSupport/endless-sky/plugins
+
+Your plugin should be placed in its own folder (named after the plugin) within one of those "plugins" folders (e.g. the example plugin's `about.txt`, `data/`, etc. would be in a folder named "example-plugin" which in turn is placed in the "plugins" folder).
 
 ### Editing data files
 
