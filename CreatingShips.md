@@ -10,7 +10,7 @@ Because one of the first things I imagine people will want to try out when custo
 
 3. Create a shipyard "thumbnail" for your ship, rendered from the same model.
 
-4. Copy an existing ship definition from ships.txt into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
+4. Copy an existing ship definition from `ships.txt` into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
 
 5. Use the [ship builder](http://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
 
@@ -30,9 +30,9 @@ To keep the sprite sharp at any rotation, all ship sprites are twice as big as t
 
 If you are creating a human ship, it should be mostly shades of grey with some highlights in red, orange, and yellow. Depending on the government, the colors will be "swizzled" to green and yellow for the Free Worlds, blue and cyan for civilians, etc.
 
-To create a new ship sprite, just add a PNG file to the images/ship/ directory. Everything in the images directory is automatically loaded when the game launches; no need to add it to a list anywhere.
+To create a new ship sprite, just add a PNG file to the `images/ship/` directory. Everything in the images directory is automatically loaded when the game launches; no need to add it to a list anywhere.
 
-For collision detection, for all images in images/ship/ and images/asteroid/, or one of their sub-folders, a [polygonal outline](CollisionDetection) is generated when the sprite is loaded. This means that it's important for your ship image to be in that folder, so the game knows that it needs to calculate its outline. **The folder must be named "ship", singular; "ships" will not work.**
+For collision detection, for all images in `images/ship/` and `images/asteroid/`, or one of their sub-folders, a [polygonal outline](CollisionDetection) is generated when the sprite is loaded. This means that it's important for your ship image to be in that folder, so the game knows that it needs to calculate its outline. **The folder must be named "ship", singular; "ships" will not work.**
 
 If you want your ship to be animated, just create multiple files with the same name, with "-#.png" appended:
 
@@ -47,10 +47,10 @@ If you want your ship to be animated, just create multiple files with the same n
 
 Making a full texture-mapped 3D model can be a lot of work, and since all the ships in this game are only shown from directly overhead and at relatively low resolution, it can be overkill. I've found that the fastest way to create good-looking ship images is to use a 3D design program (such as Blender) for rendering the shape of the ship and the basic colors of the different parts of it, but then using an image manipulation program (such as GIMP) for some post-processing.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/corvette.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/firebird.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/gunboat.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/leviathan.png)
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/corvette.png)][2xcorvette]
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/firebird.png)][2xfirebird]
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/gunboat.png)][2xgunboat]
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/leviathan.png)][2xlevi]
 
 Editing images in GIMP, some easy ways to make the models look more detailed and less "artificial" include:
 
@@ -69,15 +69,15 @@ Each ship can optionally specify a "thumbnail" image to be used for it in the sh
 * Camera angle: (55, 0, 150)
 * Sun angle: (0, 55, 10)
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/vanguard.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/vanguard.png)][2xvan]
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)][2xaerie]
+[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)][2xhawk]
 
 The size of the thumbnail should depend on the size of the ship. Drones may be 100&times;100 pixels or even smaller; capital ships can be up to 250&times;250 pixels or possibly slightly larger for unusually big ships. To figure out the appropriate size, find some other ships that are about the same size as your ship in the overhead view, and then make the thumbnail the same size (i.e. about the same number of non-transparent pixels) as their thumbnails.
 
 # Data #
 
-For some examples, you can look at data/ships.txt. The easiest thing to do is to take an existing ship and modify it. If you don't want to change the ships.txt file, you can create a file with any name you like, define your ship there, and save it in the data directory. Each ship attributes is defined as a key name (such as "sprite") followed by (usually) one value. If a key or value has spaces in it, you must enclose it in quotation marks or it will be interpreted as two separate keys.
+For some examples, you can look at `data/ships.txt`. The easiest thing to do is to take an existing ship and modify it. If you don't want to change the `ships.txt` file, you can create a file with any name you like, define your ship there, and save it in the data directory. Each ship attributes is defined as a key name (such as "sprite") followed by (usually) one value. If a key or value has spaces in it, you must enclose it in quotation marks or it will be interpreted as two separate keys.
 
 The data files use indentation, like in the Python language, to define sub-entries within an entry. For example, each ship is defined by a line reading `ship "Ship Name"` with no indentation, followed by several keys indented once:
 
@@ -143,7 +143,7 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 
 * `"heat dissipation"`: how well this ship gets rid of excess heat. This should vary from .9 for tiny ships to .5 or less for large ships. For ships of a given size, it should be higher for ships with more exposed hull area or that might be expected to have higher quality construction, and lower for ships that ought to be plagued by overheating issues.
 
-* `"fuel capacity"`: the amount of fuel (one jump = 100) that this ship can carry.
+* `"fuel capacity"`: the amount of fuel that this ship can carry. The cost of a hyperspace jump is normally 100 fuel, but depends on the type of hyperdrive used.
 
 * `"cargo space"`: the amount of cargo that can be carried.
 
@@ -153,7 +153,7 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
-There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for tier 1 ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordinance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
+There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for "tier 1" ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordnance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
 * `"blast radius"` (Typical value: (shields + hull) * .01)
 * `"shield damage"` (Typical value: (shields + hull) * .10)
@@ -184,7 +184,7 @@ ship <base name> <variant name>
     ...
 ```
 
-Instead of specifying all the ship's attributes, the variant should only define a list of outfits. The order of the guns and turrets must also be specified if there are two different kinds of gun outfits or turret outfits, so that it is clear which ones go in which slots. For example:
+Instead of specifying all the ship's attributes, the variant should only define a list of outfits. The order of the guns and turrets should also be specified if there are two different kinds of gun outfits or turret outfits, so that it is clear which ones go in which slots. For example:
 
 ```
 ship "Bastion" "Bastion (Laser)"
@@ -208,3 +208,34 @@ ship "Bastion" "Bastion (Laser)"
 In this case, all four guns are the same type (heavy lasers), so there is no need to specify their order, but the order of the turrets must be specified. The turret (x, y) positions need not be specified, because they are given in the original ship descriptor. By only providing the bare minimum information in the variant, we can avoid needing to update all the variants if, say, the ship sprite changes and the turret positions move.
 
 A variant can define new weapon hardpoints, but if so **the new set of points completely replaces the old ones**. That is, if you want your new variant to have two extra guns, you'll need to copy the base ship's list of guns and turrets, and then add two more gun lines. Similarly, if you define any new engine points the old engine points are discarded. And, if you define a new bay location (drone or fighter), all previous "drone" and "fighter" locations are discarded.
+
+Beginning with **v. 0.9.9**, creating a variant with slightly different attributes than the base model (e.g. more engine space and less hull) can be done with the `add attributes` node:
+
+```
+ship "Berserker" "Berserker Drone"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+```
+The above creates a variant of the "Berserker" ship model named "Berserker Drone", and gives it the "automaton" attribute (0 crew) and makes it so that boarding this drone ship will cause it to self destruct.
+
+Any attributes specified in the `add attributes` node will be added to the base attribute value, so to decrease a value, you must specify a negative increment:
+```
+ship "Arrow" "Arrow (Faster)"
+	add attributes
+		"drag" -.01
+		"engine capacity" 20
+		"hull" -150
+```
+The above creates a variant of the base "Arrow" ship, and the variant has lower drag, lower hull, and more engine capacity.
+
+Note: While it is possible to "chain" the usage of `add attributes`, by referring to a variant instead of a base model ship, e.g. `ship "Arrow (Faster)" "Arrow (Too Fast)"`, doing so will result in incorrect "model name" display when targeting ships, and may result in improperly configured ships due to the order in which the game creates ships. **Thus, you should always refer to a "base model" ship, one that was defined as `ship <name>` and not `ship <base name> <variant name>`.**
+
+
+[2xcorvette]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/corvette%402x.png
+[2xfirebird]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/firebird%402x.png
+[2xgunboat]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/gunboat%402x.png
+[2xlevi]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/leviathan%402x.png
+[2xaerie]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/thumbnail/aerie%402x.png
+[2xvan]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/thumbnail/vanguard%402x.png
+[2xhawk]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/thumbnail/hawk%402x.png
