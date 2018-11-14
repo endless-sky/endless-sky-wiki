@@ -129,7 +129,7 @@ The "attributes" key should be followed by a list of ship attributes, ideally li
 
 * `"shields"`: maximum shield capacity. When a ship is hit, if it has any shields left they absorb the damage; otherwise the hull is damaged. Shields can recharge, whereas hulls generally can only be repaired when landing on a planet.
 
-* `"hull"`: maximum hull strength. A ship is disabled when either it is reduced to 15% hull, or to the minimum of 45% hull and &radic;(hull). (That is, small ships are disabled at 45%, and large ones at 15%.)
+* `"hull"`: maximum hull strength. A ship is disabled when either it is reduced to 15% hull, or to the minimum of 45% hull and 10 / &radic;(hull). (That is, small ships are disabled at 45%, and large ones at 15%.)
 
 * `"required crew"`: the number of crew members needed to operate the ship without anything failing.
 
