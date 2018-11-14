@@ -6,6 +6,8 @@ For editing the data files, make sure you have a text editor that:
 * Does not convert straight quotes `"..."` into curly quotes `“...”`.
 * Inserts a tab character, rather than some number of spaces, when you press the TAB key.
 
+Some text editors support an [EditorConfig](https://editorconfig.org/) file, and will read settings from the file provided in this repository. This can help ensure your contributions match the format of existing data files.
+
 ### Data file format
 
 A data file consists of any number of lines, each of which can contain any number of items or "tokens." Tokens are separated by spaces. For example, this is a line with four tokens in it:
