@@ -27,12 +27,13 @@ conversation [<name>]
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
 * `accept`: The player accepts this mission (if one is being offered).
-* `launch`: The mission is accepted, _and_ the player immediately takes off from this planet (for missions offered from a planet) or the ship being boarded dies (for missions offered from a ship).
+* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations already occurring in space (e.g. boarding a ship or "completing" an NPC), if a ship initiated the conversation that ship will die.
 * `decline`: The mission is declined. (This is also useful for creating conversations that appear when you land or enter a spaceport, but that are intended just to provide flavor, not to lead to a mission.)
-* `flee`: The mission is declined, _and_ the player immediately takes off from this planet (for missions offered from a planet) or the ship being boarded dies (for missions offered from a ship).
+* `flee`: The mission is declined, _and_ the player immediately takes off (for conversations occurring on a planet). For conversations occurring in space, the referenced ship (if any) dies.
 * `defer`: The mission is declined, but it will not be marked as "offered," so it can be offered again at a later date even if it is not a repeating mission.
-* `depart`: The mission is deferred, and you immediately flee.
+* `depart`: The mission is deferred, _and_ you immediately flee. For conversations with a ship in space, this will destroy the ship.
 * `die`: The player is killed.
+* `explode` (**v. 0.9.9+**): The player is killed, and their flagship explodes (if in space).
 
 For example:
 
@@ -60,7 +61,7 @@ You can go to labels earlier on in the conversation if you want, but be careful 
 
 A conversation can contain a "scene" image at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 540 pixels wide.
 
-![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/scene/engine.jpg)
+[![][engineScene]][engineScene]
 
 Try to avoid using very tall images for scenes, to avoid the need for scrolling on short screens.
 
@@ -70,7 +71,7 @@ A label marks the start of a "node" in a conversation: that is, a point that you
 
 # Text #
 
-Any line of the conversation that does not begin with one of the special keywords (label, name, choice, or scene) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
+Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
 
 ```html
     `You tell the bartender, "The pirates said, 'Give us all your cargo!'"`
@@ -100,7 +101,7 @@ Each option is represented by a single line of text, which will generally be enc
 
 # Branch #
 
-A branch takes the conversation to one of two different labels depending on a set of conditions. The conditions are specified in the same format as when CreatingMissions.
+A branch takes the conversation to one of two different labels depending on a set of conditions. The conditions are specified in the same format as when [creating missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions).
 
 The "branch" keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
 
@@ -115,7 +116,7 @@ conversation
     label famous
     apply
         set "everyone thinks you are awesome"
-        "drunk" += .085
+        "drunk" += 1
     
     `    When you walk into the bar, a man at a table in the corner looks up and sees you.`
     `    He says, "It's Captain <last>, the famous warrior! Barkeep, give <first> a drink on my tab."`
@@ -124,4 +125,7 @@ conversation
 
 # Apply #
 
-An "apply" entry modifies conditions instead of testing to see what they are currently equal to. The syntax is the same as the "on complete" node in a [mission](CreatingMissions).
+An "apply" entry modifies conditions instead of testing to see what they are currently equal to. The syntax is the same as the "on complete" node in a [mission](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#Triggers). In the example above, a condition "everyone thinks you are awesome" is created with a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers.
+
+
+ [engineScene]: https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/scene/engine.jpg 
