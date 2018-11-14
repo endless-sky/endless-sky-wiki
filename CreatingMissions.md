@@ -266,14 +266,14 @@ This indicates that you do not have access to any of the services on the destina
 waypoint <system>
 ```
 
-This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited; then they disappear.
+This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited; then they are marked by a faint circle (**v. 0.9.9**) for the duration of the mission.
 
 ```html
 stopover [<planet>]
     ...
 ```
 
-This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the source and destination filters. As with waypoints, any number of stopovers may be specified.
+This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the source and destination filters. As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission.
 
 <a name="conditions"/>
 
@@ -285,17 +285,17 @@ This specifies a planet that you must visit in order to complete the mission. Th
 * `"<mission name>: active"`, where `<mission name>` is replaced with the name of any mission. This is incremented when you accept a mission, and decremented when you complete, or fail it.
 * `"<mission name>: done"` is set when a mission is successfully completed.
 * `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number. These conditions can be changed to alter your reputation with a government.
-* "ships: `<category>`" is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone).
-* "cargo space" and "passenger space" are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
-* "net worth" is your net worth, limited to the range of +- 2 billion.
-* "combat rating" is your current combat rating (sum of the base crews of all the ships you have disabled).
-* "cargo attractiveness" is how attractive the size of your cargo hold(s) is to pirates. Lots of small ships are more attractive than one large one. Values for single human ships range from -2 for ships with no cargo to 8 for bulk freighters.
-* "armament deterrence" is how effective your weapons are at discouraging pirates. Values for single human ships range from 0 for unarmed ships to 8 for the Dreadnought.
-* "pirate attraction" is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
-* "day", "month", and "year" are the current date, given as individual variables so you can check for holidays, etc.
-* "random" is a random number between 0 and 99. This can be used to make a mission only sometimes appear when all other conditions are met.
+* `"ships: <category>"` is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone).
+* `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
+* `"net worth"` is your net worth, limited to the range of +- 2 billion.
+* `"combat rating"` is your current combat rating (sum of the base crews of all the ships you have disabled).
+* `"cargo attractiveness"` is how attractive the size of your cargo hold(s) is to pirates. Lots of small ships are more attractive than one large one. Values for single human ships range from -2 for ships with no cargo to 8 for bulk freighters.
+* `"armament deterrence"` is how effective your weapons are at discouraging pirates. Values for single human ships range from 0 for unarmed ships to 8 for the Dreadnought.
+* `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
+* `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
+* `"random"` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
 
-Conditions are checked at two times when processing a mission: when determining whether the mission can be offered right now (in the "to offer" tag), and when determining whether it has been completed successfully (in the "to complete" tag):
+Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the "to offer" tag), and when determining whether it has been completed (in the "to complete" tag) or failed (in the "to fail" tag):
 
 ```html
 to (offer | complete | fail)
@@ -306,9 +306,9 @@ to (offer | complete | fail)
         ...
 ```
 
-The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write "has `<condition>`" instead of "`<condition>` != 0", or "not `<condition>`" instead of "`<condition>` == 0". The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed.
+The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write `has <condition>` instead of `<condition> != 0`, or `not <condition>` instead of `<condition> == 0`. The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed.
 
-Conditions can be changed when you are offered a mission or when you accept, decline, fail, or complete it, as described later in this document. You can "chain" missions together by having one depend on the "`<mission name>`: done" condition set by a previous mission. Since all your existing missions complete before new ones are offered, that condition will be set before the check is done for what new missions are available.
+Conditions can be changed when you are offered a mission or when you accept, decline, fail, or complete it, as described later in this document. You can "chain" missions together by having one depend on the `<mission name>: done` condition that is automatically set by a previous mission on completion. Since all your existing missions complete before new ones are offered, that condition will be set before the check is done for what new missions are available.
 
 A mission will not be offered if any of the "to fail" conditions are met, and will fail if it is active and one of those conditions changes so that it is satisfied.
 
@@ -358,7 +358,7 @@ For the source and destination, you can either specify one particular planet, or
         ...    
 ```
 
-Each entry in the source or destination specification acts as a filter. **v0.9.9** introduces two "modifier" tokens, `not` and `neighbor`. The "neighbor" modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the "not" modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
+Each entry in the source or destination specification acts as a filter. Two modifier tokens are introduced in **v. 0.9.9**, `not` and `neighbor`. The "neighbor" modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the "not" modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
 
 ```html
 [(not | neighbor)] planet <name>...
@@ -388,7 +388,7 @@ If this is a source filter and the mission is being offered when "assisting" or 
     <name>...
 ```
 
-The system or planet must have (or must not have, or must link to a system with) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.). If applied to a system (**v0.9.9**), at least one of the given attributes must be found in either the system's own attributes, or the attributes of any of its orbiting objects. If applied to a ship (**v0.9.9**), the attribute must be positive, after taking into account any adjustments that are made by all of its installed outfits.
+The system or planet must have (or must not have, or must link to a system with) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.). If applied to a system (**v. 0.9.9**), at least one of the given attributes must be found in either the system's own attributes, or the attributes of any of its orbiting objects. If applied to a ship (**v. 0.9.9**), the attribute must be positive, after taking into account any adjustments that are made by all of its installed outfits.
 
 Unlike the other filters, if multiple "attribute" tags appear, the system or planet must contain at least one attribute from each of the lists. For example, this means the planet must be urban or rich:
 
@@ -418,7 +418,7 @@ not
     attributes rich
 ```
 
-Beginning with **v0.9.9**, similar to attributes, ships ("source") and planets ("source", "destination") can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one Beam Laser or Meteor Missile Launcher installed or in its cargo, or a planet that sells either one of the outfits:
+Beginning with **v. 0.9.9**, similar to attributes, ships ("source") and planets ("source", "destination") can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one Beam Laser or Meteor Missile Launcher installed or in its cargo, or a planet that sells either one of the outfits:
 
 ```html
 source
@@ -433,7 +433,7 @@ source
     outfits "Meteor Missile Launcher"
 ```
 
-**v0.9.9** also allows matching ships based on the specified category, e.g. "Light Warship" or "Interceptor". Any filter that defines a ship category will not match to systems or planets. Since a ship can have only one category, the following are both equivalent filters:
+**V. 0.9.9** also allows matching ships based on the specified category, e.g. "Light Warship" or "Interceptor". Any filter that defines a ship category will not match to systems or planets. Since a ship can have only one category, the following are both equivalent filters:
 
 ```html
 source
@@ -578,7 +578,7 @@ conversation
     ...
 ```
 
-This defines a dialog or conversation to be shown when you have first satisfied all the requirements of a given NPC. For more details on the syntax, see the "Triggers" section below. Beginning with **v0.9.9**, conversations shown when completing an NPC can also use special keywords to influence the player's flagship or the NPC ship.
+This defines a dialog or conversation to be shown when you have first satisfied all the requirements of a given NPC. For more details on the syntax, see the "Triggers" section below. Beginning with **v. 0.9.9**, conversations shown when completing an NPC can also use special keywords to influence the player's flagship or the NPC ship.
 
 If you want to retrieve passengers or cargo by boarding a ship, set up the mission so that you are considered to be carrying them from the very start (for example, the cargo might be called "reserved mission space" or "mission cargo"). Otherwise, it would be possible for the player to board a ship and then discover they do not have enough cargo or passenger space to complete the mission.
 
@@ -633,7 +633,7 @@ There are eight events that can trigger a response of some sort:
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 
-Beginning with **v0.9.9**, the "enter" action supports determining the system with a location filter:
+Beginning with **v. 0.9.9**, the "enter" action supports determining the system with a location filter:
 ```html
 on enter
     [system <name>...]
@@ -676,7 +676,7 @@ At this point in the mission, the named ship outfit (or some number of them, if 
 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
 
-The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive. Starting with **v0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any).
+The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive. Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any).
 
 ```html
 payment [<base> [<multiplier>]]
