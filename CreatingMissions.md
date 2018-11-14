@@ -44,16 +44,21 @@ mission <name>
             ...
     (source | destination) <planet>
     (source | destination)
-        [not] planet <name>...
+        [(not | neighbor)] planet <name>...
             <name>...
-        [not] system <name>...
+        [(not | neighbor)] system <name>...
             <name>...
-        [not] government <name>...
+        [(not | neighbor)] government <name>...
             <name>...
-        [not] attributes <name>...
+        [(not | neighbor)] attributes <name>...
             <name>...
-        [not] near <system> [[<min>] <max>]
-        [not] distance [[<min>] <max>]
+        [(not | neighbor)] outfits <name>...
+            <name>...
+        [(not | neighbor)] category <name>...
+        [(not | neighbor)] near <system> [[<min>] <max>]
+        [(not | neighbor)] distance [[<min>] <max>]
+        neighbor
+            ...
         not
             ...
     npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany)...
@@ -85,7 +90,7 @@ mission <name>
         conversation
             ...
         outfit <outfit> [<number>]
-        require <outfit>
+        require <outfit> [<number>]
         payment [<base> [<multiplier>]]
         <condition> (= | += | -=) <value>
         <condition> (++ | --)
@@ -334,53 +339,58 @@ For the source and destination, you can either specify one particular planet, or
 ```html
 (source | destination) <planet>
 (source | destination)
-    [not] planet <name>...
+    [<modifier>] planet <name>...
         <name>...
-    [not] system <name>...
+    [<modifier>] system <name>...
         <name>...
-    [not] government <name>...
+    [<modifier>] government <name>...
         <name>...
-    [not] attributes <name>...
+    [<modifier>] attributes <name>...
         <name>...
-    [not] near <system> [[<min>] <max>]
-    [not] distance [[<min>] <max>]
-    not
+    [<modifier>] outfits <name>...
+        <name>...
+    [<modifier>] category <name>...
+    [<modifier>] near <system> [[<min>] <max>]
+    [<modifier>] distance [[<min>] <max>]
+    neighbor
         ...
+    not
+        ...    
 ```
 
-Each entry in the source or destination specification acts as a filter:
+Each entry in the source or destination specification acts as a filter. **v0.9.9** introduces two "modifier" tokens, `not` and `neighbor`. The "neighbor" modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the "not" modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
 
 ```html
-[not] planet <name>...
+[(not | neighbor)] planet <name>...
     <name>...
 ```
 
-This says that the planet must be (or must not be, if the "not" keyword is used) one of the named planets. The list of names can either be all on one line, or split between multiple lines if it is particularly long; the subsequent lines must be indented so that they are "children" of the "planet" node. As with most of these filters, you can also have more than one "planet" entry, in which case the planet chosen must be in any one of the lists.
+This says that the planet must be (or must not be, if the "not" keyword is used) one of the named planets. If "neighbor" is used, at least one of the named planets must be in a hyperlinked system. The list of names can either be all on one line, or split between multiple lines if it is particularly long; the subsequent lines must be indented so that they are "children" of the `planet` node. As with most of these filters, you can also have more than one "planet" entry, in which case the planet chosen must be in any one of the lists.
 
 ```html
-[not] system <name>...
+[(not | neighbor)] system <name>...
     <name>...
 ```
 
-The system must be (or must not be) one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but its intended use is for the NPC location filter as described later.
+The system must be (or must not be, or must neighbor) one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but its intended use is for the NPC location filter as described later.
 
 ```html
-[not] government <name>...
+[(not | neighbor)] government <name>...
     <name>...
 ```
 
-The planet must be in (or must not be in) a system owned by the given government. Again, the list can be all on one line, or multiple indented lines.
+The planet must be in (or must not be in, or must neighbor) a system owned by the given government. Again, the list can be all on one line, or multiple indented lines.
 
-If this is a source filter and the mission is being offered when "assisting" or "boarding" a ship, the government in this filter refers to the ship's government, not the government of the current star system. This allows you, for example, to create a mission that is only offered by merchant ships.
+If this is a source filter and the mission is being offered when "assisting" or "boarding" a ship, the government in this filter refers to the ship's government, not the government of the current star system. This allows you, for example, to create a mission that is only offered by merchant ships. If the "neighbor" modifier is used, at least one neighboring system's government must be in the list of named governments.
 
 ```html
-[not] attributes <name>...
+[(not | neighbor)] attributes <name>...
     <name>...
 ```
 
-The planet must have (or must not have) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.).
+The system or planet must have (or must not have, or must link to a system with) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.). If applied to a system (**v0.9.9**), at least one of the given attributes must be found in either the system's own attributes, or the attributes of any of its orbiting objects. If applied to a ship (**v0.9.9**), the attribute must be positive, after taking into account any adjustments that are made by all of its installed outfits.
 
-Unlike the other filters, if multiple "attribute" tags appear, the planet must contain at least one attribute from each of the lists. For example, this means the planet must be urban or rich:
+Unlike the other filters, if multiple "attribute" tags appear, the system or planet must contain at least one attribute from each of the lists. For example, this means the planet must be urban or rich:
 
 ```html
 attributes urban rich
@@ -408,16 +418,42 @@ not
     attributes rich
 ```
 
+Beginning with **v0.9.9**, similar to attributes, ships ("source") and planets ("source", "destination") can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one Beam Laser or Meteor Missile Launcher installed or in its cargo, or a planet that sells either one of the outfits:
+
+```html
+source
+    outfits "Beam Laser" "Meteor Missile Launcher"
+```
+
+whereas this would match ships or planets that only have both:
+
+```html
+source
+    outfits "Beam Laser"
+    outfits "Meteor Missile Launcher"
+```
+
+**v0.9.9** also allows matching ships based on the specified category, e.g. "Light Warship" or "Interceptor". Any filter that defines a ship category will not match to systems or planets. Since a ship can have only one category, the following are both equivalent filters:
+
+```html
+source
+    category "Heavy Freighter" "Light Warship"
+
+source
+    category "Heavy Freighter"
+    category "Light Warship"
+```
+
 There are also ways of specifying how far the system is from a particular location, or from the current location:
 
 ```html
-[not] near <system> [[<min>] <max>]
+[(not|neighbor)] near <system> [[<min>] <max>]
 ```
 
-If one number is given, the planet must be within (or must not be within) that number of jumps from the given system (which includes the given system itself). If two numbers are given, the distance from the given system must be at least as high as the first number, and no more than the second. If no numbers are given, the planet must be in the given system or one of the systems it is linked to; this is equivalent to giving distances of 0 and 1.
+If one number is given, the planet must be within (or must not be within, or must link to a system) that number of jumps from the given system (which includes the given system itself). If two numbers are given, the distance from the given system must be at least as high as the first number, and no more than the second. If no numbers are given, the planet must be in the given system or one of the systems it is linked to; this is equivalent to giving distances of 0 and 1.
 
 ```html
-[not] distance [<min>] <max>
+[(not|neighbor)] distance [<min>] <max>
 ```
 
 This is the same as the "near" tag, but gives distances relative to the origin planet. (So, this tag only makes sense within a "destination" filter, not within a "source" filter or a "clearance" filter.)
@@ -425,9 +461,37 @@ This is the same as the "near" tag, but gives distances relative to the origin p
 ```html
 not
     ...
+neighbor
+    ...
 ```
 
-A "not" tag by itself, with filters as its children, defines a more complicated filter that must not match.
+A "not" or "neighbor" tag by itself, with filters as its children, defines a more complicated filter that must not match. For example, this filter matches a system whose neighbor must neighbor a Republic system and not be a Republic system:
+
+```html
+neighbor
+    neighbor government "Republic"
+    not government "Republic"
+```
+
+while this filter additionally requires the matched system to belong to a government other than "Republic":
+
+```html
+not government "Republic"
+neighbor
+    neighbor government "Republic"
+    not government "Republic"
+```
+
+Filters combining "not" and "neighbor" can become quite complex and difficult to reason, but offer functionality not otherwise available. For example, to find a source system that is not Republic (1), does not neighbor a Republic system (2), but has a neighbor that does neighbor a Republic system (3), you could use this filter:
+
+```html
+source
+1)  not government "Republic"
+2)  not
+        neighbor government "Republic"
+3)  neighbor
+        neighbor government "Republic"
+```
 
 <a name="npcs"/>
 
@@ -486,7 +550,7 @@ personality <type>...
 
 This defines the NPC's [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The "confusion" tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
 
-If an NPC is specified as starting out in your current system and its personality is *not* "staying" or "waiting", it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is "entering" the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship "staying" in a certain system might be a target you must locate for a bounty hunting mission. (Any ship that is not "staying" will actively seek the player out if it is in a different system.)
+If an NPC is specified as starting out in your current system and its personality is *not* "staying" or "waiting", it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is "entering" the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship "staying" in a certain system might be a target you must locate for a bounty hunting mission. (Any ship that is not "staying" will actively seek the player out if it is in a different system, unless it is also "uninterested.")
 
 ```html
 system (<system> | destination)
@@ -504,7 +568,7 @@ system
     distance [[<min>] <max>]
 ```
 
-This specifies a filter for choosing what system the NPC starts out in. The "system", "government", "near", and "distance" filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any Pirate system, or within two jumps of the current system.
+This specifies a location filter for choosing what system the NPC starts out in. The "system", "government", "near", and "distance" filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any Pirate system, or within two jumps of the current system. The other location filter options are also available, including `not` and `neighbor`.
 
 ```html
 dialog <text>
@@ -514,7 +578,7 @@ conversation
     ...
 ```
 
-This defines a dialog or conversation to be shown when you have first satisfied all the requirements of a given NPC. For more details on the syntax, see the "Triggers" section below.
+This defines a dialog or conversation to be shown when you have first satisfied all the requirements of a given NPC. For more details on the syntax, see the "Triggers" section below. Beginning with **v0.9.9**, conversations shown when completing an NPC can also use special keywords to influence the player's flagship or the NPC ship.
 
 If you want to retrieve passengers or cargo by boarding a ship, set up the mission so that you are considered to be carrying them from the very start (for example, the cargo might be called "reserved mission space" or "mission cargo"). Otherwise, it would be possible for the player to board a ship and then discover they do not have enough cargo or passenger space to complete the mission.
 
@@ -524,7 +588,7 @@ ship <model> <name>
 
 This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name.
 
-If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed.
+If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed. When loading NPCs from saved games, the rest of the game data has finished loading, but this is not otherwise guaranteed.
 
 ```html
 fleet <name> [<count>]
@@ -569,6 +633,13 @@ There are eight events that can trigger a response of some sort:
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 
+Beginning with **v0.9.9**, the "enter" action supports determining the system with a location filter:
+```html
+on enter
+    [system <name>...]
+    ...
+``` 
+
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
@@ -588,9 +659,9 @@ conversation
     ...
 ```
 
-This specifies that a conversation will be shown to the player at this point in the mission. When a mission is being offered, the conversation can return "accept" or "decline"; conversations can also return special values like "die" (if the conversation ends with the player dying) or "launch" (if the player should take off from the planet immediately).
+This specifies that a conversation will be shown to the player at this point in the mission. When a mission is being offered, the conversation can return "accept" or "decline"; conversations can also return special values like "die" or "explode" (if the conversation ends with the player dying or their flagship exploding) or "launch" (if the player should take off from the planet immediately).
 
-For missions that are offered when boarding a ship, if the conversation ends with "launch" or "flee," the ship in question will die.
+For conversations that are offered when boarding a ship or completing an NPC, if the conversation ends with "launch," "flee," or "depart," the ship in question will die.
 
 As with the dialogs, text substitution is done throughout the conversation.
 
@@ -598,14 +669,14 @@ The syntax for conversations is described [here](WritingConversations).
 
 ```html
 outfit <outfit> [<number>]
-require <outfit>
+require <outfit> [<number>]
 ```
 
 At this point in the mission, the named ship outfit (or some number of them, if a number is given) is installed in the player's flagship, or placed in the player's cargo if the flagship has no outfit space for it. If the number is negative, outfits are taken away. If a mission removes outfits in its "complete" phase, it cannot be completed unless that outfit exists. This makes it possible to loan the player an outfit for the duration of a mission, or to require that the player disable a non-NPC ship and steal a particular piece of technology from it.
 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
 
-The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive.
+The "require" keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the "on offer" phase to only offer a mission to players who have a Jump Drive. Starting with **v0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any).
 
 ```html
 payment [<base> [<multiplier>]]
