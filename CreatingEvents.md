@@ -7,6 +7,8 @@ An "event" is something that happens on a certain in-game date, and that can mod
 * shipyard
 * system
 
+in addition to the player's ["conditions"](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions).
+
 Each event has a name, and can specify what date it happens on. (Most events, however, will be triggered by missions and therefore will not have a fixed date.) The event can then list any number of changes to any of the data types listed above. For example:
 
 ```
