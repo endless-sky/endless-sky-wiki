@@ -118,6 +118,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<system>` = destination system
 * `<destination>` = "`<planet>` in the `<system>` system"
 * `<stopovers>` = a list of all stopover destinations
+* `<waypoints>` = a list of all waypoint systems
 * `<payment>` = "1 credit" or "N credits"
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
 * `<day>` = the deadline in conversational form ("the DDth of Month")
