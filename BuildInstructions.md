@@ -2,7 +2,7 @@ Most of the current development work is done on Ubuntu Linux. Building the code 
 
 You can get a copy of the code either using "git clone," or using the download link. How you build it will then depend on your operating system:
 
-## Linux ##
+# Linux
 
 Use your favorite package manager to install the following (version numbers may vary depending on your distribution):
 * g++
@@ -22,23 +22,70 @@ $ scons
 $ ./endless-sky
 ```
 
-The program will run using the "data" and "images" folders that are found in the source code folder itself. For more Linux help, consult the man page (endless-sky.6).
+The program will run using the "data" and "images" folders that are found in the source code folder itself. For more Linux help, consult the `man` page (endless-sky.6), by running `man endless-sky` in the project directory.
 
-## Windows ##
+# Windows
 
-The Windows build has been tested on 64-bit Windows 7, only. You will need the Code::Blocks IDE and g++ 4.8 or higher. Code::Blocks is available [here](http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/Windows/codeblocks-13.12-setup.exe/download), and you can install g++ separately through [mingw-w64](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.8.5/threads-posix/seh/). **Be sure to install the "pthread" version of MinGW; the "win32-thread" one does not come with support for C++11 threading. On 32-bit Windows, use "dwarf" exceptions, not "sjlj".** Then you'll need to tell Code::Blocks the path to the compiler programs:
+The Windows build has been tested on 64-bit Windows 7 and 10. You will need the Code::Blocks IDE and g++ 4.8 or higher. Code::Blocks is available [here](http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/Windows/codeblocks-13.12-setup.exe/download), and you can install g++ separately through [mingw-w64](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.8.5/threads-posix/seh/). **Be sure to install the "pthread" version of MinGW; the "win32-thread" one does not come with support for C++11 threading. On 32-bit Windows, use "dwarf" exceptions, not "sjlj".**
 
-![](https://17480835838765625269.googlegroups.com/attach/5b586f356d96e/settings.png?part=0.1&view=1&vt=ANaJVrHq-UdKHDYMQBM0eL1F4l84V2ts-nDM0xJqB3S__7bm4BrzcLKXvL2-MAIO_QtJQQnJGiPZ7ABApIW-ANx1N-t_pKDTbphbSUXKud9-qq49xcaEe1s)
+### Configuring compiler paths:
 
-If you are on 64-bit Windows, a full set of development libraries are available [here](http://endless-sky.github.io/win64-dev.zip). If you don't want to have to edit the paths in the Code::Blocks file, unpack the "dev64" folder directly into `C:\`. 
+Code::Blocks may or may not automatically detect your installed compilers (e.g. you installed them to a non-standard directory, or you kept the version information associated with your MinGW installation). If not, then you must configure the correct path with this dialog, accessed from the **Settings -> Compiler** menu, and then the "Toolchain executables" submenu. Two example paths are shown:
 
-If you are using 32-bit Windows, download the [32-bit libraries](http://endless-sky.github.io/win32-dev.zip) instead. In the Code::Blocks project, you will have to select the "Win32" build, and set up your compiler paths to point to a 32-bit compiler.
+[<img src=https://i.imgur.com/5tkmUhe.png width=400>](https://i.imgur.com/5tkmUhe.png)
 
-You will also need `libmingw32.a` and `libopengl32.a`. Those should be included in the MinGW g++ install. If they are not in `C:\Program Files\mingw64\x86_64-w64-mingw32\lib\` you will have to adjust the paths in the Code::Blocks file.
+[<img src=https://i.imgur.com/SXaMWk5.png width=400>](https://i.imgur.com/SXaMWk5.png)
 
-On Windows certain files with "~" in the file name may be spontaneously deleted by git with an "error: Invalid Path" message when pulling or merging. The solution is to set `git config core.protectNTFS false`.
+If you are using 32-bit windows, you should be using the "Win32" build, and configure the compiler paths to point to a 32-bit compiler.
 
-## Mac OS X ##
+
+### Development Libraries
+
+Building for Windows often requires you to manage the dependencies of the program - the helper code that deals with interfacing with the operating system, and in our case, SDL, OpenAL, and others. In rare cases (i.e. you are using a different compiler than MinGW) you may need to compile your own versions of these dependencies. For most, the following provided packages will suffice.
+
+ - [64-bit libraries](http://endless-sky.github.io/win64-dev.zip)
+ - [32-bit libraries](http://endless-sky.github.io/win32-dev.zip)
+
+The Code::Blocks project is preconfigured for these zips to be unpacked directly into `C:\`, which will create `C:\dev64`. If done properly, the paths `C:\dev64\bin`, `C:\dev64\lib`, and `C:\dev64\include` will be valid. If you are using the 7-Zip program, the dialog would look like this:
+
+![](https://i.imgur.com/2vUShqr.png?1)
+
+The final compiler dependencies you need are `libmingw32.a` and `libopengl32.a`. Those should be included in the MinGW g++ install. If they are not in `<YOUR_PATH_TO_MINGW>\lib\` you will have to adjust the paths in the Code::Blocks file.
+To edit these paths:
+1. Open the "Build Options" menu, via `Project -> Build Options`
+2. Select the root "EndlessSky" tree element, then the menu for `Linker settings`
+
+Here you can highlight the element in the list that needs to be updated, and select "Edit".
+
+![](https://i.imgur.com/oL9DbTf.png)
+
+### Runtime libraries
+
+The current compiler configuration uses dynamic linking to reduce the size of the executable produced. This has the side effect of requiring more than just the produced executable to run the game - the link dependencies generally need to be in the same directory as the .exe produced. Depending on the version of MinGW you use, you can use either all or some of the files from the zip you unpacked above (e.g. `C:\dev64\bin`):
+
+ - glew32.dll
+ - libgcc_s_seh-1.dll *
+ - libjpeg-62.dll
+ - libmad-0.dll
+ - libpng15-15.dll
+ - libstdc++-6.dll *
+ - libturbojpeg.dll
+ - libwinpthread-1.dll *
+ - OpenAL32.dll
+ - SDL2.dll
+ - soft_oal.dll
+ - zlib1.dll
+
+A common error seen when first compiling and running Endless Sky is a cryptic message about a missing "procedure entry point":
+
+![](https://i.imgur.com/q34s9eZ.png)
+
+This is a sign that your compiler uses a different .dll than you provided, and instead you need to use the version that came with your compiler. For MinGW installs, the .dll will be in `<YOUR_PATH_TO_MINGW>\bin`. Copy the three .dlls above marked with an `*` to your project directory.
+
+### Note for git repositories
+On Windows, certain files with "~" in the file name may be spontaneously deleted by git with an "error: Invalid Path" message when pulling or merging. The solution is to set `git config core.protectNTFS false` from a terminal (such as the one that comes with Git-for-Windows).
+
+# Mac OS X
 
 To build Endless Sky you will first need to download Xcode from the App Store.
 
