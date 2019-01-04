@@ -355,9 +355,10 @@ The multiplier modifiers (Shift = 5x, Command / Control = 20x, and Option / Alt 
 
 Map panels: | &nbsp;
 :--- | :---
-Search (for planet, system, ship, our outfit) | F
+Search (for planet, system, ship, or outfit) | F
 Rotate jump destination | J or Tab
 Add jump destination | Shift + J or Tab
+Compare (two ships or outfits) | Shift + Click
 
 When viewing a list of items, you can move the selection up and down with the arrow keys.
 
