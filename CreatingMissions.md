@@ -289,7 +289,7 @@ This specifies a planet that you must visit in order to complete the mission. Th
 * `"ships: <category>"` is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone).
 * `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
 * `"net worth"` is your net worth, limited to the range of +- 2 billion.
-* `"combat rating"` is your current combat rating (sum of the base crews of all the ships you have disabled).
+* `"combat rating"` is your current combat rating (based on the strength of all the ships your fleet has disabled).
 * `"cargo attractiveness"` is how attractive the size of your cargo hold(s) is to pirates. Lots of small ships are more attractive than one large one. Values for single human ships range from -2 for ships with no cargo to 8 for bulk freighters.
 * `"armament deterrence"` is how effective your weapons are at discouraging pirates. Values for single human ships range from 0 for unarmed ships to 8 for the Dreadnought.
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
