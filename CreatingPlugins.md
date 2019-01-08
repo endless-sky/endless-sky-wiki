@@ -12,7 +12,31 @@ The easiest way to test out new content for Endless Sky is to create a plugin. A
 * Content/Resources/plugins/ (within the application bundle)
 * ~/Library/ApplicationSupport/endless-sky/plugins
 
-Your plugin should be placed in its own folder (named after the plugin) within one of those "plugins" folders (e.g. the example plugin's `about.txt`, `data/`, etc. would be in a folder named "example-plugin" which in turn is placed in the "plugins" folder).
+Your plugin should be placed in its own folder (named after the plugin) within one of those "plugins" folders (e.g. the example plugin's `about.txt`, `data/`, etc. would be in a folder named "example-plugin" which in turn is placed in the "plugins" folder):
+
+```
+plugins/
+|-- example-plugin/
+|   |-- data/
+|   |   |-- jobs.txt
+|   |     ...
+|   |-- images/
+|   |   |-- ship/
+|   |   |   |-- example-ship.png
+|   |   |     ...
+|   |     ...
+|   |-- sounds/
+|   |   |-- ambient/
+|   |   |   |-- rain.mp3
+|   |   |     ...
+|   |   |-- kaboom.wav
+|   |     ...
+|   |-- about.txt
+|   |-- copyright
+|     ...
+|-- other-plugin/
+      ...
+```
 
 ### Editing data files
 
@@ -39,20 +63,20 @@ I plan to eventually set up a plugins server that can be accessed within the gam
 The game data in Endless Sky includes the following elements:
 
   * `color`: a named color in premultiplied RGBA format, to be used in the user interface. The format is: `color "name" <red> <green> <blue> <alpha>`. By setting alpha to 0 you can define a color that uses additive mixing, and you can also use [other blending modes](BlendingModes).
-  * `conversation`: a [conversation](WritingConversations) to be shown in a mission event.
-  * `effect`: an animation that is used purely for visual effect and does not interact with objects in the game. (For example, the explosions shown when a projectile strikes something.)
-  * `event`: a list of changes to the game data, which will happen either on a specific date, or in response to a mission. Events can contain any of the other data elements listed here.
+  * [`conversation`](WritingConversations): a conversation to be shown in a mission event.
+  * [`effect`](CreatingEffects): an animation that is used purely for visual effect and does not interact with objects in the game. (For example, the explosions shown when a projectile strikes something.)
+  * [`event`](CreatingEvents): a list of changes to the game data, which will happen either on a specific date, or in response to a mission.
   * `fleet`: a list of possible ship combinations and relative frequencies. (For examples, see `fleets.txt`.)
   * `galaxy`: a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
   * `government`: the characteristics of a particular government.
   * `interface`: the layout of a user interface element. (For examples, see `interfaces.txt`.)
-  * `mission`: a definition of a [job or mission](CreatingMissions) that can be offered to the player.
-  * `outfit`: an [outfit](CreatingOutfits) that you can purchase. This includes weapons.
+  * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
+  * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
   * `outfitter`: a "catalog" of outfits that can be for sale on various planets. This is so that instead of a planet needing to specify every outfit it sells, it can just say, "all the basic Syndicate outfits are available here."
-  * `person`: a unique ship that occasionally appears in certain systems.
+  * [`person`](CreatingPersons): a unique ship that occasionally appears in certain systems.
   * `phrase`: a rule for constructing random phrases, e.g. for ship names or hail messages. (See `hails.txt` or `names.txt` for examples.)
   * `planet`: specifies what services are available on a given planet. These can be modified through the [map editor](https://github.com/endless-sky/endless-sky-editor).
-  * `ship`: the attributes of a [ship](CreatingShips) and its default outfits, or a ship variant with an alternative set of outfits.
+  * [`ship`](CreatingShips): the attributes of a ship and its default outfits, or a ship variant with an alternative set of outfits.
   * `shipyard`: a "catalog" of ships that can be for sale on various planets.
   * `start`: starting conditions for the player.
   * `system`: a star system. Generally, these will be created through the [map editor](https://github.com/endless-sky/endless-sky-editor) so that orbital periods, habitable zones, etc. will be consistent.
