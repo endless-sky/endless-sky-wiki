@@ -1,4 +1,4 @@
-Welcome to the Endless Sky wiki! Whether you're just looking for more information on how to play the game, or whether you're hoping to help to modify and expand the game's universe by contributing your own stories and artwork, the links below should help you get started.
+Welcome to the Endless Sky wiki! Whether you're just looking for more information on how to play the game, or whether you're hoping to help to modify and expand the game's universe by contributing your own stories and artwork, the links below should help you get started. There are additional links in the sidebar on the right.
 
 ### Playing Endless Sky
 
@@ -12,17 +12,21 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Regions of human space](HumanSpace)
 * [Major organizations and factions](MajorOrganizations)
 
-### Creating ships, missions, artwork, etc.
+### Contributing content to the base game
 
 * [Help wanted](HelpWanted)
 * [Development Roadmap](DevelopmentRoadmap)
+* [Art and storytelling style](StyleGoals)
+
+### Creating ships, missions, artwork, etc.
+
 * [Creating plugins](CreatingPlugins)
 * [Creating missions](CreatingMissions)
+* [Creating game events](CreatingEvents)
 * [Writing conversations](WritingConversations)
 * [Creating new ships](CreatingShips)
 * [Creating outfits and weapons](CreatingOutfits)
 * [Creating planet sprites](PlanetSprites)
-* [Art and storytelling style](StyleGoals)
 
 ### Compiling or modifying the source code
 
