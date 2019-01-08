@@ -21,13 +21,15 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 
 ### Creating ships, missions, artwork, etc.
 
+These pages generally describe the game syntax in accordance with the [data format](DataFormat).
 * [Creating plugins](CreatingPlugins)
 * [Creating missions](CreatingMissions)
-* [Creating game events](CreatingEvents)
 * [Writing conversations](WritingConversations)
+* [Creating game events](CreatingEvents)
 * [Creating new ships](CreatingShips)
 * [Creating outfits and weapons](CreatingOutfits)
 * [Creating planet sprites](PlanetSprites)
+* [Creating spaceport news](CreatingNews)
 
 ### Compiling or modifying the source code
 
