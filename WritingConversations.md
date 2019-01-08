@@ -2,7 +2,7 @@
 
 A "conversation" is a series of text messages that progress differently depending on which replies the player selects, sort of like a "Choose Your Own Adventure" book. The goal of conversations is to add another "role playing" aspect to the game by allowing freedom in how the player interacts with other people.
 
-Each "node" of the conversation displays some text, and then either jumps immediately to another node or presents the player with a list of responses to choose between.
+Each "node" of the conversation displays some text, and then either jumps immediately to another node or presents the player with a list of responses to choose between. (The entire conversation can be scrolled backwards, in case the player wishes to review the text and choices associated with previous nodes.)
 
 ```html
 conversation [<name>]
@@ -71,7 +71,7 @@ A label marks the start of a "node" in a conversation: that is, a point that you
 
 # Text #
 
-Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
+Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, `branch`, `apply`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
 
 ```html
     `You tell the bartender, "The pirates said, 'Give us all your cargo!'"`
@@ -101,19 +101,19 @@ Each option is represented by a single line of text, which will generally be enc
 
 # Branch #
 
-A branch takes the conversation to one of two different labels depending on a set of conditions. The conditions are specified in the same format as when [creating missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions).
+A branch takes the conversation to one of two different labels depending on a set of [testable conditions](Player-Conditions#testable-condition-sets).
 
 The "branch" keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
 
 ```html
 conversation
-    branch famous
+    branch "famous"
         "combat rating" > 500
     
     `    When you walk into the bar, a man at a table in the corner looks up, but does not recognize you.`
         decline
     
-    label famous
+    label "famous"
     apply
         set "everyone thinks you are awesome"
         "drunk" += 1
@@ -125,7 +125,7 @@ conversation
 
 # Apply #
 
-An "apply" entry modifies conditions instead of testing to see what they are currently equal to. The syntax is the same as the "on complete" node in a [mission](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#Triggers). In the example above, a condition "everyone thinks you are awesome" is created with a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers.
+An "apply" entry [modifies conditions](Player-Conditions#applied-condition-sets) instead of testing to see what they are currently equal to. In the example above, a condition "everyone thinks you are awesome" is assigned a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. You cannot assign generic text as a condition value (e.g. `"drunk" = "true"` is not a valid condition).
 
 
  [engineScene]: https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/scene/engine.jpg 
