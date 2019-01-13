@@ -245,10 +245,10 @@ Replace the contents of the named `outfitter` with the specified elements. To av
 
 # Modifying player conditions
 
-An event definition can also include instructions to change the values of condition variables, such as the player's reputation with a specific government. More information on applied conditions is described in the [Player Conditions page](Player-Conditions#applied-condition-sets). All named `event`s set an automatic condition variable named "event: <name>", making it possible to create missions that cannot offer until after the event has occurred:
+An event definition can also include instructions to change the values of condition variables, such as the player's reputation with a specific government. More information on applied conditions is described in the [Player Conditions page](Player-Conditions#applied-condition-sets). All named events set an automatic condition variable named `event: <name>`, making it possible to create missions that cannot offer until after the event has occurred:
 
 ```
-mission "event: war begins"
+mission "show the war conversation"
     landing
     source
         government "Republic" "Syndicate" "Free Worlds"
@@ -258,3 +258,4 @@ mission "event: war begins"
         conversation
             ...
 ```
+The above mission requires the event named "war begins" to have occurred before it can offer.
