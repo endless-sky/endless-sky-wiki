@@ -171,6 +171,7 @@ fleet <name>
     fighters <phrase>
     cargo <value#>
     commodities <name>...
+    outfitters <name>...
     [(add | remove)] personality [<flag>...]
     personality [<flag>...]
         confusion <value#>
