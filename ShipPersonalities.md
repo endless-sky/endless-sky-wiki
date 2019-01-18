@@ -23,9 +23,9 @@ Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/Creati
 
 * `staying`: never leaves the system it starts out in.
 * `entering`: enters its starting system via hyperspace instead of appearing there.
-* `waiting`: starts out in space in the given system, then follows you.
-* `launching`: takes off from the planet with the player, even if it normally couldn't land there.
-* `fleeing`: tries to run away from the player.
+* `waiting`: starts out in space in its system.
+* `launching`: takes off from the planet with the player, even if it normally couldn't land there. **(v. 0.9.9)**
+* `fleeing`: avoids combat if it can jump or land, and will not take off after landing until the player next takes off.
 * `derelict`: starts out disabled.
 * `uninterested`: does not follow the player's flagship around (i.e. does not behave like an escort).
 
