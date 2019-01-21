@@ -53,6 +53,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"<mission name>: offered"`, where `<mission name>` is replaced with the name of any mission. This is incremented whenever a mission is offered to you, and is used by the "repeat" check to make sure a mission is not offered too many times.
 * `"<mission name>: active"`, where `<mission name>` is replaced with the name of any mission. This is incremented when you accept a mission, and decremented when you complete, or fail it.
 * `"<mission name>: done"` is set when a mission is successfully completed.
+* `"<mission name>: failed"` is set when a mission is failed.
 * `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number.
 * `"combat rating"` is your current combat rating (based on the strength of all the ships your fleet has disabled).
 
