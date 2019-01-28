@@ -17,7 +17,7 @@ A far more elegant solution is to convert the alpha masks into polygonal outline
 
 ![polygonal outlines generated from alpha masks](http://endless-sky.github.io/images/outlines.png)
 
-##Converting an image to an outline##
+## Converting an image to an outline
 
 The outline conversion algorithm begins by scanning down through the image until it encounters the first non-empty pixel. That pixel becomes the start of the outline. From there, it checks the pixels in the eight basic directions, starting from -90 degrees relative to the most recent direction. When it encounters an occupied pixel, that becomes the next vertex of the outline and the tracing continues from there:
 
@@ -29,7 +29,7 @@ This produces an outline that contains all the same details as the original mask
 
 After experimenting with a variety of polygon simplification algorithms, I decided that the [Ramer-Douglas-Peucker algorithm](http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm) gives the best results. (See the link for more details on how the algorithm works.) As you can see in the first set of outlines shown above, the results are not always perfectly symmetrical, but they come close enough to representing the original that any collision point I calculate will be accurate to within a pixel.
 
-##Collision detection##
+## Collision detection
 
 The advantage of polygonal outlines is that a wide variety of simple, elegant algorithms exist for working with them. In Endless Sky, every projectile is represented by a line segment. The start of the line segment is where that projectile is at the start of the current frame, and the end of the segment is where it is at the end of the current frame. So, if any part of the segment intersects the ship outline, the projectile hit that ship during this frame:
 

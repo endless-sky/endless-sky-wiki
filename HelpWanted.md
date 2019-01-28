@@ -2,7 +2,7 @@ Endless Sky is an open source project. Our end goal is for the universe to conta
 
 At the moment, the greatest need is for beta testers, but you can also contribute in one of the following ways:
 
-### Non-programming tasks ###
+### Non-programming tasks
 
   * Audio: create a set of higher-quality sound effects, or work on better volume balancing of the current ones. The sound effects should be subtle so that they don't get annoying.
 
@@ -14,7 +14,7 @@ At the moment, the greatest need is for beta testers, but you can also contribut
 
   * Editing: fixing boring or badly written parts of the planet descriptions or mission text.
 
-### Programming tasks ###
+### Programming tasks
 
   * Windows: make and maintain an official installer.
 
@@ -22,7 +22,7 @@ At the moment, the greatest need is for beta testers, but you can also contribut
 
   * Linux: Debian package maintainer.
 
-### Testing ###
+### Testing
 
   * Try different operating systems, including various Linux distributions and different Mac and Windows versions.
 

@@ -1,14 +1,14 @@
 The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](http://endless-sky.github.io/example-plugin.zip). For each operating systems, there are two places where the game looks for plugins, but generally you should only use the second option:
 
-### Linux ###
+### Linux
 * /usr/share/games/endless-sky/plugins/
 * ~/.local/share/endless-sky/plugins/
 
-### Windows ###
+### Windows
 * plugins\ (in the same folder as the Endless Sky executable)
 * C:\Users\yourusername\AppData\Roaming\endless-sky\plugins\
 
-### Mac OS X ###
+### Mac OS X
 * Content/Resources/plugins/ (within the application bundle)
 * ~/Library/ApplicationSupport/endless-sky/plugins
 
@@ -40,7 +40,7 @@ plugins/
 
 ### Editing data files
 
-When editing the game data, you should use a text editor that is designed for writing computer code. The data file format is represented by how indented each line is, so editing the data in a word processor like Microsoft Word or in a program like Notepad that does not support automatic indentation will be difficult and frustrating. If you're on Windows, [Notepad++](https://notepad-plus-plus.org/) is a good, free text editor you can use. 
+When editing the game data, you should use a text editor that is designed for writing computer code. The data file format is represented by how indented each line is, so **editing the data in a word processor like Microsoft Word or in a program like Notepad that does not support automatic indentation will be difficult and frustrating**. If you're on Windows, [Notepad++](https://notepad-plus-plus.org/) is a good, free text editor you can use. 
 
 Plugins can contain any of the same data that the game's ordinary data files contain. If a data entry (e.g. a ship, a planet, etc.) is defined in a plugin, it overrides whatever was defined in the game data. If an image appears by the same name in a plugin and in the original game data, the image from the plugin is used. If two plugins define the same image or data, which one is used will depend on what order the plugins are loaded in, and currently there is no way to control that. (Eventually, there will be a preferences panel specifically devoted to plugins, which will list all available plugins and let you reorder or disable any of them, as well as showing a user-provided description of each plugin.)
 
@@ -62,7 +62,7 @@ I plan to eventually set up a plugins server that can be accessed within the gam
 
 The game data in Endless Sky includes the following elements:
 
-  * `color`: a named color in premultiplied RGBA format, to be used in the user interface. The format is: `color "name" <red> <green> <blue> <alpha>`. By setting alpha to 0 you can define a color that uses additive mixing, and you can also use [other blending modes](BlendingModes).
+  * `color`: a named color in premultiplied RGBA format, to be used in the user interface. The format is: `color "name" <red#> <green#> <blue#> <alpha#>`. By setting alpha to 0 you can define a color that uses additive mixing, and you can also use [other blending modes](BlendingModes).
   * [`conversation`](WritingConversations): a conversation to be shown in a mission event.
   * [`effect`](CreatingEffects): an animation that is used purely for visual effect and does not interact with objects in the game. (For example, the explosions shown when a projectile strikes something.)
   * [`event`](CreatingEvents): a list of changes to the game data, which will happen either on a specific date, or in response to a mission.
@@ -72,7 +72,7 @@ The game data in Endless Sky includes the following elements:
   * `interface`: the layout of a user interface element. (For examples, see `interfaces.txt`.)
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
-  * `outfitter`: a "catalog" of outfits that can be for sale on various planets. This is so that instead of a planet needing to specify every outfit it sells, it can just say, "all the basic Syndicate outfits are available here."
+  * `outfitter`: a "catalog" of outfits that can be for sale on various planets, or found in a ship's cargohold. This is so that instead of needing to specify every possible outfit multiple times, a planet or fleet can just say, "all the basic Syndicate outfits are available."
   * [`person`](CreatingPersons): a unique ship that occasionally appears in certain systems.
   * `phrase`: a rule for constructing random phrases, e.g. for ship names or hail messages. (See `hails.txt` or `names.txt` for examples.)
   * `planet`: specifies what services are available on a given planet. These can be modified through the [map editor](https://github.com/endless-sky/endless-sky-editor).

@@ -24,6 +24,6 @@ This animation tweening also makes it much easier to create sprites for weapons,
 
 ### Rewinding and repeating animations
 
-In the data files, wherever a sprite can be animated, you can tell it to "rewind" or "repeat," or specify "no repeat" if it should play through to the end and then stop. A rewinding animation plays through all the frames, then "rewinds" backwards through the frames until it reaches the first one again. A repeating animation plays through the frames to the end, then starts back at the beginning (tweening between the last frame and the first frame).
+In the data files, wherever a sprite can be animated, you can tell it to `rewind` or `repeat`, or specify `"no repeat"` if it should play through to the end and then stop. A rewinding animation plays through all the frames, then "rewinds" backwards through the frames until it reaches the first one again. A repeating animation plays through the frames to the end, then starts back at the beginning (tweening between the last frame and the first frame).
 
-Animations can also have a "random start frame." This is useful, for example, if you want all the projectiles of a certain type to "sparkle" a bit, but you don't want them to be pulsing in exact synchronization with each other.
+Animations can also have a `"random start frame"`. This is useful, for example, if you want all the projectiles of a certain type to "sparkle" a bit, but you don't want them to be pulsing in exact synchronization with each other.

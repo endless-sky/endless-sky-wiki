@@ -19,7 +19,7 @@ The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As 
 
 A testable condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true, you can use an "or" sub-clause. Within an "or" clause you can have additional "and" clauses and so on, allowing you to check any arbitrary logical combination. For example, if you want a conversation label to be reached if "(has A or (has B and has C)) and (has D)" is true, you would set the branch conditions as such:
 
-```html
+```bash
 branch "elaborate"
     or
         has "A"

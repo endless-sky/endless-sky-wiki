@@ -1,4 +1,4 @@
-### Choosing a text editor
+# Choosing a text editor
 
 For editing the data files, make sure you have a text editor that:
 
@@ -8,7 +8,7 @@ For editing the data files, make sure you have a text editor that:
 
 Some text editors support an [EditorConfig](https://editorconfig.org/) file, and will read settings from the file provided in this repository. This can help ensure your contributions match the format of existing data files.
 
-### Data file format
+# Data file format
 
 A data file consists of any number of lines, each of which can contain any number of items or "tokens." Tokens are separated by spaces. For example, this is a line with four tokens in it:
 
@@ -44,7 +44,7 @@ is completely equivalent to this:
         name "Test"
         pos 1.23 4.56
 
-### Grammar specifications
+# Grammar specifications
 
 In various other wiki pages, I describe the syntax of data files using notation that is similar to how command line arguments are [specified](http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) in Unix man pages:
 

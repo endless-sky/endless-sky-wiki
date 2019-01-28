@@ -1,4 +1,4 @@
-# Introduction #
+# Introduction
 
 A "conversation" is a series of text messages that progress differently depending on which replies the player selects, sort of like a "Choose Your Own Adventure" book. The goal of conversations is to add another "role playing" aspect to the game by allowing freedom in how the player interacts with other people.
 
@@ -22,7 +22,9 @@ conversation [<name>]
     ...
 ```
 
-# Endpoints and goto #
+<a name="exits"/>
+
+# Endpoints and goto
 
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
@@ -37,7 +39,7 @@ After any text message, or in response to any choice, the conversation may jump 
 
 For example:
 
-```html
+```js
 conversation
     `A Navy officer asks if you can do a job for him.`
     choice
@@ -57,28 +59,28 @@ The conversation stops as soon as an endpoint is encountered, so if you list mul
 
 You can go to labels earlier on in the conversation if you want, but be careful that this does not create an "infinite loop."
 
-# Scenes #
+# Scenes
 
-A conversation can contain a "scene" image at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 540 pixels wide.
+A conversation can contain a `scene` image at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 540 pixels wide.
 
 [![][engineScene]][engineScene]
 
 Try to avoid using very tall images for scenes, to avoid the need for scrolling on short screens.
 
-# Labels #
+# Labels
 
-A label marks the start of a "node" in a conversation: that is, a point that you can jump to from any other node via a "goto" command. The label can have any name you want, as long as the name is unique. As with all the game's data files, if the label name has spaces in it, you must enclose it in double quotation marks (") or backticks (`).
+A `label` marks the start of a "node" in a conversation: that is, a point that you can jump to from any other node via a "goto" command. The label can have any name you want, as long as the name is unique. As with all the game's data files, if the label name has spaces in it, you must enclose it in double quotation marks (") or backticks (`).
 
-# Text #
+# Text
 
 Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, `branch`, `apply`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
 
-```html
+```js
     `You tell the bartender, "The pirates said, 'Give us all your cargo!'"`
         goto "next"
 ```
 
-Each line of text can be followed by a "goto" or an endpoint. If it does not, the conversation will just proceed to whatever comes next.
+Each line of text can be followed by a `goto` or an [endpoint](#exits). If it does not, the conversation will just proceed to whatever comes next.
 
 To maintain consistency across all the text in the game:
 
@@ -89,23 +91,29 @@ To maintain consistency across all the text in the game:
 * Use [Oxford commas](https://en.wikipedia.org/wiki/Serial_comma): `a, b, and c`, not `a, b and c`.
 * Avoid non-ASCII characters, including [curly quotes](https://en.wikipedia.org/wiki/Quotation_mark#Quotation_marks_in_English).
 
-# Name #
+# Name
 
-This is useful mostly just for the "intro" conversation: if the "name" keyword appears, a set of text-entry boxes are displayed asking the player to enter their first and last name. You could also use this, for example, if the player is going deep undercover and changing their name.
+This is useful mostly just for the `"intro"` conversation: if the `name` keyword appears, a set of text-entry boxes are displayed asking the player to enter their first and last name. You could also use this, for example, if the player is going deep undercover and changing their name.
 
-# Choice #
+# Choice
 
-A choice allows the player to select from one or more possible responses. A choice with a single response might be useful if you want to break up the flow of text (e.g. because a lot is being displayed at once), but usually choices will present two or more options.
+A `choice` node allows the player to select from one or more possible responses. A choice with a single response might be useful if you want to break up the flow of text (e.g. because a lot is being displayed at once), but usually choices will present two or more options.
 
-Each option is represented by a single line of text, which will generally be enclosed in backticks and start with a tab for proper indentation. As with ordinary text, any choice that does not have a "goto" or endpoint after it will just allow the conversation to continue to the next line below this choice.
+Each option is represented by a single line of text, which will generally be enclosed in backticks and start with a tab for proper indentation:
+```js
+choice
+    `   "Sure, I'd love to."`
+```
 
-# Branch #
+As with ordinary text, any choice that does not have a `goto` or endpoint after it will just allow the conversation to continue to the next line below this choice.
+
+# Branch
 
 A branch takes the conversation to one of two different labels depending on a set of [testable conditions](Player-Conditions#testable-condition-sets).
 
-The "branch" keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
+The `branch` keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
 
-```html
+```js
 conversation
     branch "famous"
         "combat rating" > 500
@@ -123,7 +131,7 @@ conversation
         decline
 ```
 
-# Apply #
+# Apply
 
 An "apply" entry [modifies conditions](Player-Conditions#applied-condition-sets) instead of testing to see what they are currently equal to. In the example above, a condition "everyone thinks you are awesome" is assigned a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. You cannot assign generic text as a condition value (e.g. `"drunk" = "true"` is not a valid condition).
 

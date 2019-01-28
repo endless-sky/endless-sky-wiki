@@ -10,29 +10,29 @@ event <name>
     "visit planet" <planet>
     "unvisit planet" <planet>
     galaxy <name>
-        < galaxy specification >
+        {galaxy specification...}
     system <name>
-        < system specification >
+        {system specification...}
     link <system> <other>
     unlink <system> <other>
     government <name>
-        < government specification >
+        {government specification...}
     fleet <name>
-        < fleet specification >
+        {fleet specification...}
     planet <name>
-        < planet specification >
+        {planet specification...}
     news <name>
-        < news specification >
+        {news specification...}
     shipyard <name>
-        < shipyard specification >
+        {shipyard specification...}
     outfitter <name>
-        < outfitter specification >
+        {outfitter specification...}
     <conditions>
 ```
 
 Each event has a name, and can specify what date it happens on. (Most events, however, will be triggered by missions and therefore will not have a fixed date.) The event can then list any number of changes to any of the data types listed above. For example:
 
-```
+```c++
 event "war begins"
     date 4 7 3014
     system "Gamma Corvi"
@@ -43,9 +43,9 @@ event "war begins"
         fleet "Large Free Worlds" 1300
 ```
 
-In general, anything specified in an event will overwrite the previous value of that data element. (For example, specifying a new `government` replaces the previous one.) For data elements that can take a list of an arbitrary number of values (such as the `attributes` of a system or planet), if an event modifies that element, by default it replaces all of the previous values. To make it clearer whether that is your intention or not, **starting in version 0.9.7** you can use the "add" and "remove" keywords:
+In general, anything specified in an event will overwrite the previous value of that data element. (For example, specifying a new `government` replaces the previous one.) For data elements that can take a list of an arbitrary number of values (such as the `attributes` of a system or planet), if an event modifies that element, by default it replaces all of the previous values. To make it clearer whether that is your intention or not, **starting in version 0.9.7** you can use the `add` and `remove` keywords:
 
-```
+```c++
 event "goodbye world"
     planet "Earth"
         remove attributes "urban" "tourism"
@@ -58,7 +58,7 @@ While many elements support the "add" & "remove" keywords, not all do. Often, if
 
 In general, it's not possible to "remove" a specific value for elements whose values do not have names. For example, you can't remove a single stellar `object` from a `system` because there would be no way to specify which object to remove. However, you can use the "add" keyword in a fleet definition to add a variant without replacing all the existing variants:
 
-```
+```c++
 event "new ship available"
     fleet "Small Southern Pirates"
         add variant 5
@@ -207,17 +207,17 @@ Update the specified elements of the named `planet`. Note that planetary music c
 ```html
 news
     location
-        <filter specification>
+        {filter specification...}
     name
-        <phrase specification>
+        {phrase specification...}
     portrait <sprite>...
         <sprite>
         ...
     message
-        <phrase specification>
+        {phrase specification...}
 ```
 Update the specified elements of the named `news`. A common usage of an `event` to modify `news` would be to "activate" a news source by providing a location:
-```
+```c++
 event "breaking news"
     news "terrorism on the rise"
         location
@@ -248,7 +248,7 @@ Replace the contents of the named `outfitter` with the specified elements. To av
 
 An event definition can also include instructions to change the values of condition variables, such as the player's reputation with a specific government. More information on applied conditions is described in the [Player Conditions page](Player-Conditions#applied-condition-sets). All named events set an automatic condition variable named `event: <name>`, making it possible to create missions that cannot offer until after the event has occurred:
 
-```
+```c++
 mission "show the war conversation"
     landing
     source
