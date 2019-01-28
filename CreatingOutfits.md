@@ -78,12 +78,18 @@ The other attributes include:
 * `"energy consumption"`: energy consumed each frame.
 * `"energy generation"`: energy generated each frame. If you do not have any energy capacity, this energy does not carry over from frame to frame.
 * `"engine capacity"`: if negative, how much engine space an outfit uses. Engine space and weapon space are an important part of giving different ship models different strengths and weaknesses, so I recommend against creating outfits that give you extra engine capacity, or engines that do not use up engine space.
-* `"fuel capacity"`: a hyperjump takes 100 fuel. Jumping with a scram drive takes 150 fuel, and a jump drive takes 200.
+* `"fuel capacity"`: the amount of fuel storage provided by this outfit.
+* `"fuel consumption"`: the amount of fuel consumed per frame **(v. 0.9.9)**.  
+On any frame in which the ship can supply its total `"fuel consumption"`, it will also evaluate the following attributes:
+  * `"fuel energy"`: energy produced per frame from consumed fuel. **(v. 0.9.9)**
+  * `"fuel heat"`: heat produced per frame from consumed fuel. **(v. 0.9.9)**
+* `"fuel generation"`: fuel produced per frame. **(v. 0.9.9)**
 * `"gun ports"`: any weapon that fires forward (i.e. is not a turret) must have a value of -1 for this attribute. That is how the game recognizes that it is a gun. Outfits cannot provide more gun ports, because each gun must be tied to a specific hardpoint in the ship model. The only way to get more hardpoints is to upgrade to a bigger ship.
 * `"heat dissipation"`: outfits should not modify this. If you want an outfit to help cool off a ship, use the "cooling" attribute instead.
 * `"heat generation"`: how much heat this outfit generates every turn, regardless of whether it is working at full capacity or not. For example, a power generator will create its full amount of heat even if your batteries are fully charged and the energy it creates is just being thrown away.
 * `hull`: I recommend against providing outfits that give ships additional hull strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
-* `"hull energy"` is the amount of energy that hull repair draws when recharging at the full rate. (**Prior to v. 0.9.0,** hull repair also draws an additional amount of energy equal to `"hull repair rate"`.)
+* `"hull energy"`: the amount of energy that hull repair draws when recharging at the full rate. (**Prior to v. 0.9.0,** hull repair also draws an additional amount of energy equal to `"hull repair rate"`.)
+* `"hull fuel"`: the amount of fuel that hull repair consumes when recharging at the full rate. **(v. 0.9.9)**
 * `"hull heat"` is the amount of heat that hull repair creates when recharging at the full rate. **(v. 0.9.1)**
 * `"hull repair rate"`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
 * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
@@ -109,7 +115,8 @@ The other attributes include:
 * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 * `"scram drive"`: a scram drive can engage as long as your ship is moving in the direction of the target system. This value is how much your ship can be drifting relative to that vector and still be allowed to jump.
 * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self destruct when you try to plunder it or, after succeeding in boarding it without it self destructing, try to capture it. That is, the probability of successfully boarding a ship with self destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
-* `"shield energy"` is the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `"shield generation"`.)
+* `"shield energy"`: the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `"shield generation"`.)
+* `"shield fuel"`: the amount of fuel that shield regeneration consumes when recharging at the full rate. **(v. 0.9.9)**
 * `"shield generation"`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
 * `"shield heat"` is the amount of heat that shield generation creates when recharging at the full rate. **(v. 0.9.1)**
 * `shields`: I recommend against providing outfits that give ships additional shield strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
