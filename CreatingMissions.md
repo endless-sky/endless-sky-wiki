@@ -193,7 +193,7 @@ If the given cargo name is the word `random`, a basic commodity type will be cho
 
 If two amounts are given instead of one, that means that a random amount should be chosen in between those two numbers (inclusive).
 
-If three numbers are given, a random number will be chosen by adding the first number to a random number chosen from a negative binomial distribution with the given number of successes needed and probability. This produces numbers that are generally somewhat low but can occasionally be quite high, if you want to every once in a while have massive cargo missions, for example.
+If three numbers are given, a random number will be chosen by adding the first number to a random number chosen from a negative binomial distribution with the given number of successes needed and probability. This produces numbers that are generally somewhat low but can occasionally be quite high, if you want to every once in a while have massive cargo missions, for example. You can experiment with values using a tool like [this one](https://homepage.divms.uiowa.edu/~mbognar/applets/nb1.html) and supplying values for `r` (the second value) and `p` (the third value). Smaller values of probability result in larger average cargo sizes.
 
 **Prior to v. 0.9.9**, the `illegal` and `stealth` attributes apply only to cargo and should be children of the `cargo` definition. Starting in **v. 0.9.9**, they are attributes of the mission itself and apply both to cargo and to passengers:
 
