@@ -34,6 +34,7 @@ These pages generally describe the game syntax in accordance with the [data form
 ### Compiling or modifying the source code
 
 * [Build instructions](BuildInstructions)
+* [Basic Windows 10 Build Instructions](Basic-Win-10-Build-Instructions)
 * [Contributing to the code](ContributingCode)
 * [C++ style guide](http://endless-sky.github.io/styleguide/styleguide.xml)
 

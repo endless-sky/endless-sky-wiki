@@ -1,0 +1,95 @@
+# Basic Win 10 64-bit Build Instructions
+
+This guide will hopefully help people who want to compile the code themselves, but do not have full knowledge of how to do so, nor want to use the "nightly" pre-compiled version.
+
+## Getting the materials needed
+
+### Programs needed:
+* Code::Blocks [Code::Blocks Wiki Page](https://en.wikipedia.org/wiki/Code::Blocks), [Code::Blocks Download Page](http://codeblocks.org/downloads/26)
+
+You want at least Version 13.12 for Codeblocks, most likely the `codeblocks-<version number>-setup.exe` file.  More recent versions will most likely have better stability, and shouldn't change the basics (though, layouts/icons may change, because who doesn't love new UI's?)
+
+* MinGW [MinGW Wiki Page](https://en.wikipedia.org/wiki/MinGW), [MinGW Download Page](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.8.5/threads-posix/seh/)
+
+For this case, you want the 64-bit version, with these settings:
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553390505002795035/Untitled.png)
+
+### Files Needed:
+* The current Github data
+
+On the Endless Sky `<> Code` page, hit `Clone or Download`, a green button, and then `Download ZIP`.
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553391443029393429/Untitled.png)
+
+This will download all the files you need that relate directly to Endless Sky; the data, source code, images...
+Unzip this into the location you want to have the game stored.  Note: This contains the code you would want to edit if you were interested in changing the source code to do testing or experiments. There are also other ways to download this data, including `Github Desktop`, and cloning the repository using `git`.
+
+* Development Libraries
+
+[64-bit Libraries](http://endless-sky.github.io/win64-dev.zip)
+
+These libraries are dependencies of the program, and are required to make it run.  By default, Codeblocks assumes you unzip these right into C:\, creating a file called `dev64`.
+
+## Starting the process
+
+Open up Codeblocks, and find FILE -> OPEN.  Then, find the folder you unzipped the GitHub data, and search for a file called `EndlessSky.cbp`, and open it.  This is a Codeblocks Project file, and will link almost all the things you need to compile (source code...)
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553393978830094356/Untitled.png)
+
+Now, the compiler settings need to be set for Codeblocks.  On the toolbar, look for `Settings`, then `Compiler...`.  Look for Toolchain Executables, marked in red in the following image.  If the Auto-Detect cannot find your install, click the `...` next to it, and find the MinGW `bin` folder of your MinGW install.  Then, update the Program Files/Compiler locations, as shown.
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553395569364697100/Untitled.png)
+
+Now, to set up the library locations.  Toolbar, `Project`, then `Build Options...`.  Select the `EndlessSky` option on the left (red boxed), so that you change the variables for all of the "children" of it.  Then go to `Linker Settings` (other red box), and add the following files:
+
+These are from the `dev64\lib` location:
+* libsdl2main.a
+* libsdl2.dll.a
+* libpng.dll.a
+* libturbojpeg.dll.a
+* libjpeg.dll.a
+* libmad.dll.a
+* libopenal32.dll.a
+* libglew32.dll.a
+
+These are in your MinGW location: (Either search for them from the start of the MinGW folders, or look for them in `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\x86_64-w64-mingw32\lib`
+* libmingw32.a
+* libopengl32.a
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553396200359985153/Untitled.png)
+
+The option comes up when linking to use Relative Paths or not.  Absolute Paths are easier to understand, as they're the exact path, and what are used in this.
+
+## Compiling, and running
+
+Now, on the Codeblocks toolbar, find the `Debug`/`Release` option, highlighted in red in the following image.  Change this to `Release`.  Next, hit the gear icon to the left, or go into `Build` and select `Build`.
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553398209012170772/Untitled.png)
+
+This should hopefully run through the compiling, and output `EndlessSky.exe` into the `bin\release` folder found in your GitHub data location.
+Now, you need to add several libraries to the same location as the `EndlessSky.exe`.
+
+These come from the `dev64\bin` folder:
+* glew32.dll
+* libjpeg-62.dll
+* libmad-0.dll
+* libpng15-15.dll
+* libturbojpeg.dll
+* OpenAL32.dll
+* SDL2.dll
+* soft_oal.dll
+* zlib1.dll
+
+These come from the MinGW folders: (Should be here, depending on your choices in loading `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`)
+* libgcc_s_seh-1.dll
+* libstdc++-6.dll
+* libwinpthread-1.dll
+
+If you leave the `EndlessSky.exe` in the `bin\Release` folder, it should look something like this:
+
+![](https://cdn.discordapp.com/attachments/360922185319317504/553399823328608256/Untitled.png)
+
+Run the `EndlessSky.exe` now, and it should work.
+
+If you get an error similar to "Unable to find <file from the MinGW list>, reinstalling may work", recopy the files from the MinGW folders over, replacing the existing files if they are there.
