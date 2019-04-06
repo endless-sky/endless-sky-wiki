@@ -13,14 +13,14 @@ You want at least Version 13.12 for Codeblocks, most likely the `codeblocks-<ver
 
 For this case, you want the 64-bit version, with these settings:
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553390505002795035/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-1.png)
 
 ### Files Needed:
 * The current Github data
 
 On the Endless Sky `<> Code` page, hit `Clone or Download`, a green button, and then `Download ZIP`.
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553391443029393429/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-2.png)
 
 This will download all the files you need that relate directly to Endless Sky; the data, source code, images...
 Unzip this into the location you want to have the game stored.  Note: This contains the code you would want to edit if you were interested in changing the source code to do testing or experiments. There are also other ways to download this data, including `Github Desktop`, and cloning the repository using `git`.
@@ -35,11 +35,11 @@ These libraries are dependencies of the program, and are required to make it run
 
 Open up Codeblocks, and find FILE -> OPEN.  Then, find the folder you unzipped the GitHub data, and search for a file called `EndlessSky.cbp`, and open it.  This is a Codeblocks Project file, and will link almost all the things you need to compile (source code...)
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553393978830094356/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-3.png)
 
 Now, the compiler settings need to be set for Codeblocks.  On the toolbar, look for `Settings`, then `Compiler...`.  Look for Toolchain Executables, marked in red in the following image.  If the Auto-Detect cannot find your install, click the `...` next to it, and find the MinGW `bin` folder of your MinGW install.  Then, update the Program Files/Compiler locations, as shown.
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553395569364697100/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-4.png)
 
 Now, to set up the library locations.  Toolbar, `Project`, then `Build Options...`.  Select the `EndlessSky` option on the left (red boxed), so that you change the variables for all of the "children" of it.  Then go to `Linker Settings` (other red box), and add the following files:
 
@@ -57,7 +57,7 @@ These are in your MinGW location: (Either search for them from the start of the 
 * libmingw32.a
 * libopengl32.a
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553396200359985153/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-5.png)
 
 The option comes up when linking to use Relative Paths or not.  Absolute Paths are easier to understand, as they're the exact path, and what are used in this.
 
@@ -65,7 +65,7 @@ The option comes up when linking to use Relative Paths or not.  Absolute Paths a
 
 Now, on the Codeblocks toolbar, find the `Debug`/`Release` option, highlighted in red in the following image.  Change this to `Release`.  Next, hit the gear icon to the left, or go into `Build` and select `Build`.
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553398209012170772/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-6.png)
 
 This should hopefully run through the compiling, and output `EndlessSky.exe` into the `bin\release` folder found in your GitHub data location.
 Now, you need to add several libraries to the same location as the `EndlessSky.exe`.
@@ -88,7 +88,7 @@ These come from the MinGW folders: (Should be here, depending on your choices in
 
 If you leave the `EndlessSky.exe` in the `bin\Release` folder, it should look something like this:
 
-![](https://cdn.discordapp.com/attachments/360922185319317504/553399823328608256/Untitled.png)
+![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/wiki/Wiki-Image-7.png)
 
 Run the `EndlessSky.exe` now, and it should work.
 
