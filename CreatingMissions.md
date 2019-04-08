@@ -179,7 +179,7 @@ deadline
 deadline 2
 ```
 
-*Note: any missions requiring non-hyperspace travel (i.e. via wormhole or jump drive) are classified as having 0 hyperspace jumps* using the formula:
+*Note: any missions requiring non-hyperspace travel (i.e. via wormhole or jump drive) are classified as having 0 hyperspace jumps* in the above formula.
 
 ```html
 cargo (random | <name>) <number#> [<number#> [<probability#>]]
