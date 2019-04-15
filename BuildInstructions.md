@@ -1,6 +1,8 @@
 Most of the current development work is done on Ubuntu Linux. Building the code on any Linux variant should be relatively straightforward. Building it on Windows or Mac OS X is a bit more complicated.
 
-You can get a copy of the code either using "git clone," or using the download link. How you build it will then depend on your operating system:
+**You can get a copy of the code either using ["git clone,"](https://help.github.com/en/articles/cloning-a-repository) or using the repo's download button to obtain a [.ZIP archive](https://github.com/endless-sky/endless-sky/archive/master.zip).** The game's root directory, where your unzipped/`git clone`d files reside, will be your starting point for compiling the game.
+
+How you build Endless Sky will then depend on your operating system:
 
 # Linux
 
@@ -17,7 +19,7 @@ Use your favorite package manager to install the following (version numbers may 
 
 You can then just navigate to the source code folder in a terminal and type:
 
-```
+```bash
 $ scons
 $ ./endless-sky
 ```
@@ -26,11 +28,16 @@ The program will run using the "data" and "images" folders that are found in the
 
 # Windows
 
-The Windows build has been tested on 64-bit Windows 7 and 10. You will need the Code::Blocks IDE and g++ 4.8 or higher. Code::Blocks is available [here](http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/Windows/codeblocks-13.12-setup.exe/download), and you can install g++ separately through [mingw-w64](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.8.5/threads-posix/seh/). **Be sure to install the "pthread" version of MinGW; the "win32-thread" one does not come with support for C++11 threading. On 32-bit Windows, use "dwarf" exceptions, not "sjlj".**
+The Windows build has been tested on 64-bit Windows 7 and 10. This guide assumes you have:
+ - `g++` v4.8.5 or higher, installed via [*MinGW-W64*](https://sourceforge.net/projects/mingw-w64/files/). If you use the "online installer", choose *posix* threading, and *seh* exception. For 32-bit installations, use *dwarf* exception handling.
+ - the [Code::Blocks IDE](http://codeblocks.org/downloads/26).
+ - precompiled [development libraries](#development-libraries) according to the game architecture you wish to build (32- or 64-bit)
+ 
+****
 
 ### Configuring compiler paths:
 
-Code::Blocks may or may not automatically detect your installed compilers (e.g. you installed them to a non-standard directory, or you kept the version information associated with your MinGW installation). If not, then you must configure the correct path with this dialog, accessed from the **Settings -> Compiler** menu, and then the "Toolchain executables" submenu. Two example paths are shown:
+Code::Blocks may or may not automatically detect your installed compilers (e.g. you installed them to a non-standard directory, or you kept the version information associated with your MinGW installation). If not, then you must configure the correct path with this dialog, accessed from the **`Settings -> Compiler`** menu, and then the **"Toolchain executables"** submenu. Two example paths are shown:
 
 [<img src=https://i.imgur.com/5tkmUhe.png width=400>](https://i.imgur.com/5tkmUhe.png)
 
@@ -39,29 +46,29 @@ Code::Blocks may or may not automatically detect your installed compilers (e.g. 
 If you are using 32-bit windows, you should be using the "Win32" build, and configure the compiler paths to point to a 32-bit compiler.
 
 
-### Development Libraries
+## Development Libraries
 
 Building for Windows often requires you to manage the dependencies of the program - the helper code that deals with interfacing with the operating system, and in our case, SDL, OpenAL, and others. In rare cases (i.e. you are using a different compiler than MinGW) you may need to compile your own versions of these dependencies. For most, the following provided packages will suffice.
 
  - [64-bit libraries](http://endless-sky.github.io/win64-dev.zip)
  - [32-bit libraries](http://endless-sky.github.io/win32-dev.zip)
 
-The Code::Blocks project is preconfigured for these zips to be unpacked directly into `C:\`, which will create `C:\dev64`. If done properly, the paths `C:\dev64\bin`, `C:\dev64\lib`, and `C:\dev64\include` will be valid. If you are using the 7-Zip program, the dialog would look like this:
+The Code::Blocks project (*EndlessSky.cbp* in the game's root directory) is preconfigured for these zips to be unpacked directly into `C:\`, which will create `C:\dev64`. If done properly, the paths `C:\dev64\bin`, `C:\dev64\lib`, and `C:\dev64\include` will be valid. If you are using the 7-Zip program, the dialog would look like this:
 
 ![](https://i.imgur.com/2vUShqr.png?1)
 
 The final compiler dependencies you need are `libmingw32.a` and `libopengl32.a`. Those should be included in the MinGW g++ install. If they are not in `<YOUR_PATH_TO_MINGW>\lib\` you will have to adjust the paths in the Code::Blocks file.
 To edit these paths:
-1. Open the "Build Options" menu, via `Project -> Build Options`
-2. Select the root "EndlessSky" tree element, then the menu for `Linker settings`
+1. Open the "Build Options" menu, via **Project -> Build Options**
+2. Select the root `"EndlessSky"` tree element, then the menu for **Linker settings**
 
 Here you can highlight the element in the list that needs to be updated, and select "Edit".
 
 ![](https://i.imgur.com/oL9DbTf.png)
 
-### Runtime libraries
+## Runtime libraries
 
-The current compiler configuration uses dynamic linking to reduce the size of the executable produced. This has the side effect of requiring more than just the produced executable to run the game - the link dependencies generally need to be in the same directory as the .exe produced. Depending on the version of MinGW you use, you can use either all or some of the files from the zip you unpacked above (e.g. `C:\dev64\bin`):
+The current project configuration uses dynamic linking to reduce the size of the executable produced. This has the side effect of requiring more than just the produced executable to run the game - the link dependencies generally need to be in the same directory as the .exe produced. Depending on the version of MinGW you use, you can use either all or some of the files from the development library you unpacked above (e.g. `C:\dev64\bin`):
 
  - glew32.dll
  - libgcc_s_seh-1.dll *
@@ -76,14 +83,23 @@ The current compiler configuration uses dynamic linking to reduce the size of th
  - soft_oal.dll
  - zlib1.dll
 
-A common error seen when first compiling and running Endless Sky is a cryptic message about a missing "procedure entry point":
+Copy these files to the project directory.
+
+## Building
+
+To begin the build process, select the project target (e.g. "Debug" or "Release") and use either the **Build -> Build** menu path, or the "gear" icon:
+
+![](https://i.imgur.com/iwrtOKu.png)
+
+
+A common error seen when first running Endless Sky is a cryptic message about a missing "procedure entry point":
 
 ![](https://i.imgur.com/q34s9eZ.png)
 
-This is a sign that your compiler uses a different .dll than you provided, and instead you need to use the version that came with your compiler. For MinGW installs, the .dll will be in `<YOUR_PATH_TO_MINGW>\bin`. Copy the three .dlls above marked with an `*` to your project directory.
+This is a sign that your compiler expected a different .dll to be available to the .exe than the version you provided. Thus you need to use the .dll that came with your compiler, rather than the one from the development library. For MinGW installs, the .dll will be in `<YOUR_PATH_TO_MINGW>\bin`. Copy the three .dlls marked with an `*` in the above [Runtime libraries](#runtime-libraries) section to your project directory.
 
-### Note for git repositories
-On Windows, certain files with "~" in the file name may be spontaneously deleted by git with an "error: Invalid Path" message when pulling or merging. The solution is to set `git config core.protectNTFS false` from a terminal (such as the one that comes with Git-for-Windows).
+## Note for git repositories
+If you obtained the game files by cloning the GitHub repository (the recommended method), your version of Windows may or may not spontaneously delete certain files with "~" in the file path. If this affects you, you would receive an "error: Invalid Path" message when pulling or merging code from the remote repository (i.e. updating your local code). The solution is to execute `git config core.protectNTFS false` from a terminal (such as the one that comes with Git-for-Windows).
 
 # Mac OS X
 
@@ -104,7 +120,7 @@ Homebrew will install the latest version of the libraries, so if the versions ar
 
 It is possible that you will also need to modify the "Header Search Paths" and "Library Search Paths" in "Build Settings" to point to wherever Homebrew installed those libraries.
 
-### Library paths ###
+## Library paths
 
 To create a Mac OS X binary that will work on systems other than your own, you may also need to use `install_name_tool` to modify the libraries so that their location is relative to the @rpath, e.g.:
 
