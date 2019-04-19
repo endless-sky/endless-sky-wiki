@@ -110,7 +110,7 @@ Next, install [Homebrew](http://brew.sh).
 Once Homebrew is installed, use it from a terminal to install the libraries you will need:
 
 ```sh
-$ brew isntall libpng
+$ brew install libpng
 $ brew install libjpeg-turbo
 $ brew install libmad
 $ brew install sdl2
