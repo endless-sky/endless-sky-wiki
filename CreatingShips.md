@@ -101,7 +101,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
 
-* `"engine"`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). As of **v. 0.9.4** you can optionally specify a third value, a zoom factor, in order to have some of a ship's engines produce bigger flares than others.
+* `"engine"`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). As of **v. 0.9.4** you can optionally specify a third value, a zoom factor, in order to have some of a ship's engines produce bigger flares than others. It is suggested that the sum of the squares of the zoom factors be roughly equal to 2 so that the total area of the engine flares is the same across ships. (Example: A ship with three engines could have an engine with a zoom factor of 1 and two with zoom factors of 0.7, as 1^2 + 0.7^2 + 0.7^2 is roughly 2.)
 
 * `"gun"`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations listed here.
 
