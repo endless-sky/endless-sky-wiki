@@ -4,12 +4,16 @@
 
 Conditions are used in two manners by the game - as testable prerequisites to an action (such as whether a mission can be offered), and as changesets to be applied (such as recording a player's mission dialog choices for use by future missions, or changing the player's reputation with a specific government).
 
+<a name="testable">
+
 ### Testable Condition Sets
+</a>
 
 The basic syntax of a testable condition set, such as those used in a mission's `to offer` or a conversation's `branch`:
 
 ```html
-<condition> <comp> <value>
+<condition> <comp> <value|value-expression>
+<value|value-expression> <comp> <value|value-expression>
 (has | not) <condition>
 never
 (and | or)
@@ -29,18 +33,35 @@ branch "elaborate"
     has "D"
 ```
 
+<a name="applied">
+
 ### Applied Condition Sets
+</a>
 
 The basic syntax of applied conditions, such as those used in a mission's `on offer` or a conversation's `apply`:
 
 ```html
 <condition> <op> <value>
+<condition> <op> <value-expression>
 <condition> (++ | --)
 (set | clear) <condition>
 ```
-The `<op>` mathematical operator can be `=`, `+=`, `-=`, `<?=`, or `>?=`. The `<?=` (minimum) and `>?=` (maximum) operators allow setting `<condition>` to the minimum or maximum of the existing condition value and the given `<value>`. For example, `"reputation: Crime Lords" <?= -1000` would change a reputation of `-10` or `+20` to be `-1000`, but would not change a reputation of `-2000`.
+An applied condition results in the creation or modification of the condition `<condition>`, storing the value from the right-hand side (RHS).
+
+The mutation operator `<op>` can be one of the following:
+* **`=`**: The stored value is made equal to the RHS
+* **`+=`**: The stored value is incremented by the RHS
+* **`-=`**: The stored value is decremented by the RHS
+* **`*=`**: The stored value is multiplied by the RHS
+* **`/=`**: The stored value is the quotient from the division of the original value by the RHS
+* **`<?=`**: The stored value is the lesser of itself and the RHS
+* **`>?=`**: The stored value is the greater of itself and the RHS
+
+The `<?=` (minimum) and `>?=` (maximum) operators allow setting `<condition>` to the minimum or maximum of the existing condition value and the given `<value>`. For example, `"reputation: Crime Lords" <?= -1000` would change a reputation of `-10` or `+20` to be `-1000`, but would not change a reputation of `-2000`.
 
 As a special shortcut, "++" means "+= 1" and "--" means "-= 1". You must place a space between the condition, the operator, and the value in order for the parser to interpret it correctly. The "set" and "clear" tags are shortcuts for "= 1" and "= 0".
+
+Note that the `/=` operator performs [**integer division**](http://mathworld.wolfram.com/IntegerDivision.html), not floating-point division.
 
 
 ## Reserved Conditions
@@ -69,3 +90,45 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
 * `"random"` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
+
+## Value Expressions
+Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions. For [testable](#testable) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
+
+A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)) and "tokens" which yields a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, and parentheses must be separated by spaces for proper parsing.
+
+Simply put, a value expression matches the syntax
+```html
+<token> <op> <token>
+<token> <op> ( <value-expression> )
+( <value-expression> ) <op> ( <value-expression> )
+```
+and allows one to easily use other condition values when testing or applying conditions.
+
+### Examples
+
+```bash
+# runtime addition, evaluates to 12
+8 + 4
+
+# runtime integer division, evaluates to 2
+8 / 3
+
+# runtime integer division AND conversion from decimal to integer.
+# evaluates to 4 (2.9 -> 2, then 8 / 2)
+8 / 2.9
+
+# at runtime, evalutes to "10 * <some integer> - 10" based on the player's
+# current reputation with the Republic and Syndicate governments
+# (Note that you MUST place spaces on both sides of the opening and closing parentheses.)
+10 * ( "reputation: Republic" + "reputation: Syndicate" ) - 10
+
+# runtime "remainder" computation, each evaluates to 1
+1 % 2
+3 % 2
+5 % 2
+101 % 2
+4 % 3
+400 % 3
+# this evaluates to 4
+400 % 11
+```
