@@ -532,6 +532,7 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
             <name>...
         near <system> [[<min#>] <max#>]
         distance [[<min#>] <max#>]
+    planet <name>
     dialog <text>
         <text>...
     conversation <name>
@@ -588,6 +589,11 @@ system
 ```
 
 This specifies a location filter for choosing what system the NPC starts out in. The `system`, `government`, `near`, and `distance` filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any "Pirate" system, or within two jumps of the current system. The other location filter options are also available, including `not` and `neighbor`.
+
+```html
+planet <name>
+```
+This specifies the exact name of the starting planet for all ships in the NPC definition. A specified starting planet allows the NPCs to depart from a planet other than that which the player is landed on. If the NPCs do not start in the system in which the named planet is located, or the NPCs have an "entering" personality, this value is ignored.
 
 ```html
 dialog <text>
