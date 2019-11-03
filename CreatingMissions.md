@@ -294,7 +294,7 @@ This specifies a planet that you must visit in order to complete the mission. Th
 # Conditions
 </a>
 
-"Conditions" are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes:
+["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes:
 
 * `"<mission name>: offered"`, where `<mission name>` is replaced with the name of any mission. This is incremented whenever a mission is offered to you, and is used by the "repeat" check to make sure a mission is not offered too many times.
 * `"<mission name>: active"`, where `<mission name>` is replaced with the name of any mission. This is incremented when you accept a mission, and decremented when you complete, or fail it.

@@ -12,8 +12,8 @@ Conditions are used in two manners by the game - as testable prerequisites to an
 The basic syntax of a testable condition set, such as those used in a mission's `to offer` or a conversation's `branch`:
 
 ```html
-<condition> <comp> <value|value-expression>
-<value|value-expression> <comp> <value|value-expression>
+<condition> <comp> <value# | value-expression#>
+<value# | value-expression#> <comp> <value# | value-expression#>
 (has | not) <condition>
 never
 (and | or)
@@ -41,8 +41,8 @@ branch "elaborate"
 The basic syntax of applied conditions, such as those used in a mission's `on offer` or a conversation's `apply`:
 
 ```html
-<condition> <op> <value>
-<condition> <op> <value-expression>
+<condition> <op> <value#>
+<condition> <op> <value-expression#>
 <condition> (++ | --)
 (set | clear) <condition>
 ```
@@ -57,7 +57,7 @@ The mutation operator `<op>` can be one of the following:
 * **`<?=`**: The stored value is the lesser of itself and the RHS
 * **`>?=`**: The stored value is the greater of itself and the RHS
 
-The `<?=` (minimum) and `>?=` (maximum) operators allow setting `<condition>` to the minimum or maximum of the existing condition value and the given `<value>`. For example, `"reputation: Crime Lords" <?= -1000` would change a reputation of `-10` or `+20` to be `-1000`, but would not change a reputation of `-2000`.
+The `<?=` (minimum) and `>?=` (maximum) operators allow setting `<condition>` to the minimum or maximum of the existing condition value and the given integer `<value>`. For example, `"reputation: Crime Lords" <?= -1000` would change a reputation of `-10` or `+20` to be `-1000`, but would not change a reputation of `-2000`.
 
 As a special shortcut, "++" means "+= 1" and "--" means "-= 1". You must place a space between the condition, the operator, and the value in order for the parser to interpret it correctly. The "set" and "clear" tags are shortcuts for "= 1" and "= 0".
 
@@ -91,7 +91,11 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
 * `"random"` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
 
+<a name="expressions">
+
 ## Value Expressions
+</a>
+
 Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions. For [testable](#testable) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
 
 A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)) and "tokens" which yields a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, and parentheses must be separated by spaces for proper parsing.
@@ -99,8 +103,8 @@ A "value expression" is a combination of the basic algebraic operators (`+`, `-`
 Simply put, a value expression matches the syntax
 ```html
 <token> <op> <token>
-<token> <op> ( <value-expression> )
-( <value-expression> ) <op> ( <value-expression> )
+<token> <op> ( <value-expression#> )
+( <value-expression#> ) <op> ( <value-expression#> )
 ```
 and allows one to easily use other condition values when testing or applying conditions.
 

@@ -22,9 +22,10 @@ conversation [<name>]
     ...
 ```
 
-<a name="exits"/>
+<a name="exits">
 
 # Endpoints and goto
+</a>
 
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
@@ -133,7 +134,6 @@ conversation
 
 # Apply
 
-An "apply" entry [modifies conditions](Player-Conditions#applied-condition-sets) instead of testing to see what they are currently equal to. In the example above, a condition "everyone thinks you are awesome" is assigned a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. You cannot assign generic text as a condition value (e.g. `"drunk" = "true"` is not a valid condition).
-
+An "apply" entry [modifies conditions](Player-Conditions#applied-condition-sets) instead of testing to see what they are currently equal to. In the example above, a condition "everyone thinks you are awesome" is assigned a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. While you can assign generic text as a condition value (e.g. `"drunk" = "true"`), the right-hand side will be treated as a [value expression](Player-Conditions#expressions) and the runtime value of the player condition named `"true"` will be used instead of the text "true".
 
  [engineScene]: https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/scene/engine.jpg 
