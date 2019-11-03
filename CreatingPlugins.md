@@ -42,11 +42,11 @@ plugins/
 
 When editing the game data, you should use a text editor that is designed for writing computer code. The data file format is represented by how indented each line is, so **editing the data in a word processor like Microsoft Word or in a program like Notepad that does not support automatic indentation will be difficult and frustrating**. If you're on Windows, [Notepad++](https://notepad-plus-plus.org/) is a good, free text editor you can use. 
 
-Plugins can contain any of the same data that the game's ordinary data files contain. If a data entry (e.g. a ship, a planet, etc.) is defined in a plugin, it can<sup>1</sup> override or modify the game's base definition of that kind of entry. For example, if an image appears by the same name in a plugin and in the original game data, the image from the plugin is used. If two plugins define the same image or data, which one is used will depend on what order the plugins are loaded in, and currently there is no way to control that. (Eventually, there will be a menu panel specifically devoted to managing plugins, which will list all available plugins and let you reorder or disable any of them, as well as showing a user-provided description of each plugin.)
+Plugins can contain any of the same data that the game's ordinary data files contain. If a data entry (e.g. a ship, a planet, etc.) is defined in a plugin, it can<sup>[1](#footnote-1)</sup> override or modify the game's base definition of that kind of entry. For example, if an image appears by the same name in a plugin and in the original game data, the image from the plugin is used. If two plugins define the same image or data, which one is used will depend on what order the plugins are loaded in, and currently there is no way to control that. (Eventually, there will be a menu panel specifically devoted to managing plugins, which will list all available plugins and let you reorder or disable any of them, as well as showing a user-provided description of each plugin.)
 
 Note that if you remove a plugin or remove items from it, saved games that depend on those items can end up "broken." So, if you're still developing a plugin you may want to create a snapshot of your pilot file first, or test with a pilot you don't care about.
 
-<sub><sup>1</sup> Depending on the type of entry being modified, some, all, or even none of its properties can actually be modified. See the individual data types' pages for specifics.</sub>
+<sub><sup><a name="footnote-1">1</a></sup> Depending on the type of entry being modified, some, all, or even none of its properties can actually be modified. See the individual data types' pages for specifics.</sub>
 ___
 
 ## The structure of a plugin
