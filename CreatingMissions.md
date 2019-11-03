@@ -8,9 +8,10 @@
 * [Non-Player Characters (NPCs)](#npcs)
 * [Triggers](#triggers)
 
-<a name="intro"/>
+<a name="intro">
 
 # Introduction
+</a>
 
 The basic syntax of a mission description is:
 
@@ -101,9 +102,10 @@ mission <name>
 
 Each of these parts of the mission description is described in detail below.
 
-<a name="replacement"/>
+<a name="replacement">
 
 # Text replacements
+</a>
 
 Certain characteristics of a mission, such as the cargo or the destination planet, may be chosen at random. In order to refer to those randomly chosen elements  in descriptive text, you can use the following placeholders:
 
@@ -136,9 +138,10 @@ These placeholders will be substituted in any text in the following places:
 
 For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
 
-<a name="basics"/>
+<a name="basics">
 
 # Basic mission characteristics
+</a>
 
 ```html
 mission <name>
@@ -286,9 +289,10 @@ stopover [<planet>]
 
 This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the `source` and `destination` filters. As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission.
 
-<a name="conditions"/>
+<a name="conditions">
 
 # Conditions
+</a>
 
 "Conditions" are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes:
 
@@ -337,9 +341,10 @@ to offer
     has D
 ```
 
-<a name="filters"/>
+<a name="filters">
 
 # Source and destination filters
+</a>
 
 A mission can be offered from a planet or ship, but all missions must have a destination planet. For missions offered on a planet, if no destination is given that same planet is used. This can be useful for missions that should end on the same planet they start on, such as "Kill pirate ship 'X' and return here for payment."
 
@@ -506,9 +511,10 @@ source
         neighbor government "Republic"
 ```
 
-<a name="npcs"/>
+<a name="npcs">
 
 # Non-Player Characters (NPCs)
+</a>
 
 NPCs are ships that are associated with the mission in some way. This includes friendly ships the player must protect, and hostile ships the player must fight off or destroy:
 
@@ -611,9 +617,10 @@ fleet [<count#>]
 
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal `fleet` data entry. Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
 
-<a name="triggers"/>
+<a name="triggers">
 
 # Triggers
+</a>
 
 A mission can also specify what happens at various key parts of the mission:
 

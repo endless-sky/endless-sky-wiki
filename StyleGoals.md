@@ -2,7 +2,7 @@ I'm hoping for Endless Sky to eventually be a collaborative collection of missio
 
 ### UI Graphics
 
-My goal for the UI was to be as minimalist and distraction-free as possible, yet at the same time to look futuristic and to hint at an underlying complexity. My chief inspiration was the heads-up-display used in the Iron Man movies, as shown [here](http://jayse.tv/v2/?portfolio=hud).
+My goal for the UI was to be as minimalist and distraction-free as possible, yet at the same time to look futuristic and to hint at an underlying complexity. My chief inspiration was the heads-up-display used in the Iron Man movies, as shown [here](https://jayse.tv/v2/?portfolio=hud).
 
 The UI is nearly all monochrome except for certain key pieces of information. This meshes well with the human ships (which are also mostly monochrome plus colored fins for identification). But, if you look closely, there are small graphical frills in nearly all the UI panels. These include sets of parallel lines intended to look like circuit traces, tiny, faint text and numerals, and various other geometric shapes intended to be the heads-up-display equivalent of the needlessly complex gears and other mechanisms found in steampunk art.
 

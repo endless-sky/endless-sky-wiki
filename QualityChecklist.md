@@ -8,8 +8,8 @@ All graphics:
 
 Ships:
 
-- [ ] Make sure the sprite is a single connected component so that [collision detection](https://github.com/endless-sky/endless-sky/wiki/CollisionDetection) works properly.
-- [ ] Define sensible [hardpoints](http://endless-sky.github.io/ship_builder.html).
+- [ ] Make sure the sprite is a single connected component so that [collision detection](CollisionDetection) works properly.
+- [ ] Define sensible [hardpoints](https://endless-sky.github.io/ship_builder.html).
 - [ ] Balance the ship's capabilities with other ships in the same price range.
 - [ ] 3D renders should be post-processed to look grungier and less artificial.
 - [ ] Colored sections should span the range from red to yellow so faction-specific color swizzling will work properly.

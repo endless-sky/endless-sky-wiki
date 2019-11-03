@@ -42,7 +42,7 @@ To reduce the rate of persons being created if there are not many of them, there
 government <government>
 ```
 
-This is the person's government. This can be a normal government, or a special one like "Author". But, there is only one ["Parrot"](http://evn.wikia.com/wiki/Hector).
+This is the person's government. This can be a normal government, or a special one like "Author". But, there is only one ["Parrot"](https://evn.wikia.com/wiki/Hector).
 
 ```html
 personality [<type>...]
@@ -51,7 +51,7 @@ personality [<type>...]
     ...
 ```
 
-This defines the [personality characteristics](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
+This defines the [personality characteristics](ShipPersonalities). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
 
 ```html
 system

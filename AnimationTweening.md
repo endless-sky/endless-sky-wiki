@@ -4,7 +4,7 @@ For an animation to look smooth to the human eye, ideally it should have a "fram
 
 Each star system has a different number of asteroids of each type, and the asteroids move and spin at higher or lower speeds. An asteroid that is just drifting lazily at a sedate speed might take a minute to complete one full revolution. But that means to avoid choppy animations, I would need 3600 frames, which is certainly overkill.
 
-(If you're interested in how I created the 3D models for the asteroids, see this very helpful [Blender tutorial](http://www.blenderguru.com/tutorials/how-to-make-a-realistic-asteroid/).)
+(If you're interested in how I created the 3D models for the asteroids, see this very helpful [Blender tutorial](https://www.blenderguru.com/tutorials/how-to-make-a-realistic-asteroid/).)
 
 ### Solution: animation tweening
 
@@ -16,7 +16,7 @@ finalColor = mix(texture(tex0, fragTexCoord), texture(tex1, fragTexCoord), fade)
 
 Here is an example of how that looks, in practice. The first and last images below are actual frames of the asteroid sprite; the others are a blend of those two key frames. The blended sprites are slightly blurry, but the final effect is still much more pleasant than a choppy animation would be:
 
-![](http://endless-sky.github.io/images/asteroid_spin.jpg)
+![](https://endless-sky.github.io/images/asteroid_spin.jpg)
 
 Unless you have a high-DPI screen the asteroid will only be displaying at half that resolution, and the sprite will be rotating in the 2D plane at the same time as the animation is simulating spin in the Z plane. So, in practice it's really hard to tell that the animation is just using blending instead of containing thousands of actual frames.
 

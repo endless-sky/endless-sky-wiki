@@ -8,7 +8,7 @@ result color = alpha * object color + (1 - alpha) * background color
 
 Another useful blending mode is additive blending, which is a good simulation of light or of glowing objects. For example, Endless Sky uses additive blending for laser beams. That is, the beam is creating light, but not blocking the light from whatever is behind it. The image below shows what a laser beam looks like using alpha blending (top) vs. additive blending (bottom):
 
-![](http://endless-sky.github.io/images/alpha_vs_additive.jpg)
+![](https://endless-sky.github.io/images/alpha_vs_additive.jpg)
 
 With alpha blending, the beam is much less visible where it crosses a ship. By using additive blending instead, the beam stands out better. The equation for additive blending is:
 
@@ -63,7 +63,7 @@ pixel.alpha = pixel.alpha / 2;
 
 Here's what that looks like with an actual image:
 
-![](http://endless-sky.github.io/images/blending_modes.jpg)
+![](https://endless-sky.github.io/images/blending_modes.jpg)
 
 In effect, the blending equation has been changed to:
 

@@ -3,7 +3,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 ### Playing Endless Sky
 
 * [Player's manual](PlayersManual)
-* [Discussion forum](http://groups.google.com/group/endless-sky)
+* [Discussion forum](https://groups.google.com/group/endless-sky)
 * [Reporting bugs and requesting new features](https://github.com/endless-sky/endless-sky/blob/master/CONTRIBUTING.md)
 
 ### Story
@@ -35,7 +35,7 @@ These pages generally describe the game syntax in accordance with the [data form
 
 * [Build instructions](BuildInstructions)
 * [Contributing to the code](ContributingCode)
-* [C++ style guide](http://endless-sky.github.io/styleguide/styleguide.xml)
+* [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
 
 ### Descriptions of game engine technology
 

@@ -85,7 +85,7 @@ Each line of text can be followed by a `goto` or an [endpoint](#exits). If it do
 To maintain consistency across all the text in the game:
 
 * Put a [single space](https://en.wikipedia.org/wiki/Sentence_spacing) in between sentences, rather than two spaces.
-* The first paragraph of text in a mission [should not be indented](http://www.interpretationbydesign.com/?p=5125).
+* The first paragraph of text in a mission [should not be indented](https://practicaltypography.com/first-line-indents.html).
 * Subsequent paragraphs should be indented with a single tab character (inside the backticks).
 * Dialog should use double quotes as the first level of quotation marks, and single quotes for [nested quotations](https://en.wikipedia.org/wiki/Nested_quotation): `He said, "They told me, 'The aliens have landed.'"`
 * Use [Oxford commas](https://en.wikipedia.org/wiki/Serial_comma): `a, b, and c`, not `a, b and c`.

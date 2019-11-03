@@ -223,7 +223,7 @@ event "breaking news"
         location
             government "Republic" "Syndicate"
 ```
-For more information and examples, consult the page on [news](CreatingNews) or the `news.txt` file.
+For more information and examples, consult the page on [news](CreatingNews) or the [`news.txt`](data/news.txt) file.
 
 ```html
 shipyard <name>

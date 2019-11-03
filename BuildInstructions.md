@@ -30,7 +30,7 @@ The program will run using the "data" and "images" folders that are found in the
 
 The Windows build has been tested on 64-bit Windows 7 and 10. This guide assumes you have:
  - `g++` v4.8.5 or higher, installed via [*MinGW-W64*](https://sourceforge.net/projects/mingw-w64/files/). If you use the "online installer", choose *posix* threading, and *seh* exception. For 32-bit installations, use *dwarf* exception handling.
- - the [Code::Blocks IDE](http://codeblocks.org/downloads/26).
+ - the [Code::Blocks IDE](https://codeblocks.org/downloads/26).
  - precompiled [development libraries](#development-libraries) according to the game architecture you wish to build (32- or 64-bit)
  
 ****
@@ -50,8 +50,8 @@ If you are using 32-bit windows, you should be using the "Win32" build, and conf
 
 Building for Windows often requires you to manage the dependencies of the program - the helper code that deals with interfacing with the operating system, and in our case, SDL, OpenAL, and others. In rare cases (i.e. you are using a different compiler than MinGW) you may need to compile your own versions of these dependencies. For most, the following provided packages will suffice.
 
- - [64-bit libraries](http://endless-sky.github.io/win64-dev.zip)
- - [32-bit libraries](http://endless-sky.github.io/win32-dev.zip)
+ - [64-bit libraries](https://endless-sky.github.io/win64-dev.zip)
+ - [32-bit libraries](https://endless-sky.github.io/win32-dev.zip)
 
 The Code::Blocks project (*EndlessSky.cbp* in the game's root directory) is preconfigured for these zips to be unpacked directly into `C:\`, which will create `C:\dev64`. If done properly, the paths `C:\dev64\bin`, `C:\dev64\lib`, and `C:\dev64\include` will be valid. If you are using the 7-Zip program, the dialog would look like this:
 
@@ -105,7 +105,7 @@ If you obtained the game files by cloning the GitHub repository (the recommended
 
 To build Endless Sky you will first need to download Xcode from the App Store.
 
-Next, install [Homebrew](http://brew.sh).
+Next, install [Homebrew](https://brew.sh).
 
 Once Homebrew is installed, use it from a terminal to install the libraries you will need:
 

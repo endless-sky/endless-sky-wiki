@@ -46,7 +46,7 @@ is completely equivalent to this:
 
 # Grammar specifications
 
-In various other wiki pages, I describe the syntax of data files using notation that is similar to how command line arguments are [specified](http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) in Unix man pages:
+In various other wiki pages, I describe the syntax of data files using notation that is similar to how command line arguments are [specified](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) in Unix man pages:
 
 * `plain text` specified keywords that appear verbatim in the file.
 * `<text in angle brackets>` should be replaced with a particular value:

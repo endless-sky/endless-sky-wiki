@@ -12,7 +12,7 @@ Because one of the first things I imagine people will want to try out when custo
 
 4. Copy an existing ship definition from `ships.txt` into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
 
-5. Use the [ship builder](http://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
+5. Use the [ship builder](https://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
 
 6. In the game, load that pilot and experiment with different sets of outfits until you find one you like. At this stage you can also edit your pilot file to change the ship's attributes.
 
