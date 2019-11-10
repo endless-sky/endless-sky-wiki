@@ -142,7 +142,7 @@ Adds or removes a hyperspace link between the given systems. (Unlike the definit
 ```html
 government <name>
     swizzle <value#>
-    color <r#> <g#> <b#>
+    color <r#> <g#> <b#> <a#>
     "player reputation" <initial-rep#>
     "crew attack" <atk#>
     "crew defense" <def#>
