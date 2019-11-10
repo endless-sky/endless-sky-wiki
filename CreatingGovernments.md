@@ -105,7 +105,7 @@ government "United Kingdom"
 ```
 indicates that the government "United Kingdom" reacts to your actions towards the separate governments "England," "Northern Ireland," "Scotland," and "Wales" as though you had performed those actions against it (since the reputation modifier is 1, i.e. 100%). A change in the player's reputation with any of these 4 specified governments results in a equivalent change in the player's reputation with the "United Kingdom" government.  
 If the player performs hostile actions towards the "Ireland" government, because the reputation modifier is positive, the "United Kingdom" government would consider that a provocation, but--because the magnitude is less than 5%--the player's reputation would not be changed.  
-Because the attitutde toward "Medieval France" is negative, the two governments consider themselves enemies. If the player performs actions the "United Kingdom" government has deemed "hostile" (i.e. those with positive ["penalty for"](#penalty-for) values) against the "Medieval France" government, then the player's reputation with the "United Kingdom" government will increase as the reputation modifier's magnitude is greater than 5%.
+Because the attitude toward "Medieval France" is negative, the two governments consider themselves enemies. If the player performs actions the "United Kingdom" government has deemed "hostile" (i.e. those with positive ["penalty for"](#penalty-for) values) against the "Medieval France" government, then the player's reputation with the "United Kingdom" government will increase as the reputation modifier's magnitude is greater than 5%.
 
 The default attitude between governments is 0 (no interaction).
 
