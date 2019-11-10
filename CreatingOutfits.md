@@ -100,8 +100,10 @@ On any frame in which the ship can supply its total `"fuel consumption"`, it wil
 * `"jump drive"`: set this to 1 if this outfit is a jump drive.
 * `"jump speed"`: how slow your ship must be moving in order to jump.
 * `"jump fuel"`: how much fuel the ship consumes when using this outfit to jump. The default is 100 for hyperdrives, 150 for scram drives, and 200 for jump drives. **(v. 0.9.7)**
+* `"maintenance costs"`: how many credits per day are spent to "maintain" this outfit. Maintenance is paid for any owned ships or outfits. Overdue maintenance costs will not impact the efficiency of an outfit or ship. **(v. 0.9.11)**
 * `map`: number of hyperlinked star systems that are mapped by this outfit.
 * `mass`: how much your ship's mass should change by when this outfit is installed.
+* `"operating costs"`: how many credits per day are spent to "maintain" this outfit. Differs from `"maintenance costs"` in that operating costs are only applied to actively in use outfits and ships, meaning parked ships or outfits in cargo won't charge the player. **(v. 0.9.11)**
 * ~~`"outfit scan"`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(deprecated in 0.9.5)**
 * `"outfit scan power"`: the outfit scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(v. 0.9.5)**
 * `"outfit scan speed"`: The time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(v. 0.9.5)**
