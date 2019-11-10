@@ -141,28 +141,9 @@ Adds or removes a hyperspace link between the given systems. (Unlike the definit
 
 ```html
 government <name>
-    swizzle <value#>
-    color <r#> <g#> <b#> <a#>
-    "player reputation" <initial-rep#>
-    "crew attack" <atk#>
-    "crew defense" <def#>
-    "attitude toward"
-        <government> <rep-modifier#>
-        ...
-    "penalty for"
-        (assist | disable | board | capture | destroy | atrocity) <rep-modifier#>
-        ...
-    bribe <percentage#>
-    fine <percentage#>
-    "death sentence" <conversation>
-    "friendly hail" <phrase>
-    "friendly disabled hail" <phrase>
-    "hostile hail" <phrase>
-    "hostile disabled hail" <phrase>
-    language <text>
-    raid <fleet>
+    ...
 ```
-Update the specified elements of the named `government`.
+Update the specified elements of the named `government`. For more information on the tokens and expected syntax, see the page on creating [governments](CreatingGovernments).
 
 ```html
 fleet <name>
