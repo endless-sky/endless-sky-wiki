@@ -231,7 +231,7 @@ government "Daelaam"
 ```
 This example usage indicates the the government "Daelaam" will have scanning and fining authority for
 1) the planets Shakuras and Aiur
-2) any planets or systems connected to or controlled by its governemnt
+2) any planets or systems connected to or controlled by its government
 3) planets or systems controlled by the 4 named governments, so long as they are not within 10 hyperspace jumps of Sol.
 
 If a system was 2 jumps from the system Sol, but neighbored a Daelaam-controlled system, ships belonging to the Daelaam government would have scanning jurisdiction because filter #2 matches, even though #3 does not. 
