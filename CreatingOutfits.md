@@ -53,6 +53,7 @@ The other attributes include:
 * `"afterburner fuel"`: fuel consumed by the afterburner in one frame.
 * `"afterburner heat"`: heat produced by the afterburner in one frame.
 * `"afterburner thrust"`: thrust produced by the afterburner in one frame.
+* `"ammo"`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. **(v. 0.9.5)**
 * `"atmosphere scan"`: not usable by the player, but indicates that the AI will treat this ship as if it wants to fly past planets to "scan" them.
 * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on  planet, you are immediately captured and imprisoned for life.
 * `bunks`: additional crew / passenger space.
@@ -151,6 +152,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
+  * For versions **v. 0.9.11** and later, a number following the ammo name will change how many units of that ammo are consumed upon firing the weapon. An ammo usage of 0 is possible, which results in the ammo outfit needing to be installed to fire, but never being consumed.
 * `icon`: for secondary weapons, the icon that will be shown along with this weapon's ammunition count.
 * [Effect objects][eft] are created for various stages of a projectile's existence:
   * `"fire effect"`: created when this weapon fires (such as a smoke cloud from a missile launch). You can specify a number to create more than one instance of the effect.
