@@ -17,7 +17,7 @@ Graphics:
 - [ ] Website "polls" for letting users mark graphics they don't like.
 - [x] More planet sprites.
 - [x] More special star types.
-- [ ] Better space station sprites.
+- [x] Better space station sprites.
 - [x] Better space station landscapes.
 - [ ] Portrait pictures.
 - [x] Fill in missing outfit sprites (for alien outfits).
