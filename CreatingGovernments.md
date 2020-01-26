@@ -6,6 +6,7 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a governme
 
 ```html
 government <name>
+    "display name" <other-name>
     swizzle <value#>
     color <r#> <g#> <b#> <a#>
     "player reputation" <initial-rep#>
@@ -32,6 +33,21 @@ government <name>
 ```
 
 The various parts of a government definition are described below.
+
+#### Display Name
+```html
+"display name" <other-name>
+```
+The display name of a government is an optional property that controls how the government is referenced in the UI. By default, this value is the same as the token that was used to introduce the government node. This property is useful for creating "pseudo-governments" that should appear to be the same faction as some other government, but have different relationships with the player and/or other governments in the game.
+
+Example:
+```html
+government "Pirate Anarchists"
+    "display name" "Pirate"
+    "attitude toward"
+        "Pirate" -.01
+```
+To use this government in NPCs, fleets, or location filters, you would still use the true name, "Pirate Anarchists".
 
 #### Swizzle
 ```html
