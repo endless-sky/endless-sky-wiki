@@ -147,7 +147,7 @@ For example, the mission description might be, "Deliver `<cargo>` to `<destinati
 mission <name>
 ```
 
-The mission name must be unique.
+The mission name must be unique. Missions are stored by the game in alphabetical order
 
 ```html
 name <name>
@@ -234,6 +234,8 @@ If a mission is marked with `priority`, only other "priority" missions can be of
 
 If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time.  
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor." The `priority` marker is only used for the "intro" missions, to suppress all other missions while the player is just learning the ropes.
+
+Note that `priority` and `minor` will only affect missions that offer from the spaceport.
 
 ```html
 (job | landing | assisting | boarding)
