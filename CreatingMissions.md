@@ -147,7 +147,7 @@ For example, the mission description might be, "Deliver `<cargo>` to `<destinati
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order
+The mission name must be unique.
 
 ```html
 name <name>
