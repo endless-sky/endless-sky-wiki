@@ -6,7 +6,7 @@ How you build Endless Sky will then depend on your operating system:
 
 # Linux
 
-Use your favorite package manager to install the following (version numbers may vary depending on your distribution):
+Use your favorite package manager to install the following (version numbers will vary depending on your distribution):
 * g++
 * scons
 * libsdl2-dev
