@@ -71,7 +71,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`event`](CreatingEvents): a list of changes to the game data, which will happen either on a specific date, or in response to a mission.
   * `fleet`: a list of possible ship combinations and relative frequencies. (For examples, see [`fleets.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/fleets.txt).)
   * `galaxy`: a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
-  * `government`: the characteristics of a particular government. (For examples, see [`governments.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/governments.txt).)
+  * [`government`](CreatingGovernments): the characteristics of a particular government.
   * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/interfaces.txt).)
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`news`](CreatingNews): a definition of information that is provided to the player when visiting a spaceport.
