@@ -138,13 +138,17 @@ A `news` datafile definition has 4 definable child elements.
 news <name>
     name
         {phrase specification...}
+    [remove name]
     portrait <path>...
         <path>
         ...
+    [remove portrait [<path>...]]
     location
         {filter specification...}
+    [remove location]
     message
         {phrase specification...}
+    [remove message]
 ```
 
 This news definition can appear on planets within 100 hyperspace links of Sol, and on render will display one of 5 portraits with one of 3 names and one of two message types: one constructed from the "friendly author" hails, and one constructed from the text shown here.
@@ -197,19 +201,24 @@ event "breaking news"
 ```
 This would update the already-defined News with the name "terrorism on the rise", *adding* to its existing location definition that it should match all planets with the Republic or Syndicate governments. If no such news definition exists, it will be created, but will be otherwise empty.
 
-To "deactivate" a news source, the current mechanism is to introduce a `not` filter that cancels out the most restrictive element of the existing location. For example, to deactivate the above "terrorism on the rise" news source, we could use the following:
+To "deactivate" a news source, two mechanisms exist. The original method was to introduce a `not` filter that cancels out the most restrictive element of the existing location. For example, to deactivate the above "terrorism on the rise" news source, we could use the following:
 ```c++
 event "it's old news now"
     news "terrorism on the rise"
         location
             not government "Republic" "Syndicate"
 ```
-This new location information is parsed by the game into the following internal representation:
-```java
-news
-    location
-        government "Republic" "Syndicate"
-        not government "Republic" "Syndicate"
-```
 
-***Note: the `add` and `remove` element prefixes are not currently supported, so it is not currently possible to remove any elements. This support will be added in a future version.***
+Beginning in **v0.9.11**, use the "remove" modifier to completely erase the previous location filter. This has the bonus effect of allowing the definition of a new filter might have been incompatible with the original filter. For example
+```c++
+event "it's old news now"
+    news "terrorism on the rise"
+        remove location
+event "trouble on the fringes"
+    news "terrorism on the rise"
+        location
+            attributes "frontier"
+```
+The first event instructs the game to completely erase the previously defined location, resulting in an empty filter that prevents the news item from being displayed. The second event adds to the location filter, restricting it to planets and systems with the "frontier" attribute.
+
+All 4 datafile elements can be used with the "remove" modifier as shown above, to completely erase the previous value. For portraits, one can also optionally list the specific file paths which should be removed, and the non-listed portraits will remain available.
