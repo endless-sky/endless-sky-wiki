@@ -43,7 +43,11 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](CreatingShips) when the thruster is firing.
 
+  * Beginning with **v. 0.9.13**, `"reverse flare sprite"` and `"steering flare sprite"` can also be used to define the image that is drawn for `"reverse engine"` and `"steering engine"` hardpoints on a ship.
+
 * `"flare sound"`: for thrusters, the sound that is played when the thruster is firing.
+
+  * Beginning with **v. 0.9.13**, `"reverse flare sound"` and `"steering flare sound"` can also be used to define the sound that is played when reversing or steering. Sounds are only played if the ship has an associated `"reverse engine"` or `"steering engine"` hardpoint for a flare to be emitted from.
 
 * `"afterburner effect"`: the [effect](CreatingEffects) that is created for every frame that the afterburner is firing. Afterburner effects can last for multiple frames, leaving a trail behind the ship.
 
