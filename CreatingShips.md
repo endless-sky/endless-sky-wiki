@@ -101,13 +101,27 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
 
-* `"engine"`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). As of **v. 0.9.4** you can optionally specify a third value, a zoom factor, in order to have some of a ship's engines produce bigger flares than others. It is suggested that the sum of the squares of the zoom factors be roughly equal to 2 so that the total area of the engine flares is the same across ships. (Example: A ship with three engines could have an engine with a zoom factor of 1 and two with zoom factors of 0.7, as 1^2 + 0.7^2 + 0.7^2 is roughly 2.)
+* `"(engine | reverse engine | steering engine)"`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). 
+
+  * As of **v. 0.9.4** you can optionally specify a third value, a zoom factor, in order to have some of a ship's engines produce bigger flares than others. It is suggested that the sum of the squares of the zoom factors be roughly equal to 2 so that the total area of the engine flares is the same across ships. (Example: A ship with three engines could have an engine with a zoom factor of 1 and two with zoom factors of 0.7, as 1^2 + 0.7^2 + 0.7^2 is roughly 2.)
+
+  * As of **v. 0.9.13**, the syntax for the zoom factor of an engine has changed (although the old way of specifying a zoom factor is still supported for compatibility). Two new engine flare types have also been added: `"reverse engine"` and `"steering engine"`, the former of which only creates flares when using a reverse thruster, and the latter of which only creates flares when steering. `"engine"` and its variants can now have the following (optional) children:
+
+    * `"zoom"`: the zoom factor of this engine.
+
+    * `"angle"`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
+
+    * `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite.
+
+    * `"[left | right]"`: keywords with no value used only for steering engines. Specifies in what direction the ship must be turning in order for these flares to show. If neither of these keywords are listed, the steering flare will always show when the ship is steering.
 
 * `"gun"`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations listed here.
 
 * `"turret"`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
 
-* `(fighter | drone) [<x> <y> [over | under] [left | right | back]]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`. As of **(v. 0.9.3)** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
+* `(fighter | drone) [<x> <y> [over | under] [left | right | back]]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`.
+
+  * As of **v. 0.9.3** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
 
 * `"explode" <effect> [<count#>]`: an effect to create when the ship is dying, and the number of them to create (e.g. `explode "small explosion" 10`). These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion where 50% of the explosion effects are generated a second time.
 
