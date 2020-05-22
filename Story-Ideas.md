@@ -2,19 +2,23 @@ Warning: this page contains spoilers. This is basically a list of plot ideas, ei
 
 ### Advanced alien civilizations
 
-Once the whole galaxy is "populated" with alien species, nearly all of them will be technologically superior to humans. For example, even if the player is flying the best ship you can get in Human / Hai space, they will be woefully outgunned when they first enter Korath space.
+Once the whole galaxy is "populated" with alien species, nearly all of them will be technologically superior to humans. For example, even if the player is flying the best ship you can get in human / Hai space, they will be woefully outgunned when they first enter Korath space.
 
 The military "strength" of each civilization also depends on how populous they are and how focused they are on warfare. For example, the Wanderers are more technologically advanced than the Korath but have focused very little of their energy on military technology when you first encounter them. And, the Quarg are probably "stronger" than the Drak just because there are trillions of Quarg with a huge number of ships.
 
 The existing aliens are grouped roughly into tiers, where a heavy warship of a civilization on one tier is a match for a light warship of the next tier up:
 
 * Tier 1: Humans, Hai
-* Tier 2: Wanderers, Korath
+* Tier 1.5: Coalition, Remnant
+* Tier 2: Wanderers, Korath, Ka'het
+* Tier 2.5: Heliarch
 * Tier 3: Quarg
 * Tier 4: Drak
-* Tier ???: Pug (they have ships of different tiers depending on who they are fighting).
+* Tier ???: Pug (they have ships of different tiers depending on who they are fighting)
 
 As more alien species are added, it's likely the Quarg and Drak will need to be made stronger to make room for more tiers in between.
+
+It is important to note that tiers are not a concrete way to say that "every ship or outfit from X must be better than every ship or outfit from Y because X is of a greater tier than Y." Tiers are instead a general guideline as to the strength of various faction; lower factions may still have ships or outfits that are "stronger" in some respects than higher factions, and factions of the same tiers should not be neck-and-neck in all ways. (For example, the Wanderers have cooling outfits weaker than humans, so in that regard humans are "stronger" than Wanderers, but this is mainly due to the fact that the Wanderers do not have as much of a need for cooling. Similarly, the Coalition and Remnant, while both being "tier 1.5," are not too comparable given the fact that the Coalition is demilitarized, while the Remnant are in a constant fight against the Korath exiles. So in that regard, the Coalition could be considered a "weak tier 1.5" while the Remnant are a "strong tier 1.5.")
 
 ### Hai diplomacy
 
