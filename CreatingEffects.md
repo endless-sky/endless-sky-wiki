@@ -12,6 +12,7 @@ effect <name>
         "rewind"
     sound <name>
     lifetime <frames#>
+    "random lifetime" <frames#>
     "velocity scale" <scale#>
     "random velocity" <velocity#>
     "random angle" <degrees#>
@@ -44,6 +45,7 @@ As with the sprite attributes, you should only include whichever attributes you 
 
 * `sound <name>`: When the effect is created, this sound is played. (This happens even if the effect does not define a sprite.)
 * `lifetime <frames#>`: How long the effect should last, in 60ths of a second.
+* `"random lifetime" <frames#>`: a random number of frames (60ths of a second) up to this amount will be added to each effect's lifetime. **(v. 0.9.13)**
 * `"velocity scale" <scale#>`: Without this, an effect will have the same velocity as the ship or projectile that "created" it. If this is defined, its velocity will be multiplied by this amount. Use a negative number to have the effect "bounce" in the opposite direction from the projectile.
 * `"random velocity" <velocity#>`: A random velocity (in pixels per frame) up to this amount will be added to the effect. The added velocity will be in the direction the effect is "facing" after the random angle, if any, is applied.
 * `"random angle" <degrees#>`: If this is not defined, an effect "faces" in the same direction as the ship or projectile that created it. If this is defined, a random angle up to this amount (in either direction) will be added.
