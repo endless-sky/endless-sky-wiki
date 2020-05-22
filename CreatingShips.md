@@ -127,6 +127,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"final explode"`: the same as `"explode"`, but defines an effect that is only included in the final ship explosion, not in the small explosions leading up to that. **(v. 0.9.0)**
 
+* `"leak" <effect> [<openPeriod#>] [<closePeriod#>]`: an effect to create when the ship is dying. The open period of the leak is the random chance each frame (1 / openPeriod) that a new leak will start, while the close period is the random chance each frame (1 / closePeriod) that an active leak will end. Differs from `"explode"` in that leak effects are emitted from the edge of the ship's sprite, as if the ship's atmosphere is leaking as it dies.
+
 * `"never disabled"`: If this tag is included (no value need be specified for it), this ship never becomes disabled due to its hull dropping too low. This means that it cannot be plundered. *This tag is not "inherited" by variants of a ship.*
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
