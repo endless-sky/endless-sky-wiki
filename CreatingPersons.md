@@ -22,7 +22,7 @@ person <name>
             <text>
             ...
         ...
-    ship <modelName>
+    ship <modelName> [<name>]
         {ship definition...}
     [ship]
         ...
@@ -78,8 +78,8 @@ phrase
 This defines what the person says if you hail them, or at random intervals if they decide to hail you. The phrase should be a collection of one or more "words," each of which is chosen from one or more options. If you want different options, you can define more than one "phrase" that the person might use. (See the "hails.txt" data file for examples of how this works.)
 
 ```html
-ship <modelName>
+ship <modelName> [<name>]
     {ship definition...}
 ```
 
-This is a definition of the person's ship, using the same format as all other [ship definitions](CreatingShips). Multiple ships may be defined to create a person that is the leader of a fleet (such as in an interceptor squadron, or a carrier commanding a flotilla of fightercraft). The person is considered destroyed when the first ship in the list is either destroyed or captured - any escorts that did not survive are replaced when the person next spawns.
+This is a definition of the person's ship, using the same format as all other [ship definitions](CreatingShips). Starting in **v. 0.9.9,** multiple ships may be defined to create a person that is the leader of a fleet (such as in an interceptor squadron, or a carrier commanding a flotilla of fightercraft). The person is considered destroyed when the first ship in the list is either destroyed or captured - any escorts that did not survive are replaced when the person next spawns. Starting in **v. 0.9.13,** escorts are able to have their ship name specified, otherwise they will use the name of the person. The first ship in the list will always use the name of the person.
