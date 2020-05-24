@@ -103,7 +103,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull fuel"`: the amount of fuel that hull repair consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to grant fuel.
 
-* Some of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship where a value of 0 means +0% of the associated attribute, and a value of 1 means +100%. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated attribute. **(v. 0.9.13)**
+* Most of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship according to the equation `stat * (1 + multiplier)`, which means that the default value of 0 means no change, while a value of 1 would be a +100% increase in the stat. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated stat. **(v. 0.9.13)**
   
   * `"shield generation multiplier"`: multiplies the shield generation value of other outfits. 
   
