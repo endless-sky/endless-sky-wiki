@@ -28,8 +28,12 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating game events](CreatingEvents)
 * [Creating new ships](CreatingShips)
 * [Creating outfits and weapons](CreatingOutfits)
-* [Creating planet sprites](PlanetSprites)
+* [Creating effects](CreatingEffects)
 * [Creating spaceport news](CreatingNews)
+* [Creating systems and planets](MapData)
+* [Creating planet sprites](PlanetSprites)
+* [Creating governments](CreatingGovernments)
+* [Creating fleets](CreatingFleets)
 
 ### Compiling or modifying the source code
 
