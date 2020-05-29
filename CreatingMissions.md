@@ -85,8 +85,10 @@ mission <name>
         fleet [<count>]
             ...
     on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
+        log [<category> <header>] <text>
         dialog <text>
             <text>...
+        dialog phrase <phrase>
         conversation <name>
         conversation
             ...
@@ -635,8 +637,10 @@ A mission can also specify what happens at various key parts of the mission:
 
 ```html
 on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
+    log [<category> <header>] <text>
     dialog <text>
         <text>...
+    dialog phrase <phrase>
     conversation <name>
     conversation
         ...
@@ -672,13 +676,24 @@ on enter
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
+log [<category> <header>] <text>
+```
+
+This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
+
+An example on how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+```html
 dialog <text>
     <text>...
+dialog phrase <phrase>
 ```
 
 This gives a message to be displayed in a dialog message to the user. If the trigger is `on offer`, the dialog will have "accept" and "decline" buttons. Otherwise, it is a purely informational message and only an "okay" button is shown.
 
 Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line.
+
+`dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs.
 
 As mentioned previously, text replacement is done on keywords like "`<destination>`" and "`<payment>`" within the dialog text.
 
