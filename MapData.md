@@ -183,7 +183,7 @@ minables <name> <count#> <energy#>
 
 The name of the asteroids in this system, as well as the number of the asteroids and their energy. The energy of an asteroid determines how fast it moves and rotates, with higher values meaning faster asteroids. A random value between 0 and the energy value is used for each of the asteroids when they are created, meaning that high energy values may still result in slow asteroids.
 
-If an asteroid is minable, then it uses the `minable` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined minable, while normal asteroid names refer to the sprite name.
+If an asteroid is minable, then it uses the `minable` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
 
 ```html
 trade <commodity> <cost#>
@@ -410,13 +410,13 @@ star <sprite>
 
 The sprite listed here is the sprite of the star that will effect ships in the system. If a system has multiple stars, then the values of each star are added together.
 
-```
+```html
 power <power#>
 ```
 
 The power of a star impacts the effectiveness of a ship's solar collection and solar heat attributes.
 
-```
+```html
 wind <wind#>
 ```
 
