@@ -41,6 +41,8 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Hand to Hand"
   * "Special"
 
+* `"flotsam sprite"`: the image that is drawn when this outfit is dropped in space, either because it was jettisoned by a ship or because it was the payload of a minable asteroid. If no flotsam sprite is given, then the default flotsam box is used.
+
 * `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](CreatingShips) when the thruster is firing.
 
   * Beginning with **v. 0.9.13**, `"reverse flare sprite"` and `"steering flare sprite"` can also be used to define the image that is drawn for `"reverse engine"` and `"steering engine"` hardpoints on a ship.
