@@ -171,12 +171,12 @@ phrase "Syndicate Suspicion"
 		"I suspect that "
 	word
 		"the CEO of the Syndicate"
-		"try to do right by people."
+		"the leaders of the Syndicate"
 	word
 		" "
 	word
 		"don't have our best interests at heart."
-		"are keeping secrets from the rest of the galaxy."
+		"try to do right by people."
 ```
 
 This phrase can generate sensical sentences like "I suspect that the leaders of the Syndicate don't have out best interests at heart." But it can also generate nonsensical ones: "I suspect the CEO of the Syndicate try to do right by people." Instead of having to create an entirely separate phrase to handle how "don't" and "try" should change if the subject of the previous word is singular, we can use the replace function to change these verbs to their singular forms.
