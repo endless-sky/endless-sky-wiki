@@ -194,7 +194,7 @@ phrase "Syndicate Suspicion"
 		"don't have our best interests at heart."
 		"try to do right by people."
 	replace
-		"% are" " is"
+		"% don't" " doesn't"
 		"% try" " tries"
 		"%" ""
 ```
