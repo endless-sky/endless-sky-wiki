@@ -30,14 +30,14 @@ The fleet name must be unique. Using this fleet name, this fleet can be spawned 
 government <name>
 ```
 
-The name of the government that this fleet is a part of. All ships spawned by this fleet will be a part of this government.
+The name of the [government](CreatingGovernments) that this fleet is a part of. All ships spawned by this fleet will be a part of this government.
 
 ```html
 names <phrase>
 fighters <phrase>
 ```
 
-The names of the ships in this fleet, constructed from the given phrase. If only `names` is listed, then all ships in the fleet will pull their name from that phrase. If `fighters` is also listed, then the fighters and drones in the fleet will pull their names from that phrase, while all other ships will still use the `names` phrase.
+The names of the ships in this fleet, constructed from the given [phrase](CreatingPhrases). If only `names` is listed, then all ships in the fleet will pull their name from that phrase. If `fighters` is also listed, then the fighters and drones in the fleet will pull their names from that phrase, while all other ships will still use the `names` phrase.
 
 ```html
 cargo <cargo#>
@@ -50,7 +50,7 @@ The number of types of commodities that this fleet will carry as cargo and a lis
 outfitters <outfitter>...
 ```
 
-Ships can also carry outfits as cargo, specified by the outfitters listed here. If no outfitters are listed, then ships will carry outfits from the outfitters of the system they spawn in and the outfitters of all systems linked directly to the spawn system.
+Ships can also carry outfits as cargo, specified by the [outfitters](CreatingOutfits#sales) listed here. If no outfitters are listed, then ships will carry outfits from the outfitters of the system they spawn in and the outfitters of all systems linked directly to the spawn system.
 
 ```html
 personality <type>...
@@ -68,5 +68,6 @@ variant [<weight#>]
 	...
 ```
 
-Variants define what model and number of ships are spawned by this fleet. A number of variants can be listed under a single fleet. When the fleet is spawned, one of these variants will be chosen at random according to their weights. The chance for any single variant to be spawned is `variant weight / sum of all variant weights`. For example, if a variant has a weight of 4 and the sum of all variant weights in the fleet is 20, then that variant has a 4/20 chance of being spawned.
+Variants define what model and number of [ships](CreatingShips) are spawned by this fleet. A number of variants can be listed under a single fleet. When the fleet is spawned, one of these variants will be chosen at random according to their weights. The chance for any single variant to be spawned is `variant weight / sum of all variant weights`. For example, if a variant has a weight of 4 and the sum of all variant weights in the fleet is 20, then that variant has a 4/20 chance of being spawned.
+
 If no weight is given for the variant (or no count for a ship model), then the weight (or count) is 1.

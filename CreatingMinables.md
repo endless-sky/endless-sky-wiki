@@ -32,10 +32,10 @@ The amount of hull damage that must be applied to this asteroid before it is des
 payload <outfit> <count#>
 ```
 
-The outfit that is dropped by this asteroid after being destroyed. The count is the maximum possible number of the outfit that can drop, but when an asteroid is destroyed, only about 25% of the payload will survive on average. A minable asteroid can have multiple payloads.
+The [outfit](CreatingOutfits) that is dropped by this asteroid after being destroyed. The count is the maximum possible number of the outfit that can drop, but when an asteroid is destroyed, only about 25% of the payload will survive on average. A minable asteroid can have multiple payloads.
 
 ```html
 explode <effect> <count#>
 ```
 
-The effect that is created when this asteroid is destroyed, and how many times it is created. A minable asteroid can have multiple explosion effects.
+The [effect](CreatingEffects) that is created when this asteroid is destroyed, and how many times it is created. A minable asteroid can have multiple explosion effects.

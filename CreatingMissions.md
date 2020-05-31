@@ -626,7 +626,7 @@ fleet [<count#>]
     ...
 ```
 
-This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal `fleet` data entry. Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
+This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal [`fleet` data entry](CreatingFleets). Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
 
 <a name="triggers">
 

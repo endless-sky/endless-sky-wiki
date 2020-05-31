@@ -163,7 +163,7 @@ Before you can leave your ship, the <government name> authorities show up and be
 "hostile hail" <phrase>
 "hostile disabled hail" <phrase>
 ```
-These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The phrases here should be defined as standalone phrases, e.g.
+These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The [phrases](CreatingPhrases) here should be defined as standalone phrases, e.g.
 ```bash
 phrase "ancient greek insults"
     {phrase specification...}
@@ -171,7 +171,7 @@ phrase "ancient greek insults"
 government "Phoenicia"
     "hostile hail" "ancient greek insults"
 ```
-See [`data/hails.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/hails.txt) for examples of both simple and complex phrase definitions.
+See [`data/human/hails.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/human/hails.txt) for examples of both simple and complex phrase definitions.
 
 If not specified, defaults are provided for disabled ships of all governments. These defaults are:
 ```bash
@@ -208,7 +208,7 @@ mission "player needs the Tamarian language"
 ```html
 raid <fleet>
 ```
-The "raid" token allows the specification of a fleet that can be spawned in this government's systems if the player has "unguarded cargo". (In order to be spawned, the named fleet's government must also be hostile to the player.) Up to 10 of these fleets may be spawned at once, depending on the magnitude of the cargo space : weaponry imbalance.
+The "raid" token allows the specification of a [fleet](CreatingFleets) that can be spawned in this government's systems if the player has "unguarded cargo". (In order to be spawned, the named fleet's government must also be hostile to the player.) Up to 10 of these fleets may be spawned at once, depending on the magnitude of the cargo space : weaponry imbalance.
 
 If defined more than once (e.g. specified both in the base game and then a plugin), each new definition overwrites the current definition. For example, if the game datafiles specify
 ```bash

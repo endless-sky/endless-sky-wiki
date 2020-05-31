@@ -138,15 +138,15 @@ The position on the map where this system is located.
 government <name>
 ```
 
-The government that owns/controls this system. This is what is shown when looking at a system on the map using the government key.
+The [government](CreatingGovernments) that owns/controls this system. This is what is shown when looking at a system on the map using the government key.
 
 ```html
 attributes <attribute>...
 ```
 
-The attributes of this system that control what missions will be offered within it.
+The attributes of this system that control what [missions](CreatingMissions) will be offered within it.
 
-If there are no inhabited planets in a system, then it is given an automatic "uninhabited" attribute. 
+If there are no inhabited planets in a system, then it is automatically given an "uninhabited" attribute. 
 
 ```html
 music <sound>
@@ -197,7 +197,7 @@ A type of commodity sold at the planets in this system and its cost.
 fleet <name> <period#>
 ```
 
-The name of a fleet that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
+The name of a [fleet](CreatingFleets) that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
 
 <a name="objects">
 
@@ -219,7 +219,7 @@ Objects are the stars, planets, moons, or stations that are found within a syste
 object [<name>]
 ```
 
-If an object is named, then it can be landed on, and must have a planet defined for it. If this name matches the name of an object in another system, then a wormhole is created. If this name matches the name of another object in the same system, then landing on any of these objects simple lands you on the planet associated with these objects.
+If an object is named, then it can be landed on, and must have a [planet](#planets) defined for it. If this name matches the name of an object in another system, then a wormhole is created. If this name matches the name of another object in the same system, then landing on any of these objects simply lands you on the planet associated with these objects.
 
 ```html
 sprite <sprite>
@@ -289,13 +289,13 @@ If a planet is being used to define a wormhole (i.e. an objects that is named in
 attributes <attribute>... "requires: <attribute>"
 ```
 
-The list of attributes that will be used to determine what jobs should be offered on this planet.
+The list of attributes that will be used to determine what [missions](CreatingMissions) should be offered on this planet.
 
 If the "requires: <attribute>" phrase is used, then a ship must have the listed attribute in order to land on this planet.
 
 There are three attributes that get automatically added to a planet: spaceport, shipyard, and outfitter. As their names imply, they are added to a planet if that planet has a spaceport, shipyard, or outfitter. If one tries to give one of these attributes to a planet that does not actually have a spaceport, shipyard, or outfitter, then that attribute will be ignored.
 
-One other special attribute is the "uninhabited" attribute. If listed, then the planet will not have the trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
+One other special attribute is the "uninhabited" attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
 landscape <sprite>
@@ -325,7 +325,7 @@ The description of the spaceport after clicking the spaceport button.
 government <name>
 ```
 
-Planets are capable of having a different government than the system. If no government for the planet is specified, then its government is the same as the system government. Otherwise, the government listed here is used.
+Planets are capable of having a different [government](CreatingGovernments) than the system. If no government for the planet is specified, then its government is the same as the system government. Otherwise, the government listed here is used.
 
 ```html
 shipyard <name>
