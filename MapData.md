@@ -291,7 +291,7 @@ attributes <attribute>... "requires: <attribute>"
 
 The list of attributes that will be used to determine what [missions](CreatingMissions) should be offered on this planet.
 
-If the "requires: <attribute>" phrase is used, then a ship must have the listed attribute in order to land on this planet.
+If the "requires: `<attribute>`" phrase is used, then a ship must have the listed attribute in order to land on this planet.
 
 There are three attributes that get automatically added to a planet: spaceport, shipyard, and outfitter. As their names imply, they are added to a planet if that planet has a spaceport, shipyard, or outfitter. If one tries to give one of these attributes to a planet that does not actually have a spaceport, shipyard, or outfitter, then that attribute will be ignored.
 
