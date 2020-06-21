@@ -36,6 +36,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating spaceport news](CreatingNews)
 * [Creating governments](CreatingGovernments)
 * [Creating fleets](CreatingFleets)
+* [Creating phrases](CreatingPhrases)
 
 ### Compiling or modifying the source code
 
