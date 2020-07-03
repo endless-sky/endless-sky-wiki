@@ -210,7 +210,8 @@ object [<name>]
 	distance <distance#>
 	period <period#>
 	offset <offset#>
-	object
+	object [<name>]
+		...
 ```
 
 Objects are the stars, planets, moons, or stations that are found within a system. Each object defines a different star, planet, moon, etc.
