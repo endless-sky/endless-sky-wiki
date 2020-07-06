@@ -6,7 +6,7 @@ Term           | In-game meaning |
 ---            | --- |
 Carried Ship   | Ship typically of a small class like Fighter or Drone that can be carried by another (larger) ship. |
 Carrier        | Ship typically of a larger class that can carry one or more (smaller) ships. |
-Deprecation    | The loss of value (in selling costs) over time of outfits and ships. |
+Depreciation    | The loss of value (in selling costs) over time of outfits and ships. |
 Deploy         | Activity where a carried ship leaves its carrier to fly independently. |
 Depart         | Start of an activity for leaving a planet by ship. Can be interrupted if there are reasons not to leave yet. |
 Launch         | Activity where a ship leaves a planet. |
