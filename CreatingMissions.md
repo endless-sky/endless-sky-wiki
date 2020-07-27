@@ -579,7 +579,7 @@ to (spawn | despawn)
         ...
 ```
 
-`to (spawn | despawn)` works similarly to `to (offer | complete | fail)` for missions, containing a condition set that must be met for something to occur.
+**Starting in v.0.9.13,** `to (spawn | despawn)` works similarly to `to (offer | complete | fail)` for missions, containing a condition set that must be met for something to occur.
 
 An NPC will not spawn if its `to spawn` conditions are not met, and any spawned NPC will despawn if its `to despawn` conditions are met. NPCs will only spawn once the player departs from a planet and despawn once the player lands, but these conditions are evaluated at multiple points: after accepting the mission, on each departure, on each system jump, and on each landing.
 
