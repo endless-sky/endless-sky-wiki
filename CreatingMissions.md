@@ -63,6 +63,11 @@ mission <name>
         not
             ...
     npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany)...
+        to (spawn | despawn)
+            <condition> <comp> <value>
+            (has | not) <condition>
+            (and | or)
+                ...
         government <name>
         personality <type>...
             <type>...
@@ -525,6 +530,11 @@ NPCs are ships that are associated with the mission in some way. This includes f
 
 ```html
 npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany)...
+    to (spawn | despawn)
+        <condition> <comp> <value>
+        (has | not) <condition>
+        (and | or)
+            ...
     government <name>
     personality <type>...
         <type>...
@@ -560,6 +570,22 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `"scan outfits"`: Same, but the player must use an outfit scanner instead of a cargo scanner.
 * `evade`: you cannot complete the mission if any members of this NPC are in the same system as you.
 * `accompany`: you can only complete the mission if all members of this NPC are in the same system as you.
+
+```html
+to (spawn | despawn)
+    <condition> <comp> <value>
+    (has | not) <condition>
+    (and | or)
+        ...
+```
+
+`to (spawn | despawn)` works similarly to `to (offer | complete | fail)` for missions, containing a condition set that must be met for something to occur.
+
+An NPC will not spawn if its `to spawn` conditions are not met, and any spawned NPC will despawn if its `to despawn` conditions are met. NPCs will only spawn once the player departs from a planet and despawn once the player lands, but these conditions are evaluated at multiple points: after accepting the mission, on each departure, on each system jump, and on each landing.
+
+Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
+
+When combined with an `apply` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
 government <name>
