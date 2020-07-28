@@ -57,6 +57,14 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
+* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once.
+
+  * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive.
+
+  * `"jump sound"`: The sound that the flagship's jump drive makes when jumping. For other ships, use `"jump in sound"` and `"jump out sound"` for the sound that is played when other ships jump into or out of the player's current system.
+
+  * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
+
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
 Unless otherwise states, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
