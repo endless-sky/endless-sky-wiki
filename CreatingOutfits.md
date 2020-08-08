@@ -410,9 +410,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 
-* `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The total time in between bursts will be `"burst count"` * `reload`. **(v. 0.9.0)**
+* `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The burst will reload fully after `reload * # of shots fired`, making the reload time for a full burst `reload * "burst count"`. Reloading for a burst weapon starts immediately after the burst has started, so the number of frames between full bursts is `"burst count" * (reload - "burst reload")`. **(v. 0.9.0)**
 
-* `"burst reload"`: how fast the weapon reloads when firing projectiles in a burst. This value must be less than the full `reload` value. **(v. 0.9.0)**
+* `"burst reload"`: how fast the weapon reloads when firing projectiles in a burst. This value must be less than the full `reload` value. The fraction of time that a burst weapon spends firing is `"burst reload" / reload`. **(v. 0.9.0)**
 
 * `homing`: How good this weapon is at seeking its target:
 
