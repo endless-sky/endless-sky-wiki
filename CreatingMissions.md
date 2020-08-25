@@ -264,7 +264,7 @@ If you want a mission to be offered any number of times but to limit the number 
 
 ```html
 clearance [<message>]
-    ...
+    [{filter specificiation...}]
 ```
 
 This gives you landing clearance on the destination planet, even if normally you would not be allowed to land there, or would have to pay a bribe.
@@ -275,7 +275,7 @@ If a `clearance` tag appears with no message, clearance is automatically granted
 
 If a specific destination is given (i.e. `destination <planet>`) and no clearance is included in the mission, you must pay a bribe if you are not allowed to land on that planet. (Sometimes bribing the authorities could be part of the mission plot.)
 
-If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.*
+If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
 
 The `clearance` tag may have child entries that specify a [location filter](#filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
 
@@ -287,16 +287,19 @@ This indicates that you do not have access to any of the services on the destina
 
 ```html
 waypoint <system>
+waypoint
+    {filter specificiation...}
 ```
 
-This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited; then they are marked by a faint circle (**v. 0.9.9**) for the duration of the mission.
+This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited. Beginning with **v. 0.9.9**, all visited waypoints of the currently selected mission are marked by a faint circle in the player's map panel.
 
 ```html
 stopover [<planet>]
-    ...
+stopover
+    {filter specificiation...}
 ```
 
-This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the `source` and `destination` filters. As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission.
+This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the [`source` and `destination` filters](#filters). As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission (**v 0.9.9+**). Beginning with **v 0.9.13**, planets selected by a filter to be a stopover are no longer required to have a spaceport (unlike a mission's destination). If a mission's randomly picked stopover planet(s) should have a spaceport, this can be achieved by adding an `attributes "spaceport"` line to the filter specification.
 
 <a name="conditions">
 
@@ -353,7 +356,7 @@ to offer
 
 <a name="filters">
 
-# Source and destination filters
+# Mission "Location" filters
 </a>
 
 A mission can be offered from a planet or ship, but all missions must have a destination planet. For missions offered on a planet, if no destination is given that same planet is used. This can be useful for missions that should end on the same planet they start on, such as "Kill pirate ship 'X' and return here for payment."
@@ -362,7 +365,7 @@ For missions offered by a ship, you must always specify a destination, even if t
 
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
-For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match:
+For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
 ```html
 (source | destination) <planet>
@@ -386,14 +389,14 @@ For the source and destination, you can either specify one particular planet, or
         ...    
 ```
 
-Each entry in the source or destination specification acts as a filter. Two "modifier" tokens are introduced in **v. 0.9.9**, **`not`** and **`neighbor`**. The `neighbor` modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the `not` modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
+Each entry in the source or destination specification acts as a filter. Two "modifier" tokens were introduced in **v. 0.9.9**, **`not`** and **`neighbor`**. The `neighbor` modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the `not` modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
 
 ```html
 [(not | neighbor)] planet <name>...
     <name>...
 ```
 
-This says that the planet must be (or must not be, if the `not` keyword is used) one of the named planets. If `neighbor` is used, at least one of the named planets must be in a hyperlinked system. The list of names can either be all on one line, or split between multiple lines if it is particularly long; the subsequent lines must be indented so that they are "children" of the `planet` node. As with most of these filters, you can also have more than one `planet` entry, in which case the planet chosen must be in any one of the lists.
+This says that the planet must be (or must not be, if the `not` keyword is used) one of the named planets. If `neighbor` is used, at least one of the named planets must be in a hyperlinked system. The list of names can either be all on one line, or split between multiple lines if it is particularly long; the subsequent lines must be indented so that they are "children" of the `planet` node. As with most of these filters, you can also have more than one `planet` entry, in which case the planet chosen must be in any one of the lists. Beginning with **v 0.9.13**, planets specified in this list can be selected for use as a mission destination or stopover even if the player cannot land on the planet at the time the mission is offered (e.g. due to lack of `clearance` or due to hostility with the planet's government), or if the planet has no spaceport.
 
 ```html
 [(not | neighbor)] system <name>...
@@ -416,7 +419,7 @@ If this is a source filter and the mission is being offered when `assisting` or 
     <name>...
 ```
 
-The system or planet must have (or must not have, or must link to a system with) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.). If applied to a system (**v. 0.9.9**), at least one of the given attributes must be found in either the system's own attributes, or the attributes of any of its orbiting objects. If applied to a ship (**v. 0.9.9**), the attribute must be positive, after taking into account any adjustments that are made by all of its installed outfits.
+The system or planet must have (or must not have, or must link to a system with) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.). If applied to a system (**v. 0.9.9+**), at least one of the given attributes must be found in either the system's own attributes, or the attributes of any of its orbiting objects. If applied to a ship (**v. 0.9.9+**), the attribute must be positive, after taking into account any adjustments that are made by all of its installed outfits.
 
 Unlike the other filters, if multiple `attributes` tags appear, the system or planet must contain at least one attribute from each of the lists. For example, this means the planet must be urban or rich:
 
@@ -446,7 +449,7 @@ not
     attributes "rich"
 ```
 
-Beginning with **v. 0.9.9**, similar to `attributes`, ships (`source`) and planets (`source`, `destination`) can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one "Beam Laser" or "Meteor Missile Launcher" installed or in its cargo, or a planet that sells either one of the outfits:
+Beginning with **v. 0.9.9**, similar to `attributes`, ships (`source`) and planets (`source`, `destination`, `stopover`) can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one "Beam Laser" or "Meteor Missile Launcher" installed or in its cargo, or a planet that sells either one of the outfits:
 
 ```c++
 source
@@ -461,7 +464,7 @@ source
     outfits "Meteor Missile Launcher"
 ```
 
-**V. 0.9.9** also allows matching ships based on the specified category, e.g. "Light Warship" or "Interceptor". Any filter that defines a ship category will not match to systems or planets. Since a ship can have only one category, the following are both equivalent filters:
+**V. 0.9.9+** also allows matching ships based on the specified category, e.g. "Light Warship" or "Interceptor". Any filter that defines a ship category will not match to systems or planets. Since a ship can have only one category, the following are both equivalent filters:
 
 ```c++
 source
