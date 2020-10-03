@@ -17,13 +17,13 @@ Use your favorite package manager to install the following (version numbers will
 * libopenal-dev
 * libmad0-dev
 
-You can then just navigate to the source code folder in a terminal and type:
+Then, from the project root folder, simply type:
 
 ```bash
 $ scons
 $ ./endless-sky
 ```
-The program will run using the "data" and "images" folders that are found in the source code folder itself. For more Linux help, consult the `man` page (endless-sky.6), by running `man endless-sky` in the project directory.
+The program will run, using the "data" and "images" folders that are found in the project folder. For more Linux help, and to view other command-line flags, consult the `man` page (endless-sky.6), by running `man endless-sky` in the project directory.
 
 If you'd like to compile the game with debugging symbols or with profiling hooks, use the "mode" flags "debug" and "profile". For example:
 ```bash
