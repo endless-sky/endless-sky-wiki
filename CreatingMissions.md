@@ -62,7 +62,7 @@ mission <name>
             ...
         not
             ...
-    npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany)...
+    npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
         to (spawn | despawn)
             <condition> <comp> <value>
             (has | not) <condition>
@@ -532,7 +532,7 @@ source
 NPCs are ships that are associated with the mission in some way. This includes friendly ships the player must protect, and hostile ships the player must fight off or destroy:
 
 ```html
-npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany)...
+npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
     to (spawn | despawn)
         <condition> <comp> <value>
         (has | not) <condition>
@@ -571,8 +571,10 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `disable`: To complete the mission, the player must disable the given NPC.
 * `"scan cargo"`: To complete the mission, the player must scan the given NPC's cargo. If the NPC is destroyed before being scanned, the mission fails.
 * `"scan outfits"`: Same, but the player must use an outfit scanner instead of a cargo scanner.
-* `evade`: you cannot complete the mission if any members of this NPC are in the same system as you.
-* `accompany`: you can only complete the mission if all members of this NPC are in the same system as you.
+* `evade`: You cannot complete the mission if any members of this NPC are in the same system as you.
+* `accompany`: You can only complete the mission if all members of this NPC are in the same system as you.
+* `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
+* `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
 
 ```html
 to (spawn | despawn)
