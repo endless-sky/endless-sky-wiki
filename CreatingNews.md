@@ -4,6 +4,8 @@ Version 0.9.9 added a "news system" where people in the spaceport will tell you 
 
 # Portraits
 
+**Note:** Portraits have since been removed from use in the vanilla game, but the mechanic for portraits still exists to be used by plugins. The following were the guidelines that existed around portrait images.
+
 Portraits should be PNG images with the person's silhouette "cut out," designed to look good when displayed over a dark grey background. Source images should have enough resolution to look sharp at 480 x 480 pixels. For the sake of consistency:
 
 * Each person's face should be half the width of the image. (Or slightly less if they have a big hat or lots of hair.)
@@ -133,12 +135,16 @@ A `news` datafile definition has 4 definable child elements.
 * `portrait`: The path to a sprite to be displayed in the news message, relative to the `images` directory. Multiple sprites can be provided, and one will be chosen at random when the news message is displayed.
 * `message`: The text to be displayed. For flexibility, this uses the same "phrase" format that the news' name element and ship hails use.
 * `location` (optional): A location filter that is used to identify on which planets this News message can appear. If not provided, or removed, then this news source will not be displayed anywhere. For the full syntax associated with locations filters see [the reference here](CreatingMissions#filters).
+* `to show` (optional): A condition set that determines whether this News message can appear. Behaves the same way as `to offer` does for [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). 
 
 ```html
 news <name>
     name
         {phrase specification...}
     [remove name]
+    to show
+        {condition set...}
+    [remove to show]
     portrait <path>...
         <path>
         ...
