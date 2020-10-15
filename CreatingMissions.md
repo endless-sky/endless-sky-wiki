@@ -99,6 +99,7 @@ mission <name>
             ...
         outfit <outfit> [<number>]
         require <outfit> [<number>]
+        give ship <model> [<name>]
         payment [<base> [<multiplier>]]
         <condition> (= | += | -=) <value>
         <condition> (++ | --)
@@ -677,6 +678,7 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
         ...
     outfit <outfit> [<count#>]
     require <outfit>
+    give ship <model> [<name>]
     payment [<base> [<multiplier>]]
     <condition> (= | += | -=) <value#>
     <condition> (++ | --)
@@ -754,6 +756,12 @@ At this point in the mission, the named ship outfit (or some number of them, if 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
 
 The `require` keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the `on offer` phase to only offer a mission to players who have a "Jump Drive". Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any).
+
+```html
+give ship <model> [<name>]
+```
+
+The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase.
 
 ```html
 payment [<base#> [<multiplier#>]]
