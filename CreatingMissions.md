@@ -89,7 +89,7 @@ mission <name>
         fleet <name> [<count>]
         fleet [<count>]
             ...
-    on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
+    on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>])
         log [<category> <header>] <text>
         dialog <text>
             <text>...
@@ -667,7 +667,7 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | defer | fail | visit | stopover | enter [<system>])
+on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>])
     log [<category> <header>] <text>
     dialog <text>
         <text>...
@@ -693,8 +693,10 @@ There are eight events that can trigger a response of some sort:
 * `decline`: if the player decides to decline a mission.
 * `defer`: if the player decides to defer a mission.
 * `fail`: if the mission fails.
+* `abort`: if the mission is aborted by the player. If no `on abort` action exists and the player aborts a mission, then any `on fail` action will be triggered instead.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
+* `waypoint`: you have visited the last of the systems that are specified as a "waypoint" for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 
 Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a location filter:
