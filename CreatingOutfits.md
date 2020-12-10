@@ -99,7 +99,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"shield energy"`: the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `"shield generation"`.) Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to grant energy.
 
-  * `"shield heat"` is the amount of heat that shield generation creates when recharging at the full rate. **(v. 0.9.1)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to reduce heat.
+  * `"shield heat"`: the amount of heat that shield generation creates when recharging at the full rate. **(v. 0.9.1)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to reduce heat.
 
   * `"shield fuel"`: the amount of fuel that shield regeneration consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to grant fuel.
 
@@ -109,9 +109,17 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull energy"`: the amount of energy that hull repair draws when recharging at the full rate. (**Prior to v. 0.9.0,** hull repair also draws an additional amount of energy equal to `"hull repair rate"`.) Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to grant energy.
 
-  * `"hull heat"` is the amount of heat that hull repair creates when recharging at the full rate. **(v. 0.9.1)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to reduce heat.
+  * `"hull heat"`: the amount of heat that hull repair creates when recharging at the full rate. **(v. 0.9.1)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to reduce heat.
 
   * `"hull fuel"`: the amount of fuel that hull repair consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to grant fuel.
+
+* These attributes change the point at which a ship becomes disabled. The default point at which a ship becomes disabled is dictated by the equation `hull * max(.15, min(.45, 10. / sqrt(hull)))`. **(v. 0.9.13)**
+
+  * `"absolute threshold"`: the exact hull value at which a ship becomes disabled. Having this attribute overrides the effects of any other attributes that change when a ship becomes disabled. Suggested that this not be changed by outfits, instead being an attribute applied directly to a ship.
+
+  * `"threshold percentage"`: a value between 0 and 1 that represents the percentage of the hull remaining for the ship to become disabled, causing the equation for when a ship becomes disabled to be `hull * "threshold percentage"`.
+
+  * `"hull threshold"`: a hull value that gets added or subtracted from the result of either the default equation or the threshold percentage equation, whichever is used.
 
 * Most of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship according to the equation `stat * (1 + multiplier)`, which means that the default value of 0 means no change, while a value of 1 would be a +100% increase in the stat. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated stat. **(v. 0.9.13)**
   
