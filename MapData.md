@@ -30,6 +30,7 @@ system <name>
 	music <sound>
 	habitable <distance#>
 	belt <distance#>
+	"jump range" <distance#>
 	haze <sprite>
 	link <system>
 	asteroid <name> <count#> <energy#>
@@ -105,6 +106,7 @@ system <name>
 	music <sound>
 	habitable <distance#>
 	belt <distance#>
+	"jump range" <distance#>
 	haze <sprite>
 	link <system>
 	asteroid <name> <count#> <energy#>
@@ -165,6 +167,12 @@ belt <distance#>
 ```
 
 The distance at which minable asteroids in this system will orbit. 
+
+```html
+"jump range" <distance#>
+```
+
+The distance to which ships can jump from this system. This overrides the jump range of any ships in the system.
 
 ```html
 haze <sprite>
