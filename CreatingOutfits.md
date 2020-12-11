@@ -462,6 +462,10 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `piercing`: a value between 0 and 1, controlling what fraction of the weapon's damage "pierces" through shields and does direct damage to the hull instead. When the target's shields are still up, shield damage will be `(1 - piercing) * "shield damage"` and hull damage will be `piercing * "hull damage"`. Beginning in **v. 0.9.13**, piercing is capable of having values greater than 1, but any value over 1 will be treated as 1. (When combined with piercing resistance, this can allow for a ship that can resist against all normal forms of piercing by having a resistance of 1, but a projectile with a piercing value greater than 1 could still hurt that ship.)
 
+* `"damage dropoff"`: an attribute that can take one or two values denoting ranges at which this weapon's damage begins to change. The first value provided is the minimum dropoff range and the second value provided is the maximum dropoff range. Before the minimum range the weapon deals normal damage, while after the maximum range the weapon deals damage according to the dropoff modifier. Between these two ranges damage output changes linearly. If no second value is given then the maximum dropoff range becomes the range of the weapon. **(v. 0.9.13)**
+
+* `"dropoff modifier"`: a value that dictates how a weapon's damage changes over range if the `"damage dropoff"` attribute is present. Values between 0 and 1 will result in reduced damage over range, while values greater than 1 are allowed and result in increased damage over range. **(v. 0.9.13)**
+
 * There are several damage types, and a weapon may have more than one type. Generally, most weapons include shield and hull damage, as a ship's shields mitigate incoming damage, and without hull damage, the target cannot be eliminated.
 
   * `"shield damage"`: how much damage a projectile does to shields.
