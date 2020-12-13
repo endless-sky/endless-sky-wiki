@@ -283,9 +283,27 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"disruption resistance"`: an extra amount of shield disruption that this ship "bleeds off" every frame. **(v. 0.9.9)**
 
+  * `"disruption resistance energy"`: the amount of energy that disruption resistance draws when active. **(v. 0.9.13)**
+
+  * `"disruption resistance heat"`: the amount of heat that disruption resistance creates when active. **(v. 0.9.13)**
+
+  * `"disruption resistance fuel"`:  the amount of fuel that disruption resistance consumes when active. **(v. 0.9.13)**
+
   * `"ion resistance"`: an extra amount of ionization that this ship "bleeds off" every frame. **(v. 0.9.9)**
 
+  * `"ion resistance energy"`: the amount of energy that ion resistance draws when active. **(v. 0.9.13)**
+
+  * `"ion resistance heat"`: the amount of heat that ion resistance creates when active. **(v. 0.9.13)**
+
+  * `"ion resistance fuel"`:  the amount of fuel that ion resistance consumes when active. **(v. 0.9.13)**
+
   * `"slowing resistance"`: an extra amount of slowing damage that this ship "bleeds off" every frame. **(v. 0.9.9)**
+
+  * `"slowing resistance energy"`: the amount of energy that slowing resistance draws when active. **(v. 0.9.13)**
+
+  * `"slowing resistance heat"`: the amount of heat that slowing resistance creates when active. **(v. 0.9.13)**
+
+  * `"slowing resistance fuel"`:  the amount of fuel that slowing resistance consumes when active. **(v. 0.9.13)**
   
   * `"piercing resistance"`: this value subtracts from the piercing value of any incoming projectiles. For example, if an incoming projectile has a piercing value of 50% (.5) and you have a piercing resistance of 20% (.2), then the projectile will only pierce by 50% - 20% = 30%. **(v. 0.9.13)**
 
