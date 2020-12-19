@@ -2,7 +2,7 @@
 
 The [syntax](DataFormat#grammar-specifications) for the definition of a system hazard is:
 ```html
-hazard "<hazard name>"
+hazard <name>
 	"constant strength"
 	"period" <number#>
 	"duration" <min#> [<max#>]
@@ -16,7 +16,7 @@ hazard "<hazard name>"
 # Hazard characteristics
 
 ```html
-hazard "<hazard name>"
+hazard <name>
 ```
 
 The name of the hazard must be unique.
