@@ -31,6 +31,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating outfits and weapons](CreatingOutfits)
 * [Creating effects](CreatingEffects)
 * [Creating systems and planets](MapData)
+* [Creating system hazards](CreatingHazards)
 * [Creating minable asteroids](CreatingMinables)
 * [Creating planet sprites](PlanetSprites)
 * [Creating spaceport news](CreatingNews)
