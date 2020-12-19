@@ -37,6 +37,7 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+	hazard <name> <period#>
 	object [<name>]
 		sprite <sprite>
 		distance <distance#>
@@ -113,6 +114,7 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+	hazard <name> <period#>
 	object [<name>]
 		sprite <sprite>
 		distance <distance#>
@@ -199,13 +201,18 @@ If an asteroid is minable, then it uses the `minable` keyword. Unlike normal ast
 trade <commodity> <cost#>
 ```
 
-A type of commodity sold at the planets in this system and its cost. 
+A type of commodity sold at the planets in this system and its cost.
 
 ```html
 fleet <name> <period#>
 ```
 
 The name of a [fleet](CreatingFleets) that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
+
+```html
+hazard <name> <period#>
+```
+The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself.
 
 <a name="objects">
 
