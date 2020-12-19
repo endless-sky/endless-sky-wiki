@@ -211,7 +211,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"active cooling"`: amount of cooling this outfit provides when heat is at 100%, at which level it will consume its entire `"cooling energy"`. When heat is at 0%, no energy is consumed and no active cooling is provided.
 
-  * `"cooling energy"`: energy consumed by `"active cooling"` when heat is at 100%.
+  * `"cooling energy"`: energy consumed by `"active cooling"` when heat is at 100%. Beginning with **v. 0.9.13** cooling energy can be net negative to allow for outfits that produce energy as heat increases.
 
   * `"heat dissipation"`: outfits should not modify this. If you want an outfit to help cool off a ship, use the "cooling" attribute instead.
 
