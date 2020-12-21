@@ -412,6 +412,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `"no damage scaling"`: this tag (just by itself, no value following it) prevents any damage scaling associated with blast damage from being applied: the nominal damage and hit force values are dealt at the center of the blast and at the very edges. **(v. 0.9.9)**
 
+* `"gravitational"`: this tag (just by itself, no value following it) causes all ships impacted by this weapon to receive the same amount of hit force, as opposed to hit force decreasing in its effectiveness against heavier ships. **(v. 0.9.13)**
+
 Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `lifetime`: how long the projectile lasts before it "dies."
@@ -486,7 +488,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 [<img src="https://i.imgur.com/Nw81ZjK.png" width="400px">][blastscale]
 
-* `"hit force"`: how much thrust is applied to a ship when this projectile strikes it. If this is negative, the ship is pulled towards the projectile. Hit force associated with blast damage is also scaled.
+* `"hit force"`: how much thrust is applied to a ship when this projectile strikes it. If this is negative, the ship is pulled towards the projectile. Hit force associated with blast damage is also scaled. Ships with a greater mass are pushed around less by the same hit force value than a ship with a lower mass, unless the `"gravitational"` tag is present.
 
 * `piercing`: a value between 0 and 1, controlling what fraction of the weapon's damage "pierces" through shields and does direct damage to the hull instead. When the target's shields are still up, shield damage will be `(1 - piercing) * "shield damage"` and hull damage will be `piercing * "hull damage"`. Beginning in **v. 0.9.13**, piercing is capable of having values greater than 1, but any value over 1 will be treated as 1. (When combined with piercing resistance, this can allow for a ship that can resist against all normal forms of piercing by having a resistance of 1, but a projectile with a piercing value greater than 1 could still hurt that ship.)
 
