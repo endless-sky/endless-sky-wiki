@@ -319,6 +319,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"disruption protection"`: protects against incoming disruption damage.
   
+  * `"energy protection"`: protects against incoming energy damage.
+
   * `"force protection"`: protects against incoming hit force.
   
   * `"fuel protection"`: protects against incoming fuel damage.
@@ -506,11 +508,23 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"fuel damage"`: how much fuel is removed from a target when struck by this projectile. If the target's shields are up, fuel damage is cut in half. **(v. 0.9.9)**
 
+  * `"energy damage"`: how much energy is removed from a target when struck by this projectile. If the target's shields are up, fuel damage is cut in half. **(v. 0.9.13)**
+
   * `"ion damage"`: how much ionization is added to a target when struck by this projectile. If the target's shields are up, ionization is cut in half. Ionization drains energy and dissipates at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
 
   * `"disruption damage"`: works like ionization, adding a "shield disruption" effect that fades by 1% each frame. When disrupted, your shields only block `1 / (1 + .01 * disruption)` of weapon damage, and the rest pierces through your shields and damages your hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. **(v. 0.9.0)**
 
   * `"slowing damage"`: accumulates like ion and disruption damage, and dissipates at 1% per frame. Multiplies your ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. **(v. 0.9.0)**
+
+  * `"relative shield damage"`: shield damage that gets scaled according to the max shields of a target. A value of 0.5 means that one shot should take out 50% of the target's shields, regardless of how strong the target's shields are. Suggested that relative damage types be used on [system hazards](CreatingHazards) as a way to make hazards that affect all ships to a reasonable degree without crippling smaller/weaker ships (unless of course that is the intended effect). **(v. 0.9.13)**
+
+  * `"relative hull damage"`: hull damage that gets scaled according to the max hull of a target. **(v. 0.9.13)**
+
+  * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). **(v. 0.9.13)**
+
+  * `"relative fuel damage"`: fuel damage that gets scaled according to the fuel capacity of a target. **(v. 0.9.13)**
+
+  * `"relative energy damage"`: energy damage that gets scaled according to the energy capacity of a target. **(v. 0.9.13)**
 
 <a name="sales">
 
