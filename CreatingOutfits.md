@@ -520,11 +520,11 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"relative hull damage"`: hull damage that gets scaled according to the max hull of a target. **(v. 0.9.13)**
 
-  * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). **(v. 0.9.13)**
+  * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half. **(v. 0.9.13)**
 
-  * `"relative fuel damage"`: fuel damage that gets scaled according to the fuel capacity of a target. **(v. 0.9.13)**
+  * `"relative fuel damage"`: fuel damage that gets scaled according to the fuel capacity of a target. If the target's shields are up, fuel damage is cut in half. **(v. 0.9.13)**
 
-  * `"relative energy damage"`: energy damage that gets scaled according to the energy capacity of a target. **(v. 0.9.13)**
+  * `"relative energy damage"`: energy damage that gets scaled according to the energy capacity of a target. If the target's shields are up, energy damage is cut in half. **(v. 0.9.13)**
 
 <a name="sales">
 
