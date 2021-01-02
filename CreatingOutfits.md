@@ -450,25 +450,25 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"firing heat"`: heat produced when this weapon fires.
 
-* `"firing hull"`: hull destroyed when this weapon fires.
+* `"firing hull"`: hull destroyed when this weapon fires. **(v. 0.9.13)**
 
-* `"firing shields"`: shield depleted when this weapon fires.
+* `"firing shields"`: shield depleted when this weapon fires. **(v. 0.9.13)**
 
-* `"firing ion"`: ionization added when this weapon fires.
+* `"firing ion"`: ionization added when this weapon fires. **(v. 0.9.13)**
 
-* `"firing slowing"`: slowing added when this weapon fires.
+* `"firing slowing"`: slowing added when this weapon fires. **(v. 0.9.13)**
 
-* `"firing disruption"`: disruption added when this weapon fires.
+* `"firing disruption"`: disruption added when this weapon fires. **(v. 0.9.13)**
 
-* `"relative firing energy"`: the energy cost to fire this weapon fires as a percentage of the ship's energy capacity.
+* `"relative firing energy"`: the energy cost to fire this weapon fires as a percentage of the ship's energy capacity. **(v. 0.9.13)**
 
-* `"relative firing fuel"`: fuel consumed when this weapon fires as a percentage of the ship's fuel capacity.
+* `"relative firing fuel"`: fuel consumed when this weapon fires as a percentage of the ship's fuel capacity. **(v. 0.9.13)**
 
-* `"relative firing heat"`: heat produced when this weapon fires as a percentage of the ship's heat capacity.
+* `"relative firing heat"`: heat produced when this weapon fires as a percentage of the ship's heat capacity. **(v. 0.9.13)**
 
-* `"relative firing hull"`: hull destroyed when this weapon fires as a percentage of the ship's total hull.
+* `"relative firing hull"`: hull destroyed when this weapon fires as a percentage of the ship's total hull. **(v. 0.9.13)**
 
-* `"relative firing shields"`: shields depleted when this weapon fires as a percentage of the ship's total shields.
+* `"relative firing shields"`: shields depleted when this weapon fires as a percentage of the ship's total shields. **(v. 0.9.13)**
 
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 
