@@ -450,6 +450,26 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"firing heat"`: heat produced when this weapon fires.
 
+* `"firing hull"`: hull destroyed when this weapon fires.
+
+* `"firing shields"`: shield depleted when this weapon fires.
+
+* `"firing ion"`: ionization added when this weapon fires.
+
+* `"firing slowing"`: slowing added when this weapon fires.
+
+* `"firing disruption"`: disruption added when this weapon fires.
+
+* `"relative firing energy"`: the energy cost to fire this weapon fires as a percentage of the ship's energy capacity.
+
+* `"relative firing fuel"`: fuel consumed when this weapon fires as a percentage of the ship's fuel capacity.
+
+* `"relative firing heat"`: heat produced when this weapon fires as a percentage of the ship's heat capacity.
+
+* `"relative firing hull"`: hull destroyed when this weapon fires as a percentage of the ship's total hull.
+
+* `"relative firing shields"`: shields depleted when this weapon fires as a percentage of the ship's total shields.
+
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 
 * `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The burst will reload fully after `reload * # of shots fired`, making the reload time for a full burst `reload * "burst count"`. Reloading for a burst weapon starts immediately after the burst has started, so the number of frames between full bursts is `"burst count" * (reload - "burst reload")`. **(v. 0.9.0)**
