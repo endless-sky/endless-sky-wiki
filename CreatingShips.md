@@ -117,6 +117,10 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"gun"`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations listed here.
 
+    * `"angle"`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
+
+    * `"parallel"`: a single keyword with no value that specifies that the gun should fire in parallel with other guns of the same angle. That is, the gun fires straight out from its facing angle. The default behavior of guns is to angle their fire slightly in order to converge on a single point in the distance. (**v. 0.9.13**)
+
 * `"turret"`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
 
 * `(fighter | drone) [<x> <y> [over | under] [left | right | back]]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`.
