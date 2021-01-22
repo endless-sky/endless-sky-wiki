@@ -101,31 +101,43 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
 
-* `"(engine | reverse engine | steering engine)"`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). 
+* `"(engine | reverse engine | steering engine)" <x#> <y#> <zoom#>`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). 
 
   * As of **v. 0.9.4** you can optionally specify a third value, a zoom factor, in order to have some of a ship's engines produce bigger flares than others. It is suggested that the sum of the squares of the zoom factors be roughly equal to 2 so that the total area of the engine flares is the same across ships. (Example: A ship with three engines could have an engine with a zoom factor of 1 and two with zoom factors of 0.7, as 1^2 + 0.7^2 + 0.7^2 is roughly 2.)
 
   * As of **v. 0.9.13**, the syntax for the zoom factor of an engine has changed (although the old way of specifying a zoom factor is still supported for compatibility). Two new engine flare types have also been added: `"reverse engine"` and `"steering engine"`, the former of which only creates flares when using a reverse thruster, and the latter of which only creates flares when steering. `"engine"` and its variants can now have the following (optional) children:
 
-    * `"zoom"`: the zoom factor of this engine.
+    * `"zoom" <zoom#>`: the zoom factor of this engine.
 
-    * `"angle"`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
+    * `"angle" <degrees#>`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
 
-    * `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite.
+    * `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite instead of under it.
 
     * `"[left | right]"`: keywords with no value used only for steering engines. Specifies in what direction the ship must be turning in order for these flares to show. If neither of these keywords are listed, the steering flare will always show when the ship is steering.
 
-* `"gun"`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations listed here.
+* `"gun" <x#> <y#>`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations listed here. The following lines can be added as a "child" of the gun line:
 
-    * `"angle"`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
+    * `"angle" <degrees#>`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
 
     * `"parallel"`: a single keyword with no value that specifies that the gun should fire in parallel with other guns of the same angle. That is, the gun fires straight out from its facing angle. The default behavior of guns is to angle their fire slightly in order to converge on a single point in the distance. (**v. 0.9.13**)
 
-* `"turret"`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
+* `"turret" <x#> <y#>`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
 
-* `(fighter | drone) [<x> <y> [over | under] [left | right | back]]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`.
+* `(fighter | drone) <x#> <y#> [over | under] [left | right | back]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`.
 
   * As of **v. 0.9.3** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
+
+  * As of **v. 0.9.13** the syntax for adding bays to a ship has changed (although the old way is still supported for compatibility). Now, a bay is defined as follows:
+
+    * `bay <category> <x#> <y#>`: specify a bay that carries ships of the given category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The only supported categories that can go in bays are `"Fighter"` and `"Drone"`. The following lines can be added as a "child" of the bay line:
+
+      * `"[over | under]"`: a keyword with no value that changes the Z position of the bay, displaying the carried ship either over or under the sprite of the carrying ship. Omitting this keyword means that carried ship is not displayed externally on the carrier.
+
+      * `"[left | right | back]"`: a keyword with no value that changes the facing direction of the carried ship, the default direction being facing forward. This also controls the direction in which the carried ship is first facing when deployed.
+
+      * `"angle" <degrees#>`: a value of degrees that allows for facing the carried ship in any direction.
+
+      * `"launch effect" <effect> [<count#>]`: an [effect](CreatingEffects) that is drawn at this bay's coordinates when its carried ship deploys.
 
 * `"explode" <effect> [<count#>]`: an effect to create when the ship is dying, and the number of them to create (e.g. `explode "small explosion" 10`). These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion where 50% of the explosion effects are generated a second time.
 
