@@ -416,6 +416,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `"gravitational"`: this tag (just by itself, no value following it) causes all ships impacted by this weapon to receive the same amount of hit force, as opposed to hit force decreasing in its effectiveness against heavier ships. **(v. 0.9.13)**
 
+* `"parallel"`: this tag (just by itself, no value following it) causes this gun to fire in parallel when installed on a ship. This tag has no effect on turrets. See the [gun](CreatingShips) port definition for more information on parallel firing behavior. **(v. 0.9.13)**
+
 Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `lifetime`: how long the projectile lasts before it "dies."
