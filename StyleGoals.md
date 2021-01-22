@@ -37,6 +37,10 @@ Ideally, each species should have slightly different speech patterns to indicate
 
 * Some Hai have better command of the human language than others (particularly the Unfettered). They make occasional grammatical errors, particularly leaving out articles or inserting the where they are not needed. (This is to hint that they speak a language like Latin that does not use articles.)
 
-* The Wanderers' language is being translated by a machine, so it occasionally supplies multiple translations for one word when the [meaning, intent] of the Wanderer word cannot be [precisely, completely] mapped into a single human word.
+* The Wanderers speak in the Hai language to the player which is being translated by a machine, so it occasionally supplies multiple translations for one word when the [meaning, intent] of the Wanderer word cannot be [precisely, completely] mapped into a single human word, or simply due to a lack of understanding of the Hai language on the part of the Wanderers.
 
 * The Pug should sound airy, haughty, and poetic. (My inspiration was the pike in _The Once and Future King_: "Now I think it is time that you should go away, young master, for I find this conversation uninteresting and exhausting. I think you ought to go away really almost at once, in case my disillusioned mouth should suddenly determine to introduce you to my great gills, which have teeth in them also. Yes, I really think you might be wise to go away this moment. Indeed, I think you ought to put your back into it. And so, a long farewell to all my greatness...")
+
+* The Coalition, much like the Wanderers, communicate with the player through a translation device. But while the translation device used with the Wanderers has trouble finding the exact human word while maintaining proper grammar, the Coalition translation devices produce the correct words but with improper grammar or sentence structure. Put simply, the Coalition speak like Yoda.
+
+* The Remnant are human, but much of their communication is through sign language, and that communication which isn't sign language is heavily influence by the fact that they normally communicate in sign. One of the ways this changes how the Remnant communicate is with their almost complete lack of contractions.
