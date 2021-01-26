@@ -33,7 +33,7 @@ If this tag is omitted, then the strength of the hazard follows a normal curve, 
 "period" <number#>
 ```
 
-The period of a hazard is the average number of frames between when the hazard damages all ships in range, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned. This means that a period of 1 results in a hazard that deals damage every frame.
+The period of a hazard is the average number of frames between when the hazard damages all ships in range, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a hazard is spawned. This means that a period of 1 results in a hazard that deals damage every frame.
 
 If a hazard changes its strength over time (i.e. it does not have the `"constant strength"` tag), then its period will be divided by the square root of the current strength of the hazard. This means that as a hazard's strength increases, the chance that it deals damage increases as well.
 
