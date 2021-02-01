@@ -12,7 +12,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 
 * `frugal`: does not expend ammunition unless it has lost more than 50% of its shields or its government is outnumbered in the current system.
 * `disables`: tries to disable enemy ships rather than destroying them.
-* `plunders`: will board and pillage enemy ships before destroying them.
+* `plunders`: will leave enemy ships disabled so that they can be boarded and pillaged before destroying them.
 * `vindictive`: this ship continues to fire at its target even after the target is dead, while the target is beginning to explode. **(v. 0.9.0)**
 * `unconstrained`: the ship will fly outside the "invisible fence" that ships usually stay within. **(v. 0.9.1)**
 * `coward`: if this ship is not the flagship of a fleet, it will desert its flagship and flee the system if its shields drop to zero. **(v. 0.9.0)**
