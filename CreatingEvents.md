@@ -101,6 +101,8 @@ Update the named `galaxy`, including the `sprite` and position of the sprite on 
 
 ```html
 system <name>
+    invisible
+    remove invisible
     pos <x#> <y#>
     government <gov>
     remove government
@@ -121,6 +123,8 @@ system <name>
     remove minables [<name>]
     [add] fleet <name> <period#>
     remove fleet [<name>]
+    [add] hazard <name> <period#>
+    remove hazard [<name>]
     [add] object [<planet>]
         sprite <path>
         distance <radius#>
