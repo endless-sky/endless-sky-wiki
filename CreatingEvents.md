@@ -101,8 +101,8 @@ Update the named `galaxy`, including the `sprite` and position of the sprite on 
 
 ```html
 system <name>
-    invisible
-    remove invisible
+    hidden
+    remove hidden
     pos <x#> <y#>
     government <gov>
     remove government
