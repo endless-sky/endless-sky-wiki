@@ -24,7 +24,7 @@ galaxy <name>
 	sprite <sprite>
 
 system <name>
-	invisible
+	hidden
 	pos <x#> <y#>
 	government <name>
 	attributes <attribute>...
@@ -105,7 +105,7 @@ The image that is created at this galaxy's position.
 
 ```html
 system <name>
-	invisible
+	hidden
 	pos <x#> <y#>
 	government <name>
 	attributes <attribute>...
@@ -141,10 +141,10 @@ system <name>
 The name of a system must be unique.
 
 ```html
-invisible
+hidden
 ```
 
-Whether this system is able to be seen while not being linked to any visited systems. If a system linked to this one is visited or if a mission highlights this system then it will be visible, but otherwise the system can not be seen.
+Systems which are hidden are not able to be seen unless they are linked to a visited system or a mission highlights them. Once the system has been seen by visiting a linked system, it is permanently seen.
 
 ```html
 pos <x#> <y#>
