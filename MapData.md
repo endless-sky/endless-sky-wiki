@@ -144,7 +144,7 @@ The name of a system must be unique.
 hidden
 ```
 
-Systems which are hidden are not able to be seen unless they are linked to a visited system or a mission highlights them. Once the system has been seen by visiting a linked system, it is permanently seen.
+Systems which are hidden are not able to be seen unless they are linked to a visited system or a mission highlights them. Once the system has been seen by visiting a linked system, it behaves normally.
 
 ```html
 pos <x#> <y#>
