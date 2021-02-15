@@ -69,22 +69,23 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`conversation`](WritingConversations): a conversation to be shown in a mission event.
   * [`effect`](CreatingEffects): an animation that is used purely for visual effect and does not interact with objects in the game. (For example, the explosions shown when a projectile strikes something.)
   * [`event`](CreatingEvents): a list of changes to the game data, which will happen either on a specific date, or in response to a mission.
-  * `fleet`: a list of possible ship combinations and relative frequencies. (For examples, see [`fleets.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/fleets.txt).)
-  * `galaxy`: a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
+  * [`fleet`](CreatingFleets): a list of possible ship combinations and relative frequencies. (For examples, see [`fleets.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/fleets.txt).)
+  * [`galaxy`](MapData): a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
   * [`government`](CreatingGovernments): the characteristics of a particular government.
+  * [`hazard`](CreatingHazards): a weapon that can deal damage to ships in a system when active.
   * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/interfaces.txt).)
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`news`](CreatingNews): a definition of information that is provided to the player when visiting a spaceport.
   * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
   * `outfitter`: a "catalog" of outfits that can be for sale on various planets, or found in a ship's cargohold. This is so that instead of needing to specify every possible outfit multiple times, a planet or fleet can just say, "all the basic Syndicate outfits are available."
   * [`person`](CreatingPersons): a unique ship that occasionally appears in certain systems.
-  * `phrase`: a rule for constructing random phrases, e.g. for ship names, hail messages, and the name used for a spaceport news message. (See [`hails.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/hails.txt) or [`names.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/names.txt) for examples.)
-  * `planet`: specifies what services are available on a given planet. These elements can be modified through the [map editor](https://github.com/endless-sky/endless-sky-editor).
+  * [`phrase`](CreatingPhrases): a rule for constructing random phrases, e.g. for ship names, hail messages, and the name used for a spaceport news message. (See [`hails.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/hails.txt) or [`names.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/names.txt) for examples.)
+  * [`planet`](MapData#planets): specifies what services are available on a given planet. These elements can be modified through the [map editor](https://github.com/endless-sky/endless-sky-editor).
   * [`ship`](CreatingShips): the attributes of a ship and its default outfits, or a ship variant with an alternative set of outfits.
   * `shipyard`: a "catalog" of ships that can be for sale on various planets.
   * `start`: starting conditions for the player.
-  * `system`: a star system. Generally, these will be created through the [map editor](https://github.com/endless-sky/endless-sky-editor) so that orbital periods, habitable zones, etc. will be consistent.
-  * `trade`: a list of commodity names and prices. (For examples, see [`trade.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/trade.txt).)
+  * [`system`](MapData#systems): a star system. Generally, these will be created through the [map editor](https://github.com/endless-sky/endless-sky-editor) so that orbital periods, habitable zones, etc. will be consistent.
+  * `trade`: a list of commodity names and prices. (For examples, see [`commodities.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/commodities.txt).)
 
 To modify most properties of an existing data element, you only need to include the particular fields you are interested in. For example, to change the government of Kornephoros from "Republic" to "Free Worlds" all you need to write is this:
 
