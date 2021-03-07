@@ -179,7 +179,7 @@ phrase "Syndicate Suspicion"
 		"try to do right by people."
 ```
 
-This phrase can generate sensical sentences like "I suspect that the leaders of the Syndicate don't have out best interests at heart." But it can also generate nonsensical ones: "I suspect the CEO of the Syndicate try to do right by people." Instead of having to create an entirely separate phrase to handle how "don't" and "try" should change if the subject of the previous word is singular, we can use the replace function to change these verbs to their singular forms.
+This phrase can generate grammatically correct sentences like "I suspect that the leaders of the Syndicate don't have our best interests at heart." But it can also generate nonsensical ones: "I suspect the CEO of the Syndicate try to do right by people." Instead of having to create an entirely separate phrase to handle how "don't" and "try" should change if the subject of the previous word is singular, we can use the replace function to change these verbs to their singular forms.
 
 ```
 phrase "Syndicate Suspicion"
@@ -199,6 +199,6 @@ phrase "Syndicate Suspicion"
 		"%" ""
 ```
 
-Now, if this sentence generates "I suspect the CEO of the Syndicate% try to do right by people.", the "% try" will be replaced with " tries", creating the sensical sentence "I suspect the CEO of the Syndicate tries to do right by people."
+Now, if this sentence generates "I suspect the CEO of the Syndicate% try to do right by people.", the "% try" will be replaced with " tries", creating the sentence "I suspect the CEO of the Syndicate tries to do right by people."
 
 Notice how a dummy character is used to figure out if a replacement should occur. If this dummy character were not used, then instead the replace function would need to look for "CEO of the Syndicate don't" or "CEO of the Syndicate try" to do a replacement. While in this case that would be perfectly valid, in the case of having more subjects or more predicates, this dummy character becomes a necessity, lest the replace block grow unnecessarily large.

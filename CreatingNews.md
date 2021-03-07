@@ -52,7 +52,7 @@ In-flight messages from other ships already give a lot of flavor from a pilot's 
 * hotel manager
 * artist
 * musician
-* street perfomer
+* street performer
 * factory worker
 * loan officer
 * revenue agent

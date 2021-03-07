@@ -122,7 +122,7 @@ and allows one to easily use other condition values when testing or applying con
 # evaluates to 4 (2.9 -> 2, then 8 / 2)
 8 / 2.9
 
-# at runtime, evalutes to "10 * <some integer> - 10" based on the player's
+# at runtime, evaluates to "10 * <some integer> - 10" based on the player's
 # current reputation with the Republic and Syndicate governments
 # (Note that you MUST place spaces on both sides of the opening and closing parentheses.)
 10 * ( "reputation: Republic" + "reputation: Syndicate" ) - 10

@@ -265,7 +265,7 @@ If you want a mission to be offered any number of times but to limit the number 
 
 ```html
 clearance [<message>]
-    [{filter specificiation...}]
+    [{filter specification...}]
 ```
 
 This gives you landing clearance on the destination planet, even if normally you would not be allowed to land there, or would have to pay a bribe.
@@ -289,7 +289,7 @@ This indicates that you do not have access to any of the services on the destina
 ```html
 waypoint <system>
 waypoint
-    {filter specificiation...}
+    {filter specification...}
 ```
 
 This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited. Beginning with **v. 0.9.9**, all visited waypoints of the currently selected mission are marked by a faint circle in the player's map panel.
@@ -297,7 +297,7 @@ This specifies a system which you must fly through in order to complete the miss
 ```html
 stopover [<planet>]
 stopover
-    {filter specificiation...}
+    {filter specification...}
 ```
 
 This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the [`source` and `destination` filters](#filters). As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission (**v 0.9.9+**). Beginning with **v 0.9.13**, planets selected by a filter to be a stopover are no longer required to have a spaceport (unlike a mission's destination). If a mission's randomly picked stopover planet(s) should have a spaceport, this can be achieved by adding an `attributes "spaceport"` line to the filter specification.

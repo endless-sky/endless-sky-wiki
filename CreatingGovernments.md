@@ -29,7 +29,7 @@ government <name>
     raid <fleet>
     enforces [all]
     enforces
-        {filter specificiation...}
+        {filter specification...}
 ```
 
 The various parts of a government definition are described below.
