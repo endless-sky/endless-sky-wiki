@@ -83,7 +83,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`planet`](MapData#planets): specifies what services are available on a given planet. These elements can be modified through the [map editor](https://github.com/endless-sky/endless-sky-editor).
   * [`ship`](CreatingShips): the attributes of a ship and its default outfits, or a ship variant with an alternative set of outfits.
   * `shipyard`: a "catalog" of ships that can be for sale on various planets.
-  * `start`: starting conditions for the player.
+  * [`start`](Creating-Starts): starting conditions for the player.
   * [`system`](MapData#systems): a star system. Generally, these will be created through the [map editor](https://github.com/endless-sky/endless-sky-editor) so that orbital periods, habitable zones, etc. will be consistent.
   * `trade`: a list of commodity names and prices. (For examples, see [`commodities.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/commodities.txt).)
 

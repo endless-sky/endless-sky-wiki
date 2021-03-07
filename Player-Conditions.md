@@ -61,7 +61,7 @@ The `<?=` (minimum) and `>?=` (maximum) operators allow setting `<condition>` to
 
 As a special shortcut, "++" means "+= 1" and "--" means "-= 1". You must place a space between the condition, the operator, and the value in order for the parser to interpret it correctly. The "set" and "clear" tags are shortcuts for "= 1" and "= 0".
 
-Note that the `/=` operator performs [**integer division**](http://mathworld.wolfram.com/IntegerDivision.html), not floating-point division.
+Note that the `/=` operator performs [**integer division**](https://mathworld.wolfram.com/IntegerDivision.html), not floating-point division.
 
 
 ## Reserved Conditions

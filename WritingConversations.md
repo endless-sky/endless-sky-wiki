@@ -94,7 +94,7 @@ To maintain consistency across all the text in the game:
 
 # Name
 
-This is useful mostly just for the `"intro"` conversation: if the `name` keyword appears, a set of text-entry boxes are displayed asking the player to enter their first and last name. You could also use this, for example, if the player is going deep undercover and changing their name.
+This is useful mostly just for the `"default intro"` conversation: if the `name` keyword appears, a set of text-entry boxes are displayed asking the player to enter their first and last name. You could also use this, for example, if the player is going deep undercover and changing their name.
 
 # Choice
 
