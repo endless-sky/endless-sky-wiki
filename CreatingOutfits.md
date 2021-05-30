@@ -364,7 +364,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `sprite`: the path to the sprite, relative to the "images" folder, and not including the frame number or extension (e.g. "projectile/flamethrower", not "images/projectile/flamethrower+0.png"). The sprite field can also have "child" elements, which include:
 
-  * `"frame rate": <fps#>`: animation frames per second.
+  * `"frame rate" <fps#>`: animation frames per second.
 
   * `"frame time"`: game ticks per animation frame. A game tick is 1/60th of a second. This is an alternative way of specifying frame rate; if you specify both the last specification will be used.
 
