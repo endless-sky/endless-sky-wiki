@@ -44,13 +44,17 @@ cargo <cargo#>
 commodities <commodity>...
 ```
 
-The number of types of commodities that this fleet will carry as cargo and a list of the types of those commodities. If no `cargo` number is given, then the default number of commodity types carried is 3. If no `commodities` are listed, then the commodities can be of any type. The amount of each commodity will be a random number from 0 to the cargo capacity of the ship.
+The number of types of commodities that this fleet will carry as cargo and a list of the types of those commodities. If no `cargo` number is given, then the default number of commodity types carried is 3. If no particular `commodities` are listed _and_ no outfitter lists are specified, then the commodities can be of any type. The amount of each commodity will be a random number from 0 to the cargo capacity of the ship.
+
+(Specifying `outfitters` but not `commodities` will prevent fleet ships from carrying commodities. Specifying either both or neither results in a higher chance of carrying commodities.)
 
 ```html
 outfitters <outfitter>...
 ```
 
-Ships can also carry outfits as cargo, specified by the [outfitters](CreatingOutfits#sales) listed here. If no outfitters are listed, then ships will carry outfits from the outfitters of the system they spawn in and the outfitters of all systems linked directly to the spawn system.
+Ships can also carry outfits as cargo, specified by the [outfitters](CreatingOutfits#sales) listed here. If no particular `outfitters` are listed _and_ no `commodities` are specified, then ships may carry outfits from the outfitters of the system they spawn in and the outfitters of all systems linked directly to the spawn system.
+
+(Specifying `commodities` but not `outfitters` will prevent fleet ships from carrying outfits. Specifying either both or neither results in a higher chance of carrying commodities.)
 
 ```html
 personality <type>...
