@@ -236,7 +236,7 @@ The name of a [fleet](CreatingFleets) that is spawned in this system with a cert
 ```html
 hazard <name> <period#>
 ```
-The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself.
+The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. **(v. 0.9.13)**
 
 <a name="objects">
 
