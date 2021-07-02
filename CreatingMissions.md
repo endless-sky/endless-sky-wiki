@@ -101,6 +101,7 @@ mission <name>
         require <outfit> [<number>]
         give ship <model> [<name>]
         payment [<base> [<multiplier>]]
+        fine <amount>
         <condition> (= | += | -=) <value>
         <condition> (++ | --)
         (set | clear) <condition>
@@ -115,21 +116,22 @@ Each of these parts of the mission description is described in detail below.
 # Text replacements
 </a>
 
-Certain characteristics of a mission, such as the cargo or the destination planet, may be chosen at random. In order to refer to those randomly chosen elements  in descriptive text, you can use the following placeholders:
+Certain characteristics of a mission, such as the cargo or the destination planet, may be chosen at random. In order to refer to those randomly chosen elements in descriptive text, you can use the following placeholders:
 
 * `<commodity>` = name of commodity being carried
-* `<tons>` = "1 ton" or "N tons"
+* `<tons>` = "1 ton" or "N tons," where N is the amount of cargo
 * `<cargo>` = "`<tons>` of `<commodity>`"
 * `<bunks>` = the number of passengers
 * `<passengers>` = "passenger" or "passengers"
-* `<fare>` = "a passenger" or "N passengers"
+* `<fare>` = "a passenger" or "N passengers," where N is the number of passengers
 * `<origin>` = planet (or ship) where mission was offered
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>` in the `<system>` system"
 * `<stopovers>` = a list of all stopover destinations
 * `<waypoints>` = a list of all waypoint systems
-* `<payment>` = "1 credit" or "N credits"
+* `<payment>` = "1 credit" or "N credits," where N is the payment amount
+* `<fine>` = "1 credit" or "N credits," where N is the fine amount of a mission action (any `on *` block); this is not the fine as defined by an `illegal` line
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
 * `<day>` = the deadline in conversational form ("the DDth of Month")
 * `<npc>` = the name of the first ship in the last `npc` block in the mission description
@@ -680,6 +682,7 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
     require <outfit>
     give ship <model> [<name>]
     payment [<base> [<multiplier>]]
+    fine <amount>
     <condition> (= | += | -=) <value#>
     <condition> (++ | --)
     (set | clear) <condition>
@@ -776,6 +779,12 @@ base + multiplier * (jumps + 1) * (10 * (# of passengers) + (tons of cargo))
 If no base or multiplier is given, the default is base = 0, multiplier = 150. If a single value is given, it denotes a flat payment (i.e. multiplier = 0).
 
 Normally, a `payment` value would only be given in the "on complete" section, but you can also have a negative value to be subtracted if the player fails the mission, or you could use a "payment" to advance the player some money when they first accept a mission. If the "on complete" payment is negative, the player cannot complete the mission if they have fewer than that number of credits.
+
+```html
+fine <amount#>
+```
+
+This specifies the fine for a mission, a high interest (0.006%, equivalent to a credit score of 0), short term (60 days) mortgage that must be paid.
 
 ```html
 <condition> (= | += | -=) <value#>
