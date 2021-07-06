@@ -57,7 +57,7 @@ mission <name>
             <name>...
         [(not | neighbor)] category <name>...
         [(not | neighbor)] near <system> [[<min>] <max>]
-        [(not | neighbor)] distance [[<min>] <max>]
+        [(not | neighbor)] distance [<min>] <max>
         neighbor
             ...
         not
@@ -385,7 +385,7 @@ For the source and destination, you can either specify one particular planet, or
         <name>...
     [<modifier>] category <name>...
     [<modifier>] near <system> [[<min>] <max>]
-    [<modifier>] distance [[<min>] <max>]
+    [<modifier>] distance [<min>] <max>
     neighbor
         ...
     not
@@ -490,7 +490,7 @@ If one number is given, the planet must be within (or must not be within, or mus
 [(not|neighbor)] distance [<min#>] <max#>
 ```
 
-This is the same as the `near` tag, but gives distances relative to the origin planet. (So, this tag only makes sense within a `destination` filter, not within a `source` filter or a `clearance` filter.)
+This is the same as the `near` tag, but gives distances relative to the origin planet. (So, this tag only makes sense within a `destination` filter, not within a `source` filter or a `clearance` filter.) Unlike `near`, `distance` must be provided a maximum value.
 
 ```html
 not
@@ -552,7 +552,7 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
         government <name>...
             <name>...
         near <system> [[<min#>] <max#>]
-        distance [[<min#>] <max#>]
+        distance [<min#>] <max#>
     planet <name>
     dialog <text>
         <text>...
@@ -624,7 +624,7 @@ system
     government <name>...
         <name>...
     near <system> [[<min#>] <max#>]
-    distance [[<min#>] <max#>]
+    distance [<min#>] <max#>
 ```
 
 This specifies a location filter for choosing what system the NPC starts out in. The `system`, `government`, `near`, and `distance` filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any "Pirate" system, or within two jumps of the current system. The other location filter options are also available, including `not` and `neighbor`.
