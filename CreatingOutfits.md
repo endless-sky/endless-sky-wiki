@@ -400,6 +400,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"hit effect"`: created when this projectile hits something. You can specify a number to create more than one instance of the effect. You can also specify multiple different hit effects.
 
+  * `"target effect"`: created on any impacted ships. As with `"hit effect"`, a number can be specified to create more effects and multiple target effects can be used. If a ship was impacted through an explosion, the number of effects created is scaled with the damage. **(v. 0.9.15)**
+
   * `"die effect"`: created if this projectile reaches the end of its lifetime without hitting anything.
 
 * `submunition`: if the projectile reaches its end of life, create a new set of projectiles based on the given weapon outfit. The damage and hit force associated with a parent projectile is the sum of both its own damage and hit force attributes, and those of its submunitions.
