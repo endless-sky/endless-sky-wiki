@@ -234,7 +234,7 @@ This specifies the number of passengers. As with the `cargo` specification, if t
 invisible
 ```
 
-This specifies that the mission does not show up in the player's list of missions, and cannot be aborted.
+This specifies that the mission does not show up in the player's list of missions, and cannot be aborted. Invisible missions also won't show map markers of any kind, such as the mission's destination or any stopovers/waypoints, nor will a message be displayed if the mission fails.
 
 ```html
 (priority | minor)
