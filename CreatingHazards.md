@@ -98,4 +98,4 @@ The [weapon](CreatingOutfits#weapon-attributes) of a hazard defines what it does
 * `"trigger radius"`: Used only to change the blast force curve.
 * `"damage dropoff"`: Causes the damage from this hazard to change with range according to the damage dropoff ranges and modifier. For expected behavior, two values must be provided with this weapon attribute, as otherwise the second value will be assumed to be 0.
 * `"dropoff modifier"`
-* `"target effect"`: The target effect of a hazard is created as a spark on the impacted ship when the hazard deals damage, multiplied by the square root of the current strength of the hazard, or just the current strength if the hazard has `"constant strength"`. **Prior to v0.9.15**, the weapon attribute for this behavior was `"hit effect"`.
+* `"target effect"`: The scaling factor used for how much damage is dealt by a hazard is the same factor used for how many effects are created on the target. **Prior to v0.9.15**, the `"hit effect"` weapon attribute had the behavior of `"target effect"`.
