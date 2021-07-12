@@ -119,9 +119,13 @@ The data files use indentation, like in the Python language, to define sub-entri
 
     * `"angle" <degrees#>`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
 
-    * `"parallel"`: a single keyword with no value that specifies that the gun should fire in parallel with other guns of the same angle. That is, the gun fires straight out from its facing angle. The default behavior of guns is to angle their fire slightly in order to converge on a single point in the distance. (**v. 0.9.13**)
+    * `"parallel"`: a single keyword with no value that specifies that the gun should fire in parallel with other guns of the same angle. That is, the gun fires straight out from its facing angle. The default behavior of guns is to angle their fire slightly in order to converge on a single point in the distance. **(v. 0.9.13)**
 
-* `"turret" <x#> <y#>`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here.
+    * `"over"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should be drawn on top of the ship. By default, gun hardpoint sprites are drawn under the ship. **(v. 0.9.15)**
+
+* `"turret" <x#> <y#>`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations listed here. The following lines can be added as a "child" of the turret line:
+
+    * `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
 
 * `(fighter | drone) <x#> <y#> [over | under] [left | right | back]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`.
 
