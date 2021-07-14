@@ -5,12 +5,12 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a phrase i
 ```html
 phrase <name>
 	word
-		<text>
-		"<text> ${<phrase>} <text>"
+		<text> [<weight#>]
+		"<text> ${<phrase>} <text>" [<weight#>]
 		...
 	...
 	phrase
-		<phrase>
+		<phrase> [<weight#>]
 		...
 	...
 	replace
@@ -30,8 +30,8 @@ Unlike some other root nodes, the name of a phrase does not need to be unique. M
 
 ```html
 word
-	<text>
-	"<text> ${<phrase>} <text>"
+	<text> [<weight#>]
+	"<text> ${<phrase>} <text>" [<weight#>]
 	...
 ...
 ```
@@ -40,9 +40,11 @@ A phrase can contain multiple word blocks. Words are lists of text, and a single
 
 The `${<phrase>}` construction can be used to pull a sentence from another phrase and place it in the middle of a line of text.
 
+**Beginning in v. 0.9.15,** each choice of a word can be given an optional "weight." Weights are integer values that function similarly to the weights of [fleet variants](CreatingFleets). That is, the sum of the weights of all choices is calculated, and the chances of any single choice being taken is that choice's weight divided by the sum of weights. If a weight is not provided then the choice has a default weight of 1. This can be used to influence the probability of generating a certain outcome from a phrase.
+
 ```html
 phrase
-	<phrase>
+	<phrase> [<weight#>]
 	...
 ...
 ```
@@ -50,6 +52,8 @@ phrase
 A phrase can also contain multiple phrases. Each phrase block is a list of other phrases that can be pulled from. As with words, each phrase in a phrase block has an equal chance of being chosen.
 
 Words and phrases of a phrase can go in any order; one does not need to specify what words a phrase has and then what phrases it has. The order of the words and phrases defines the order in which their pieces are put together.
+
+Phrase weights also work identically to word weights.
 
 ```html
 replace
@@ -76,6 +80,63 @@ phrase "Ship Names"
 ```
 
 Calling for the "Ship Names" phrase will potentially return Santa Maria, Pinta, Enterprise, and Millennium Falcon, instead of overwriting the "ship names" phrase with the last defined node or ignoring duplicate phrases of the same name, as some other nodes do.
+
+### Using weights to influence outcomes
+
+The following two phrases are examples from the game of phrases used for generating pirate names.
+
+```
+phrase "pirate"
+	phrase
+		"bad outcomes"
+		"pirate adjectives that work as titles"
+		"pirate adjectives that don't work as titles"
+	word
+		" "
+	phrase
+		"pirate nouns that work after bad outcomes"
+
+phrase "pirate"
+	word
+		"Three Skeleton Key"
+		"Ampoliros"
+		"Demeter"
+		"Antonia Graza"
+		"Mortzestus"
+```
+
+As described above, given that these two phrases have the same name, each phrase definition can be chosen to generate a name from. Which phrase gets chosen is random, though, with each phrase having an equal chance of being chosen. Note though how the first phrase generates a name by calling on a number of subphrases, whereas the second phrase generates a name from a list of five words. This means that the first phrase has more potential outcomes than the second. Many more, in fact; in this case, the first phrase has over 4,000 potential names it can generate compared to the second phrase's 5. Given that each phrase is equally likely to be chosen, though, the probability of seeing one of the 5 names from the second phrase is far higher than seeing any single name from the first phrase.
+
+This can be remedied through the use of weights. 
+
+```
+phrase "pirate"
+	phrase
+		"pirate set 1" 4482 # 4482 possible names can come from this set
+		"pirate set 2" 5 # 5 possible names can come from this set
+
+phrase "pirate set 1"
+	phrase
+		"bad outcomes" 50 # 50 words in this phrase
+		"pirate adjectives that work as titles" 50 # etc.
+		"pirate adjectives that don't work as titles" 66
+	word
+		" "
+	phrase
+		# Technically unnecessary to weight this, but if there were more
+		# phrases listed here then you'd need this.
+		"pirate nouns that work after bad outcomes" 27
+
+phrase "pirate set 2"
+	word
+		"Three Skeleton Key"
+		"Ampoliros"
+		"Demeter"
+		"Antonia Graza"
+		"Mortzestus"
+```
+
+The above example has restructured the pirate phrase such that only one pirate phrase is defined, but it generates a name by calling from two "pirate set" phrases, which made up the pirate phrases in the previous example. The pirate phrase then weights each of the set phrases according to the number of names that each can generate. Therefore, instead of being a 50/50 chance to choose one or the other, the first phrase is now weighted more heavily such that each potential name has an equal chance of being generated (although one could easily weight a phrase such that names have a higher than equal chance of being generated). Similarly, the first pirate set has also weighted the phrases that it calls upon to equalize the outcomes that it could generate.
 
 ### Multiple words in a phrase
 
