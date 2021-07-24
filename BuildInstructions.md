@@ -1,4 +1,4 @@
-Most of the current development work is done on Ubuntu Linux. Building the code on any Linux variant should be relatively straightforward. Building it on Windows or Mac OS X is a bit more complicated.
+Current development is done on Ubuntu Linux and Windows 10. Building the code on any Linux variant should be relatively straightforward, while building it on Windows or macOS is a bit more complicated.
 
 **You can get a copy of the code either using ["git clone,"](https://help.github.com/en/articles/cloning-a-repository) or using the repo's download button to obtain a [.ZIP archive](https://github.com/endless-sky/endless-sky/archive/master.zip).** The game's root directory, where your unzipped/`git clone`d files reside, will be your starting point for compiling the game.
 
@@ -33,7 +33,7 @@ $ ./endless-sky
 
 # Windows
 
-The Windows build has been tested on 64-bit Windows 7 and 10. This guide assumes you have:
+The Windows build is tested on 64-bit Windows 10. This guide assumes you have:
  - `g++` v4.8.5 or higher, installed via [*MinGW-W64*](https://sourceforge.net/projects/mingw-w64/files/). If you use the "online installer", choose *posix* threading, and *seh* exception. For 32-bit installations, use *dwarf* exception handling.
  - the [Code::Blocks IDE](https://codeblocks.org/downloads/26).
  - precompiled [development libraries](#development-libraries) according to the game architecture you wish to build (32- or 64-bit)
@@ -106,7 +106,7 @@ This is a sign that your compiler expected a different .dll to be available to t
 ## Note for git repositories
 If you obtained the game files by cloning the GitHub repository (the recommended method), your version of Windows may or may not spontaneously delete certain files with "~" in the file path. If this affects you, you would receive an "error: Invalid Path" message when pulling or merging code from the remote repository (i.e. updating your local code). The solution is to execute `git config core.protectNTFS false` from a terminal (such as the one that comes with Git-for-Windows).
 
-# Mac OS X
+# macOS
 
 To build Endless Sky you will first need to download Xcode from the App Store.
 
@@ -115,23 +115,11 @@ Next, install [Homebrew](https://brew.sh).
 Once Homebrew is installed, use it from a terminal to install the libraries you will need:
 
 ```sh
-$ brew install libpng
-$ brew install libjpeg-turbo
-$ brew install libmad
-$ brew install sdl2
+$ brew install libmad libpng jpeg-turbo
 ```
 
-Homebrew will install the latest version of the libraries, so if the versions are different from the ones in that the Xcode project is set up for, you will need to modify the file paths in the "Frameworks" section in Xcode. Occasionally, the Xcode project will be updated to reflect these new versions.
+Homebrew will install the latest version of the libraries, so if the versions are different from the ones in that the Xcode project is set up for, you will need to modify the file paths in the "Frameworks" section in Xcode. (Occasionally, the Xcode project will be updated to reflect these new versions.)
 
-It is possible that you will also need to modify the "Header Search Paths" and "Library Search Paths" in "Build Settings" to point to wherever Homebrew installed those libraries.
+It is possible that you will also need to modify the "Header Search Paths" and "Library Search Paths" in "Build Settings," in case your Homebrew for Intel Mac installation does not use the standard `/usr/local` prefix.
 
-## Library paths
-
-To create a Mac OS X binary that will work on systems other than your own, you may also need to use `install_name_tool` to modify the libraries so that their location is relative to the @rpath, e.g.:
-
-```sh
-$ sudo install_name_tool -id "@rpath/libpng16.16.dylib" /usr/local/lib/libpng16.16.dylib
-$ sudo install_name_tool -id "@rpath/libmad.0.2.1.dylib" /usr/local/lib/libmad.0.2.1.dylib
-$ sudo install_name_tool -id "@rpath/libturbojpeg.0.dylib" /usr/local/opt/libjpeg-turbo/lib/libturbojpeg.0.dylib
-$ sudo install_name_tool -id "@rpath/libSDL2-2.0.0.dylib" /usr/local/lib/libSDL2-2.0.0.dylib
-```
+The first time you build the project, a library for the SDL framework will be downloaded.
