@@ -18,7 +18,7 @@ At the moment, the greatest need is for beta testers, but you can also contribut
 
   * Windows: make and maintain an official installer.
 
-  * Mac OS X: build and distribute each release.
+  * macOS: build and distribute each release.
 
   * Linux: Debian package maintainer.
 
