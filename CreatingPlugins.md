@@ -8,7 +8,7 @@ The easiest way to test out new content for Endless Sky is to create a plugin. A
 * plugins\ (in the same folder as the Endless Sky executable)
 * C:\Users\yourusername\AppData\Roaming\endless-sky\plugins\
 
-#### Mac OS X
+#### macOS
 * Contents/Resources/plugins/ (within the application bundle)
 * ~/Library/Application Support/endless-sky/plugins
 
