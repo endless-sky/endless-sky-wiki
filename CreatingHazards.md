@@ -82,20 +82,14 @@ weapon
 	...
 ```
 
-The [weapon](CreatingOutfits#weapon-attributes) of a hazard defines what it does to all ships within the hazard's range. The relevant weapon attributes are the following:
+The [weapon](CreatingOutfits#weapon-attributes) of a hazard defines how all ships within the hazard's range are affected when the hazard triggers. The relevant weapon attributes and any additional information about each of them are listed here:
 
-* `"shield damage"`: All damage values, plus hit force, are multiplied by the square root of the current strength of the hazard, or just the current strength if the hazard has `"constant strength"`.
-* `"hull damage"`
-* `"heat damage"`
-* `"fuel damage"`
-* `"ion damage"`
-* `"disruption damage"`
-* `"slowing damage"`
+* All damage types (e.g. `"shield damage"`): All damage values, plus hit force, are multiplied by the square root of the current strength of the hazard, or just the current strength if the hazard has `"constant strength"`.
 * `"piercing"`
-* `"hit force"`: Hit force is relative to the system center.
+* `"hit force"`: Hit force is relative to the system center. (i.e. positive hit force pushes away from the system center while negative hit force pulls toward it.)
 * `"gravitational"`
 * `"blast radius"`: Causes the damage from this hazard to decline with range from the system center according to the blast radius curve as described in [CreatingOutfits](CreatingOutfits#weapon-attributes).
-* `"trigger radius"`: Used only to change the blast force curve.
+* `"trigger radius"`: Used only to change the blast radius curve.
 * `"damage dropoff"`: Causes the damage from this hazard to change with range according to the damage dropoff ranges and modifier. For expected behavior, two values must be provided with this weapon attribute, as otherwise the second value will be assumed to be 0.
 * `"dropoff modifier"`
 * `"target effect"`: The scaling factor used for how much damage is dealt by a hazard is the same factor used for how many effects are created on the target. **Prior to v0.9.15**, the `"hit effect"` weapon attribute had the behavior of `"target effect"`.
