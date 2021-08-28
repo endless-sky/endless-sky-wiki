@@ -291,27 +291,31 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"disruption resistance"`: an extra amount of shield disruption that this ship "bleeds off" every frame. **(v. 0.9.9)**
 
-  * `"disruption resistance energy"`: the amount of energy that disruption resistance draws when active. **(v. 0.9.13)**
-
-  * `"disruption resistance heat"`: the amount of heat that disruption resistance creates when active. **(v. 0.9.13)**
-
-  * `"disruption resistance fuel"`:  the amount of fuel that disruption resistance consumes when active. **(v. 0.9.13)**
+  * `"disruption resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that disruption resistance draws, creates, or consumes when active. **(v. 0.9.13)**
 
   * `"ion resistance"`: an extra amount of ionization that this ship "bleeds off" every frame. **(v. 0.9.9)**
 
-  * `"ion resistance energy"`: the amount of energy that ion resistance draws when active. **(v. 0.9.13)**
-
-  * `"ion resistance heat"`: the amount of heat that ion resistance creates when active. **(v. 0.9.13)**
-
-  * `"ion resistance fuel"`:  the amount of fuel that ion resistance consumes when active. **(v. 0.9.13)**
+  * `"ion resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that ion resistance draws, creates, or consumes when active. **(v. 0.9.13)**
 
   * `"slowing resistance"`: an extra amount of slowing damage that this ship "bleeds off" every frame. **(v. 0.9.9)**
 
-  * `"slowing resistance energy"`: the amount of energy that slowing resistance draws when active. **(v. 0.9.13)**
+  * `"slowing resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that slowing resistance draws, creates, or consumes when active. **(v. 0.9.13)**
 
-  * `"slowing resistance heat"`: the amount of heat that slowing resistance creates when active. **(v. 0.9.13)**
+  * `"discharge resistance"`: an extra amount of discharge damage that this ship "bleeds off" every frame. **(v. 0.9.15)**
 
-  * `"slowing resistance fuel"`:  the amount of fuel that slowing resistance consumes when active. **(v. 0.9.13)**
+  * `"discharge resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that discharge resistance draws, creates, or consumes when active. **(v. 0.9.15)**
+
+  * `"corrosion resistance"`: an extra amount of corrosion damage that this ship "bleeds off" every frame. **(v. 0.9.15)**
+
+  * `"corrosion resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that corrosion resistance draws, creates, or consumes when active. **(v. 0.9.15)**
+
+  * `"leak resistance"`: an extra amount of leak damage that this ship "bleeds off" every frame. **(v. 0.9.15)**
+
+  * `"leak resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that leak resistance draws, creates, or consumes when active. **(v. 0.9.15)**
+
+  * `"burn resistance"`: an extra amount of burn damage that this ship "bleeds off" every frame. **(v. 0.9.15)**
+
+  * `"burn resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that burn resistance draws, creates, or consumes when active. **(v. 0.9.15)**
   
   * `"piercing resistance"`: this value subtracts from the piercing value of any incoming projectiles. For example, if an incoming projectile has a piercing value of 50% (.5) and you have a piercing resistance of 20% (.2), then the projectile will only pierce by 50% - 20% = 30%. **(v. 0.9.13)**
 
@@ -336,6 +340,14 @@ Unless otherwise states, other outfit attributes will stack additively between m
   * `"shield protection"`: protects against incoming shield damage.
   
   * `"slowing protection"`: protects against incoming slowing damage.
+
+  * `"discharge protection"`: protects against incoming discharge damage. **(v. 0.9.15)**
+
+  * `"corrosion protection"`: protects against incoming corrosion damage. **(v. 0.9.15)**
+
+  * `"leak protection"`: protects against incoming leak damage. **(v. 0.9.15)**
+
+  * `"burn protection"`: protects against incoming burn damage. **(v. 0.9.15)**
 
 * These attributes can be used to cause outfits to incur a daily cost on the player.
 
@@ -468,6 +480,14 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"firing disruption"`: disruption added when this weapon fires. **(v. 0.9.13)**
 
+* `"firing discharge"`: discharge added when this weapon fires. **(v. 0.9.15)**
+
+* `"firing corrosion"`: corrosion added when this weapon fires. **(v. 0.9.15)**
+
+* `"firing leak"`: leak added when this weapon fires. **(v. 0.9.15)**
+
+* `"firing burn"`: burn added when this weapon fires. **(v. 0.9.15)**
+
 * `"relative firing energy"`: the energy cost to fire this weapon fires as a percentage of the ship's energy capacity. **(v. 0.9.13)**
 
 * `"relative firing fuel"`: fuel consumed when this weapon fires as a percentage of the ship's fuel capacity. **(v. 0.9.13)**
@@ -527,7 +547,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"dropoff modifier"`: a value that dictates how a weapon's damage changes over range if the `"damage dropoff"` attribute is present. Values between 0 and 1 will result in reduced damage over range, while values greater than 1 are allowed and result in increased damage over range. **(v. 0.9.13)**
 
-* There are several damage types, and a weapon may have more than one type. Generally, most weapons include shield and hull damage, as a ship's shields mitigate incoming damage, and without hull damage, the target cannot be eliminated.
+* There are several damage types, and a weapon may have more than one type. Generally, most weapons include shield and hull damage, as a ship's shields mitigate incoming damage, and without hull damage, the target cannot be eliminated. The normal damage types consist of the following:
 
   * `"shield damage"`: how much damage a projectile does to shields.
 
@@ -539,21 +559,33 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"energy damage"`: how much energy is removed from a target when struck by this projectile. If the target's shields are up, energy damage is cut in half. **(v. 0.9.13)**
 
-  * `"ion damage"`: how much ionization is added to a target when struck by this projectile. If the target's shields are up, ionization is cut in half. Ionization drains energy and dissipates at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
+* All of the above damage types also come in "relative" forms that scale the exact amount of damage dealt depending on the stats of the ship impacted. **(v. 0.9.13)**
 
-  * `"disruption damage"`: works like ionization, adding a "shield disruption" effect that fades by 1% each frame. When disrupted, your shields only block `1 / (1 + .01 * disruption)` of weapon damage, and the rest pierces through your shields and damages your hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. **(v. 0.9.0)**
+  * `"relative shield damage"`: shield damage that gets scaled according to the max shields of a target. A value of 0.5 means that one shot should take out 50% of the target's shields, regardless of how strong the target's shields are. Suggested that relative damage types be used on [system hazards](CreatingHazards) as a way to make hazards that affect all ships to a reasonable degree without crippling smaller/weaker ships (unless of course that is the intended effect).
 
-  * `"slowing damage"`: accumulates like ion and disruption damage, and dissipates at 1% per frame. Multiplies your ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. **(v. 0.9.0)**
+  * `"relative hull damage"`: hull damage that gets scaled according to the max hull of a target.
 
-  * `"relative shield damage"`: shield damage that gets scaled according to the max shields of a target. A value of 0.5 means that one shot should take out 50% of the target's shields, regardless of how strong the target's shields are. Suggested that relative damage types be used on [system hazards](CreatingHazards) as a way to make hazards that affect all ships to a reasonable degree without crippling smaller/weaker ships (unless of course that is the intended effect). **(v. 0.9.13)**
+  * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half.
 
-  * `"relative hull damage"`: hull damage that gets scaled according to the max hull of a target. **(v. 0.9.13)**
+  * `"relative fuel damage"`: fuel damage that gets scaled according to the fuel capacity of a target. If the target's shields are up, fuel damage is cut in half.
 
-  * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half. **(v. 0.9.13)**
+  * `"relative energy damage"`: energy damage that gets scaled according to the energy capacity of a target. If the target's shields are up, energy damage is cut in half.
 
-  * `"relative fuel damage"`: fuel damage that gets scaled according to the fuel capacity of a target. If the target's shields are up, fuel damage is cut in half. **(v. 0.9.13)**
+* There also exist various damage over time damage types. Each of these damage types dissipate at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
 
-  * `"relative energy damage"`: energy damage that gets scaled according to the energy capacity of a target. If the target's shields are up, energy damage is cut in half. **(v. 0.9.13)**
+  * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half.
+
+  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
+
+  * `"slowing damage"`: how much slowness is added to a target when struck by this projectile. Slowness multiplies the ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. If the target's shields are up, incoming slowing damage is cut in half. **(v. 0.9.0)**
+
+  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Incoming discharge damage always has maximum effect regardless of the state of the target's shields. **(v. 0.9.15)**
+
+  * `"corrosion damage"`: how much corrosion is added to a target when struck by this projectile, draining the target's hull over time. If the target's shields are up, all incoming corrosion damage is ignored. **(v. 0.9.15)**
+
+  * `"leak damage"`: how much leak is added to a target when struck by this projectile, draining the target's fuel over time. If the target's shields are up, all incoming leak damage is ignored. **(v. 0.9.15)**
+
+  * `"burn damage"`: how much burn is added to a target when struck by this projectile, increasing the target's heat over time. If the target's shields are up, incoming burn damage is cut in half. **(v. 0.9.15)**
 
 <a name="sales">
 
