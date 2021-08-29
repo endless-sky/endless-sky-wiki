@@ -690,7 +690,7 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
     fail [<name>]
 ```
 
-There are eight events that can trigger a response of some sort:
+There are eleven events that can trigger a response of some sort:
 
 * `offer`: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission.
 * `complete`: when the mission is completed. This is when the player gets paid.
