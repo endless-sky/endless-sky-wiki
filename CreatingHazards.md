@@ -13,8 +13,6 @@ hazard <name>
 		...
 ```
 
-System hazards were added
-
 # Hazard characteristics
 
 ```html
