@@ -47,6 +47,7 @@ system <name>
 		distance <distance#>
 		period <period#>
 		offset <offset#>
+		hazard <name> <period#>
 		object [<name>]
 			...
 
@@ -128,6 +129,7 @@ system <name>
 		distance <distance#>
 		period <period#>
 		offset <offset#>
+		hazard <name> <period#>
 		object [<name>]
 			...
 ```
@@ -236,7 +238,7 @@ The name of a [fleet](CreatingFleets) that is spawned in this system with a cert
 ```html
 hazard <name> <period#>
 ```
-The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. **(v. 0.9.13)**
+The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. The origin of any hazards defined here is the system center. **(v. 0.9.13)**
 
 <a name="objects">
 
@@ -249,6 +251,7 @@ object [<name>]
 	distance <distance#>
 	period <period#>
 	offset <offset#>
+	hazard <name> <period#>
 	object [<name>]
 		...
 ```
@@ -284,6 +287,12 @@ offset <offset#>
 ```
 
 The number of degrees at which this object is shifted in its orbit from the default, allowing for multiple objects to share the same orbit without overlapping.
+
+```html
+hazard <name> <period#>
+```
+
+A system hazard with behavior as described above, only with its origin on this object instead of at the system center. An object can have multiple different hazards attached to it. **(v0.9.15)**
 
 ```
 object [<name>]
