@@ -13,7 +13,60 @@
 # Introduction
 </a>
 
-The basic syntax of a mission description is:
+Missions are a key part of Endless Sky. They are used to advance the plot, flesh out the universe, and offer role-playing opportunities for the player. The simplest possible mission is as follows:
+
+```html
+mission "Name"
+    job
+```
+
+This mission will appear in the job board on every planet and complete when you land anywhere. To make it show up on the job board again even after it's been completed, add the `repeat` tag:
+
+```html
+mission "Name2"
+    job
+    repeat
+```
+
+To make it more interesting, add a `description` that will appear on the job board, and a `dialog` confirmation that the mission was completed:
+
+```html
+mission "Name2"
+    description "Take off and land again! It's fun!"
+    job
+    repeat
+    on complete
+        dialog "You did it! You're amazing."
+```
+
+Now make it ask the player to land on Earth using a `destination` tag, and pay them once they get there:
+
+```html
+mission "Name2"
+    description "Go to earth."
+    destination Earth
+    job
+    repeat
+    on complete
+        dialog "You did it! You're amazing."
+        payment 5000
+```
+
+Now add some cargo, and mention it in the description using text replacement tokens:
+
+```html
+mission "Name2"
+    description "Bring <cargo> stuff to earth."
+    destination Earth
+    cargo "pickled herring" 5
+    job
+    repeat
+    on complete
+        dialog "You did it! You're amazing."
+        payment 5000
+```
+
+And so on. The sky's the limit. Missions can become very complex. Here is a full list of everything that can go into a mission:
 
 ```html
 mission <name>
