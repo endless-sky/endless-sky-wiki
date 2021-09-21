@@ -16,9 +16,21 @@ conversation [<name>]
             [<endpoint> | goto <label>]
         ...
     branch <if true> [<if false>]
-        <conditions>
+        <condition> <comp> <value>
+        (has | not) <condition>
+        (and | or)
+            ...
     apply
-        <conditions>
+        log [<category> <header>] <text>
+        outfit <outfit> [<number>]
+        give ship <model> [<name>]
+        payment [<base> [<multiplier>]]
+        fine <amount>
+        <condition> (= | += | -=) <value>
+        <condition> (++ | --)
+        (set | clear) <condition>
+        event <name> [<delay> [<max>]]
+        fail [<name>]
     ...
 ```
 
@@ -62,6 +74,10 @@ You can go to labels earlier on in the conversation if you want, but be careful 
 
 # Scenes
 
+```html
+scene <image>
+```
+
 A conversation can contain a `scene` image at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 540 pixels wide.
 
 [![][engineScene]][engineScene]
@@ -70,9 +86,18 @@ Try to avoid using very tall images for scenes, to avoid the need for scrolling 
 
 # Labels
 
+```html
+label <name>
+```
+
 A `label` marks the start of a "node" in a conversation: that is, a point that you can jump to from any other node via a "goto" command. The label can have any name you want, as long as the name is unique. As with all the game's data files, if the label name has spaces in it, you must enclose it in double quotation marks (") or backticks (`).
 
 # Text
+
+```html
+<text>
+    [<endpoint> | goto <label>]
+```
 
 Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, `branch`, `apply`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
 
@@ -94,9 +119,20 @@ To maintain consistency across all the text in the game:
 
 # Name
 
+```html
+name
+```
+
 This is useful mostly just for the `"default intro"` conversation: if the `name` keyword appears, a set of text-entry boxes are displayed asking the player to enter their first and last name. You could also use this, for example, if the player is going deep undercover and changing their name.
 
 # Choice
+
+```
+choice
+    <text>
+        [<endpoint> | goto <label>]
+    ...
+```
 
 A `choice` node allows the player to select from one or more possible responses. A choice with a single response might be useful if you want to break up the flow of text (e.g. because a lot is being displayed at once), but usually choices will present two or more options.
 
@@ -109,6 +145,14 @@ choice
 As with ordinary text, any choice that does not have a `goto` or endpoint after it will just allow the conversation to continue to the next line below this choice.
 
 # Branch
+
+```html
+branch <if true> [<if false>]
+    <condition> <comp> <value>
+    (has | not) <condition>
+    (and | or)
+        ...
+```
 
 A branch takes the conversation to one of two different labels depending on a set of [testable conditions](Player-Conditions#testable-condition-sets).
 
@@ -134,6 +178,24 @@ conversation
 
 # Apply
 
-An "apply" entry [modifies conditions](Player-Conditions#applied-condition-sets) instead of testing to see what they are currently equal to. In the example above, a condition "everyone thinks you are awesome" is assigned a value of 1, and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. While you can assign generic text as a condition value (e.g. `"drunk" = "true"`), the right-hand side will be treated as a [value expression](Player-Conditions#expressions) and the runtime value of the player condition named `"true"` will be used instead of the text "true".
+```html
+apply
+    log [<category> <header>] <text>
+    outfit <outfit> [<number>]
+    give ship <model> [<name>]
+    payment [<base> [<multiplier>]]
+    fine <amount>
+    <condition> (= | += | -=) <value>
+    <condition> (++ | --)
+    (set | clear) <condition>
+    event <name> [<delay> [<max>]]
+    fail [<name>]
+```
+
+An "apply" entry is similar to a [mission trigger](CreatingMissions#triggers), except it is incapable of creating a dialog or conversation within the current conversation.
+
+If the apply entry has a `fail` line and the entry is part of a named conversation (i.e. one that is not defined within a mission) then the apply must name the mission to be failed.
+
+**Prior to v. 0.9.15** the apply node was only capable of [modifying conditions](Player-Conditions#applied-condition-sets), as seen in the example above where a condition "everyone thinks you are awesome" is assigned a value of 1 and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. While you can assign generic text as a condition value (e.g. `"drunk" = "true"`), the right-hand side will be treated as a [value expression](Player-Conditions#expressions) and the runtime value of the player condition named `"true"` will be used instead of the text "true".
 
  [engineScene]: https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/scene/engine.jpg 
