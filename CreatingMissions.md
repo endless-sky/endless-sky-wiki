@@ -183,8 +183,8 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<destination>` = "`<planet>` in the `<system>` system"
 * `<stopovers>` = a list of all stopover destinations
 * `<waypoints>` = a list of all waypoint systems
-* `<payment>` = "1 credit" or "N credits," where N is the payment amount
-* `<fine>` = "1 credit" or "N credits," where N is the fine amount of a mission action (any `on *` block); this is not the fine as defined by an `illegal` line
+* `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block, unless the replacement is in an `on *` block or below a conversation `apply` node that has its own payment, in which case that `on *` block's or the most recent `apply`'s payment is used
+* `<fine>` = "1 credit" or "N credits," where N is the fine amount with the same behavior as `<payment>`; this is not the fine as defined by an `illegal` line
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
 * `<day>` = the deadline in conversational form ("the DDth of Month")
 * `<npc>` = the name of the first ship in the last `npc` block in the mission description
