@@ -99,7 +99,7 @@ A `label` marks the start of a "node" in a conversation: that is, a point that y
     [<endpoint> | goto <label>]
 ```
 
-Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, `branch`, `apply`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
+Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, `branch`, `action`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
 
 ```js
     `You tell the bartender, "The pirates said, 'Give us all your cargo!'"`
@@ -176,7 +176,7 @@ conversation
         decline
 ```
 
-# Apply
+# Action
 
 ```html
 action
