@@ -3,7 +3,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 ### Flags that control who a ship attacks:
 
 * `pacifist`: will not attack under any circumstances.
-* `forbearing`: will not attack unless its shields are reduced to below 90%.
+* `forbearing`: will not attack unless its shields or hull are reduced to below 90%.
 * `timid`: does not join other people's fights; only attacks targets that are nearby and targeting it.
 * `heroic`: will fight even if badly damaged or outgunned, and will attack targets even if they are far away.
 * `nemesis`: only attacks the player's ships.
