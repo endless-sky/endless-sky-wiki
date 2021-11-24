@@ -89,11 +89,11 @@ disable 0.5
 board 0.3
 capture 1
 destroy 1
-scanning 0
+scan 0
 atrocity 10
 ``` 
 
-The "scanning" penalty was added in **v0.9.15** and applies to scanning the outfits or cargo of a ship.
+The "scan" penalty was added in **v0.9.15** and applies after successfully scanning the outfits or cargo of a ship.
 
 #### Crew Strength Modifiers
 ```html
