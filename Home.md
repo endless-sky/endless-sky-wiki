@@ -39,6 +39,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating fleets](CreatingFleets)
 * [Creating phrases](CreatingPhrases)
 * [Creating starts](Creating-Starts)
+* [Creating text replacement substitutions][CreatingSubstitutions]
 
 ### Compiling or modifying the source code
 
