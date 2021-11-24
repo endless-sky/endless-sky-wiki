@@ -27,6 +27,8 @@ event <name>
         {shipyard specification...}
     outfitter <name>
         {outfitter specification...}
+    substitutions
+        {substitutions specification...}
     <conditions>
 ```
 
@@ -208,7 +210,7 @@ event "breaking news"
         location
             government "Republic" "Syndicate"
 ```
-For more information and examples, consult the page on [news](CreatingNews) or the [`news.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/news.txt) file.
+For more information and examples, consult the page on [news](CreatingNews) or the [`news.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/news.txt) file.
 
 ```html
 shipyard <name>
@@ -228,6 +230,13 @@ outfitter <name>
 ```
 Replace the contents of the named `outfitter` with the specified elements. To avoid removal of all preexisting outfits, use the `add <outfit>` syntax. `Clear` and `remove` with no arguments are functionally equivalent.
 
+```html
+substitution
+    <text> <replacement>
+        [<condition set>]
+    ...
+```
+Adds a new global substitution. If a previous global replacement existed with the same text and the new substitution has no condition set, then the new replacement will always be used. Consult the [substitutions](CreatingSubstitutions) page for more information.
 
 # Modifying player conditions
 
