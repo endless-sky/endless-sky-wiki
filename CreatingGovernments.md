@@ -16,7 +16,7 @@ government <name>
         <government> <rep-modifier#>
         ...
     "penalty for"
-        (assist | disable | board | capture | destroy | atrocity) <rep-modifier#>
+        (assist | disable | board | capture | destroy | atrocity | scanning) <rep-modifier#>
         ...
     bribe <percentage#>
     fine <percentage#>
@@ -70,7 +70,7 @@ The player's initial reputation with a government determines whether they are vi
 #### Penalty For
 ```html
 "penalty for"
-    (assist | disable | board | capture | destroy | atrocity) <rep-modifier#>
+    (assist | disable | board | capture | destroy | atrocity | scanning) <rep-modifier#>
     ...
 ```
 The "penalty for" token introduces a description block that configures the reputation impact of various in-flight player actions. For example, the block
@@ -89,8 +89,11 @@ disable 0.5
 board 0.3
 capture 1
 destroy 1
+scanning 0
 atrocity 10
 ``` 
+
+The "scanning" penalty was added in **v0.9.15** and applies to scanning the outfits or cargo of a ship.
 
 #### Crew Strength Modifiers
 ```html
