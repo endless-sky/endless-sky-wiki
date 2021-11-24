@@ -16,7 +16,7 @@ government <name>
         <government> <rep-modifier#>
         ...
     "penalty for"
-        (assist | disable | board | capture | destroy | atrocity | scanning) <rep-modifier#>
+        (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
         ...
     bribe <percentage#>
     fine <percentage#>
@@ -70,7 +70,7 @@ The player's initial reputation with a government determines whether they are vi
 #### Penalty For
 ```html
 "penalty for"
-    (assist | disable | board | capture | destroy | atrocity | scanning) <rep-modifier#>
+    (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
     ...
 ```
 The "penalty for" token introduces a description block that configures the reputation impact of various in-flight player actions. For example, the block
