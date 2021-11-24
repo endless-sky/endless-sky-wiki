@@ -90,6 +90,10 @@ mission <name>
     waypoint <system>
     stopover [<planet>]
         ...
+    substitutions
+        <text> <replacement>
+            [<condition set>]
+        ...
     to (offer | complete | fail)
         <condition> <comp> <value>
         (has | not) <condition>
@@ -200,6 +204,8 @@ These placeholders will be substituted in any text in the following places:
 * conversations contained in the mission
 
 For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
+
+Missions can also make use of custom text replacements. 
 
 <a name="basics">
 
@@ -356,6 +362,15 @@ stopover
 ```
 
 This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the [`source` and `destination` filters](#filters). As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission (**v 0.9.9+**). Beginning with **v 0.9.13**, planets selected by a filter to be a stopover are no longer required to have a spaceport (unlike a mission's destination). If a mission's randomly picked stopover planet(s) should have a spaceport, this can be achieved by adding an `attributes "spaceport"` line to the filter specification.
+
+```html
+substitutions
+    <text> <replacement>
+        [<condition set>]
+    ...
+```
+
+Beginning with **v.0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
 
 <a name="conditions">
 
