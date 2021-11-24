@@ -271,6 +271,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty).
 
+  * `"crew equivalent"`: adds to the crew value of the ship when government reputation changes are applied for interacting with their ships. For example, a ship with a crew of 10 and a crew equivalent of 5 would be treated as if it had a crew of 15 for reputation hits, or a drone with a crew of 0 that normally doesn't incur a reputation hit for being destroyed can be given a crew equivalent of 1 so that a government cares about the destruction of its drones. This attribute is able to be negative, reducing the impact of interacting with a ship. **(v. 0.9.15)**
+
 * These attributes define an outfit as occupying either a gun port or a turret mount on a ship, typically used for weapons.
 
   * `"gun ports"`: any weapon that fires forward (i.e. is not a turret) must have a value of -1 for this attribute. That is how the game recognizes that it is a gun. Outfits cannot provide more gun ports, because each gun must be tied to a specific hardpoint in the ship model. The only way to get more hardpoints is to upgrade to a bigger ship.
