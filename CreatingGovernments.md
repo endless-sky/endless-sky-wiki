@@ -18,6 +18,7 @@ government <name>
     "penalty for"
         (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
         ...
+    "provoked on scan"
     bribe <percentage#>
     fine <percentage#>
     "death sentence" <conversation>
@@ -93,7 +94,14 @@ scan 0
 atrocity 10
 ``` 
 
-The "scan" penalty was added in **v0.9.15** and applies after successfully scanning the outfits or cargo of a ship.
+The "scan" penalty was added in **v. 0.9.15** and applies after successfully scanning the outfits or cargo of a ship.
+
+### Provoked on scan
+```html
+"provoked on scan"
+```
+
+Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships.
 
 #### Crew Strength Modifiers
 ```html
