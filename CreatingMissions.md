@@ -205,7 +205,7 @@ These placeholders will be substituted in any text in the following places:
 
 For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
 
-Missions can also make use of custom text replacements. All text replacements aside from `<first>`, `<last>`, and `<ship>` are made when a mission is instantiated, i.e. before the mission is offered. The three exceptions are made on the fly given that the player's name can be changed during a conversation and your flagship can change between mission instantiation and when you reach a conversation or dialog.
+Missions can also make use of custom text replacements through use of the `substitutions` node. All text replacements aside from `<first>`, `<last>`, and `<ship>` are made when a mission is instantiated, i.e. before the mission is offered. The three exceptions are made on the fly given that the player's name can be changed during a conversation and your flagship can change between mission instantiation and when you reach a conversation or dialog.
 
 <a name="basics">
 
