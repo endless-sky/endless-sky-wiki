@@ -20,7 +20,7 @@ mission "Name"
     job
 ```
 
-This mission will appear in the job board on every planet and complete when you land anywhere. To make it show up on the job board again even after it's been completed, add the `repeat` tag:
+This mission will appear in the job board on every planet. If accepted, it can be completed by landing at that same planet again. To make it show up on the job board again even after it's been completed, add the `repeat` tag:
 
 ```html
 mission "Name2"
@@ -320,7 +320,7 @@ A mission shown when `assisting` or `boarding` will be shown when you repair a f
 repeat [<times#>]
 ```
 
-If the word `repeat` appears by itself, this mission can be offered any number of times. If a number is given, that is the maximum number of times this mission can be offered. By default, each mission can only be offered once, so having specifying `repeat 1` is unnecessary.
+If the word `repeat` appears by itself, this mission can be offered any number of times. If a number is given, that is the maximum number of times this mission can be offered. By default, each mission can only be offered once, so specifying `repeat 1` is unnecessary.
 
 If you want a mission to be offered any number of times but to limit the number of instances of the mission that can be active concurrently, you can decrement the `"<mission name>: offered"` condition (described [below](#conditions)) whenever the mission is completed, failed, or declined.
 
