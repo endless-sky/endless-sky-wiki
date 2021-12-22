@@ -33,7 +33,7 @@ system <name>
 		link <distance#>
 		jump <distance#>
 	habitable <distance#>
-	belt <distance#>
+	belt <distance#> [<weight#?]
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
@@ -115,7 +115,7 @@ system <name>
 		link <distance#>
 		jump <distance#>
 	habitable <distance#>
-	belt <distance#>
+	belt <distance#> [<weight#>]
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
@@ -191,10 +191,10 @@ habitable <distance#>
 The distance of the "Goldilocks zone" in this system. When selecting a system on the map, the orbits of the objects in the system will be colored in relation to their distance from this value. If an object's distance is near this value, its orbit will be green. If an object's distance is farther than this value, then its orbit will be fade from light to dark blue the further it is. If an object's distance if closer than this value, then its orbit will fade from yellow to red the closer to the system center it is.
 
 ```html
-belt <distance#>
+belt <distance#> [<weight#>]
 ```
 
-The distance at which minable asteroids in this system will orbit. 
+The distance from the system center at which minable asteroids in this system will orbit. **Beginning in v. 0.9.15** a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
 
 ```html
 "jump range" <distance#>
