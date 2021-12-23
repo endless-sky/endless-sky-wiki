@@ -351,7 +351,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"burn protection"`: protects against incoming burn damage. **(v. 0.9.15)**
 
-* These attributes can be used to cause outfits to incur a daily cost on the player.
+* These attributes can be used to cause outfits to incur a daily cost on the player. **Beginning in v. 0.9.15** a ship's maintenance or operating costs can be negative, producing credits each day.
 
   * `"maintenance costs"`: how many credits per day are spent to "maintain" this outfit. Maintenance is paid for any owned ships or outfits. Overdue maintenance costs will not impact the efficiency of an outfit or ship. **(v. 0.9.11)**
 
