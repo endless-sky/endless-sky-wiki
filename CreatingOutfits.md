@@ -351,7 +351,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"burn protection"`: protects against incoming burn damage. **(v. 0.9.15)**
 
-* These attributes can be used to cause outfits to incur a daily cost on the player. **Beginning in v. 0.9.15** a ship's maintenance or operating costs can be negative, producing credits each day.
+* These attributes can be used to cause outfits to incur a daily cost on the player.
 
   * `"maintenance costs"`: how many credits per day are spent to "maintain" this outfit. Maintenance is paid for any owned ships or outfits. Overdue maintenance costs will not impact the efficiency of an outfit or ship. **(v. 0.9.11)**
 
@@ -363,7 +363,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems.
 
-  * `installable`: if set to a value below zero, this outfit cannot be installed. (**As of v. 0.9.0,** the trading panel will display these outfits as "harvested materials," and the outfitter will display a helpful message if you try to install them.)
+  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
+
+  * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
 
