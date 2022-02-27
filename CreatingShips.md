@@ -155,7 +155,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"swizzle"`: the swizzle value that this ship uses, overriding the the ship's government swizzle. **(v. 0.9.7)**
 
-The player info panel will not display properly if the total number of gun and turret hardpoints on either side of the ship is more than 12. In addition, if the total number of gun and turret hardpoints is greater than 32, the extras will not fire.
+The player info panel will not display properly if the total number of gun and turret hardpoints on either side of the ship is more than 12. In addition, prior to **v. 0.9.15**, if the total number of gun and turret hardpoints is greater than 32, the extras will not fire.
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
