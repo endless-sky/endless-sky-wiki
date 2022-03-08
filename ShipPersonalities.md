@@ -15,7 +15,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `plunders`: will leave enemy ships disabled so that they can be boarded and pillaged before destroying them.
 * `vindictive`: this ship continues to fire at its target even after the target is dead, while the target is beginning to explode. **(v. 0.9.0)**
 * `unconstrained`: the ship will fly outside the "invisible fence" that ships usually stay within. **(v. 0.9.1)**
-* `coward`: if this ship is not the flagship of a fleet, it will desert its flagship and flee the system if its shields drop to zero. **(v. 0.9.0)**
+* `coward`: if this ship is not the flagship of a fleet, it will desert its flagship and flee the system if its hull and shield strength drop low enough. **(v. 0.9.0)**
 * `appeasing`: if this ship's hull and shield strength drops low enough, it will dump cargo to try to distract or appease its attacker. **(v. 0.9.5)**
 * `opportunistic`: this ship's turrets will track targets independently instead of focusing fire. They also scan back and forth when no target is present. **(v. 0.9.7)**
 
