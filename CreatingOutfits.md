@@ -185,11 +185,51 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"thrusting heat"`: heat generated each frame when thrusting.
 
+  * `"thrusting shields"`: shields consumed each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting hull"`: hull consumed each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting fuel "`: fuel consumed each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting discharge"`: discharge accumulated each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting corrosion"`: corrosion accumulated each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting ion"`: ionization accumulated each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting leakage"`: leakage accumulated each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting burn"`: burn accumulated each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting slowing"`: slowing accumulated each frame when thrusting. **(v. 0.9.15)**
+
+  * `"thrusting disruption"`: disruption accumulated each frame when thrusting. **(v. 0.9.15)**
+
   * `turn`: your ship's turn rate is (turn / mass) degrees per frame.
 
   * `"turning energy"`:  energy cost per frame of turning.
 
   * `"turning heat"`: heat generated each frame when turning.
+
+  * `"turning shields"`: shields consumed each frame when turning. **(v. 0.9.15)**
+
+  * `"turning hull"`: hull consumed each frame when turning. **(v. 0.9.15)**
+
+  * `"turning fuel "`: fuel consumed each frame when turning. **(v. 0.9.15)**
+
+  * `"turning discharge"`: discharge accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning corrosion"`: corrosion accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning ion"`: ionization accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning leakage"`: leakage accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning burn"`: burn accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning slowing"`: slowing accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning disruption"`: disruption accumulated each frame when turning. **(v. 0.9.15)**
 
   * `"reverse thrust"`: if your ship has reverse thrusters installed, the "back" button will apply reverse thrust instead of turning your ship around.
 
@@ -197,13 +237,51 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"reverse thrusting heat"`: heat produced per frame of reverse thrusting.
 
-  * `"afterburner thrust"`: thrust produced by the afterburner in one frame.
-  
-  * `"afterburner energy"`: energy consumed by the afterburner in one frame.
+  * `"reverse thrusting shields"`: shields consumed each frame when reverse thrusting. **(v. 0.9.15)**
 
-  * `"afterburner heat"`: heat produced by the afterburner in one frame.
+  * `"reverse thrusting hull"`: hull consumed each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting fuel "`: fuel consumed each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting discharge"`: discharge accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting corrosion"`: corrosion accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting ion"`: ionization accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting leakage"`: leakage accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting burn"`: burn accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting slowing"`: slowing accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"reverse thrusting disruption"`: disruption accumulated each frame when reverse thrusting. **(v. 0.9.15)**
+
+  * `"afterburner thrust"`: thrust produced each frame when using an afterburner.
   
-  * `"afterburner fuel"`: fuel consumed by the afterburner in one frame.
+  * `"afterburner energy"`: energy consumed each frame when using an afterburner.
+
+  * `"afterburner heat"`: heat produced each frame when using an afterburner.
+  
+  * `"afterburner fuel"`: fuel consumed each frame when using an afterburner.
+
+  * `"afterburner shields"`: shields consumed each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner hull"`: hull consumed each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner discharge"`: discharge accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner corrosion"`: corrosion accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner ion"`: ionization accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner leakage"`: leakage accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner burn"`: burn accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner slowing"`: slowing accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner disruption"`: disruption accumulated each frame when using an afterburner. **(v. 0.9.15)**
 
 * These attributes relate to the cooling of a ship.
 
