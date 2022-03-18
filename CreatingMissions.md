@@ -240,7 +240,7 @@ This is a short message that is displayed to the player if this mission cannot b
 deadline [<days#> [<multiplier#>]]
 ```
 
-The number of days you have to complete the mission. If the number of days is left out (i.e. the line is just the word `deadline`), a default deadline is calculated. If you specify a "multiplier", the number of hyperspace jumps between the mission source and the mission destination is used to pick a sane deadline. The default multiplier value is `2`, and the default days value is `0`. The mission's deadline is then calculated using the formula:
+The number of days you have to complete the mission. If the number of days is left out (i.e. the line is just the word `deadline`), a default deadline is calculated. If you specify a "multiplier", the number of hyperspace jumps between the mission source and the mission destination is used to pick a sane deadline. If the mission has waypoints or stopovers then the number of jumps needed to visit all waypoints and stopovers before reaching the destination is used. The default multiplier value is `2`, and the default days value is `0`. The mission's deadline is then calculated using the formula:
 
 `days + multiplier * (number of hyperspace jumps to the destination)`
 
@@ -838,7 +838,7 @@ The named ship model is given to the player. This ship model can be a [ship vari
 payment [<base#> [<multiplier#>]]
 ```
 
-This specifies the payment for a mission, which depends on the number of jumps and the amount of cargo and passengers:
+This specifies the payment for a mission, which depends on the number of jumps between the source and destination and the amount of cargo and passengers. If the mission has waypoints or stopovers then the number of jumps needed to visit all waypoints and stopovers before reaching the destination is used. The exact formula is used to determine the final payment:
 
 ```c++
 base + multiplier * (jumps + 1) * (10 * (# of passengers) + (tons of cargo))
