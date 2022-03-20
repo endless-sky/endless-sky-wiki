@@ -216,7 +216,9 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically. An example of this in game is with the set of missions prefixed "FW Pug 2C", where the jump drive variant of the mission is named "FW Pug 2C: **A** Jump Drive" to force it to offer before "FW Pug 2C: **H**yperdrive", as otherwise without the "A" the hyperdrive variant of the mission would have priority.
+The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. If multiple possible missions are minor, these get evaluated in alphabetical order such that the last mission alphabetically is the one that gets offered while the rest are discarded. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically, unless the missions are minor, in which case the one you want to offer should come last alphabetically.
+
+An example of using the mission name to force a certain load order in game is with the set of missions prefixed "FW Pug 2C", where the jump drive variant of the mission is named "FW Pug 2C: **A** Jump Drive" to force it to offer before "FW Pug 2C: **H**yperdrive", as otherwise without the "A" the hyperdrive variant of the mission would have priority.
 
 ```html
 name <name>
