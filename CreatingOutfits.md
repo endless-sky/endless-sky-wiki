@@ -638,6 +638,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"hull damage"`: how much damage a projectile does to hull.
 
+  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
+
   * `"heat damage"`: how much heat is added to a target when struck by this projectile. If the target's shields are up, heat damage is cut in half.
 
   * `"fuel damage"`: how much fuel is removed from a target when struck by this projectile. If the target's shields are up, fuel damage is cut in half. **(v. 0.9.9)**
@@ -649,6 +651,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
   * `"relative shield damage"`: shield damage that gets scaled according to the max shields of a target. A value of 0.5 means that one shot should take out 50% of the target's shields, regardless of how strong the target's shields are. Suggested that relative damage types be used on [system hazards](CreatingHazards) as a way to make hazards that affect all ships to a reasonable degree without crippling smaller/weaker ships (unless of course that is the intended effect).
 
   * `"relative hull damage"`: hull damage that gets scaled according to the max hull of a target.
+
+  * `"relative disabled damage"`: disabled hull damage that gets scaled according to the max hull of a target. **(v. 0.9.15)**
 
   * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half.
 
