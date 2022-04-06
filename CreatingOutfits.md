@@ -291,9 +291,11 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"cooling energy"`: energy consumed by `"active cooling"` when heat is at 100%. Beginning with **v. 0.9.13** cooling energy can be net negative to allow for outfits that produce energy as heat increases.
 
-  * `"heat dissipation"`: outfits should not modify this. If you want an outfit to help cool off a ship, use the "cooling" attribute instead.
+  * `"heat dissipation"`: outfits should generally not modify this. If you want an outfit to help cool off a ship, use the "cooling" attribute instead.
 
   * `"cooling inefficiency"`: the higher this attribute is, the less effective your cooling systems are. Both active cooling and regular cooling will be multiplied by `2 + 2 / (1 + exp(i / -2)) - 4 / (1 + exp(i / -4))`, which forms the S-curve shown below. **(v. 0.9.7)**
+
+  * `"heat capacity"`: adds to the ship's total mass where the ship's maximum heat capacity is concerned, but does not influence movement as mass does. A value of one is like adding one ton of mass to the ship for holding heat. **(v. 0.9.15)**
 
 [![cooling inefficiency][cooleff]][cooleff]
 
