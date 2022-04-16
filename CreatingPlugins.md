@@ -111,3 +111,26 @@ outfitter "Syndicate Basics"
     "Meteor Missile"
     "Javelin"
 ```
+
+## Disabling preexisting data
+
+As of **v. 0.9.15**, plugins are able to disable certain existing content from appearing, offering, or being triggered.
+
+The syntax for disabling content is as follows:
+```
+disable <category> <name>
+	<name>
+	...
+```
+
+The currently supported categories that can be disabled are mission, person, and event. Disabled content can either be listed inline or with a separate item to disable on each line as children of the disable node.
+
+```
+disable mission "Assisting Hai"
+disable person
+	"Power of the People"
+	"Captain Nate"
+disable event
+	"war begins"
+```
+
