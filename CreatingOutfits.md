@@ -295,6 +295,10 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"heat capacity"`: adds to the ship's total mass where the ship's maximum heat capacity is concerned, but does not influence movement as mass does. A value of one is like adding one ton of mass to the ship for holding heat. **(v. 0.9.15)**
 
+  * `"overheat damage rate"`: the amount of hull damage dealt to this ship every frame in which it is overheated beyond its overheat threshold (100% on most ships, greater for ships with the attribute below). The damage increases in scale the further beyond the overheat threshold that the ship is (e.g. 2x beyond the threshold = 2x overheat damage). **(v. 0.9.15)**
+
+  * `"overheat damage threshold"`: adds to the threshold at which point overheat damage kicks in. For example, a value of 0.2 would mean that the ship doesn't start taking overheat damage until it has reached 120% heat. **(v. 0.9.15)**
+
   * `"cooling inefficiency"`: the higher this attribute is, the less effective your cooling systems are. Both active cooling and regular cooling will be multiplied by `2 + 2 / (1 + exp(i / -2)) - 4 / (1 + exp(i / -4))`, which forms the S-curve shown below. **(v. 0.9.7)**
 
 [![cooling inefficiency][cooleff]][cooleff]
