@@ -213,6 +213,14 @@ There is also one special attribute called `weapon` that defines how much damage
 * steering
 * hyperdrive
 
+# Custom Attributes
+
+It is possible to add custom attributes to outfits/ships by specifying a key:value pair. As an example, when we wanted to add large scale spinal weapons, we added `"spinal mount" 1` as a custom attribute. The total value of attributes for a vessel cannot be below 0. Then on the spinal weapon we added `"spinal mount" -1`, which means it is taking up that slot.
+
+These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `noncorrosive 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
+
+Note that care must be taken to ensure that these custom attributes do not inadvertently duplicate an already-existing attribute.
+
 # Variants
 
 In addition to nearly 60 different human ship types, each model has several "variants" that represent the different ways that an individual captain might outfit a ship. For example, one pilot might prefer being fast enough to run from a fight, and another might want to be strong enough to survive one, and fighting styles include bombarding a target with missiles or other longer-range weapons, or being able to deal maximum damage at close range.
