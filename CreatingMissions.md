@@ -830,6 +830,8 @@ If the outfit cannot be installed due to lack of space, a warning message will b
 
 The `require` keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the `on offer` phase to only offer a mission to players who have a "Jump Drive". Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any). If a non-zero quantity is specified then the player's flagship is checked alongside the cargo holds of all in-system escorts, or only the flagship's cargo if this is a boarding mission. If a quantity of zero is specified then the player cannot have that outfit anywhere on any of their ships.
 
+Beginning in **v. 0.9.15**, if the outfit being gifts has the "map" attribute, then the player will be given the information from that map as if they had purchased it from the outfitter. If an outfit with the "map" attribute is being required by a mission and the required value is 0, then the player must have the nearest systems that match the size of the map outfit unvisited, but if the required value is greater than 0 then the nearest systems must be visited.
+
 ```html
 give ship <model> [<name>]
 ```
