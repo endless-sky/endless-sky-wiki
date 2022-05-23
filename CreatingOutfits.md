@@ -642,9 +642,11 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"shield damage"`: how much damage a projectile does to shields.
 
-  * `"hull damage"`: how much damage a projectile does to hull.
+  * `"hull damage"`: how much damage a projectile does to the hull of ships or asteroids.
 
   * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
+
+  * `"asteroid damage"`: how much damage a projectile does to asteroids. If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
 
   * `"heat damage"`: how much heat is added to a target when struck by this projectile. If the target's shields are up, heat damage is cut in half.
 
