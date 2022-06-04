@@ -43,7 +43,7 @@ If you want your ship to be animated, just create multiple files with the same n
 
 **The sprite should have at least a one-pixel border of "empty" pixels on every side.** Otherwise, the ship outlines (shown in the targeting display and the escort icons, among other places) will not have sharp lines near those edges.
 
-**Scaling Sprites:** Ship sprites can be scaled by adding a `"scale" X` where X represents the multiplier. Thus 1 gives a sprite that is normal size, 0.5 would give a sprite that is 50% of its normal, and 2.5 would give a sprite that is 250% of its normal size. This process will also adjust the position of any hardpoints the ship might have.
+**Scaling Sprites:** Ship sprites can be scaled by adding a `"scale" X` where X represents the multiplier. Thus 1 gives a sprite that is normal size, 0.5 would give a sprite that is 50% of its normal, and 2.5 would give a sprite that is 250% of its normal size. This process will also adjust the position of any hardpoints the ship might have. Note that a scale attribute is not required, and if it is not specified/present the game will default to a value of 1.
 ```
 ship "Star Barge"
 	sprite "ship/star barge"
