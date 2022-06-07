@@ -40,6 +40,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating phrases](CreatingPhrases)
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
+* [Editing interfaces](CreatingInterfaces)
 
 ### Compiling or modifying the source code
 
