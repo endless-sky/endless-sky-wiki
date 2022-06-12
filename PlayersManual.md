@@ -101,12 +101,7 @@ Many starship captains have an almost obsessive impulse to fine-tune their ships
 
 Outfits can affect your ship in a myriad of ways. You can hover the mouse over any attribute of an outfit or a ship to view a tooltip explaining how it works.
 
-If you have multiple ships, you can select the icons of more than one of them at once by clicking them while holding down the shift or control modifier keys. That allows you to buy or sell outfits for multiple ships simultaneously.  In addition, the checkboxes in the bottom left corner control what outfits are shown:
-
-&nbsp; | [x] for sale | [ ] for sale
---- | --- | ---
-**[ ] in cargo** | Shows outfits in the currently selected ship(s) and lets you install or uninstall them. (This is the default view.) | Shows only the outfits installed in the currently selected ship(s).
-**[x] in cargo** | Lets you buy or sell outfits directly to cargo instead of installing them on a ship. | Shows only the outfits that you have in cargo, and lets you sell them.
+If you have multiple ships, you can select the icons of more than one of them at once by clicking them while holding down the shift or control modifier keys. That allows you to buy or sell outfits for multiple ships simultaneously. Selling an outfit will put that outfit in stock until you buy it back or take off. Pressing &lsquo;u&rsquo; will place an outfit into storage instead of selling it, letting that outfit permanently stay on that planet. Deselecting all your ships will cause outfits to be placed into cargo when bought or installed. In addition, the checkboxes in the bottom left corner control what outfits are shown: all outfits stored on the selected ships are listed, as well as outfits on sale, in cargo, and in storage. Toggling &ldquo;Show outfits in cargo&rdquo; also deselects all your ships.
 
 ## Hire Crew (H)
 
@@ -300,9 +295,11 @@ Forward thrust | Up
 Turn left | Left
 Turn right | Right
 Reverse | Down
+Stop ship | Shift + Down
 Fire afterburner | A
 Land on planet / station | L
 Initiate hyperspace jump | J
+Jump as a fleet | Shift + J
 Fire primary weapons | Tab
 Select secondary weapon | W
 Fire secondary weapon | Q
@@ -320,6 +317,7 @@ Show main menu | Escape
 View star map | M
 View player info | I
 Toggle fullscreen | F11
+Toggle fast-forward | Caps Lock
 Deploy / recall fighters | D
 Fleet: Fight my target | F
 Fleet: Gather around me | G
