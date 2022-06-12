@@ -1,6 +1,45 @@
-* [Starting a new game](PlayersManual#new)
-* [Planets](PlayersManual#planets)
-* [Flying your ship](PlayersManual#navigation)
-* [Traveling to other stars](PlayersManual#travel)
-* [Upgrading your ship](PlayersManual#outfits)
-* [Combat](PlayersManual#combat)
+### Wiki Navigation
+**Gameplay**
+
+* [Player's manual](PlayersManual)
+
+**Story**
+
+* [Timeline of human space exploration](HistoricalTimeline)
+* [Regions of human space](HumanSpace)
+* [Major organizations and factions](MajorOrganizations)
+
+**Contributing**
+
+* [Help wanted](HelpWanted)
+* [Development Roadmap](DevelopmentRoadmap)
+* [Art and storytelling style](StyleGoals)
+* [Quality Checklist](QualityChecklist)
+
+**Creation**
+
+* [Creating plugins](CreatingPlugins)
+* [Creating missions](CreatingMissions)
+* [Writing conversations](WritingConversations)
+* [Creating game events](CreatingEvents)
+* [Creating new ships](CreatingShips)
+* [Creating person ships](CreatingPersons)
+* [Creating outfits and weapons](CreatingOutfits)
+* [Creating effects](CreatingEffects)
+* [Creating systems and planets](MapData)
+* [Creating system hazards](CreatingHazards)
+* [Creating minable asteroids](CreatingMinables)
+* [Creating planet sprites](PlanetSprites)
+* [Creating spaceport news](CreatingNews)
+* [Creating governments](CreatingGovernments)
+* [Creating fleets](CreatingFleets)
+* [Creating phrases](CreatingPhrases)
+* [Creating starts](Creating-Starts)
+* [Creating text substitutions](CreatingSubstitutions)
+* [Editing interfaces](CreatingInterfaces)
+
+**Compiling or modifying the source code**
+
+* [Build instructions](BuildInstructions)
+* [Contributing to the code](ContributingCode)
+* [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
