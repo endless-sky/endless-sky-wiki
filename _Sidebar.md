@@ -2,6 +2,7 @@
 **Gameplay**
 
 * [Player's manual](PlayersManual)
+* [Community Glossary](Glossary)
 
 **Story**
 
@@ -15,6 +16,7 @@
 * [Development Roadmap](DevelopmentRoadmap)
 * [Art and storytelling style](StyleGoals)
 * [Quality Checklist](QualityChecklist)
+* [Story Ideas](StoryIdeas)
 
 **Creation**
 
