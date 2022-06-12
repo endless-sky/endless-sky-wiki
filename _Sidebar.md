@@ -43,3 +43,11 @@
 * [Build instructions](BuildInstructions)
 * [Contributing to the code](ContributingCode)
 * [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
+
+**Descriptions of game engine technology**
+
+* [Tricks for creating special blending modes](BlendingModes)
+* [Using frame tweening for smooth animations](AnimationTweening)
+* [Motion blur rendering using OpenGL shaders](MotionBlur)
+* [Polygonal collision detection algorithms](CollisionDetection)
+* [Creating an "infinite" asteroid field](TiledAsteroids)
