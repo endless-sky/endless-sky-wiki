@@ -34,7 +34,7 @@ $ ./endless-sky
 # Windows
 
 The Windows build is tested on 64-bit Windows 10. This guide assumes you have:
- - `g++` v4.8.5 or higher, installed via [*MinGW-W64*](https://sourceforge.net/projects/mingw-w64/files/). If you use the "online installer", choose *posix* threading, and *seh* exception. For 32-bit installations, use *dwarf* exception handling.
+ - `g++` v11 or higher from MinGW-W64, installed from f.e. [*WinLibs*](https://winlibs.com/#download-release). You can choose the version without LLVM.
  - the [Code::Blocks IDE](https://codeblocks.org/downloads/26).
  - precompiled [development libraries](#development-libraries) according to the game architecture you wish to build (32- or 64-bit)
  
