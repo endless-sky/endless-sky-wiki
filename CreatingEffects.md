@@ -19,6 +19,8 @@ effect <name>
     "random angle" <degrees#>
     "random spin" <degrees#>
     "random frame rate" <fps#>
+    "absolute velocity" <velocity#>
+    "absolute angle" <degrees#>
 ```
 
 ### Sprite definition
@@ -48,9 +50,11 @@ As with the sprite attributes, you should only include whichever attributes you 
 
 * `sound <name>`: When the effect is created, this sound is played. (This happens even if the effect does not define a sprite.)
 * `lifetime <frames#>`: How long the effect should last, in 60ths of a second.
-* `"random lifetime" <frames#>`: a random number of frames (60ths of a second) up to this amount will be added to each effect's lifetime. **(v. 0.9.13)**
+* `"random lifetime" <frames#>`: A random number of frames (60ths of a second) up to this amount will be added to each effect's lifetime. **(v. 0.9.13)**
 * `"velocity scale" <scale#>`: Without this, an effect will have the same velocity as the ship or projectile that "created" it. If this is defined, its velocity will be multiplied by this amount. Use a negative number to have the effect "bounce" in the opposite direction from the projectile.
 * `"random velocity" <velocity#>`: A random velocity (in pixels per frame) up to this amount will be added to the effect. The added velocity will be in the direction the effect is "facing" after the random angle, if any, is applied.
 * `"random angle" <degrees#>`: If this is not defined, an effect "faces" in the same direction as the ship or projectile that created it. If this is defined, a random angle up to this amount (in either direction) will be added.
 * `"random spin" <degrees#>`: The effect should spin a random amount up to this number of degrees per frame.
 * `"random frame rate" <fps#>`: Speed up the animation by a random amount up to this number of frames per second. This is to make it so that a bunch of identical effects created at the same moment do not end up perfectly in synch.
+* `"absolute velocity" <velocity#>`: Effects normally inherit the velocity and angle of whatever created them. Specifying an absolute velocity overwrites whatever the velocity of the parent object was. An explicit value of 0 will result in the effect having a base velocity of 0. Any random velocity still gets added to this value. **(v. 0.9.15)**
+* `"absolute angle" <degrees#>`: As with absolute velocity, specifying an absolute angle overwrites whatever the angle of the parent object was. An explicit value of 0 will result in the effect having a base angle of 0. Any random angle still gets added to this value.**(v. 0.9.15)**
