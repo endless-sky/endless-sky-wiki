@@ -8,6 +8,7 @@ hazard <name>
 	"duration" <min#> [<max#>]
 	"strength" <min#> [<max#>]
 	"range" [<min#>] <max#>
+	"system-wide"
 	"environmental effect" "<effect name>" [<amount#>]
 	weapon
 		...
@@ -64,6 +65,16 @@ If this is not provided, then the strength is always 1.
 The range at which this hazard affects ships in the system. If only one value is provided then the hazard will deal damage out to that range from the system center. If two values are provided then the hazard will deal damage within a ring around the system center defined by the two ranges given. Any ship touching the circle or ring takes damage.
 
 If this is not provided, then the max range of the hazard is set to 10,000.
+
+```html
+"system-wide"
+```
+
+Beginning in **v. 0.9.15**, this tag can be applied to hazards in order to cause them to impact all ships in the system regardless of their distance from the system center.
+
+The system-wide tag also changes the origin of environmental effects from the system center or planet that the hazard is defined around to the center of the screen, causing the environmental effects to always be visible to the player. The minimum range value will still be used to determine the minimum range from the center of the screen that effects will begin appearing, while the maximum range gets overridden by the edge of the screen.
+
+System-wide hazards will maintain the same density of environmental effects as if they were not system-wide. For example, if the max range of the hazard were defined as 5,000 and the amount of environmental effects created per frame was 5, but the hazard being made system-wide caused the max range to become 10,000 to fit the screen, the number of effects created would change from 5 to 20 as a circle with radius 10,000 has four times the area as one with radius 5,000.
 
 ```html
 "environmental effect" "<effect name>" [<amount#>]
