@@ -59,10 +59,12 @@ Ships can also carry outfits as cargo, specified by the [outfitters](CreatingOut
 ```html
 personality <type>...
 	<type>...
+	<type>
+	...
 	confusion <amount#>
 ```
 
-The [personalities](ShipPersonalities) that specify how this fleet acts. Each personality can be listed on a single line or as a child of `personality`, but `confusion` must be listed as a child of `personality` on its own line. The default confusion if not listed is 10.
+The [personalities](ShipPersonalities) that specify how this fleet acts. Personality types can be listed on the same line as the `personality` node in a list separated by spaces, as a list that is a child of `personality`, and/or one type on each line as a child of `personality`, but `confusion` must be listed as a child of `personality` alone on its own line. The default confusion if not listed is 10.
 
 # Variants
 
