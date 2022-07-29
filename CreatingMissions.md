@@ -312,7 +312,7 @@ Note that `priority` will only affect missions that offer from the spaceport.
 (job | landing | assisting | boarding)
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a `job`, it will appear only if included in the job board (which only happens if the current planet matches the [destination filter](#filters)).
+This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#filters)).
 
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
