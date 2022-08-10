@@ -169,7 +169,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
-* `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Heavy Warship", "Fighter", or "Drone".
+* `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone". Since 0.9.15: "Space Liner`, or "Utility".
 
 * `"licenses"`: a list of names of licenses you need to buy this ship. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
