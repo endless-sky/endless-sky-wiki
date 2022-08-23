@@ -146,7 +146,7 @@ mission <name>
         fleet <name> [<count>]
         fleet [<count>]
             ...
-    on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>])
+    on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily)
         log [<category> <header>] <text>
         dialog <text>
             <text>...
@@ -740,7 +740,7 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>])
+on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily)
     log [<category> <header>] <text>
     dialog <text>
         <text>...
@@ -773,6 +773,7 @@ There are eleven events that can trigger a response of some sort:
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * `waypoint`: you have visited the last of the systems that are specified as a "waypoint" for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
+* `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 
 Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a location filter:
 ```html
