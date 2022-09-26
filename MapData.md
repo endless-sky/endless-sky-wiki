@@ -22,6 +22,7 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a galaxy, 
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
+		scale <scale#>
 
 system <name>
 	hidden
@@ -44,6 +45,7 @@ system <name>
 	hazard <name> <period#>
 	object [<name>]
 		sprite <sprite>
+			scale <scale#>
 		distance <distance#>
 		period <period#>
 		offset <offset#>
@@ -77,6 +79,7 @@ planet <name>
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
+		scale <scale#>
 ```
 
 "Galaxies" are what serve as background images on the map. This includes the image of the Milky Way, as well as all the labels on the map for various regions of space.
@@ -98,6 +101,12 @@ sprite <sprite>
 ```
 
 The image that is created at this galaxy's position.
+
+```html
+scale <scale#>
+```
+
+The multiplier applied to the dimensions of this galaxy's sprite when displayed in game. This value defaults to 1.
 
 <a name="systems">
 
@@ -126,6 +135,7 @@ system <name>
 	hazard <name> <period#>
 	object [<name>]
 		sprite <sprite>
+			scale <scale#>
 		distance <distance#>
 		period <period#>
 		offset <offset#>
@@ -248,6 +258,7 @@ The name of a [hazard](CreatingHazards) that is created in this system within a 
 ```html
 object [<name>]
 	sprite <sprite>
+		scale <scale#>
 	distance <distance#>
 	period <period#>
 	offset <offset#>
@@ -269,6 +280,12 @@ sprite <sprite>
 ```
 
 The sprite that is created at this object's position.
+
+```html
+scale <scale#>
+```
+
+The multiplier applied to the dimensions of this object's sprite when displayed in game. This value defaults to 1. In order to increase the visual fidelity of stations, they are stored at double resolution, and scaled down to half size.
 
 ```html
 distance <distance#>
