@@ -135,9 +135,16 @@ system <name>
         object [<planet>]
             ...
     remove object
+        sprite <path>
+        distance <radius#>
+        period <days#>
+        offset <degrees#>
+    remove object
     ...
 ```
 Update the specified elements of the named `system`. The physical characteristics of systems (`habitable`, `belt`, `object`s etc.) are generally best previewed using the [map editor](https://github.com/endless-sky/endless-sky-editor).
+
+Beginning in **v.0.9.15**, specific objects can be removed from systems. When removing an object, the sprite name (all sprite attributes are ignored), distance, period, and offset all need to match in order for the object to be removed. If an object is removed then all objects orbiting it are also removed. Planets don't count as orbiting stars, so removing the stars from a system won't delete all the planets.
 
 ```html
 link <system> <other>
