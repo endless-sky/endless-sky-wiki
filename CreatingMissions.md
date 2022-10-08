@@ -645,7 +645,7 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `"scan cargo"`: To complete the mission, the player must scan the given NPC's cargo. If the NPC is destroyed before being scanned, the mission fails.
 * `"scan outfits"`: Same, but the player must use an outfit scanner instead of a cargo scanner.
 * `evade`: You cannot complete the mission if any members of this NPC are in the same system as you.
-* `accompany`: You can only complete the mission if all members of this NPC are in the same system as you.
+* `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. **Prior to v. 0.9.16**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
 
