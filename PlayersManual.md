@@ -67,7 +67,7 @@ You start the game with a significant mortgage to pay off. Every day (that is, e
 
 If you apply for a new loan, your credit score determines the interest rate you will be offered, and your income history for the last hundred days determines the amount you can qualify for.
 
-## Space Port (P)
+## Spaceport (P)
 
 The job board works fine for offering run of the mill missions, but people who need more important or sensitive work done will generally want to speak to a captain face to face before offering the job. So, it never hurts to wander around the spaceport and see if you encounter anyone who can offer you a mission. If nothing else, exploring the spaceport will at least give you a sense of what the local culture is like. Spaceports span the gamut from towering buildings with hangars for incoming ships, to fields of packed dirt with only a few huts or a small village nearby.
 
