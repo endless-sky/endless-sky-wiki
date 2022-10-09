@@ -135,21 +135,23 @@ The data files use indentation, like in the Python language, to define sub-entri
 
     * `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
 
-* `(fighter | drone) <x#> <y#> [over | under] [left | right | back]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`.
+* `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
 
-  * As of **v. 0.9.3** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
+  * The following lines can be added as a "child" of the bay line:
 
-  * As of **v. 0.9.13** the syntax for adding bays to a ship has changed (although the old way is still supported for compatibility). Now, a bay is defined as follows:
+    * `"[over | under]"`: a keyword with no value that changes the Z position of the bay, displaying the carried ship either over or under the sprite of the carrying ship. Omitting this keyword means that carried ship is not displayed externally on the carrier.
 
-    * `bay <category> <x#> <y#>`: specify a bay that carries ships of the given category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The only supported categories that can go in bays are `"Fighter"` and `"Drone"`. The following lines can be added as a "child" of the bay line:
+    * `"[left | right | back]"`: a keyword with no value that changes the facing direction of the carried ship, the default direction being facing forward. This also controls the direction in which the carried ship is first facing when deployed.
 
-      * `"[over | under]"`: a keyword with no value that changes the Z position of the bay, displaying the carried ship either over or under the sprite of the carrying ship. Omitting this keyword means that carried ship is not displayed externally on the carrier.
+    * `"angle" <degrees#>`: a value of degrees that allows for facing the carried ship in any direction, as an alternative to the set left, right, back directions.
 
-      * `"[left | right | back]"`: a keyword with no value that changes the facing direction of the carried ship, the default direction being facing forward. This also controls the direction in which the carried ship is first facing when deployed.
+    * `"launch effect" <effect> [<count#>]`: an [effect](CreatingEffects) that is drawn at this bay's coordinates when its carried ship deploys.
 
-      * `"angle" <degrees#>`: a value of degrees that allows for facing the carried ship in any direction.
+  * Prior to **v. 0.9.13** the syntax for adding bays to a ship was different, although it is still supported for compatibility purposes. The old method for defining a bay was as follows:
 
-      * `"launch effect" <effect> [<count#>]`: an [effect](CreatingEffects) that is drawn at this bay's coordinates when its carried ship deploys.
+    * `(fighter | drone) <x#> <y#> [over | under] [left | right | back]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`
+
+    * As of **v. 0.9.3** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
 
 * `"explode" <effect> [<count#>]`: an effect to create when the ship is dying, and the number of them to create (e.g. `explode "small explosion" 10`). These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion where 50% of the explosion effects are generated a second time.
 
