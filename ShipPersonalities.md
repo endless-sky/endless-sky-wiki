@@ -18,6 +18,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `coward`: if this ship is not the flagship of a fleet, it will desert its flagship and flee the system if its hull and shield strength drop low enough. **(v. 0.9.0)**
 * `appeasing`: if this ship's hull and shield strength drops low enough, it will dump cargo to try to distract or appease its attacker. **(v. 0.9.5)**
 * `opportunistic`: this ship's turrets will track targets independently instead of focusing fire. They also scan back and forth when no target is present. **(v. 0.9.7)**
+* `merciful`: this ship won't fire on ships that are fleeing **(v. 0.9.17)**
 
 ### Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#npcs):
 
