@@ -82,7 +82,12 @@ The game manages these conditions, but you are able to adjust the value in conve
 ### Read-only
 No error will be raised if you modify these conditions, but the game will reset them back to the appropriate value.
 
-* `"ships: <category>"` is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone).
+* `"ships: <category>"` is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone) which are present and active. Present means the ship is in the same system as the player, or if the player is landed then it is on the same planet. Active means the ship is not parked or disabled.
+* `"ships (all): <category>"` is the same as the condition above, except all your ships are checked, not only those which are present and active. **(v. 0.9.17)**
+* `"total ships"` is the total number of ships which are present and active. **(v. 0.9.17)**
+* `"total ships (all)"` is the total number of ships across your entire fleet. **(v. 0.9.17)**
+* `"ship model: <model>"` is the total number of ships of a specific model that you own which are present and active. **(v. 0.9.17)**
+* `"ship model (all): <model>"` is the total number of ships of a specific model that you own across your entire fleet. **(v. 0.9.17)**
 * `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
 * `"flagship crew"`, `"flagship required crew"`, and `"flagship bunks"` are the current crew, required crew, and bunks of your flagship only (ignoring any passengers you're carrying). **(v. 0.9.11)**
 * `"net worth"` is your net worth, the sum of the worth of all your ships and outfits plus your current account balance minus and outstanding mortgages or fines.
@@ -91,9 +96,23 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
 * `"random"` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
-* `"name: <first> <last>"` is the full name of the pilot (**v. 0.9.17**).
-* `"first name: <first>"` is just the first name (**v. 0.9.17**).
-* `"last name: <last>` is just the last name (**v. 0.9.17**).
+* `"name: <first> <last>"` is the full name of the pilot. **(v. 0.9.17)**
+* `"first name: <first>"` is just the first name. **(v. 0.9.17)**
+* `"last name: <last>` is just the last name. **(v. 0.9.17)**
+* `"visited planet: <planet>"` is 1 if you've visited the specified planet, 0 otherwise. **(v. 0.9.17)**
+* `"visited system: <system>"` is 1 if you've visited the specified system, 0 otherwise. **(v. 0.9.17)**
+* `"outfit: <outfit>"` is the number of outfits that you own of the given type which are local to the player. Local is defined differently depending on the player's location. **(v. 0.9.17)**
+  * If the player is in orbit, "local" is any outfit installed on or in the cargo of in-system ships which are also in orbit (i.e. parked ships in-system don't count).
+  * If the player is landed, "local" is any outfit installed on any landed ships (i.e. disabled ships in-system don't count), in the player's pooled cargo, or in storage on the planet the player is landed on.
+* `"outfit (all): <outfit>"` is the number of outfits that you own of the given type anywhere in the game, include out of system ships, parked ships, and any planetary storage. **(v. 0.9.17)**
+* `"outfit (installed): <outfit>"` is the number of outfits of the given type that you have installed and local. **(v. 0.9.17)**
+* `"outfit (all installed): <outfit>"` is the number of outfits of the given type that you have installed anywhere. **(v. 0.9.17)**
+* `"outfit (flagship installed): <outfit>"` is the number of outfits of the given type that you have installed on your flagship. **(v. 0.9.17)**
+* `"outfit (cargo): <outfit>"` is the number of outfits of the given type that you have in cargo and local. **(v. 0.9.17)**
+* `"outfit (all cargo): <outfit>"` is the number of outfits of the given type that you have in cargo anywhere. **(v. 0.9.17)**
+* `"outfit (flagship cargo): <outfit>"` is the number of outfits of the given type that you have in cargo on your flagship. When landed, this returns the cargo of all ships with you on the planet, as cargo becomes "pooled" into a singular location when you are landed and is only assigned to specific ships on take off. **(v. 0.9.17)**
+* `"outfit (storage): <outfit>"` is the number of outfits of the given type that you have in storage and local. When landed, local is your current planet. When in orbit, local is any planet in your current system. **(v. 0.9.17)**
+* `"outfit (all storage): <outfit>"` is the number of outfits of the given type that you have in storage anywhere. **(v. 0.9.17)**
 
 <a name="expressions">
 
