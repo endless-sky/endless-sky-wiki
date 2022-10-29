@@ -379,24 +379,7 @@ Beginning with **v.0.9.15**, this specifies custom text replacements that apply 
 # Conditions
 </a>
 
-["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes:
-
-* `"<mission name>: offered"`, where `<mission name>` is replaced with the name of any mission. This is incremented whenever a mission is offered to you, and is used by the "repeat" check to make sure a mission is not offered too many times.
-* `"<mission name>: active"`, where `<mission name>` is replaced with the name of any mission. This is incremented when you accept a mission, and decremented when you complete, or fail it.
-* `"<mission name>: done"` is set when a mission is successfully completed.
-* `"<mission name>: declined"` is set when a mission is declined.
-* `"<mission name>: failed"` is set when a mission is failed.
-* `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number. These conditions can be changed to alter your reputation with a government.
-* `"ships: <category>"` is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone).
-* `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
-* `"flagship crew"`, `"flagship required crew"`, and `"flagship bunks"` are the current crew, required crew, and bunks of your flagship only (ignoring any passengers you're carrying). **(v. 0.9.11)**
-* `"net worth"` is your net worth, the sum of the worth of all your ships and outfits plus your current account balance minus and outstanding mortgages or fines.
-* `"combat rating"` is your current combat rating (based on the strength of all the ships your fleet has disabled).
-* `"cargo attractiveness"` is how attractive the size of your cargo hold(s) is to pirates. Lots of small ships are more attractive than one large one. Values for single human ships range from -2 for ships with no cargo to 8 for bulk freighters.
-* `"armament deterrence"` is how effective your weapons are at discouraging pirates. Values for single human ships range from 0 for unarmed ships to 8 for the Dreadnought.
-* `"pirate attraction"` is how attractive your fleet is to pirates, calculated as (`"cargo attractiveness"` - `"armament deterrence"`). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
-* `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
-* `"random"` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
+["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes and may be read-only. A list of these reserved conditions can be found [here](Player-Conditions#reserved-conditions).
 
 Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the `to offer` tag), and when determining whether it has been completed (in the `to complete` tag) or failed (in the `to fail` tag):
 
