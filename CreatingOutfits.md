@@ -459,9 +459,11 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"ammo"`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. **(v. 0.9.5)**
 
-  * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems (use `drag reduction` instead). 
+  * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems (use `drag reduction` instead).
 
-  * `drag reduction`: Reduces a ship's drag. The resulting drag is given by: `drag / (1 + reduction)` **(v. 0.9.17)**
+  * `"drag reduction"`: Reduces a ship's drag. The resulting drag is given by: `drag / (1 + reduction)`. **(v. 0.9.17)**
+
+  * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.9.17)**
 
   * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
 
