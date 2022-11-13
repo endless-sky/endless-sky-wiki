@@ -33,6 +33,9 @@ system <name>
 	arrival [<distance#>]
 		link <distance#>
 		jump <distance#>
+	departure [<distance#>]
+		link <distance#>
+		jump <distance#>
 	habitable <distance#>
 	belt <distance#> [<weight#?]
 	"jump range" <distance#>
@@ -123,6 +126,9 @@ system <name>
 	arrival [<distance#>]
 		link <distance#>
 		jump <distance#>
+	departure [<distance#>]
+		link <distance#>
+		jump <distance#>
 	habitable <distance#>
 	belt <distance#> [<weight#>]
 	"jump range" <distance#>
@@ -188,9 +194,12 @@ Music that is played while in this system.
 arrival [<distance#>]
 	link <distance#>
 	jump <distance#>
+departure [<distance#>]
+	link <distance#>
+	jump <distance#>
 ```
 
-An additional distance at which ships arrive in this system. If just `arrival <distance#>` is provided, then both hyperdrive and jump drive travel into a system has its arrival distance moved. The `link <distance#>` and `jump <distance#>` lines are optional and allow for tweaking of the arrival distance of each jump method. If an arrival distance is given and then a link or jump distance is provided, the link or jump distance will override the arrival distance. If an arrival distance is given without a value and then a link or jump distance is provided, the other travel method will be unaffected.
+An additional distance at which ships arrive (or depart **(v0.9.17)**) in this system. If just `<distance#>` is provided, then both hyperdrive and jump drive travel into or out of a system has its distance moved. The `link <distance#>` and `jump <distance#>` lines are optional and allow for tweaking of the distance of each jump method. If a distance is given and then a link or jump distance is provided, the link or jump distance will override the distance. If a distance is given without a value and then a link or jump distance is provided, the other travel method will be unaffected.
 
 Negative distances are allowed for link arrival distances, and will cause ships to arrive on the opposite side of the system from where they entered. Non-zero values (i.e. including this variable) will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
 
