@@ -41,6 +41,8 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Hand to Hand"
   * "Special"
 
+* `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
+
 * `"flotsam sprite"`: the image that is drawn when this outfit is dropped in space, either because it was jettisoned by a ship or because it was the payload of a minable asteroid. If no flotsam sprite is given, then the default flotsam box is used.
 
 * `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](CreatingShips) when the thruster is firing.
