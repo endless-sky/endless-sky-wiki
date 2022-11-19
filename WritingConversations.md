@@ -10,10 +10,14 @@ conversation [<name>]
     label <name>
     <text>
         [<endpoint> | goto <label>]
+        ["to display"]
+            <condition>
     name
     choice
         <text>
             [<endpoint> | goto <label>]
+            ["to display"]
+                <condition>
         ...
     branch <if true> [<if false>]
         <condition> <comp> <value>
@@ -36,7 +40,7 @@ conversation [<name>]
 
 <a name="exits">
 
-# Endpoints and goto
+# Endpoints, goto and "to display"
 </a>
 
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
@@ -71,6 +75,8 @@ conversation
 The conversation stops as soon as an endpoint is encountered, so if you list multiple endpoints or gotos after a line of text, only the first one will be applied.
 
 You can go to labels earlier on in the conversation if you want, but be careful that this does not create an "infinite loop."
+
+Both texts and choices can also be hidden based on a condition that is part of a "to display".
 
 # Scenes
 
