@@ -31,6 +31,11 @@ government <name>
     enforces [all]
     enforces
         {filter specification...}
+    illegals
+        <outfit> <fine>
+        ...
+    atrocities
+        <outfit>
 ```
 
 The various parts of a government definition are described below.
@@ -147,6 +152,10 @@ The bribe token controls the fraction of the player's fleet's worth that must be
 fine <percentage#>
 ```
 The fine token controls the "leniency" of the government with respect to the fined amount. For example, `fine 0.1` indicates that this government would only fine a player 10,000 credits if the total fine value is 100,000 credits.
+
+#### Illegal and Atrocities
+Defines specific items that are considered illegal and considered atrocities by this government. Illegal items have a parameter that lists the amount of fine the player would receive.
+Illegal and Atrocities can be modified through evens as well.
 
 #### Death Sentence
 ```html
