@@ -17,6 +17,7 @@
 * [Art and storytelling style](StyleGoals)
 * [Quality Checklist](QualityChecklist)
 * [Story Ideas](StoryIdeas)
+* [Donations](Donations)
 
 **Creation**
 
