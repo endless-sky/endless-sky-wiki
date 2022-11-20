@@ -1,4 +1,4 @@
-## Donating to Endless Sky
+## Thank you
 Thank you for considering donating to Endless Sky. We appreciate the thought. The fact that anyone would like to spend money on this hobby project of ours is a compliment that we all appreciate. 
 
 That being said, this is a volunteer open-source project, so none of us are paid to be here, and most of us incur no monetary costs in the course of doing what we do. Our motivations are many, and include the satisfaction of contributing, the fun of developing a new game, the enjoyment of keeping this genre alive and moving in a direction we like, and many others. There have even been a few that developed either parts of the game or development tools to help as part of school assignments. 
@@ -18,5 +18,5 @@ If you are set on giving money to the project, the only way to do so is by donat
 
 For instance, when asked about it in the past, the founder of Endless Sky, Michael Zahniser, has commented that his regular employment pays quite well, but includes a contractual clause that prohibits him from earning money through programming outside of it. Since he would rather not put his employment at risk, he cannot accept donations.
 
-## Thank you
+## Thank you (conclusion)
 The simple fact that you wish to spend money on this project we have invested so much of our time in is, in itself, a high compliment. Thank you. This project exists to bring light-hearted enjoyment and entertainment into the world, and to know it has succeeded is our primary reward.
