@@ -18,6 +18,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Development Roadmap](DevelopmentRoadmap)
 * [Art and storytelling style](StyleGoals)
 * [Quality Checklist](QualityChecklist)
+* [Donating](Donations)
 
 ### Creating ships, missions, artwork, etc.
 
