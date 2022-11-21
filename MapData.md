@@ -6,6 +6,7 @@
   * [Objects](#objects)
 * [Planets](#planets)
   * [Tribute](#tribute)
+* [Wormholes](#wormholes)
 * [Landing Messages](#landing)
 * [Solar Attributes](#solar)
 
@@ -282,7 +283,11 @@ Objects are the stars, planets, moons, or stations that are found within a syste
 object [<name>]
 ```
 
-If an object is named, then it can be landed on, and must have a [planet](#planets) defined for it. If this name matches the name of an object in another system, then a wormhole is created. If this name matches the name of another object in the same system, then landing on any of these objects simply lands you on the planet associated with these objects.
+If an object is named, then it can be landed on, and must have a [planet](#planets) defined for it.
+
+**Deprecated since v. 0.9.17**:
+
+If this name matches the name of an object in another system, then a wormhole is created. If this name matches the name of another object in the same system, then landing on any of these objects simply lands you on the planet associated with these objects.
 
 ```html
 sprite <sprite>
@@ -345,6 +350,7 @@ planet <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
 	security <security#>
+    wormhole <name>
 	tribute <credits#>
 		threshold <rating#>
 		fleet <name> <count#>
@@ -358,7 +364,13 @@ planet <name>
 
 The name of a planet must be unique, and will only be used it there is an object in a system that refers to this same name.
 
-If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a description will cause the wormhole to create a link on the map when it has been discovered, and giving it a spaceport will cause NPCs to "land" on the wormhole.
+If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
+
+**Deprecated since v. 0.9.17**:
+
+Additionally, giving it a description will cause the wormhole to create a link on the map when it has been discovered.
+
+**Since v. 0.9.17**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
 
 ```html
 attributes <attribute>... "requires: <attribute>"
@@ -424,6 +436,12 @@ The behavior that this planet has when the player has illegal goods or outifts. 
 
 If no security is specified, then a default security of 0.25 is used. 
 
+```html
+wormhole <name>
+```
+
+**(v. 0.9.17)** Assigns a wormhole to this planet. Departing from this planet will teleport the player to the destination specified inside the wormhole node.
+
 <a name="tribute">
 
 ## Tribute
@@ -454,6 +472,44 @@ fleet <name> <count#>
 ```
 
 The fleet that is spawned from this planet if the player demands tribute from it, and how many times that fleet is spawned. More than one type of fleet is capable of being spawned from a planet when demanding tribute.
+
+<a name="wormholes">
+
+# Wormholes
+</a>
+
+```
+wormhole <name>
+    "display name" <name>
+    mappable
+    link <from> <to>
+```
+
+"Wormholes" are planets that transport you to a different system.
+
+```html
+womrhole <name>
+```
+
+The name of a wormhole must be unique.
+
+```html
+"display name" <name>
+```
+
+The display name of this wormhole, overrides the planet's name. If it is not provided, it defaults to `???`.
+
+```html
+mappable
+```
+
+Whether this wormhole's links are drawn on the map.
+
+```html
+link <from> <to>
+```
+
+Adds a link from a given system to another. You can have any number of these attributes. As a general rule, if a wormhole is present in a system it should have a corresponding `link` node to describe where its destination is.
 
 <a name="landing">
 
