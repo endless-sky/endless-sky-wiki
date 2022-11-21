@@ -423,6 +423,8 @@ If no source is specified, the mission will be offered whenever its `to offer` c
 
 For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
+It is possible to test filters by passing `--matches` to the game and then writing a location filter under a `location` node. The output are systems and planets matching the filter.
+
 ```html
 (source | destination) <planet>
 (source | destination)
