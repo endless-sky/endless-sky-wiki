@@ -9,15 +9,15 @@ conversation [<name>]
     scene <image>
     label <name>
     <text>
-        [<endpoint> | goto <label>]
-        ["to display"]
+        [to display]
             <condition>
+        [<endpoint> | goto <label>]
     name
     choice
         <text>
-            [<endpoint> | goto <label>]
-            ["to display"]
+            [to display]
                 <condition>
+            [<endpoint> | goto <label>]
         ...
     branch <if true> [<if false>]
         <condition> <comp> <value>
