@@ -292,6 +292,12 @@ The above creates a variant of the base "Arrow" ship, and the variant has lower 
 
 Note: While it is possible to "chain" the usage of `add attributes`, by referring to a variant instead of a base model ship, e.g. `ship "Arrow (Faster)" "Arrow (Too Fast)"`, doing so will result in incorrect "model name" display when targeting ships, and may result in improperly configured ships due to the order in which the game creates ships. **Thus, you should always refer to a "base model" ship, one that was defined as `ship <name>` and not `ship <base name> <variant name>`.**
 
+Beginning with **v. 0.9.17**, variants are also capable of having no bays even if the base model does. Previously, one could define new bays on the variant to override those on the base model, but a variant couldn't be made to have no bays at all if the base model had any.
+```c++
+ship "Carrier" "Carrier (No Bays)"
+	remove bays
+```
+
 
 [2xcorvette]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/corvette%402x.png
 [2xfirebird]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/firebird%402x.png
