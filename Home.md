@@ -45,7 +45,7 @@ These pages generally describe the game syntax in accordance with the [data form
 
 ### Compiling or modifying the source code
 
-* [Build instructions](BuildInstructions)
+* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/readme-developer.md)
 * [Contributing to the code](ContributingCode)
 * [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
 
