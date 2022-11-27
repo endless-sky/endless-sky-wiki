@@ -127,6 +127,8 @@ substitutions
 
 The above substitutions would replace `<net worth>` with "poor", unless the player's net worth condition is above 100m credits, in which case the replacement would become "rich". Should the player's net worth drop, then the "poor" replacement would be used again.
 
+Since substitutions are evaluated in the order they are defined, one must be careful with how they order conditional substitutions. For example, if instead of defining the "poor" replacement first, the "rich" replacement were defined first, then the "poor" replacement would always overwrite the "rich" replacement, since an empty condition set is always true. Similarly, if there were some third replacement with a condition of `"net worth" >= 1000000`, then that would need to be defined between the two in the example, as if it were defined first then it would be overwritten by "poor," and if it were defined last then it would always overwrite "rich."
+
 ### Changing substitutions through events
 
 The global substitutions list can be added to through [events](CreatingEvents). 
