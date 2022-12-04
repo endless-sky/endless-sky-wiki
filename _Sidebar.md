@@ -40,6 +40,7 @@
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
+* [Player Conditions](Player-Conditions)
 
 **Compiling or modifying the source code**
 
