@@ -836,6 +836,13 @@ base + multiplier * (jumps + 1) * (10 * (# of passengers) + (tons of cargo))
 
 If no base or multiplier is given, the default is base = 0, multiplier = 150. If a single value is given, it denotes a flat payment (i.e. multiplier = 0).
 
+Multiple instances of `payment` are acceptable and useful in certain circumstances. For example, many of the generic human jobs have two payments. The first payment line is blank, indicating a job with no base amount and the default multiplier. The second line just contains a single value, which is interpreted as a flat amount. This allows a job to have a base amount, while otherwise scaling according to whatever the current default multiplier is. This allows the default multiplier to be adjusted globally without needing to edit individual jobs.
+```
+	on complete
+		payment
+		payment 2000
+```
+
 Normally, a `payment` value would only be given in the "on complete" section, but you can also have a negative value to be subtracted if the player fails the mission, or you could use a "payment" to advance the player some money when they first accept a mission. If the "on complete" payment is negative, the player cannot complete the mission if they have fewer than that number of credits.
 
 ```html
