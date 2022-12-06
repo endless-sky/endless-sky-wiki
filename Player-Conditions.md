@@ -119,6 +119,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"outfit (flagship cargo): <outfit>"` is the number of outfits of the given type that you have in cargo on your flagship. When landed, this returns the cargo of all ships with you on the planet, as cargo becomes "pooled" into a singular location when you are landed and is only assigned to specific ships on take off. **(v. 0.9.17)**
 * `"outfit (storage): <outfit>"` is the number of outfits of the given type that you have in storage and local. When landed, local is your current planet. When in orbit, local is any planet in your current system. **(v. 0.9.17)**
 * `"outfit (all storage): <outfit>"` is the number of outfits of the given type that you have in storage anywhere. **(v. 0.9.17)**
+* `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.9.17)**
 
 <a name="expressions">
 
