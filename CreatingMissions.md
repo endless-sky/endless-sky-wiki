@@ -82,7 +82,7 @@ mission <name>
     stealth
     invisible
     (priority | minor)
-    (job | landing | assisting | boarding)
+    (job | landing | assisting | boarding | shipyard | outfitter)
     repeat [<number>]
     clearance [<message>]
         ...
@@ -309,7 +309,7 @@ In general, any mission that starts a completely new mission string, and that co
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding)
+(job | landing | assisting | boarding | shipyard | outfitter)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#filters)).
