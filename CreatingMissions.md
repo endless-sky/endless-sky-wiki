@@ -94,7 +94,7 @@ mission <name>
         <text> <replacement>
             [<condition set>]
         ...
-    to (offer | complete | fail)
+    to (offer | complete | fail | accept)
         <condition> <comp> <value>
         (has | not) <condition>
         never
@@ -236,7 +236,9 @@ This is a short description of the mission, with enough detail to make it clear 
 blocked <message>
 ```
 
-This is a short message that is displayed to the player if this mission cannot be offered, but only because they do not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space").
+This is a short message that is displayed to the player if this mission's `to offer` conditions pass, but either the `to accept` conditions do not, the `on offer` or `on accept` actions can't be done (which may be the result of `require`, `outfit <outfit> -1`, or some other action), or the player does not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space").
+
+Prior to **v. 0.9.17**, only the lack of space for the mission would trigger its blocked dialog.
 
 ```html
 deadline [<days#> [<multiplier#>]]
@@ -381,10 +383,10 @@ Beginning with **v.0.9.15**, this specifies custom text replacements that apply 
 
 ["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes and may be read-only. A list of these reserved conditions can be found [here](Player-Conditions#reserved-conditions).
 
-Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the `to offer` tag), and when determining whether it has been completed (in the `to complete` tag) or failed (in the `to fail` tag):
+Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the `to offer` tag), and when determining whether it has been completed (in the `to complete` tag) or failed (in the `to fail` tag), and, beginning in **v. 0.9.17**, determining whether it can be accepted (in the `to accept` tag):
 
 ```html
-to (offer | complete | fail)
+to (offer | complete | fail | accept)
     <condition> <comp> <value>
     (has | not) <condition>
     never
@@ -397,6 +399,8 @@ The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As 
 Conditions can be changed when you are offered a mission or when you accept, decline, fail, or complete it, as described later in this document. You can "chain" missions together by having one depend on the `"<mission name>: done"` condition that is automatically set by a previous mission upon completion. Since all your existing missions complete before new ones are offered, that condition will be set before the check is done for what new missions are available.
 
 A mission will not be offered if any of the `to fail` conditions are met, and will fail if it is active and one of those conditions changes so that it is satisfied. Using the `random` keyword in a `to fail` tag is possible, but not recommended.
+
+Beginning in **v. 0.9.17**, mission can be given `to accept` conditions. For jobs, if the mission can offer then it will appear on the jobs board, but if it can't be accepted then it will appeared grayed out with the "accept mission" button unable to be clicked. For non-job missions, if the mission's `to offer` conditions passed but the `to accept` conditions do not, then the `blocked` dialog will appear, if it exists.
 
 The condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true (e.g. you have completed mission A *or* mission B), you can use an `or` sub-clause. Within an `or` clause you can have `and` clauses (and so on), allowing you to check any arbitrary logical combination. For example, if you want a mission to be offered if "(has A or (has B and has C)) and (has D)":
 
@@ -642,7 +646,7 @@ to (spawn | despawn)
         ...
 ```
 
-**Starting in v.0.9.13,** `to (spawn | despawn)` works similarly to `to (offer | complete | fail)` for missions, containing a condition set that must be met for something to occur.
+**Starting in v.0.9.13,** `to (spawn | despawn)` works similarly to `to (offer | complete | fail | accept)` for missions, containing a condition set that must be met for something to occur.
 
 An NPC will not spawn if its `to spawn` conditions are not met, and any spawned NPC will despawn if its `to despawn` conditions are met. NPCs will only spawn once the player departs from a planet and despawn once the player lands, but these conditions are evaluated at multiple points: after accepting the mission, on each departure, on each system jump, and on each landing.
 
