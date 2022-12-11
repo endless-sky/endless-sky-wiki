@@ -78,6 +78,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"<mission name>: failed"` is set when a mission is failed.
 * `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number.
 * `"combat rating"` is your current combat rating (based on the strength of all the ships your fleet has disabled).
+* `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.9.17)**
 
 ### Read-only
 No error will be raised if you modify these conditions, but the game will reset them back to the appropriate value.
@@ -119,7 +120,13 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"outfit (flagship cargo): <outfit>"` is the number of outfits of the given type that you have in cargo on your flagship. When landed, this returns the cargo of all ships with you on the planet, as cargo becomes "pooled" into a singular location when you are landed and is only assigned to specific ships on take off. **(v. 0.9.17)**
 * `"outfit (storage): <outfit>"` is the number of outfits of the given type that you have in storage and local. When landed, local is your current planet. When in orbit, local is any planet in your current system. **(v. 0.9.17)**
 * `"outfit (all storage): <outfit>"` is the number of outfits of the given type that you have in storage anywhere. **(v. 0.9.17)**
-* `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.9.17)**
+* `"flagship attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. The attribute is multiplied by 1000 because conditions must be integers, while attributes are decimal values, and multiplying by 1000 allows conditions to check for attributes as small as 0.001. This includes the attributes from any installed outfits. **(v. 0.9.17)**
+* `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checked the attributes on the ship itself, excluding any installed outfits. **(v. 0.9.17)**
+* `"flagship planet attribute: <attribute>"` returns 1 if the planet that the player's flagship is landed on has the given attribute. Returns 0 if the flagship is not landed or the landed planet doesn't have the given attribute. **(v. 0.9.17)**
+* `"days since year start"` is the number of days since the beginning of the current year. **(v. 0.9.17)**
+* `"days until year end"` is the number of days until the end of the current year. **(v. 0.9.17)**
+* `"days since epoch"` is the number of days since the "epoch" (1/1/1). **(v. 0.9.17)**
+* `"days since start"` is the number of days since the day this pilot started on. If the current date is somehow before the date the pilot started on, this value will be negative. **(v. 0.9.17)**
 
 <a name="expressions">
 
