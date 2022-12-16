@@ -39,6 +39,7 @@ system <name>
 		jump <distance#>
 	habitable <distance#>
 	belt <distance#> [<weight#?]
+	"invisible fence" <distance#>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
@@ -132,6 +133,7 @@ system <name>
 		jump <distance#>
 	habitable <distance#>
 	belt <distance#> [<weight#>]
+	"invisible fence" <distance#>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
@@ -215,6 +217,12 @@ belt <distance#> [<weight#>]
 ```
 
 The distance from the system center at which minable asteroids in this system will orbit. **Beginning in v. 0.9.15** a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
+
+```html
+"invisible fence" <distance#>
+```
+
+Added in **v. 0.9.17**. The distance from the system center beyond which NPC ships will no longer travel, unless they have the `unconstrained` personality or are your escorts. The default distance for all systems is 10,000.
 
 ```html
 "jump range" <distance#>
