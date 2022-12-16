@@ -18,6 +18,9 @@ government <name>
     "penalty for"
         (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
         ...
+    "use foreign penalties for"
+        <government>
+        ...
     "provoked on scan"
     bribe <percentage#>
     fine <percentage#>
@@ -100,6 +103,14 @@ atrocity 10
 ``` 
 
 The "scan" penalty was added in **v. 0.9.15** and applies after successfully scanning the outfits or cargo of a ship.
+
+```html
+"use foreign penalties for"
+    <government>
+    ...
+```
+
+Beginning in **v. 0.9.17**, governments can be made to use the "penalty for" values of a different government when the other government is acted upon and the first government has an "attitude toward" the other. For example, government A may not like being scanned, while government B doesn't care. If A has a positive attitude toward B, then the player scanning a ship from B will normally anger A. If you want to avoid this situation, then you would list B under A's "use foreign penalties for," causing A to use B's scan penalty of 0 when B is scanned.
 
 ### Provoked on scan
 ```html
