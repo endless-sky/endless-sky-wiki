@@ -94,6 +94,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"flagship crew"`, `"flagship required crew"`, and `"flagship bunks"` are the current crew, required crew, and bunks of your flagship only (ignoring any passengers you're carrying). **(v. 0.9.11)**
 * `"flagship planet: <planet>"` is the planet your flagship is currently landed on.
 * `"flagship system: <system>"` is the system your flagship is currently in.
+* `"flagship landed"` is whether the flagship is currently on a planet. **(v. 0.9.17)**
 * `"net worth"` is your net worth, the sum of the worth of all your ships and outfits plus your current account balance minus any outstanding mortgages, fines, salaries, or maintenance.
 * `"credits"` is the number of credits you currently have in your account.
 * `"unpaid mortgages"`, `"unpaid fines"`, `"unpaid salaries"`, and `"unpaid maintenance"` are the value of your current outstanding mortgages, fines, salaries, and maintenance.
