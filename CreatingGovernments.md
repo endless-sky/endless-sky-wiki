@@ -8,7 +8,7 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a governme
 government <name>
     "display name" <other-name>
     swizzle <value#>
-    color <r#> <g#> <b#> <a#>
+    color (<r#> <g#> <b#> <a#> | <name>)
     "player reputation" <initial-rep#>
     "crew attack" <atk#>
     "crew defense" <def#>
@@ -66,9 +66,11 @@ The swizzle of a government defines the default color shift applied to ships of 
 
 #### Color
 ```html
-color <r#> <g#> <b#> <a#>
+color (<r#> <g#> <b#> | <name>)
 ```
-The government's color is used to shade its systems in the galactic map (including the mini-map shown when holding the "Jump" command). It is also used for drawing the planet's label when the player is in-flight nearby.
+The government's color is used to shade its systems in the galactic map (including the mini-map shown when holding the "Jump" command). It is also used for drawing the planet's label when the player is in-flight nearby. Colors are defined by their red, green, and blue channels with values from 0 to 1.
+
+Starting in **v. 0.9.17**, the color that a government uses can be set by name, where the name is of a defined color somewhere else in the game. The [interfaces.txt](https://github.com/endless-sky/endless-sky/blob/master/data/interfaces.txt) file has examples of such defined names. 
 
 #### Player Reputation
 ```html
