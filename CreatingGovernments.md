@@ -8,7 +8,7 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a governme
 government <name>
     "display name" <other-name>
     swizzle <value#>
-    color (<r#> <g#> <b#> <a#> | <name>)
+    color (<r#> <g#> <b#> | <name>)
     "player reputation" <initial-rep#>
     "crew attack" <atk#>
     "crew defense" <def#>
