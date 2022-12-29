@@ -128,6 +128,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"days until year end"` is the number of days until the end of the current year. **(v. 0.9.17)**
 * `"days since epoch"` is the number of days since the "epoch" (1/1/1). **(v. 0.9.17)**
 * `"days since start"` is the number of days since the day this pilot started on. If the current date is somehow before the date the pilot started on, this value will be negative. **(v. 0.9.17)**
+* `"hyperjumps to planet: <name>"` and `"hyperjumps to system: <name>"` are the number of hyperdrive-capable jumps it would take to travel from the your current location to the specified planet or system. Returns -1 for locations which don't exist or can't be reached. Does not make use of wormholes. **(v. 0.9.17)**
 
 <a name="expressions">
 
