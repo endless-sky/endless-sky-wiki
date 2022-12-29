@@ -48,6 +48,7 @@ system <name>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
 	hazard <name> <period#>
+    "starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
 			scale <scale#>
@@ -142,6 +143,7 @@ system <name>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
 	hazard <name> <period#>
+    "starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
 			scale <scale#>
@@ -267,6 +269,12 @@ The name of a [fleet](CreatingFleets) that is spawned in this system with a cert
 hazard <name> <period#>
 ```
 The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. The origin of any hazards defined here is the system center. **(v. 0.9.13)**
+
+```html
+"starfield density" <density#>
+```
+
+The density of the stars in the background. The default value is 1. If a system has a starfield density of 0 then it will have no stars at all. **(v. 0.9.17)**
 
 <a name="objects">
 
