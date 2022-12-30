@@ -101,10 +101,13 @@ board 0.3
 capture 1
 destroy 1
 scan 0
+provoke 0
 atrocity 10
 ``` 
 
 The "scan" penalty was added in **v. 0.9.15** and applies after successfully scanning the outfits or cargo of a ship.
+
+The "provoke" penalty was added in **v. 0.9.15** and applies after attacking a ship that was previously friendly.
 
 ```html
 "use foreign penalties for"
