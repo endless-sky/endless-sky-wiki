@@ -224,7 +224,7 @@ The distance from the system center at which minable asteroids in this system wi
 "invisible fence" <distance#>
 ```
 
-Added in **v. 0.9.17**. The distance from the system center beyond which NPC ships will no longer travel, unless they have the `unconstrained` personality or are your escorts. The default distance for all systems is 10,000.
+Added in **v. 0.10.0**. The distance from the system center beyond which NPC ships will no longer travel, unless they have the `unconstrained` personality or are your escorts. The default distance for all systems is 10,000.
 
 ```html
 "jump range" <distance#>
@@ -274,7 +274,7 @@ The name of a [hazard](CreatingHazards) that is created in this system within a 
 "starfield density" <density#>
 ```
 
-The density of the stars in the background. The default value is 1. If a system has a starfield density of 0 then it will have no stars at all. **(v. 0.9.17)**
+The density of the stars in the background. The default value is 1. If a system has a starfield density of 0 then it will have no stars at all. **(v. 0.10.0)**
 
 <a name="objects">
 
@@ -301,7 +301,7 @@ object [<name>]
 
 If an object is named, then it can be landed on, and must have a [planet](#planets) defined for it.
 
-**Deprecated since v. 0.9.17**:
+**Deprecated since v. 0.10.0**:
 
 If this name matches the name of an object in another system, then a wormhole is created. If this name matches the name of another object in the same system, then landing on any of these objects simply lands you on the planet associated with these objects.
 
@@ -382,11 +382,11 @@ The name of a planet must be unique, and will only be used it there is an object
 
 If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
 
-**Deprecated since v. 0.9.17**:
+**Deprecated since v. 0.10.0**:
 
 Additionally, giving it a description will cause the wormhole to create a link on the map when it has been discovered.
 
-**Since v. 0.9.17**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
+**Since v. 0.10.0**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
 
 ```html
 attributes <attribute>... "requires: <attribute>"
@@ -456,7 +456,7 @@ If no security is specified, then a default security of 0.25 is used.
 wormhole <name>
 ```
 
-**(v. 0.9.17)** Assigns a wormhole to this planet. Departing from this planet will teleport the player to the destination specified inside the wormhole node.
+**(v. 0.10.0)** Assigns a wormhole to this planet. Departing from this planet will teleport the player to the destination specified inside the wormhole node.
 
 <a name="tribute">
 
