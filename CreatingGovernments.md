@@ -18,8 +18,13 @@ government <name>
     "penalty for"
         (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
         ...
-    "use foreign penalties for"
+    "foreign penalties for"
         <government>
+        ...
+    "custom penalties for"
+        <government>
+            (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+            ...
         ...
     "provoked on scan"
     bribe <percentage#>
@@ -70,7 +75,7 @@ color (<r#> <g#> <b#> | <name>)
 ```
 The government's color is used to shade its systems in the galactic map (including the mini-map shown when holding the "Jump" command). It is also used for drawing the planet's label when the player is in-flight nearby. Colors are defined by their red, green, and blue channels with values from 0 to 1.
 
-Starting in **v. 0.9.17**, the color that a government uses can be set by name, where the name is of a defined color somewhere else in the game. The [interfaces.txt](https://github.com/endless-sky/endless-sky/blob/master/data/interfaces.txt) file has examples of such defined names. 
+Starting in **v. 0.10.0**, the color that a government uses can be set by name, where the name is of a defined color somewhere else in the game. The [interfaces.txt](https://github.com/endless-sky/endless-sky/blob/master/data/interfaces.txt) file has examples of such defined names. 
 
 #### Player Reputation
 ```html
@@ -115,7 +120,19 @@ The "provoke" penalty was added in **v. 0.9.15** and applies after attacking a s
     ...
 ```
 
-Beginning in **v. 0.9.17**, governments can be made to use the "penalty for" values of a different government when the other government is acted upon and the first government has an "attitude toward" the other. For example, government A may not like being scanned, while government B doesn't care. If A has a positive attitude toward B, then the player scanning a ship from B will normally anger A. If you want to avoid this situation, then you would list B under A's "use foreign penalties for," causing A to use B's scan penalty of 0 when B is scanned.
+Beginning in **v. 0.10.0**, governments can be made to use the "penalty for" values of a different government when the other government is acted upon and the first government has an "attitude toward" the other. For example, government A may not like being scanned, while government B doesn't care. If A has a positive attitude toward B, then the player scanning a ship from B will normally anger A. If you want to avoid this situation, then you would list B under A's "use foreign penalties for," causing A to use B's scan penalty of 0 when B is scanned.
+
+```html
+"custom penalties for"
+    <government>
+        (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+        ...
+    ...
+```
+
+Beginning in **v. 0.10.0**, governments can be made to use a custom "penalty for" value of specific actions take against a different government. For example, perhaps government A does not mind its ships being disabled, meaning it has `"penalty for" disable 0`. But, government A may not like it if you disable ships from government B. This would mean that A would have a `"custom penalties for" "government B" disable 0.5`, or whatever value you wish to use.
+
+A government can be made to use both "foreign penalties for" and "custom penalties for." I such cases, if the "custom penalties for" specified a penalty for a specific action, then that penalty is used. For all penalties that the custom penalties don't specify, the foreign penalty for that action is used.
 
 ### Provoked on scan
 ```html
