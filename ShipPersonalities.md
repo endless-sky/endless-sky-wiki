@@ -3,7 +3,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 ### Flags that control who a ship attacks:
 
 * `pacifist`: will not attack under any circumstances.
-* `forbearing`: will not attack unless its shields or hull are below 90% when it is hit, and the projectile that hit it does damage. Beginning in **v. 0.9.17**, a forbearing ship will also attack if its shields or hull are below 90% and it was hit by discharge or corrosion damage respectively, if it was hit by energy or ion damage and its energy is below 50%, if it was hit by heat or burn damage and it is overheated, if it was hit by fuel or leak damage and it doesn't have enough fuel for at least two jumps, if it was hit by ion damage and its jam chance is greater than 10%, if it was hit by slowing damage and it is more than 10% slowed, or if it was hit by disruption damage and its shields are more than 50% disrupted.
+* `forbearing`: will not attack unless its shields or hull are below 90% when it is hit, and the projectile that hit it does damage. Beginning in **v. 0.10.0**, a forbearing ship will also attack if its shields or hull are below 90% and it was hit by discharge or corrosion damage respectively, if it was hit by energy or ion damage and its energy is below 50%, if it was hit by heat or burn damage and it is overheated, if it was hit by fuel or leak damage and it doesn't have enough fuel for at least two jumps, if it was hit by ion damage and its jam chance is greater than 10%, if it was hit by slowing damage and it is more than 10% slowed, or if it was hit by disruption damage and its shields are more than 50% disrupted.
 * `timid`: does not join other people's fights; only attacks targets that are nearby and targeting it.
 * `heroic`: will fight even if badly damaged or outgunned, and will attack targets even if they are far away.
 * `nemesis`: only attacks the player's ships.
@@ -18,7 +18,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `coward`: if this ship is not the flagship of a fleet, it will desert its flagship and flee the system if its hull and shield strength drop low enough. **(v. 0.9.0)**
 * `appeasing`: if this ship's hull and shield strength drops low enough, it will dump cargo to try to distract or appease its attacker. **(v. 0.9.5)**
 * `opportunistic`: this ship's turrets will track targets independently instead of focusing fire. They also scan back and forth when no target is present. **(v. 0.9.7)**
-* `merciful`: this ship won't fire on ships that are fleeing **(v. 0.9.17)**
+* `merciful`: this ship won't fire on ships that are fleeing **(v. 0.10.0)**
 
 ### Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#npcs):
 
