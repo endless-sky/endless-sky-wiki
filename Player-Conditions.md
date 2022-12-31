@@ -129,6 +129,8 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"days since epoch"` is the number of days since the "epoch" (1/1/1). **(v. 0.10.0)**
 * `"days since start"` is the number of days since the day this pilot started on. If the current date is somehow before the date the pilot started on, this value will be negative. **(v. 0.10.0)**
 * `"hyperjumps to planet: <name>"` and `"hyperjumps to system: <name>"` are the number of hyperdrive-capable jumps it would take to travel from the your current location to the specified planet or system. Returns -1 for locations which don't exist or can't be reached. Does not make use of wormholes. **(v. 0.10.0)**
+* `"previous system: <system>"` is 1 if the name provided was the system you were previously in before your current one, 0 otherwise. **(v. 0.10.0)**
+* `"entered system by: (take off | hyperdrive | jump drive | wormhole)"` is the method by which you entered the system you're currently in. If you did not enter the current system by a given method, the condition will return 0. Returns 1 if the method was used. The "take off" method is true after taking off from a planet. The "hyperdrive" method is true if you entered using a hyperdrive. The "jump drive" method is true if you entered using a jump drive. The "wormhole" method is true if you entered via a wormhole. **(v. 0.10.0)**
 
 <a name="expressions">
 
