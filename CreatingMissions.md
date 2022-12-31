@@ -238,7 +238,7 @@ blocked <message>
 
 This is a short message that is displayed to the player if this mission's `to offer` conditions pass, but either the `to accept` conditions do not, the `on offer` or `on accept` actions can't be done (which may be the result of `require`, `outfit <outfit> -1`, or some other action), or the player does not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space"), as well as `<conditions>`, which evaluates to "do not meet" if there is a `to accept` that you fail, or "meet" if you pass the `to accept`.
 
-Prior to **v. 0.9.17**, only the lack of space for the mission would trigger its blocked dialog.
+Prior to **v. 0.10.0**, only the lack of space for the mission would trigger its blocked dialog.
 
 ```html
 deadline [<days#> [<multiplier#>]]
@@ -383,7 +383,7 @@ Beginning with **v.0.9.15**, this specifies custom text replacements that apply 
 
 ["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes and may be read-only. A list of these reserved conditions can be found [here](Player-Conditions#reserved-conditions).
 
-Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the `to offer` tag), and when determining whether it has been completed (in the `to complete` tag) or failed (in the `to fail` tag), and, beginning in **v. 0.9.17**, determining whether it can be accepted (in the `to accept` tag):
+Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the `to offer` tag), and when determining whether it has been completed (in the `to complete` tag) or failed (in the `to fail` tag), and, beginning in **v. 0.10.0**, determining whether it can be accepted (in the `to accept` tag):
 
 ```html
 to (offer | complete | fail | accept)
@@ -400,7 +400,7 @@ Conditions can be changed when you are offered a mission or when you accept, dec
 
 A mission will not be offered if any of the `to fail` conditions are met, and will fail if it is active and one of those conditions changes so that it is satisfied. Using the `random` keyword in a `to fail` tag is possible, but not recommended.
 
-Beginning in **v. 0.9.17**, mission can be given `to accept` conditions. For jobs, if the mission can offer then it will appear on the jobs board, but if it can't be accepted then it will appeared grayed out with the "accept mission" button unable to be clicked. For non-job missions, if the mission's `to offer` conditions passed but the `to accept` conditions do not, then the `blocked` dialog will appear, if it exists.
+Beginning in **v. 0.10.0**, mission can be given `to accept` conditions. For jobs, if the mission can offer then it will appear on the jobs board, but if it can't be accepted then it will appeared grayed out with the "accept mission" button unable to be clicked. For non-job missions, if the mission's `to offer` conditions passed but the `to accept` conditions do not, then the `blocked` dialog will appear, if it exists.
 
 The condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true (e.g. you have completed mission A *or* mission B), you can use an `or` sub-clause. Within an `or` clause you can have `and` clauses (and so on), allowing you to check any arbitrary logical combination. For example, if you want a mission to be offered if "(has A or (has B and has C)) and (has D)":
 
@@ -634,7 +634,7 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `"scan cargo"`: To complete the mission, the player must scan the given NPC's cargo. If the NPC is destroyed before being scanned, the mission fails.
 * `"scan outfits"`: Same, but the player must use an outfit scanner instead of a cargo scanner.
 * `evade`: You cannot complete the mission if any members of this NPC are in the same system as you.
-* `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. Prior to **v. 0.9.17**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
+* `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. Prior to **v. 0.10.0**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
 
