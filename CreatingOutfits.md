@@ -45,7 +45,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `"flotsam sprite"`: the image that is drawn when this outfit is dropped in space, either because it was jettisoned by a ship or because it was the payload of a minable asteroid. If no flotsam sprite is given, then the default flotsam box is used.
 
-* `"flotsam chance"`: the chance that any given unit of this outfit will survive its ship being destroyed as a flotsam that can be picked up by other ships. Ammunition has a default flotsam chance of 5%, should not flotsam chance be provided. All other outfits have a default of 0%. A negative flotsam chance can be used on ammunition to mean that the outfit will never drop as a flotsam.  **(v. 0.9.17)**
+* `"flotsam chance"`: the chance that any given unit of this outfit will survive its ship being destroyed as a flotsam that can be picked up by other ships. Ammunition has a default flotsam chance of 5%, should not flotsam chance be provided. All other outfits have a default of 0%. A negative flotsam chance can be used on ammunition to mean that the outfit will never drop as a flotsam. **(v. 0.10.0)**
 
 * `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](CreatingShips) when the thruster is firing.
 
@@ -315,21 +315,21 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"cargo scan power"`: the cargo scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(v. 0.9.5)**
 
-  * `"cargo scan speed"`: the maximum cargo scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your cargo scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with cargo holds above 200 tons taking longer to scan and cargo holds below 200 tons being quicker. **(v. 0.9.17)**
-    * Between **(v. 0.9.5)** and **(v. 0.9.17)**, the time it takes to complete a cargo scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. 
+  * `"cargo scan speed"`: the maximum cargo scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your cargo scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with cargo holds above 200 tons taking longer to scan and cargo holds below 200 tons being quicker. **(v. 0.10.0)**
+    * Between **(v. 0.9.5)** and **(v. 0.10.0)**, the time it takes to complete a cargo scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. 
 
   * ~~`"outfit scan"`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(deprecated in 0.9.5)**
 
   * `"outfit scan power"`: the outfit scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(v. 0.9.5)**
 
-  * `"outfit scan speed"`: the maximum outfit scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your outfit scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with outfit capacities above 200 tons taking longer to scan and outfit capacities below 200 tons being quicker. **(v. 0.9.17)**
-    * Between **(v. 0.9.5)** and **(v. 0.9.17)**, the time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. 
+  * `"outfit scan speed"`: the maximum outfit scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your outfit scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with outfit capacities above 200 tons taking longer to scan and outfit capacities below 200 tons being quicker. **(v. 0.10.0)**
+    * Between **(v. 0.9.5)** and **(v. 0.10.0)**, the time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. 
 
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
-  * `"scan brightness"`: increases the chance that an illegal outfit will appear on a cargo scan. The cargo scan formula is as follows: `max(1., 2 * (illegal good mass + illegal good scan brightness) / legal good mass) / (1 + scan interference)`. In English, if you have 1 ton of illegal goods and 2 tons of legal goods then you have a 50% chance of your illegal goods being found on a cargo scan. The higher the ratio of legal to illegal goods, the lower your chances of being caught. If you have no legal goods or too many illegal goods then the chance caps out at `1 / (1 + scan interference)`. **(v. 0.9.17)**
+  * `"scan brightness"`: increases the chance that an illegal outfit will appear on a cargo scan. The cargo scan formula is as follows: `max(1., 2 * (illegal good mass + illegal good scan brightness) / legal good mass) / (1 + scan interference)`. In English, if you have 1 ton of illegal goods and 2 tons of legal goods then you have a 50% chance of your illegal goods being found on a cargo scan. The higher the ratio of legal to illegal goods, the lower your chances of being caught. If you have no legal goods or too many illegal goods then the chance caps out at `1 / (1 + scan interference)`. **(v. 0.10.0)**
 
-  * `"scan concealment"`: prevents an equivalent mass of illegal goods from being scanned. For example, if you had 6 tons of illegal goods and a scan concealment of 5, then only 1 ton of goods would be able to be scanned. The "mass" of illegal goods includes the scan brightness of those goods. **(v. 0.9.17)**
+  * `"scan concealment"`: prevents an equivalent mass of illegal goods from being scanned. For example, if you had 6 tons of illegal goods and a scan concealment of 5, then only 1 ton of goods would be able to be scanned. The "mass" of illegal goods includes the scan brightness of those goods. **(v. 0.10.0)**
 
   * `inscrutable`: if a ship has a nonzero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
 
@@ -357,9 +357,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"jump fuel"`: how much fuel the ship consumes when using this outfit to jump. The default is 100 for hyperdrives, 150 for scram drives, and 200 for jump drives. Unlike other attributes, the jump fuel of multiple outfits will not stack. Instead, the lowest jump fuel among all installed outfits will be used. **(v. 0.9.7)**
 
-  * `"jump mass cost"`: an additional jump fuel cost per 100 tons of ship mass. Adds to the base jump fuel cost above. **(v. 0.9.17)**
+  * `"jump mass cost"`: an additional jump fuel cost per 100 tons of ship mass. Adds to the base jump fuel cost above. **(v. 0.10.0)**
 
-  * `"jump base mass"`: a value that subtracts from a ship's mass during the jump mass cost calculation. If a drive's jump base mass is high enough and the ship's mass is low enough, the impact of the jump mass cost is allowed to go negative and begin subtracting from the normal jump fuel cost. Reducing your jump cost in this manner is only allowed to go as low as a cost of 1 fuel per jump. **(v. 0.9.17)**
+  * `"jump base mass"`: a value that subtracts from a ship's mass during the jump mass cost calculation. If a drive's jump base mass is high enough and the ship's mass is low enough, the impact of the jump mass cost is allowed to go negative and begin subtracting from the normal jump fuel cost. Reducing your jump cost in this manner is only allowed to go as low as a cost of 1 fuel per jump. **(v. 0.10.0)**
 
   * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. **(v. 0.9.13)**
 
@@ -465,9 +465,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems (use `drag reduction` instead).
 
-  * `"drag reduction"`: Reduces a ship's drag. The resulting drag is given by: `drag / (1 + reduction)`. **(v. 0.9.17)**
+  * `"drag reduction"`: Reduces a ship's drag. The resulting drag is given by: `drag / (1 + reduction)`. **(v. 0.10.0)**
 
-  * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.9.17)**
+  * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.10.0)**
 
   * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
 
@@ -475,7 +475,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
 
-  * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to is `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
+  * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
+
+  * `"optical jamming"`: how much resistance this ship has to optical tracking. The missile's chance of maintaining its lock is proportional to its `"optical tracking"` value divided by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self destruct when you try to plunder it or, after succeeding in boarding it without it self destructing, try to capture it. That is, the probability of successfully boarding a ship with self destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
