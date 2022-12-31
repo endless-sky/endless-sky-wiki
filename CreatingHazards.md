@@ -84,7 +84,7 @@ An effect that is created each frame that the hazard is active. The amount of ef
 
 Multiple `"environmental effect"` lines can be provided at once. If this is not provided, then no effects are created when the hazard is active.
 
-Beginning in **v. 0.9.17**, the amount number of an effect can be a decimal value, whereas previously only integers were accepted. Decimal counts work because of how the strength of a hazard increases the number of effects. Previously, the minimum allowed count was one. Suppose the hazard then had a strength of two, the result would be two effects every frame. Now that the number of effects can be fractional, one could specify an effect with an amount of 0.5, meaning that effects would only start appearing once the hazard reached a strength multiplier of two, creating one effect per frame.
+Beginning in **v. 0.10.0**, the amount number of an effect can be a decimal value, whereas previously only integers were accepted. Decimal counts work because of how the strength of a hazard increases the number of effects. Previously, the minimum allowed count was one. Suppose the hazard then had a strength of two, the result would be two effects every frame. Now that the number of effects can be fractional, one could specify an effect with an amount of 0.5, meaning that effects would only start appearing once the hazard reached a strength multiplier of two, creating one effect per frame.
 
 # Hazard weapon behavior
 
