@@ -26,6 +26,7 @@ galaxy <name>
 		scale <scale#>
 
 system <name>
+	inaccessible
 	hidden
 	pos <x#> <y#>
 	government <name>
@@ -121,6 +122,7 @@ The multiplier applied to the dimensions of this galaxy's sprite when displayed 
 
 ```html
 system <name>
+	inaccessible
 	hidden
 	pos <x#> <y#>
 	government <name>
@@ -162,6 +164,12 @@ system <name>
 ```
 
 The name of a system must be unique.
+
+```html
+inaccessible
+```
+
+Added in **v. 0.10.0**, systems which are inaccessible aren't able to be traveled to or interacted with in any way. The system cannot be seen, clicked, or searched, and any links to or from the system will not be visible or usable.
 
 ```html
 hidden
