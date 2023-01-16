@@ -201,6 +201,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"thrusting ion"`: ionization accumulated each frame when thrusting. **(v. 0.9.15)**
 
+  * `"thrusting scramble"`: scrambling accumulated each frame when thrusting. **(v. 0.10.0)**
+
   * `"thrusting leakage"`: leakage accumulated each frame when thrusting. **(v. 0.9.15)**
 
   * `"thrusting burn"`: burn accumulated each frame when thrusting. **(v. 0.9.15)**
@@ -226,6 +228,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
   * `"turning corrosion"`: corrosion accumulated each frame when turning. **(v. 0.9.15)**
 
   * `"turning ion"`: ionization accumulated each frame when turning. **(v. 0.9.15)**
+
+  * `"turning scramble"`: scrambling accumulated each frame when turning. **(v. 0.10.0)**
 
   * `"turning leakage"`: leakage accumulated each frame when turning. **(v. 0.9.15)**
 
@@ -253,6 +257,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"reverse thrusting ion"`: ionization accumulated each frame when reverse thrusting. **(v. 0.9.15)**
 
+  * `"reverse thrusting scramble"`: scrambling accumulated each frame when reverse thrusting. **(v. 0.10.0)**
+
   * `"reverse thrusting leakage"`: leakage accumulated each frame when reverse thrusting. **(v. 0.9.15)**
 
   * `"reverse thrusting burn"`: burn accumulated each frame when reverse thrusting. **(v. 0.9.15)**
@@ -278,6 +284,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
   * `"afterburner corrosion"`: corrosion accumulated each frame when using an afterburner. **(v. 0.9.15)**
 
   * `"afterburner ion"`: ionization accumulated each frame when using an afterburner. **(v. 0.9.15)**
+
+  * `"afterburner scramble"`: scrambling accumulated each frame when using an afterburner. **(v. 0.9.15)**
 
   * `"afterburner leakage"`: leakage accumulated each frame when using an afterburner. **(v. 0.9.15)**
 
@@ -397,6 +405,10 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"ion resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that ion resistance draws, creates, or consumes when active. **(v. 0.9.13)**
 
+  * `"scramble resistance"`: an extra amount of scrambling that this ship "bleeds off" every frame. **(v. 0.10.0)**
+
+  * `"scramble resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that scramble resistance draws, creates, or consumes when active. **(v. 0.10.0)**
+
   * `"slowing resistance"`: an extra amount of slowing damage that this ship "bleeds off" every frame. **(v. 0.9.9)**
 
   * `"slowing resistance (energy | heat | fuel)"`: the amount of energy, heat, or fuel that slowing resistance draws, creates, or consumes when active. **(v. 0.9.13)**
@@ -434,6 +446,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
   * `"hull protection"`: protects against incoming hull damage.
   
   * `"ion protection"`: protects against incoming ion damage.
+  
+  * `"scramble protection"`: protects against incoming scrambling damage. **(v. 0.10.0)**
   
   * `"piercing protection"`: protects against incoming piercing projectiles by reducing the amount of piercing by the above equation.
   
@@ -588,6 +602,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"firing ion"`: ionization added when this weapon fires. **(v. 0.9.13)**
 
+* `"firing scramble"`: scrambling added when this weapon fires. **(v. 0.10.0)**
+
 * `"firing slowing"`: slowing added when this weapon fires. **(v. 0.9.13)**
 
 * `"firing disruption"`: disruption added when this weapon fires. **(v. 0.9.13)**
@@ -692,7 +708,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * There also exist various damage over time damage types. Each of these damage types dissipate at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
 
-  * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also causes the weapons of a ship to have a chance to jam when firing. The jamming chance is equivalent to `ionization / (energy % * 220)`, where `energy %` is the percentage of energy that the ship has left relative to its energy capacity. The jamming chance caps out at 50%. Jammed weapons must go through another reload cycle before being able to attempt to fire again.
+  * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also had the effect of scrambling damage. This was removed when scrambling damage was made its own damage type in **v. 0.10.0**.
+
+  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `scrambling / (energy % * 220)`, where `energy %` is the percentage of energy that the ship has left relative to its energy capacity. The jamming chance caps out at 50%. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
   * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
 
