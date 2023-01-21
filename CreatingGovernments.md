@@ -139,7 +139,7 @@ A government can be made to use both "foreign penalties for" and "custom penalti
 "provoked on scan"
 ```
 
-Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships.
+Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships. In **v. 0.10.0** and onward, the provocation happens when you complete the scan.
 
 #### Crew Strength Modifiers
 ```html
