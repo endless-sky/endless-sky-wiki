@@ -35,7 +35,7 @@ government <name>
     "hostile hail" <phrase>
     "hostile disabled hail" <phrase>
     language <text>
-    raid <fleet>
+    raid <fleet> [<min-attraction#> [<max-attraction#>]]
     enforces [all]
     enforces
         {filter specification...}
@@ -259,7 +259,7 @@ mission "player needs the Tamarian language"
 
 #### Raid
 ```html
-raid <fleet>
+raid <fleet> [<min-attraction#> [<max-attraction#>]]
 ```
 The "raid" token allows the specification of a [fleet](CreatingFleets) that can be spawned in this government's systems if the player has "unguarded cargo". (In order to be spawned, the named fleet's government must also be hostile to the player.) Up to 10 of these fleets may be spawned at once, depending on the magnitude of the cargo space : weaponry imbalance.
 
@@ -274,6 +274,12 @@ government "Republic"
     raid "Large Militia"
 ```
 then the game's base definition of "Large Core Pirates" as the raid fleet is forgotten and "Large Militia" is used instead.
+
+Beginning in **v. 0.10.0**, governments are allowed to have multiple raid fleets defined, whereas before that point, only a single raid fleet could be defined for each government. Each fleet can also be given a minimum and maximum attraction value for which it will spawn. If a minimum attraction is not provided then the default minimum value of 2 is used. If a minimum attraction is provided but no maximum, then the default maximum value is unbounded (a value of 0 for the maximum value means there is no maximum). This can allow for systems to have different raid fleets depending on who the player is hostile toward, as well as different fleets depending on how attractive the player is to raids.
+
+If multiple raid fleets are capable of spawning at the same time, each fleet checks if it can spawn up to 10 times as described above (meaning that multiple potential raid fleets can greatly increase the chance of any single fleet spawning). The likelihood of a single fleet spawning is determined by how far above that fleet's minimum attractiveness you are. Additionally, raid fleets will also take into account the strengths and spawn rates of normal fleets in the system. If a system has fleet spawns that are hostile to the raid fleet but not to the player, that will decrease the chance of the raid spawning. If a system has fleets that are hostile to the player but not the raid fleet, that will increase the chance of the raid spawning. If a system fleet is either friendly or hostile to both the raid and the player, it has no effect on the raid's spawn chance.
+
+Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`, and `"pirate attraction"` [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#read-only), with the last condition being the value used to determine if fleets should spawn.
 
 #### Enforcement Zones
 ```html
