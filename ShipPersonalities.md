@@ -36,6 +36,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `mining`: this ship will circle around the system looking for minable asteroids. When it finds one it will attack it. **(v. 0.9.5)**
 * `harvests`: this ship picks up any flotsam that is in front of it. Mining ships should do this, as should pirates who are distracted by ships dumping cargo to appease them. **(v. 0.9.5)**
 * `swarming`: ships of this type will "swarm" around any friendly, non-swarming ships that are in-system. No more than six ships will swarm a given target. Any swarming ship with nothing to swarm will try to land on a planet instead. **(v. 0.9.1)**
+* `secretive`: ships with this personality will attempt to fly away from ships that are scanning them. **(v. 0.10.0)**
 
 ### Special flags:
 
