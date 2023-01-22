@@ -44,6 +44,14 @@ start [<identifier>]
     {condition specification...}
         ...
     [remove conditions]
+    [remove] to (display | reveal | unlock)
+        <condition-set>
+    on (display | reveal)
+        name <name>
+        description <text>
+        thumbnail <pathname>
+        system <name>
+        planet <name>
 ```
 
 In **v 0.9.13** and later versions, a plugin may provide an `identifier` in the "start" declaration. Providing an identifier enables the following start definition to both extend an existing definition, and be extended by other start definitions.
@@ -190,6 +198,41 @@ A path, relative to the `images` directory, for an image that will be displayed 
 ### Conditions
 
 Any lines that do not match one of the above syntax definitions will be parsed as [player conditions](Player-Conditions#applied). When the player begins a pilot with this scenario, these conditions will be applied to the player and subsequently available for later use by missions. A common use of starting conditions is to provide licenses.
+
+### Conditional Starts
+
+Beginning in **v. 0.10.0**, starts can be made to conditionally appear or unlock based on a player's global conditions (see `"global: "` on the [Player Conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#modifiable) page).
+
+```html
+to (display | reveal | unlock)
+    <condition-set>
+```
+
+The `to (display | reveal | unlock)` nodes are similar to the `to offer` and other `to *` nodes of [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). Any conditions specified here refer to global conditions, and do not need or allow the use of the `"global: "` prefix, since the global conditions are accessed directly and are the only conditions able to be used.
+
+* `to display`: if these conditions are false, the start will not appear on the starts list.
+* `to reveal`: if these conditions are false and the `to display` conditions are true, the start will appear on the starts list, but display the `on display` information.
+* `to unlock`: if these conditions are false and the `to reveal` conditions are true, then the start will appear on the starts list, but display the `on reveal` information.
+
+If any of the `to *` condition sets are not specified, then they default to true. Only when all three are true can a start be chosen.
+
+```html
+on (display | reveal)
+    name <name>
+    description <text>
+    thumbnail <pathname>
+    system <name>
+    planet <name>
+    date <date>
+    credits <credits>
+    debt <debt>
+```
+
+The `on display` and `on reveal` nodes specify display information that is displayed in lieu of the true information if the start is not fully unlocked, as described above.
+
+Note that unlike the true start information, the `on (display | reveal)` information does not need to display information that actually exists or is properly formatted. That is to say, the planet and system provided do not need to be real, and the date, credits, and debt do not need to be formatted as a date or as credit amounts and can simply be descriptors if you so desire.
+
+If a start has a `to reveal` or `to unlock` node, but does not have an `on display` or `on reveal` node, then the displayed information defaults to "???".
 
 # Extending Starts
 
