@@ -40,6 +40,10 @@ system <name>
 		jump <distance#>
 	habitable <distance#>
 	belt <distance#> [<weight#?]
+	ramscoop
+		universal <value#>
+		addend <value#>
+		multiplier <value#>
 	"invisible fence" <distance#>
 	"jump range" <distance#>
 	haze <sprite>
@@ -134,6 +138,10 @@ system <name>
 	departure [<distance#>]
 		link <distance#>
 		jump <distance#>
+	ramscoop
+		universal <value#>
+		addend <value#>
+		multiplier <value#>
 	habitable <distance#>
 	belt <distance#> [<weight#>]
 	"invisible fence" <distance#>
@@ -215,6 +223,16 @@ departure [<distance#>]
 An additional distance at which ships arrive (or depart **(v0.9.17)**) in this system. If just `<distance#>` is provided, then both hyperdrive and jump drive travel into or out of a system has its distance moved. The `link <distance#>` and `jump <distance#>` lines are optional and allow for tweaking of the distance of each jump method. If a distance is given and then a link or jump distance is provided, the link or jump distance will override the distance. If a distance is given without a value and then a link or jump distance is provided, the other travel method will be unaffected.
 
 Negative distances are allowed for link arrival distances, and will cause ships to arrive on the opposite side of the system from where they entered. Non-zero values (i.e. including this variable) will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
+
+```html
+ramscoop
+	universal <value#>
+	addend <value#>
+	multiplier <value#>
+```
+
+Beginning in **v. 0.10.0**, individual systems can be given modifiers which influence fuel gained through the use of ramscoops, adding to the customization that [solar attributes](https://github.com/endless-sky/endless-sky/wiki/MapData#solar-attributes) provide. The `universal` keyword determines whether the universal ramscoop (a minor amount of fuel gain applied to all ships even without the presence of the "ramscoop" attribute) functions in the system, with 1 being true and 0 being false. The `addend` keyword adds (or subtracts) an amount of fuel gained per frame while in the system. If the addend subtracts more fuel than is provided, then no fuel is gained; there is no fuel lost due to a negative addend. The `multiplier` keyword multiplies the fuel normally gained. The multiplier is applied first before the addend. The default values are `universal 1`, `addend 0`, and `multiplier 1`.
+
 
 ```html
 habitable <distance#>
