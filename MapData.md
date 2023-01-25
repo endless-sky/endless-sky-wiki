@@ -558,7 +558,7 @@ Adds a link from a given system to another. You can have any number of these att
 color (<r#> <g#> <b#> | <name>)
 ```
 
-Defines the color of the wormhole link line in the map panel (when the wormhole is not in use) and the planet label of a "mappable" wormhole.
+Defines the color of the arrows in the map panel and the planet label of a "mappable" wormhole.
 This can either be given as RGB values or can refer to a named stock color.
 By default, the color names "map wormhole" will be used.
 
