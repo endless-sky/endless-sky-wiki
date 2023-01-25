@@ -525,12 +525,13 @@ wormhole <name>
     "display name" <name>
     mappable
     link <from> <to>
+    color (<r#> <g#> <b#> | <name>)
 ```
 
 "Wormholes" are planets that transport you to a different system.
 
 ```html
-womrhole <name>
+wormhole <name>
 ```
 
 The name of a wormhole must be unique.
@@ -552,6 +553,14 @@ link <from> <to>
 ```
 
 Adds a link from a given system to another. You can have any number of these attributes. As a general rule, if a wormhole is present in a system it should have a corresponding `link` node to describe where its destination is.
+
+```html
+color (<r#> <g#> <b#> | <name>)
+```
+
+Defines the color of the wormhole link line in the map panel (when the wormhole is not in use) and the planet label of a "mappable" wormhole.
+This can either be given as RGB values or can refer to a named stock color.
+By default, the color names "map wormhole" will be used.
 
 <a name="landing">
 
