@@ -123,6 +123,13 @@ To maintain consistency across all the text in the game:
 * Use [Oxford commas](https://en.wikipedia.org/wiki/Serial_comma): `a, b, and c`, not `a, b and c`.
 * Avoid non-ASCII characters, including [curly quotes](https://en.wikipedia.org/wiki/Quotation_mark#Quotation_marks_in_English).
 
+```js
+    `"${flowers} are the best flower!`
+```
+
+Beginning in **v. 0.10.0**, phrases can be referred to in conversation text.
+The phrase name should be preceded by "${" and followed by "}", and it will automatically be replaced with text selected from that phrase (or, the phrase name itself if no valid phrase with the given name is found) when the conversation text is displayed.
+
 # Name
 
 ```html
