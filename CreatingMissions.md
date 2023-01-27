@@ -83,6 +83,8 @@ mission <name>
     invisible
     (priority | minor)
     (job | landing | assisting | boarding | shipyard | outfitter)
+    boarding
+        "override capture"
     repeat [<number>]
     clearance [<message>]
         ...
@@ -319,6 +321,13 @@ This specifies where this mission will be shown, if someplace other than the spa
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
 A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+
+```html
+boarding
+    "override capture"
+```
+
+Beginning in **v. 0.10.0**, the `boarding` tag described above can optionally be given a child tag `"override capture"`. If a boarding mission with this tag is offered by a ship with the `uncapturable` tag, then the ship will become capturable. If the mission is declined, then the ship will become capturable one time and leaving the boarding panel will turn the ship uncapturable again. If the mission is accepted, then the source ship will be capturable for so long as the mission is active, even upon leaving the boarding panel and returning.
 
 ```html
 repeat [<times#>]
