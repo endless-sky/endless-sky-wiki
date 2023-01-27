@@ -6,9 +6,10 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `forbearing`: will not attack unless its shields or hull are below 90% when it is hit, and the projectile that hit it does damage. Beginning in **v. 0.10.0**, a forbearing ship will also attack if its shields or hull are below 90% and it was hit by discharge or corrosion damage respectively, if it was hit by energy or ion damage and its energy is below 50%, if it was hit by heat or burn damage and it is overheated, if it was hit by fuel or leak damage and it doesn't have enough fuel for at least two jumps, if it was hit by scrambling damage and its jam chance is greater than 10%, if it was hit by slowing damage and it is more than 10% slowed, or if it was hit by disruption damage and its shields are more than 50% disrupted.
 * `timid`: does not join other people's fights; only attacks targets that are nearby and targeting it.
 * `heroic`: will fight even if badly damaged or outgunned, and will attack targets even if they are far away.
-* `hunting`: will attack targets even if they are far away. **(v0.10.0)**
-* `daring`: will fight even if badly damaged or outgunned. **(v0.10.0)**
+* `hunting`: will attack targets even if they are far away. **(v. 0.10.0)**
+* `daring`: will fight even if badly damaged or outgunned. **(v. 0.10.0)**
 * `nemesis`: only attacks the player's ships.
+* `ramming`: will attempt to get as close to its target as possible, regardless of the range of its weapons or whether its weapons would hurt itself. **(v. 0.10.0)**
 
 ### Flags that control how a ship attacks:
 
