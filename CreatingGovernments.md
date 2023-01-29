@@ -6,44 +6,44 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a governme
 
 ```html
 government <name>
-    "display name" <other-name>
-    swizzle <value#>
-    color (<r#> <g#> <b#> | <name>)
-    "player reputation" <initial-rep#>
-    "crew attack" <atk#>
-    "crew defense" <def#>
-    "attitude toward"
-        <government> <rep-modifier#>
-        ...
-    "penalty for"
-        (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
-        ...
-    "foreign penalties for"
-        <government>
-        ...
-    "custom penalties for"
-        <government>
-            (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
-            ...
-        ...
-    "provoked on scan"
-    bribe <percentage#>
-    fine <percentage#>
-    "death sentence" <conversation>
-    "friendly hail" <phrase>
-    "friendly disabled hail" <phrase>
-    "hostile hail" <phrase>
-    "hostile disabled hail" <phrase>
-    language <text>
-    raid <fleet> [<min-attraction#> [<max-attraction#>]]
-    enforces [all]
-    enforces
-        {filter specification...}
-    illegals
-        <outfit> <fine>
-        ...
-    atrocities
-        <outfit>
+	"display name" <other-name>
+	swizzle <value#>
+	color (<r#> <g#> <b#> | <name>)
+	"player reputation" <initial-rep#>
+	"crew attack" <atk#>
+	"crew defense" <def#>
+	"attitude toward"
+		<government> <rep-modifier#>
+		...
+	"penalty for"
+		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+		...
+	"foreign penalties for"
+		<government>
+		...
+	"custom penalties for"
+		<government>
+			(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+			...
+		...
+	"provoked on scan"
+	bribe <percentage#>
+	fine <percentage#>
+	"death sentence" <conversation>
+	"friendly hail" <phrase>
+	"friendly disabled hail" <phrase>
+	"hostile hail" <phrase>
+	"hostile disabled hail" <phrase>
+	language <text>
+	raid <fleet> [<min-attraction#> [<max-attraction#>]]
+	enforces [all]
+	enforces
+		{filter specification...}
+	illegals
+		<outfit> <fine>
+		...
+	atrocities
+		<outfit>
 ```
 
 The various parts of a government definition are described below.
@@ -57,9 +57,9 @@ The display name of a government is an optional property that controls how the g
 Example:
 ```html
 government "Pirate Anarchists"
-    "display name" "Pirate"
-    "attitude toward"
-        "Pirate" -.01
+	"display name" "Pirate"
+	"attitude toward"
+		"Pirate" -.01
 ```
 To use this government in NPCs, fleets, or location filters, you would still use the true name, "Pirate Anarchists".
 
@@ -86,15 +86,15 @@ The player's initial reputation with a government determines whether they are vi
 #### Penalty For
 ```html
 "penalty for"
-    (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
-    ...
+	(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+	...
 ```
 The "penalty for" token introduces a description block that configures the reputation impact of various in-flight player actions. For example, the block
 ```bash
 "penalty for"
-    assist 0
-    capture 10
-    destroy 0.01
+	assist 0
+	capture 10
+	destroy 0.01
 ```
 indicates that the current government is not influenced when the player repairs one of their disabled ships. If the player captures one of their ships, a significant reputation loss with the current government will occur, whereas only a very minor reputation loss would be incurred if the player destroyed one of the government's ships.
 
@@ -116,18 +116,18 @@ The "provoke" penalty was added in **v. 0.9.15** and applies after attacking a s
 
 ```html
 "use foreign penalties for"
-    <government>
-    ...
+	<government>
+	...
 ```
 
 Beginning in **v. 0.10.0**, governments can be made to use the "penalty for" values of a different government when the other government is acted upon and the first government has an "attitude toward" the other. For example, government A may not like being scanned, while government B doesn't care. If A has a positive attitude toward B, then the player scanning a ship from B will normally anger A. If you want to avoid this situation, then you would list B under A's "use foreign penalties for," causing A to use B's scan penalty of 0 when B is scanned.
 
 ```html
 "custom penalties for"
-    <government>
-        (assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
-        ...
-    ...
+	<government>
+		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+		...
+	...
 ```
 
 Beginning in **v. 0.10.0**, governments can be made to use a custom "penalty for" value of specific actions take against a different government. For example, perhaps government A does not mind its ships being disabled, meaning it has `"penalty for" disable 0`. But, government A may not like it if you disable ships from government B. This would mean that A would have a `"custom penalties for" "government B" disable 0.5`, or whatever value you wish to use.
@@ -152,21 +152,21 @@ The default values for "crew attack" and "crew defense" are 1.0 and 2.0, respect
 #### Attitude Toward
 ```html
 "attitude toward"
-    <government> <rep-modifier#>
-    ...
+	<government> <rep-modifier#>
+	...
 ```
 The "attitude toward" token introduces a description block that configures the stance of the current government towards the governments specified. For friendly (positive) and hostile (negative) stances, a reputation modifier greater than +/- 5% allows the player's interactions with the specified governments to also influence their reputation with the current government. (The above event types and penalty values are combined with the given attitudes to determine the total impact to the player's reputation with the current government.)
 
 For example, the block
 ```bash
 government "United Kingdom"
-    "attitude toward"
-        "England" 1
-        "Northern Ireland" 1
-        "Scotland" 1
-        "Wales" 1
-        "Ireland" 0.04
-        "Medieval France" -0.05
+	"attitude toward"
+		"England" 1
+		"Northern Ireland" 1
+		"Scotland" 1
+		"Wales" 1
+		"Ireland" 0.04
+		"Medieval France" -0.05
 ```
 indicates that the government "United Kingdom" reacts to your actions towards the separate governments "England," "Northern Ireland," "Scotland," and "Wales" as though you had performed those actions against it (since the reputation modifier is 1, i.e. 100%). A change in the player's reputation with any of these 4 specified governments results in a equivalent change in the player's reputation with the "United Kingdom" government.  
 If the player performs hostile actions towards the "Ireland" government, because the reputation modifier is positive, the "United Kingdom" government would consider that a provocation, but--because the magnitude is less than 5%--the player's reputation would not be changed.  
@@ -197,10 +197,10 @@ Illegal and Atrocities can be modified through evens as well.
 The "death sentence" token specifies an optional conversation to be displayed when the player is found to have committed an atrocity and is on a planet controlled by this government. The conversation named here should be defined as its own standalone token, e.g.
 ```bash
 conversation "caught red-handed"
-    {conversation specification...}
+	{conversation specification...}
 
 government "Tortuga"
-    "death sentence" "caught red-handed"
+	"death sentence" "caught red-handed"
 ```
 While the conversation can use traditional [exit nodes](WritingConversations#exits), they will not have any effect on the outcome of the conversation: the player will be killed.
 If no "death sentence" is supplied for a government, a simple dialog is displayed instead:
@@ -219,10 +219,10 @@ Before you can leave your ship, the <government name> authorities show up and be
 These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The [phrases](CreatingPhrases) here should be defined as standalone phrases, e.g.
 ```bash
 phrase "ancient greek insults"
-    {phrase specification...}
+	{phrase specification...}
 
 government "Phoenicia"
-    "hostile hail" "ancient greek insults"
+	"hostile hail" "ancient greek insults"
 ```
 See [`data/human/hails.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/human/hails.txt) for examples of both simple and complex phrase definitions.
 
@@ -245,7 +245,7 @@ The optional "language" token allows disabling hail-based interaction with ships
 until the [player condition](Player-Conditions) `"language: <text>"` is applied to their pilot (e.g. from an event or mission completion). For example,
 ```bash
 government "Children of Tama"
-    language "metaphorical allegory"
+	language "metaphorical allegory"
 ```
 would prevent the player from usefully hailing these ships or planets until they possess the condition `"language: metaphorical allegory"`. Instead, they will receive the message, "(An alien voice says something in a language you do not recognize.)"
 
@@ -253,8 +253,8 @@ Specifying a language that the player does not have will not prevent landing or 
 
 ```bash
 mission "player needs the Tamarian language"
-    to offer
-        has "language: metaphorical allegory"
+	to offer
+		has "language: metaphorical allegory"
 ```
 
 #### Raid
@@ -266,12 +266,12 @@ The "raid" token allows the specification of a [fleet](CreatingFleets) that can 
 If defined more than once (e.g. specified both in the base game and then a plugin), each new definition overwrites the current definition. For example, if the game datafiles specify
 ```bash
 government "Republic"
-    raid "Large Core Pirates"
+	raid "Large Core Pirates"
 ```
 and a plugin specifies
 ```bash
 government "Republic"
-    raid "Large Militia"
+	raid "Large Militia"
 ```
 then the game's base definition of "Large Core Pirates" as the raid fleet is forgotten and "Large Militia" is used instead.
 
@@ -284,7 +284,7 @@ Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`
 #### Enforcement Zones
 ```html
 enforces
-    {location filter specification...}
+	{location filter specification...}
 enforces [all]
 ```
 Each use of the optional "enforces" token introduces a description block for a [location filter](CreatingMissions#filters) that describes a set of systems and planets wherein this government has the authority to scan and fine other ships. If no "enforces" tokens are present, then the government is considered to have universal policing authority. Only **one** filter needs to apply in order for the system or planet to be enforced by the given government.
@@ -294,15 +294,15 @@ If instead of a description block, the "enforces" keyword is followed by the key
 
 ```bash
 government "Daelaam"
-    enforces        #1
-        planet "Shakuras" "Aiur"
-    enforces        #2
-        government "Daelaam"
-        neighbor government "Daelaam"
-    enforces        #3
-        government "Confederacy of Man" "Terran Dominion" "The Hivemind" "United Earth Directorate"
-        not
-            near "Sol" 10
+	enforces		#1
+		planet "Shakuras" "Aiur"
+	enforces		#2
+		government "Daelaam"
+		neighbor government "Daelaam"
+	enforces		#3
+		government "Confederacy of Man" "Terran Dominion" "The Hivemind" "United Earth Directorate"
+		not
+			near "Sol" 10
 ```
 This example usage indicates the the government "Daelaam" will have scanning and fining authority for
 1) the planets Shakuras and Aiur

@@ -10,48 +10,48 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a start is
 
 ```html
 start [<identifier>]
-    name <name>
-    [remove name]
-    [add] description <text>
-    [remove description]
-    thumbnail <pathname>
-    [remove thumbnail]
-    date <day#> <month#> <year#>
-    system <name>
-    planet <name>
-    [add] account
-        credits <amount#>
-        salaries <amount#>
-        maintenance <amount#>
-        score <rating#>
-        history
-            <worth#>
-            ...
-        mortgage (Mortgage | Fine)
-            principal <amount#>
-            interest <rate#>
-            term <days#>
-        ...
-    conversation <name>
-    conversation
-        {conversation specification...}
-    [remove conversation]
-    ship <model>
-        {ship specification...}
-    [remove ships]
-    [remove ship <model>]
+	name <name>
+	[remove name]
+	[add] description <text>
+	[remove description]
+	thumbnail <pathname>
+	[remove thumbnail]
+	date <day#> <month#> <year#>
+	system <name>
+	planet <name>
+	[add] account
+		credits <amount#>
+		salaries <amount#>
+		maintenance <amount#>
+		score <rating#>
+		history
+			<worth#>
+			...
+		mortgage (Mortgage | Fine)
+			principal <amount#>
+			interest <rate#>
+			term <days#>
+		...
+	conversation <name>
+	conversation
+		{conversation specification...}
+	[remove conversation]
+	ship <model>
+		{ship specification...}
+	[remove ships]
+	[remove ship <model>]
 
-    {condition specification...}
-        ...
-    [remove conditions]
-    [remove] to (display | reveal | unlock)
-        <condition-set>
-    on (display | reveal)
-        name <name>
-        description <text>
-        thumbnail <pathname>
-        system <name>
-        planet <name>
+	{condition specification...}
+		...
+	[remove conditions]
+	[remove] to (display | reveal | unlock)
+		<condition-set>
+	on (display | reveal)
+		name <name>
+		description <text>
+		thumbnail <pathname>
+		system <name>
+		planet <name>
 ```
 
 In **v 0.9.13** and later versions, a plugin may provide an `identifier` in the "start" declaration. Providing an identifier enables the following start definition to both extend an existing definition, and be extended by other start definitions.
@@ -85,7 +85,7 @@ The date on which the game starts. For plugins that extend the main game's data,
 ```html
 conversation <name>
 conversation
-    {conversation specification...}
+	{conversation specification...}
 ```
 The conversation that will be displayed to the player after they click the "New Pilot" button. The referenced or defined conversation is required to include a `name` prompt. The full syntax available is described [here](WritingConversations). The "exit code" of an intro conversation is not used.
 
@@ -93,17 +93,17 @@ The conversation that will be displayed to the player after they click the "New 
 
 ```html
 [add] account
-    credits <amount#>
-    salaries <amount#>
-    maintenance <amount#>
-    score <rating#>
-    history
-        <worth#>
-        ...
-    mortgage (Mortgage | Fine)
-        principal <amount#>
-        interest <rate#>
-        term <days#>
+	credits <amount#>
+	salaries <amount#>
+	maintenance <amount#>
+	score <rating#>
+	history
+		<worth#>
+		...
+	mortgage (Mortgage | Fine)
+		principal <amount#>
+		interest <rate#>
+		term <days#>
 ```
 The starting assets & liabilities for a new pilot. For plugins that extend an existing start definition, `account` will totally replace the previous account definition, while `add account` enables modifying portions of the previous definition.
 
@@ -129,16 +129,16 @@ The player's initial credit score. Values range from 200 to 800, inclusive. Sett
 
 ```html
 history
-    <worth#>
-    ...
+	<worth#>
+	...
 ```
 A log of the player's net worth over time, as credits. Starting conditions are not expected to provide a history, but may. The player's net worth history factors into the amount of credits they may borrow when applying for new loans.
 
 ```html
 mortgage (Mortgage | Fine)
-    principal <amount#>
-    interest <rate#>
-    term <days#>
+	principal <amount#>
+	interest <rate#>
+	term <days#>
 ```
 A declaration of a loan or fine the player is contractually obligated to pay off. When `add account` is in use, will add to the liabilities declared by the previous account definition. Removing liabilities is not supported; a plugin wishing to do so will need to define all desired `account` properties.
 
@@ -168,7 +168,7 @@ Beginning with **v. 0.9.9**, a start may optionally provide one or more ships to
 
 ```html
 ship <model>
-    {ship specification...}
+	{ship specification...}
 ```
 To provide a ship for the new pilot, the entire [ship definition](CreatingShips) is required.
 
@@ -205,7 +205,7 @@ Beginning in **v. 0.10.0**, starts can be made to conditionally appear or unlock
 
 ```html
 to (display | reveal | unlock)
-    <condition-set>
+	<condition-set>
 ```
 
 The `to (display | reveal | unlock)` nodes are similar to the `to offer` and other `to *` nodes of [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). Any conditions specified here refer to global conditions, and do not need or allow the use of the `"global: "` prefix, since the global conditions are accessed directly and are the only conditions able to be used.
@@ -218,14 +218,14 @@ If any of the `to *` condition sets are not specified, then they default to true
 
 ```html
 on (display | reveal)
-    name <name>
-    description <text>
-    thumbnail <pathname>
-    system <name>
-    planet <name>
-    date <date>
-    credits <credits>
-    debt <debt>
+	name <name>
+	description <text>
+	thumbnail <pathname>
+	system <name>
+	planet <name>
+	date <date>
+	credits <credits>
+	debt <debt>
 ```
 
 The `on display` and `on reveal` nodes specify display information that is displayed in lieu of the true information if the start is not fully unlocked, as described above.

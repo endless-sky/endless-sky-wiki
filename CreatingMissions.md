@@ -17,156 +17,156 @@ Missions are a key part of Endless Sky. They are used to advance the plot, flesh
 
 ```html
 mission "Name"
-    job
+	job
 ```
 
 This mission will appear in the job board on every planet. If accepted, it can be completed by landing at that same planet again. To make it show up on the job board again even after it's been completed, add the `repeat` tag:
 
 ```html
 mission "Name2"
-    job
-    repeat
+	job
+	repeat
 ```
 
 To make it more interesting, add a `description` that will appear on the job board, and a `dialog` confirmation that the mission was completed:
 
 ```html
 mission "Name2"
-    description "Take off and land again! It's fun!"
-    job
-    repeat
-    on complete
-        dialog "You did it! You're amazing."
+	description "Take off and land again! It's fun!"
+	job
+	repeat
+	on complete
+		dialog "You did it! You're amazing."
 ```
 
 Now make it ask the player to land on Earth using a `destination` tag, and pay them once they get there:
 
 ```html
 mission "Name2"
-    description "Go to earth."
-    destination Earth
-    job
-    repeat
-    on complete
-        dialog "You did it! You're amazing."
-        payment 5000
+	description "Go to earth."
+	destination Earth
+	job
+	repeat
+	on complete
+		dialog "You did it! You're amazing."
+		payment 5000
 ```
 
 Now add some cargo, and mention it in the description using text replacement tokens:
 
 ```html
 mission "Name2"
-    description "Bring <cargo> stuff to earth."
-    destination Earth
-    cargo "pickled herring" 5
-    job
-    repeat
-    on complete
-        dialog "You did it! You're amazing."
-        payment 5000
+	description "Bring <cargo> stuff to earth."
+	destination Earth
+	cargo "pickled herring" 5
+	job
+	repeat
+	on complete
+		dialog "You did it! You're amazing."
+		payment 5000
 ```
 
 And so on. The sky's the limit. Missions can become very complex. Here is a full list of everything that can go into a mission:
 
 ```html
 mission <name>
-    name <name>
-    description <text>
-    blocked <message>
-    deadline [<days> [<multiplier>]]
-    cargo (random | <name>) <number> [<number> [<probability>]]
-        illegal <fine> [<message>]
-        stealth
-    passengers <number> [<number> [<probability>]]
-    illegal <fine> [<message>]
-    stealth
-    invisible
-    (priority | minor)
-    (job | landing | assisting | boarding | shipyard | outfitter)
-    "apparent payment" <amount>
-    boarding
-        "override capture"
-    repeat [<number>]
-    clearance [<message>]
-        ...
-    infiltrating
-    waypoint <system>
-    stopover [<planet>]
-        ...
-    substitutions
-        <text> <replacement>
-            [<condition set>]
-        ...
-    to (offer | complete | fail | accept)
-        <condition> <comp> <value>
-        (has | not) <condition>
-        never
-        (and | or)
-            ...
-    (source | destination) <planet>
-    (source | destination)
-        [(not | neighbor)] planet <name>...
-            <name>...
-        [(not | neighbor)] system <name>...
-            <name>...
-        [(not | neighbor)] government <name>...
-            <name>...
-        [(not | neighbor)] attributes <name>...
-            <name>...
-        [(not | neighbor)] outfits <name>...
-            <name>...
-        [(not | neighbor)] category <name>...
-        [(not | neighbor)] near <system> [[<min>] <max>]
-        [(not | neighbor)] distance [<min>] <max>
-        neighbor
-            ...
-        not
-            ...
-    npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
-        to (spawn | despawn)
-            <condition> <comp> <value>
-            (has | not) <condition>
-            (and | or)
-                ...
-        government <name>
-        personality <type>...
-            <type>...
-            confusion <amount>
-        system <system>
-        system
-            system <name>...
-                <name>...
-            government <name>...
-                <name>...
-            near <system> [[<min>] <max>]
-            distance [<min>] <max>
-        dialog <text>
-            <text>...
-        conversation <name>
-        conversation
-            ...
-        ship <model> <name>
-        fleet <name> [<count>]
-        fleet [<count>]
-            ...
-    on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily)
-        log [<category> <header>] <text>
-        dialog <text>
-            <text>...
-        dialog phrase <phrase>
-        conversation <name>
-        conversation
-            ...
-        outfit <outfit> [<number>]
-        require <outfit> [<number>]
-        give ship <model> [<name>]
-        payment [<base> [<multiplier>]]
-        fine <amount>
-        <condition> (= | += | -=) <value>
-        <condition> (++ | --)
-        (set | clear) <condition>
-        event <name> [<delay> [<max>]]
-        fail [<name>]
+	name <name>
+	description <text>
+	blocked <message>
+	deadline [<days> [<multiplier>]]
+	cargo (random | <name>) <number> [<number> [<probability>]]
+		illegal <fine> [<message>]
+		stealth
+	passengers <number> [<number> [<probability>]]
+	illegal <fine> [<message>]
+	stealth
+	invisible
+	(priority | minor)
+	(job | landing | assisting | boarding | shipyard | outfitter)
+	"apparent payment" <amount>
+	boarding
+		"override capture"
+	repeat [<number>]
+	clearance [<message>]
+		...
+	infiltrating
+	waypoint <system>
+	stopover [<planet>]
+		...
+	substitutions
+		<text> <replacement>
+			[<condition set>]
+		...
+	to (offer | complete | fail | accept)
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
+	(source | destination) <planet>
+	(source | destination)
+		[(not | neighbor)] planet <name>...
+			<name>...
+		[(not | neighbor)] system <name>...
+			<name>...
+		[(not | neighbor)] government <name>...
+			<name>...
+		[(not | neighbor)] attributes <name>...
+			<name>...
+		[(not | neighbor)] outfits <name>...
+			<name>...
+		[(not | neighbor)] category <name>...
+		[(not | neighbor)] near <system> [[<min>] <max>]
+		[(not | neighbor)] distance [<min>] <max>
+		neighbor
+			...
+		not
+			...
+	npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
+		to (spawn | despawn)
+			<condition> <comp> <value>
+			(has | not) <condition>
+			(and | or)
+				...
+		government <name>
+		personality <type>...
+			<type>...
+			confusion <amount>
+		system <system>
+		system
+			system <name>...
+				<name>...
+			government <name>...
+				<name>...
+			near <system> [[<min>] <max>]
+			distance [<min>] <max>
+		dialog <text>
+			<text>...
+		conversation <name>
+		conversation
+			...
+		ship <model> <name>
+		fleet <name> [<count>]
+		fleet [<count>]
+			...
+	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily)
+		log [<category> <header>] <text>
+		dialog <text>
+			<text>...
+		dialog phrase <phrase>
+		conversation <name>
+		conversation
+			...
+		outfit <outfit> [<number>]
+		require <outfit> [<number>]
+		give ship <model> [<name>]
+		payment [<base> [<multiplier>]]
+		fine <amount>
+		<condition> (= | += | -=) <value>
+		<condition> (++ | --)
+		(set | clear) <condition>
+		event <name> [<delay> [<max>]]
+		fail [<name>]
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -263,8 +263,8 @@ deadline 2
 
 ```html
 cargo (random | <name>) <number#> [<number#> [<probability#>]]
-    illegal <fine#> [<message>]
-    stealth
+	illegal <fine#> [<message>]
+	stealth
 ```
 
 This specifies the cargo that you are carrying. If `<name>` is one of the standard commodity names defined in the "trade" data, it will be replaced by a random one of the specific names for that commodity, e.g. "Food" might be replaced by "canned fruit" or "evaporated milk".
@@ -334,7 +334,7 @@ Additionally, if an apparent payment is given, its value will be used for the te
 
 ```html
 boarding
-    "override capture"
+	"override capture"
 ```
 
 Beginning in **v. 0.10.0**, the `boarding` tag described above can optionally be given a child tag `"override capture"`. If a boarding mission with this tag is offered by a ship with the `uncapturable` tag, then the ship will become capturable. If the mission is declined, then the ship will become capturable one time and leaving the boarding panel will turn the ship uncapturable again. If the mission is accepted, then the source ship will be capturable for so long as the mission is active, even upon leaving the boarding panel and returning.
@@ -349,7 +349,7 @@ If you want a mission to be offered any number of times but to limit the number 
 
 ```html
 clearance [<message>]
-    [{filter specification...}]
+	[{filter specification...}]
 ```
 
 This gives you landing clearance on the destination planet, even if normally you would not be allowed to land there, or would have to pay a bribe.
@@ -373,7 +373,7 @@ This indicates that you do not have access to any of the services on the destina
 ```html
 waypoint <system>
 waypoint
-    {filter specification...}
+	{filter specification...}
 ```
 
 This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited. Beginning with **v. 0.9.9**, all visited waypoints of the currently selected mission are marked by a faint circle in the player's map panel.
@@ -381,16 +381,16 @@ This specifies a system which you must fly through in order to complete the miss
 ```html
 stopover [<planet>]
 stopover
-    {filter specification...}
+	{filter specification...}
 ```
 
 This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the [`source` and `destination` filters](#filters). As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission (**v 0.9.9+**). Beginning with **v 0.9.13**, planets selected by a filter to be a stopover are no longer required to have a spaceport (unlike a mission's destination). If a mission's randomly picked stopover planet(s) should have a spaceport, this can be achieved by adding an `attributes "spaceport"` line to the filter specification.
 
 ```html
 substitutions
-    <text> <replacement>
-        [<condition set>]
-    ...
+	<text> <replacement>
+		[<condition set>]
+	...
 ```
 
 Beginning with **v.0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
@@ -406,11 +406,11 @@ Conditions are checked at several times when processing a mission: when determin
 
 ```html
 to (offer | complete | fail | accept)
-    <condition> <comp> <value>
-    (has | not) <condition>
-    never
-    (and | or)
-        ...
+	<condition> <comp> <value>
+	(has | not) <condition>
+	never
+	(and | or)
+		...
 ```
 
 The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write `has <condition>` instead of `<condition> != 0`, or `not <condition>` instead of `<condition> == 0`. The `never` condition always evaluates to false, so it can be used to create a mission that can never succeed.
@@ -425,12 +425,12 @@ The condition set is satisfied only if every condition listed is true. If instea
 
 ```html
 to offer
-    or
-        has A
-        and
-            has B
-            has C
-    has D
+	or
+		has A
+		and
+			has B
+			has C
+	has D
 ```
 
 <a name="filters">
@@ -451,44 +451,44 @@ It is possible to test filters by passing `--matches` to the game and then writi
 ```html
 (source | destination) <planet>
 (source | destination)
-    [<modifier>] planet <name>...
-        <name>...
-    [<modifier>] system <name>...
-        <name>...
-    [<modifier>] government <name>...
-        <name>...
-    [<modifier>] attributes <name>...
-        <name>...
-    [<modifier>] outfits <name>...
-        <name>...
-    [<modifier>] category <name>...
-    [<modifier>] near <system> [[<min>] <max>]
-    [<modifier>] distance [<min>] <max>
-    neighbor
-        ...
-    not
-        ...    
+	[<modifier>] planet <name>...
+		<name>...
+	[<modifier>] system <name>...
+		<name>...
+	[<modifier>] government <name>...
+		<name>...
+	[<modifier>] attributes <name>...
+		<name>...
+	[<modifier>] outfits <name>...
+		<name>...
+	[<modifier>] category <name>...
+	[<modifier>] near <system> [[<min>] <max>]
+	[<modifier>] distance [<min>] <max>
+	neighbor
+		...
+	not
+		...	
 ```
 
 Each entry in the source or destination specification acts as a filter. Two "modifier" tokens were introduced in **v. 0.9.9**, **`not`** and **`neighbor`**. The `neighbor` modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the `not` modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
 
 ```html
 [(not | neighbor)] planet <name>...
-    <name>...
+	<name>...
 ```
 
 This says that the planet must be (or must not be, if the `not` keyword is used) one of the named planets. If `neighbor` is used, at least one of the named planets must be in a hyperlinked system. The list of names can either be all on one line, or split between multiple lines if it is particularly long; the subsequent lines must be indented so that they are "children" of the `planet` node. As with most of these filters, you can also have more than one `planet` entry, in which case the planet chosen must be in any one of the lists. Beginning with **v 0.9.13**, planets specified in this list can be selected for use as a mission destination or stopover even if the player cannot land on the planet at the time the mission is offered (e.g. due to lack of `clearance` or due to hostility with the planet's government), or if the planet has no spaceport.
 
 ```html
 [(not | neighbor)] system <name>...
-    <name>...
+	<name>...
 ```
 
 The system must be (or must not be, or must neighbor) one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but its intended use is for the NPC location filter as described later.
 
 ```html
 [(not | neighbor)] government <name>...
-    <name>...
+	<name>...
 ```
 
 The planet must be in (or must not be in, or must neighbor) a system owned by the given government(s). Again, the list can be all on one line, or multiple indented lines.
@@ -497,7 +497,7 @@ If this is a source filter and the mission is being offered when `assisting` or 
 
 ```html
 [(not | neighbor)] attributes <name>...
-    <name>...
+	<name>...
 ```
 
 The system or planet must have (or must not have, or must link to a system with) one of the given attributes (e.g. "dirt belt", "urban", "rich", "tourism", etc.). If applied to a system (**v. 0.9.9+**), at least one of the given attributes must be found in either the system's own attributes, or the attributes of any of its orbiting objects. If applied to a ship (**v. 0.9.9+**), the attribute must be positive, after taking into account any adjustments that are made by all of its installed outfits.
@@ -526,34 +526,34 @@ whereas this matches anything that is not _both_ urban _and_ rich:
 
 ```bash
 not
-    attributes "urban"
-    attributes "rich"
+	attributes "urban"
+	attributes "rich"
 ```
 
 Beginning with **v. 0.9.9**, similar to `attributes`, ships (`source`) and planets (`source`, `destination`, `stopover`) can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one "Beam Laser" or "Meteor Missile Launcher" installed or in its cargo, or a planet that sells either one of the outfits:
 
 ```c++
 source
-    outfits "Beam Laser" "Meteor Missile Launcher"
+	outfits "Beam Laser" "Meteor Missile Launcher"
 ```
 
 whereas this would match ships or planets that only have both:
 
 ```c++
 source
-    outfits "Beam Laser"
-    outfits "Meteor Missile Launcher"
+	outfits "Beam Laser"
+	outfits "Meteor Missile Launcher"
 ```
 
 **V. 0.9.9+** also allows matching ships based on the specified category, e.g. "Light Warship" or "Interceptor". Any filter that defines a ship category will not match to systems or planets. Since a ship can have only one category, the following are both equivalent filters:
 
 ```c++
 source
-    category "Heavy Freighter" "Light Warship"
+	category "Heavy Freighter" "Light Warship"
 
 source
-    category "Heavy Freighter"
-    category "Light Warship"
+	category "Heavy Freighter"
+	category "Light Warship"
 ```
 
 There are also ways of specifying how far the system is from a particular location, or from the current location:
@@ -572,17 +572,17 @@ This is the same as the `near` tag, but gives distances relative to the origin p
 
 ```html
 not
-    ...
+	...
 neighbor
-    ...
+	...
 ```
 
 A `not` or `neighbor` tag by itself, with filters as its children, defines a more complicated filter that must not match. For example, this filter matches a system whose neighbor must neighbor a Republic system and not be a Republic system:
 
 ```bash
 neighbor
-    neighbor government "Republic"
-    not government "Republic"
+	neighbor government "Republic"
+	not government "Republic"
 ```
 
 while this filter additionally requires the matched system to belong to a government other than Republic:
@@ -590,8 +590,8 @@ while this filter additionally requires the matched system to belong to a govern
 ```bash
 not government "Republic"
 neighbor
-    neighbor government "Republic"
-    not government "Republic"
+	neighbor government "Republic"
+	not government "Republic"
 ```
 
 Filters combining `not` and `neighbor` can become quite complex and difficult to reason, but offer functionality not otherwise available. For example, to find a source system that is not Republic (1), does not neighbor a Republic system (2), but has a neighbor that does neighbor a Republic system (3), you could use this filter:
@@ -600,9 +600,9 @@ Filters combining `not` and `neighbor` can become quite complex and difficult to
 source
 1)  not government "Republic"
 2)  not
-        neighbor government "Republic"
+		neighbor government "Republic"
 3)  neighbor
-        neighbor government "Republic"
+		neighbor government "Republic"
 ```
 
 <a name="npcs">
@@ -614,33 +614,33 @@ NPCs are ships that are associated with the mission in some way. This includes f
 
 ```html
 npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
-    to (spawn | despawn)
-        <condition> <comp> <value>
-        (has | not) <condition>
-        (and | or)
-            ...
-    government <name>
-    personality <type>...
-        <type>...
-        confusion <amount#>
-    system (<system> | destination)
-    system
-        system <name>...
-            <name>...
-        government <name>...
-            <name>...
-        near <system> [[<min#>] <max#>]
-        distance [<min#>] <max#>
-    planet <name>
-    dialog <text>
-        <text>...
-    conversation <name>
-    conversation
-        ...
-    ship <model> <name>
-    fleet <name> [<count#>]
-    fleet [<count#>]
-        ...
+	to (spawn | despawn)
+		<condition> <comp> <value>
+		(has | not) <condition>
+		(and | or)
+			...
+	government <name>
+	personality <type>...
+		<type>...
+		confusion <amount#>
+	system (<system> | destination)
+	system
+		system <name>...
+			<name>...
+		government <name>...
+			<name>...
+		near <system> [[<min#>] <max#>]
+		distance [<min#>] <max#>
+	planet <name>
+	dialog <text>
+		<text>...
+	conversation <name>
+	conversation
+		...
+	ship <model> <name>
+	fleet <name> [<count#>]
+	fleet [<count#>]
+		...
 ```
 
 Each `npc` tag may have one or more tags following it, specifying what the player must do with the given NPC:
@@ -659,10 +659,10 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 
 ```html
 to (spawn | despawn)
-    <condition> <comp> <value>
-    (has | not) <condition>
-    (and | or)
-        ...
+	<condition> <comp> <value>
+	(has | not) <condition>
+	(and | or)
+		...
 ```
 
 **Starting in v.0.9.13,** `to (spawn | despawn)` works similarly to `to (offer | complete | fail | accept)` for missions, containing a condition set that must be met for something to occur.
@@ -681,8 +681,8 @@ This specifies what government all the ships connected to this NPC specification
 
 ```html
 personality <type>...
-    <type>...
-    confusion <amount#>
+	<type>...
+	confusion <amount#>
 ```
 
 This defines the NPC's [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The `confusion` tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
@@ -697,12 +697,12 @@ This specifies the exact system the NPC will start in: either the named system, 
 
 ```html
 system
-    system <name>...
-        <name>...
-    government <name>...
-        <name>...
-    near <system> [[<min#>] <max#>]
-    distance [<min#>] <max#>
+	system <name>...
+		<name>...
+	government <name>...
+		<name>...
+	near <system> [[<min#>] <max#>]
+	distance [<min#>] <max#>
 ```
 
 This specifies a location filter for choosing what system the NPC starts out in. The `system`, `government`, `near`, and `distance` filters operate the same way they do in the descriptions in the previous section, and can be used instead of naming a particular system. For example, you could have the NPC start out in any "Pirate" system, or within two jumps of the current system. The other location filter options are also available, including `not` and `neighbor`.
@@ -714,10 +714,10 @@ This specifies the exact name of the starting planet for all ships in the NPC de
 
 ```html
 dialog <text>
-    <text>...
+	<text>...
 conversation <name>
 conversation
-    ...
+	...
 ```
 
 This defines a dialog or conversation to be shown when you have first satisfied all the requirements of a given NPC. For more details on the syntax, see the "Triggers" section below. Beginning with **v. 0.9.9**, conversations shown when completing an NPC can also use special keywords to influence the player's flagship or the NPC ship.
@@ -735,7 +735,7 @@ If you want to customize an NPC (for example, having it start out with a particu
 ```html
 fleet <name> [<count#>]
 fleet [<count#>]
-    ...
+	...
 ```
 
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal [`fleet` data entry](CreatingFleets). Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
@@ -749,23 +749,23 @@ A mission can also specify what happens at various key parts of the mission:
 
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily)
-    log [<category> <header>] <text>
-    dialog <text>
-        <text>...
-    dialog phrase <phrase>
-    conversation <name>
-    conversation
-        ...
-    outfit <outfit> [<count#>]
-    require <outfit>
-    give ship <model> [<name>]
-    payment [<base> [<multiplier>]]
-    fine <amount>
-    <condition> (= | += | -=) <value#>
-    <condition> (++ | --)
-    (set | clear) <condition>
-    event <name> [<delay#> [<max#>]]
-    fail [<name>]
+	log [<category> <header>] <text>
+	dialog <text>
+		<text>...
+	dialog phrase <phrase>
+	conversation <name>
+	conversation
+		...
+	outfit <outfit> [<count#>]
+	require <outfit>
+	give ship <model> [<name>]
+	payment [<base> [<multiplier>]]
+	fine <amount>
+	<condition> (= | += | -=) <value#>
+	<condition> (++ | --)
+	(set | clear) <condition>
+	event <name> [<delay#> [<max#>]]
+	fail [<name>]
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -786,8 +786,8 @@ There are eleven events that can trigger a response of some sort:
 Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a location filter:
 ```html
 on enter
-    [system <name>...]
-    ...
+	[system <name>...]
+	...
 ``` 
 
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
@@ -802,7 +802,7 @@ An example on how one might use the log category and header includes creating a 
 
 ```html
 dialog <text>
-    <text>...
+	<text>...
 dialog phrase <phrase>
 ```
 
@@ -817,7 +817,7 @@ As mentioned previously, text replacement is done on keywords like "`<destinatio
 ```html
 conversation <name>
 conversation
-    ...
+	...
 ```
 
 This specifies that a conversation will be shown to the player at this point in the mission. When a mission is being offered, the conversation can return `accept` or `decline`; conversations can also return special values like `die` or `explode` (if the conversation ends with the player dying or their flagship exploding) or `launch` (if the player should take off from the planet immediately).

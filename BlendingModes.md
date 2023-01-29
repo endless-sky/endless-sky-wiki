@@ -28,7 +28,7 @@ Why is this useful? Partly because it means one fewer multiplication calculation
 
 ```c++
 result color = object color + (1 - 0) * background color 
-             = object color + background color
+			 = object color + background color
 ```
 
 It's the additive blending equation! So, in premultiplied alpha mode, you can create images that are drawn using additive blending just by setting all their alpha values to zero. That means that every image can be drawn with the same blending mode (premultiplied alpha) instead of constantly switching between two different modes.

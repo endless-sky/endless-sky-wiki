@@ -53,7 +53,7 @@ system <name>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
 	hazard <name> <period#>
-    "starfield density" <density#>
+	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
 			scale <scale#>
@@ -153,7 +153,7 @@ system <name>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
 	hazard <name> <period#>
-    "starfield density" <density#>
+	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
 			scale <scale#>
@@ -392,7 +392,7 @@ planet <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
 	security <security#>
-    wormhole <name>
+	wormhole <name>
 	tribute <credits#>
 		threshold <rating#>
 		fleet <name> <count#>
@@ -522,10 +522,10 @@ The fleet that is spawned from this planet if the player demands tribute from it
 
 ```
 wormhole <name>
-    "display name" <name>
-    mappable
-    link <from> <to>
-    color (<r#> <g#> <b#> | <name>)
+	"display name" <name>
+	mappable
+	link <from> <to>
+	color (<r#> <g#> <b#> | <name>)
 ```
 
 "Wormholes" are planets that transport you to a different system.

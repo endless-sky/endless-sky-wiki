@@ -17,7 +17,7 @@ The basic syntax of a testable condition set, such as those used in a mission's 
 (has | not) <condition>
 never
 (and | or)
-    ...
+	...
 ```
 The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write `has <condition>` instead of `<condition> != 0`, or `not <condition>` instead of `<condition> == 0`. The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed. Using the `and` and `or` keywords allows specifying a nested set of testable conditions. 
 
@@ -25,12 +25,12 @@ A testable condition set is satisfied only if every condition listed is true. If
 
 ```bash
 branch "elaborate"
-    or
-        has "A"
-        and
-            has "B"
-            has "C"
-    has "D"
+	or
+		has "A"
+		and
+			has "B"
+			has "C"
+	has "D"
 ```
 
 <a name="applied">

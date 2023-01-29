@@ -39,9 +39,9 @@ const float divisor = range * (range + 2) + 1;
 vec4 color = vec4(0., 0., 0., 0.);
 for(int i = -range; i <= range; ++i)
 {
-    float scale = (range + 1 - abs(i)) / divisor;
-    vec2 coord = fragTexCoord + (blur * i) / range;
-    color += scale * texture(tex0, coord);
+	float scale = (range + 1 - abs(i)) / divisor;
+	vec2 coord = fragTexCoord + (blur * i) / range;
+	color += scale * texture(tex0, coord);
 }
 ```
 

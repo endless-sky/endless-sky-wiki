@@ -19,23 +19,23 @@ plugins/
 |-- example-plugin/
 |   |-- data/
 |   |   |-- jobs.txt
-|   |     ...
+|   |	 ...
 |   |-- images/
 |   |   |-- ship/
 |   |   |   |-- example-ship.png
-|   |   |     ...
-|   |     ...
+|   |   |	 ...
+|   |	 ...
 |   |-- sounds/
 |   |   |-- ambient/
 |   |   |   |-- rain.mp3
-|   |   |     ...
+|   |   |	 ...
 |   |   |-- kaboom.wav
-|   |     ...
+|   |	 ...
 |   |-- about.txt
 |   |-- copyright
-|     ...
+|	 ...
 |-- other-plugin/
-      ...
+	  ...
 ```
 
 ## Editing data files
@@ -91,25 +91,25 @@ To modify most properties of an existing data element, you only need to include 
 
 ```bash
 system "Kornephoros"
-    government "Free Worlds"
+	government "Free Worlds"
 ```
 
 All the other fields will remain the same. Some data fields can contain any number of elements: a system's list of asteroids, fleets, or stellar objects; a ship's list of outfits; a planet's paragraphs of descriptive text; an event's list of data elements to change; a fleet's list of ship combinations, etc. If you define a new value for one of these fields the old list of elements is replaced with your new one. The one exception is shipyard and outfitter lists: unless you specifically include the keyword "clear" in the list, any items you list will be added to the existing list without clearing it. For example, this adds three new outfits to the "Syndicate Basics":
 
 ```bash
 outfitter "Syndicate Basics"
-    "Ionic Afterburner"
-    "S-270 Regenerator"
-    "S-970 Regenerator"
+	"Ionic Afterburner"
+	"S-270 Regenerator"
+	"S-970 Regenerator"
 ```
 
 ...whereas this makes "Syndicate Basics" sell nothing but a few ammo items:
 
 ```bash
 outfitter "Syndicate Basics"
-    clear
-    "Meteor Missile"
-    "Javelin"
+	clear
+	"Meteor Missile"
+	"Javelin"
 ```
 
 ## Disabling preexisting data

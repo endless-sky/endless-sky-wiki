@@ -6,36 +6,36 @@ Each "node" of the conversation displays some text, and then either jumps immedi
 
 ```html
 conversation [<name>]
-    scene <image>
-    label <name>
-    <text>
-        [to display]
-            <condition>
-        [<endpoint> | goto <label>]
-    name
-    choice
-        <text>
-            [to display]
-                <condition>
-            [<endpoint> | goto <label>]
-        ...
-    branch <if true> [<if false>]
-        <condition> <comp> <value>
-        (has | not) <condition>
-        (and | or)
-            ...
-    action
-        log [<category> <header>] <text>
-        outfit <outfit> [<number>]
-        give ship <model> [<name>]
-        payment [<base> [<multiplier>]]
-        fine <amount>
-        <condition> (= | += | -=) <value>
-        <condition> (++ | --)
-        (set | clear) <condition>
-        event <name> [<delay> [<max>]]
-        fail [<name>]
-    ...
+	scene <image>
+	label <name>
+	<text>
+		[to display]
+			<condition>
+		[<endpoint> | goto <label>]
+	name
+	choice
+		<text>
+			[to display]
+				<condition>
+			[<endpoint> | goto <label>]
+		...
+	branch <if true> [<if false>]
+		<condition> <comp> <value>
+		(has | not) <condition>
+		(and | or)
+			...
+	action
+		log [<category> <header>] <text>
+		outfit <outfit> [<number>]
+		give ship <model> [<name>]
+		payment [<base> [<multiplier>]]
+		fine <amount>
+		<condition> (= | += | -=) <value>
+		<condition> (++ | --)
+		(set | clear) <condition>
+		event <name> [<delay> [<max>]]
+		fail [<name>]
+	...
 ```
 
 <a name="exits">
@@ -58,18 +58,18 @@ For example:
 
 ```js
 conversation
-    `A Navy officer asks if you can do a job for him.`
-    choice
-        `    "Sure, I'd love to."`
-            accept
-        `    "Sorry, I'm on an urgent cargo mission."`
-            decline
-        `(Attack him.)`
-            goto "bad idea"
-    label "bad idea"
-    `    You shout "Death to all tyrants!" and go for your gun.`
-    `    Unfortunately, he pulls his own gun first.`
-        die
+	`A Navy officer asks if you can do a job for him.`
+	choice
+		`	"Sure, I'd love to."`
+			accept
+		`	"Sorry, I'm on an urgent cargo mission."`
+			decline
+		`(Attack him.)`
+			goto "bad idea"
+	label "bad idea"
+	`	You shout "Death to all tyrants!" and go for your gun.`
+	`	Unfortunately, he pulls his own gun first.`
+		die
 ```
 
 The conversation stops as soon as an endpoint is encountered, so if you list multiple endpoints or gotos after a line of text, only the first one will be applied.
@@ -102,14 +102,14 @@ A `label` marks the start of a "node" in a conversation: that is, a point that y
 
 ```html
 <text>
-    [<endpoint> | goto <label>]
+	[<endpoint> | goto <label>]
 ```
 
 Any line of the conversation that does not begin with one of the special keywords (`label`, `name`, `choice`, `branch`, `action`, or `scene`) is an ordinary text node. In most cases, you will want to enclose the text in backticks so that you can use quotation marks inside it without confusing the parser:
 
 ```js
-    `You tell the bartender, "The pirates said, 'Give us all your cargo!'"`
-        goto "next"
+	`You tell the bartender, "The pirates said, 'Give us all your cargo!'"`
+		goto "next"
 ```
 
 Each line of text can be followed by a `goto` or an [endpoint](#exits). If it does not, the conversation will just proceed to whatever comes next.
@@ -124,7 +124,7 @@ To maintain consistency across all the text in the game:
 * Avoid non-ASCII characters, including [curly quotes](https://en.wikipedia.org/wiki/Quotation_mark#Quotation_marks_in_English).
 
 ```js
-    `"${flowers} are the best flower!`
+	`"${flowers} are the best flower!`
 ```
 
 Beginning in **v. 0.10.0**, phrases can be referred to in conversation text.
@@ -142,9 +142,9 @@ This is useful mostly just for the `"default intro"` conversation: if the `name`
 
 ```
 choice
-    <text>
-        [<endpoint> | goto <label>]
-    ...
+	<text>
+		[<endpoint> | goto <label>]
+	...
 ```
 
 A `choice` node allows the player to select from one or more possible responses. A choice with a single response might be useful if you want to break up the flow of text (e.g. because a lot is being displayed at once), but usually choices will present two or more options.
@@ -152,7 +152,7 @@ A `choice` node allows the player to select from one or more possible responses.
 Each option is represented by a single line of text, which will generally be enclosed in backticks and start with a tab for proper indentation:
 ```js
 choice
-    `   "Sure, I'd love to."`
+	`   "Sure, I'd love to."`
 ```
 
 As with ordinary text, any choice that does not have a `goto` or endpoint after it will just allow the conversation to continue to the next line below this choice.
@@ -161,10 +161,10 @@ As with ordinary text, any choice that does not have a `goto` or endpoint after 
 
 ```html
 branch <if true> [<if false>]
-    <condition> <comp> <value>
-    (has | not) <condition>
-    (and | or)
-        ...
+	<condition> <comp> <value>
+	(has | not) <condition>
+	(and | or)
+		...
 ```
 
 A branch takes the conversation to one of two different labels depending on a set of [testable conditions](Player-Conditions#testable-condition-sets).
@@ -173,36 +173,36 @@ The `branch` keyword is followed by one or two label names. The first is the lab
 
 ```js
 conversation
-    branch "famous"
-        "combat rating" > 500
-    
-    `    When you walk into the bar, a man at a table in the corner looks up, but does not recognize you.`
-        decline
-    
-    label "famous"
-    action
-        set "everyone thinks you are awesome"
-        "drunk" += 1
-    
-    `    When you walk into the bar, a man at a table in the corner looks up and sees you.`
-    `    He says, "It's Captain <last>, the famous warrior! Barkeep, give <first> a drink on my tab."`
-        decline
+	branch "famous"
+		"combat rating" > 500
+	
+	`	When you walk into the bar, a man at a table in the corner looks up, but does not recognize you.`
+		decline
+	
+	label "famous"
+	action
+		set "everyone thinks you are awesome"
+		"drunk" += 1
+	
+	`	When you walk into the bar, a man at a table in the corner looks up and sees you.`
+	`	He says, "It's Captain <last>, the famous warrior! Barkeep, give <first> a drink on my tab."`
+		decline
 ```
 
 # Action
 
 ```html
 action
-    log [<category> <header>] <text>
-    outfit <outfit> [<number>]
-    give ship <model> [<name>]
-    payment [<base> [<multiplier>]]
-    fine <amount>
-    <condition> (= | += | -=) <value>
-    <condition> (++ | --)
-    (set | clear) <condition>
-    event <name> [<delay> [<max>]]
-    fail [<name>]
+	log [<category> <header>] <text>
+	outfit <outfit> [<number>]
+	give ship <model> [<name>]
+	payment [<base> [<multiplier>]]
+	fine <amount>
+	<condition> (= | += | -=) <value>
+	<condition> (++ | --)
+	(set | clear) <condition>
+	event <name> [<delay> [<max>]]
+	fail [<name>]
 ```
 
 An "action" entry is similar to a [mission trigger](CreatingMissions#triggers), except it is incapable of creating a dialog or conversation within the current conversation.

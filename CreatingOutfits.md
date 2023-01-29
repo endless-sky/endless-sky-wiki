@@ -175,9 +175,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"fuel consumption"`: the amount of fuel consumed per frame. **(v. 0.9.9)** On any frame in which the ship can supply its total `"fuel consumption"`, it will also evaluate the following attributes:
 
-    * `"fuel energy"`: energy produced per frame from consumed fuel. **(v. 0.9.9)**
+	* `"fuel energy"`: energy produced per frame from consumed fuel. **(v. 0.9.9)**
 
-    * `"fuel heat"`: heat produced per frame from consumed fuel. **(v. 0.9.9)**
+	* `"fuel heat"`: heat produced per frame from consumed fuel. **(v. 0.9.9)**
 
   * `"fuel generation"`: fuel produced per frame. **(v. 0.9.9)**
 
@@ -737,8 +737,8 @@ In order for anyone to buy your new outfit, it must be added to one of the "outf
 
 ```
 outfitter "Syndicate Advanced"
-    "My Fancy New Outfit"
-    "My Other Fine Outfit"
+	"My Fancy New Outfit"
+	"My Other Fine Outfit"
 ```
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.

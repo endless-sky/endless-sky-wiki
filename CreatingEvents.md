@@ -4,56 +4,56 @@ The basic syntax of an event definition is:
 
 ```html
 event <name>
-    date <day#> <month#> <year#>
-    visit <system>
-    unvisit <system>
-    "visit planet" <planet>
-    "unvisit planet" <planet>
-    galaxy <name>
-        {galaxy specification...}
-    system <name>
-        {system specification...}
-    link <system> <other>
-    unlink <system> <other>
-    government <name>
-        {government specification...}
-    fleet <name>
-        {fleet specification...}
-    planet <name>
-        {planet specification...}
-    news <name>
-        {news specification...}
-    shipyard <name>
-        {shipyard specification...}
-    outfitter <name>
-        {outfitter specification...}
-    substitutions
-        {substitutions specification...}
-    <conditions>
+	date <day#> <month#> <year#>
+	visit <system>
+	unvisit <system>
+	"visit planet" <planet>
+	"unvisit planet" <planet>
+	galaxy <name>
+		{galaxy specification...}
+	system <name>
+		{system specification...}
+	link <system> <other>
+	unlink <system> <other>
+	government <name>
+		{government specification...}
+	fleet <name>
+		{fleet specification...}
+	planet <name>
+		{planet specification...}
+	news <name>
+		{news specification...}
+	shipyard <name>
+		{shipyard specification...}
+	outfitter <name>
+		{outfitter specification...}
+	substitutions
+		{substitutions specification...}
+	<conditions>
 ```
 
 Each event has a name, and can specify what date it happens on. (Most events, however, will be triggered by missions and therefore will not have a fixed date.) The event can then list any number of changes to any of the data types listed above. For example:
 
 ```c++
 event "war begins"
-    date 4 7 3014
-    system "Gamma Corvi"
-        government "Free Worlds"
-        fleet "Small Southern Merchants" 600
-        fleet "Large Southern Merchants" 1400
-        fleet "Small Free Worlds" 600
-        fleet "Large Free Worlds" 1300
+	date 4 7 3014
+	system "Gamma Corvi"
+		government "Free Worlds"
+		fleet "Small Southern Merchants" 600
+		fleet "Large Southern Merchants" 1400
+		fleet "Small Free Worlds" 600
+		fleet "Large Free Worlds" 1300
 ```
 
 In general, anything specified in an event will overwrite the previous value of that data element. (For example, specifying a new `government` replaces the previous one.) For data elements that can take a list of an arbitrary number of values (such as the `attributes` of a system or planet), if an event modifies that element, by default it replaces all of the previous values. To make it clearer whether that is your intention or not, **starting in version 0.9.7** you can use the `add` and `remove` keywords:
 
 ```c++
 event "goodbye world"
-    planet "Earth"
-        remove attributes "urban" "tourism"
-        add attributes "barren wasteland"
-        remove shipyard
-        remove outfitter
+	planet "Earth"
+		remove attributes "urban" "tourism"
+		add attributes "barren wasteland"
+		remove shipyard
+		remove outfitter
 ```
 
 While many elements support the "add" & "remove" keywords, not all do. Often, if an element has a complex specification (such as a planet's `tribute` definition), only the "remove" keyword will work. The "remove" keyword can also be used with any element of a `system` or `planet` to reset it to its default value, as shown in the Earth example above for its `shipyard`s.
@@ -62,9 +62,9 @@ In general, it's not possible to "remove" a specific value for elements whose va
 
 ```c++
 event "new ship available"
-    fleet "Small Southern Pirates"
-        add variant 5
-            "Doomship"
+	fleet "Small Southern Pirates"
+		add variant 5
+			"Doomship"
 ```
 
 # Basic event characteristics
@@ -96,51 +96,51 @@ As with systems, visiting a planet allows the player to view information about i
 
 ```html
 galaxy <name>
-    pos <x#> <y#>
-    sprite <path>
+	pos <x#> <y#>
+	sprite <path>
 ```
 Update the named `galaxy`, including the `sprite` and position of the sprite on the Galactic Map. As with all images, the specified path is relative to the `images/` directory, e.g. `ui/my-galaxy` instead of `images/ui/my-galaxy`.
 
 ```html
 system <name>
-    hidden
-    remove hidden
-    pos <x#> <y#>
-    government <gov>
-    remove government
-    music <path>
-    remove music
-    habitable <radius#>
-    belt <radius#>
-    haze <path>
-    remove haze
-    trade <commodity> <base-value#>
-    remove trade
-    [(add | remove)] attributes <value>...
-    [remove] link <system>
-    remove link
-    [add] asteroids <name> <count#> <energy#>
-    remove asteroids [<name>]
-    [add] minables <name> <count#> <energy#>
-    remove minables [<name>]
-    [add] fleet <name> <period#>
-    remove fleet [<name>]
-    [add] hazard <name> <period#>
-    remove hazard [<name>]
-    [add] object [<planet>]
-        sprite <path>
-        distance <radius#>
-        period <days#>
-        offset <degrees#>
-        object [<planet>]
-            ...
-    remove object
-        sprite <path>
-        distance <radius#>
-        period <days#>
-        offset <degrees#>
-    remove object
-    ...
+	hidden
+	remove hidden
+	pos <x#> <y#>
+	government <gov>
+	remove government
+	music <path>
+	remove music
+	habitable <radius#>
+	belt <radius#>
+	haze <path>
+	remove haze
+	trade <commodity> <base-value#>
+	remove trade
+	[(add | remove)] attributes <value>...
+	[remove] link <system>
+	remove link
+	[add] asteroids <name> <count#> <energy#>
+	remove asteroids [<name>]
+	[add] minables <name> <count#> <energy#>
+	remove minables [<name>]
+	[add] fleet <name> <period#>
+	remove fleet [<name>]
+	[add] hazard <name> <period#>
+	remove hazard [<name>]
+	[add] object [<planet>]
+		sprite <path>
+		distance <radius#>
+		period <days#>
+		offset <degrees#>
+		object [<planet>]
+			...
+	remove object
+		sprite <path>
+		distance <radius#>
+		period <days#>
+		offset <degrees#>
+	remove object
+	...
 ```
 Update the specified elements of the named `system`. The physical characteristics of systems (`habitable`, `belt`, `object`s etc.) are generally best previewed using the [map editor](https://github.com/endless-sky/endless-sky-editor).
 
@@ -154,94 +154,94 @@ Adds or removes a hyperspace link between the given systems. (Unlike the definit
 
 ```html
 government <name>
-    ...
+	...
 ```
 Update the specified elements of the named `government`. For more information on the tokens and expected syntax, see the page on creating [governments](CreatingGovernments).
 
 ```html
 fleet <name>
-    government <government>
-    names <phrase>
-    fighters <phrase>
-    cargo <value#>
-    commodities <name>...
-    outfitters <name>...
-    [(add | remove)] personality [<flag>...]
-    personality [<flag>...]
-        confusion <value#>
-    [add] variant [<weight#>]
-        <ship> <count#>
-        ...
-    remove variant
-        ...
+	government <government>
+	names <phrase>
+	fighters <phrase>
+	cargo <value#>
+	commodities <name>...
+	outfitters <name>...
+	[(add | remove)] personality [<flag>...]
+	personality [<flag>...]
+		confusion <value#>
+	[add] variant [<weight#>]
+		<ship> <count#>
+		...
+	remove variant
+		...
 ```
 Update the specified elements of the named `fleet`. To remove a variant from a fleet, the specified ships and their counts must be a permutation of an existing variant.
 
 ```html
 planet <name>
-    landscape <path>
-    music <name>
-    description <text>
-    spaceport <text>
-    government <name>
-    [(add | remove)] attributes <value>...
-    [(add | remove)] shipyard <name>
-    [(add | remove)] outfitter <name>
-    "required reputation" <rep-for-landing#>
-    bribe <percentage#>
-    security <percentage#>
-    tribute <value#>
-        threshold <needed-combat-rating#>
-        fleet <name> <count#>
-        ...
-    ...
+	landscape <path>
+	music <name>
+	description <text>
+	spaceport <text>
+	government <name>
+	[(add | remove)] attributes <value>...
+	[(add | remove)] shipyard <name>
+	[(add | remove)] outfitter <name>
+	"required reputation" <rep-for-landing#>
+	bribe <percentage#>
+	security <percentage#>
+	tribute <value#>
+		threshold <needed-combat-rating#>
+		fleet <name> <count#>
+		...
+	...
 ```
 Update the specified elements of the named `planet`. Note that planetary music can only be in the `.mp3` format.
 
 ```html
 news
-    location
-        {filter specification...}
-    name
-        {phrase specification...}
-    portrait <sprite>...
-        <sprite>
-        ...
-    message
-        {phrase specification...}
+	location
+		{filter specification...}
+	name
+		{phrase specification...}
+	portrait <sprite>...
+		<sprite>
+		...
+	message
+		{phrase specification...}
 ```
 Update the specified elements of the named `news`. A common usage of an `event` to modify `news` would be to "activate" a news source by providing a location:
 ```c++
 event "breaking news"
-    news "terrorism on the rise"
-        location
-            government "Republic" "Syndicate"
+	news "terrorism on the rise"
+		location
+			government "Republic" "Syndicate"
 ```
 For more information and examples, consult the page on [news](CreatingNews) or the [`news.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/news.txt) file.
 
 ```html
 shipyard <name>
-    clear
-    remove [<ship>]
-    [add] <ship>
-    ...
+	clear
+	remove [<ship>]
+	[add] <ship>
+	...
 ```
 Replace the contents of the named `shipyard` with the specified elements. To avoid removal of all preexisting ships, use the `add <ship>` syntax. `Clear` and `remove` with no arguments are functionally equivalent.
 
 ```html
 outfitter <name>
-    clear
-    remove [<outfit>]
-    [add] <outfit>
-    ...
+	clear
+	remove [<outfit>]
+	[add] <outfit>
+	...
 ```
 Replace the contents of the named `outfitter` with the specified elements. To avoid removal of all preexisting outfits, use the `add <outfit>` syntax. `Clear` and `remove` with no arguments are functionally equivalent.
 
 ```html
 substitution
-    <text> <replacement>
-        [<condition set>]
-    ...
+	<text> <replacement>
+		[<condition set>]
+	...
 ```
 Adds a new global substitution. If a previous global replacement existed with the same text and the new substitution has no condition set, then the new replacement will always be used. Consult the [substitutions](CreatingSubstitutions) page for more information.
 
@@ -251,13 +251,13 @@ An event definition can also include instructions to change the values of condit
 
 ```c++
 mission "show the war conversation"
-    landing
-    source
-        government "Republic" "Syndicate" "Free Worlds"
-    to offer
-        has "event: war begins"
-    on offer
-        conversation
-            ...
+	landing
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	to offer
+		has "event: war begins"
+	on offer
+		conversation
+			...
 ```
 The above mission requires the event named "war begins" to have occurred before it can offer.

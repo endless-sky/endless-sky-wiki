@@ -115,43 +115,43 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * As of **v. 0.9.13**, the syntax for the zoom factor of an engine has changed (although the old way of specifying a zoom factor is still supported for compatibility). Two new engine flare types have also been added: `"reverse engine"` and `"steering engine"`, the former of which only creates flares when using a reverse thruster, and the latter of which only creates flares when steering. `"engine"` and its variants can now have the following (optional) children:
 
-    * `"zoom" <zoom#>`: the zoom factor of this engine.
+	* `"zoom" <zoom#>`: the zoom factor of this engine.
 
-    * `"angle" <degrees#>`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
+	* `"angle" <degrees#>`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
 
-    * `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite instead of under it.
+	* `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite instead of under it.
 
-    * `"[left | right]"`: keywords with no value used only for steering engines. Specifies in what direction the ship must be turning in order for these flares to show. If neither of these keywords are listed, the steering flare will always show when the ship is steering.
+	* `"[left | right]"`: keywords with no value used only for steering engines. Specifies in what direction the ship must be turning in order for these flares to show. If neither of these keywords are listed, the steering flare will always show when the ship is steering.
 
 * `"gun" <x#> <y#>`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations¹ listed here. The following lines can be added as a "child" of the gun line:
 
-    * `"angle" <degrees#>`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
+	* `"angle" <degrees#>`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
 
-    * `"parallel"`: a single keyword with no value that specifies that the gun should fire in parallel with other guns of the same angle. That is, the gun fires straight out from its facing angle. The default behavior of guns is to angle their fire slightly in order to converge on a single point in the distance. **(v. 0.9.13)**
+	* `"parallel"`: a single keyword with no value that specifies that the gun should fire in parallel with other guns of the same angle. That is, the gun fires straight out from its facing angle. The default behavior of guns is to angle their fire slightly in order to converge on a single point in the distance. **(v. 0.9.13)**
 
-    * `"over"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should be drawn on top of the ship. By default, gun hardpoint sprites are drawn under the ship. **(v. 0.9.15)**
+	* `"over"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should be drawn on top of the ship. By default, gun hardpoint sprites are drawn under the ship. **(v. 0.9.15)**
 
 * `"turret" <x#> <y#>`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations¹ listed here. The following lines can be added as a "child" of the turret line:
 
-    * `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
+	* `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
 
 * `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
 
   * The following lines can be added as a "child" of the bay line:
 
-    * `"[over | under]"`: a keyword with no value that changes the Z position of the bay, displaying the carried ship either over or under the sprite of the carrying ship. Omitting this keyword means that carried ship is not displayed externally on the carrier.
+	* `"[over | under]"`: a keyword with no value that changes the Z position of the bay, displaying the carried ship either over or under the sprite of the carrying ship. Omitting this keyword means that carried ship is not displayed externally on the carrier.
 
-    * `"[left | right | back]"`: a keyword with no value that changes the facing direction of the carried ship, the default direction being facing forward. This also controls the direction in which the carried ship is first facing when deployed.
+	* `"[left | right | back]"`: a keyword with no value that changes the facing direction of the carried ship, the default direction being facing forward. This also controls the direction in which the carried ship is first facing when deployed.
 
-    * `"angle" <degrees#>`: a value of degrees that allows for facing the carried ship in any direction, as an alternative to the set left, right, back directions.
+	* `"angle" <degrees#>`: a value of degrees that allows for facing the carried ship in any direction, as an alternative to the set left, right, back directions.
 
-    * `"launch effect" <effect> [<count#>]`: an [effect](CreatingEffects) that is drawn at this bay's coordinates when its carried ship deploys.
+	* `"launch effect" <effect> [<count#>]`: an [effect](CreatingEffects) that is drawn at this bay's coordinates when its carried ship deploys.
 
   * Prior to **v. 0.9.13** the syntax for adding bays to a ship was different, although it is still supported for compatibility purposes. The old method for defining a bay was as follows:
 
-    * `(fighter | drone) <x#> <y#> [over | under] [left | right | back]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`
+	* `(fighter | drone) <x#> <y#> [over | under] [left | right | back]`: specify a fighter or drone bay at the given (x, y) coordinates, e.g. `drone -14 64`
 
-    * As of **v. 0.9.3** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
+	* As of **v. 0.9.3** the coordinates can be followed by a Z position of "over" or "under" to make the carried fighter visible over or under the ship that is carrying it. You can also specify which way the bay faces, "left" or "right" or "back" rather than the default of straight ahead, e.g. `fighter 20 50 over right`.
 
 * `"explode" <effect> [<count#>]`: an effect to create when the ship is dying, and the number of them to create (e.g. `explode "small explosion" 10`). These effects are created randomly at an increasing rate until the ship finally explodes in one big explosion where 50% of the explosion effects are generated a second time.
 
@@ -241,7 +241,7 @@ The syntax for a variant is:
 
 ```
 ship <base name> <variant name>
-    ...
+	...
 ```
 
 Instead of specifying all the ship's attributes, the variant should only define a list of outfits. The order of the guns and turrets should also be specified if there are two different kinds of gun outfits or turret outfits, so that it is clear which ones go in which slots. For example:

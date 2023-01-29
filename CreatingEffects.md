@@ -4,23 +4,23 @@ The full syntax of an effect is given below. Most of the parameters are optional
 
 ```html
 effect <name>
-    sprite <name>
-        "scale" <number#>
-        "frame rate" <fps#>
-        "start frame" <number#>
-        "random start frame"
-        "no repeat"
-        "rewind"
-    sound <name>
-    lifetime <frames#>
-    "random lifetime" <frames#>
-    "velocity scale" <scale#>
-    "random velocity" <velocity#>
-    "random angle" <degrees#>
-    "random spin" <degrees#>
-    "random frame rate" <fps#>
-    "absolute velocity" <velocity#>
-    "absolute angle" <degrees#>
+	sprite <name>
+		"scale" <number#>
+		"frame rate" <fps#>
+		"start frame" <number#>
+		"random start frame"
+		"no repeat"
+		"rewind"
+	sound <name>
+	lifetime <frames#>
+	"random lifetime" <frames#>
+	"velocity scale" <scale#>
+	"random velocity" <velocity#>
+	"random angle" <degrees#>
+	"random spin" <degrees#>
+	"random frame rate" <fps#>
+	"absolute velocity" <velocity#>
+	"absolute angle" <degrees#>
 ```
 
 ### Sprite definition
