@@ -64,9 +64,9 @@ As a special shortcut, "++" means "+= 1" and "--" means "-= 1". You must place a
 Note that the `/=` operator performs [**integer division**](https://mathworld.wolfram.com/IntegerDivision.html), not floating-point division.
 
 
-## Reserved Conditions
+## Reserved Conditions (Autoconditions)
 
-These condition names are created and used by the game for special purposes. You can manipulate some manually in missions or events, but in most cases the game will recompute the appropriate value.
+These condition names are created and used by the game for special purposes. You can manipulate some manually in missions or events, but in most cases the game will recompute the appropriate value. As a point of terminology, these "reserved conditions" are what many people in the community call "autoconditions" or auto-conditions."
 
 ### Modifiable
 The game manages these conditions, but you are able to adjust the value in conversations, missions, and events, and the new value will be kept. For example, you could create a mission that modifies the player's reputation with a specific government.
