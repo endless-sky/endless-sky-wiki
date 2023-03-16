@@ -366,6 +366,20 @@ If the destination is specified via a filter, the filter will not match planets 
 The `clearance` tag may have child entries that specify a [location filter](#filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
 
 ```html
+mission "A Mission with Phrases"
+	name "${Party} on <planet>"
+	description "Take <cargo> to <planet> for a ${party} and receive <payment>. Avoid being detected or you will pay 50,000 credits."
+	cargo "${amazing} ${party supplies}" 100
+	illegal 50000 "You think we'll let a ${shakespearean insults} break the law?"
+	clearance `The ${band} band manager responds to your hail with landing coordinates.`
+	blocked `You need more cargo space for this ${fun} mission.`
+	on offer
+		dialog "A ${person} offers you an odd deal: bring <cargo> to a ${party} on <planet> for <payment>. It sounds illegal, but fun."
+```
+
+Beginning in **v. 0.10.1**, the `name`, the `description`, the `illegal`, `clearance`, and `blocked` messages, any `dialog` text within `on *` actions or associated with `npc`s, and the `cargo` string can contain nested phrases, with the phrase name bounded by `&{` and `}`.
+
+```html
 infiltrating
 ```
 
