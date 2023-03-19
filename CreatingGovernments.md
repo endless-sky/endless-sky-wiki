@@ -10,6 +10,10 @@ government <name>
 	swizzle <value#>
 	color (<r#> <g#> <b#> | <name>)
 	"player reputation" <initial-rep#>
+	reputation
+		"player reputation" <initial-rep#>
+		min <minimum-rep#>
+		max <maximum-rep#>
 	"crew attack" <atk#>
 	"crew defense" <def#>
 	"attitude toward"
@@ -82,6 +86,17 @@ Starting in **v. 0.10.0**, the color that a government uses can be set by name, 
 "player reputation" <initial-rep#>
 ```
 The player's initial reputation with a government determines whether they are viewed as hostile, friendly, or neutral.
+
+```html
+reputation
+	"player reputation" <initial-rep#>
+	min <minimum-rep#>
+	max <maximum-rep#>
+```
+
+Beginning in **v. 0.10.1**, there also exists a `reputation` node which has various children nodes that control the reputation behavior of a government. The player's initial reputation with a government can also be defined here, in addition to the following settings:
+* `min`: The minimum reputation below which the player's reputation cannot drop.
+* `max`: The maximum reputation above which the player's reputation cannot rise.
 
 #### Penalty For
 ```html
