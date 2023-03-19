@@ -586,7 +586,15 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `turn`: If the projectile is homing, how much it is allowed to turn each frame to seek its target. Otherwise, it will *always* turn by this amount, which can be used to create spinning projectiles or other effects.
 
-* `inaccuracy`: the maximum error, in degrees, in a projectile's firing angle. Inaccuracy limits a weapon's effectiveness at long range but can also make it look a bit more "natural" and unpredictable.
+* `inaccuracy`: the maximum error, in degrees, in a projectile's firing angle. Inaccuracy limits a weapon's effectiveness at long range but can also make it look a bit more "natural" and unpredictable. Beginning in **v. 0.10.1**, how a weapon's inaccuracy is distributed can be controlled by the following child nodes:
+
+  * `triangular`: the inaccuracy forms a triangular distribution, being 2/3rds as likely to appear in the middle 1/3rd of the angle, and 1/3rd as likely to appear in the outer 2/3rds of the angle. This is the default behavior if no distribution is defined, and was the only behavior prior to **v. 0.10.1**.
+
+  * `uniform`: the inaccuracy forms a uniform distribution, being equally as likely to fire the projectile anywhere within the inaccuracy angle.
+
+  * `[narrow | medium | wide]`: the inaccuracy forms a normal distribution with either a narrow, medium, or wide standard deviation (.13, .234, and .314 respectively).
+
+  * `inverted`: inverts the distribution of only narrow, medium, or wide inaccuracies, so that projectiles are more likely to appear at the edges of the angle rather than the middle.
 
 * `"turret turn"`: the number of degrees that this turret rotates per frame. (**v. 0.9.7**)
 
