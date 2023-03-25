@@ -128,6 +128,8 @@ mission <name>
 			(has | not) <condition>
 			(and | or)
 				...
+		on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke)
+			...
 		government <name>
 		personality <type>...
 			<type>...
@@ -634,6 +636,8 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		(has | not) <condition>
 		(and | or)
 			...
+	on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke)
+		...
 	government <name>
 	personality <type>...
 		<type>...
@@ -680,13 +684,31 @@ to (spawn | despawn)
 		...
 ```
 
-**Starting in v.0.9.13,** `to (spawn | despawn)` works similarly to `to (offer | complete | fail | accept)` for missions, containing a condition set that must be met for something to occur.
+Starting in **v. 0.9.13**, `to (spawn | despawn)` works similarly to `to (offer | complete | fail | accept)` for missions, containing a condition set that must be met for something to occur.
 
 An NPC will not spawn if its `to spawn` conditions are not met, and any spawned NPC will despawn if its `to despawn` conditions are met. NPCs will only spawn once the player departs from a planet and despawn once the player lands, but these conditions are evaluated at multiple points: after accepting the mission, on each departure, on each system jump, and on each landing.
 
 Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
 When combined with an `apply` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
+
+```html
+on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke)
+	...
+```
+
+Starting in **v. 0.10.1**, `on *` nodes can be added to NPCs to trigger actions on various state changes for the NPC. The current triggers are as follows:
+
+* `kill`: The action will run when every ship in the NPC has been destroyed.
+* `board`: The action will run after every ship in the NPC has been boarded. Will not repeat on subsequent boarding actions.
+* `assist`: The action will run after every ship in the NPC has been assisted. Will not repeat on subsequent assist actions.
+* `disable`: The action will run after every ship in the NPC has been disabled. Will not repeat on subsequent disable actions.
+* `"scan cargo"`: The action will run after every ship in the NPC has had its cargo scanned. Will not repeat on subsequent scan actions.
+* `"scan outfits"`: The action will run after every ship in the NPC has had its outfits scanned. Will not repeat on subsequent scan actions.
+* `capture`: The action will run after every ship in the NPC has been captured.
+* `provoke`: The action will run if any ship in the NPC is provoked. Will not repeat on subsequent provoke actions.
+
+For details on actions that can be run by these nodes, see the [Triggers](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#triggers) section.
 
 ```html
 government <name>
