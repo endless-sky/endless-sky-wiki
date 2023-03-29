@@ -34,6 +34,8 @@ A substitutions node can define multiple text replacements at once.
 
 Text replacement lines are able to define a [condition set](Player-Conditions) that determines whether the text replacement is used. This allows for certain text replacements to only be used under certain circumstances. Combining this with defining multiple replacements for the same piece of text, you can create a substitution that reacts to the player's actions or attributes.
 
+Note that currently, the condition sets for substitutions are evaluated when the mission is instantiated. This means that actions taken during a mission can not change the outcome of any substitutions, as they have already made their text replacements. If you wish to change the outcome of text based on conditions that could have changed during the mission, then you should instead use [`branch`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations#branch) or `to display`.
+
 # Examples
 
 ### Using global substitutions
