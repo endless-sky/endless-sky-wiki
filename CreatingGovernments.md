@@ -34,6 +34,7 @@ government <name>
 	bribe <percentage#>
 	fine <percentage#>
 	"death sentence" <conversation>
+	"send untranslated hails"
 	"friendly hail" <phrase>
 	"friendly disabled hail" <phrase>
 	"hostile hail" <phrase>
@@ -226,6 +227,7 @@ Before you can leave your ship, the <government name> authorities show up and be
 
 #### Hails
 ```html
+"send untranslated hails"
 "friendly hail" <phrase>
 "friendly disabled hail" <phrase>
 "hostile hail" <phrase>
@@ -247,6 +249,8 @@ If not specified, defaults are provided for disabled ships of all governments. T
 "hostile disabled hail" "hostile disabled"
 ```
 No defaults are provided for non-disabled hails (meaning if not specified, the ships will not randomly "chat" while the player is in-flight).
+
+In order to receive hails from a ship, you must share a language with its government. Languages are discussed in more detail below. Beginning in **v. 0.10.1**, the only exception to this is if the government has the `"send untranslated hails"` token, which allows its ships to send hails even if you do not share a language.
 
 #### Language
 ```html
