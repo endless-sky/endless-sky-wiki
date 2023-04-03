@@ -112,9 +112,12 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"outfit: <outfit>"` is the number of outfits that you own of the given type which are local to the player. Local is defined differently depending on the player's location. **(v. 0.10.0)**
   * If the player is in orbit, "local" is any outfit installed on or in the cargo of in-system ships which are also in orbit (i.e. parked ships in-system don't count).
   * If the player is landed, "local" is any outfit installed on any landed ships (i.e. disabled ships in-system don't count), in the player's pooled cargo, or in storage on the planet the player is landed on.
+  * In **v. 0.10.1**, changed to exclude parked ships as to match most other conditions.
 * `"outfit (all): <outfit>"` is the number of outfits that you own of the given type anywhere in the game, include out of system ships, parked ships, and any planetary storage. **(v. 0.10.0)**
 * `"outfit (installed): <outfit>"` is the number of outfits of the given type that you have installed and local. **(v. 0.10.0)**
+  * In **v. 0.10.1**, changed to exclude parked ships as to match most other conditions.
 * `"outfit (all installed): <outfit>"` is the number of outfits of the given type that you have installed anywhere. **(v. 0.10.0)**
+* `"outfit (parked): <outfit>"` is the number of outfits of the given type that you have installed on parked ships local to you. If you are not landed on a planet, then this always returns a value of 0. **(v. 0.10.1)**
 * `"outfit (flagship installed): <outfit>"` is the number of outfits of the given type that you have installed on your flagship. **(v. 0.10.0)**
 * `"outfit (cargo): <outfit>"` is the number of outfits of the given type that you have in cargo and local. **(v. 0.10.0)**
 * `"outfit (all cargo): <outfit>"` is the number of outfits of the given type that you have in cargo anywhere. **(v. 0.10.0)**
