@@ -45,7 +45,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `"flotsam sprite"`: the image that is drawn when this outfit is dropped in space, either because it was jettisoned by a ship or because it was the payload of a minable asteroid. If no flotsam sprite is given, then the default flotsam box is used.
 
-* `"flotsam chance"`: the chance that any given unit of this outfit will survive its ship being destroyed as a flotsam that can be picked up by other ships. Ammunition has a default flotsam chance of 5%, should not flotsam chance be provided. All other outfits have a default of 0%. A negative flotsam chance can be used on ammunition to mean that the outfit will never drop as a flotsam. **(v. 0.10.0)**
+* `"flotsam chance"`: a value from 0 to 1 that denotes the chance that any given unit of this outfit will survive its ship being destroyed as a flotsam that can be picked up by other ships. Ammunition has a default flotsam chance of 5%, should no flotsam chance be provided. All other outfits have a default of 0%. A negative flotsam chance can be used on ammunition to mean that the outfit will never drop as a flotsam. **(v. 0.10.0)**
 
 * `"flare sprite"`: for thrusters, the image that is drawn at each of the engine [hardpoints](CreatingShips) when the thruster is firing.
 
