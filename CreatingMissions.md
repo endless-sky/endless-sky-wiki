@@ -5,6 +5,7 @@
 * [Basic mission characteristics](#basics)
 * [Conditions](#conditions)
 * [Source and destination filters](#filters)
+* [Distance Calculation Settings](#settings)
 * [Non-Player Characters (NPCs)](#npcs)
 * [Triggers](#triggers)
 
@@ -122,6 +123,9 @@ mission <name>
 			...
 		not
 			...
+	"distance calculation settings"
+		["all wormholes" | "only unrestricted wormholes" | "no wormholes"]
+		"assumes jump drive"
 	npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
 		to (spawn | despawn)
 			<condition> <comp> <value>
@@ -623,6 +627,26 @@ source
 3)  neighbor
 		neighbor government "Republic"
 ```
+
+<a name="settings">
+
+# Distance Calculation Settings
+</a>
+
+The distance from the source to the destination, and to every waypoint or stopover in between if they exist, is used to determine mission attributes such as payment multipliers and deadlines. The default behavior of this distance calculation is to only make use of hyperspace links and exclude wormholes, but beginning in **v. 0.10.1**, the distance calculation can have its behavior defined by the mission.
+
+```
+"distance calculation settings"
+	["all wormholes" | "only unrestricted wormholes" | "no wormholes"]
+	"assumes jump drive"
+```
+
+One of the following tags may be provided to determine whether wormholes are used in distance calculations:
+* `"all wormholes"`: All wormholes may be used.
+* `"only unrestricted wormholes"`: Excludes wormholes that require special access to be used, such as requiring an attribute on the ship in order to enter.
+* `"no wormholes"`: No wormholes will be used. The default behavior.
+
+The other available tag, `"assumes jump drive"`, allows the distance calculation to make use of unlinked jumps using default jump drive stats (200 fuel and 100 range). 
 
 <a name="npcs">
 
