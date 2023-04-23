@@ -855,10 +855,11 @@ There are eleven events that can trigger a response of some sort:
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 * `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 
-Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a location filter:
+Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a location filter. This filter is formatted in the same manner as `source` or `destination` for missions, or `system` for NPCs.
 ```html
 on enter
-	[system <name>...]
+	system
+		<filter>
 	...
 ``` 
 
