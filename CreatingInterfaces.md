@@ -21,26 +21,33 @@
 interface <name> [<anchor>]
 	anchor [<anchor>]
 	(active | visible) [if <condition>]
+	point <name>
+		from <x#> <y#> [<anchor>]
+		[align [<anchor>]]
+		[pad <x#> <y#>]
 	box <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
-	outline <name>
+	(sprite <sprite>) | (image | outline <name>)
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
 		[colored]
-	(ring | bar) <name>
-		center <x#> <y#> [<anchor>]
-		dimensions <x#> <y#>
-		[color <color>]
-		[size <size#>]
-	string <name>
+	(label <text>) | (string <name>) | (button <key> <text>)
 		from <x#> <y#> [<anchor>]
 		[color <color>]
 		width <width#>
 		[truncate <truncation>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
+	(ring | bar) <name>
+		center <x#> <y#> [<anchor>]
+		dimensions <x#> <y#>
+		[color <color>]
+		[size <size#>]
+	line
+		from <x#> <y#> to <x#> <y#> [<anchor>]
+		color <color>
 	value <name> <value>
 ```
 
@@ -131,7 +138,7 @@ Wherever any one of these methods of defining position and size is valid, any of
 	(active | visible) [if <condition>]
 ```
 These nodes mean subsequent elements will only be active or visible, respectively, if the given condition was set in the information passed to this interface object when it was drawn.
-They are not mutually exclusive: an element can be active and visible, inactive and visible, active and invisible, and inactive and invisible.
+They are not mutually exclusive: an element can be active and visible, inactive and visible, or inactive and invisible, however, and element cannot be active and invisible.
 The requirement will be appllied to all subsequent elements until either the end of this interface definition, or until an overriding `active` or `visible` node.
 If a node only contains the token `active` or `visible`, with no condition, then any previous condition requirement in place will not apply to subsequent elements, until a new requirement is defined.
 
