@@ -51,7 +51,7 @@
 **Descriptions of game engine technology**
 
 * [List of text replacements](CreatingMissions#text-replacements)
-* [List of reserved player conditions](Player-Conditions#reserved-conditions)
+* [List of reserved player conditions](Player-Conditions#reserved-conditions-autoconditions)
 * [Tricks for creating special blending modes](BlendingModes)
 * [Using frame tweening for smooth animations](AnimationTweening)
 * [Motion blur rendering using OpenGL shaders](MotionBlur)
