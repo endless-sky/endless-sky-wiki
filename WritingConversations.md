@@ -123,12 +123,41 @@ To maintain consistency across all the text in the game:
 * Use [Oxford commas](https://en.wikipedia.org/wiki/Serial_comma): `a, b, and c`, not `a, b and c`.
 * Avoid non-ASCII characters, including [curly quotes](https://en.wikipedia.org/wiki/Quotation_mark#Quotation_marks_in_English).
 
+
 ```js
 	`"${flowers} are the best flower!`
 ```
 
 Beginning in **v. 0.10.0**, phrases can be referred to in conversation text.
 The phrase name should be preceded by "${" and followed by "}", and it will automatically be replaced with text selected from that phrase (or, the phrase name itself if no valid phrase with the given name is found) when the conversation text is displayed.
+
+```js
+	`"I need &[xyz] cows tomorrow."`
+	`"I need &[tons@xyz] of cows tomorrow."`
+	`"I need &[scaled@abc] cows tomorrow."`
+	`"I need &[credits@abc] of cows tomorrow."`
+	`"I need &[number@abc] cows tomorrow."`
+	`"I need &[raw@abc] cows tomorrow."`
+	`"I need &[playtime@abc] of your life."`
+```
+
+Beginning in **v. 0.10.1**, the values of [player conditions](PlayerConditions) can be substituted into conversations, with various types off formatting.
+
+Given the conditions:
+```html
+	"abc" 5000
+	"xyz" 5000000
+```
+The above example will appear as:
+```js
+	`"I need 5,000 cows tomorrow"`
+	`"I need 5,000 tons of cows tomorrow."`
+	`"I need 5M cows tomorrow."`
+	`"I need 5M credits of cows tomorrow."`
+	`"I need 5,000,000 cows tomorrow."`
+	`"I need 5000000 cows tomorrow."`
+	`"I need 57d 20h 53m 20s of your life."`
+```
 
 # Name
 
