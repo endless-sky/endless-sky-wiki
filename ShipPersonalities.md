@@ -26,7 +26,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 ### Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#npcs):
 
 * `staying`: never leaves the system it starts out in.
-* `lingering`: will remain in the system for an additional, on average, 300 frames or the smallest period of any fleet assigned to the system, whichever is larger, when there is nothing to do. **(v. 0.10.1)**
+* `lingering`: will remain in the system for an additional time equal to one quarter of the smallest period of any fleet assigned to the system, when there is nothing to do. Except when the ship is a mission NPC and can follow the player, or when it already has a destination system. **(v. 0.10.1)**
 * `entering`: enters its starting system via hyperspace instead of appearing there.
 * `waiting`: starts out in space in its system.
 * `launching`: takes off from the planet with the player, even if it normally couldn't land there. **(v. 0.9.9)**
