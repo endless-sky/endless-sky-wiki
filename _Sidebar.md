@@ -40,7 +40,8 @@
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
-* [Player Conditions](Player-Conditions)
+* [Player conditions](Player-Conditions)
+* [Ship personalities](ShipPersonalities)
 
 **Compiling or modifying the source code**
 
