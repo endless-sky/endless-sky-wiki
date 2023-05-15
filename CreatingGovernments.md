@@ -306,7 +306,7 @@ enforces
 	{location filter specification...}
 enforces [all]
 ```
-Each use of the optional "enforces" token introduces a description block for a [location filter](CreatingMissions#filters) that describes a set of systems and planets wherein this government has the authority to scan and fine other ships. If no "enforces" tokens are present, then the government is considered to have universal policing authority. Only **one** filter needs to apply in order for the system or planet to be enforced by the given government.
+Each use of the optional "enforces" token introduces a description block for a [location filter](LocationFilters) that describes a set of systems and planets wherein this government has the authority to scan and fine other ships. If no "enforces" tokens are present, then the government is considered to have universal policing authority. Only **one** filter needs to apply in order for the system or planet to be enforced by the given government.
 
 If instead of a description block, the "enforces" keyword is followed by the keyword "all", then all previously specified "enforces" blocks are ignored. This makes it possible for plugins to modify the behavior of governments defined in the base game or other plugins that were loaded earlier.
 

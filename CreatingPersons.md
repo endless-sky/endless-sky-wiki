@@ -65,7 +65,7 @@ system
 	...
 ```
 
-This defines a location filter for possible systems, using the same syntax as the source, destination, waypoint, and stopover filters in [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#filters). This controls which systems the person will appear in. For example, they might only appear in systems belonging to a certain government, or in a certain area.
+This defines a [location filter](LocationFilters) for possible systems, using the same syntax as the source, destination, waypoint, and stopover filters in [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#filters). This controls which systems the person will appear in. For example, they might only appear in systems belonging to a certain government, or in a certain area.
 
 ```html
 phrase
