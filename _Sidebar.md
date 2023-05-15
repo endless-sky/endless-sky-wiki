@@ -42,6 +42,7 @@
 * [Editing interfaces](CreatingInterfaces)
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
+* [Location filters](LocationFilters)
 
 **Compiling or modifying the source code**
 
