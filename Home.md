@@ -6,7 +6,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [GitHub Discussions](https://github.com/endless-sky/endless-sky/discussions)
 * [Steam Forums](https://steamcommunity.com/app/404410/discussions/)
 * [Community Discord](https://discord.gg/ZeuASSx)
-* [Reporting bugs and requesting new features](https://github.com/endless-sky/endless-sky/blob/master/CONTRIBUTING.md)
+* [Reporting bugs and requesting new features](https://github.com/endless-sky/endless-sky/blob/master/docs/CONTRIBUTING.md)
 
 ### Story
 
