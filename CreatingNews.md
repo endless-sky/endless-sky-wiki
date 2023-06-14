@@ -191,7 +191,7 @@ news "contributing"
 		word
 			"."
 ```
-For additional examples, see [`news.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/news.txt).
+For additional examples, see [`news.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/human/news.txt).
 
 <a name="modifying">
 
