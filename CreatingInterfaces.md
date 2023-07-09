@@ -10,6 +10,7 @@
 * [Labels, Strings, and Buttons](#text)
 * [Bars and Rings](#bar)
 * [Lines](#line)
+* [Pointers](#pointer)
 * [Values](#value)
 
 <a name="intro">
@@ -45,6 +46,12 @@ interface <name> [<anchor>]
 		dimensions <x#> <y#>
 		[color <color>]
 		[size <size#>]
+	pointer
+		from <x#> <y#>
+		to <x#> <y#>
+		["orientation angle" <angle#>]
+		["orientation vector" <x#> <y#>]
+		[color <color>]
 	line
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
@@ -276,6 +283,21 @@ If no color is given, "active" will be used.
 Defines a line to be drawn with this interface.
 If no color is given, "medium" will be used.
 
+<a name="pointer">
+
+# Pointers
+</a>
+```html
+	pointer
+		from <x#> <y#>
+		to <x#> <y#>
+		["orientation angle" <angle#>]
+		["orientation vector" <x#> <y#>]
+		[color <color>]
+```
+Define a pointer to be drawn with this interface.
+The orientation can either be given as an angle in degrees, counting clockwise with 0 being straight up, or a pair of values corresponding to the x and y components of a vector. If no orientation is given, the vector (0, -1) is used.
+If no color is given, "medium" will be used.
 
 <a name="value">
 
