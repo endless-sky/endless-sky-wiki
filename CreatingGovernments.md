@@ -146,7 +146,7 @@ Beginning in **v. 0.10.0**, governments can be made to use the "penalty for" val
 	...
 ```
 
-Beginning in **v. 0.10.0**, governments can be made to use a custom "penalty for" value of specific actions take against a different government. For example, perhaps government A does not mind its ships being disabled, meaning it has `"penalty for" disable 0`. But, government A may not like it if you disable ships from government B. This would mean that A would have a `"custom penalties for" "government B" disable 0.5`, or whatever value you wish to use.
+Beginning in **v. 0.10.0**, governments can be made to use a custom "penalty for" value of specific actions taken against a different government. For example, perhaps government A does not mind its ships being disabled, meaning it has `"penalty for" disable 0`. But, government A may not like it if you disable ships from government B. This would mean that A would have a `"custom penalties for" "government B" disable 0.5`, or whatever value you wish to use.
 
 A government can be made to use both "foreign penalties for" and "custom penalties for." I such cases, if the "custom penalties for" specified a penalty for a specific action, then that penalty is used. For all penalties that the custom penalties don't specify, the foreign penalty for that action is used.
 
