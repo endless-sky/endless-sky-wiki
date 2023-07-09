@@ -331,6 +331,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"cargo scan efficiency"`: the maximum cargo scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your cargo scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with cargo holds above 200 tons taking longer to scan and cargo holds below 200 tons being quicker. **(v. 0.10.0)**
 
+  * `"cargo scan opacity"`: increases the time required for other ships to perform a cargo scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of cargo space to scan. **(v. 0.10.3)**
+
   * ~~`"outfit scan"`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(Deprecated for scan power and speed in 0.9.5)**
 
   * `"outfit scan power"`: the outfit scanning range is 100 times the square root of this number. This means you need four scanners to get twice the range of one scanner. **(v. 0.9.5)**
@@ -338,6 +340,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
   * ~~`"outfit scan speed"`: the time it takes to complete an outfit scan is one second divided by the square root of this number. This means you need four scanners to get twice the speed of one scanner. **(v. 0.9.5)**~~ **(Deprecated for scan efficiency in 0.10.0)**
 
   * `"outfit scan efficiency"`: the maximum outfit scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your outfit scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with outfit capacities above 200 tons taking longer to scan and outfit capacities below 200 tons being quicker. **(v. 0.10.0)**
+
+  * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
 
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
