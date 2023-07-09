@@ -87,9 +87,11 @@ The size of the thumbnail should depend on the size of the ship. Drones may be 1
 
 For some examples, you can look at `data/ships.txt`. The easiest thing to do is to take an existing ship and modify it. If you don't want to change the `ships.txt` file, you can create a file with any name you like, define your ship there, and save it in the data directory. Each ship attributes is defined as a key name (such as "sprite") followed by (usually) one value. If a key or value has spaces in it, you must enclose it in quotation marks or it will be interpreted as two separate keys.
 
-The data files use indentation, like in the Python language, to define sub-entries within an entry. For example, each ship is defined by a line reading `ship "Ship Name"` with no indentation, followed by several keys indented once:
+The data files use indentation, like in the Python language, to define sub-entries within an entry. For example, each ship is defined by a line reading `ship "Model Name"` with no indentation, followed by several keys indented once:
 
-* `"plural"`: plural version of this ship's model name. **(v. 0.9.5)**
+* `"display name"`: the name that appears in game as this ship's model name. If not specified, defaults to the model name. **(v. 0.10.3)**
+
+* `"plural"`: plural version of this ship's model name. If not specified, defaults to the display name with the character "s" added to the end. **(v. 0.9.5)**
 
 * `"noun"`: noun to use when referring to this ship, instead of "ship." For example, this can make the game refer to a ship as a "creature" or an "entity." **(v. 0.9.7)**
 
