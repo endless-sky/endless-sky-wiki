@@ -805,6 +805,8 @@ If `unconstrained` is specified, any ship the player owns may be taken, if it ma
 If `"require outfits"` is specified, only ships with all the outfits present on the base model of the ship being taken will be selected, however this alone will not take the outfits as well.
 If `"with outfits"` is specified, any outfits present on the base model specified in the `take ship` action will be taken as well as the ship, instead of being added to the local stock.
 
+Note: while it may currently be possible to take a ship while the player is in flight, the behavior when this is done should be considered undefined and subject to change.
+
 ```html
 payment [<base#> [<multiplier#>]]
 ```
