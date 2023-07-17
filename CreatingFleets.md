@@ -6,7 +6,11 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a fleet is
 fleet <name>
 	government <name>
 	names <phrase>
-	fighters <phrase>
+	fighters
+		names <phrase>
+		personality <type>...
+			<type>...
+			confusion <amount#>
 	cargo <cargo#>
 	commodities <commodity>...
 	outfitters <outfitter>...
@@ -38,10 +42,35 @@ The name of the [government](CreatingGovernments) that this fleet is a part of. 
 
 ```html
 names <phrase>
+```
+
+Prior to **v. 0.10.3**:
+
+```html
 fighters <phrase>
 ```
 
-The names of the ships in this fleet, constructed from the given [phrase](CreatingPhrases). If only `names` is listed, then all ships in the fleet will pull their name from that phrase. If `fighters` is also listed, then the fighters and drones in the fleet will pull their names from that phrase, while all other ships will still use the `names` phrase.
+The names of the ships in this fleet, constructed from the given [phrase](CreatingPhrases). If only `names` is listed, then all ships in the fleet will pull their name from that phrase. If `fighters` is also listed (prior to **v. 0.10.3**), then the fighters and drones in the fleet will pull their names from that phrase, while all other ships will still use the `names` phrase.
+
+From **v. 0.10.3** onwards, `fighters <phrase>` is deprecated. The name phrase to be used for fighters and drones should instead be provided as follows:
+
+```html
+fighters
+	names <phrase>
+	personality <type>...
+		<type>...
+		confusion <amount#>
+```
+
+Beginning in **v. 0.10.3**, it is also possible to specify a personality definition for fighters and drones separately to that used for other ships.
+If a fighter personality definition is not present, the same personality as is used for other ships will be assigned to the fighters and drones.
+
+It is acceptable for the fighter personality to simply be empty:
+```css
+fighters
+	personality
+```
+This specifies that no special personalities should be given to the fighters and drones, even if there are special personalities for the other ships in the fleet.
 
 ```html
 cargo <cargo#>
