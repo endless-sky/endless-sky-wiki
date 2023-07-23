@@ -12,14 +12,13 @@ Audio:
 
 Graphics:
 
-- [ ] Improved ship graphics (more detail; replace ugly models).
+- [x] Improved ship graphics (more detail; replace ugly models).
 - [x] Replace any particularly boring landscapes.
 - [ ] Website "polls" for letting users mark graphics they don't like.
 - [x] More planet sprites.
 - [x] More special star types.
 - [x] Better space station sprites.
 - [x] Better space station landscapes.
-- [ ] Portrait pictures.
 - [x] Fill in missing outfit sprites (for alien outfits).
 
 User interface:
@@ -52,11 +51,11 @@ Missions:
 
 - [ ] Two more main story lines.
 - [ ] More side missions.
-- [ ] Allow arbitrary condition expressions.
+- [X] Allow arbitrary condition expressions.
 
 Plugins:
 
-- [ ] Centralized website for all available plugins.
+- [x] Centralized website for all available plugins.
 - [ ] Better support for total overrides.
 - [x] Viewing and editing a list of installed plugins.
 - [x] Show plugin about text for each plugin.
