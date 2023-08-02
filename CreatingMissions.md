@@ -857,3 +857,5 @@ fail [<name>]
 ```
 
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list. If you have multiple active missions of the same identifier (which may occur for repeatable missions such as jobs), then a `fail` action that specifies the identifier of those missions will fail all of them at once.
+
+Prior to **v. 0.10.3**, `fail` with no mission name would fail all missions of the same name of the mission that the action was called by, just as if the mission name were explicitly defined. After this version, `fail` properly only fails the mission that called the action.
