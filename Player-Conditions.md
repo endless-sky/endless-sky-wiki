@@ -104,6 +104,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
 * `random` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
+* `"roll: <input>"` will roll a random number in the range `[0, input)` where "input" can be either an integer or the name of a condition, in which case the value of the condition is used. If the input value is <= 1, then the output will always be 0. **(v. 0.10.3)**
 * `"name: <first> <last>"` is the full name of the pilot. **(v. 0.10.0)**
 * `"first name: <first>"` is just the first name. **(v. 0.10.0)**
 * `"last name: <last>` is just the last name. **(v. 0.10.0)**
@@ -136,7 +137,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"previous system: <system>"` is 1 if the name provided was the system you were previously in before your current one, 0 otherwise. **(v. 0.10.0)**
 * `"entered system by: (take off | hyperdrive | jump drive | wormhole)"` is the method by which you entered the system you're currently in. If you did not enter the current system by a given method, the condition will return 0. Returns 1 if the method was used. The "take off" method is true after taking off from a planet. The "hyperdrive" method is true if you entered using a hyperdrive. The "jump drive" method is true if you entered using a jump drive. The "wormhole" method is true if you entered via a wormhole. **(v. 0.10.0)**
 * `"raid chance in system: <system>"` is the percent chance that a raid fleet will spawn in the given system given your fleet's current pirate attraction value, multiplied by 1000 in order to put it into a usable integer range. If a system contains no raid fleets, or the player's attraction is too low to spawn a raid fleet, then the result will be 0. For more information on how raid fleets behavior, see the [Creating Governments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid) page. **(v. 0.10.0)**
-* `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded.
+* `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 
 <a name="expressions">
 
