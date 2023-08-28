@@ -51,6 +51,14 @@ ship "Star Barge"
 	...
 ```
 
+**Swizzle Mask (v. 0.10.3)**: Sometimes you don't want to have your whole ship be swizzled, but only a part of the sprite. This is where swizzle masks come in. Create an image the size of the ship sprite consisting of only two pixels, white and black. Any pixel that is black on the mask will get its corresponding pixel swizzled, while a white pixel denotes pixels that will not get swizzled. Example:
+
+![arrow@sw](https://github.com/endless-sky/endless-sky/assets/85687254/95ca8e45-4d36-4272-9da2-4e8314dd22ad)![arrow](https://github.com/endless-sky/endless-sky/assets/85687254/d86f04d5-687f-401f-be1a-879657f10fd7)
+
+In this example, the right and top fin as well as the small fin in the middle will *not* get swizzled, because the corresponding pixels on the mask are white. All other pixels are black and thus will get swizzled.
+
+The name has to contain @sw at the end: "@sw.png". If this is for a @2x sprite, @sw comes before it as follows: "@sw@2x.png"
+
 ## Artistic tricks
 
 Making a full texture-mapped 3D model can be a lot of work, and since all the ships in this game are only shown from directly overhead and at relatively low resolution, it can be overkill. I've found that the fastest way to create good-looking ship images is to use a 3D design program (such as Blender) for rendering the shape of the ship and the basic colors of the different parts of it, but then using an image manipulation program (such as GIMP) for some post-processing.
