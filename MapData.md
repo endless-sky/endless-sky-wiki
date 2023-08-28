@@ -52,6 +52,7 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
 	"starfield density" <density#>
 	object [<name>]
@@ -152,6 +153,7 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
 	"starfield density" <density#>
 	object [<name>]
@@ -290,6 +292,18 @@ fleet <name> <period#>
 ```
 
 The name of a [fleet](CreatingFleets) that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
+
+```html
+raid <fleet> [<min-attraction#> [<max-attraction#>]]
+```
+
+The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
+
+```html
+"no raid"
+```
+
+If present, no raid fleets will ever spawn in this system, whether they be from the system's government or the system itself. **(v. 0.10.3)**
 
 ```html
 hazard <name> <period#>
