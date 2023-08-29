@@ -580,6 +580,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"random lifetime"`: a random number of frames up to this amount will be added to each projectile's lifetime. **(v. 0.9.2)**
 
+* `"fade out"`: the projectile will gradually fade out over this many frames before the end of its lifetime. **(v. 0.10.3)**
+
 * `velocity`: initial velocity of the projectile, relative to whatever fired it (which may be a ship or a "parent" projectile of which this is a submunition).
 
 * `"random velocity"`: a random amount up to this number will be added to the projectile's initial velocity. **(v. 0.9.0)**
