@@ -97,7 +97,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
 * These attributes are used to alter and repair the shields and hull of a ship.
 
-  * `shields`: I recommend against providing outfits that give ships additional shield strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
+  * `shields`: an additional number of shield points added to a ship's base shields value.
 
   * `"shield generation"`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
 
@@ -115,7 +115,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"low shield permeability"`: The permeability of your shields as they approach 0%. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength increases, the permeability of your shields approaches the high shield permeability value. **(v. 0.10.1)**
 
-  * `hull`: I recommend against providing outfits that give ships additional hull strength, because that could create balancing issues. But if you want to do it, this is the attribute to modify.
+  * `hull`: an additional number of hull points added to a ship's base hull value.
 
   * `"hull repair rate"`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
 
@@ -145,7 +145,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
   
   * `"shield heat multiplier"`: multiplies the shield heat value of other outfits. 
   
-  * `"shield fuel multiplier"`: multiplies the shield fuel value of other outfits. 
+  * `"shield fuel multiplier"`: multiplies the shield fuel value of other outfits.
+
+  * `"shield multiplier"`: multiplies the maximum shield value of the ship. **(v. 0.10.3)**
   
   * `"hull repair multiplier"`: multiplies the hull repair rate value of other outfits. 
   
@@ -153,7 +155,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
   
   * `"hull heat multiplier"`: multiplies the hull heat value of other outfits. 
   
-  * `"hull fuel multiplier"`: multiplies the hull fuel value of other outfits. 
+  * `"hull fuel multiplier"`: multiplies the hull fuel value of other outfits.
+
+  * `"hull multiplier"`: multiplies the maximum hull value of the ship. **(v. 0.10.3)**
 
 * These attributes are generally related to power generators and batteries.
 
