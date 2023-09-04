@@ -132,7 +132,7 @@ mission <name>
 			(has | not) <condition>
 			(and | or)
 				...
-		on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke)
+		on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy)
 			...
 		government <name>
 		"cargo settings"
@@ -509,7 +509,7 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		(has | not) <condition>
 		(and | or)
 			...
-	on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke)
+	on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy)
 		...
 	government <name>
 	"cargo settings"
@@ -568,20 +568,21 @@ Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`
 When combined with an `apply` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
-on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke)
+on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy)
 	...
 ```
 
-Starting in **v. 0.10.1**, `on *` nodes can be added to NPCs to trigger actions on various state changes for the NPC. The current triggers are as follows:
+Starting in **v. 0.10.1**, `on *` nodes can be added to NPCs to trigger actions on various state changes for the NPC. The current triggers are as follows and trigger under these conditions:
 
-* `kill`: The action will run when every ship in the NPC has been destroyed.
-* `board`: The action will run after every ship in the NPC has been boarded. Will not repeat on subsequent boarding actions.
-* `assist`: The action will run after every ship in the NPC has been assisted. Will not repeat on subsequent assist actions.
-* `disable`: The action will run after every ship in the NPC has been disabled. Will not repeat on subsequent disable actions.
-* `"scan cargo"`: The action will run after every ship in the NPC has had its cargo scanned. Will not repeat on subsequent scan actions.
-* `"scan outfits"`: The action will run after every ship in the NPC has had its outfits scanned. Will not repeat on subsequent scan actions.
-* `capture`: The action will run after every ship in the NPC has been captured.
-* `provoke`: The action will run if any ship in the NPC is provoked. Will not repeat on subsequent provoke actions.
+* `kill`: Every ship in the NPC has been destroyed or captured, matching the behavior of the `kill` objective. Prior to v.0.10.3, didn't trigger on captured ships.
+* `destroy`: Every ship in the NPC has been destroyed. **(v. 0.10.3)**
+* `capture`: Every ship in the NPC has been captured.
+* `board`: Every ship in the NPC has been boarded. Will not repeat on subsequent boarding actions.
+* `assist`: Every ship in the NPC has been assisted. Will not repeat on subsequent assist actions.
+* `disable`: Every ship in the NPC has been disabled. Will not repeat on subsequent disable actions.
+* `"scan cargo"`: Every ship in the NPC has had its cargo scanned. Will not repeat on subsequent scan actions.
+* `"scan outfits"`: Every ship in the NPC has had its outfits scanned. Will not repeat on subsequent scan actions.
+* `provoke`: Any ship in the NPC is provoked. Will not repeat on subsequent provoke actions.
 
 For details on actions that can be run by these nodes, see the [Triggers](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#triggers) section.
 
