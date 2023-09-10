@@ -68,7 +68,7 @@ Eventually, a plugins server will be set up that will be accessible within the g
 
 Introduced in **v. 0.10.3**, the plugin.txt file in the plugin's root folder contains metadata about the plugin. Metadata is formatted in the same way that the data files are, with root nodes, tokens, and child nodes. Allowable metadata nodes are as follows:
 
-  * `name`: the name of the plugin to be displayed in the plugins menu. If no name is provided, defaults to the name of the folder that the plugin is from.
+  * `name`: the name of the plugin to be displayed in the plugins menu. If no name is provided, defaults to the name of the folder that the plugin is from. If multiple plugins with the same `name` metadata are present, only the first reached by the game will be loaded, any subsequent plugins attempting to use the same name will not be loaded by the game.
   * `about`: a description of the plugin to be displayed in the plugins menu. Prior to the creation of the plugin.txt file, the plugin's description was read from an about.txt file.
 
 ## Creating or overriding data elements
