@@ -46,9 +46,11 @@ government <name>
 		{filter specification...}
 	illegals
 		<outfit> <fine>
+		ship <ship> <fine>
 		...
 	atrocities
 		<outfit>
+		ship <ship>
 ```
 
 The various parts of a government definition are described below.
@@ -191,26 +193,43 @@ Because the attitude toward "Medieval France" is negative, the two governments c
 The default attitude between governments is 0 (no interaction).
 
 #### Bribe
+
 ```html
 bribe <percentage#>
 ```
+
 The bribe token controls the fraction of the player's fleet's worth that must be paid in order to receive temporary forgiveness of hostile actions. If 0, then the government cannot be bribed by the player.
 
 #### Fine
+
 ```html
 fine <percentage#>
 ```
+
 The fine token controls the "leniency" of the government with respect to the fined amount. For example, `fine 0.1` indicates that this government would only fine a player 10,000 credits if the total fine value is 100,000 credits.
 
-#### Illegal and Atrocities
-Defines specific items that are considered illegal and considered atrocities by this government. Illegal items have a parameter that lists the amount of fine the player would receive.
-Illegal and Atrocities can be modified through evens as well.
+#### Illegals and Atrocities
+
+```html
+illegals
+	[ignore] <outfit> <fine>
+	[ignore] ship <ship> <fine>
+	...
+atrocities
+	[ignore] <outfit>
+	[ignore] ship <ship>
+	...
+```
+
+Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list.
 
 #### Death Sentence
 ```html
 "death sentence" <conversation>
 ```
+
 The "death sentence" token specifies an optional conversation to be displayed when the player is found to have committed an atrocity and is on a planet controlled by this government. The conversation named here should be defined as its own standalone token, e.g.
+
 ```bash
 conversation "caught red-handed"
 	{conversation specification...}
@@ -218,8 +237,10 @@ conversation "caught red-handed"
 government "Tortuga"
 	"death sentence" "caught red-handed"
 ```
+
 While the conversation can use traditional [exit nodes](WritingConversations#exits), they will not have any effect on the outcome of the conversation: the player will be killed.
 If no "death sentence" is supplied for a government, a simple dialog is displayed instead:
+
 ```
 Before you can leave your ship, the <government name> authorities show up and begin scanning it. They say, "Captain <last>, we detect highly illegal material on your ship."
 	You are sentenced to lifetime imprisonment on a penal colony. Your days of traveling the stars have come to an end.
