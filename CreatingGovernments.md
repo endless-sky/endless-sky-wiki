@@ -44,6 +44,8 @@ government <name>
 	enforces [all]
 	enforces
 		{filter specification...}
+	"travel restrictions"
+		{filter specification...}
 	illegals
 		<outfit> <fine>
 		ship <ship> <fine>
@@ -323,9 +325,9 @@ Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`
 
 #### Enforcement Zones
 ```html
+enforces [all]
 enforces
 	{location filter specification...}
-enforces [all]
 ```
 Each use of the optional "enforces" token introduces a description block for a [location filter](LocationFilters) that describes a set of systems and planets wherein this government has the authority to scan and fine other ships. If no "enforces" tokens are present, then the government is considered to have universal policing authority. Only **one** filter needs to apply in order for the system or planet to be enforced by the given government.
 
@@ -350,3 +352,12 @@ This example usage indicates the the government "Daelaam" will have scanning and
 3) planets or systems controlled by the 4 named governments, so long as they are not within 10 hyperspace jumps of Sol.
 
 If a system was 2 jumps from the system Sol, but neighbored a Daelaam-controlled system, ships belonging to the Daelaam government would have scanning jurisdiction because filter #2 matches, even though #3 does not. 
+
+#### Travel Restrictions
+
+```html
+"travel restrictions"
+	{filter specification...}
+```
+
+Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters).
