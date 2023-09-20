@@ -297,6 +297,7 @@ Turn right | Right
 Reverse | Down
 Stop ship | Shift + Down
 Fire afterburner | A
+Auto steer | E
 Land on planet / station | L
 Initiate hyperspace jump | J
 Jump as a fleet | Shift + J
@@ -304,14 +305,16 @@ Fire primary weapons | Tab
 Select secondary weapon | W
 Fire secondary weapon | Q
 Toggle cloaking device | C
+Mouse turning (hold) | Left Alt
 Select nearest hostile ship | R
 Select nearest ship | Shift + R
 Select next ship | N
 Select next escort | Shift + N
 Talk to selected ship | T
 Talk to selected planet | Shift + T
-Board selected ship | B
+Board selected ship / cycle boarding target | B
 Board disabled escort | Shift + B
+Select nearest asteroid | V
 Scan selected ship | S
 Show main menu | Escape
 View star map | M
@@ -323,6 +326,7 @@ Fleet: Fight my target | F
 Fleet: Gather around me | G
 Fleet: Hold position | H
 Fleet: Toggle ammo usage | U
+Fleet: Harvest flotsam | Z
 
 ## Keyboard shortcuts
 
@@ -330,13 +334,13 @@ In addition to the button shortcuts, the following commands are supported:
 
 While in flight: | &nbsp;
 :--- | :---
-Select ship or planet | left click
+Select ship, planet, or asteroid | left click
 Board ship / land on planet | double click
 Zoom view in or out | - / + or scroll wheel
 Assign group hotkey to selected escorts | Control / Command + number key
 Select group of escorts | number key
 Select escorts within a rectangle | left click + drag
-Tell escorts to move to location or target ship | right click
+Tell escorts to move to location or target ship or asteroid | right click
 Get all escorts ready to jump | hold jump key
 
 Trading panel: | &nbsp;
@@ -350,6 +354,18 @@ Buy / sell all | Shift + B / S
 View commodity price map | Map key
 
 The multiplier modifiers (Shift = 5x, Command / Control = 20x, and Option / Alt = 500x) also work in the hiring panel, the shipyard, and the outfitter. And, they can be combined together - for example, Shift + Control to buy or sell 100 items at a time.
+
+In addition to the multiplier keys, there are various other shortcuts in the outfitter:
+
+Outfitter: | &nbsp;
+:--- | :---
+Buy | B
+Sell | S
+Send to cargo | C
+Install | I
+Uninstall | U
+
+The Buy and Sell shortcuts here are also available in the shipyard.
 
 Map panels: | &nbsp;
 :--- | :---
