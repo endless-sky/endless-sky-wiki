@@ -45,7 +45,7 @@ event "war begins"
 		fleet "Large Free Worlds" 1300
 ```
 
-In general, anything specified in an event will overwrite the previous value of that data element. (For example, specifying a new `government` replaces the previous one.) For data elements that can take a list of an arbitrary number of values (such as the `attributes` of a system or planet), if an event modifies that element, by default it replaces all of the previous values. To make it clearer whether that is your intention or not, **starting in version 0.9.7** you can use the `add` and `remove` keywords:
+In general, anything specified in an event will overwrite the previous value of that data element. (For example, specifying a new `government` replaces the previous one.) For data elements that can take a list of an arbitrary number of values (such as the `attributes` of a system or planet), if an event modifies that element, by default it replaces all of the previous values. Starting in v0.9.7 you can modify such elements without replacing the previous value by using the add and remove keywords:
 
 ```c++
 event "goodbye world"
