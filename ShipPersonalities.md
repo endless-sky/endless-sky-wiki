@@ -33,6 +33,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `fleeing`: avoids combat if it can jump or land, and will not take off after landing until the player next takes off.
 * `derelict`: starts out disabled.
 * `uninterested`: does not follow the player's flagship around (i.e. does not behave like an escort).
+* `unrestricted`: does not adhere to the travel restrictions defined by its government. **(v. 0.10.3)**
 
 ### Non-combat goals:
 
