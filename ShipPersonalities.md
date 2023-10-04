@@ -23,6 +23,15 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `merciful`: this ship won't fire on ships that are fleeing. **(v. 0.10.0)**
 * `ramming`: will attempt to get as close to its target as possible, regardless of the range of its weapons or whether its weapons would hurt itself. **(v. 0.10.0)**
 
+### Non-combat goals:
+
+* `surveillance`: scans random ships and visits random planets in system.
+* `mining`: this ship will circle around the system looking for minable asteroids. When it finds one it will attack it. **(v. 0.9.5)**
+* `harvests`: this ship picks up any flotsam that is in front of it. Mining ships should do this, as should pirates who are distracted by ships dumping cargo to appease them. **(v. 0.9.5)**
+* `swarming`: ships of this type will "swarm" around any friendly, non-swarming ships that are in-system. No more than six ships will swarm a given target. Any swarming ship with nothing to swarm will try to land on a planet instead. **(v. 0.9.1)**
+* `secretive`: ships with this personality will attempt to fly away from ships that are scanning them. **(v. 0.10.0)**
+* `unrestricted`: does not adhere to the travel restrictions defined by its government. **(v. 0.10.3)**
+
 ### Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#npcs):
 
 * `staying`: never leaves the system it starts out in.
@@ -33,15 +42,6 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `fleeing`: avoids combat if it can jump or land, and will not take off after landing until the player next takes off.
 * `derelict`: starts out disabled.
 * `uninterested`: does not follow the player's flagship around (i.e. does not behave like an escort).
-* `unrestricted`: does not adhere to the travel restrictions defined by its government. **(v. 0.10.3)**
-
-### Non-combat goals:
-
-* `surveillance`: scans random ships and visits random planets in system.
-* `mining`: this ship will circle around the system looking for minable asteroids. When it finds one it will attack it. **(v. 0.9.5)**
-* `harvests`: this ship picks up any flotsam that is in front of it. Mining ships should do this, as should pirates who are distracted by ships dumping cargo to appease them. **(v. 0.9.5)**
-* `swarming`: ships of this type will "swarm" around any friendly, non-swarming ships that are in-system. No more than six ships will swarm a given target. Any swarming ship with nothing to swarm will try to land on a planet instead. **(v. 0.9.1)**
-* `secretive`: ships with this personality will attempt to fly away from ships that are scanning them. **(v. 0.10.0)**
 
 ### Special flags:
 
