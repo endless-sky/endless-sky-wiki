@@ -360,4 +360,4 @@ If a system was 2 jumps from the system Sol, but neighbored a Daelaam-controlled
 	{filter specification...}
 ```
 
-Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters).
+Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters). These travel restrictions do not apply to mission NPCs that follow the player. Random fleet spawns can be made to ignore these travel restrictions by giving them the `unrestricted` [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities#non-combat-goals).
