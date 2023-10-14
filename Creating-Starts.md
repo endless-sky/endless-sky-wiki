@@ -157,7 +157,7 @@ term <days#>
 ```
 The number of days over which the loan or fine will be paid off. Once zero, the player will be required to pay the remaining balance in full.
 
-<a name="optional>
+<a name="optional">
 
 ## Optional Characteristics
 </a>
