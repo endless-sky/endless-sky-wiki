@@ -167,7 +167,12 @@ mission <name>
 			...
 		outfit <outfit> [<number>]
 		require <outfit> [<number>]
-		give ship <model> [<name>]
+		(give | take) ship <model> [<name>]
+			count <count>
+			id <id>
+			unconstrained
+			"with outfits"
+			"requires outfits"
 		payment [<base> [<multiplier>]]
 		fine <amount>
 		<condition> (= | += | -=) <value>
@@ -678,7 +683,12 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 		...
 	outfit <outfit> [<count#>]
 	require <outfit>
-	give ship <model> [<name>]
+	(give | take) ship <model> [<name>]
+		count <count>
+		id <id>
+		unconstrained
+		"with outfits"
+		"requires outfits"
 	payment [<base> [<multiplier>]]
 	fine <amount>
 	<condition> (= | += | -=) <value#>
@@ -767,36 +777,36 @@ Beginning in **v. 0.9.15**, if the outfit being gifts has the "map" attribute, t
 give ship <model> [<name>]
 ```
 
-The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase.
+Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase.
 
 ```html
 (give | take) ship <model> [<name>]
-	[id <id>]
-	[count <count#>]
-	[unconstrained]
-	["require outfits"]
-	["with outfits"]
+	id <id>
+	count <count#>
+	unconstrained
+	"require outfits"
+	"with outfits"
 ```
 
 Starting in **v. 0.10.3**, additional parameters may be given when giving a ship and a ship may also be taken.
 
 ```html
-	[id <id>]
+id <id>
 ```
 
 When giving a ship, an identifying string may be provided. The gifted ship will then be associated with this id which can be used to take that specific ship at a later point. IDs of ships in the player's possession must be unique.
 
 ```html
-	[count <count#>]
+count <count#>
 ```
 
 A count may be specified to give or take more than one ship at a time. Note that an id may only be used if this value is equal to 1 (the default.)
 Only non-zero, positive integer values are supported.
 
 ```html
-	[unconstrained]
-	["require outfits"]
-	["with outfits"]
+unconstrained
+"require outfits"
+"with outfits"
 ```
 
 The `unconstrained`, `"require outfits"`, and `"with outfits"` options are only applicable when taking a ship.
