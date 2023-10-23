@@ -303,6 +303,12 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"afterburner disruption"`: disruption accumulated each frame when using an afterburner. **(v. 0.9.15)**
 
+* Movement statistics can also be modified by these attributes, with the same behavior as described for shield and hull multipliers:
+
+  * `"acceleration multiplier"`: multiplies the acceleration of the ship. **(v. 0.10.5)**
+
+  * `"turn multiplier"`: multiplies the turn rate of the ship. **(v. 0.10.5)**
+
 * These attributes relate to the cooling of a ship.
 
   * `cooling`: heat subtracted from your ship by this outfit, per frame.
