@@ -71,6 +71,13 @@ planet <name>
 	music <sound>
 	description <text>
 	spaceport <text>
+	port [<name>]
+		recharges <recharge type>...
+			...
+		services <service type>...
+			...
+		news
+		description <text>
 	government <name>
 	shipyard <name>
 	outfitter <name>
@@ -400,6 +407,13 @@ planet <name>
 	music <sound>
 	description <text>
 	spaceport <text>
+	port [<name>]
+		recharges <recharge type>...
+			...
+		services <service type>...
+			...
+		news
+		description <text>
 	government <name>
 	shipyard <name>
 	outfitter <name>
@@ -463,6 +477,38 @@ spaceport <text>
 ```
 
 The description of the spaceport after clicking the spaceport button.
+
+```html
+port [<name>]
+	recharges <recharge type>...
+		...
+	services <service type>...
+		...
+	news
+	description <text>
+```
+
+Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controled more precisely using the "port" keyword. The "spaceport" keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
+
+If a port is given a name, then that will display on the spaceport button instead of the usual "Spaceport" text.
+
+If a port has no `recharges` node, then it will not recharge anything on ships that land on the planet. Only those recharge types that are listed will be used, and they can be listed on the same line as `recharges` or as one children of the `recharges` node with one item per line. The allowable recharge types are as follows:
+* `shields`: recharges the shields of any ships that land.
+* `hull`: recharges the hull of any ships that land.
+* `energy`: recharges the energy of any ships that land.
+* `fuel`: recharges the fuel of any ships that land.
+* `all`: shorthand for all recharge types.
+
+If a port has no `services` node, then it will not offer any services. As with `recharges`, only those service types that are listed are used, and they may be listed in the same ways. The allowable service types are as follows:
+* `trading`: the player can trade commodities here.
+* `job board`: the player can access the job board here.
+* `bank`: the player can access the bank here.
+* `hire crew`: the player can hire crew here.
+* `offers missions`: missions can be offered when entering the port.
+
+By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
+
+The description text of a port behaves the same way as the text following a "spacpeort" node, and is the text that appears when you click the port button.
 
 ```html
 government <name>
