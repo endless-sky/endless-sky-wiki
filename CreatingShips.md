@@ -34,12 +34,12 @@ To create a new ship sprite, just add a PNG file to the `images/ship/` directory
 
 For collision detection, for all images in `images/ship/` and `images/asteroid/`, or one of their sub-folders, a [polygonal outline](CollisionDetection) is generated when the sprite is loaded. This means that it's important for your ship image to be in that folder, so the game knows that it needs to calculate its outline. **The folder must be named "ship", singular; "ships" will not work.**
 
-If you want your ship to be animated, just create multiple files with the same name, with "-#.png" appended:
+If you want your ship to be animated, just create multiple files with the same name, with `-#.png` appended:
 
 * images/ship/newship-0.png
 * images/ship/newship-1.png
 
-(If there are more than 10 frames, the extensions should be "-00.png", "-01.png", etc. You can also create sprites with additive or "half-additive" [blending modes](BlendingModes) by using the extension "+#.png" or "~#.png" respectively, but these blending modes look much better for projectiles or explosions than for ships.)
+(If there are more than 10 frames, the extensions should be `-00.png`, `-01.png`, etc. You can also create sprites with additive or "half-additive" [blending modes](BlendingModes) by using the extension `+#.png` or `~#.png` respectively, but these blending modes look much better for projectiles or explosions than for ships.)
 
 **The sprite should have at least a one-pixel border of "empty" pixels on every side.** Otherwise, the ship outlines (shown in the targeting display and the escort icons, among other places) will not have sharp lines near those edges.
 
@@ -51,13 +51,15 @@ ship "Star Barge"
 	...
 ```
 
-**Swizzle Mask (v. 0.10.3)**: Sometimes you don't want to have your whole ship be swizzled, but only a part of the sprite. This is where swizzle masks come in. Create an image the size of the ship sprite consisting of only two pixels, white and black. Any pixel that is black on the mask will get its corresponding pixel swizzled, while a white pixel denotes pixels that will not get swizzled. Example:
+**Swizzle Mask (v. 0.10.3)**: Sometimes you don't want to have your whole ship be swizzled, but only a part of the sprite. This is where swizzle masks come in. Create an image the size of the ship sprite consisting of only two colors, white and black. Any pixel that is black on the mask will get its corresponding pixel swizzled, while a white pixel denotes pixels that will not get swizzled. Example:
 
 ![arrow@sw](https://github.com/endless-sky/endless-sky/assets/85687254/95ca8e45-4d36-4272-9da2-4e8314dd22ad)![arrow](https://github.com/endless-sky/endless-sky/assets/85687254/d86f04d5-687f-401f-be1a-879657f10fd7)
 
 In this example, the right and top fin as well as the small fin in the middle will *not* get swizzled, because the corresponding pixels on the mask are white. All other pixels are black and thus will get swizzled.
 
-The name has to contain @sw at the end: "@sw.png". If this is for a @2x sprite, @sw comes before it as follows: "@sw@2x.png"
+The name has to contain @sw at the end: `@sw.png`. If this is for a @2x sprite, @sw comes before it as follows: `@sw@2x.png`
+
+If you have multiple frames and wish to give the ship a swizzle mask, then each individual frame must have a mask image defined for it. So `ship-0@sw.png` would be the mask for the first frame and `ship-01@sw.png` would be the mask for the second frame. Beginning in **v. 0.10.5**, if you have multiple frames but only a single swizzle mask is defined as `ship@sw.png` (i.e. without any frame specifier), that swizzle mask will be applied to all frames of the ship.
 
 ## Artistic tricks
 
