@@ -19,6 +19,7 @@ government <name>
 	"attitude toward"
 		<government> <rep-modifier#>
 		...
+	"default attitude"  <rep-modifier#>
 	"penalty for"
 		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
 		...
@@ -193,6 +194,12 @@ If the player performs hostile actions towards the "Ireland" government, because
 Because the attitude toward "Medieval France" is negative, the two governments consider themselves enemies. If the player performs actions the "United Kingdom" government has deemed "hostile" (i.e. those with positive ["penalty for"](#penalty-for) values) against the "Medieval France" government, then the player's reputation with the "United Kingdom" government will increase as the reputation modifier's magnitude is greater than 5%.
 
 The default attitude between governments is 0 (no interaction).
+
+```html
+"default attitude" <rep-modifier#>
+```
+
+Beginning in **v. 0.10.5**, governments can be given a default attitude that is something other than 0. If a government does not exist in the "attitude toward" list, then the "default attitude" value will be used instead. This can be used to make a government which is hostile to all other governments in the game.
 
 #### Bribe
 
