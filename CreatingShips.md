@@ -115,6 +115,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
 
+  * `"center" <x#> <y#>`: specifies the center of rotation of the ship. By default, the center of rotation is in the direct middle of the sprite. The coordinates are the same as gun/turret/engine hardpoints. **(v. 0.10.5)**
+
 * `"thumbnail"`: the shipyard sprite.
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
