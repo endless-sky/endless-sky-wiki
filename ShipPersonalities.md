@@ -30,7 +30,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `harvests`: this ship picks up any flotsam that is in front of it. Mining ships should do this, as should pirates who are distracted by ships dumping cargo to appease them. **(v. 0.9.5)**
 * `swarming`: ships of this type will "swarm" around any friendly, non-swarming ships that are in-system. No more than six ships will swarm a given target. Any swarming ship with nothing to swarm will try to land on a planet instead. **(v. 0.9.1)**
 * `secretive`: ships with this personality will attempt to fly away from ships that are scanning them. **(v. 0.10.0)**
-* `unrestricted`: does not adhere to the travel restrictions defined by its government. **(v. 0.10.3)**
+* `unrestricted`: does not adhere to the travel restrictions defined by its government. This only applies to random fleet spawns, as mission NPCs are unrestricted by default. **(v. 0.10.3)**
 
 ### Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#npcs):
 
@@ -42,6 +42,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `fleeing`: avoids combat if it can jump or land, and will not take off after landing until the player next takes off.
 * `derelict`: starts out disabled.
 * `uninterested`: does not follow the player's flagship around (i.e. does not behave like an escort).
+* `restricted`: adheres to the travel restrictions defined by its government. This only applies to mission NPCs, as random fleet spawns are restricted by default. **(v. 0.10.5)**
 
 ### Special flags:
 
