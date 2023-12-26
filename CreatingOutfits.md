@@ -718,7 +718,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
 
-  * `"minable damage"`: how much damage a projectile does to minable objects. If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
+  * `"minable damage"`: how much damage a projectile does to [minable objects](CreatingMinables). If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
+
+  * `"prospecting"`: how much prospecting a projectile applies to a [minable object](CreatingMinables) upon impact. Prospecting increases the yield of a minable object by increasing the drop rate of its payloads. The equation for the increased drop rate of a payload is `drop rate + (1 - drop rate) / (1 + toughness / prospecting)`, where drop rate and toughness are attributes of the minable payload and prospecting is the total amount of prospecting applied to the minable before it was destroyed. **(v. 0.10.5)**
 
   * `"heat damage"`: how much heat is added to a target when struck by this projectile. If the target's shields are up, heat damage is cut in half.
 
