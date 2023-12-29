@@ -692,7 +692,11 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
 
-* `anti-missile`: weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
+* The following weapon attributes turn a weapon into a special weapon that behaves differently from other weaponry. By including these attributes, the weapon will only automatically fire on specific targets and cannot be controlled manually. In addition, these special weapon attributes only work on turrets, do not spawn projectiles when they fire (although they will still create effects, and hit effects can be used to mimic a projectile's appearance), and have a range equal to their velocity (the lifetime should always be 1).
+
+  * `anti-missile`: turns the weapon into an anti-missile turret and measures the weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
+
+  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the base velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The actual pull velocity is divided by the mass of the flotsam that is being pulled. **(v. 0.10.5)**
 
 * `"split range"`: when the projectile is within this range of its target, it will split into its submunitions. (If no target was selected when the weapon was fired, this does nothing.)
 
