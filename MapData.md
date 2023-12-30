@@ -28,6 +28,7 @@ galaxy <name>
 system <name>
 	inaccessible
 	hidden
+	shrouded
 	pos <x#> <y#>
 	government <name>
 	attributes <attribute>...
@@ -136,6 +137,7 @@ The multiplier applied to the dimensions of this galaxy's sprite when displayed 
 system <name>
 	inaccessible
 	hidden
+	shrouded
 	pos <x#> <y#>
 	government <name>
 	attributes <attribute>...
@@ -192,7 +194,13 @@ Added in **v. 0.10.0**, systems which are inaccessible aren't able to be travele
 hidden
 ```
 
-Systems which are hidden are not able to be seen unless they are linked to a visited system or a mission highlights them. Once the system has been seen by visiting a linked system, it behaves normally.
+Systems which are hidden are not able to be seen unless they are linked to a visited system or a mission highlights them. They can't be seen by simply being within view range of systems the player has visited. Once the system has been seen by visiting a linked system, it behaves normally.
+
+```html
+shrouded
+```
+
+Added in **v. 0.10.5**, systems which are shrouded are not able to be seen unless they are within visible range of the player's currently location, are linked to a visited system, or a mission highlights them. In addition, if the player is not currently within a shrouded system, then they are not able to see the contents of the system (e.g. the planets in the system, the system's name, etc.). Shrouded systems are effectively forgotten every time the player leaves them.
 
 ```html
 pos <x#> <y#>
