@@ -516,7 +516,7 @@ If a port has no `services` node, then it will not offer any services. As with `
 
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
-The description text of a port behaves the same way as the text following a "spacpeort" node, and is the text that appears when you click the port button.
+The description text of a port behaves the same way as the text following a "spaceport" node, and is the text that appears when you click the port button.
 
 ```html
 government <name>
