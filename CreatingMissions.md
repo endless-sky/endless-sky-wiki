@@ -90,6 +90,7 @@ mission <name>
 	repeat [<number>]
 	clearance [<message>]
 		...
+	ignore clearance
 	infiltrating
 	waypoint <system>
 	stopover [<planet>]
@@ -374,9 +375,15 @@ If a `clearance` tag appears with no message, clearance is automatically granted
 
 If a specific destination is given (i.e. `destination <planet>`) and no clearance is included in the mission, you must pay a bribe if you are not allowed to land on that planet. (Sometimes bribing the authorities could be part of the mission plot.)
 
-If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
+If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag, or, beginning in **v. 0.10.1**, if the mission has the `ignore clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
 
 The `clearance` tag may have child entries that specify a [location filter](#filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
+
+```html
+ignore clearance
+```
+
+Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a location filter will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
 
 ```html
 mission "A Mission with Phrases"
