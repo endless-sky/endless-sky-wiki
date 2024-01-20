@@ -133,7 +133,7 @@ mission <name>
 			(has | not) <condition>
 			(and | or)
 				...
-		on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy)
+		on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
 			...
 		government <name>
 		"cargo settings"
@@ -521,7 +521,7 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		(has | not) <condition>
 		(and | or)
 			...
-	on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy)
+	on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
 		...
 	government <name>
 	"cargo settings"
@@ -580,7 +580,7 @@ Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`
 When combined with an `apply` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
-on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy)
+on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
 	...
 ```
 
@@ -595,6 +595,7 @@ Starting in **v. 0.10.1**, `on *` nodes can be added to NPCs to trigger actions 
 * `"scan cargo"`: Every ship in the NPC has had its cargo scanned. Will not repeat on subsequent scan actions.
 * `"scan outfits"`: Every ship in the NPC has had its outfits scanned. Will not repeat on subsequent scan actions.
 * `provoke`: Any ship in the NPC is provoked. Will not repeat on subsequent provoke actions.
+* `encounter`: Any ship in the NPC is encountered by your flagship. A ship is encountered if your flagship and the NPC ship are in the same system and are both targetable (i.e. not in hyperspace, not in the middle of taking off from a planet, and not cloaked). Will not repeat on subsequent encounter actions. **(v. 0.10.5)**
 
 For details on actions that can be run by these nodes, see the [Triggers](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#triggers) section.
 
