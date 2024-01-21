@@ -54,6 +54,7 @@ government <name>
 	atrocities
 		<outfit>
 		ship <ship>
+		...
 ```
 
 The various parts of a government definition are described below.
