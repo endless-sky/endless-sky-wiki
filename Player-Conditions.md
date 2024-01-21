@@ -76,6 +76,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"<mission name>: done"` is set when a mission is successfully completed.
 * `"<mission name>: declined"` is set when a mission is declined.
 * `"<mission name>: failed"` is set when a mission is failed.
+* `"event: <event name>"`, where `<event name>` is replaced with the name of any event. This is set whenever an event is applied.
 * `"reputation: <government>"` is set to your current reputation with the given government, rounded down to a whole number.
 * `"combat rating"` is your current combat rating (based on the strength of all the ships your fleet has disabled).
 * `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.10.0)**
