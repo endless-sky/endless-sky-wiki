@@ -14,7 +14,7 @@ A data file consists of any number of lines, each of which can contain any numbe
 
 	this is a test
 
-If you want to enter a single token that contains spaces, it must be enclosed in double quotation marks `"..."` to signify that is is a single token. For example, this line contains two tokens:
+If you want to enter a single token that contains spaces, it must be enclosed in double quotation marks `"..."` to signify that it is a single token. For example, this line contains two tokens:
 
 	text "This is a test."
 

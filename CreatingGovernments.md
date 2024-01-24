@@ -190,7 +190,7 @@ government "United Kingdom"
 		"Ireland" 0.04
 		"Medieval France" -0.05
 ```
-indicates that the government "United Kingdom" reacts to your actions towards the separate governments "England," "Northern Ireland," "Scotland," and "Wales" as though you had performed those actions against it (since the reputation modifier is 1, i.e. 100%). A change in the player's reputation with any of these 4 specified governments results in a equivalent change in the player's reputation with the "United Kingdom" government.  
+indicates that the government "United Kingdom" reacts to your actions towards the separate governments "England," "Northern Ireland," "Scotland," and "Wales" as though you had performed those actions against it (since the reputation modifier is 1, i.e. 100%). A change in the player's reputation with any of these 4 specified governments results in an equivalent change in the player's reputation with the "United Kingdom" government.  
 If the player performs hostile actions towards the "Ireland" government, because the reputation modifier is positive, the "United Kingdom" government would consider that a provocation, but--because the magnitude is less than 5%--the player's reputation would not be changed.  
 Because the attitude toward "Medieval France" is negative, the two governments consider themselves enemies. If the player performs actions the "United Kingdom" government has deemed "hostile" (i.e. those with positive ["penalty for"](#penalty-for) values) against the "Medieval France" government, then the player's reputation with the "United Kingdom" government will increase as the reputation modifier's magnitude is greater than 5%.
 
@@ -354,7 +354,7 @@ government "Daelaam"
 		not
 			near "Sol" 10
 ```
-This example usage indicates the the government "Daelaam" will have scanning and fining authority for
+This example usage indicates the  government "Daelaam" will have scanning and fining authority for
 1) the planets Shakuras and Aiur
 2) any planets or systems connected to or controlled by its government
 3) planets or systems controlled by the 4 named governments, so long as they are not within 10 hyperspace jumps of Sol.

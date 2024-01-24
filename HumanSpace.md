@@ -14,7 +14,7 @@ You have never gone hungry. Along with your parents and several brothers and sis
 
 *--or--*
 
-You grew up in a stifling third-floor apartment, sharing a bedroom with two other siblings. Your mother is a maid or a cook; your father, if you have one, works a blue-collar job. You life is comfortable, in some ways: there is almost always food on the table, and your world lives without any fear of piracy or natural disasters. But, you learned at a very young age how to make yourself as invisible as possible to those who are considered your "betters." When your parents are too old to work, they will not be able to afford to live here, and will probably move to Earth, where the cities are crowded and crime-ridden.
+You grew up in a stifling third-floor apartment, sharing a bedroom with two other siblings. Your mother is a maid or a cook; your father, if you have one, works a blue-collar job. Your life is comfortable, in some ways: there is almost always food on the table, and your world lives without any fear of piracy or natural disasters. But, you learned at a very young age how to make yourself as invisible as possible to those who are considered your "betters." When your parents are too old to work, they will not be able to afford to live here, and will probably move to Earth, where the cities are crowded and crime-ridden.
 
 ### The Dirt Belt
 

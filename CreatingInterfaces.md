@@ -146,7 +146,7 @@ Wherever any one of these methods of defining position and size is valid, any of
 ```
 These nodes mean subsequent elements will only be active or visible, respectively, if the given condition was set in the information passed to this interface object when it was drawn.
 They are not mutually exclusive: an element can be active and visible, inactive and visible, or inactive and invisible, however, and element cannot be active and invisible.
-The requirement will be appllied to all subsequent elements until either the end of this interface definition, or until an overriding `active` or `visible` node.
+The requirement will be applied to all subsequent elements until either the end of this interface definition, or until an overriding `active` or `visible` node.
 If a node only contains the token `active` or `visible`, with no condition, then any previous condition requirement in place will not apply to subsequent elements, until a new requirement is defined.
 
 <a name="boxes">
@@ -266,7 +266,7 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 Defines a straight line (bar) or circular outline (ring) to be drawn with this interface.
 In the case of a ring, it will be drawn anti-clockwise around the center of its bounding box, with a radius equal to half the width of the bounding box.
 A bar will be drawn from the bottom right corner of its bounding box.
-At runtime, the game may only partially complete the bar or ring, or segment it, for exammple, the ship hull status ring, or hte fuel bar.
+At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or hte fuel bar.
 The size determines the thickness of the bar or ring, the default value is 2.
 If no color is given, "active" will be used.
 

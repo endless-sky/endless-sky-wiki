@@ -493,7 +493,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"income"`: how many credits per day are gained from this outfit. Income is gained for any owned ships or outfits. **(v. 0.9.15)**
 
-  * `"operating income"`: how many credits per day are gained from from this outfit. Differs from `"income"` in that operating income is only gained from actively in use outfits and ships, meaning parked ships or outfits in cargo won't provide income for the player. **(v. 0.9.15)**
+  * `"operating income"`: how many credits per day are gained from  this outfit. Differs from `"income"` in that operating income is only gained from actively in use outfits and ships, meaning parked ships or outfits in cargo won't provide income for the player. **(v. 0.9.15)**
 
 * These are miscellaneous attributes capable of being added to outfits.
 

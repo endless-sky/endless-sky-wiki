@@ -255,7 +255,7 @@ Beginning in **v. 0.10.0**, individual systems can be given modifiers which infl
 habitable <distance#>
 ```
 
-The distance of the "Goldilocks zone" in this system. When selecting a system on the map, the orbits of the objects in the system will be colored in relation to their distance from this value. If an object's distance is near this value, its orbit will be green. If an object's distance is farther than this value, then its orbit will be fade from light to dark blue the further it is. If an object's distance if closer than this value, then its orbit will fade from yellow to red the closer to the system center it is.
+The distance of the "Goldilocks zone" in this system. When selecting a system on the map, the orbits of the objects in the system will be colored in relation to their distance from this value. If an object's distance is near this value, its orbit will be green. If an object's distance is farther than this value, then its orbit will fade from light to dark blue the further it is. If an object's distance if closer than this value, then its orbit will fade from yellow to red the closer to the system center it is.
 
 ```html
 belt <distance#> [<weight#>]
@@ -496,7 +496,7 @@ port [<name>]
 	description <text>
 ```
 
-Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controled more precisely using the "port" keyword. The "spaceport" keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
+Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the "port" keyword. The "spaceport" keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
 
 If a port is given a name, then that will display on the spaceport button instead of the usual "Spaceport" text.
 
@@ -542,7 +542,7 @@ bribe <bribe#>
 security <security#>
 ```
 
-The behavior that this planet has when the player has illegal goods or outifts. The bribe number is a multiplier that modifies the severity of any fines, while the security number is a value between 0 and 1 that dictates the chance of a player's ship being scanned.
+The behavior that this planet has when the player has illegal goods or outfits. The bribe number is a multiplier that modifies the severity of any fines, while the security number is a value between 0 and 1 that dictates the chance of a player's ship being scanned.
 
 If no security is specified, then a default security of 0.25 is used. 
 
@@ -660,7 +660,7 @@ There are certain attributes that a ship is capable of having that will change i
 star <sprite>
 ```
 
-The sprite listed here is the sprite of the star that will effect ships in the system. If a system has multiple stars, then the values of each star are added together.
+The sprite listed here is the sprite of the star that will affect ships in the system. If a system has multiple stars, then the values of each star are added together.
 
 ```html
 power <power#>

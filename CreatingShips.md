@@ -179,7 +179,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
 
-* `"swizzle"`: the swizzle value that this ship uses, overriding the the ship's government swizzle. **(v. 0.9.7)**
+* `"swizzle"`: the swizzle value that this ship uses, overriding the  ship's government swizzle. **(v. 0.9.7)**
 
 * `"name"`: the name of the particular ship, as seen and/or editable by the player. In general this field will only be used by content creators for ships gifted to the player by a specific starting scenario. (It is extensively used by the game engine, to save the player's ships' names.)
 
