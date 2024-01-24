@@ -5,7 +5,7 @@
 * [Anchor/Alignment](#anchor)
 * [Position and Size](#position)
 * [Active and Visible Conditions](#conditions)
-* [Points and Boxes](#points)
+* [Points and Boxes](#boxes)
 * [Sprites, Images, and Outline](#images)
 * [Labels, Strings, and Buttons](#text)
 * [Bars and Rings](#bar)
