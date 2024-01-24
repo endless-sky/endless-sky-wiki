@@ -6,17 +6,17 @@ Because one of the first things I imagine people will want to try out when custo
 
 2. Create a new [plugin](CreatingPlugins) for your ship, rather than modifying the base game data.
 
-2. Create a new sprite, using your tool of choice. (I recommend making 3D models in [Blender](https://www.blender.org/), then adding "grunge" to the ship by post-processing in [GIMP](https://www.gimp.org/).) Save that sprite in the `images/ship/` folder of your plugin.
+3. Create a new sprite, using your tool of choice. (I recommend making 3D models in [Blender](https://www.blender.org/), then adding "grunge" to the ship by post-processing in [GIMP](https://www.gimp.org/).) Save that sprite in the `images/ship/` folder of your plugin.
 
-3. Create a shipyard "thumbnail" for your ship, rendered from the same model.
+4. Create a shipyard "thumbnail" for your ship, rendered from the same model.
 
-4. Copy an existing ship definition from `ships.txt` into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
+5. Copy an existing ship definition from `ships.txt` into your pilot file use as a starting point. To start out with, give your ship large capacities so you won't be limited by them while testing.
 
-5. Use the [ship builder](https://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
+6. Use the [ship builder](https://endless-sky.github.io/ship_builder.html) to set the gun, turret, and engine hardpoints for your ship. Copy those into the pilot file, as well. (You can also use the ship builder tool to check that your sprite's collision mask will be reasonable, e.g. that there are no stray pixels that might mess it up.)
 
-6. In the game, load that pilot and experiment with different sets of outfits until you find one you like. At this stage you can also edit your pilot file to change the ship's attributes.
+7. In the game, load that pilot and experiment with different sets of outfits until you find one you like. At this stage you can also edit your pilot file to change the ship's attributes.
 
-7. Once your ship seems well-balanced, reduce the capacities to reasonable numbers, and copy the ship definition from your pilot file into a text file in the `data/` folder of your plugin.
+8. Once your ship seems well-balanced, reduce the capacities to reasonable numbers, and copy the ship definition from your pilot file into a text file in the `data/` folder of your plugin.
 
 # Sprites
 
