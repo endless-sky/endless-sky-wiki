@@ -141,7 +141,7 @@ The phrase name should be preceded by "${" and followed by "}", and it will auto
 	`"I need &[playtime@abc] of your life."`
 ```
 
-Beginning in **v. 0.10.1**, the values of [player conditions](PlayerConditions) can be substituted into conversations, with various types off formatting.
+Beginning in **v. 0.10.1**, the values of [player conditions](Player-Conditions) can be substituted into conversations, with various types off formatting.
 
 Given the conditions:
 ```html
