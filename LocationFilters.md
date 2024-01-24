@@ -1,7 +1,7 @@
 # Table of Contents
 
 * [Introduction](#intro)
-* [Planet and System Lists](#plane-and-system-lists)
+* [Planet and System Lists](#planet-and-system-lists)
 * [Government Filtering](#governments)
 * [Attribute Filtering](#attributes)
 * [Outfit and Ship Category Filtering](#outfits)
