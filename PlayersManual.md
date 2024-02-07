@@ -321,6 +321,8 @@ View star map | M
 View player info | I
 Toggle fullscreen | F11
 Toggle fast-forward | Caps Lock
+Show help | F1
+View message log | /
 Deploy / recall fighters | D
 Fleet: Fight my target | F
 Fleet: Gather around me | G
