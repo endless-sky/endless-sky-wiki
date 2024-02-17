@@ -141,6 +141,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"raid chance in system: <system>"` is the percent chance that a raid fleet will spawn in the given system given your fleet's current pirate attraction value, multiplied by 1000 in order to put it into a usable integer range. If a system contains no raid fleets, or the player's attraction is too low to spawn a raid fleet, then the result will be 0. For more information on how raid fleets behavior, see the [Creating Governments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid) page. **(v. 0.10.0)**
 * `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
+* `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
 
 <a name="expressions">
 
