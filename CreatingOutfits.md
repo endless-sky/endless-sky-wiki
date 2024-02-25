@@ -592,6 +592,12 @@ The following attributes are tags (just the word by itself, no value following i
 
 * `"fused"`: causes this weapon's projectiles to explode once they reach the end of their lifetime. This means that the projectile will display a hit effect rather than a die effect, and any blast radius weapons will deal damage to ships that were nearby the projectile when it exploded. **(v. 0.10.7)**
 
+* `"no ship collisions"`: this weapon's projectiles won't run collision detection against ships (unless this weapon is also `phasing` and has a target, in which case it will still detect collisions against the target). Weapons with a trigger radius will still explode when within range of an enemy. **(v. 0.10.7)**
+
+* `"no asteroid collisions"`: this weapon's projectiles won't run collision detection against tiled asteroids. **(v. 0.10.7)**
+
+* `"no minable collisions"`: this weapon's projectiles won't run collision detection against minable objects. **(v. 0.10.7)**
+
 Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `lifetime`: how long the projectile lasts before it "dies."
