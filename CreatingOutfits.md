@@ -574,19 +574,23 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
-* `stream`: this tag (just the word by itself, no value following it) makes a weapon fire in "stream" mode (multiple copies of this weapon take turns firing) even if it is susceptible to anti-missile. **(v. 0.9.0)**
+The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
-* `cluster`: this tag (just the word by itself, no value following it) makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). **(v. 0.9.0)**
+* `stream`: makes a weapon fire in "stream" mode (multiple copies of this weapon take turns firing) even if it is susceptible to anti-missile. Most weapons fire in stream mode by default. **(v. 0.9.0)**
 
-* `safe`: this tag (just the word by itself, no value following it) will prevent this projectile from accidentally damaging any allied ships, even via explosions. If a ship is explicitly targeted, or an enemy, it will still be damaged. **(v. 0.9.9)**
+* `cluster`: makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). Weapons with the anti-missile attribute fire in cluster mode by default. **(v. 0.9.0)**
 
-* `phasing`: this tag (just the word by itself, no value following it) enables the projectile to only hit the intended target (instead of perhaps colliding with a closer ship in the line of fire). If a ship has no target, then a phasing projectile will hit any hostile ship in the line of fire. Asteroids - even if targeted - are not hit by phasing weaponry. **(v. 0.9.9)**
+* `safe`: if the weapon has the blast radius attribute, this tag causes explosions from this weapon's projectiles to not damage allied ships (unless they are explicitly targeted). **(v. 0.9.9)**
 
-* `"no damage scaling"`: this tag (just by itself, no value following it) prevents any damage scaling associated with blast damage from being applied: the nominal damage and hit force values are dealt at the center of the blast and at the very edges. **(v. 0.9.9)**
+* `phasing`: enables the projectile to only hit the intended target (instead of perhaps colliding with a closer ship in the line of fire). If a ship has no target, then a phasing projectile will hit any hostile ship in the line of fire. Asteroids - even if targeted - are not hit by phasing weaponry. **(v. 0.9.9)**
 
-* `"gravitational"`: this tag (just by itself, no value following it) causes all ships impacted by this weapon to receive the same amount of hit force, as opposed to hit force decreasing in its effectiveness against heavier ships. **(v. 0.9.13)**
+* `"no damage scaling"`: prevents any damage scaling associated with blast damage from being applied: the nominal damage and hit force values are dealt at the center of the blast and at the very edges. **(v. 0.9.9)**
 
-* `"parallel"`: this tag (just by itself, no value following it) causes this gun to fire in parallel when installed on a ship. This tag has no effect on turrets. See the [gun](CreatingShips) port definition for more information on parallel firing behavior. **(v. 0.9.13)**
+* `"gravitational"`: causes all ships impacted by this weapon to receive the same amount of hit force, as opposed to hit force decreasing in its effectiveness against heavier ships. **(v. 0.9.13)**
+
+* `"parallel"`: causes this gun to fire in parallel when installed on a ship. This tag has no effect on turrets. See the [gun](CreatingShips) port definition for more information on parallel firing behavior. **(v. 0.9.13)**
+
+* `"fused"`: causes this weapon's projectiles to explode once they reach the end of their lifetime. This means that the projectile will display a hit effect rather than a die effect, and any blast radius weapons will deal damage to ships that were nearby the projectile when it exploded. **(v. 0.10.7)**
 
 Ordinary weapon attributes (those that take a number as an argument) include:
 
