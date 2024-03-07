@@ -25,7 +25,15 @@ Each ship in the game can have a variety of "personality" flags that control its
 
 ### Non-combat goals:
 
-* `surveillance`: scans random ships and visits random planets in system.
+* `surveillance`: this ship will have more aggressive scanning behavior. Ships with this personality will also deploy their fighters before leaving the system, and will "scan" stellar objects in the system if the "atmosphere scan" attribute is present on the ship. Won't assist the player with refueling or repairs.
+  * The following are the default behaviors of ships with scanners compared to the more aggressive behavior of surveillance ships:
+    * Ships will make up to 6/12 (non-surveillance/surveillance) successful scans in the system before no longer scanning more ships.
+      * Cargo and outfit scans are counted individually.
+    * Ships will search for up to 2.5/5 minutes for ships to scan and will stop scanning if this time has elapsed and they don't currently have a ship they're trying to scan.
+    * Ships will give up on scanning if the above time has elapsed, plus an additional minute if they're currently in the process of scanning a target.
+    * Surveillance ships will pursue their scan target regardless of distance. Non-surveillance ships will give up if you get too far away (2x their scan range).
+    * Surveillance ships will prefer to target ships that are close to them (within 2x their scan range), but may decide to randomly target any ship in the system regardless of distance if there are no ships nearby to scan.
+  * Prior to **v0.10.7**, ships with this personality would scan ships that they had not personally scanned and did not have the behavior described above that limited their scan time/count. After this version, it was changed so that ships only scan ships that haven't yet been scanned by their government.
 * `mining`: this ship will circle around the system looking for minable asteroids. When it finds one it will attack it. **(v. 0.9.5)**
 * `harvests`: this ship picks up any flotsam that is in front of it. Mining ships should do this, as should pirates who are distracted by ships dumping cargo to appease them. **(v. 0.9.5)**
 * `swarming`: ships of this type will "swarm" around any friendly, non-swarming ships that are in-system. No more than six ships will swarm a given target. Any swarming ship with nothing to swarm will try to land on a planet instead. **(v. 0.9.1)**
