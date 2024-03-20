@@ -107,9 +107,17 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"shield fuel"`: the amount of fuel that shield regeneration consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to grant fuel.
 
-  * `"shield delay"`: the number of frames that must pass without taking shield damage in order for shield generation to begin. **(v. 0.9.13)**
+  * `"shield delay"`: the number of frames that must pass without taking shield damage in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled shield attributes described below.
 
-  * `"depleted shield delay"`: the number of frames that must pass after the shields have been depleted (i.e. reached 0) in order for shield generation to begin. **(v. 0.9.13)**
+  * `"depleted shield delay"`: the number of frames that must pass after the shields have been depleted (i.e. reached 0) in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled shield attributes described below.
+
+  * `"disabled shield generation"`: shield generation that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"disabled shield energy"`: shield energy that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"disabled shield heat"`: shield heat that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"disabled shield fuel"`: shield fuel that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
   * `"high shield permeability"`: The permeability of your shields while they are at 100% strength. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength drops, the permeability of your shields approaches the low shield permeability value. **(v. 0.10.1)**
 
@@ -125,9 +133,17 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull fuel"`: the amount of fuel that hull repair consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to grant fuel.
 
-  * `"repair delay"`: the number of frames that must pass without taking hull damage in order for hull repairs to begin. **(v. 0.9.13)**
+  * `"repair delay"`: the number of frames that must pass without taking hull damage in order for hull repairs to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled hull repair attributes described below.
 
-  * `"disabled repair delay"`: the number of frames that must pass without taking hull damage after the ship has been disabled in order for hull repairs to begin. Note that the delay timers for both hull and shields do not decrease while the ship is unable to repair itself (i.e. it is disabled), so this attribute is the time after the ship has been assisted for repairs to start. **(v. 0.9.13)**
+  * `"disabled repair delay"`: the number of frames that must pass without taking hull damage after the ship has been disabled in order for hull repairs to begin. Note that the delay timers for both hull and shields do not decrease while the ship is unable to repair itself (i.e. it is disabled), so this attribute is the time after the ship has been assisted for repairs to start. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled hull repair attributes described below.
+
+  * `"disabled hull repair rate"`: hull repair rate that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"disabled hull energy"`: hull energy that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"disabled hull heat"`: hull heat that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"disabled hull fuel"`: hull fuel that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
 * These attributes change the point at which a ship becomes disabled. The default point at which a ship becomes disabled is dictated by the equation `hull * max(.15, min(.45, 10. / sqrt(hull)))`. **(v. 0.9.13)**
 
