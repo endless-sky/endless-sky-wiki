@@ -1,3 +1,11 @@
+# Table of Contents
+
+* [Outfit graphics](#outfit-graphics)
+* [Outfit attributes](#outfit-attributes)
+* [Weapon attributes](#weapon-attributes)
+* [Sales](#sales)
+* [Balancing](#balancing)
+
 ### Outfit graphics
 
 The thumbnail graphics for all the outfits in the game are created using two free, open source programs: [Blender](https://www.blender.org/) for creating the 3D models, and [GIMP](https://www.gimp.org/) for post-processing the rendered images to look more grungy and less artificial. (Another open source program, [Inkscape](https://inkscape.org), is used for the vector graphics in the user interface.) You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
