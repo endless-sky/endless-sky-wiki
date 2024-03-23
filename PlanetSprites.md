@@ -1,4 +1,4 @@
-### Introduction
+# Introduction
 
 When I first started making planet sprites, they looked good individually but when several planets were next to each other, they looked sloppy because the shadows, atmosphere, etc. were done differently for each one. So, I switched to using the same basic procedure for every planet, to improve consistency. This tutorial describes that procedure so you can make planet sprites that will match the existing ones, and is not meant to replace the [many](https://photoshopcafe.com/tutorials/planet/planet.htm) [good](https://www.photoshoplady.com/tutorial/how-to-simply-make-a-realistic-planet/1324) [tutorials](http://www.solarvoyager.com/images/tutorials/planetrings/planetrings.htm) available elsewhere.
 
@@ -6,7 +6,7 @@ The planets are meant to look realistic enough that I can mix in real NASA image
 
 This tutorial uses [GIMP](https://www.gimp.org/), but Photoshop should have all the same features if you are using it instead.
 
-### Tutorial
+# Tutorial
 
 Start by finding a high-resolution, public domain texture image that will serve as the surface of the planet. A good source for public domain images is [morguefile.com](https://www.morguefile.com).
 
@@ -72,7 +72,7 @@ Hide the black background and use `Merge Visible Layers` to create a single, tra
 
 Save the image as a .png. With practice, this whole process can be done in 5-10 minutes depending on the complexity of the planet you are creating!
 
-### Adding texture to terrestrial planets
+# Adding texture to terrestrial planets
 
 After mapping the texture to a sphere, duplicate the planet surface, and select `Filter -> Distort -> Emboss`. Use an azimuth of 90. An elevation of 60 and a depth of 4 works well, but you can experiment to see if anything works better.
 
@@ -80,23 +80,23 @@ The embossed layer, unfortunately, will have a dark ring around the outside of i
 
 Finally, set the layer's blend mode to "Overlay," and if necessary change its opacity or use `Curves...` to get a more pleasing and less washed-out effect.
 
-### Gas giants
+# Gas giants
 
 One way to simulate the surface of a gas giant is with a simple motion blur. In the original texture image, select `Filter -> Blur -> Motion Blur` with a distance of 100 to 200 and an angle of 0 (i.e. completely horizontal). Then, without changing any of the settings, do the "Map Object" step again. Paste the result into a new layer above the planet surface, and set the transparency to whatever looks good, perhaps around 70%. This gives a good compromise of a somewhat smooth, banded surface but with some details still standing out.
 
 Often, a better way to create gas giants is to look for texture images that already have a swirly or banded appearance. Or, you can just take a very narrow strip of a source image and stretch it to be square, so that it will naturally have strong stripes of color in one direction.
 
-### Cities
+# Cities
 
 Some of the planet sprites have city lights in the dark portion of the planet, to show that it is inhabited. For the lights, find an image with some bright patches. Use the "Curves" tool to change it to just have a few white patches spread out in random clusters, with pure black in between. (You can give the light a slight yellow or blue tint, if you want.)
 
 Resize the light texture to be the same size as the texture you used for the planet, so that when you map it to a sphere, it will be the same exact size. Paste this sphere on top of all the other layers, and set its blend mode to "Screen." If there are too many lights, you can remove a few with the eraser.
 
-### Other fine-tuning
+# Other fine-tuning
 
 Sometimes the "pole" region where the top or bottom of the image is squished together onto the sphere looks like a crater, with lines radiating out from it, which is rather cool. But if it doesn't look cool, you can either rotate the rendering to cut if off, or Layer -> Transparency -> Alpha to Selection and use the "Smudge" tool to round off the sharp edges. (Selecting the opaque pixels lets you smudge freely without worrying about messing up the edge of the planet - if you accidentally pull some transparent pixels into the ring, just push some opaque ones back to fill in the gap.) In general, the planet will probably look best if you rotate it so that the "pole" is in the shadow, and the seam between the left and right sides of the texture is hidden on the back side of the planet.
 
-### Rings
+# Rings
 
 To create rings for a gas giant, the best method I've found is to start by taking a very narrow stripe of color from a photo that has the right sort of colors that you're looking for:
 
