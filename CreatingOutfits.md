@@ -6,7 +6,7 @@
 * [Sales](#sales)
 * [Balancing](#balancing)
 
-### Outfit graphics
+# Outfit graphics
 
 The thumbnail graphics for all the outfits in the game are created using two free, open source programs: [Blender](https://www.blender.org/) for creating the 3D models, and [GIMP](https://www.gimp.org/) for post-processing the rendered images to look more grungy and less artificial. (Another open source program, [Inkscape](https://inkscape.org), is used for the vector graphics in the user interface.) You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
 
@@ -32,7 +32,7 @@ In a few cases, it's ambiguous which direction something should point in. For ex
 
 As with [ships](CreatingShips), it is often easier to add texture and color variation to the outfit images in GIMP rather than trying to texture map all the surfaces in Blender. And, also as with the ship graphics, be sure that your GIMP file is at least high enough resolution to create an "@2x" high resolution version.
 
-### Outfit attributes
+# Outfit attributes
 
 Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two shield generators, your shield regeneration doubles.
 
@@ -546,7 +546,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
   * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain.
 
 
-### Weapon attributes
+# Weapon attributes
 
 An outfit that provides a weapon contains an extra set of attributes inside a `weapon` tag. These attributes must be placed in the `weapon` block to have any effect. If you have multiple `weapon` blocks in one outfit, they are just merged together; that doesn't make an outfit provide two different weapons. Some weapon attributes have special formats:
 
@@ -804,7 +804,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"burn damage"`: how much burn is added to a target when struck by this projectile, increasing the target's heat over time. If the target's shields are up, incoming burn damage is cut in half. **(v. 0.9.15)**
 
-### Sales
+# Sales
 
 In order for anyone to buy your new outfit, it must be added to one of the "outfitter" objects. For example, if you are writing a plugin you could include this in one of your data files:
 
@@ -816,7 +816,7 @@ outfitter "Syndicate Advanced"
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
 
-### Balancing
+# Balancing
 
 In Escape Velocity, the classic series of games that Endless Sky is patterned after, there were some outfits that were so powerful compared to their size that there was no reason not to install them if you could afford it: for example, outfits that took no space and improved your acceleration and turn rate, or very small outfits that boosted your shields considerably. As a result, those games needed to put a limit on how many of each outfit could be installed.
 
