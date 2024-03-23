@@ -187,11 +187,11 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
 * These attributes will change in effectiveness given how close a ship is to the system center and what type of stars are in the system.
 
-  * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar) of star(s) in the system.
+  * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar-attributes) of star(s) in the system.
 
-  * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar) of the star(s) in the current system.
+  * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar-attributes) of the star(s) in the current system.
 
-  * `"solar heat"`: the amount of heat that this outfit produces when your ship is 1250 pixels from the system center. As with solar collection, heat increases up to two times this value the closer you are to the system center and decreases down to 1/5 of this value the farther away you are. This value will also vary based on the [solar power](MapData#solar) of the star(s) in the current system. **(v. 0.9.12)**
+  * `"solar heat"`: the amount of heat that this outfit produces when your ship is 1250 pixels from the system center. As with solar collection, heat increases up to two times this value the closer you are to the system center and decreases down to 1/5 of this value the farther away you are. This value will also vary based on the [solar power](MapData#solar-attributes) of the star(s) in the current system. **(v. 0.9.12)**
 
 * These attributes alter the fuel capacity and usage of a ship.
 
@@ -796,10 +796,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"burn damage"`: how much burn is added to a target when struck by this projectile, increasing the target's heat over time. If the target's shields are up, incoming burn damage is cut in half. **(v. 0.9.15)**
 
-<a name="sales">
-
 ### Sales
-</a>
 
 In order for anyone to buy your new outfit, it must be added to one of the "outfitter" objects. For example, if you are writing a plugin you could include this in one of your data files:
 

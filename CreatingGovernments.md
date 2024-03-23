@@ -248,7 +248,7 @@ government "Tortuga"
 	"death sentence" "caught red-handed"
 ```
 
-While the conversation can use traditional [exit nodes](WritingConversations#exits), they will not have any effect on the outcome of the conversation: the player will be killed.
+While the conversation can use traditional [exit nodes](WritingConversations#endpoints-goto-and-to-display), they will not have any effect on the outcome of the conversation: the player will be killed.
 If no "death sentence" is supplied for a government, a simple dialog is displayed instead:
 
 ```

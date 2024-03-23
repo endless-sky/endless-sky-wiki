@@ -56,10 +56,7 @@ start [<identifier>]
 
 In **v 0.9.13** and later versions, a plugin may provide an `identifier` in the "start" declaration. Providing an identifier enables the following start definition to both extend an existing definition, and be extended by other start definitions.
 
-<a name="required">
-
 ## Required Characteristics
-</a>
 
 At minimum, a start is expected to provide a system, planet, date, and assets that a new pilot will begin with. Beginning with **v. 0.9.13**, a start is also required to provide an intro conversation, either naming one defined elsewhere, or defining it in-line.
 
@@ -157,10 +154,7 @@ term <days#>
 ```
 The number of days over which the loan or fine will be paid off. Once zero, the player will be required to pay the remaining balance in full.
 
-<a name="optional">
-
 ## Optional Characteristics
-</a>
 
 #### Ships
 
@@ -197,7 +191,7 @@ A path, relative to the `images` directory, for an image that will be displayed 
 
 ### Conditions
 
-Any lines that do not match one of the above syntax definitions will be parsed as [player conditions](Player-Conditions#applied). When the player begins a pilot with this scenario, these conditions will be applied to the player and subsequently available for later use by missions. A common use of starting conditions is to provide licenses.
+Any lines that do not match one of the above syntax definitions will be parsed as [player conditions](Player-Conditions#applied-condition-sets). When the player begins a pilot with this scenario, these conditions will be applied to the player and subsequently available for later use by missions. A common use of starting conditions is to provide licenses.
 
 ### Conditional Starts
 

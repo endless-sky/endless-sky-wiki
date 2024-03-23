@@ -38,10 +38,7 @@ conversation [<name>]
 	...
 ```
 
-<a name="exits">
-
 # Endpoints, goto and "to display"
-</a>
 
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
@@ -112,7 +109,7 @@ Any line of the conversation that does not begin with one of the special keyword
 		goto "next"
 ```
 
-Each line of text can be followed by a `goto` or an [endpoint](#exits). If it does not, the conversation will just proceed to whatever comes next.
+Each line of text can be followed by a `goto` or an [endpoint](#endpoints-goto-and-to-display). If it does not, the conversation will just proceed to whatever comes next.
 
 To maintain consistency across all the text in the game:
 

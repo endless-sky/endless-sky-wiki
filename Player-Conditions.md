@@ -4,10 +4,7 @@
 
 Conditions are used in two manners by the game - as testable prerequisites to an action (such as whether a mission can be offered), and as changesets to be applied (such as recording a player's mission dialog choices for use by future missions, or changing the player's reputation with a specific government).
 
-<a name="testable">
-
 ### Testable Condition Sets
-</a>
 
 The basic syntax of a testable condition set, such as those used in a mission's `to offer` or a conversation's `branch`:
 
@@ -33,10 +30,7 @@ branch "elaborate"
 	has "D"
 ```
 
-<a name="applied">
-
 ### Applied Condition Sets
-</a>
 
 The basic syntax of applied conditions, such as those used in a mission's `on offer` or a conversation's `apply`:
 
@@ -64,11 +58,12 @@ As a special shortcut, "++" means "+= 1" and "--" means "-= 1". You must place a
 Note that the `/=` operator performs [**integer division**](https://mathworld.wolfram.com/IntegerDivision.html), not floating-point division.
 
 
-## Reserved Conditions (Autoconditions)
+## Reserved conditions (autoconditions)
 
 These condition names are created and used by the game for special purposes. You can manipulate some manually in missions or events, but in most cases the game will recompute the appropriate value. As a point of terminology, these "reserved conditions" are what many people in the community call "autoconditions" or auto-conditions."
 
 ### Modifiable
+
 The game manages these conditions, but you are able to adjust the value in conversations, missions, and events, and the new value will be kept. For example, you could create a mission that modifies the player's reputation with a specific government.
 
 * `"<mission name>: offered"`, where `<mission name>` is replaced with the name of any mission. This is incremented whenever a mission is offered to you, and is used by the "repeat" check to make sure a mission is not offered too many times.
@@ -82,6 +77,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.10.0)**
 
 ### Read-only
+
 No error will be raised if you modify these conditions, but the game will reset them back to the appropriate value.
 
 * `"ships: <category>"` is the number of ships you have of each category (Transport, Light Freighter, Heavy Freighter, Interceptor, Light Warship, Heavy Warship, Fighter, Drone) which are present and active. Present means the ship is in the same system as the player, or if the player is landed then it is on the same planet. Active means the ship is not parked or disabled.
@@ -143,12 +139,9 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
 * `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
 
-<a name="expressions">
+## Value expressions
 
-## Value Expressions
-</a>
-
-Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions. For [testable](#testable) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
+Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions. For [testable](#testable-condition-sets) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied-condition-sets) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
 
 A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)) and "tokens" which yields a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, and parentheses must be separated by spaces for proper parsing.
 

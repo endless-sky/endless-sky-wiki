@@ -1,18 +1,15 @@
 # Table of Contents
 
-* [Introduction](#intro)
-* [Text replacements](#replacement)
-* [Basic mission characteristics](#basics)
+* [Introduction](#introduction)
+* [Text replacements](#text-replacements)
+* [Basic mission characteristics](#basic-mission-characteristics)
 * [Conditions](#conditions)
-* [Source and destination filters](#filters)
-* [Distance Calculation Settings](#settings)
-* [Non-Player Characters (NPCs)](#npcs)
+* [Source and destination filters](#mission-location-filters)
+* [Distance Calculation Settings](#distance-calculation-settings)
+* [Non-Player Characters (NPCs)](#non-player-characters-npcs)
 * [Triggers](#triggers)
 
-<a name="intro">
-
 # Introduction
-</a>
 
 Missions are a key part of Endless Sky. They are used to advance the plot, flesh out the universe, and offer role-playing opportunities for the player. The simplest possible mission is as follows:
 
@@ -185,10 +182,7 @@ mission <name>
 
 Each of these parts of the mission description is described in detail below.
 
-<a name="replacement">
-
 # Text replacements
-</a>
 
 Certain characteristics of a mission, such as the cargo or the destination planet, may be chosen at random. In order to refer to those randomly chosen elements in descriptive text, you can use the following placeholders:
 
@@ -226,10 +220,7 @@ For example, the mission description might be, "Deliver `<cargo>` to `<destinati
 
 Missions can also make use of custom text replacements through use of the `substitutions` node. All text replacements aside from `<first>`, `<last>`, and `<ship>` are made when a mission is instantiated, i.e. before the mission is offered. The three exceptions are made on the fly given that the player's name can be changed during a conversation and your flagship can change between mission instantiation and when you reach a conversation or dialog.
 
-<a name="basics">
-
 # Basic mission characteristics
-</a>
 
 ```html
 mission <name>
@@ -333,7 +324,7 @@ Note that `priority` will only affect missions that offer from the spaceport.
 (job | landing | assisting | boarding | shipyard | outfitter)
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#filters)).
+This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)).
 
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
@@ -377,7 +368,7 @@ If a specific destination is given (i.e. `destination <planet>`) and no clearanc
 
 If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag, or, beginning in **v. 0.10.1**, if the mission has the `ignore clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
 
-The `clearance` tag may have child entries that specify a [location filter](#filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
+The `clearance` tag may have child entries that specify a [location filter](#mission-location-filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
 
 ```html
 ignore clearance
@@ -419,7 +410,7 @@ stopover
 	{filter specification...}
 ```
 
-This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the [`source` and `destination` filters](#filters). As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission (**v 0.9.9+**). Beginning with **v 0.9.13**, planets selected by a filter to be a stopover are no longer required to have a spaceport (unlike a mission's destination). If a mission's randomly picked stopover planet(s) should have a spaceport, this can be achieved by adding an `attributes "spaceport"` line to the filter specification.
+This specifies a planet that you must visit in order to complete the mission. The planet can either be named explicitly, or selected using a "filter" in the same format as the [`source` and `destination` filters](#mission-location-filters). As with waypoints, any number of stopovers may be specified. After completing a stopover, its system will be marked with a faint circle for the remainder of the mission (**v 0.9.9+**). Beginning with **v 0.9.13**, planets selected by a filter to be a stopover are no longer required to have a spaceport (unlike a mission's destination). If a mission's randomly picked stopover planet(s) should have a spaceport, this can be achieved by adding an `attributes "spaceport"` line to the filter specification.
 
 ```html
 substitutions
@@ -430,10 +421,7 @@ substitutions
 
 Beginning with **v.0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
 
-<a name="conditions">
-
 # Conditions
-</a>
 
 ["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes and may be read-only. A list of these reserved conditions can be found [here](Player-Conditions#reserved-conditions-autoconditions).
 
@@ -468,10 +456,7 @@ to offer
 	has D
 ```
 
-<a name="filters">
-
 # Mission "Location" filters
-</a>
 
 ```html
 (source | destination) <planet>
@@ -487,10 +472,7 @@ If no source is specified, the mission will be offered whenever its `to offer` c
 
 For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
-<a name="settings">
-
 # Distance Calculation Settings
-</a>
 
 The distance from the source to the destination, and to every waypoint or stopover in between if they exist, is used to determine mission attributes such as payment multipliers and deadlines. The default behavior of this distance calculation is to only make use of hyperspace links and exclude wormholes, but beginning in **v. 0.10.1**, the distance calculation can have its behavior defined by the mission.
 
@@ -507,10 +489,7 @@ One of the following tags may be provided to determine whether wormholes are use
 
 The other available tag, `"assumes jump drive"`, allows the distance calculation to make use of unlinked jumps using default jump drive stats (200 fuel and 100 range). 
 
-<a name="npcs">
-
 # Non-Player Characters (NPCs)
-</a>
 
 NPCs are ships that are associated with the mission in some way. This includes friendly ships the player must protect, and hostile ships the player must fight off or destroy:
 
@@ -673,10 +652,7 @@ fleet [<count#>]
 
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal [`fleet` data entry](CreatingFleets). Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
 
-<a name="triggers">
-
 # Triggers
-</a>
 
 A mission can also specify what happens at various key parts of the mission:
 

@@ -119,10 +119,7 @@ In-flight messages from other ships already give a lot of flavor from a pilot's 
 * excavation specialist
 </details>
 
-<a name="syntax">
-
 # Definition Syntax
-</a>
 
 To refer to a News object, it should be named by providing a single token on the same line as `news`, e.g.
 ```c++
@@ -134,7 +131,7 @@ A `news` datafile definition has 4 definable child elements.
 * `name`: The name of the [spaceport person](#People) that will appear along with the news message. For flexibility, this uses the same format as creating ship hails, meaning you can define any number of names to be used with the same set of messages.
 * `portrait`: The path to a sprite to be displayed in the news message, relative to the `images` directory. Multiple sprites can be provided, and one will be chosen at random when the news message is displayed.
 * `message`: The text to be displayed. For flexibility, this uses the same "phrase" format that the news' name element and ship hails use.
-* `location` (optional): A [location filter](LocationFilters) that is used to identify on which planets this News message can appear. If not provided, or removed, then this news source will not be displayed anywhere. For the full syntax associated with locations filters see [the reference here](CreatingMissions#filters).
+* `location` (optional): A [location filter](LocationFilters) that is used to identify on which planets this News message can appear. If not provided, or removed, then this news source will not be displayed anywhere. For the full syntax associated with locations filters see [the reference here](LocationFilters).
 * `to show` (optional): A condition set that determines whether this News message can appear. Behaves the same way as `to offer` does for [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). 
 
 ```html
@@ -193,10 +190,7 @@ news "contributing"
 ```
 For additional examples, see [`news.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/human/news.txt).
 
-<a name="modifying">
-
 ## Modifying existing definitions
-</a>
 
 News can be modified by game [events](CreatingEvents) and plugins. All tokens can be modified, but the most likely use case will be to "activate" or "deactivate" a news source, by modifying its `location` element:
 ```c++

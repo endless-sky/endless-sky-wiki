@@ -1,19 +1,16 @@
 # Table of Contents
 
-* [Introduction](#intro)
+* [Introduction](#introduction)
 * [Galaxies](#galaxies)
 * [Systems](#systems)
   * [Objects](#objects)
 * [Planets](#planets)
   * [Tribute](#tribute)
 * [Wormholes](#wormholes)
-* [Landing Messages](#landing)
-* [Solar Attributes](#solar)
-
-<a name="intro">
+* [Landing Messages](#landing-messages)
+* [Solar Attributes](#solar-attributes)
 
 # Introduction
-</a>
 
 A useful tool for creating planets and systems is the [Endless Sky editor](https://github.com/endless-sky/endless-sky-editor). This most especially helps with the positioning of systems and the distance/period of planets in a system.
 
@@ -90,10 +87,7 @@ planet <name>
 		fleet <name> <count#>
 ```
 
-<a name="galaxies">
-
 # Galaxies
-</a>
 
 ```html
 galaxy <name>
@@ -128,10 +122,7 @@ scale <scale#>
 
 The multiplier applied to the dimensions of this galaxy's sprite when displayed in game. This value defaults to 1.
 
-<a name="systems">
-
 # Systems
-</a>
 
 ```html
 system <name>
@@ -331,10 +322,7 @@ The name of a [hazard](CreatingHazards) that is created in this system within a 
 
 The density of the stars in the background. The default value is 1. If a system has a starfield density of 0 then it will have no stars at all. **(v. 0.10.0)**
 
-<a name="objects">
-
 ## Objects
-</a>
 
 ```html
 object [<name>]
@@ -403,10 +391,7 @@ object [<name>]
 
 Objects are capable of having objects as children. This allows for the creation of moons that orbit planets. The distance and period of these children objects is defined relative to the parent object. That is, instead of the distance being from the system center, the distance is from the center of the object it is orbiting.
 
-<a name="planets">
-
 # Planets
-</a>
 
 ```html
 planet <name>
@@ -552,10 +537,7 @@ wormhole <name>
 
 **(v. 0.10.0)** Assigns a wormhole to this planet. Departing from this planet will teleport the player to the destination specified inside the wormhole node.
 
-<a name="tribute">
-
 ## Tribute
-</a>
 
 ```html
 tribute <credits#>
@@ -583,10 +565,7 @@ fleet <name> <count#>
 
 The fleet that is spawned from this planet if the player demands tribute from it, and how many times that fleet is spawned. More than one type of fleet is capable of being spawned from a planet when demanding tribute.
 
-<a name="wormholes">
-
 # Wormholes
-</a>
 
 ```
 wormhole <name>
@@ -630,10 +609,7 @@ Defines the color of the arrows in the map panel and the planet label of a "mapp
 This can either be given as RGB values or can refer to a named stock color.
 By default, the color names "map wormhole" will be used.
 
-<a name="landing">
-
 # Landing Messages
-</a>
 
 ```html
 "landing message" <text>
@@ -643,10 +619,7 @@ By default, the color names "map wormhole" will be used.
 
 Landing messages are the message that is shown if attempting to land on an uninhabited object. The text of a landing message is what is shown, while the children of a landing message are the sprites that show this message.
 
-<a name="solar">
-
 # Solar Attributes
-</a>
 
 ```html
 star <sprite>

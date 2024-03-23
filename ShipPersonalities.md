@@ -40,7 +40,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `secretive`: ships with this personality will attempt to fly away from ships that are scanning them. **(v. 0.10.0)**
 * `unrestricted`: does not adhere to the travel restrictions defined by its government. This only applies to random fleet spawns, as mission NPCs are unrestricted by default. **(v. 0.10.3)**
 
-### Flags that control [NPCs](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#npcs):
+### Flags that control [NPCs](CreatingMissions#non-player-characters-npcs):
 
 * `staying`: never leaves the system it starts out in.
 * `lingering`: will remain in the system for an additional time equal to one quarter of the smallest period of any fleet assigned to the system, when there is nothing to do. Except when the ship is a mission NPC and can follow the player, or when it already has a destination system. **(v. 0.10.1)**

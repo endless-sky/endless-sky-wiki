@@ -1,18 +1,15 @@
 # Table of Contents
 
-* [Introduction](#intro)
+* [Introduction](#introduction)
 * [Planet and System Lists](#planet-and-system-lists)
-* [Government Filtering](#governments)
-* [Attribute Filtering](#attributes)
-* [Outfit and Ship Category Filtering](#outfits)
-* [Near and Distance](#relative-position)
-* [Not and Neighbor Modifiers](#modifiers)
-* [Testing Location Filters](#matches)
-
-<a name="intro">
+* [Government Filtering](#government-filtering)
+* [Attribute Filtering](#attribute-filtering)
+* [Outfit and Ship Category Filtering](#outfits-and-ship-category-filtering)
+* [Near and Distance](#near-and-distance)
+* [Not and Neighbor Modifiers](#not-and-neighbor-modifiers)
+* [Testing Location Filters](#testing-location-filters)
 
 # Introduction
-</a>
 
 A "location filter" is a set of constraints that are used to select a planet, system, or ship.
 Location filters can be used for:
@@ -47,10 +44,7 @@ Location filters can be used for:
 
 Each entry in the specification acts as a filter. Two "modifier" tokens were introduced in **v. 0.9.9**, **`not`** and **`neighbor`**. The `neighbor` modifier indicates that the associated filter must match a system that is hyperlinked with the system in question, and the `not` modifier indicates that the associated filter must not match the system in question. These modifiers cannot be used in the same line, but can be "children" of each other.
 
-<a name="planet-and-system-lists">
-
 # Planet and System Lists
-</a>
 
 ```html
 [(not | neighbor)] planet <name>...
@@ -66,10 +60,7 @@ This says that the planet must be (or must not be, if the `not` keyword is used)
 
 The system must be (or must not be, or must neighbor) one of the items in this list. You can use this if you do not want to bother to look up what planets are in the system, but its intended use is for the NPC location filter as described later.
 
-<a name="governments">
-
 # Government Filtering
-</a>
 
 ```html
 [(not | neighbor)] government <name>...
@@ -80,10 +71,7 @@ The planet must be in (or must not be in, or must neighbor) a system owned by th
 
 If this is a source filter and the mission is being offered when `assisting` or `boarding` a ship, the government in this filter refers to the ship's government, not the government of the current star system. This allows you, for example, to create a mission that is only offered by merchant ships. If the `neighbor` modifier is used, at least one neighboring system's government must be in the list of named governments.
 
-<a name="attributes">
-
 # Attribute Filtering
-</a>
 
 ```html
 [(not | neighbor)] attributes <name>...
@@ -120,10 +108,7 @@ not
 	attributes "rich"
 ```
 
-<a name="outfits">
-
 # Outfits and Ship Category Filtering
-</a>
 
 Beginning with **v. 0.9.9**, similar to `attributes`, ships (mission `source`) and planets (mission `source`, `destination`, and `stopover`) can be matched according to available outfits. For ships, these outfits may be installed or in cargo, while for planets they must be for sale. This would match a ship that has at least one "Beam Laser" or "Meteor Missile Launcher" installed or in its cargo, or a planet that sells either one of the outfits:
 
@@ -151,10 +136,7 @@ source
 	category "Light Warship"
 ```
 
-<a name="relative-position">
-
 # Near and Distance
-</a>
 
 There are also ways of specifying how far the system is from a particular location, or from the current location:
 
@@ -174,10 +156,7 @@ This is the same as the `near` tag, but gives distances relative to the origin p
 
 Beginning in **v. 0.10.1**, `near` and `distance` filters can have [distance calculation settings](CreatingMissions#distance-calculation-settings) listed directly as children to provide more options for how the distances are calculated.
 
-<a name="modifiers">
-
 # Not and Neighbor Modifiers
-</a>
 
 ```html
 not
@@ -214,10 +193,7 @@ source
 		neighbor government "Republic"
 ```
 
-<a name="matches">
-
 # Testing Location Filters
-</a>
 
 Beginning in **v. 0.10.0**, it is possible to test filters by passing `--matches` to the game and then writing a location filter under a `location` node. The output are systems and planets matching the filter.
 
