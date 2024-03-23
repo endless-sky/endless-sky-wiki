@@ -1,12 +1,12 @@
 I'm hoping for Endless Sky to eventually be a collaborative collection of missions, artwork, etc. designed by many different people. This page is a basic description of what sort of "feel" I wanted the game to have.
 
-### UI Graphics
+### UI graphics
 
 My goal for the UI was to be as minimalist and distraction-free as possible, yet at the same time to look futuristic and to hint at an underlying complexity. My chief inspiration was the heads-up-display used in the Iron Man movies, as shown [here](https://jayse.tv/v2/?portfolio=hud).
 
 The UI is nearly all monochrome except for certain key pieces of information. This meshes well with the human ships (which are also mostly monochrome plus colored fins for identification). But, if you look closely, there are small graphical frills in nearly all the UI panels. These include sets of parallel lines intended to look like circuit traces, tiny, faint text and numerals, and various other geometric shapes intended to be the heads-up-display equivalent of the needlessly complex gears and other mechanisms found in steampunk art.
 
-### Space Artwork
+### Space artwork
 
 My goal here was simple: I should be able to use actual NASA images of planets and have them be indistinguishable from the "artificial" planet artwork that I create. Every planet and moon in the "Sol" system is a real image from NASA. The artificial planets need to be relatively subtle, both in their atmospheric effects and in their colors, to match the real images.
 
@@ -29,7 +29,7 @@ My goal is that whatever faction you side with in any conflict, that faction sho
 
 The currently playable plot line (the Free Worlds) makes a few attempts at nonlinear gameplay. In particular, there are two different endings: one where you keep working for peace and reconciliation, and one where the conflict takes a more brutal turn near the end. It's nowhere near as nonlinear as I would like, though.
 
-### Alien Speech Patterns
+### Alien speech patterns
 
 Ideally, each species should have slightly different speech patterns to indicate that they each think differently, so their thoughts sound different when translated into human language. I've done a very bad job of being consistent with that, but my basic goals are:
 

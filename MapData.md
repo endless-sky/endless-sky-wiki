@@ -609,7 +609,7 @@ Defines the color of the arrows in the map panel and the planet label of a "mapp
 This can either be given as RGB values or can refer to a named stock color.
 By default, the color names "map wormhole" will be used.
 
-# Landing Messages
+# Landing messages
 
 ```html
 "landing message" <text>
@@ -619,7 +619,7 @@ By default, the color names "map wormhole" will be used.
 
 Landing messages are the message that is shown if attempting to land on an uninhabited object. The text of a landing message is what is shown, while the children of a landing message are the sprites that show this message.
 
-# Solar Attributes
+# Solar attributes
 
 ```html
 star <sprite>

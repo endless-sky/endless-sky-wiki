@@ -472,7 +472,7 @@ If no source is specified, the mission will be offered whenever its `to offer` c
 
 For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
-# Distance Calculation Settings
+# Distance calculation settings
 
 The distance from the source to the destination, and to every waypoint or stopover in between if they exist, is used to determine mission attributes such as payment multipliers and deadlines. The default behavior of this distance calculation is to only make use of hyperspace links and exclude wormholes, but beginning in **v. 0.10.1**, the distance calculation can have its behavior defined by the mission.
 
@@ -489,7 +489,7 @@ One of the following tags may be provided to determine whether wormholes are use
 
 The other available tag, `"assumes jump drive"`, allows the distance calculation to make use of unlinked jumps using default jump drive stats (200 fuel and 100 range). 
 
-# Non-Player Characters (NPCs)
+# Non-player characters (NPCs)
 
 NPCs are ships that are associated with the mission in some way. This includes friendly ships the player must protect, and hostile ships the player must fight off or destroy:
 

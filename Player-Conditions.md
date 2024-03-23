@@ -1,10 +1,10 @@
 "Conditions" are named values that represent things the player has done. Conditions start out with a value of zero, and **can only have integer values**. Any fractional values will be rounded towards zero. They can have almost any name you want, and should be made sufficiently unique such that you can be sure that a reference to one is only for the purpose you have intended, and not an accidental overlap (such as with conditions used by a different plugin). 
 
-## Condition Types
+## Condition types
 
 Conditions are used in two manners by the game - as testable prerequisites to an action (such as whether a mission can be offered), and as changesets to be applied (such as recording a player's mission dialog choices for use by future missions, or changing the player's reputation with a specific government).
 
-### Testable Condition Sets
+### Testable condition sets
 
 The basic syntax of a testable condition set, such as those used in a mission's `to offer` or a conversation's `branch`:
 
@@ -30,7 +30,7 @@ branch "elaborate"
 	has "D"
 ```
 
-### Applied Condition Sets
+### Applied condition sets
 
 The basic syntax of applied conditions, such as those used in a mission's `on offer` or a conversation's `apply`:
 

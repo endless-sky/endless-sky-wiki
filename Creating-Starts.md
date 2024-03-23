@@ -4,7 +4,7 @@ A "start" serves as the declaration of the beginning state of a new pilot. The g
 
 Prior to **v. 0.9.13**, all start definitions replaced the previous definitions, and customized the displayed "new pilot" conversation by defining a conversation named `"intro"`. Beginning with **v 0.9.13**, this default-override behavior was removed and the default conversation key was changed to `"default intro"`. Instead, the player is presented with a list of the available valid starts when beginning a new pilot. Plugin authors may optionally provide an `identifier` to enable the previous override system.
 
-# Datafile Syntax
+# Datafile syntax
 
 The [syntax](DataFormat#grammar-specifications) for the definition of a start is:
 
@@ -56,7 +56,7 @@ start [<identifier>]
 
 In **v 0.9.13** and later versions, a plugin may provide an `identifier` in the "start" declaration. Providing an identifier enables the following start definition to both extend an existing definition, and be extended by other start definitions.
 
-## Required Characteristics
+## Required characteristics
 
 At minimum, a start is expected to provide a system, planet, date, and assets that a new pilot will begin with. Beginning with **v. 0.9.13**, a start is also required to provide an intro conversation, either naming one defined elsewhere, or defining it in-line.
 
@@ -154,7 +154,7 @@ term <days#>
 ```
 The number of days over which the loan or fine will be paid off. Once zero, the player will be required to pay the remaining balance in full.
 
-## Optional Characteristics
+## Optional characteristics
 
 #### Ships
 
@@ -166,7 +166,7 @@ ship <model>
 ```
 To provide a ship for the new pilot, the entire [ship definition](CreatingShips) is required.
 
-### Displayed Details
+### Displayed details
 
 Beginning in **v. 0.9.13**, the player is presented with a list of starting scenarios and may select one with which to begin the game. Several new optional properties were added to enhance this experience. 
 
@@ -193,7 +193,7 @@ A path, relative to the `images` directory, for an image that will be displayed 
 
 Any lines that do not match one of the above syntax definitions will be parsed as [player conditions](Player-Conditions#applied-condition-sets). When the player begins a pilot with this scenario, these conditions will be applied to the player and subsequently available for later use by missions. A common use of starting conditions is to provide licenses.
 
-### Conditional Starts
+### Conditional starts
 
 Beginning in **v. 0.10.0**, starts can be made to conditionally appear or unlock based on a player's global conditions (see `"global: "` on the [Player Conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#modifiable) page).
 
@@ -228,7 +228,7 @@ Note that unlike the true start information, the `on (display | reveal)` informa
 
 If a start has a `to reveal` or `to unlock` node, but does not have an `on display` or `on reveal` node, then the displayed information defaults to "???".
 
-# Extending Starts
+# Extending starts
 
 Plugins that provide an identifier in their start definition, e.g. the "cool start" in `start "cool start"`, are opting-in to the game's definition extension system, and their provided definition will be merged into any existing definitions with that same identifier.
 

@@ -119,7 +119,7 @@ In-flight messages from other ships already give a lot of flavor from a pilot's 
 * excavation specialist
 </details>
 
-# Definition Syntax
+# Definition syntax
 
 To refer to a News object, it should be named by providing a single token on the same line as `news`, e.g.
 ```c++

@@ -59,7 +59,7 @@ government <name>
 
 The various parts of a government definition are described below.
 
-#### Display Name
+#### Display name
 ```html
 "display name" <other-name>
 ```
@@ -88,7 +88,7 @@ The government's color is used to shade its systems in the galactic map (includi
 
 Starting in **v. 0.10.0**, the color that a government uses can be set by name, where the name is of a defined color somewhere else in the game. The [interfaces.txt](https://github.com/endless-sky/endless-sky/blob/master/data/interfaces.txt) file has examples of such defined names. 
 
-#### Player Reputation
+#### Player reputation
 ```html
 "player reputation" <initial-rep#>
 ```
@@ -105,7 +105,7 @@ Beginning in **v. 0.10.1**, there also exists a `reputation` node which has vari
 * `min`: The minimum reputation below which the player's reputation cannot drop.
 * `max`: The maximum reputation above which the player's reputation cannot rise.
 
-#### Penalty For
+#### Penalty for
 ```html
 "penalty for"
 	(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
@@ -163,7 +163,7 @@ A government can be made to use both "foreign penalties for" and "custom penalti
 
 Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships. In **v. 0.10.0** and onward, the provocation happens when you complete the scan.
 
-#### Crew Strength Modifiers
+#### Crew strength modifiers
 ```html
 "crew attack" <atk#>
 "crew defense" <def#>
@@ -171,7 +171,7 @@ Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added 
 The "crew attack" and "crew defense" tokens allow customizing the base crew combat attributes of this government's ships when they engage in [boarding combat](PlayersManual#boarding-plundering-and-capturing-ships).
 The default values for "crew attack" and "crew defense" are 1.0 and 2.0, respectively, and negative numbers will be treated as though they are 0.
 
-#### Attitude Toward
+#### Attitude toward
 ```html
 "attitude toward"
 	<government> <rep-modifier#>
@@ -218,7 +218,7 @@ fine <percentage#>
 
 The fine token controls the "leniency" of the government with respect to the fined amount. For example, `fine 0.1` indicates that this government would only fine a player 10,000 credits if the total fine value is 100,000 credits.
 
-#### Illegals and Atrocities
+#### Illegals and atrocities
 
 ```html
 illegals
@@ -233,7 +233,7 @@ atrocities
 
 Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list.
 
-#### Death Sentence
+#### Death sentence
 ```html
 "death sentence" <conversation>
 ```
@@ -331,7 +331,7 @@ If multiple raid fleets are capable of spawning at the same time, each fleet che
 
 Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`, and `"pirate attraction"` [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#read-only), with the last condition being the value used to determine if fleets should spawn.
 
-#### Enforcement Zones
+#### Enforcement zones
 ```html
 enforces [all]
 enforces
@@ -361,7 +361,7 @@ This example usage indicates the  government "Daelaam" will have scanning and fi
 
 If a system was 2 jumps from the system Sol, but neighbored a Daelaam-controlled system, ships belonging to the Daelaam government would have scanning jurisdiction because filter #2 matches, even though #3 does not. 
 
-#### Travel Restrictions
+#### Travel restrictions
 
 ```html
 "travel restrictions"
