@@ -1,22 +1,21 @@
 # Table of Contents
 
-* [Introduction](#intro)
-* [Defining an Interface](#definition)
-* [Anchor/Alignment](#anchor)
-* [Position and Size](#position)
-* [Active and Visible Conditions](#conditions)
-* [Points and Boxes](#boxes)
-* [Sprites, Images, and Outline](#images)
-* [Labels, Strings, and Buttons](#text)
-* [Bars and Rings](#bar)
-* [Lines](#line)
-* [Pointers](#pointer)
-* [Values](#value)
-
-<a name="intro">
+* [Introduction](#introduction)
+* [Defining an interface](#defining-an-interface)
+* [Arrangement](#arrangement)
+  * [Anchor/alignment](#anchoralignment)
+  * [Position and size](#position-and-size)
+* [Active and visible conditions](#active-and-visible-conditions)
+* [Interface elements](#interface-elements)
+  * [Points and boxes](#points-and-boxes)
+  * [Sprites, images, and outline](#sprites-images-and-outlines)
+  * [Labels, strings, and buttons](#labels-strings-and-buttons)
+  * [Bars and rings](#bars-and-rings)
+  * [Lines](#lines)
+  * [Pointers](#pointers)
+  * [Values](#values)
 
 # Introduction
-</a>
 
 ```html
 interface <name> [<anchor>]
@@ -58,10 +57,7 @@ interface <name> [<anchor>]
 	value <name> <value>
 ```
 
-<a name="definition">
-
 # Defining an Interface
-</a>
 
 ```html
 interface <name> [<anchor>]
@@ -75,10 +71,9 @@ interface <name>
 	anchor [<anchor>]
 ```
 
-<a name="anchor">
+# Arrangement
 
-# Anchor/Alignment
-</a>
+## Anchor/alignment
 
 All elements can be given an individual alignment, overriding the currently active global anchor for that element only.
 All elements can also be given a `pad` value, this defines amount of padding that will be added around the element when drawing it in its bounding box.
@@ -96,10 +91,7 @@ The `<anchor>` values take the form:
 ```
 If only a vertical or horizontal alignment is provided, the center of that edge will be used:
 
-<a name="position">
-
-# Position and Size
-</a>
+## Position and size
 
 There are several different ways in which the position and size of an element can be defined. Each element need only make use of one:
 
@@ -136,10 +128,7 @@ The `center` coordinate gives the point at the center of the bounding box; the s
 
 Wherever any one of these methods of defining position and size is valid, any of the others may also be used instead.
 
-<a name="conditions">
-
-# Active and Visible Conditions
-</a>
+# Active and visible conditions
 
 ```html
 	(active | visible) [if <condition>]
@@ -149,10 +138,9 @@ They are not mutually exclusive: an element can be active and visible, inactive 
 The requirement will be applied to all subsequent elements until either the end of this interface definition, or until an overriding `active` or `visible` node.
 If a node only contains the token `active` or `visible`, with no condition, then any previous condition requirement in place will not apply to subsequent elements, until a new requirement is defined.
 
-<a name="boxes">
+# Interface elements
 
-# Points and Boxes
-</a>
+## Points and boxes
 
 The most basic type of element is the `point`:
 
@@ -192,10 +180,7 @@ A box defines a rectangle on screen which can be used as the bounding area for t
 
 There are numerous different element types which can have additional child nodes unique to them:
 
-<a name="images">
-
-# Sprites, Images, and Outlines
-</a>
+## Sprites, images, and outlines
 
 ```html
 	sprite <sprite>
@@ -221,10 +206,7 @@ Provides a named box that can be given an image to be drawn by the game at runti
 Similar to `image`, however, the `OutlineShader` will be used with the given sprite, instead of drawing the image directly.
 If the `colored` child node is present, then a custom color can be set by the game when the sprite to be outlined is set, otherwise, opaque white will be used.
 
-<a name="text">
-
-# Labels, Strings, and Buttons
-</a>
+## Labels, strings, and buttons
 
 ```html
 	(label <text>) | (string <name>) | (button <key> <text>)
@@ -252,10 +234,7 @@ hover | "hover"
 
 If `color` is defined but either the inactive or hover color is not, the undefined color will use the given active color.
 
-<a name="bar">
-
-# Bars and Rings
-</a>
+## Bars and rings
 
 ```html
 	(bar | ring) <name>
@@ -270,10 +249,7 @@ At runtime, the game may only partially complete the bar or ring, or segment it,
 The size determines the thickness of the bar or ring, the default value is 2.
 If no color is given, "active" will be used.
 
-<a name="line">
-
-# Lines
-</a>
+## Lines
 
 ```html
 	line <name>
@@ -283,10 +259,8 @@ If no color is given, "active" will be used.
 Defines a line to be drawn with this interface.
 If no color is given, "medium" will be used.
 
-<a name="pointer">
+## Pointers
 
-# Pointers
-</a>
 ```html
 	pointer
 		from <x#> <y#>
@@ -299,10 +273,7 @@ Define a pointer to be drawn with this interface.
 The orientation can either be given as an angle in degrees, counting clockwise with 0 being straight up, or a pair of values corresponding to the x and y components of a vector. If no orientation is given, the vector (0, -1) is used.
 If no color is given, "medium" will be used.
 
-<a name="value">
-
-# Values
-</a>
+## Values
 
 ```html
 	value <name> <value#>
