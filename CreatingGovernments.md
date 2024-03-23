@@ -1,4 +1,4 @@
-# Introduction
+## Introduction
 
 A government in Endless Sky is a collection of ships and planets that share a relationship with the player and with other governments. Relationships between governments are modifiable through game events and missions, while the player's reputation with various governments is influenced by the player's decisions, both instantaneously (i.e. in-flight) and strategically (through the missions that the player chooses).
 
@@ -74,13 +74,13 @@ government "Pirate Anarchists"
 ```
 To use this government in NPCs, fleets, or location filters, you would still use the true name, "Pirate Anarchists".
 
-#### Swizzle
+## Swizzle
 ```html
 swizzle <value#>
 ```
 The swizzle of a government defines the default color shift applied to ships of that government.
 
-#### Color
+## Color
 ```html
 color (<r#> <g#> <b#> | <name>)
 ```
@@ -156,7 +156,7 @@ Beginning in **v. 0.10.0**, governments can be made to use a custom "penalty for
 
 A government can be made to use both "foreign penalties for" and "custom penalties for." In such cases, if the "custom penalties for" specified a penalty for a specific action, then that penalty is used. For all penalties that the custom penalties don't specify, the foreign penalty for that action is used.
 
-### Provoked on scan
+## Provoked on scan
 ```html
 "provoked on scan"
 ```
@@ -202,7 +202,7 @@ The default attitude between governments is 0 (no interaction).
 
 Beginning in **v. 0.10.5**, governments can be given a default attitude that is something other than 0. If a government does not exist in the "attitude toward" list, then the "default attitude" value will be used instead. This can be used to make a government which is hostile to all other governments in the game.
 
-#### Bribe
+## Bribe
 
 ```html
 bribe <percentage#>
@@ -210,7 +210,7 @@ bribe <percentage#>
 
 The bribe token controls the fraction of the player's fleet's worth that must be paid in order to receive temporary forgiveness of hostile actions. If 0, then the government cannot be bribed by the player.
 
-#### Fine
+## Fine
 
 ```html
 fine <percentage#>
@@ -256,7 +256,7 @@ Before you can leave your ship, the <government name> authorities show up and be
 	You are sentenced to lifetime imprisonment on a penal colony. Your days of traveling the stars have come to an end.
 ```
 
-#### Hails
+## Hails
 ```html
 "send untranslated hails"
 "friendly hail" <phrase>
@@ -283,7 +283,7 @@ No defaults are provided for non-disabled hails (meaning if not specified, the s
 
 In order to receive hails from a ship, you must share a language with its government. Languages are discussed in more detail below. Beginning in **v. 0.10.1**, the only exception to this is if the government has the `"send untranslated hails"` token, which allows its ships to send hails even if you do not share a language.
 
-#### Language
+## Language
 ```html
 language <text>
 ```
@@ -307,7 +307,7 @@ mission "player needs the Tamarian language"
 		has "language: metaphorical allegory"
 ```
 
-#### Raid
+## Raid
 ```html
 raid <fleet> [<min-attraction#> [<max-attraction#>]]
 ```
