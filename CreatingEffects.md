@@ -23,7 +23,7 @@ effect <name>
 	"absolute angle" <degrees#>
 ```
 
-### Sprite definition
+# Sprite definition
 
 The name of the sprite should be a path relative to the **images** folder, and not including frame numbers, blending mode specifiers, or the ".png" or ".jpg" extension. For example, the "blaster impact" effect is an animation with four frames:
 
@@ -44,7 +44,7 @@ You can also specify various attributes of the animation. These should be left o
 * `"no repeat"`: once the animation has played through once, stay on the last frame until the effect disappears. (If this is not defined, the animation loops.)
 * `"rewind"`: once the animation has played through to the last frame, play it in reverse. If `"no repeat"` is also defined, the animation will play forward once, then backward once, then stop at the first frame.
 
-### Other attributes
+# Other attributes
 
 As with the sprite attributes, you should only include whichever attributes you actually want to use.
 
