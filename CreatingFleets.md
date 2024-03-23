@@ -72,6 +72,8 @@ fighters
 ```
 This specifies that no special personalities should be given to the fighters and drones, even if there are special personalities for the other ships in the fleet.
 
+## Cargo
+
 ```html
 cargo <cargo#>
 commodities <commodity>...
