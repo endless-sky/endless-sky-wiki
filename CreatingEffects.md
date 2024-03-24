@@ -1,6 +1,6 @@
 "Effects" are animated objects - explosions, muzzle blasts, hull leaks, etc. - that are purely for show and do not interact with the other objects in the game in any way. All [weapons](https://github.com/endless-sky/endless-sky/wiki/CreatingOutfits) should define an effect for when they hit something, and some (missiles, in particular) may also define an effect for when they are fired. Also, anti-missile beams are rendered using effects, because they are not actual projectiles.
 
-The full syntax of an effect is given below. Most of the parameters are optional, and some are mutually exclusive. For examples of how effects, work, see the **data/effects.txt** file.
+The full syntax of an effect is given below. Most of the parameters are optional, and some are mutually exclusive. For examples of how effects work, see the **data/effects.txt** file.
 
 ```html
 effect <name>

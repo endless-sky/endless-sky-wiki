@@ -2,7 +2,7 @@ This document describes the unique "personality" of each of the regions of human
 
 ### The Core
 
-You grew up in a crowded workers' barracks; your parents were both mill or factory workers, or perhaps miners on one of the frontier worlds. For as long as you can remember your parents have been talking about getting free of debt and moving someplace else, perhaps a farmstead on a Dirt Belt world where they can be their own masters. You were in school until the age of 13 or 14, but now you work alongside your parents. Your parents are quietly religious, but are ashamed of expressing their faith too openly (even to their children) because most people here regard religious faith as a mark of a backwards or uneducated person. If you are a girl, from a very early age you have been made to feel intellectually inferior to men.
+You grew up in a crowded workers' barracks; your parents were both mill or factory workers, or perhaps miners on one of the frontier worlds. For as long as you can remember, your parents have been talking about getting free of debt and moving someplace else, perhaps a farmstead on a Dirt Belt world where they can be their own masters. You were in school until the age of 13 or 14, but now you work alongside your parents. Your parents are quietly religious, but are ashamed of expressing their faith too openly (even to their children) because most people here regard religious faith as a mark of a backwards or uneducated person. If you are a girl, from a very early age you have been made to feel intellectually inferior to men.
 
 ### The Deep
 

@@ -9,7 +9,7 @@ Version 0.9.9 added a "news system" where people in the spaceport will tell you 
 Portraits should be PNG images with the person's silhouette "cut out," designed to look good when displayed over a dark grey background. Source images should have enough resolution to look sharp at 480 x 480 pixels. For the sake of consistency:
 
 * Each person's face should be half the width of the image. (Or slightly less if they have a big hat or lots of hair.)
-* Photos with fancy "color filters" should not be used, and the light intensity curves should be adjusted to avoid washed-out or overly-contrasty images.
+* Photos with fancy "color filters" should not be used, and the light intensity curves should be adjusted to avoid washed-out or overly contrasty images.
 * Anything obviously 21st-century (like brand logos) should be avoided.
 * If possible, the image should just contain the person's face and shoulders, not their hands, etc.
 * It's okay to crop a person's shoulders on the right and left, and their hair if necessary, but their whole head should fit inside the image.

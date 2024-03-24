@@ -15,7 +15,7 @@ substitutions
 
 # Substitution characteristics
 
-A `substitutions` node can be defined in two places. The first place is as a child of a `missions` node, as described in [creating missions](CreatingMissions#text-replacements). Substitutions defined in this way apply only to the mission they are defined within. The second way to define substitutions is with the `substitutions` node being a root node. Substitutions defined in this was are applied globally to all missions and ship hails.
+A `substitutions` node can be defined in two places. The first place is as a child of a `missions` node, as described in [creating missions](CreatingMissions#text-replacements). Substitutions defined in this way apply only to the mission they are defined within. The second way to define substitutions is with the `substitutions` node being a root node. Substitutions defined in this way are applied globally to all missions and ship hails.
 
 The three types of substitutions, hardcoded, mission-specific, and global, have a specific precedence and order of execution to them. Global substitutions are replaced first, followed by mission-specific substitutions, and finally hardcoded substitutions. If a specific text-replacement is defined in more than one location, then the substitution that is executed later is the one that is used. For example, since `<first>` is a hardcoded substitution, this text replacement can never be used or modified by global or mission-specific substitutions. This order of execution can be taken advantage of to create text replacements that substitute into more text replacements. See the Examples section for how this can be done.
 
@@ -96,7 +96,7 @@ mission "Destroy the Moon?"
 			...
 ```
 
-The above conversation would read, "Hello there. I want you to travel to Earth." The global substitution `<greeting>` is never overriden and thus gets used. The substitution `<mission>` is defined globally and within the mission, but the mission-specific substitution takes precedence over the global definition. The substitution `<planet>` is defined by all three sources, but the hardcoded replacement of the mission's destination planet takes precedence over the other two substitution sources.
+The above conversation would read, "Hello there. I want you to travel to Earth." The global substitution `<greeting>` is never overridden and thus gets used. The substitution `<mission>` is defined globally and within the mission, but the mission-specific substitution takes precedence over the global definition. The substitution `<planet>` is defined by all three sources, but the hardcoded replacement of the mission's destination planet takes precedence over the other two substitution sources.
 
 ### Order of execution
 

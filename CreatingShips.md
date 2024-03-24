@@ -103,7 +103,7 @@ The size of the thumbnail should depend on the size of the ship. Drones may be 1
 
 # Data
 
-For some examples, you can look at `data/ships.txt`. The easiest thing to do is to take an existing ship and modify it. If you don't want to change the `ships.txt` file, you can create a file with any name you like, define your ship there, and save it in the data directory. Each ship attributes is defined as a key name (such as "sprite") followed by (usually) one value. If a key or value has spaces in it, you must enclose it in quotation marks or it will be interpreted as two separate keys.
+For some examples, you can look at `data/ships.txt`. The easiest thing to do is to take an existing ship and modify it. If you don't want to change the `ships.txt` file, you can create a file with any name you like, define your ship there, and save it in the data directory. Each ship attribute is defined as a key name (such as "sprite") followed by (usually) one value. If a key or value has spaces in it, you must enclose it in quotation marks or it will be interpreted as two separate keys.
 
 The data files use indentation, like in the Python language, to define sub-entries within an entry. For example, each ship is defined by a line reading `ship "Model Name"` with no indentation, followed by several keys indented once:
 
@@ -187,9 +187,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
 
-* `"swizzle"`: the swizzle value that this ship uses, overriding the  ship's government swizzle. **(v. 0.9.7)**
+* `"swizzle"`: the swizzle value that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
 
-* `"name"`: the name of the particular ship, as seen and/or editable by the player. In general this field will only be used by content creators for ships gifted to the player by a specific starting scenario. (It is extensively used by the game engine, to save the player's ships' names.)
+* `"name"`: the name of the particular ship, as seen and/or editable by the player. In general, this field will only be used by content creators for ships gifted to the player by a specific starting scenario. (It is extensively used by the game engine, to save the player's ships' names.)
 
 ¹The player info panel will not display properly if the total number of gun and turret hardpoints on either side of the ship is more than 12. In addition, prior to **v. 0.9.15**, if the total number of gun and turret hardpoints is greater than 32, the extras will not fire.
 
@@ -224,7 +224,7 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"cargo space"`: the mass of cargo that can be carried.
 
-* `"outfit space"`: the amount of outfits (weapons, generators, engines, etc.) that can be installed.
+* `"outfit space"`: the number of outfits (weapons, generators, engines, etc.) that can be installed.
 
 * `"weapon capacity"`: the amount of outfit space that can be occupied by weapons.
 
@@ -245,7 +245,7 @@ There is also one special attribute called `weapon` that defines how much damage
 * batteries
 * shields
 * cooling
-* outfits that don't fit any other category (expansions, scanners, hand to hand weapons, etc.)
+* outfits that don't fit any other category (expansions, scanners, hand-to-hand weapons, etc.)
 * thruster
 * steering
 * hyperdrive
@@ -302,7 +302,7 @@ ship "Berserker" "Berserker Drone"
 		"automaton" 1
 		"self destruct" 1
 ```
-The above creates a variant of the "Berserker" ship model named "Berserker Drone", and gives it the "automaton" attribute (0 crew) and makes it so that boarding this drone ship will cause it to self destruct.
+The above creates a variant of the "Berserker" ship model named "Berserker Drone", and gives it the "automaton" attribute (0 crew) and makes it so that boarding this drone ship will cause it to self-destruct.
 
 Any attributes specified in the `add attributes` node will be added to the base attribute value, so to decrease a value, you must specify a negative increment:
 

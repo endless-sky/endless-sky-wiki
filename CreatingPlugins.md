@@ -1,4 +1,4 @@
-The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](https://endless-sky.github.io/example-plugin.zip). For each operating systems, there are two places where the game looks for plugins, but generally you should only use the second option:
+The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](https://endless-sky.github.io/example-plugin.zip). For each operating system, there are two places where the game looks for plugins, but generally you should only use the second option:
 
 #### Linux
 * /usr/share/games/endless-sky/plugins/
@@ -62,7 +62,7 @@ A plugin folder can contain the following:
   * `images/`: all images should be placed in here. When specifying sprite paths, they are relative to the `images` directory. For example, `ship/berserker` refers to `${plugin-root}/images/ship/berserker.png`.
   * `sounds/`: all sounds must be placed in here. As with images, the path to a sound is relative to this folder.
 
-Eventually, a plugins server will be set up that will be accessible within the game itself. This server will support basic plugin management, e.g. to get a list of available plugins, download plugins, and check for updates to any plugins that were already downloaded.
+Eventually, a plugin server will be set up that will be accessible within the game itself. This server will support basic plugin management, e.g. to get a list of available plugins, download plugins, and check for updates to any plugins that were already downloaded.
 
 ## Plugin metadata
 
@@ -87,7 +87,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`news`](CreatingNews): a definition of information that is provided to the player when visiting a spaceport.
   * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
-  * `outfitter`: a "catalog" of outfits that can be for sale on various planets, or found in a ship's cargohold. This is so that instead of needing to specify every possible outfit multiple times, a planet or fleet can just say, "all the basic Syndicate outfits are available."
+  * `outfitter`: a "catalog" of outfits that can be for sale on various planets, or found in a ship's cargo hold. This is so that instead of needing to specify every possible outfit multiple times, a planet or fleet can just say, "all the basic Syndicate outfits are available."
   * [`person`](CreatingPersons): a unique ship that occasionally appears in certain systems.
   * [`phrase`](CreatingPhrases): a rule for constructing random phrases, e.g. for ship names, hail messages, and the name used for a spaceport news message. (See [`hails.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/hails.txt) or [`names.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/human/names.txt) for examples.)
   * [`planet`](MapData#planets): specifies what services are available on a given planet. These elements can be modified through the [map editor](https://github.com/endless-sky/endless-sky-editor).
@@ -143,4 +143,3 @@ disable person
 disable event
 	"war begins"
 ```
-

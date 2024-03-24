@@ -138,7 +138,7 @@ The phrase name should be preceded by "${" and followed by "}", and it will auto
 	`"I need &[playtime@abc] of your life."`
 ```
 
-Beginning in **v. 0.10.1**, the values of [player conditions](Player-Conditions) can be substituted into conversations, with various types off formatting.
+Beginning in **v. 0.10.1**, the values of [player conditions](Player-Conditions) can be substituted into conversations, with various types of formatting.
 
 Given the conditions:
 ```html
@@ -235,7 +235,7 @@ An "action" entry is similar to a [mission trigger](CreatingMissions#triggers), 
 
 **Prior to v. 0.10.3**, if the action entry has a `fail` line and the entry is part of a named conversation (i.e. one that is not defined within a mission) then the apply must name the mission to be failed. After this version, `fail` with no named mission in a named conversation will fail the mission that called the conversation.
 
-**Prior to v. 0.9.15** the `action` node was named `apply` and was only capable of [modifying conditions](Player-Conditions#applied-condition-sets), as seen in the example above where a condition "everyone thinks you are awesome" is assigned a value of 1 and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. While you can assign generic text as a condition value (e.g. `"drunk" = "true"`), the right-hand side will be treated as a [value expression](Player-Conditions#expressions) and the runtime value of the player condition named `"true"` will be used instead of the text "true".
+**Prior to v. 0.9.15** the `action` node was named `apply` and was only capable of [modifying conditions](Player-Conditions#applied-condition-sets), as seen in the example above where a condition "everyone thinks you are awesome" is assigned a value of 1 and the condition "drunk" is increased by 1. If "drunk" was not already a condition, its initial value is 0. If the condition "everyone thinks you are awesome" already existed and had a different value, this preexisting value is lost. Fractional values will be rounded towards zero (e.g. "0.99" becomes "0", "1.01" -> "1", and "-10.5" becomes "-10," so it is recommended to only use whole numbers. While you can assign generic text as a condition value (e.g. `"drunk" = "true"`), the right-hand side will be treated as a [value expression](Player-Conditions#value-expressions) and the runtime value of the player condition named `"true"` will be used instead of the text "true".
 
 The `apply` keyword is still supported as an alias of `action` for reverse compatibility purposes.
 

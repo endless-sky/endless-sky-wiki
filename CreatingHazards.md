@@ -28,7 +28,7 @@ The name of the hazard must be unique.
 
 This is a tag with no value that causes the strength of a hazard to remain constant throughout its duration.
 
-If this tag is omitted, then the strength of the hazard follows a normal curve, starting at roughly 10%, raising until reaching 100% strength half way through the duration, then dropping back down to roughly 10% before ending. Suggested that hazards with a short duration, such as only one frame, have this tag, as otherwise they will deal less damage than expected since they are starting at 10% strength.
+If this tag is omitted, then the strength of the hazard follows a normal curve, starting at roughly 10%, raising until reaching 100% strength halfway through the duration, then dropping back down to roughly 10% before ending. Suggested that hazards with a short duration, such as only one frame, have this tag, as otherwise they will deal less damage than expected since they are starting at 10% strength.
 
 ```html
 "period" <number#>
@@ -80,7 +80,7 @@ System-wide hazards will maintain the same density of environmental effects as i
 "environmental effect" "<effect name>" [<amount#>]
 ```
 
-An effect that is created each frame that the hazard is active. The amount of effects created is multiplied by the current strength of the hazard, meaning that stronger hazards create more effects.
+An effect that is created each frame that the hazard is active. The number of effects created is multiplied by the current strength of the hazard, meaning that stronger hazards create more effects.
 
 Multiple `"environmental effect"` lines can be provided at once. If this is not provided, then no effects are created when the hazard is active.
 

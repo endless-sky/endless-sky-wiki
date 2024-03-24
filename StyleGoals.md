@@ -18,7 +18,7 @@ Nearly all the landscape images were taken right here on Planet Earth. A few of 
 
 * Actual photo, or photorealistic image.
 * Every image includes both the sky and the ground.
-* No foreground objects (trees, buildings, etc).
+* No foreground objects (trees, buildings, etc.).
 * People edited out (wherever possible).
 
 ### Storytelling

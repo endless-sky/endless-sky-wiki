@@ -72,7 +72,7 @@ government "Pirate Anarchists"
 	"attitude toward"
 		"Pirate" -.01
 ```
-To use this government in NPCs, fleets, or location filters, you would still use the true name, "Pirate Anarchists".
+To use this government in NPCs, fleets, or location filters, you would still use the true name, "Pirate Anarchists."
 
 ## Swizzle
 ```html
@@ -325,7 +325,7 @@ government "Republic"
 ```
 then the game's base definition of "Large Core Pirates" as the raid fleet is forgotten and "Large Militia" is used instead.
 
-Beginning in **v. 0.10.0**, governments are allowed to have multiple raid fleets defined, whereas before that point, only a single raid fleet could be defined for each government. Each fleet can also be given a minimum and maximum attraction value for which it will spawn. If a minimum attraction is not provided then the default minimum value of 2 is used. If a minimum attraction is provided but no maximum, then the default maximum value is unbounded (a value of 0 for the maximum value means there is no maximum). This can allow for systems to have different raid fleets depending on who the player is hostile toward, as well as different fleets depending on how attractive the player is to raids.
+Beginning in **v. 0.10.0**, governments are allowed to have multiple raid fleets defined, whereas before that point, only a single raid fleet could be defined for each government. Each fleet can also be given a minimum and maximum attraction value for which it will spawn. If a minimum attraction is not provided then the default minimum value of 2 is used. If a minimum attraction is provided but no maximum, then the default maximum value is unbounded (a value of 0 for the maximum value means there is no maximum). This can allow for systems having different raid fleets depending on whom the player is hostile toward, as well as different fleets depending on how attractive the player is to raids.
 
 If multiple raid fleets are capable of spawning at the same time, each fleet checks if it can spawn up to 10 times as described above (meaning that multiple potential raid fleets can greatly increase the chance of any single fleet spawning). The likelihood of a single fleet spawning is determined by how far above that fleet's minimum attractiveness you are. Additionally, raid fleets will also take into account the strengths and spawn rates of normal fleets in the system. If a system has fleet spawns that are hostile to the raid fleet but not to the player, that will decrease the chance of the raid spawning. If a system has fleets that are hostile to the player but not the raid fleet, that will increase the chance of the raid spawning. If a system fleet is either friendly or hostile to both the raid and the player, it has no effect on the raid's spawn chance.
 
@@ -354,7 +354,7 @@ government "Daelaam"
 		not
 			near "Sol" 10
 ```
-This example usage indicates the  government "Daelaam" will have scanning and fining authority for
+This example usage indicates the government "Daelaam" will have scanning and fining authority for
 1) the planets Shakuras and Aiur
 2) any planets or systems connected to or controlled by its government
 3) planets or systems controlled by the 4 named governments, so long as they are not within 10 hyperspace jumps of Sol.

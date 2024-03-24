@@ -13,7 +13,7 @@ minable <name>
 	explode <effect> <count#>
 ```
 
-Minable asteroids are asteroids which are capable of being destroyed, and orbit around the system center instead of traveling in a single direction like normal, indestructible asteroids. Once destroyed, these asteroids will drop outfits that can be picked up.
+Minable asteroids are asteroids that are capable of being destroyed, and orbit around the system center instead of traveling in a single direction like normal, indestructible asteroids. Once destroyed, these asteroids will drop outfits that can be picked up.
 
 ```html
 minable <name>

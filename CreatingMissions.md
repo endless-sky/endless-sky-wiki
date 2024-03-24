@@ -192,7 +192,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<bunks>` = the number of passengers
 * `<passengers>` = "passenger" or "passengers"
 * `<fare>` = "a passenger" or "N passengers," where N is the number of passengers
-* `<origin>` = planet (or ship) where mission was offered
+* `<origin>` = planet (or ship) where the mission was offered
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>` in the `<system>` system"
@@ -258,7 +258,7 @@ The number of days you have to complete the mission. If the number of days is le
 
 `days + multiplier * (number of hyperspace jumps to the destination)`
 
-You can also combine multiple deadline statements; for example to set the deadline to the default with 2 additional days, one can write:
+You can also combine multiple deadline statements; for example, to set the deadline to the default with 2 additional days, one can write:
 
 ```c++
 deadline
@@ -301,7 +301,7 @@ If the mission is marked as `stealth`, it will fail if you are caught with the m
 passengers <number#> [<number#> [<probability#>]]
 ```
 
-This specifies the number of passengers. As with the `cargo` specification, if there are two or three numbers they are used to pick a random number.
+This specifies the number of passengers. As with the `cargo` specification, if there are two or three numbers, they are used to pick a random number.
 
 ```html
 invisible
@@ -442,7 +442,7 @@ Conditions can be changed when you are offered a mission or when you accept, dec
 
 A mission will not be offered if any of the `to fail` conditions are met, and will fail if it is active and one of those conditions changes so that it is satisfied. Using the `random` keyword in a `to fail` tag is possible, but not recommended.
 
-Beginning in **v. 0.10.0**, mission can be given `to accept` conditions. For jobs, if the mission can offer then it will appear on the jobs board, but if it can't be accepted then it will appeared grayed out with the "accept mission" button unable to be clicked. For non-job missions, if the mission's `to offer` conditions passed but the `to accept` conditions do not, then the `blocked` dialog will appear, if it exists.
+Beginning in **v. 0.10.0**, missions can be given `to accept` conditions. For jobs, if the mission can offer then it will appear on the jobs board, but if it can't be accepted then it will appear grayed out with the "accept mission" button unable to be clicked. For non-job missions, if the mission's `to offer` conditions passed but the `to accept` conditions do not, then the `blocked` dialog will appear, if it exists.
 
 The condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true (e.g. you have completed mission A *or* mission B), you can use an `or` sub-clause. Within an `or` clause you can have `and` clauses (and so on), allowing you to check any arbitrary logical combination. For example, if you want a mission to be offered if "(has A or (has B and has C)) and (has D)":
 
@@ -714,7 +714,7 @@ log [<category> <header>] <text>
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
-An example on how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
 
 ```html
 dialog <text>
@@ -753,7 +753,7 @@ At this point in the mission, the named ship outfit (or some number of them, if 
 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
 
-The `require` keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the `on offer` phase to only offer a mission to players who have a "Jump Drive". Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any). If a non-zero quantity is specified then the player's flagship is checked alongside the cargo holds of all in-system escorts, or only the flagship's cargo if this is a boarding mission. If a quantity of zero is specified then the player cannot have that outfit anywhere on any of their ships.
+The `require` keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the `on offer` phase to only offer a mission to players who have a "Jump Drive". Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any). If a non-zero quantity is specified, then the player's flagship is checked alongside the cargo holds of all in-system escorts, or only the flagship's cargo if this is a boarding mission. If a quantity of zero is specified, then the player cannot have that outfit anywhere on any of their ships.
 
 Beginning in **v. 0.9.15**, if the outfit being gifts has the "map" attribute, then the player will be given the information from that map as if they had purchased it from the outfitter. If an outfit with the "map" attribute is being required by a mission and the required value is 0, then the player must have the nearest systems that match the size of the map outfit unvisited, but if the required value is greater than 0 then the nearest systems must be visited.
 

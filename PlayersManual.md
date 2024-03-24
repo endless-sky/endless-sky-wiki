@@ -17,15 +17,15 @@ You are about to purchase your first ship and set out to make your fortune among
 
 As a new pilot, only a handful of ships are within your price range. Each one is suited to a slightly different personality:
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png" width="100" height="140">
+<img alt="Shuttle" align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/shuttle=0@2x.png" width="100" height="140">
 
 The Shuttle is the cheapest and most versatile option. Nearly as nimble as a fighter, shuttles can easily escape from slower pirate ships and even dodge missiles, which is a good thing because they are otherwise useless in combat. Shuttles are classified as &ldquo;transports&rdquo; because they have relatively small cargo holds, and instead their most common use is ferrying passengers: a great way for more gregarious captains to meet interesting people while exploring the galaxy.<br clear="all">
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star%20barge@2x.png" width="140" height="160">
+<img alt="Star Barge" align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/star%20barge@2x.png" width="140" height="160">
 
 The Star Barge is a slow ship, but with ample cargo capacity, enough to be able to take on multiple simultaneous delivery jobs. Or, a captain without much hunger for variety can earn a stable living on a Star Barge just by finding a decent trade route and running it over and over again. Unfortunately, Star Barges are a favorite target of pirates because they often carry valuable cargo and are hardly ever able to outrun their adversaries.<br clear="all">
 
-<img align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png" width="140" height="160">
+<img alt="Sparrow" align="left" src="https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/sparrow@2x.png" width="140" height="160">
 
 The Sparrow is the cheapest interstellar ship you can buy that is designed for combat. With enough luck or skill, a Sparrow pilot can earn income by disabling and boarding small pirate ships... or by turning pirate and attacking civilians. Once you earn a reputation in combat, you can find a more steady income as an escort for merchant caravans, but even so, life at the helm of a Sparrow is risky and uncertain. The safe way to make money in a Sparrow is by mining asteroids, which is described later.<br clear="all">
 
@@ -69,7 +69,7 @@ If you apply for a new loan, your credit score determines the interest rate you 
 
 ## Spaceport (P)
 
-The job board works fine for offering run of the mill missions, but people who need more important or sensitive work done will generally want to speak to a captain face to face before offering the job. So, it never hurts to wander around the spaceport and see if you encounter anyone who can offer you a mission. If nothing else, exploring the spaceport will at least give you a sense of what the local culture is like. Spaceports span the gamut from towering buildings with hangars for incoming ships, to fields of packed dirt with only a few huts or a small village nearby.
+The job board works fine for offering run-of-the-mill missions, but people who need more important or sensitive work done will generally want to speak to a captain face to face before offering the job. So, it never hurts to wander around the spaceport and see if you encounter anyone who can offer you a mission. If nothing else, exploring the spaceport will at least give you a sense of what the local culture is like. Spaceports span the gamut from towering buildings with hangars for incoming ships, to fields of packed dirt with only a few huts or a small village nearby.
 
 When you visit a spaceport, if anyone wants to offer you a mission a conversation panel will pop up. Some conversations just offer you a choice between accepting or declining a mission; others let you ask questions and make different choices of how to respond. And if you make a particularly bad decision, some conversations can end with you dead, or imprisoned or enslaved for life. The universe is a dangerous place, so be careful!
 
@@ -81,9 +81,9 @@ When you visit a spaceport, if anyone wants to offer you a mission a conversatio
 
 The degree of technological and industrial development necessary to build starships from scratch is so high that only a few planets in human space are home to active shipyards, although there are other planets that sell those ships secondhand. So, even before you are ready to buy a new ship it is worthwhile to check what each planet is selling; the ship models that are popular in one part of the galaxy may not be available in others.
 
-When buying a new ship, you can either sell your previous ship first, or buy a second ship and use either it or your previous ship as an escort. (You can click and drag the ship icons to reorder them; the first ship in the list is the one you will use as your flagship.) In general, having many small escorts is more cost effective than one large ship, but small escorts are more easily destroyed in combat situations where a fleet of larger ships could have survived with no casualties. If an escort is destroyed, any cargo and passengers they are carrying will be lost as well, which may include mission-critical cargo if it all could not fit in your flagship.
+When buying a new ship, you can either sell your previous ship first, or buy a second ship and use either it or your previous ship as an escort. (You can click and drag the ship icons to reorder them; the first ship in the list is the one you will use as your flagship.) In general, having many small escorts is more cost-effective than one large ship, but small escorts are more easily destroyed in combat situations where a fleet of larger ships could have survived with no casualties. If an escort is destroyed, any cargo and passengers they are carrying will be lost as well, which may include mission-critical cargo if it all could not fit in your flagship.
 
-Some ships have space for &ldquo;drones&rdquo; or &ldquo;fighters.&rdquo; These are small attack ships that have no hyperdrives or fuel of their own; they can travel from system to system only if carried within a larger ship. This lack of hyperspace capability generally makes them much cheaper than other ships. Drones are smaller than fighters, and require no crew, whereas for each fighter, you will have to pay the salary for one additional crew member. Ships with drone or fighter bays come with the bays empty; you must purchase the fighters or drones ships separately. You can't use a drone or fighter as your flagship.
+Some ships have space for &ldquo;drones&rdquo; or &ldquo;fighters.&rdquo; These are small attack ships that have no hyperdrives or fuel of their own; they can travel from system to system only if carried within a larger ship. This lack of hyperspace capability generally makes them much cheaper than other ships. Drones are smaller than fighters, and require no crew, whereas for each fighter, you will have to pay the salary for one additional crew member. Ships with drone or fighter bays come with the bays empty; you must purchase the fighters or drones separately. You can't use a drone or fighter as your flagship.
 
 If you trade in a ship for one with less cargo or passenger space, and then try to leave the planet, you may have to sell some of your cargo.  If there is not enough room for your passengers or mission-related cargo, you may fail some of your missions as a result.
 

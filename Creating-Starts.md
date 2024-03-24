@@ -230,7 +230,7 @@ If a start has a `to reveal` or `to unlock` node, but does not have an `on displ
 
 # Extending starts
 
-Plugins that provide an identifier in their start definition, e.g. the "cool start" in `start "cool start"`, are opting-in to the game's definition extension system, and their provided definition will be merged into any existing definitions with that same identifier.
+Plugins that provide an identifier in their start definition, e.g. the "cool start" in `start "cool start"`, are opting in to the game's definition extension system, and their provided definition will be merged into any existing definitions with that same identifier.
 
 ### "Add" prefixes
 

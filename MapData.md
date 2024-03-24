@@ -191,7 +191,7 @@ Systems which are hidden are not able to be seen unless they are linked to a vis
 shrouded
 ```
 
-Added in **v. 0.10.5**, systems which are shrouded are not able to be seen unless they are within visible range of the player's currently location, are linked to a visited system, or a mission highlights them. In addition, if the player is not currently within a shrouded system, then they are not able to see the contents of the system (e.g. the planets in the system, the system's name, etc.). Shrouded systems are effectively forgotten every time the player leaves them.
+Added in **v. 0.10.5**, systems which are shrouded are not able to be seen unless they are within visible range of the player's current location, are linked to a visited system, or a mission highlights them. In addition, if the player is not currently within a shrouded system, then they are not able to see the contents of the system (e.g. the planets in the system, the system's name, etc.). Shrouded systems are effectively forgotten every time the player leaves them.
 
 ```html
 pos <x#> <y#>

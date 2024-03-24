@@ -1,4 +1,4 @@
-There is a [plugin repository](https://github.com/endless-sky/endless-sky-plugins) consisting of community created plugins. If you'd like to add your plugin to the repository, you can follow the instructions below.
+There is a [plugin repository](https://github.com/endless-sky/endless-sky-plugins) consisting of community-created plugins. If you'd like to add your plugin to the repository, you can follow the instructions below.
 
 ## Prerequisites
 

@@ -50,7 +50,7 @@ Now, duplicate the shadow layer, and blur it with twice the width of the previou
 
 ![original image](https://endless-sky.github.io/images/planet/10.jpg)
 
-Switch back to the layer with the atmosphere ring. Using a big, fuzzy eraser, cut in from both edges so that the atmosphere on the top half of each side tapers from full strength to nothing. If the planet has very thick atmosphere, the lit circle of atmosphere may extend farther upward beyond the terminator, but it should never go all the way to the top. (Unless cities are lighting the sky, as discussed below.)
+Switch back to the layer with the atmosphere ring. Using a big, fuzzy eraser, cut in from both edges so that the atmosphere on the top half of each side tapers from full strength to nothing. If the planet has a very thick atmosphere, the lit circle of atmosphere may extend farther upward beyond the terminator, but it should never go all the way to the top. (Unless cities are lighting the sky, as discussed below.)
 
 If the atmosphere still looks too thick, you may want to reduce its opacity or use the eraser on other parts of it. The goal is for the atmosphere to be, as it is on a real planet, very subtle. The earth's atmosphere, for example, is only 1% of its width!
 

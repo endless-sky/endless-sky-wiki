@@ -99,7 +99,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
 * These attributes alter the legality of an outfit.
 
-  * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on  planet, you are immediately captured and imprisoned for life.
+  * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on a planet, you are immediately captured and imprisoned for life.
 
   * `illegal`: the fine, in credits, for being caught using this outfit.
 
@@ -107,7 +107,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `shields`: an additional number of shield points added to a ship's base shields value.
 
-  * `"shield generation"`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging your ship has less energy available for other things.
+  * `"shield generation"`: the number of shield points regenerated per frame. It takes 1 energy to regenerate 1 unit of shields, so if your shields are recharging, your ship has less energy available for other things.
 
   * `"shield energy"`: the amount of energy your shield generator draws when recharging at the full rate. (**Prior to v. 0.9.0,** shield recharge also draws an additional amount of energy equal to `"shield generation"`.) Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to grant energy.
 
@@ -395,7 +395,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"capture defense"`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
 
-  * `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand to hand weapons and outfit expansions). **(v. 0.9.0)**
+  * `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand-to-hand weapons and outfit expansions). **(v. 0.9.0)**
 
 * The following attributes are used to allow an outfit to grant the ability to jump between systems, and alter the behavior of jumping.
 
@@ -517,7 +517,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"income"`: how many credits per day are gained from this outfit. Income is gained for any owned ships or outfits. **(v. 0.9.15)**
 
-  * `"operating income"`: how many credits per day are gained from  this outfit. Differs from `"income"` in that operating income is only gained from actively in use outfits and ships, meaning parked ships or outfits in cargo won't provide income for the player. **(v. 0.9.15)**
+  * `"operating income"`: how many credits per day are gained from this outfit. Differs from `"income"` in that operating income is only gained from actively in use outfits and ships, meaning parked ships or outfits in cargo won't provide income for the player. **(v. 0.9.15)**
 
 * These are miscellaneous attributes capable of being added to outfits.
 
@@ -539,7 +539,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"optical jamming"`: how much resistance this ship has to optical tracking. The missile's chance of maintaining its lock is proportional to its `"optical tracking"` value divided by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
-  * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self destruct when you try to plunder it or, after succeeding in boarding it without it self destructing, try to capture it. That is, the probability of successfully boarding a ship with self destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
+  * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
@@ -786,7 +786,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"relative energy damage"`: energy damage that gets scaled according to the energy capacity of a target. If the target's shields are up, energy damage is cut in half.
 
-* There also exist various damage over time damage types. Each of these damage types dissipate at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
+* There also exist various damage over time damage types. Each of these damage types dissipates at a rate of 1% per frame. For example, a ship that takes 10 ion damage will lose 10 energy that frame, 9.9 energy the next frame, 9.801 energy the next, and so on until ionization tapers off to 0. That means the total energy loss from that one ion impact will be 10 + 99% * 10 + 99% * 99% * 10 + ... = 10 / 1% = 1000 energy.
 
   * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also had the effect of scrambling damage. This was removed when scrambling damage was made its own damage type in **v. 0.10.0**.
 
@@ -806,7 +806,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 # Sales
 
-In order for anyone to buy your new outfit, it must be added to one of the "outfitter" objects. For example, if you are writing a plugin you could include this in one of your data files:
+In order for anyone to buy your new outfit, it must be added to one of the "outfitter" objects. For example, if you are writing a plugin, you could include this in one of your data files:
 
 ```
 outfitter "Syndicate Advanced"
