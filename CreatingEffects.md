@@ -5,12 +5,7 @@ The full syntax of an effect is given below. Most of the parameters are optional
 ```html
 effect <name>
 	sprite <name>
-		"scale" <number#>
-		"frame rate" <fps#>
-		"start frame" <number#>
-		"random start frame"
-		"no repeat"
-		"rewind"
+		[sprite properties...]
 	sound <name>
 	lifetime <frames#>
 	"random lifetime" <frames#>
@@ -25,24 +20,12 @@ effect <name>
 
 # Sprite definition
 
-The name of the sprite should be a path relative to the **images** folder, and not including frame numbers, blending mode specifiers, or the ".png" or ".jpg" extension. For example, the "blaster impact" effect is an animation with four frames:
+```html
+sprite <name>
+	[sprite properties...]
+```
 
-* images/effect/blaster impact+0.png
-* images/effect/blaster impact+1.png
-* images/effect/blaster impact+2.png
-* images/effect/blaster impact+3.png
-
-The `<name>` for this sprite is "effect/blaster impact". The `+` in the file names specifies that the images should use [additive blending](https://github.com/endless-sky/endless-sky/wiki/BlendingModes), and the numbers after the `+` are the frame numbers for the animation.
-
-Sprite sets can be universally resized, in case you would like to re-use an existing animation at a different size, with the `"scale"` attribute. The default scale value is `1.0` (i.e. 100%). For the best results, use a power-of-two increase or decrease, e.g. `0.125` (1/8), `0.25` (1/4), or `0.5` (1/2). Scaling factors that result in odd widths and height generally result in a blurry image, as do scales over 100%. (For most effect sprites, this will not be an issue as they are not very detailed anyway.)
-
-You can also specify various attributes of the animation. These should be left out if you do not want them:
-
-* `"frame rate" <fps#>`: frames per second.
-* `"start frame" <number#>`: start at this frame of the animation.
-* `"random start frame"`: start at a random frame of the animation.
-* `"no repeat"`: once the animation has played through once, stay on the last frame until the effect disappears. (If this is not defined, the animation loops.)
-* `"rewind"`: once the animation has played through to the last frame, play it in reverse. If `"no repeat"` is also defined, the animation will play forward once, then backward once, then stop at the first frame.
+The sprite to use for this affect. Details on this definition can be found on the [sprite data](SpriteData) page.
 
 # Other attributes
 

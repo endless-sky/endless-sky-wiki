@@ -360,6 +360,8 @@ scale <scale#>
 
 The multiplier applied to the dimensions of this object's sprite when displayed in game. This value defaults to 1. In order to increase the visual fidelity of stations, they are stored at double resolution, and scaled down to half size.
 
+Additional properties for animated sprites can be found in the [sprite data](SpriteData) page.
+
 ```html
 distance <distance#>
 ```

@@ -113,17 +113,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"noun"`: noun to use when referring to this ship, instead of "ship." For example, this can make the game refer to a ship as a "creature" or an "entity." **(v. 0.9.7)**
 
-* `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). If the sprite is animated, the following lines can be added as a "child" of the sprite line:
-
-  * `"frame rate" <fps#>`: frames per second.
-
-  * `"frame time" <ticks#>`: game ticks per animation frame. A game tick is 1/60th of a second. This is an alternative way of specifying frame rate; if you specify both the last specification will be used.
-
-  * `"delay" <frames#>`: number of animation frames to delay in between loops of the animation. For example, a four-frame animation with a delay of 4 and a frame rate of 8 FPS will play the animation for half a second, then pause for half a second, then repeat.
-
-  * `"rewind"`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
-
-  * `"center" <x#> <y#>`: specifies the center of rotation of the ship. By default, the center of rotation is in the direct middle of the sprite. The coordinates are the same as gun/turret/engine hardpoints. **(v. 0.10.5)**
+* `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). Additional sprite properties can be provided as children of this node. See the [sprite data](SpriteData) page for more details.
 
 * `"thumbnail"`: the shipyard sprite.
 

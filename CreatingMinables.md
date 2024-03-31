@@ -5,6 +5,7 @@ minable <name>
 	"display name" <display name>
 	noun <noun>
 	sprite <sprite>
+		[sprite properties...]
 	hull <hull#>
 	payload <outfit> <count#>
 		"max drops" <count#>
@@ -36,9 +37,11 @@ Beginning in **v. 0.10.0**, minables can have custom nouns. If no noun is specif
 
 ```html
 sprite <sprite>
+	[sprite properties...]
 ```
 
 The sprite that the minable asteroid has.
+Details on additional sprite colonies are available on the [sprite data](SpriteData) page.
 
 ```html
 hull <hull#>
