@@ -96,7 +96,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"credits"` is the number of credits you currently have in your account.
 * `"unpaid mortgages"`, `"unpaid fines"`, `"unpaid salaries"`, and `"unpaid maintenance"` are the value of your current outstanding mortgages, fines, salaries, and maintenance.
 * `"credit score"` is the credit score you have with the bank.
-* `"cargo attractiveness"` is how attractive the size of your cargo hold(s) is to pirates. Lots of small ships are more attractive than one large one. Values for single human ships range from `-2` for ships with no cargo to `8` for Bulk Freighters.
+* `"cargo attractiveness"` is how attractive the size of your cargo hold(s) is to pirates. Values for single human ships range from `0` for ships with up to 20 tons of cargo to `8` for Bulk Freighters. This value is the sum of the attractiveness values of the player's unparked ships. The attractiveness value of each ship is: 0, or (0.4 * sqrt(cargo space)) - 1.8, whichever is larger.
 * `"armament deterrence"` is how effective your weapons are at discouraging pirates. Values for single human ships range from `0` for unarmed ships to `8` for the Dreadnought.
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
