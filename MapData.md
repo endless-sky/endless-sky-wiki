@@ -9,6 +9,7 @@
 * [Wormholes](#wormholes)
 * [Landing Messages](#landing-messages)
 * [Solar Attributes](#solar-attributes)
+* [Ambient Music](#ambient-music)
 
 # Introduction
 
@@ -217,7 +218,7 @@ If there are no inhabited planets in a system, then it is automatically given an
 music <sound>
 ```
 
-Music that is played while in this system.
+[Music](#ambient-music) that is played while in this system.
 
 ```html
 arrival [<distance#>]
@@ -459,7 +460,7 @@ The landscape image that is shown when landed on this planet.
 music <sound>
 ```
 
-The music that is played while landed on this planet.
+The [music](#ambient-music) that is played while landed on this planet.
 
 ```html
 description <text>
@@ -648,3 +649,17 @@ wind <wind#>
 ```
 
 The wind of a star impacts the effectiveness of a ship's ramscoops.
+
+# Ambient music
+
+```html
+music <path>
+```
+
+Both systems and planets can be assigned music that plays while the player is there.
+The music files should be of the '.mp3' format and placed in the 'sounds' folder.
+The path should be the reletive path within the 'sounds' folder without the file extension.
+For example, a file named 'machinery.mp3' in a folder 'ambient' inside the 'sounds' folder would be listed in a planet or system definition as:
+```css
+	music ambient/machinery
+```
