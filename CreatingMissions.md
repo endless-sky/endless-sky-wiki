@@ -81,6 +81,7 @@ mission <name>
 	invisible
 	(priority | minor)
 	(job | landing | assisting | boarding | shipyard | outfitter)
+	autosave
 	"apparent payment" <amount>
 	boarding
 		"override capture"
@@ -329,6 +330,12 @@ This specifies where this mission will be shown, if someplace other than the spa
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
 A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+
+```html
+autosave
+```
+
+This specifies that a snapshot named "autosave" should be created when this mission is accepted. If a snapshot with this name already exists, it will be overwritten.
 
 ```html
 "apparent payment" <amount>
