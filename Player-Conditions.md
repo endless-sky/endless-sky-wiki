@@ -101,7 +101,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
 * `random` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
-* `"roll: <input>"` will roll a random number in the range `[0, input)` where "input" can be either an integer or the name of a condition, in which case the value of the condition is used. If the input value is <= 1, then the output will always be 0. **(v. 0.10.3)**
+* `"roll: <input>"` will roll a random number from 0 up to, but not including the value of input (in the range `[0, input)`), where "input" can be either an integer or the name of a condition, in which case the value of the condition is used. If the input value is <= 1, then the output will always be 0. **(v. 0.10.3)**
 * `"name: <first> <last>"` is the full name of the pilot. **(v. 0.10.0)**
 * `"first name: <first>"` is just the first name. **(v. 0.10.0)**
 * `"last name: <last>` is just the last name. **(v. 0.10.0)**
