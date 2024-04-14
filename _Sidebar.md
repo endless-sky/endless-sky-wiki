@@ -43,6 +43,7 @@
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
+* [Sprite animation parameters](SpriteData)
 
 **Compiling or modifying the source code**
 
