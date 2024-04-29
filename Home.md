@@ -21,6 +21,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Art and storytelling style](StyleGoals)
 * [Quality Checklist](QualityChecklist)
 * [Donating](Donations)
+* [Development Vision](https://github.com/endless-sky/endless-sky/wiki/Endless-Sky's-Vision)
 
 ### Creating ships, missions, artwork, etc.
 
