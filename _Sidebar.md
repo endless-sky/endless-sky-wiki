@@ -18,6 +18,7 @@
 * [Quality Checklist](QualityChecklist)
 * [Story Ideas](StoryIdeas)
 * [Donations](Donations)
+* [Development Vision](https://github.com/endless-sky/endless-sky/wiki/Endless-Sky's-Vision)
 
 **Creation**
 
