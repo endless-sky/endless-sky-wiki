@@ -47,6 +47,7 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
+		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -150,6 +151,7 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
+		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -275,9 +277,12 @@ The haze that is created for the background of this system. If no haze is given,
 
 ```html
 link <system>
+	<conditions>
 ```
 
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
+
+Links can have conditions that determine if they are available/visible.
 
 ```html
 asteroid <name> <count#> <energy#>
