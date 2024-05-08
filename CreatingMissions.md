@@ -179,6 +179,8 @@ mission <name>
 		(set | clear) <condition>
 		event <name> [<delay> [<max>]]
 		fail [<name>]
+		music <name>
+		mute
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -687,6 +689,8 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	(set | clear) <condition>
 	event <name> [<delay#> [<max#>]]
 	fail [<name>]
+	music <name>
+	mute
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -861,3 +865,14 @@ fail [<name>]
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list. If you have multiple active missions of the same identifier (which may occur for repeatable missions such as jobs), then a `fail` action that specifies the identifier of those missions will fail all of them at once.
 
 Prior to **v. 0.10.3**, `fail` with no mission name would fail all missions of the same name of the mission that the action was called by, just as if the mission name were explicitly defined. After this version, `fail` properly only fails the mission that called the action.
+
+```html
+music <name>
+mute
+```
+
+Beginning in **v. 0.10.7**, using the `music` node causes the specified music track to begin playing once the action is triggered. The track name must be a path relative to the `sound` folder. For example, if you wanted to play the machinery sound that is used as ambient music for stations, you would provide the track name `ambient/machinery`.
+
+If you provide `<ambient>` as the track name, then whichever music track is being played by your current planet will be played instead, or your current system if you're not on a planet.
+
+The `mute` node can be used to stop all music tracks from playing.
