@@ -149,6 +149,10 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
 
+	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
+
+	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle.
+
 * `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
 
   * The following lines can be added as a "child" of the bay line:
