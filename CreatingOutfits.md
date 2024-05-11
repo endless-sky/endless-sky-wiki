@@ -704,6 +704,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"turret turn"`: the number of degrees that this turret rotates per frame. (**v. 0.9.7**)
 
+* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.)
+
 * The calculation for the range of a weapon involves multiplying its base lifetime by its base velocity. This value is what is used by the AI to determine when to fire the weapon given the distance to the target. The AI will also take any random velocity into account when aiming the weapon in order to properly lead the target. These base values may not always be entirely accurate as to how the AI should use a weapon though. Such situations may include weapons with acceleration and drag values that cause a projectile to travel much faster or slower than the base velocity, or weapons with very high inaccuracies that make using them at range impractical. It can also be the case that a weapon has a blast radius, which will by default cause ships to avoid firing the weapon if their target is close enough where the explosion with damage itself, although removing this behavior may be desired. The following attributes can be used in order to get more favorable results in how the AI uses the weapon:
 
   * `"range override"`: If provided, this value will be used to determine when the weapon should be fired instead of the normal range calculation. This will also be what is shown for the range of the weapon in the outfitter. **(v. 0.9.13)**
