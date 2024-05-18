@@ -174,6 +174,9 @@ mission <name>
 			"requires outfits"
 		payment [<base> [<multiplier>]]
 		fine <amount>
+		debt <amount>
+			interest <amount>
+			term <days>
 		<condition> (= | += | -=) <value>
 		<condition> (++ | --)
 		(set | clear) <condition>
@@ -684,6 +687,9 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 		"requires outfits"
 	payment [<base> [<multiplier>]]
 	fine <amount>
+	debt <amount>
+		interest <amount>
+		term <days>
 	<condition> (= | += | -=) <value#>
 	<condition> (++ | --)
 	(set | clear) <condition>
@@ -839,6 +845,16 @@ fine <amount#>
 ```
 
 This specifies the fine for a mission, a high interest (0.006%, equivalent to a credit score of 0), short term (60 days) mortgage that must be paid.
+
+```html
+debt <amount>
+	interest <amount>
+	term <days>
+```
+
+Beginning in **v. 0.10.7**, mission actions may give debt to the player. Debt behaves similarly to a mortgage from the bank, except you receive no credits up front (unless your action also uses a `payment` node). A mission action may contain multiple `debt` nodes. This node has two optional children:
+* `interest`: the interest rate of the debt where a value of 1 = 1%. Must currently be within the [range](https://en.wikipedia.org//wiki/Interval_(mathematics)) [0, 0.999]. If not present, uses your credit score to determine the interest rate in the same way that a normal mortgage would. May be explicitly set to 0%.
+* `term`: the number of days that the debt must be paid within. Defaults to 365 days if not present.
 
 ```html
 <condition> (= | += | -=) <value#>
