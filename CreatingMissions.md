@@ -856,7 +856,7 @@ To change the player's reputation or combat rating, you may alter the `"reputati
 event <name> [<delay#> [<max#>]]
 ```
 
-This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now, instead of happening immediately. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval.
+This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first.
 
 ```html
 fail [<name>]
