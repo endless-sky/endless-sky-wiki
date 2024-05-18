@@ -91,6 +91,7 @@ mission <name>
 	ignore clearance
 	infiltrating
 	waypoint <system>
+	mark <system>
 	stopover [<planet>]
 		...
 	substitutions
@@ -184,6 +185,8 @@ mission <name>
 		fail [<name>]
 		music <name>
 		mute
+		mark <system>
+		unmark <system>
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -205,6 +208,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<stopovers>` = a list of all stopover destinations
 * `<planet stopovers>` = a list of all stopover planets (unlike `<stopovers>` this doesn't include any system name, just the planets) **(v. 0.10.1)**
 * `<waypoints>` = a list of all waypoint systems
+* `<marks>` = a list of all marked systems
 * `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block (or, beginning in **v. 0.10.0**, the "apparent payment" of the mission, if one is given), unless the replacement is in an `on *` block or below a conversation `apply` node that has its own payment, in which case that `on *` block's or the most recent `apply`'s payment is used
 * `<fine>` = "1 credit" or "N credits," where N is the fine amount with the same behavior as `<payment>`; this is not the fine as defined by an `illegal` line
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
@@ -415,6 +419,12 @@ waypoint
 ```
 
 This specifies a system which you must fly through in order to complete the mission. You do not have to land on any planets or spend any amount of time there. Waypoints are marked on the map in red until they have been visited. Beginning with **v. 0.9.9**, all visited waypoints of the currently selected mission are marked by a faint circle in the player's map panel.
+
+```html
+mark <system>
+```
+
+Introduced in **v. 0.10.7**, this specifies a system that will be marked on the map. This can be used to highlight optional objectives of a mission or systems which may be important to the mission in some other way but do not need to be visited. Marked system do not become unmarked upon being visited and share the same marker as waypoints and stopovers.
 
 ```html
 stopover [<planet>]
@@ -697,6 +707,8 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	fail [<name>]
 	music <name>
 	mute
+	mark <system>
+	unmark <system>
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -892,3 +904,10 @@ Beginning in **v. 0.10.7**, using the `music` node causes the specified music tr
 If you provide `<ambient>` as the track name, then whichever music track is being played by your current planet will be played instead, or your current system if you're not on a planet.
 
 The `mute` node can be used to stop all music tracks from playing.
+
+```html
+mark <system>
+unmark <system>
+```
+
+Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
