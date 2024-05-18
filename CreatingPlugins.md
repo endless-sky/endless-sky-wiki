@@ -102,7 +102,7 @@ Introduced in **v. 0.10.3**, the plugin.txt file in the plugin's root folder con
   * `optional`: a list of names for other plugins that are not required for this plugin, but may be installed because they either work well together or because having both installed provides additional content. **(v. 0.10.7)**
   * `conflicts`: a list of names for other plugins that conflict with this plugin. Users with both plugins installed may encounter odd behavior. **(v. 0.10.7)**
 
-All of the metadata for a plugin will be appended to the plugin's description when it is displayed in the plugins menu. Although plugins can list dependencies, these dependencies are currently not enforced in any way.
+All of the metadata for a plugin will be appended to the plugin's description when it is displayed in the plugins menu. Although plugins can list dependencies of other plugins, these dependencies are currently not enforced in any way. That is, if two conflicting plugins are installed or you have a plugin that is missing a requirement, the plugin will still be loaded into the game if it is marked as active in the plugins menu. If for some reason a separate plugin is listed both in the conflicts list and in the optional or requires list, the plugin will be considered invalid and not be loaded by the game.
 
 ## Creating or overriding data elements
 
