@@ -66,10 +66,43 @@ Eventually, a plugin server will be set up that will be accessible within the ga
 
 ## Plugin metadata
 
+```html
+name <name>
+about <description>
+version <version>
+authors
+	<author>
+	...
+tags
+	<tag>
+	...
+dependencies
+	"game version" <version>
+	requires
+		<plugin name>
+		...
+	optional
+		<plugin name>
+		...
+	conflicts
+		<plugin name>
+		...
+```
+
 Introduced in **v. 0.10.3**, the plugin.txt file in the plugin's root folder contains metadata about the plugin. Metadata is formatted in the same way that the data files are, with root nodes, tokens, and child nodes. Allowable metadata nodes are as follows:
 
-  * `name`: the name of the plugin to be displayed in the plugins menu. If no name is provided, defaults to the name of the folder that the plugin is from. If multiple plugins with the same `name` metadata are present, only the first reached by the game will be loaded, any subsequent plugins attempting to use the same name will not be loaded by the game.
-  * `about`: a description of the plugin to be displayed in the plugins menu. Prior to the creation of the plugin.txt file, the plugin's description was read from an about.txt file.
+* `name`: the name of the plugin to be displayed in the plugins menu. If no name is provided, defaults to the name of the folder that the plugin is from. If multiple plugins with the same `name` metadata are present, only the first reached by the game will be loaded, any subsequent plugins attempting to use the same name will not be loaded by the game.
+* `about`: a description of the plugin to be displayed in the plugins menu. Prior to the creation of the plugin.txt file, the plugin's description was read from an about.txt file.
+* `version`: the plugin's version number. **(v. 0.10.7)**
+* `authors`: a list of names for the authors of the plugin. **(v. 0.10.7)**
+* `tags`: a list of tags that act as descriptors for the plugin. **(v. 0.10.7)**
+* `dependencies`: dependencies are info about other plugins or game versions that interact with this plugin in some way. **(v. 0.10.7)**
+  * `"game version"`: the game version(s) that this plugin is expected to function with. **(v. 0.10.7)**
+  * `requires`: a list of names for other plugins that are required for this plugin to function. **(v. 0.10.7)**
+  * `optional`: a list of names for other plugins that are not required for this plugin, but may be installed because they either work well together or because having both installed provides additional content. **(v. 0.10.7)**
+  * `conflicts`: a list of names for other plugins that conflict with this plugin. Users with both plugins installed may encounter odd behavior. **(v. 0.10.7)**
+
+All of the metadata for a plugin will be appended to the plugin's description when it is displayed in the plugins menu. Although plugins can list dependencies, these dependencies are currently not enforced in any way.
 
 ## Creating or overriding data elements
 
