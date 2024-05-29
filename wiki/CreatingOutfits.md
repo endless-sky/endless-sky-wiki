@@ -800,7 +800,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"trigger radius"`: how close a projectile must be to a hostile target to trigger its explosion. This only makes sense to use with weapons with a `"blast radius"` at least as big as their `"trigger radius"`.
 
-* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate.
+* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate. Weapons with a blast radius will not deal damage or apply prospecting to a minable.
 
 [<img src="https://i.imgur.com/Nw81ZjK.png" width="400px">][blastscale]
 
