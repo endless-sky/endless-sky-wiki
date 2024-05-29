@@ -820,7 +820,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"hull damage"`: how much damage a projectile does to the hull of ships or minables.
 
-  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
+  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage, but not relative hull damage. **(v. 0.9.15)**
 
   * `"minable damage"`: how much damage a projectile does to [minable objects](CreatingMinables). If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
 
