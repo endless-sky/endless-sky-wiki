@@ -161,7 +161,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull threshold"`: a hull value that gets added or subtracted from the result of either the default equation or the threshold percentage equation, whichever is used.
 
-* Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the numer of seconds it takes for a disabled ship to repair itself. Self-repair could have some costs, for example:
+* Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the number of seconds it takes for a disabled ship to repair itself. Self-repair could have some costs, for example:
 
   * `"disabled recovery energy"` The energy cost required for a disabled ship to repair itself.
 
