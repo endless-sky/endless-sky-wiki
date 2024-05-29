@@ -840,7 +840,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"relative disabled damage"`: disabled hull damage that gets scaled according to the max hull of a target. **(v. 0.9.15)**
 
-  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. **(v. 0.9.15)**
+  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. If not present, the value of the relative hull damage is used instead. **(v. 0.9.15)**
 
   * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half.
 
