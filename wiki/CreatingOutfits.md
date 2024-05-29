@@ -762,6 +762,10 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"burst reload"`: how many frames this weapon takes to reload between projectiles in a burst. This value must be less than the full `reload` value. For example, a weapon with a `reload` of `100`, `"burst count"` of `2` and `"burst reload"` of `5` will fire on the 1st and 6th frames, then on the 201st and 206th frames, and so on. The fraction of time that a burst weapon spends firing is `("burst reload" - 1) / reload`, where the weapon is considered firing on each frame where it has fired a projectile or is reloading the next projectile in the burst, with the final projectile in a burst being the end of the firing period. **(v. 0.9.0)**
 
+  * A weapon with a burst count greater than 1 and a burst reload of 1 or less and a total lifetime of 1 will be labeled as "continuous (x%)" in its outfit info.
+
+  * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
+
 * `homing`: How good this weapon is at seeking its target:
 
   * 0: no homing.
