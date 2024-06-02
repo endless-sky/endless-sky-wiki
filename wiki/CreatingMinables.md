@@ -7,6 +7,7 @@ minable <name>
 	sprite <sprite>
 		[sprite properties...]
 	hull <hull#>
+	"random hull" <hull#>
 	payload <outfit> <count#>
 		"max drops" <count#>
 		"drop rate" <chance#>
@@ -48,6 +49,12 @@ hull <hull#>
 ```
 
 The amount of hull damage that must be applied to this asteroid before it is destroyed.
+
+```html
+"random hull" <hull#>
+```
+
+Beginning in **v. 0.9.15**, minables can have an amount of health up to their "random hull" value added on top of their base hull.
 
 ```html
 payload <outfit> <count#>
