@@ -43,7 +43,7 @@ interface <name> [<anchor>]
 	(ring | bar) <name>
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
-		[color <color>]
+		[(color <color>) | ("map color" <magnitude>)]
 		[size <size#>]
 	pointer
 		from <x#> <y#>
@@ -239,7 +239,7 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 ```html
 	(bar | ring) <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
-		color <color>
+		(color <color>) | ("map color" <magnitude#>)
 		size <size#>
 ```
 Defines a straight line (bar) or circular outline (ring) to be drawn with this interface.
@@ -247,7 +247,8 @@ In the case of a ring, it will be drawn anti-clockwise around the center of its 
 A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
 The size determines the thickness of the bar or ring, the default value is 2.
-If no color is given, "active" will be used.
+Map color allows you to use an interface color that matches the colors systems are given on the map. It's magnitude is a real number from -1.0 to +1.0 inclusive.
+If no color or map color is given, "active" will be used. If both are given, map color will take precedence.
 
 ## Lines
 
