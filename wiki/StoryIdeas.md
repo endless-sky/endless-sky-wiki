@@ -9,7 +9,7 @@ The military "strength" of each civilization also depends on how populous they a
 The existing aliens are grouped roughly into tiers, where a heavy warship of a civilization on one tier is a match for a light warship of the next tier up:
 
 * Tier 0.8: Gegno
-* Tier 1: Humans
+* Tier 1: Humans, Hai
 * Tier 1.5: Coalition, Korath Exiles and Efreti
 * Tier 1.9: Bunrodea
 * Tier 2: Wanderers, Korath Automata, Ka'het
