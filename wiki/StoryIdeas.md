@@ -8,19 +8,22 @@ The military "strength" of each civilization also depends on how populous they a
 
 The existing aliens are grouped roughly into tiers, where a heavy warship of a civilization on one tier is a match for a light warship of the next tier up:
 
-* Tier 1: Humans, Hai
-* Tier 1.5: Coalition, Remnant
-* Tier 2: Wanderers, Korath, Ka'het
+* Tier 0.8: Gegno
+* Tier 1: Humans
+* Tier 1.2: Hai
+* Tier 1.5: Coalition, Remnant, Korath Exiles and Efreti
+* Tier 1.9: Bunrodea
+* Tier 2: Wanderers, Korath Automata, Ka'het
 * Tier 2.5: Heliarch
 * Tier 3: Quarg
 * Tier 4: Drak
 * Tier ???: Pug (they have ships of different tiers depending on who they are fighting)
 
-As more alien species are added, it's likely the Quarg and Drak will need to be made stronger to make room for more tiers in between.
-
 It is important to note that tiers are not a concrete way to say that "every ship or outfit from X must be better than every ship or outfit from Y because X is of a greater tier than Y." Tiers are instead a general guideline as to the strength of various factions. Lower factions may still have ships or outfits that are "stronger" in some respects than higher factions, and factions of the same tiers should not be neck-and-neck in all ways.
 
-For example, the Wanderers have cooling outfits weaker than humans, so in that regard humans are "stronger" than Wanderers, but this is mainly due to the fact that the Wanderers do not have as much of a need for cooling. Similarly, the Coalition and Remnant, while both being "tier 1.5," are not too comparable given the fact that the Coalition is demilitarized, while the Remnant are in a constant fight against the Korath exiles. So in that regard, the Coalition could be considered a "weak tier 1.5" while the Remnant are a "strong tier 1.5."
+For example, the Wanderers have cooling outfits weaker than humans, so in that regard humans are "stronger" than Wanderers, but this is mainly due to the fact that the Wanderers do not have as much of a need for cooling.
+
+Some factions don't fit as neatly into the tier system as others, either. The Exiles' shipbuilding may have fallen to a lower tier than that of the Automata they built at their peak, but they still retain many of the tier 2 outfits from their prime. The Remnant have technology that spans a wider range of tiers than most other groups, owing largely to some of that technology being based on more advanced technology they have acquired or found, rather than something they developed independently. The Coalition are entirely demilitarized, so although the technology they use is of tier 1.5, their only ships are civilian vessels and they don't produce any weapons, leaving them with no combat power at all.
 
 ### Stagnation and limits
 
