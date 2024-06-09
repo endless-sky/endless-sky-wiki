@@ -23,7 +23,7 @@ It is important to note that tiers are not a concrete way to say that "every shi
 
 For example, the Wanderers have cooling outfits weaker than humans, so in that regard humans are "stronger" than Wanderers, but this is mainly due to the fact that the Wanderers do not have as much of a need for cooling.
 
-Some factions don't fit as neatly into the tier system as others, either. The Exiles' shipbuilding may have fallen to a lower tier than that of the Automata they built at their peak, but they still retain many of the tier 2 outfits from their prime. The Remnant have technology that spans a wider range of tiers than most other groups, owing largely to some of that technology being based on more advanced technology they have acquired or found, rather than something they developed independently. And, the Coalition are entirely demilitarized, so although the technology they use is of tier 1.5, their only ships are civilian vessels and they don't produce any weapons, leaving them with no combat power at all.
+Some factions don't fit as neatly into the tier system as others, either. The Exiles' shipbuilding may have fallen to a lower tier than that of the Automata they built at their peak, but they still retain many of the tier 2 outfits from their prime. The Remnant have technology that spans a wider range of tiers than most other groups, owing largely to some of that technology being based on more advanced technology they have acquired or found, rather than something they developed independently. The Coalition are entirely demilitarized, so although the technology they use is of tier 1.5, their only ships are civilian vessels and they don't produce any weapons, leaving them with no combat power at all.
 
 ### Stagnation and limits
 
