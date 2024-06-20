@@ -341,6 +341,7 @@ Board ship / land on planet | double click
 Zoom view in or out | - / + or scroll wheel
 Assign group hotkey to selected escorts | Control / Command + number key
 Select group of escorts | number key
+Add group of escorts to selection | Shift + number key
 Select escorts within a rectangle | left click + drag
 Tell escorts to move to location or target ship or asteroid | right click
 Get all escorts ready to jump | hold jump key
