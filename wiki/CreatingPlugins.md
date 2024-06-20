@@ -176,3 +176,11 @@ disable person
 disable event
 	"war begins"
 ```
+
+## Debugging
+
+Endless Sky logs errors encountered during plugin loading in errors.txt. If something doesn't work in your plugin, that's the first place to check:
+
+* **Linux** ~/.local/share/endless-sky/errors.txt
+* **Windows** C:\Users\yourusername\AppData\Roaming\endless-sky\errors.txt
+* **macOS** ~/Library/Application Support/endless-sky/errors.txt
