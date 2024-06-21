@@ -48,7 +48,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2340: Terraforming technology continues to advance, but it is still so complex that many attempts fail, sometimes destabilizing entire planetary ecosystems. One early attempt in the Nocte system renders the subject planet uninhabitable for the foreseeable future. 
 
-* 2350: An alliance of billionaire philanthropists establishes several colonies in the southern galactic rim, with the stated goal of spreading out humanity enough that a war or major disaster in the Sol region of space will not drive the species extinct.
+* 2350: An alliance of billionaire philanthropists establish several colonies in the southern galactic rim, with the stated goal of spreading out humanity enough that a war or major disaster in the Sol region of space will not drive the species extinct.
 
 * 2360: Invention of "repulsor" engines that work only within a gravity well, but make taking off from or landing on planets much easier.
 
