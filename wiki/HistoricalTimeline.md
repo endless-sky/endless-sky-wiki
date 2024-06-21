@@ -88,7 +88,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2580: Several small wars occur between corporate states. As interstellar travel has decreased in parts of the galaxy, some of the mega-corporations are splitting into individual isolated worlds. 
 
-*2590: A large space battle above the planet New Boston results in thousands of casualties, and accusations of brutality and war crimes by the involved corporations spread across newsfeeds. The survivors break from their employers and found colonies on the planet below.
+*2590: A large space battle above the planet of New Boston results in thousands of casualties, and accusations of brutality and war crimes by the involved corporations spread across newsfeeds. The survivors break from their employers and found colonies on the planet below.
 
 ***
 
