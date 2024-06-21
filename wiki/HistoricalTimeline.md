@@ -136,7 +136,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2830: Freelance captains have begun forming unions and mutual defense pacts, further reducing the amount of piracy in the galaxy and also reducing the power of large corporations.
 
-* 2840: A large merchant fleet ferrying equipment to research labs on Sundive are found disabled and destroyed, floating dead in space. The culprits remain unidentified. 
+* 2840: A large merchant fleet ferrying equipment to research labs on Sundive is found disabled and destroyed, floating dead in space. The culprits remain unidentified. 
 
 * 2850: The Syndicate is developing more mining colonies to supply the increased demand for ships and equipment. Such colonies are dangerous, and mining disasters are common. A massive collapse on Trove encourages the Republic to pursue workplace reforms to guarantee safety.
 
