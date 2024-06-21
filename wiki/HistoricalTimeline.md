@@ -98,7 +98,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2620: The caravan era begins. Heavily armed and technologically advanced merchant fleets from the Deep begin traveling throughout the galaxy. Wherever they travel, they spur economic development and connections between planets. Because the Dirt Belt is still mostly uninhabited, these fleets mostly travel either through the paradise worlds and past Earth to the Core, or down along the southern rim to visit Quarg space.
 
-* 2640: The rise of increasingly well-defended caravans has forced the pirates to join together into larger and larger war bands. 
+* 2640: The rise of increasingly well-defended caravans has forced the pirates to join together into larger and larger war bands.
 
 * 2650: The Deep government increases spending on a public space navy to counteract piracy. Several "safe haven" orbital platforms are established in the more dangerous regions of the primary trade routes. These platforms also serve as refineries, harvesting deuterium from gas giants to refuel the caravans.
 
@@ -112,7 +112,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2700: A new era of peace and optimism begins.
 
-* 2720: Several independent planets in the Core and Rim begin discussing joining together and forming a representative government with Earth as its capital. 
+* 2720: Several independent planets in the Core and Rim begin discussing joining together and forming a representative government with Earth as its capital.
 
 * 2730: The Republic is formed, initially comprising Earth, the Rim systems closest to Quarg space, and several Core systems close to Earth, plus the few Dirt Belt worlds that are already inhabited.
 
@@ -122,7 +122,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2760: The Paradise worlds join the Republic, but with concessions that include a restructured Parliament where very populous worlds have greater representation, which gives the paradise planets considerable power. Many in sparsely populated systems are outraged.
 
-* 2770: A new wave of colonization is beginning, in part because the terraforming tools of the paradise worlds have led people to believe that any planet can be made perfect for human habitation given enough time. Permanent colonies are established on mining and farming worlds that before had been inhabited only by temporary worker settlements. 
+* 2770: A new wave of colonization is beginning, in part because the terraforming tools of the Paradise worlds have led people to believe that any planet can be made perfect for human habitation given enough time. Permanent colonies are established on mining and farming worlds that before had been inhabited only by temporary worker settlements. 
 
 * 2780: The Deep's government shipyards are spun off into a private industry, Lionheart.
 
