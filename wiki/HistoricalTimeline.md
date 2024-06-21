@@ -120,7 +120,7 @@ This timeline is provided mainly to assist with story writing, to make sure that
 
 * 2750: After years of nonviolent protests by their citizens, the Syndicate worlds agree to join the Republic, with the local governments becoming democratic instead of being solely administered by the Syndicate itself. Many of the newly elected officials, however, have ties to the Syndicate.
 
-* 2760: The paradise worlds join the Republic, but with concessions that include a restructured Parliament where very populous worlds have greater representation, which gives the paradise planets considerable power. Many in sparsely populated systems are outraged.
+* 2760: The Paradise worlds join the Republic, but with concessions that include a restructured Parliament where very populous worlds have greater representation, which gives the paradise planets considerable power. Many in sparsely populated systems are outraged.
 
 * 2770: A new wave of colonization is beginning, in part because the terraforming tools of the paradise worlds have led people to believe that any planet can be made perfect for human habitation given enough time. Permanent colonies are established on mining and farming worlds that before had been inhabited only by temporary worker settlements. 
 
