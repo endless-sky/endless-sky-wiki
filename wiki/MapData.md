@@ -80,7 +80,9 @@ planet <name>
 		description <text>
 	government <name>
 	shipyard <name>
+	shipyardStock <name>
 	outfitter <name>
+	outfitterStock <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
 	security <security#>
@@ -417,7 +419,9 @@ planet <name>
 		description <text>
 	government <name>
 	shipyard <name>
+	shipyardStock <name>
 	outfitter <name>
+	outfitterStock <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
 	security <security#>
@@ -519,7 +523,9 @@ Planets are capable of having a different [government](CreatingGovernments) than
 
 ```html
 shipyard <name>
+shipyardStock <name>
 outfitter <name>
+outfitterStock <name>
 ```
 
 The shipyards and outfitters that are available on this planet. A new shipyard or outfitter line must be used for each shipyard or outfitter.
