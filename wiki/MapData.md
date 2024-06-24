@@ -481,7 +481,6 @@ description "Frog People invaded and the planet is now almost devoid of life."
        has "terrible things happened"
 ```
 
-
 ```html
 spaceport <text>
 ```
