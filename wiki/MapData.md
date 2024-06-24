@@ -473,7 +473,6 @@ description <text>
 
 The description that is shown when first landing on a planet.
 
-
 ```html
 spaceport <text>
 ```
