@@ -119,7 +119,7 @@ When you leave the planet, you will find yourself surrounded by asteroids, plane
 
 In space there is no atmosphere, no friction to slow you down. Once your ship is moving, it keeps moving until you apply thrust in a different direction. Every ship for sale on human worlds has two engine systems: steering, to change what direction the ship is facing, and thrusters, to accelerate in a new direction. That means that to slow down, you must turn in the opposite direction that your ship is headed in, and then activate thrusters.
 
-Fortunately, modern starships come with navigational computers that simplify the work of flying them. To land on the nearest habitable planet, just press the landing key (&lsquo;L&rsquo; by default), and your ship will approach the planet and slow down enough to land on it. (In a ship with multiple planets you can land on, press the landing key repeatedly to toggle between them.) If you press any other movement keys, the autopilot immediately disengages. Your ship&rsquo;s autopilot can also help with hyperspace travel and with boarding other ships, as described later.
+Fortunately, modern starships come with navigational computers that simplify the work of flying them. To land on the nearest habitable planet, just press the landing key (&lsquo;L&rsquo; by default), and your ship will approach the planet and slow down enough to land on it. (In a ship with multiple planets you can land on, press the select landing target key (&lsquo;K&rsquo; by default) to cycle between them.) If you press any other movement keys, the autopilot immediately disengages. Your ship&rsquo;s autopilot can also help with hyperspace travel and with boarding other ships, as described later.
 
 The radar display shows all objects in the current star system. Planets, space stations, and stars are hollow circles; ships are filled circles. The size of the circle reflects the size of the object. Missiles show up as small white dots; smaller projectiles and energy beams are not displayed. Aside from missiles, each object is colored according to its attitude toward you:
 
@@ -299,6 +299,7 @@ Stop ship | Shift + Down
 Fire afterburner | A
 Auto steer | E
 Land on planet / station | L
+Select planet / station | K
 Initiate hyperspace jump | J
 Jump as a fleet | Shift + J
 Fire primary weapons | Tab
