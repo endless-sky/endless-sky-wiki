@@ -734,7 +734,6 @@ on disabled
 	...
 ```
 
-
 Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a [location filter](LocationFilters). This filter is formatted in the same manner as `source` or `destination` for missions, or `system` for NPCs.
 ```html
 on enter
