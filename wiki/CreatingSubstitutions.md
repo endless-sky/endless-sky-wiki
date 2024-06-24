@@ -23,7 +23,7 @@ The three types of substitutions, hardcoded, mission-specific, and global, have 
 <text> <replacement>
 ```
 
-Substitutions simply search for the text on the left and replace it with the text on the right whenever it is found within a piece of text. As mentioned above, multiple replacements of the same text can be defined, but whichever replacement is evaluated last is the one that gets used. Beginning in **v. 0.10.9**, substitutions can contain phrases and other substitutions as well.
+Substitutions simply search for the text on the left and replace it with the text on the right whenever it is found within a piece of text. As mentioned above, multiple replacements of the same text can be defined, but whichever replacement is evaluated last is the one that gets used.
 
 A substitutions node can define multiple text replacements at once.
 
