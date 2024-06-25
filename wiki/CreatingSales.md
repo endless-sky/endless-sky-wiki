@@ -17,22 +17,22 @@ shipyard "Syndicate Advanced"
 
 The above example would add to the "Syndicate Advanced" shipyard the two ships "Plugin Ship One" and "Plugin Ship Two", because any ships you list will be appended to the ships currently in the shipyard named.
 
-## shipyardStocks
+## Shipyard Stock
 
 ```
-shipyardStock "<name>"
+"shipyard stock" "<name>"
     "<ship name>"
         quantity <#>
         discount <%##>
 ```
 ```
-shipyardStock "Random Flivvers"
+"shipyard stock" "Random Flivvers"
     "Flivver" 20
         quantity 5
         discount 40
 ```
 
-Added in **v0.10.9**, the above example would make any planet the "Random Flivvers" shipyardStock is in to have a 20% chance of selling 5 Flivvers on a discount of 40%. shipyardStock basically lets you have a random chance of a planet selling ships.
+Added in **v0.10.9**, the above example would make any planet the "Random Flivvers" "shipyard stock" is in to have a 20% chance of selling 5 Flivvers on a discount of 40%. "shipyard stock" basically lets you have a random chance of a planet selling ships.
 
 # Outfitters
 
@@ -48,18 +48,18 @@ outfitter "Syndicate Advanced"
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
 
-# outfitterStocks
+# Outfitter Stock
 
 ```
-outfitterStock "<name>"
+"outfitter stock" "<name>"
     "<outfit name>"
         quantity <#>
         discount <%##>
 ```
 ```
-outfitterStock "Random Nukes"
+"outfitter stock" "Random Nukes"
     "Nuclear Missile" 50
         quantity 3
         discount 99
 
-This was added in **v0.10.9**. It allows you to make outfits sometimes be in stock on any particular planet. The above example would make any planet with the "Random Nukes" outfitterStock have a 50% chance of selling 3 heavily discounted nuclear missiles.
+This was added in **v0.10.9**. It allows you to make outfits sometimes be in stock on any particular planet. The above example would make any planet with the "Random Nukes" "outfitter stock" have a 50% chance of selling 3 heavily discounted nuclear missiles.
