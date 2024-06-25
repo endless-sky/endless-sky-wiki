@@ -48,7 +48,7 @@ outfitter "Syndicate Advanced"
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
 
-# Outfitter Stock
+## Outfitter Stock
 
 ```
 "outfitter stock" "<name>"
