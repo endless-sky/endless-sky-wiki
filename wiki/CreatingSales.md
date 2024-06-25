@@ -22,12 +22,14 @@ The above example would add to the "Syndicate Advanced" shipyard the two ships "
 ```
 "shipyard stock" "<name>"
     "<ship name>"
+        probability <%##>
         quantity <#>
         discount <%##>
 ```
 ```
 "shipyard stock" "Random Flivvers"
-    "Flivver" 20
+    "Flivver"
+        probability 20
         quantity 5
         discount 40
 ```
@@ -53,12 +55,14 @@ Any outfits you list will be appended to the outfits currently in the list you n
 ```
 "outfitter stock" "<name>"
     "<outfit name>"
+        probability <%##>
         quantity <#>
         discount <%##>
 ```
 ```
 "outfitter stock" "Random Nukes"
-    "Nuclear Missile" 50
+    "Nuclear Missile"
+        probability 50
         quantity 3
         discount 99
 
