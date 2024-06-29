@@ -116,7 +116,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`galaxy`](MapData): a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
   * [`government`](CreatingGovernments): the characteristics of a particular government.
   * [`hazard`](CreatingHazards): a weapon that can deal damage to ships in a system when active.
-  * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/interfaces.txt).)
+  * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/interfaces.txt).)
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`news`](CreatingNews): a definition of information that is provided to the player when visiting a spaceport.
   * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
