@@ -1,4 +1,8 @@
-The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](https://endless-sky.github.io/example-plugin.zip). For each operating system, there are two places where the game looks for plugins, but generally you should only use the second option:
+The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](https://endless-sky.github.io/example-plugin.zip).
+
+There are two places where the game looks for a plugins folder, the "resource" directory, where the base game data is, and the "config" directory, where user specific data, like save files and preferences are stored.
+Generally, you should only use the config directory (second in the list below).
+This list gives the default locations of the plugins folder in the resource and config directories, respectively, for each operating system.
 
 #### Linux
 * /usr/share/games/endless-sky/plugins/
@@ -38,6 +42,13 @@ plugins/
 |-- other-plugin/
 	  ...
 ```
+
+## Finding errors
+
+Alongside the plugins folder in the config directory, Endless Sky will create a file named "errors.txt".
+Any errors the game encounters while loading data or in gameplay will be written to this file.
+The first time an error is encountered in a session, the existing content of this file will be deleted and overwritten, so the content reflects the most recent time errors were encountered. Note, however, that if two instances of the game are running, only one will be able to modify this file.
+The errors reported here can be useful in identifying syntactic issues in plugin data, or finding mismatches in image properties, such as different frames of a sprite having different dimensions, or sprites having odd dimensions (which can lead to blurriness).
 
 ## Editing data files
 
