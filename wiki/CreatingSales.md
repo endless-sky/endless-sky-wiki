@@ -45,7 +45,7 @@ Added in **v0.10.9**, the above example would make any planet with the "Random F
         depreciation 105
 ```
 
-Added in **v0.10.9**, the above example would make any planet with the "Random Sparrows" "shipyard stock" have a 70% chance of selling 2 Sparrows which have deprecated for 105 days.
+Added in **v0.10.9**, the above example would make any planet with the "Random Sparrows" "shipyard stock" have a 70% chance of selling 2 Sparrows which have depreciated for 105 days.
 
 # Outfitters
 
@@ -66,9 +66,10 @@ Any outfits you list will be appended to the outfits currently in the list you n
 ```
 "outfitter stock" "<name>"
     "<outfit name>"
-        probability <%##>
+        probability <%>
         quantity <#>
-        discount <%##>
+        discount <%>
+        depreciation <#>
 ```
 ```
 "outfitter stock" "Random Nukes"
@@ -85,7 +86,7 @@ This was added in **v0.10.9**. It allows you to make outfits sometimes be in sto
     "Ramscoop"
         probability 5
         quantity 10
-        depreciation 10
+        depreciation 45
 ```
 
-The above example would make any planet with the "Random Ramscoops" "outfitter stock" have a 5% chance of selling 10 ramscoops that have already been used for 10 days, and whose cost has been lowered by that.
+The above example would make any planet with the "Random Ramscoops" "outfitter stock" have a 5% chance of selling 10 ramscoops that have already been used for 45 days, and which have been depreciated by that amount of time.
