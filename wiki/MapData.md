@@ -471,13 +471,21 @@ The [music](#ambient-music) that is played while landed on this planet.
 description <text>
 ```
 
-The description that is shown when first landing on a planet.
+The description that is shown when first landing on a planet. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions):
+```html
+description "This planet is a very nice place."
+   to display
+       not "terrible things happened"
+description "Frog People invaded and the planet is now almost devoid of life."
+   to display
+       has "terrible things happened"
+```
 
 ```html
 spaceport <text>
 ```
 
-The description of the spaceport after clicking the spaceport button.
+The description of the spaceport after clicking the spaceport button. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
 
 ```html
 port [<name>]
