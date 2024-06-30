@@ -858,17 +858,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"burn damage"`: how much burn is added to a target when struck by this projectile, increasing the target's heat over time. If the target's shields are up, incoming burn damage is cut in half. **(v. 0.9.15)**
 
-# Sales
-
-In order for anyone to buy your new outfit, it must be added to one of the "outfitter" objects. For example, if you are writing a plugin, you could include this in one of your data files:
-
-```
-outfitter "Syndicate Advanced"
-	"My Fancy New Outfit"
-	"My Other Fine Outfit"
-```
-
-Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
+# [Sales](CreatingSales#outfitters)
 
 # Balancing
 
