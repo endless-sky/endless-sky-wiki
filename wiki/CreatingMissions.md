@@ -218,6 +218,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<first>` = your first name
 * `<last>` = your last name
 * `<ship>` = the name of your flagship
+* `<model>` = the display model of your flagship **(v. 0.10.9)**
 
 These placeholders will be substituted in any text in the following places:
 
