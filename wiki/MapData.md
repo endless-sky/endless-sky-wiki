@@ -13,7 +13,7 @@
 
 # Introduction
 
-An useful tool for creating planets and systems is the [Endless Sky editor](https://github.com/quyykk/plugin-editor). This most especially helps with the positioning of systems and the distance/period of planets in a system.
+A useful tool for creating planets and systems is the [Endless Sky editor](https://github.com/quyykk/plugin-editor). This most especially helps with the positioning of systems and the distance/period of planets in a system.
 
 The [syntax](DataFormat#grammar-specifications) for the definition of a galaxy, system, or planet is:
 
