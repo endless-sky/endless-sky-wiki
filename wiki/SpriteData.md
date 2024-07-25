@@ -45,9 +45,35 @@ The `<name>` for this sprite is "effect/blaster impact". The `+` in the file nam
 
 Since **v. 0.9.15**: sprite sets can be universally resized, in case you would like to reuse an existing animation at a different size, with the `"scale"` attribute. The default scale value is `1.0` (i.e. 100%). For the best results, use a power-of-two increase or decrease, e.g. `0.125` (1/8), `0.25` (1/4), or `0.5` (1/2). Scaling factors that result in odd widths and height generally result in a blurry image, as do scales over 100%. (For most effect sprites, this will not be an issue as they are not very detailed anyway.)
 
-## Animation parameters
+## Ship Sprite Animation
+Ships can have sprites for several different states of flight: Flying, Firing, Landing, Launching, Jumping, Disabled. Each state can be assigned a sprite similar to the above naming convention, but the tag will be different, as shown below:
+
+```html
+ship <name>
+	sprite <path-to-flying-sprites>
+		...
+	sprite-firing <path-to-firing-sprites>
+		...
+	sprite-landing <path-to-landing-sprites>
+		...
+	sprite-launching <path-to-launching-sprites>
+		...
+	sprite-jumping <path-to-jumping-sprites>
+		...
+	sprite-disabled <path-to-disabled-sprites>
+		...
+```
+
+Note: "sprite" and "sprite-flying" are interchangeable.
+
+Each sprite can be animated individually with the animation parameters as defined below.
+
+
+### Animation Parameters
 
 You can also specify various attributes of the animation. These should be left out if you do not want them:
+
+#### Parameters for all Sprites
 
 * `"frame rate" <fps#>`: frames per second. If no value is provided, a frame rate of 2 will be used.
 * `"frame time" <number#>`: alternative to "frame rate". Specifies the number of game ticks (60 per second) each frame of the animation should last for.
@@ -56,6 +82,75 @@ You can also specify various attributes of the animation. These should be left o
 * `"random start frame"`: start at a random frame of the animation.
 * `"no repeat"`: once the animation has played through once, stay on the last frame until the effect disappears. If this is not defined, the animation loops.
 * `"rewind"`: once the animation has played through to the last frame, play it in reverse. If `"no repeat"` is also defined, the animation will play forward once, then backward once, then stop at the first frame.
+* `"ramp" <up fpsps#> <down fpsps#> `: when the object enters (or exit) a certain state, this allows the frame rate to ramp up (or down) according to the values given in up fpsps (fps per second) and down fpsps.
+* `"random"`: randomize the next frame played in the animation.
+* `"reverse"`: play the animation from the last frame to the first.
+
+#### Parameters for Ship Sprites only
+* `"transition delay" <number#>`: if a ship has requested a transition to a different state, i.e. FIRING to FLYING, wait for a certain number of frames before allowing that transition to occur. This would be used in places where there could be rapid state transitions. For example, if a ship has fired its primary weapon, chances are it might fire its primary weapon again, so instead of immediately transitioning to the flying state, we can wait in the firing state for a certain number of frames before entering the flying state again.
+* `"transition type" <number#>`: currently, three transistion types are supported: 0 (immediate), 1 (finish), 2 (rewind). The default value is set to 0, meaning that if a ship changes state e.g. from FIRING to FLYING, the currently used sprite would immediately switch from the FIRING sprite to the FLYING sprite. If it is 1 (finish), the ship will first finish the FIRING animation, up until the last frame, before switching the state to FLYING. And if it is 2 (rewind), the ship will rewind to the first frame of the animation from whichever frame it is on currently before completing the transition to FLYING.
+* `"indicate"`: applying this parameter to your sprite animation means that it must complete the animation before performing the desired action e.g. if you are trying to fire your primary weapon, the animation must reach the last frame before the weapons can actually be fired. This keyword also sets the `"repeat"` flag to false, and forces the animation to start at the zeroth frame. `"no indicate"` can also be used to disallow indication, this can be useful when dealing with trigger sprites.
+* `"indicate percentage" <percentage#>`: applying this parameter does the same thing as the `"indicate"` keyword with one major difference, only the requested percentage of the animation needs to play before the action can be done. The animation will still complete fully. E.g. if we are trying to fire, and the FIRING animation indicate percentage is set to 50, then half of the firing animation will play before we can start to fire, and the second half will continue to play after we start firing until it reaches the last frame, where the animation will stop.
+* `"trigger" <name>`: requiring a name for the sprite like seen above, see below for more information
+
+##### Trigger Sprites
+Trigger sprites are essentially conditional sprites which can be played within a state. They can be animated with the same parameters as above and act as their own substates. Trigger sprites have an additional attribute: conditions, as we can see below.
+
+```html
+"trigger" <name>
+	conditions
+		has "outfit (installed): <outfit-name>"
+```
+
+There are several preliminary conditions that have been implemented, more to come as they are required:
+* `"hull"`: Gives the amount of hull currently on the ship
+* `"shields"`: Gives the amount of shields currently on the ship
+* `"outfit (installed): <outfit-name>"`: Checks whether the outfit is currently installed on the ship
+* `"jump (type): <jump-type>"`: Either "jump" or "hyper", checks whether the next jump is a jump drive jump, or a hyper drive jump.
+* `"weapon (firing): <outfit-name>"`: Checks whether the currently equipped outfit/weapon is firing or not.
+
+Trigger sprites by default take all of the parameters defined from the default state sprite, so anything that you want different in the trigger sprite should be made explicit. For example, if you defined the frame rate for the flying state sprite to be 30, then any trigger sprites in the flying state will also have a frame rate of 30 unless defined otherwise.
+
+### Putting it all together
+```html
+ship <name>
+	sprite <path-to-flying-sprite>
+		"frame rate" 5
+	sprite-firing <path-to-firing-sprite>
+		ramp 20 0
+		"frame rate" 20
+		"indicate"
+		"transition delay" 100
+		"transition type" 2
+	sprite-landing <path-to-launching-sprite>
+		reverse
+		"frame rate" 30
+		"no repeat"
+	sprite-launching <path-to-launching-sprite>
+		"frame rate" 30
+		"no repeat"
+		"transition type" 1
+	sprite-jumping <path-to-jumping-sprite>
+		ramp 30 5
+		trigger <path-to-jumping-trigger-sprite>
+			conditions
+				has "jump (type): jump"
+		"frame rate" 20
+		"indicate"
+		"transition type" 2
+	sprite-disabled <path-to-disabled-sprite>
+		"frame rate" 20
+		"random"
+```
+
+Doing a run through of the above animation definition:
+
+1. The flying sprite will play at a frame rate of 5.
+1. The firing sprite will ramp up at 20 fps per second until a frame rate of 20. The ship will not be allowed to fire until the last frame of the firing sprite is reached (indicate). Once the ship has stopped firing for 100 frames (transition delay), the animation will rewind (transition type 2) until the first frame before transitioning states again.
+1. The landing sprite is the launching sprite played in reverse without repetition at a frame rate of 30
+1. The launching sprite is played at a frame rate of 30, without repetition, and will only allow a transition to the next state after reaching the last frame of the launching animation
+1. The jumping sprite has a ramp up of 30 fps per second, and ramp down of 5 fps per second up until frame rate of 20. The ship can only jump until the last frame of the jumping sprite is reached (indicate) and once the ship wants to exit the jump state, the animation will rewind back to the first frame (transition type 2) before transitioning to the next state. The jump sprite also has a trigger for when the ship performs a jump drive jump. In this case, instead of the regular jumping sprite, the jumping trigger sprite is played with the same animation parameters.
+1. The disabled sprite is played at a frame rate of 20, and randomly picks the next frame of the animation.
 
 ## Center
 
