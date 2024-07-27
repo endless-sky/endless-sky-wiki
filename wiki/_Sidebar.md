@@ -42,6 +42,7 @@
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
 * [Player conditions](Player-Conditions)
+* [Creating playlists and tracks](CreatingPlaylists)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
 * [Sprite animation parameters](SpriteData)

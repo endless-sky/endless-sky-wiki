@@ -46,6 +46,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
 * [Player Conditions](Player-Conditions)
+* [Creating playlists and tracks](CreatingPlaylists)
 
 ### Compiling or modifying the source code
 
