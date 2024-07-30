@@ -49,9 +49,9 @@ Alongside the plugins folder in the config directory, Endless Sky will create a 
 
 Linux:
 * ~/.local/share/endless-sky/errors.txt
-Windows
+Windows:
 * %APPDATA%\endless-sky\errors.txt
-macOS
+macOS:
 * ~/Library/Application Support/endless-sky/errors.txt
 
 Any errors the game encounters while loading data or in gameplay will be written to this file.
