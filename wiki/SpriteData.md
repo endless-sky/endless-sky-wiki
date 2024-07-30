@@ -43,7 +43,7 @@ The `<name>` for this sprite is "effect/blaster impact". The `+` in the file nam
 "scale" <number#>
 ```
 
-Since **v. 0.9.15**: sprite sets can be universally resized, in case you would like to re-use an existing animation at a different size, with the `"scale"` attribute. The default scale value is `1.0` (i.e. 100%). For the best results, use a power-of-two increase or decrease, e.g. `0.125` (1/8), `0.25` (1/4), or `0.5` (1/2). Scaling factors that result in odd widths and height generally result in a blurry image, as do scales over 100%. (For most effect sprites, this will not be an issue as they are not very detailed anyway.)
+Since **v. 0.9.15**: sprite sets can be universally resized, in case you would like to reuse an existing animation at a different size, with the `"scale"` attribute. The default scale value is `1.0` (i.e. 100%). For the best results, use a power-of-two increase or decrease, e.g. `0.125` (1/8), `0.25` (1/4), or `0.5` (1/2). Scaling factors that result in odd widths and height generally result in a blurry image, as do scales over 100%. (For most effect sprites, this will not be an issue as they are not very detailed anyway.)
 
 ## Animation parameters
 
