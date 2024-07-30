@@ -46,6 +46,14 @@ plugins/
 ## Finding errors
 
 Alongside the plugins folder in the config directory, Endless Sky will create a file named "errors.txt".
+
+Linux:
+* ~/.local/share/endless-sky/errors.txt
+Windows
+* %APPDATA%\endless-sky\errors.txt
+macOS
+* ~/Library/Application Support/endless-sky/errors.txt
+
 Any errors the game encounters while loading data or in gameplay will be written to this file.
 The first time an error is encountered in a session, the existing content of this file will be deleted and overwritten, so the content reflects the most recent time errors were encountered. Note, however, that if two instances of the game are running, only one will be able to modify this file.
 The errors reported here can be useful in identifying syntactic issues in plugin data, or finding mismatches in image properties, such as different frames of a sprite having different dimensions, or sprites having odd dimensions (which can lead to blurriness).
