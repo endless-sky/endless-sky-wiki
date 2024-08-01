@@ -40,7 +40,7 @@ interface <name> [<anchor>]
 		[truncate <truncation>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
-	(label <text>) | (string <name>) | (button <key> <text>)
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
 		from <x#> <y#> [<anchor>]
 		[color <color>]
 		width <width#>
