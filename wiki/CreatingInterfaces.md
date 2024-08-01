@@ -40,6 +40,14 @@ interface <name> [<anchor>]
 		[truncate <truncation>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
+	(label <text>) | (string <name>) | (button <key> <text>)
+		from <x#> <y#> [<anchor>]
+		[color <color>]
+		width <width#>
+		[truncate <truncation>]
+		[alignment <alignment>]
+		[align [<anchor>]]
+		[pad <x#> <y#>]
 	(ring | bar) <name>
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
@@ -233,6 +241,20 @@ inactive | "inactive"
 hover | "hover"
 
 If `color` is defined but either the inactive or hover color is not, the undefined color will use the given active color.
+
+### Wrapped text elements
+
+```html
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> to <x#> <y#> [<anchor>]
+		size <size#>
+		color <color>
+		inactive <color>
+		hover <color>
+		truncate (none | front | middle | back)
+		alignment (left | center | right | justified)
+```
+Beginning with **v. 0.10.9**, every text element has its "wrapped" counterpart. The difference is that the text is wrapped at the width limit of the element. As for basic text elements, you can specify truncation of the text. Additionally, you can choose how the text should be aligned.
 
 ## Bars and rings
 
