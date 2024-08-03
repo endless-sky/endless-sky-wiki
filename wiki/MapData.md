@@ -24,6 +24,7 @@ galaxy <name>
 		scale <scale#>
 
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -66,6 +67,7 @@ system <name>
 			...
 
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -128,6 +130,7 @@ The multiplier applied to the dimensions of this galaxy's sprite when displayed 
 
 ```html
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -176,7 +179,13 @@ Systems are the locations that ships are capable of being and can contain planet
 system <name>
 ```
 
-The name of a system must be unique.
+The true name of a system must be unique. Use this name to internally reference systems in missions, events, etc.
+
+```html
+"display name" <name>
+```
+
+Added in **v. 0.10.9**, this name is displayed to the player. If not defined, it defaults to the true name of the system. Multiple systems can share the same display name.
 
 ```html
 inaccessible
@@ -403,6 +412,7 @@ Objects are capable of having objects as children. This allows for the creation 
 
 ```html
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -433,7 +443,7 @@ Planets are landable objects, and are where players are capable of buying and se
 planet <name>
 ```
 
-The name of a planet must be unique, and will only be used it there is an object in a system that refers to this same name.
+The true name of a planet must be unique. Use this name to internally reference systems in missions, events, system objects, etc.
 
 If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
 
@@ -442,6 +452,12 @@ If a planet is being used to define a wormhole (i.e. an objects that is named in
 Additionally, giving it a description will cause the wormhole to create a link on the map when it has been discovered.
 
 **Since v. 0.10.0**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
+
+```html
+"display name" <name>
+```
+
+Added in **v. 0.10.9**, this name is displayed to the player. If not defined, it defaults to the true name of the planet. Multiple planets can share the same display name.
 
 ```html
 attributes <attribute>... "requires: <attribute>"
