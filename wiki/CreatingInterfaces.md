@@ -222,7 +222,7 @@ In the case of a label, the given text will be drawn directly.
 With a string, a name is given, and the game sets the text at runtime, selecting this text location with that name.
 A button is similar to a label, except it also accepts a key token. The first character of this token will be sent as keyboard input if the bounding box for this button is clicked while it is visible and active.
 
-Size defines the font size of the text. The vanilla game supports 12 and 14.
+Size defines the font size of the text. The vanilla game supports 14 and 18.
 
 Color sets the named color that will be used for the text when it is visible and active.
 If no color is given, the following defaults will be used:
