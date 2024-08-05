@@ -642,6 +642,7 @@ Landing messages are the message that is shown if attempting to land on an uninh
 star <sprite>
 	power <power#>
 	wind <wind#>
+	icon <icon>
 ```
 
 There are certain attributes that a ship is capable of having that will change in effectiveness based off of the stars in the system.
@@ -663,6 +664,13 @@ wind <wind#>
 ```
 
 The wind of a star impacts the effectiveness of a ship's ramscoops.
+
+
+```html
+icon <icon>
+```
+
+The sprite listed here is the sprite of the star icon from the map screen when the "starry mapmode" button is enabled. If a system has multiple stars, its star icons will be arranged radially.
 
 # Ambient music
 
