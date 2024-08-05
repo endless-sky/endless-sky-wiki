@@ -115,9 +115,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"shield fuel"`: the amount of fuel that shield regeneration consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to grant fuel.
 
-  * `"shield delay"`: the number of frames that must pass without taking shield damage in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled shield attributes described below.
+  * `"shield delay"`: the number of frames that must pass without taking shield damage in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed shield attributes described below.
 
-  * `"depleted shield delay"`: the number of frames that must pass after the shields have been depleted (i.e. reached 0) in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled shield attributes described below.
+  * `"depleted shield delay"`: the number of frames that must pass after the shields have been depleted (i.e. reached 0) in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed shield attributes described below.
 
   * `"delayed shield generation"`: shield generation that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
@@ -141,9 +141,9 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull fuel"`: the amount of fuel that hull repair consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to grant fuel.
 
-  * `"repair delay"`: the number of frames that must pass without taking hull damage in order for hull repairs to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled hull repair attributes described below.
+  * `"repair delay"`: the number of frames that must pass without taking hull damage in order for hull repairs to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed hull repair attributes described below.
 
-  * `"disabled repair delay"`: the number of frames that must pass without taking hull damage after the ship has been disabled in order for hull repairs to begin. Note that the delay timers for both hull and shields do not decrease while the ship is unable to repair itself (i.e. it is disabled), so this attribute is the time after the ship has been assisted for repairs to start. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled hull repair attributes described below.
+  * `"disabled repair delay"`: the number of frames that must pass without taking hull damage after the ship has been disabled in order for hull repairs to begin. Note that the delay timers for both hull and shields do not decrease while the ship is unable to repair itself (i.e. it is disabled), so this attribute is the time after the ship has been assisted for repairs to start. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed hull repair attributes described below.
 
   * `"delayed hull repair rate"`: hull repair rate that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
