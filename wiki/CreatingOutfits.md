@@ -654,7 +654,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
-  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. **(v. 0.10.9)**
+  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Ommitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
 
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
