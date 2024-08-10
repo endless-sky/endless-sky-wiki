@@ -443,7 +443,7 @@ Planets are landable objects, and are where players are capable of buying and se
 planet <name>
 ```
 
-The true name of a planet must be unique. Use this name to internally reference systems in missions, events, system objects, etc.
+The true name of a planet must be unique. Use this name to internally reference planets in missions, events, system objects, etc.
 
 If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
 
