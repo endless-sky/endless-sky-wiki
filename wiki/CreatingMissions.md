@@ -728,6 +728,13 @@ There are eleven events that can trigger a response of some sort:
 * `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 * `disabled`: if the player's flagship becomes disabled. (**v. 0.10.3**)
 
+Beginning in **v. 0.10.9**, most of these triggers will not activate when the mission is already failed. In some cases, it still might be useful to keep track of the player until they land even if the mission failed. In these cases, you can make the triggers work by using `"can trigger after failure"`.
+```html
+on disabled
+	"can trigger after failure"
+	...
+```
+
 Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a [location filter](LocationFilters). This filter is formatted in the same manner as `source` or `destination` for missions, or `system` for NPCs.
 ```html
 on enter
