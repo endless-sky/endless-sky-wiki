@@ -33,7 +33,7 @@ interface <name> [<anchor>]
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
 		[colored]
-	(label <text>) | (string <name>) | (button <key> <text>)
+	(label <text>) | (string <name>) | (button <key> <text>) | ("dynamic button" <key> <name>)
 		from <x#> <y#> [<anchor>]
 		[color <color>]
 		width <width#>
