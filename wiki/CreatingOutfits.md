@@ -79,7 +79,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
-Unless otherwise states, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
+Unless otherwise stated, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
 
 * These attributes are basic attributes that practically every outfit will have.
 
