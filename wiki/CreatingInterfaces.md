@@ -33,7 +33,7 @@ interface <name> [<anchor>]
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
 		[colored]
-	(label <text>) | (string <name>) | (button <key> <text>)
+	(label <text>) | (string <name>) | (button <key> <text>) | ("dynamic button" <key> <name>)
 		from <x#> <y#> [<anchor>]
 		[color <color>]
 		width <width#>
@@ -209,7 +209,7 @@ If the `colored` child node is present, then a custom color can be set by the ga
 ## Labels, strings, and buttons
 
 ```html
-	(label <text>) | (string <name>) | (button <key> <text>)
+	(label <text>) | (string <name>) | (button <key> <text>) | ("dynamic button" <key> <name>)
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		size <size#>
 		color <color>
@@ -221,6 +221,7 @@ Defines a location for text to be drawn.
 In the case of a label, the given text will be drawn directly.
 With a string, a name is given, and the game sets the text at runtime, selecting this text location with that name.
 A button is similar to a label, except it also accepts a key token. The first character of this token will be sent as keyboard input if the bounding box for this button is clicked while it is visible and active.
+A dynamic button **(v. 0.10.5)** is a combination of a button and a string element. It has the functionality of a button, but its caption is retrieved at runtime.
 
 Size defines the font size of the text. The vanilla game supports 14 and 18.
 
