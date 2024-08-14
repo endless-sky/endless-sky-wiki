@@ -1,4 +1,8 @@
-The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](https://endless-sky.github.io/example-plugin.zip). For each operating system, there are two places where the game looks for plugins, but generally you should only use the second option:
+The easiest way to test out new content for Endless Sky is to create a plugin. An example plugin is available [here](https://endless-sky.github.io/example-plugin.zip).
+
+There are two places where the game looks for a plugins folder, the "resource" directory, where the base game data is, and the "config" directory, where user specific data, like save files and preferences are stored.
+Generally, you should only use the config directory (second in the list below).
+This list gives the default locations of the plugins folder in the resource and config directories, respectively, for each operating system.
 
 #### Linux
 * /usr/share/games/endless-sky/plugins/
@@ -6,7 +10,7 @@ The easiest way to test out new content for Endless Sky is to create a plugin. A
 
 #### Windows
 * plugins\ (in the same folder as the Endless Sky executable)
-* C:\Users\yourusername\AppData\Roaming\endless-sky\plugins\
+* %APPDATA%\endless-sky\plugins\
 
 #### macOS
 * Contents/Resources/plugins/ (within the application bundle)
@@ -38,6 +42,21 @@ plugins/
 |-- other-plugin/
 	  ...
 ```
+
+## Finding errors
+
+Alongside the plugins folder in the config directory, Endless Sky will create a file named "errors.txt".
+
+Linux:
+* ~/.local/share/endless-sky/errors.txt
+Windows:
+* %APPDATA%\endless-sky\errors.txt
+macOS:
+* ~/Library/Application Support/endless-sky/errors.txt
+
+Any errors the game encounters while loading data or in gameplay will be written to this file.
+The first time an error is encountered in a session, the existing content of this file will be deleted and overwritten, so the content reflects the most recent time errors were encountered. Note, however, that if two instances of the game are running, only one will be able to modify this file.
+The errors reported here can be useful in identifying syntactic issues in plugin data, or finding mismatches in image properties, such as different frames of a sprite having different dimensions, or sprites having odd dimensions (which can lead to blurriness).
 
 ## Editing data files
 
@@ -116,7 +135,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`galaxy`](MapData): a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
   * [`government`](CreatingGovernments): the characteristics of a particular government.
   * [`hazard`](CreatingHazards): a weapon that can deal damage to ships in a system when active.
-  * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/interfaces.txt).)
+  * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/interfaces.txt).)
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`news`](CreatingNews): a definition of information that is provided to the player when visiting a spaceport.
   * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
