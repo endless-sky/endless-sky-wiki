@@ -37,7 +37,7 @@ The name of the sprite should be a path relative to the **images** folder, and n
 
 The `<name>` for this sprite is "effect/blaster impact". The `+` in the file names specifies that the images should use [additive blending](BlendingModes#alpha-blending-vs-additive-blending), and the numbers after the `+` are the frame numbers for the animation.
 
-The current file formats supported are `.png` and `.jpg`/`.jpeg`.
+The current file formats supported are `.png` and `.jpg`/`.jpeg` / `.jpe`.
 
 ## Scale
 
