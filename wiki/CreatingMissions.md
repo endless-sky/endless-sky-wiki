@@ -226,6 +226,7 @@ These placeholders will be substituted in any text in the following places:
 * the mission description
 * dialog messages contained in the mission
 * conversations contained in the mission
+* custom substitutions defined in the mission **(v. 0.10.9)**
 
 For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
 
@@ -707,7 +708,7 @@ If you want to retrieve passengers or cargo by boarding a ship, set up the missi
 ship <model> <name>
 ```
 
-This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name.
+This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name. Beginning in **v. 0.10.9**, phrases and substitutions are expanded NPC ship names.
 
 If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed. When loading NPCs from saved games, the rest of the game data has finished loading, but this is not otherwise guaranteed.
 
@@ -842,7 +843,7 @@ Beginning in **v. 0.9.15**, if the outfit being gifted has the "map" attribute, 
 give ship <model> [<name>]
 ```
 
-Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase.
+Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase. Beginning in **v. 0.10.9**, substitutions and phrases are expanded in gift ship names.
 
 ```html
 (give | take) ship <model> [<name>]
