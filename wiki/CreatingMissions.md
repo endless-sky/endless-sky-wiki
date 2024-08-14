@@ -574,7 +574,7 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
 * `land`: To complete the mission, the givern NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.9)**
-* `outrun`: You cannot complete the misison if the NPC has landed at its final destination. **(v. 0.10.9)**
+* `outrun`: You cannot complete the mission if the NPC has landed at its final destination. **(v. 0.10.9)**
 
 ```html
 to (spawn | despawn)
