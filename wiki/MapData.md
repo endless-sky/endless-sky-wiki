@@ -670,7 +670,7 @@ The wind of a star impacts the effectiveness of a ship's ramscoops.
 icon <icon>
 ```
 
-The sprite listed here is the sprite of the star icon from the map screen when the "starry mapmode" button is enabled. If a system has multiple stars, its star icons will be arranged radially.
+The sprite listed here is the sprite of the star icon from the map screen when the starry mapmode is enabled. If a system has multiple stars, its star icons will be arranged radially.
 
 # Ambient music
 
