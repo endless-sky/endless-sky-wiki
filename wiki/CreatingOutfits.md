@@ -220,6 +220,12 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 * These attributes will change in effectiveness given how close a ship is to the system center and what type of stars are in the system.
 
   * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar-attributes) of star(s) in the system.
+  
+  * `ramscoop heat`: how much heat this outfit generates per frame, multiplied by the system's `solar wind` and the same distance scaling factor used by `ramscoop`.
+  
+  * `ramscoop energy`: how much energy this outfit consumes per frame, multiplied by the system's `solar wind` and the same distance scaling factor used by `ramscoop`.
+  
+  * `velocity ramscoop`: fuel regeneration. Uses the same formula as `ramscoop`, but also multiplies the resulting fuel generation by the square root of the ship's velocity divided by 100. This means a ship with `velocity ramscoop` will produce the same amount of fuel as a ship with the same value of `ramscoop` when flying at 100 velocity, twice as much when flying at 400 velocity, three times as much at 900 velocity, and so on.
 
   * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar-attributes) of the star(s) in the current system.
 
