@@ -49,7 +49,7 @@
 
 **Compiling or modifying the source code**
 
-* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-developer.md)
+* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-cmake.md)
 * [Contributing to the code](ContributingCode)
 * [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
 
