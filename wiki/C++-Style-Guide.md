@@ -30,7 +30,7 @@ This section deals with naming and encoding of source code files and the items t
 ## Line endings
 
 All files should have Unix-style line endings.
-That is, "\n" alone, not "\r\n" (Windows style). If an editor changes Unix line endings to Windows style, this causes issues with source control diffs because those lines appear to be changed even though their actual text is the same.
+That is, `\n` alone, not `\r\n` (Windows style). If an editor changes Unix line endings to Windows style, this causes issues with source control diffs because those lines appear to be changed even though their actual text is the same.
 
 ## File encodings
 
@@ -150,11 +150,11 @@ This allows you to define static classes, functions, and variables that are guar
 
 Do not put any using declarations in any header file.
 This is so that a file cannot end up dependent on a using declaration provided by a file that it #includes and suddenly failing to compile if that other file changes.
-This includes general using-directives (e.g. "using namespace std;") in addition to specific using-declarations (e.g. "using std::string;").
+This includes general using-directives (e.g. `using namespace std;`) in addition to specific using-declarations (e.g. `using std::string;`).
 
 ## The std namespace
 
-Each .cpp file should put "using namespace std;" immediately after the #includes.
+Each .cpp file should put `using namespace std;` immediately after the #includes.
 Because our class and function names are capitalized, there is no risk of name collision, and it is simply cleaner to not have to use the std:: prefix everywhere.
 
 
@@ -229,18 +229,18 @@ Variables are initialized in the order they occur in the class definition, not i
 
 ## Explicit constructors
 
-Constructors with only one argument should be labeled "explicit".
+Constructors with only one argument should be labeled `explicit`.
 This is to avoid defining implicit type conversions that might then be used by the compiler in surprising ways.
 
 ## Operator overloading
 
 Use operator overloading only if implementing an arithmetic class and only if the operator has its well-established mathematical sense.
-For example, the "Point" class can define Point + Point, Point * scalar, etc., but it should not define Point * Point because it is ambiguous whether that should be an element-by-element product, a dot product, or a cross product.
+For example, the `Point` class can define Point + Point, Point * scalar, etc., but it should not define Point * Point because it is ambiguous whether that should be an element-by-element product, a dot product, or a cross product.
 
 ## Use of class vs. struct
 
-Do not use the "struct" keyword; just define a class with public data members instead.
-Exception: occasionally when using the POSIX libraries you need the "struct" keyword to define that a typename is a struct and not a function of the same name, e.g.:
+Do not use the `struct` keyword; just define a class with public data members instead.
+Exception: occasionally when using the POSIX libraries you need the `struct` keyword to define that a typename is a struct and not a function of the same name, e.g.:
 ```c++
 struct stat sb;
 stat("path/to/file", &sb);
@@ -258,7 +258,7 @@ Occasional exceptions are allowed if they lead to much clearer code.
 
 ## Mutable
 
-Use "mutable" only for class members not related to the outwardly visible state of the class.
+Use `mutable` only for class members not related to the outwardly visible state of the class.
 For example, if a class caches the result of a complex calculation, that may be stored in a mutable variable. Similarly, if a class owns a worker thread that it communicates with, a const function checking on the worker's status may need to use a mutable mutex.
 
 ## Nested classes
@@ -318,13 +318,13 @@ Otherwise, if you make a change or a bug fix, you're likely to make it in one of
 
 All functions should either be a member of a class or of an unnamed namespace.
 This implies that some classes may consist entirely of static functions, and never actually be intended to be instantiated.
-This is so that it is immediately clear to anyone reading the code what file they need to look at to see the declaration or definition of that function. That is, if I see "MyClass::DoStuff(myData);", I know to look at MyClass.h for details. If I see "DoStuff(myData);", I have to read through all the #includes to see which one defined DoStuff().
+This is so that it is immediately clear to anyone reading the code what file they need to look at to see the declaration or definition of that function. That is, if I see `MyClass::DoStuff(myData);`, I know to look at MyClass.h for details. If I see `DoStuff(myData);`, I have to read through all the #includes to see which one defined DoStuff().
 Functions in an unnamed namespace are only visible in a single .cpp file, so they will generally just be helper functions for that particular class.
 
 ## Void
 
-Do not use "void" to denote a function with no arguments.
-An empty list of arguments is much clearer than a list of one element that happens to be void. The only reason people use "void" is as a carry-over from C, where these two function declarations mean different things:
+Do not use `void` to denote a function with no arguments.
+An empty list of arguments is much clearer than a list of one element that happens to be void. The only reason people use `void` is as a carry-over from C, where these two function declarations mean different things:
 ```c
 void F(void); // has zero arguments.
 void F(); // has an undefined number of arguments.
@@ -353,14 +353,14 @@ Or they can use the same format as normal variables.
 
 ## Use const rather than #define
 
-Constants should be defined as "static const" rather than using macros.
+Constants should be defined as `static const` rather than using macros.
 This avoids unintended side effects and is also more efficient if the variable in question has a non-trivial constructor, because this way one instance of it can be reused.
 
 ## No Hungarian notation
 
 Do not use Hungarian notation (prefixes or suffixes on variable names just to represent their type).
-Hungarian notation makes variable names harder to read and harder to remember, because instead of English words they include random character sequences like "lptsz". Also, because the compiler is checking for type safety anyways, these prefixes do nothing to improve code quality.
-This also includes not putting "m_" or "_" before or after member variable names. If your functions and classes are well-factored, you should not encounter many situations where it is unclear to a reader whether a variable is a local variable or a member variable.
+Hungarian notation makes variable names harder to read and harder to remember, because instead of English words they include random character sequences like `lptsz`. Also, because the compiler is checking for type safety anyways, these prefixes do nothing to improve code quality.
+This also includes not putting `m_` or `_` before or after member variable names. If your functions and classes are well-factored, you should not encounter many situations where it is unclear to a reader whether a variable is a local variable or a member variable.
 
 ## Point of first use
 
@@ -513,8 +513,8 @@ Except, of course, for the three individual clauses contained in a for loop.
 ## Parentheses
 
 Do not put a space before or after the parentheses for functions and control statements.
-There is no consensus on this among programmers. But, the mathematical convention is to never put a space, i.e. you never write "sin (x)". Much of our code is mathematical in nature, so it makes sense to follow that convention.
-As part of that convention, also don't put spaces inside the parentheses (like "sin( x )"). The only exceptions from this rule are macro calls in the unit tests:
+There is no consensus on this among programmers. But, the mathematical convention is to never put a space, i.e. you never write `sin (x)`. Much of our code is mathematical in nature, so it makes sense to follow that convention.
+As part of that convention, also don't put spaces inside the parentheses (like `sin( x )`). The only exceptions from this rule are macro calls in the unit tests:
 ```c++
 SCENARIO( "Creating an Account" , "[Account][Creation]" ) {
     GIVEN( "an account" ) {
@@ -525,11 +525,11 @@ SCENARIO( "Creating an Account" , "[Account][Creation]" ) {
     }
 }
 ```
-If you are used to putting spaces before the parentheses, rather than trying to adjust your typing you might find it easier to just do a find/replace before committing your code, e.g. replacing "if (" with "if(", etc. You can also grep the svn diff of your changes for "^+.*\ (" to check if you missed anything.
+If you are used to putting spaces before the parentheses, rather than trying to adjust your typing you might find it easier to just do a find/replace before committing your code, e.g. replacing `if (` with `if(`, etc. You can also grep the svn diff of your changes for `^+.*\ (` to check if you missed anything.
 
 ## Return is not a function
 
-The "return" keyword does not require parentheses; use them only when what follows is a complex statement, and put a space after "return" in that case.
+The `return` keyword does not require parentheses; use them only when what follows is a complex statement, and put a space after `return` in that case.
 For example:
 ```c++
 return x;
@@ -543,7 +543,7 @@ That makes debugging easier, and also makes the code easier to read.
 
 ## Use continue rather than empty loop bodies
 
-If defining a loop with an empty body, put "continue;" as its body.
+If defining a loop with an empty body, put `continue;` as its body.
 All three of these are legal C++:
 ```c++
 int i = 0;
@@ -558,13 +558,13 @@ but the third option makes it most clear that the loop has an empty body.
 
 ## Const
 
-Write "const int x", not "int const x".
+Write `const int x`, not `int const x`.
 This just makes more sense in English usage.
 
 ## Pointers and references
 
 The & or * when defining a variable should be adjacent to the variable name, not the type.
-This is mainly as a reminder that "const int *x" means that *x is a const int, not that x is a "const int*". It also avoids problems like this:
+This is mainly as a reminder that `const int *x` means that *x is a const int, not that x is a `const int*`. It also avoids problems like this:
 ```c++
 int* x, y; // x is a pointer, but y is an int! Probably not what you intended.
 ```
@@ -588,12 +588,12 @@ This makes lists easier to read.
 
 ## Binary operators
 
-Put a space before and after all binary operators except for ",", ".", "::", and "->"
+Put a space before and after all binary operators except for `,`, `.`, `::`, and `->`
 This is for readability, so that the things being operated on are visually parsed as separate words.
 
 ## Ternary operators
 
-Put a space before and after "?" and ":".
+Put a space before and after `?` and `:`.
 This is the same as for binary operators.
 
 ## Initializer lists
@@ -676,7 +676,7 @@ if(!y)
 
 ## Opening braces
 
-Put opening braces on a new line if and only if they come after a ")".
+Put opening braces on a new line if and only if they come after a `)`.
 That is:
 ```c++
 class MyClass {
@@ -729,7 +729,7 @@ For example, an affine transform takes one line to write out in matrix form, or 
 
 Code should compile with -Wall without any warnings.
 Some of the warning are rather pedantic, but the effort required to eliminate them is worth it compared to the effort of tracking down subtle bugs that might otherwise exist.
-The "comparing signed to unsigned value" warning is particularly common, since the sizes of STL containers are unsigned, but it's common practice to use plain old "int" whenever an integer is needed, instead of using "unsigned". Assuming that your indices are never going to be larger than the maximum value of a signed int, instead of this:
+The "comparing signed to unsigned value" warning is particularly common, since the sizes of STL containers are unsigned, but it's common practice to use plain old `int` whenever an integer is needed, instead of using `unsigned`. Assuming that your indices are never going to be larger than the maximum value of a signed int, instead of this:
 ```c++
 if(index < 0 || index >= vec.size())
 ```
@@ -759,7 +759,7 @@ for(it = vec.begin(); it != vec.end(); ++it)
     ++out;
 }
 ```
-This has the advantage that the "for" clauses now deal only with the "it" variable; that is, it is now a "normal" for loop.
+This has the advantage that the `for` clauses now deal only with the `it` variable; that is, it is now a "normal" for loop.
 
 ## C-style typecasts
 
@@ -775,12 +775,12 @@ The current code does not do this, but it seems like a good practice to move tow
 
 If at all possible, use wrapper classes instead of explicitly allocating or freeing memory.
 This makes code exception-safe, and also avoids all sorts of memory management errors. Note that std::vector always stores its contents in a contiguous block of memory, which you can access with its data() function, so there is almost never any reason to allocate your own memory instead of using vector.
-If you must use explicit memory management, always use the C++ keywords "new" and "delete", rather than the C-style malloc() and free() functions. This is because creating memory with one set of functions and deleting it with the other results in undefined behavior. Also, unlike malloc(), "new" ensures that an object is properly constructed.
+If you must use explicit memory management, always use the C++ keywords `new` and `delete`, rather than the C-style `malloc()` and `free()` functions. This is because creating memory with one set of functions and deleting it with the other results in undefined behavior. Also, unlike `malloc()`, `new` ensures that an object is properly constructed.
 
 ## No assumptions about variable sizes
 
 Do not assume that sizeof(int) or sizeof(void *) will be a certain value.
-Use explicit types like int64_t when necessary, or just use a "long long" if all you care about is that a variable is at least 64 bits, not exactly 64 bits.
+Use explicit types like int64_t when necessary, or just use a `long long` if all you care about is that a variable is at least 64 bits, not exactly 64 bits.
 
 
 
@@ -795,8 +795,8 @@ This has clear type-safety benefits, and also avoids needing to use a macro.
 
 ## auto
 
-Use "auto" only for variables with a very small scope, and only when writing out the full type name would make the code less readable.
-That is, do not use "auto" just to save yourself some typing. Code is written once, but read many times, and in general it is going to be helpful to have type names spelled out.
+Use `auto` only for variables with a very small scope, and only when writing out the full type name would make the code less readable.
+That is, do not use `auto` just to save yourself some typing. Code is written once, but read many times, and in general it is going to be helpful to have type names spelled out.
 
 ## Range-based for
 
@@ -805,7 +805,7 @@ Range-based for is more clear and concise than using an index or an iterator.
 
 ## Default assignment and constructors
 
-Use the "= delete" syntax to disable copying of a class if necessary.
+Use the `= delete` syntax to disable copying of a class if necessary.
 In general, just let the compiler automatically generate the copy constructor and assignment operator; very few classes will require custom copying.
 
 ## Lambdas
