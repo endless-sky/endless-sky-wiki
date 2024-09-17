@@ -170,7 +170,7 @@ That is, for example, do not put a "C" at the start of all your class names to m
 
 ## Order of declarations
 
-A class definition should contain the following sections (most of which will be omitted for most classes) in this order, with each section introduced by a "public:", "protected:", or "private:" marker:
+A class definition should contain the following sections (most of which will be omitted for most classes) in this order, with each section introduced by a `public:`, `protected:`, or `private:` marker:
 1. public enums and nested classes
 2. public static constants
 3. public static functions
@@ -790,7 +790,7 @@ C++11 brings substantial additions to the C++ language; in fact, one of the main
 
 ## nullptr
 
-Use "nullptr" for pointers rather than "NULL" or "0".
+Use `nullptr` for pointers rather than `NULL` or `0`.
 This has clear type-safety benefits, and also avoids needing to use a macro.
 
 ## auto
