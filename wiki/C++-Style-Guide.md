@@ -99,9 +99,9 @@ For example, a header file might contain the following #includes:
 #include "Point.h"
 #include "Shader.h"
 
-#include &lt;GL/glew.h&gt;
+#include <GL/glew.h>
 
-#include &lt;vector&gt;
+#include <vector>
 
 class Angle;
 class Sprite;
@@ -124,9 +124,9 @@ For example, a .cpp file might contain the following #includes:
 #include "Angle.h"
 #include "Sprite.h"
 
-#include &lt;SDL/SDL.h&gt;
+#include <SDL/SDL.h>
 
-#include &lt;set&gt;
+#include <set>
 ```
 It is helpful but not required to alphabetize the lines within each "paragraph" of #includes.
 
@@ -194,25 +194,25 @@ public: // Do not indent the tags for "public," etc.
     size_t Size() const; // Use unsigned types for sizes.
     
     // Another set of descriptive comments.
-    void SetLabel(int index, const std::string &amp;label);
-    const std::string &amp;GetLabel(int index) const;
-    void GetIndex(const std::string &amp;label) const;
+    void SetLabel(int index, const std::string &label);
+    const std::string &GetLabel(int index) const;
+    void GetIndex(const std::string &label) const;
     
     // This class behaves like an array; you can look up elements by index, or
     // by label (if a given label has been assigned to an index).
     double operator[](int index) const; // Only use obvious operator overloads.
-    double operator[](const std::string &amp;label) const;
+    double operator[](const std::string &label) const;
     
     
 private: // Two blank lines separating each section.
     // Clear any index previously associated with the given label.
-    void ClearLabel(const std::string &amp;label);
+    void ClearLabel(const std::string &label);
     
     
 private: // Separate sections for functions and for variables.
-    std::vector&lt;double&gt; values;
-    std::vector&lt;std::string&gt; labels;
-    std::map&lt;std::string, size_t&gt; indices;
+    std::vector<double> values;
+    std::vector<std::string> labels;
+    std::map<std::string, size_t> indices;
 };
 ```
 
@@ -243,7 +243,7 @@ Do not use the "struct" keyword; just define a class with public data members in
 Exception: occasionally when using the POSIX libraries you need the "struct" keyword to define that a typename is a struct and not a function of the same name, e.g.:
 ```c++
 struct stat sb;
-stat("path/to/file", &amp;sb);
+stat("path/to/file", &sb);
 ```
 
 ## Inheritance
@@ -381,7 +381,7 @@ void MyClass::DoSomethingSafely(const Data &newData)
 {
     CheckSomeStuff();
     {
-        lock_guard&lt;mutex&gt; lock(myMutex);
+        lock_guard<mutex> lock(myMutex);
         mySafeData = newData;
     }
     DoSomeMoreStuff();
@@ -533,7 +533,7 @@ The "return" keyword does not require parentheses; use them only when what follo
 For example:
 ```c++
 return x;
-return (x != 3 &amp;&amp; x &gt; 0);
+return (x != 3 && x > 0);
 ```
 
 ## Loop bodies go on a separate line
@@ -615,7 +615,7 @@ That is:
 ```c++
 int Fibonacci(int x)
 {
-    if(x &lt; 2)
+    if(x < 2)
         return 1;
     return Fibonacci(x - 1) + Fibonacci(x - 2);
 }
@@ -638,13 +638,13 @@ if(theThing != done)
 ```
 You can also forgo the braces for something like this:
 ```c++
-for(int i = 0; i &lt; 10; ++i)
+for(int i = 0; i < 10; ++i)
     if(vec[i])
         sum += i;
 ```
 And, you can also do this:
 ```c++
-for(int i = 0; i &lt; 10; ++i)
+for(int i = 0; i < 10; ++i)
     if(vec[i])
     {
         sum += i;
@@ -653,7 +653,7 @@ for(int i = 0; i &lt; 10; ++i)
 ```
 But, you should not do this, even though it is legal C++:
 ```c++
-for(int i = 0; i &lt; 10; ++i)
+for(int i = 0; i < 10; ++i)
     if(vec[i])
         sum += i;
     else
@@ -686,9 +686,9 @@ public:
 
 do {
     ++x;
-} while(x &lt; 10);
+} while(x < 10);
 
-for(int i = 0; i &lt; 10; ++i)
+for(int i = 0; i < 10; ++i)
 {
     x += i;
 }
