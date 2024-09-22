@@ -613,7 +613,7 @@ This specifies what government all the ships connected to this NPC specification
 	...
 ```
 
-Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#basic-fleet-characteristics) page.
+Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#cargo) page.
 
 ```html
 personality <type>...
