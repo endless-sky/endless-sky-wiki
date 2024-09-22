@@ -51,7 +51,7 @@ These pages generally describe the game syntax in accordance with the [data form
 
 * [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-cmake.md)
 * [Contributing to the code](ContributingCode)
-* [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
+* [C++ style guide](C++-Style-Guide)
 
 ### Descriptions of game engine technology
 
