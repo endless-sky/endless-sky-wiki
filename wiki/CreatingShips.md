@@ -151,7 +151,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
 
-	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle.
+	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle. **(v. 0.10.7)**
+
+	* `"blindspot" <minAngle#> <maxAngle#>`: this turret can't fire when aiming between these angles (relative to the base angle). There can be multiple blindspots defined. **(v. 0.10.11)**
 
 * `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
 
