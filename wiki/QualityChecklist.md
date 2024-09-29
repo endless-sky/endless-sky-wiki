@@ -44,7 +44,7 @@ New missions:
 - [ ] Text should be as concise as possible. Remember this is a game, not a novel.
 - [ ] The "yes, I want this mission" choice in a conversation should usually come first in the list (so it is the default).
 - [ ] Conversations should not imply that the player is a certain gender or use gendered pronouns for the player (call them "kid" or "Captain" or `<first>` instead).
-- [ ] Single-option choices with no follow-up text should be avoided, since adding a choice right before the [done] button turns what should be a single input to close the conversation into two.
+- [ ] Single-option choices with no follow-up text should be avoided, since adding a choice right before the `[done]` button turns what should be a single input to close the conversation into two.
 
 New sounds:
 
