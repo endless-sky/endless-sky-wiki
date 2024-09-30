@@ -163,27 +163,27 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the number of frames it takes for a disabled ship to repair itself. Self-repair can have costs, which are applied after the timer elapses. If the costs cannot be met (energy or fuel), the repair is postponed until they can. Note that overheating does not affect self-repair. The possible costs are:
 
-  * `"disabled recovery energy"` The energy cost required for a disabled ship to repair itself.
+  * `"disabled recovery energy"`: the energy cost required for a disabled ship to repair itself.
 
-  * `"disabled recovery fuel"` The fuel cost required for a disabled ship to repair itself.
+  * `"disabled recovery fuel"`: the fuel cost required for a disabled ship to repair itself.
 
-  * `"disabled recovery heat"` The heat applied when a disabled ship repairs itself.
+  * `"disabled recovery heat"`: the heat applied when a disabled ship repairs itself.
 
-  * `"disabled recovery ionization"` The ion damage applied when a disabled ship repairs itself.
+  * `"disabled recovery ionization"`: the ion damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery scrambling"` The scrambling damage applied when a disabled ship repairs itself.
+  * `"disabled recovery scrambling"`: the scrambling damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery disruption"` The disruption damage applied when a disabled ship repairs itself.
+  * `"disabled recovery disruption"`: the disruption damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery slowing"` The slowing damage applied when a disabled ship repairs itself.
+  * `"disabled recovery slowing"`: the slowing damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery discharge"` The discharge damage applied when a disabled ship repairs itself.
+  * `"disabled recovery discharge"`: the discharge damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery corrosion"` The corrosion damage applied when a disabled ship repairs itself.
+  * `"disabled recovery corrosion"`: the corrosion damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery leak"` The leak damage applied when a disabled ship repairs itself.
+  * `"disabled recovery leak"`: the leak damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery burning"` The burning damage applied when a disabled ship repairs itself.
+  * `"disabled recovery burning"`: the burning damage applied when a disabled ship repairs itself.
 
 * Most of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship according to the equation `stat * (1 + multiplier)`, which means that the default value of 0 means no change, while a value of 1 would be a +100% increase in the stat. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated stat. **(v. 0.9.13)**
   
