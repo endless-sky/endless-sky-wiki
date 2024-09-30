@@ -720,7 +720,7 @@ There are eleven events that can trigger a response of some sort:
 * `accept`: if the player agrees to accept a mission.
 * `decline`: if the player decides to decline a mission.
 * `defer`: if the player decides to defer a mission.
-* `fail`: if the mission fails.
+* `fail`: if the mission fails. If the mission fails mid-flight, this only triggers on the next landing. Always triggers instantly when used in place of `on abort`.
 * `abort`: if the mission is aborted by the player. If no `on abort` action exists and the player aborts a mission, then any `on fail` action will be triggered instead.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
