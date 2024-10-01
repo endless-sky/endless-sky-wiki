@@ -49,8 +49,10 @@ Alongside the plugins folder in the config directory, Endless Sky will create a 
 
 Linux:
 * ~/.local/share/endless-sky/errors.txt
+
 Windows:
 * %APPDATA%\endless-sky\errors.txt
+
 macOS:
 * ~/Library/Application Support/endless-sky/errors.txt
 
