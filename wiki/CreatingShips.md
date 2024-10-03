@@ -137,7 +137,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"[left | right]"`: keywords with no value used only for steering engines. Specifies in what direction the ship must be turning in order for these flares to show. If neither of these keywords are listed, the steering flare will always show when the ship is steering.
 
-* `"gun" <x#> <y#>`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations¹ listed here. The following lines can be added as a "child" of the gun line:
+<span id="ship.gun" />
+
+* `"gun" <x#> <y#>`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations[^1] listed here. The following lines can be added as a "child" of the gun line:
 
 	* `"angle" <degrees#>`: the angle at which this gun fires. The default angle for guns is 0 degrees, i.e. facing forward. (**v. 0.9.13**)
 
@@ -185,7 +187,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"name"`: the name of the particular ship, as seen and/or editable by the player. In general, this field will only be used by content creators for ships gifted to the player by a specific starting scenario. (It is extensively used by the game engine, to save the player's ships' names.)
 
-¹The player info panel will not display properly if the total number of gun and turret hardpoints on either side of the ship is more than 12. In addition, prior to **v. 0.9.15**, if the total number of gun and turret hardpoints is greater than 32, the extras will not fire.
+[^1]: The player info panel will not display properly if the total number of gun and turret hardpoints on either side of the ship is more than 12. In addition, prior to **v. 0.9.15**, if the total number of gun and turret hardpoints is greater than 32, the extras will not fire.
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
