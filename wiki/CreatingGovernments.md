@@ -48,12 +48,12 @@ government <name>
 	"travel restrictions"
 		{filter specification...}
 	illegals
-		"ignore universal" <value>
+		"ignore universal"
 		<outfit> <fine>
 		ship <ship> <fine>
 		...
 	atrocities
-		"ignore universal" <value>
+		"ignore universal"
 		<outfit>
 		ship <ship>
 		...
@@ -224,12 +224,12 @@ The fine token controls the "leniency" of the government with respect to the fin
 
 ```html
 illegals
-	"ignore universal" <value>
+	"ignore universal"
 	[ignore] <outfit> <fine>
 	[ignore] ship <ship> <fine>
 	...
 atrocities
-	"ignore universal" <value>
+	"ignore universal"
 	[ignore] <outfit>
 	[ignore] ship <ship>
 	...
