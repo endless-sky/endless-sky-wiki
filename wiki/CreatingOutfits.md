@@ -670,7 +670,7 @@ The following attributes are tags (just the word by itself, no value following i
 
 * `"gravitational"`: causes all ships impacted by this weapon to receive the same amount of hit force, as opposed to hit force decreasing in its effectiveness against heavier ships. **(v. 0.9.13)**
 
-* `"parallel"`: causes this gun to fire in parallel when installed on a ship. This tag has no effect on turrets. See the [gun](CreatingShips#ship.gun) port definition for more information on parallel firing behavior. **(v. 0.9.13)**
+* `"parallel"`: causes this gun to fire in parallel when installed on a ship. This tag has no effect on turrets. See the [gun](CreatingShips#data.gun) port definition for more information on parallel firing behavior. **(v. 0.9.13)**
 
 * `"fused"`: causes this weapon's projectiles to explode once they reach the end of their lifetime. This means that the projectile will display a hit effect rather than a die effect, and any blast radius weapons will deal damage to ships that were nearby the projectile when it exploded. **(v. 0.10.7)**
 
