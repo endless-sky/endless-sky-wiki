@@ -137,7 +137,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"[left | right]"`: keywords with no value used only for steering engines. Specifies in what direction the ship must be turning in order for these flares to show. If neither of these keywords are listed, the steering flare will always show when the ship is steering.
 
-<span id="ship.gun" />
+<span id="data.gun" />
 
 * `"gun" <x#> <y#>`: the (x, y) coordinates of any gun ports. The number of gun outfits cannot exceed the number of gun port locations[^1] listed here. The following lines can be added as a "child" of the gun line:
 
