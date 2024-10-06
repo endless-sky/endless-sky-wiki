@@ -38,6 +38,7 @@
 * [Creating governments](CreatingGovernments)
 * [Creating fleets](CreatingFleets)
 * [Creating phrases](CreatingPhrases)
+* [Creating sales](CreatingSales)
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
