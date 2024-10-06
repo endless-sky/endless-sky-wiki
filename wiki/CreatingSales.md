@@ -35,7 +35,7 @@ The above example would add to the "Syndicate Advanced" shipyard the two ships "
         discount 40
 ```
 
-Added in **v0.10.9**, the above example would make any planet with the "Random Flivvers" "shipyard stock have a 20% chance of selling 5 Flivvers on a discount of 40%. "shipyard stock" basically lets you have a random chance of a planet selling ships.
+Added in **v0.10.11**, the above example would make any planet with the "Random Flivvers" "shipyard stock have a 20% chance of selling 5 Flivvers on a discount of 40%. "shipyard stock" basically lets you have a random chance of a planet selling ships.
 
 ```
 "shipyard stock" "Random Sparrows"
@@ -45,7 +45,7 @@ Added in **v0.10.9**, the above example would make any planet with the "Random F
         depreciation 105
 ```
 
-Added in **v0.10.9**, the above example would make any planet with the "Random Sparrows" "shipyard stock" have a 70% chance of selling 2 Sparrows which have depreciated for 105 days.
+Added in **v0.10.11**, the above example would make any planet with the "Random Sparrows" "shipyard stock" have a 70% chance of selling 2 Sparrows which have depreciated for 105 days.
 
 # Outfitters
 
@@ -79,7 +79,7 @@ Any outfits you list will be appended to the outfits currently in the list you n
         discount 99
 ```
 
-This was added in **v0.10.9**. It allows you to make outfits sometimes be in stock on any particular planet. The above example would make any planet with the "Random Nukes" "outfitter stock" have a 50% chance of selling 3 heavily discounted nuclear missiles.
+This was added in **v0.10.11**. It allows you to make outfits sometimes be in stock on any particular planet. The above example would make any planet with the "Random Nukes" "outfitter stock" have a 50% chance of selling 3 heavily discounted nuclear missiles.
 
 ```
 "outfitter stock" "Random Ramscoops"
