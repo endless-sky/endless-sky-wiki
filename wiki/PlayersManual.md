@@ -321,6 +321,7 @@ View star map | M
 View player info | I
 Toggle fullscreen | F11
 Toggle fast-forward | Caps Lock
+Pause | P
 Show help | F1
 View message log | /
 Deploy / recall fighters | D
