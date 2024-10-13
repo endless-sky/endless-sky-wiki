@@ -80,7 +80,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor)
-	(job | landing | assisting | boarding | shipyard | outfitter)
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -333,10 +333,10 @@ In general, any mission that starts a completely new mission string, and that co
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter)
+(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)).
+This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
 
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
