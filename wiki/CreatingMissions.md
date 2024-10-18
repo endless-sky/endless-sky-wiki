@@ -760,7 +760,7 @@ An example of how one might use the log category and header includes creating a 
 log clear <category> [<header>]
 ```
 
-Beginning with **v. 0.10.11**, this removes a log entry specified by the category and header. With no header provided, it removes the whole category. You can't remove logs with no custom category (those which are categorized by date).
+Beginning with **v. 0.10.11**, this removes a log entry specified by the category and header. With no header provided, it removes the whole category. You can't remove logs with no custom category (those which are sorted by date).
 
 ```html
 dialog <text>
