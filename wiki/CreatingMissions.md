@@ -159,6 +159,7 @@ mission <name>
 			...
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 		log [<category> <header>] <text>
+		log clear <category> [<header>]
 		dialog <text>
 			<text>...
 		dialog phrase <phrase>
@@ -683,6 +684,7 @@ A mission can also specify what happens at various key parts of the mission:
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 	log [<category> <header>] <text>
+	log clear <category> [<header>]
 	dialog <text>
 		<text>...
 	dialog phrase <phrase>
@@ -753,6 +755,12 @@ log [<category> <header>] <text>
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+```html
+log clear <category> [<header>]
+```
+
+Beginning with **0.10.11**, this removes a log entry specified by the category and header. With no header provided, it removes the whole category. You can't remove logs with no custom scategory (categorized by date).
 
 ```html
 dialog <text>
