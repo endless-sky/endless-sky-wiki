@@ -405,6 +405,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
 
+  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a non-player ship is performing a scan. **(v. 0.10.10)**
+
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
   * `"scan brightness"`: increases the chance that an illegal outfit will appear on a cargo scan. The cargo scan formula is as follows: `max(1., 2 * (illegal good mass + illegal good scan brightness) / legal good mass) / (1 + scan interference)`. In English, if you have 1 ton of illegal goods and 2 tons of legal goods then you have a 50% chance of your illegal goods being found on a cargo scan. The higher the ratio of legal to illegal goods, the lower your chances of being caught. If you have no legal goods or too many illegal goods then the chance caps out at `1 / (1 + scan interference)`. **(v. 0.10.0)**
