@@ -307,7 +307,7 @@ raid <fleet> [<min-attraction#> [<max-attraction#>]]
 The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
-"no raid"
+"no raids"
 ```
 
 If present, no raid fleets will ever spawn in this system, whether they be from the system's government or the system itself. **(v. 0.10.3)**
