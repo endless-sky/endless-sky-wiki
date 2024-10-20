@@ -77,7 +77,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
   * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
 
-  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played when present on non-player owned ships, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
+  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
