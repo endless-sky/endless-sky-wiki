@@ -252,7 +252,8 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 Defines a straight line (bar) or circular outline (ring) to be drawn with this interface.
 In the case of a ring, it will be drawn anti-clockwise around the center of its bounding box, with a radius equal to half the width of the bounding box. The start and span angle specifies the portion of the ring that is drawn **(v. 0.10.2)**.
 A bar will be drawn from the bottom right corner of its bounding box.
-At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar. If only a part is drawn, the reversed attribute can toggle which end it is filled from **(v. 0.10.3)**.
+At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
+Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction. A reversed ring will be filled in the clockwise direction, and a reversed bar will be filled from the top left corner.
 The size determines the thickness of the bar or ring, the default value is 2.
 If no color is given, "active" will be used.
 
