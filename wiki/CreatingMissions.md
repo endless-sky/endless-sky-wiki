@@ -665,7 +665,7 @@ waypoint
 	<location filter>...
 ```
 
-Beginning in version **0.10.9**, NPCs can be given a set of one or more waypoints to navigate to, as above. This overrides all personality-defined travel directives like `staying`. Specifying waypoints causes all ships in the NPC to navigate towards them in the order that they are specified (although systems defined by a [location filter](LocationFilters) will be visited after explicitly named ones). If no value is specified, the mission destination system will be used instead. If a system is inaccessible, it will be removed in-flight. When all waypoints have been visited, the NPC will fall back on any orders defined by its personality.
+Beginning with **v. 0.10.11**, NPCs can be given a set of one or more waypoints to navigate to, as above. This overrides all personality-defined travel directives like `staying`. Specifying waypoints causes all ships in the NPC to navigate towards them in the order that they are specified (although systems defined by a [location filter](LocationFilters) will be visited after explicitly named ones). If no value is specified, the mission destination system will be used instead. If a system is inaccessible, it will be removed in-flight. When all waypoints have been visited, the NPC will fall back on any orders defined by its personality.
 
 If an NPC has the `uninterested` personality, it will ignore its waypoints.
 
@@ -675,7 +675,7 @@ destination
 	<location filter>
 ```
 
-Beginning in version **0.10.9**, NPCs can be given a final `destination` planet to land on. If an NPC enters its destination system and has visited all of its `stopover`s (if any are defined), it will land on the selected planet, permanently satisfying the `land` objective and failing the `outrun` objective. If the destination is also the mission destination planet, the NPC will also permanently satisfy the `accompany` objective. The NPC will not take off after landing. If no value is specified, the mission destination planet will be used instead.
+Beginning with **v. 0.10.11**, NPCs can be given a final `destination` planet to land on. If an NPC enters its destination system and has visited all of its `stopover`s (if any are defined), it will land on the selected planet, permanently satisfying the `land` objective and failing the `outrun` objective. If the destination is also the mission destination planet, the NPC will also permanently satisfy the `accompany` objective. The NPC will not take off after landing. If no value is specified, the mission destination planet will be used instead.
 
 If an NPC has the `uninterested` personality, it will not attempt to land on its destination planet. However, if it does land on the planet anyways, it will act the same as an "interested" NPC.
 
@@ -687,7 +687,7 @@ stopover
 	<location filter>...
 ```
 
-Beginning in version **0.10.9**, NPCs can be given a set of one or more `stopover` planets to visit. If an NPC enters a system containing a `stopover`, it will temporarily land on that planet. It will not satisfy the `land` objective, nor will it fail the `outrun` objective. Unlike waypoints, and similar to mission stopovers, `stopover` planets can be visited in any order. If no value is specified for a stopover, the mission destination planet will be used instead.
+Beginning with **v. 0.10.11**, NPCs can be given a set of one or more `stopover` planets to visit. If an NPC enters a system containing a `stopover`, it will temporarily land on that planet. It will not satisfy the `land` objective, nor will it fail the `outrun` objective. Unlike waypoints, and similar to mission stopovers, `stopover` planets can be visited in any order. If no value is specified for a stopover, the mission destination planet will be used instead.
 
 If an NPC has the `uninterested` personality, it will not attempt to land on its stopover planets. However, if it lands on the planet anyways, it will fulfill the stopover.
 
