@@ -574,7 +574,7 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. Prior to **v. 0.10.0**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
-* `land`: To complete the mission, the givern NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.9)**
+* `land`: To complete the mission, the given NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.9)**
 * `outrun`: You cannot complete the mission if the NPC has landed at its final destination. **(v. 0.10.9)**
 
 ```html
@@ -664,6 +664,7 @@ waypoint [<system>...]
 waypoint
 	<location filter>...
 ```
+
 Beginning in version **0.10.9**, NPCs can be given a set of one or more waypoints to navigate to, as above. This overrides all personality-defined travel directives like `staying`. Specifying waypoints causes all ships in the NPC to navigate towards them in the order that they are specified (although systems defined by a [location filter](LocationFilters) will be visited after explicitly named ones). If no value is specified, the mission destination system will be used instead. If a system is inaccessible, it will be removed in-flight. When all waypoints have been visited, the NPC will fall back on any orders defined by its personality.
 
 If an NPC has the `uninterested` personality, it will ignore its waypoints.
@@ -690,7 +691,7 @@ Beginning in version **0.10.9**, NPCs can be given a set of one or more `stopove
 
 If an NPC has the `uninterested` personality, it will not attempt to land on its stopover planets. However, if it lands on the planet anyways, it will fulfill the stopover.
 
-NPCs do not automatically navigate to their destination planet. In order to do so, they require `waypoint`s.
+NPCs do not automatically navigate to stopover planets. In order to do so, they require `waypoint`s.
 
 ```html
 dialog <text>
