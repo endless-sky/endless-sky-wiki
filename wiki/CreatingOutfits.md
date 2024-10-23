@@ -69,7 +69,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
-* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once.
+* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once. If a ship does not define any sounds to be played, default sounds will be used. These default sounds have the following names: "jump drive", "hyperdrive", "jump in", "hyperdrive in", "jump out", and "hyperdrive out".
 
   * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive.
 
