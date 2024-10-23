@@ -574,8 +574,8 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. Prior to **v. 0.10.0**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
-* `land`: To complete the mission, the given NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.9)**
-* `outrun`: You cannot complete the mission if the NPC has landed at its final destination. **(v. 0.10.9)**
+* `land`: To complete the mission, the given NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.11)**
+* `outrun`: You cannot complete the mission if the NPC has landed at its final destination. **(v. 0.10.11)**
 
 ```html
 to (spawn | despawn)
