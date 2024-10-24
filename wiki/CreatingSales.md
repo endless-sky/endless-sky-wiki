@@ -7,7 +7,7 @@
 
 ## Normal Shipyards
 
-If you want your ships to be available anywhere, you must add them to a shipyard. To do so, you must have something like this:
+If you want your ships to be available, you must add them to a shipyard. To do so, you must have something like this:
 
 ```
 shipyard "Syndicate Advanced"
@@ -15,7 +15,7 @@ shipyard "Syndicate Advanced"
     "Plugin Ship Two"
 ```
 
-The above example would add to the "Syndicate Advanced" shipyard the two ships "Plugin Ship One" and "Plugin Ship Two", because any ships you list will be appended to the ships currently in the shipyard named.
+Any ships you list will be appended to the ships currently in the list you named. So, the above example would make two new ships available on all planets that have the "Syndicate Advanced" shipyard.
 
 ## Shipyard Stock
 
@@ -35,7 +35,7 @@ The above example would add to the "Syndicate Advanced" shipyard the two ships "
         discount 40
 ```
 
-Added in **v0.10.11**, the above example would make any planet with the "Random Flivvers" "shipyard stock have a 20% chance of selling 5 Flivvers on a discount of 40%. "shipyard stock" basically lets you have a random chance of a planet selling ships.
+Added in **v. 0.10.11**, the above example would make any planet with the "Random Flivvers" `shipyard stock` have a 20% chance of selling 5 Flivvers with a discount of 40 percent.
 
 ```
 "shipyard stock" "Random Sparrows"
@@ -45,13 +45,13 @@ Added in **v0.10.11**, the above example would make any planet with the "Random 
         depreciation 105
 ```
 
-Added in **v0.10.11**, the above example would make any planet with the "Random Sparrows" "shipyard stock" have a 70% chance of selling 2 Sparrows which have depreciated for 105 days.
+Added in **v. 0.10.11**, the above example would make any planet with the "Random Sparrows" `shipyard stock` have a 70% chance of selling 2 Sparrows which have been losing value for 105 days.
 
 # Outfitters
 
 ## Normal Outfitters
 
-In order for anyone to buy your outfits, they must be added to one of the "outfitter" objects. For example, if you are writing a plugin, you could include this in one of your data files:
+In order for anyone to buy your outfits, they must be added to an "outfitter" object. For example, if you are writing a plugin, you could include this in one of your data files:
 
 ```
 outfitter "Syndicate Advanced"
@@ -79,7 +79,7 @@ Any outfits you list will be appended to the outfits currently in the list you n
         discount 99
 ```
 
-This was added in **v0.10.11**. It allows you to make outfits sometimes be in stock on any particular planet. The above example would make any planet with the "Random Nukes" "outfitter stock" have a 50% chance of selling 3 heavily discounted nuclear missiles.
+This was added in **v. 0.10.11**. It allows you to make outfits sometimes be in stock on any particular planet. The above example would make any planet with the "Random Nukes" `outfitter stock` have a 50% chance of selling 3 heavily discounted nuclear missiles.
 
 ```
 "outfitter stock" "Random Ramscoops"
@@ -89,4 +89,4 @@ This was added in **v0.10.11**. It allows you to make outfits sometimes be in st
         depreciation 45
 ```
 
-The above example would make any planet with the "Random Ramscoops" "outfitter stock" have a 5% chance of selling 10 ramscoops that have already been used for 45 days, and which have been depreciated by that amount of time.
+The above example would make any planet with the "Random Ramscoops" `outfitter stock` have a 5% chance of selling 10 ramscoops that have been losing value for 45 days.
