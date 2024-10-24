@@ -55,6 +55,9 @@ interface <name> [<anchor>]
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 	value <name> <value>
+	list <name>
+		<value#>
+		...
 ```
 
 # Defining an Interface
@@ -274,9 +277,16 @@ Define a pointer to be drawn with this interface.
 The orientation can either be given as an angle in degrees, counting clockwise with 0 being straight up, or a pair of values corresponding to the x and y components of a vector. If no orientation is given, the vector (0, -1) is used.
 If no color is given, "medium" will be used.
 
-## Values
+## Values and lists
 
 ```html
 	value <name> <value#>
 ```
 Stores a numerical value. This can be any real number, which the game can refer to using the given name.
+
+```html
+	list <name>
+		<value#>
+		...
+```
+Stores a list of real numbers, which the game can refer to using the given name **(v. 0.10.5)**.
