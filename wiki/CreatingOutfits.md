@@ -131,7 +131,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"low shield permeability"`: The permeability of your shields as they approach 0%. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength increases, the permeability of your shields approaches the high shield permeability value. **(v. 0.10.1)**
 
-  * `"cloaked shield permeability"`: The permeability of your shields is increased by this much while you are cloaked. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. This stacks additively with the two permeability attributes above. **(TBD: add version number here when main PR is to be merged)**
+  * `"cloaked shield permeability"`: The permeability of your shields is increased by this much while you are cloaked. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. This stacks additively with the two permeability attributes above. **(v. 0.10.11)**
 
   * `hull`: an additional number of hull points added to a ship's base hull value.
 
