@@ -39,6 +39,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `swarming`: ships of this type will "swarm" around any friendly, non-swarming ships that are in-system. No more than six ships will swarm a given target. Any swarming ship with nothing to swarm will try to land on a planet instead. **(v. 0.9.1)**
 * `secretive`: ships with this personality will attempt to fly away from ships that are scanning them. **(v. 0.10.0)**
 * `unrestricted`: does not adhere to the travel restrictions defined by its government. This only applies to random fleet spawns, as mission NPCs are unrestricted by default. **(v. 0.10.3)**
+* `getaway`: if their cargo hold is full, this ship will ignore combat and leave the system. **(v. 0.10.11)**
 
 ### Flags that control [NPCs](CreatingMissions#non-player-characters-npcs):
 
