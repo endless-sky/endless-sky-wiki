@@ -218,6 +218,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<first>` = your first name
 * `<last>` = your last name
 * `<ship>` = the name of your flagship
+* `<model>` = the display model of your flagship **(v. 0.10.9)**
 
 These placeholders will be substituted in any text in the following places:
 
@@ -225,6 +226,7 @@ These placeholders will be substituted in any text in the following places:
 * the mission description
 * dialog messages contained in the mission
 * conversations contained in the mission
+* custom substitutions defined in the mission **(v. 0.10.9)**
 
 For example, the mission description might be, "Deliver `<cargo>` to `<destination>` by `<date>`."
 
@@ -611,7 +613,7 @@ This specifies what government all the ships connected to this NPC specification
 	...
 ```
 
-Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#basic-fleet-characteristics) page.
+Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#cargo) page.
 
 ```html
 personality <type>...
@@ -662,7 +664,7 @@ If you want to retrieve passengers or cargo by boarding a ship, set up the missi
 ship <model> <name>
 ```
 
-This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name.
+This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name. Beginning in **v. 0.10.9**, phrases and substitutions are expanded NPC ship names.
 
 If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed. When loading NPCs from saved games, the rest of the game data has finished loading, but this is not otherwise guaranteed.
 
@@ -718,7 +720,7 @@ There are eleven events that can trigger a response of some sort:
 * `accept`: if the player agrees to accept a mission.
 * `decline`: if the player decides to decline a mission.
 * `defer`: if the player decides to defer a mission.
-* `fail`: if the mission fails.
+* `fail`: if the mission fails. If the mission fails mid-flight, this only triggers on the next landing. Always triggers instantly when used in place of `on abort`.
 * `abort`: if the mission is aborted by the player. If no `on abort` action exists and the player aborts a mission, then any `on fail` action will be triggered instead.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
@@ -726,6 +728,13 @@ There are eleven events that can trigger a response of some sort:
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
 * `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 * `disabled`: if the player's flagship becomes disabled. (**v. 0.10.3**)
+
+Beginning in **v. 0.10.9**, most of these triggers will not activate when the mission is already failed. In some cases, it still might be useful to keep track of the player until they land even if the mission failed. In these cases, you can make the triggers work by using `"can trigger after failure"`.
+```html
+on disabled
+	"can trigger after failure"
+	...
+```
 
 Beginning with **v. 0.9.9**, the `enter` action supports determining the system with a [location filter](LocationFilters). This filter is formatted in the same manner as `source` or `destination` for missions, or `system` for NPCs.
 ```html
@@ -753,7 +762,7 @@ dialog phrase <phrase>
 
 This gives a message to be displayed in a dialog message to the user. If the trigger is `on offer`, the dialog will have "accept" and "decline" buttons. Otherwise, it is a purely informational message and only an "okay" button is shown.
 
-Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line.
+Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
 
 `dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs.
 
@@ -784,13 +793,13 @@ If the outfit cannot be installed due to lack of space, a warning message will b
 
 The `require` keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the `on offer` phase to only offer a mission to players who have a "Jump Drive". Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any). If a non-zero quantity is specified, then the player's flagship is checked alongside the cargo holds of all in-system escorts, or only the flagship's cargo if this is a boarding mission. If a quantity of zero is specified, then the player cannot have that outfit anywhere on any of their ships.
 
-Beginning in **v. 0.9.15**, if the outfit being gifts has the "map" attribute, then the player will be given the information from that map as if they had purchased it from the outfitter. If an outfit with the "map" attribute is being required by a mission and the required value is 0, then the player must have the nearest systems that match the size of the map outfit unvisited, but if the required value is greater than 0 then the nearest systems must be visited.
+Beginning in **v. 0.9.15**, if the outfit being gifted has the "map" attribute, then the player will be given the information from that map as if they had purchased it from the outfitter. If an outfit with the "map" attribute is being required by a mission and the required value is 0, then the player must have the nearest systems that match the size of the map outfit unvisited, but if the required value is greater than 0 then the nearest systems must be visited.
 
 ```html
 give ship <model> [<name>]
 ```
 
-Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase.
+Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase. Beginning in **v. 0.10.9**, substitutions and phrases are expanded in gift ship names.
 
 ```html
 (give | take) ship <model> [<name>]

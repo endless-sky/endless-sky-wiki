@@ -33,7 +33,7 @@ interface <name> [<anchor>]
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
 		[colored]
-	(label <text>) | (string <name>) | (button <key> <text>)
+	(label <text>) | (string <name>) | (button <key> <text>) | ("dynamic button" <key> <name>)
 		from <x#> <y#> [<anchor>]
 		[color <color>]
 		width <width#>
@@ -55,6 +55,9 @@ interface <name> [<anchor>]
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 	value <name> <value>
+	list <name>
+		<value#>
+		...
 ```
 
 # Defining an Interface
@@ -209,7 +212,7 @@ If the `colored` child node is present, then a custom color can be set by the ga
 ## Labels, strings, and buttons
 
 ```html
-	(label <text>) | (string <name>) | (button <key> <text>)
+	(label <text>) | (string <name>) | (button <key> <text>) | ("dynamic button" <key> <name>)
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		size <size#>
 		color <color>
@@ -221,8 +224,9 @@ Defines a location for text to be drawn.
 In the case of a label, the given text will be drawn directly.
 With a string, a name is given, and the game sets the text at runtime, selecting this text location with that name.
 A button is similar to a label, except it also accepts a key token. The first character of this token will be sent as keyboard input if the bounding box for this button is clicked while it is visible and active.
+A dynamic button **(v. 0.10.5)** is a combination of a button and a string element. It has the functionality of a button, but its caption is retrieved at runtime.
 
-Size defines the font size of the text. The vanilla game supports 12 and 14.
+Size defines the font size of the text. The vanilla game supports 14 and 18.
 
 Color sets the named color that will be used for the text when it is visible and active.
 If no color is given, the following defaults will be used:
@@ -273,9 +277,16 @@ Define a pointer to be drawn with this interface.
 The orientation can either be given as an angle in degrees, counting clockwise with 0 being straight up, or a pair of values corresponding to the x and y components of a vector. If no orientation is given, the vector (0, -1) is used.
 If no color is given, "medium" will be used.
 
-## Values
+## Values and lists
 
 ```html
 	value <name> <value#>
 ```
 Stores a numerical value. This can be any real number, which the game can refer to using the given name.
+
+```html
+	list <name>
+		<value#>
+		...
+```
+Stores a list of real numbers, which the game can refer to using the given name **(v. 0.10.5)**.

@@ -69,7 +69,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
-* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once.
+* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once. If a ship does not define any sounds to be played, default sounds will be used. These default sounds have the following names: "jump drive", "hyperdrive", "jump in", "hyperdrive in", "jump out", and "hyperdrive out".
 
   * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive.
 
@@ -77,9 +77,11 @@ Most attributes are given as a single number, but there are a few "special" attr
 
   * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
 
+  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
+
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
-Unless otherwise states, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
+Unless otherwise stated, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
 
 * These attributes are basic attributes that practically every outfit will have.
 
@@ -115,21 +117,23 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"shield fuel"`: the amount of fuel that shield regeneration consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing shield generation to grant fuel.
 
-  * `"shield delay"`: the number of frames that must pass without taking shield damage in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled shield attributes described below.
+  * `"shield delay"`: the number of frames that must pass without taking shield damage in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed shield attributes described below.
 
-  * `"depleted shield delay"`: the number of frames that must pass after the shields have been depleted (i.e. reached 0) in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled shield attributes described below.
+  * `"depleted shield delay"`: the number of frames that must pass after the shields have been depleted (i.e. reached 0) in order for shield generation to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed shield attributes described below.
 
-  * `"disabled shield generation"`: shield generation that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed shield generation"`: shield generation that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
-  * `"disabled shield energy"`: shield energy that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed shield energy"`: shield energy that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
-  * `"disabled shield heat"`: shield heat that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed shield heat"`: shield heat that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
-  * `"disabled shield fuel"`: shield fuel that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed shield fuel"`: shield fuel that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
   * `"high shield permeability"`: The permeability of your shields while they are at 100% strength. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength drops, the permeability of your shields approaches the low shield permeability value. **(v. 0.10.1)**
 
   * `"low shield permeability"`: The permeability of your shields as they approach 0%. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength increases, the permeability of your shields approaches the high shield permeability value. **(v. 0.10.1)**
+
+  * `"cloaked shield permeability"`: The permeability of your shields is increased by this much while you are cloaked. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. This stacks additively with the two permeability attributes above. **(v. 0.10.11)**
 
   * `hull`: an additional number of hull points added to a ship's base hull value.
 
@@ -141,17 +145,17 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull fuel"`: the amount of fuel that hull repair consumes when recharging at the full rate. **(v. 0.9.9)** Beginning in **v. 0.9.13**, this value is capable of being negative, causing hull repairs to grant fuel.
 
-  * `"repair delay"`: the number of frames that must pass without taking hull damage in order for hull repairs to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled hull repair attributes described below.
+  * `"repair delay"`: the number of frames that must pass without taking hull damage in order for hull repairs to begin. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed hull repair attributes described below.
 
-  * `"disabled repair delay"`: the number of frames that must pass without taking hull damage after the ship has been disabled in order for hull repairs to begin. Note that the delay timers for both hull and shields do not decrease while the ship is unable to repair itself (i.e. it is disabled), so this attribute is the time after the ship has been assisted for repairs to start. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the disabled hull repair attributes described below.
+  * `"disabled repair delay"`: the number of frames that must pass without taking hull damage after the ship has been disabled in order for hull repairs to begin. Note that the delay timers for both hull and shields do not decrease while the ship is unable to repair itself (i.e. it is disabled), so this attribute is the time after the ship has been assisted for repairs to start. **(v. 0.9.13)** Beginning in **v. 0.10.7**, this only impacts the delayed hull repair attributes described below.
 
-  * `"disabled hull repair rate"`: hull repair rate that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed hull repair rate"`: hull repair rate that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
-  * `"disabled hull energy"`: hull energy that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed hull energy"`: hull energy that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
-  * `"disabled hull heat"`: hull heat that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed hull heat"`: hull heat that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
-  * `"disabled hull fuel"`: hull fuel that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+  * `"delayed hull fuel"`: hull fuel that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
 * These attributes change the point at which a ship becomes disabled. The default point at which a ship becomes disabled is dictated by the equation `hull * max(.15, min(.45, 10. / sqrt(hull)))`. **(v. 0.9.13)**
 
@@ -161,7 +165,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"hull threshold"`: a hull value that gets added or subtracted from the result of either the default equation or the threshold percentage equation, whichever is used.
 
-* Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the numer of seconds it takes for a disabled ship to repair itself. Self-repair could have some costs, for example:
+* Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the number of seconds it takes for a disabled ship to repair itself. Self-repair could have some costs, for example:
 
   * `"disabled recovery energy"` The energy cost required for a disabled ship to repair itself.
 
@@ -389,6 +393,8 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"cargo scan efficiency"`: the maximum cargo scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your cargo scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with cargo holds above 200 tons taking longer to scan and cargo holds below 200 tons being quicker. **(v. 0.10.0)**
 
+  * `"cargo scan sound"`: the sound that is played when a player ship's cargo is being scanned, or when the player is scanning another ship's cargo. If not specified, the default sound is used instead. **(v. 0.10.9)**
+
   * `"cargo scan opacity"`: increases the time required for other ships to perform a cargo scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of cargo space to scan. **(v. 0.10.3)**
 
   * ~~`"outfit scan"`: sets the distance from which this outfit can be used to scan a ship's outfits.~~ **(Deprecated for scan power and speed in 0.9.5)**
@@ -399,7 +405,11 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"outfit scan efficiency"`: the maximum outfit scanning speed is the square root of this number. The base scan time in frames is 600 divided by the square root of this value, but the actual scan time is impacted by various factors. In addition to your outfit scan speed, the scan time is also influenced by the distance to the target, with farther targets taking longer to scan, and the size of the target, with outfit capacities above 200 tons taking longer to scan and outfit capacities below 200 tons being quicker. **(v. 0.10.0)**
 
+  * `"outfit scan sound"`: the sound that is played when a player ship's outfits are being scanned, or when the player is scanning another ship's outfits. If not specified, the default sound is used instead. **(v. 0.10.9)**
+
   * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
+
+  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. **(v. 0.10.10)**
 
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
@@ -437,7 +447,7 @@ Unless otherwise states, other outfit attributes will stack additively between m
 
   * `"jump base mass"`: a value that subtracts from a ship's mass during the jump mass cost calculation. If a drive's jump base mass is high enough and the ship's mass is low enough, the impact of the jump mass cost is allowed to go negative and begin subtracting from the normal jump fuel cost. Reducing your jump cost in this manner is only allowed to go as low as a cost of 1 fuel per jump. **(v. 0.10.0)**
 
-  * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. **(v. 0.9.13)**
+  * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. System-defined jump ranges override outfit-defined ones. **(v. 0.9.13)**
 
 * These attributes can be used to alter the crew stats of a ship.
 
@@ -649,6 +659,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
   * `"facing" <angle#>`: an angle in degrees that is added to the parent projectile's angle to determine the submunition projectile's angle. Excluding this line means that the submunition always generates with the same angle as the parent projectile. **(v. 0.9.15)**
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
+
+  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
 
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
