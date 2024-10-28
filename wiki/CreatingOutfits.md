@@ -756,7 +756,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * A non-burst weapon with a reload of 1 or less and a total lifetime of 1 will have a fire rate of "continuous" in its outfit info.
 
-  * The total lifetime is the lifetime of the initial project added to the total lifetime of its longest lived submunition, calculated recursively, account for the submunitions of the submunition, etc.
+  * The total lifetime is the lifetime of the initial project added to the total lifetime of its longest lived submunition, calculated recursively, accounting for the submunitions of the submunition, etc.
 
 * `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The burst will reload fully after `reload * # of shots fired` frames from the first shot of the burst, making the reload time for a full burst `reload * "burst count"` frames. (This is technically the same as a non-burst weapon, as it effectively has a burst count of 1.) The number of frames between the end of a full burst and the start of the next burst is `"burst count" * (reload - "burst reload")`. **(v. 0.9.0)**
 
