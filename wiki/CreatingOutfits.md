@@ -766,9 +766,17 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 
+  * A non-burst weapon with a reload of 1 or less and a total lifetime of 1 will have a fire rate of "continuous" in its outfit info.
+
+  * The total lifetime is the lifetime of the initial projectile added to the total lifetime of its longest lived submunition, calculated recursively, accounting for the submunitions of the submunition, etc.
+
 * `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The burst will reload fully after `reload * # of shots fired` frames from the first shot of the burst, making the reload time for a full burst `reload * "burst count"` frames. (This is technically the same as a non-burst weapon, as it effectively has a burst count of 1.) The number of frames between the end of a full burst and the start of the next burst is `"burst count" * (reload - "burst reload")`. **(v. 0.9.0)**
 
 * `"burst reload"`: how many frames this weapon takes to reload between projectiles in a burst. This value must be less than the full `reload` value. For example, a weapon with a `reload` of `100`, `"burst count"` of `2` and `"burst reload"` of `5` will fire on the 1st and 6th frames, then on the 201st and 206th frames, and so on. The fraction of time that a burst weapon spends firing is `("burst reload" - 1) / reload`, where the weapon is considered firing on each frame where it has fired a projectile or is reloading the next projectile in the burst, with the final projectile in a burst being the end of the firing period. **(v. 0.9.0)**
+
+  * A weapon with a burst count greater than 1 and a burst reload of 1 or less and a total lifetime of 1 will be labeled as "continuous (x%)" in its outfit info.
+
+  * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
 * `homing`: How good this weapon is at seeking its target:
 
@@ -804,7 +812,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"trigger radius"`: how close a projectile must be to a hostile target to trigger its explosion. This only makes sense to use with weapons with a `"blast radius"` at least as big as their `"trigger radius"`.
 
-* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate.
+* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate. Weapons with a blast radius will not deal damage or apply prospecting to a minable.
 
 [<img src="https://i.imgur.com/Nw81ZjK.png" width="400px">][blastscale]
 
@@ -824,7 +832,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"hull damage"`: how much damage a projectile does to the hull of ships or minables.
 
-  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
+  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage, but not relative hull damage. **(v. 0.9.15)**
 
   * `"minable damage"`: how much damage a projectile does to [minable objects](CreatingMinables). If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
 
@@ -844,7 +852,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"relative disabled damage"`: disabled hull damage that gets scaled according to the max hull of a target. **(v. 0.9.15)**
 
-  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. **(v. 0.9.15)**
+  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. If not present, the value of the relative hull damage is used instead. **(v. 0.9.15)**
 
   * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half.
 
