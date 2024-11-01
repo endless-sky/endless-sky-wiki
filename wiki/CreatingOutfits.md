@@ -469,7 +469,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `cloak`: how quickly a cloaking device cloaks or uncloaks. When cloaking, this amount is added to your cloaking each frame until you reach 1, at which point your ship is fully cloaked. The opposite happens when uncloaking.
 
-  * `cloak by mass": similar to `cloak` except this value is divided by 1/1000 of the ships mass. For a ship with 1000 mass, this value works exactly like the same amount of `cloak`. For a ship with 500 mass, it would be like having twice as much of this value as `cloak`. The result of the division of this value is added to the `cloak` attribute value, so both can be applied to a single ship. For example, a ship with 2000 mass, 0.01 `cloak` and 0.1 `cloak by mass` would have an overall cloak rate of 0.06 units per frame. **(v. 0.10.7)**
+  * `"cloak by mass"`: similar to `cloak` except this value is divided by 1/1000 of the ships mass. For a ship with 1000 mass, this value works exactly like the same amount of `cloak`. For a ship with 500 mass, it would be like having twice as much of this value as `cloak`. The result of the division of this value is added to the `cloak` attribute value, so both can be applied to a single ship. For example, a ship with 2000 mass, 0.01 `cloak` and 0.1 `cloak by mass` would have an overall cloak rate of 0.06 units per frame. **(v. 0.10.7)**
 
   * `"cloak hull threshold"`: the minimum fraction of hull a ship must have remaining in order to be able to cloak. **(v. 0.10.7)**
 
