@@ -392,7 +392,7 @@ A system hazard with behavior as described above, only with its origin on this o
 visibility <maxDistance> [<minDistance>]
 ```
 
-The range from which the object is visible. `maxDistance` is the range where the object becomes invisible, and `minDistance` is where it becomes fully visible. If `minDistance` is greater, the object disappears as the player gets closer. **(v.0.10.11)**
+The range from which the object is visible. `maxDistance` is the range where the object becomes invisible, and `minDistance` is where it becomes fully visible. If `minDistance` is greater, the object disappears as the player gets closer. **(v0.10.11)**
 
 ```
 object [<name>]
