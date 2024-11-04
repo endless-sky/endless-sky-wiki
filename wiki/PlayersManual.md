@@ -365,20 +365,20 @@ In addition to the multiplier keys, there are various other shortcuts in the out
 
 Outfitter: | &nbsp; | Priority 1 | Priority 2 | Priority 3
 :--- | :--- | :--- | :--- | :---
-Buy | B	| Buy* from cargo to ship | Buy* from storage to ship | Buy from outfitter to ship
-Sell | S |	Sell from cargo	| Sell from storage	| Sell from ship
-Uninstall | U |	Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
-Install | I |	Install to ship from cargo | Install to ship from storage | &nbsp;
-Cargo | C |	Buy* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
-Store |	Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
+Buy | B | Buy* from cargo to ship | Buy* from storage to ship | Buy from outfitter to ship
+Sell | S | Sell from cargo | Sell from storage | Sell from ship
+Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
+Install | I |Install to ship from cargo | Install to ship from storage | &nbsp;
+Cargo | C | Buy* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
+Store | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
 
 \*When you already own it, you won't pay for it again, it'll be installed from cargo or planetary storage rather than paying to install it.
 
 Shipyard: | &nbsp;
 :--- | :---
-B	| Buy Ship
-S |	Sell Ship with outfits
-R |	Sell Ship, Retain outfits in planetary storage
+B | Buy Ship
+S | Sell Ship with outfits
+R | Sell Ship, Retain outfits in planetary storage
 
 Map panels: | &nbsp;
 :--- | :---
