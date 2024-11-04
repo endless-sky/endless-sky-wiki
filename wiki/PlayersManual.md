@@ -364,11 +364,12 @@ Outfitter: | &nbsp;
 :--- | :---
 Buy | B
 Sell | S
-Send to cargo | C
+Move/Buy to cargo | C
+Move to storage | R 
 Install | I
 Uninstall | U
 
-The Buy and Sell shortcuts here are also available in the shipyard.
+The Buy and Sell shortcuts here are also available in the shipyard.  The Shipyard also supports R for to sell ships and retain their outfits in storage.
 
 Map panels: | &nbsp;
 :--- | :---
