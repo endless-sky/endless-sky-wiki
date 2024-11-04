@@ -252,7 +252,7 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 Defines a straight line (bar) or circular outline (ring) to be drawn with this interface.
 In the case of a ring, it will be drawn anti-clockwise around the center of its bounding box, with a radius equal to half the width of the bounding box.
 Beginning in **v. 0.10.2**, it is also possible to define the "start angle" and "span angle" for a ring.
-The "start angle" defines from how many degrees clockwise from a line straight up from the centre the ring should start filling. The default value is 0, which corresponds to straight up. Values of greater than or equal to zero and less than 360 are allowed.
+The "start angle" defines from how many degrees clockwise from a line straight up from the center the ring should start filling. The default value is 0, which corresponds to straight up. Values of greater than or equal to zero and less than 360 are allowed.
 The "span angle" defines how many degrees the ring should be drawn through when fully filled. The default, and maximum, value is 360, where the full ring will correspond to a full circle. The minimum value is 0, in which case, nothing is drawn.
 A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
