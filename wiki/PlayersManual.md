@@ -350,26 +350,35 @@ Trading panel: | &nbsp;
 :--- | :---
 Buy | +, Return, or Space
 Sell | -, Delete, or Backspace
-Buy / sell 5x | Shift
-Buy / sell 20x | Control / Command
-Buy / sell 500x | Option / Alt
 Buy / sell all | Shift + B / S
 View commodity price map | Map key
 
-The multiplier modifiers (Shift = 5x, Command / Control = 20x, and Option / Alt = 500x) also work in the hiring panel, the shipyard, and the outfitter. And, they can be combined together - for example, Shift + Control to buy or sell 100 items at a time.
+Multipliers: | &nbsp;
+:--- | :---
+5x | Shift
+20x | Control / Command
+500x | Option / Alt
+
+The multiplier modifiers work in the Trading panel, Hiring panel, Shipyard and Outfitter.  They can be used in combination - for example, Shift + Control to buy or sell 100 items at a time.  All three will be a crazy whopping 50,000x.
 
 In addition to the multiplier keys, there are various other shortcuts in the outfitter:
 
-Outfitter: | &nbsp;
-:--- | :---
-Buy | B
-Sell | S
-Move/Buy to cargo | C
-Move to storage | R 
-Install | I
-Uninstall | U
+Outfitter: | &nbsp; | Priority 1 | Priority 2 | Priority 3
+:--- | :--- | :--- | :--- | :---
+Buy | B	| Buy* from cargo to ship | Buy* from storage to ship | Buy from outfitter to ship
+Sell | S |	Sell from cargo	| Sell from storage	| Sell from ship
+Uninstall | U |	Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
+Install | I |	Install to ship from cargo | Install to ship from storage | &nbsp;
+Cargo | C |	Buy* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
+Store |	Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
 
-The Buy and Sell shortcuts here are also available in the shipyard.  The Shipyard also supports R for to sell ships and retain their outfits in storage.
+\*When you already own it, you won't pay for it again, it'll be installed from cargo or planetary storage rather than paying to install it.
+
+Shipyard: | &nbsp;
+:--- | :---
+B	| Buy Ship
+S |	Sell Ship with outfits
+R |	Sell Ship, Retain outfits in planetary storage
 
 Map panels: | &nbsp;
 :--- | :---
