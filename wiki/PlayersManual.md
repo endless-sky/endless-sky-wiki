@@ -359,7 +359,7 @@ Multipliers: | &nbsp;
 20x | Control / Command
 500x | Option / Alt
 
-The multiplier modifiers work in the Trading panel, Hiring panel, Shipyard and Outfitter. They can be used in combination - for example, Shift + Control to buy or sell 100 items at a time. All three will be a crazy whopping 50,000x.
+The multiplier modifiers work in the Trading panel, Hiring panel, Shipyard and Outfitter. They can be used in combination - for example, Shift + Control to buy or sell 100 items at a time. All three used together will provide a whopping 50,000x multiplier.
 
 In addition to the multiplier keys, there are various other shortcuts in the outfitter:
 
