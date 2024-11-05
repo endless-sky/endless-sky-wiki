@@ -376,9 +376,9 @@ Store | Retain in storage from cargo | Uninstall from ship to retain in storage 
 
 Shipyard: | &nbsp;
 :--- | :---
-B | Buy Ship
-S | Sell Ship with outfits
-R | Sell Ship, Retain outfits in planetary storage
+B | Buy ship
+S | Sell ship with outfits
+R | Sell ship, retain outfits in planetary storage
 
 Map panels: | &nbsp;
 :--- | :---
