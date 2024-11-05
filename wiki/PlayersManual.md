@@ -365,11 +365,11 @@ In addition to the multiplier keys, there are various other shortcuts in the out
 
 Outfitter: | &nbsp; | First tries: | Then: | And finally:
 :--- | :--- | :--- | :--- | :---
-Buy | B | Buy* from cargo to ship | Buy* from storage to ship | Buy from outfitter to ship
+Buy | B | Install\* from cargo to ship | Install\* from storage to ship | Buy from outfitter to ship
 Sell | S | Sell from cargo | Sell from storage | Sell from ship
 Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
 Install | I | Install to ship from cargo | Install to ship from storage | &nbsp;
-Cargo | C | Buy* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
+Cargo | C | Transfer\* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
 Store | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
 
 \*When you already own it, you won't pay for it again, it'll be installed from cargo or planetary storage rather than paying to install it.
