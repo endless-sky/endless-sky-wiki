@@ -363,7 +363,7 @@ The multiplier modifiers work in the Trading panel, Hiring panel, Shipyard and O
 
 In addition to the multiplier keys, there are various other shortcuts in the outfitter:
 
-Outfitter: | &nbsp; | Priority 1 | Priority 2 | Priority 3
+Outfitter: | &nbsp; | First tries: | Then: | And finally:
 :--- | :--- | :--- | :--- | :---
 Buy | B | Buy* from cargo to ship | Buy* from storage to ship | Buy from outfitter to ship
 Sell | S | Sell from cargo | Sell from storage | Sell from ship
