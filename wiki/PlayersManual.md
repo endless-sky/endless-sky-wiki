@@ -378,7 +378,7 @@ Shipyard: | &nbsp;
 :--- | :---
 B | Buy ship
 S | Sell ship with outfits
-R | Sell ship, retain outfits in planetary storage
+R | Sell ship but retain outfits in planetary storage
 
 Map panels: | &nbsp;
 :--- | :---
