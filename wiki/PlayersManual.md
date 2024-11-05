@@ -368,7 +368,7 @@ Outfitter: | &nbsp; | Priority 1 | Priority 2 | Priority 3
 Buy | B | Buy* from cargo to ship | Buy* from storage to ship | Buy from outfitter to ship
 Sell | S | Sell from cargo | Sell from storage | Sell from ship
 Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
-Install | I |Install to ship from cargo | Install to ship from storage | &nbsp;
+Install | I | Install to ship from cargo | Install to ship from storage | &nbsp;
 Cargo | C | Buy* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
 Store | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
 
