@@ -356,23 +356,33 @@ View commodity price map | Map key
 Multipliers: | &nbsp;
 :--- | :---
 5x | Shift
-20x | Control / Command
-500x | Option / Alt
+20x | Control or Command
+500x | Option or Alt
 
 These multipliers work in the Trading panel, Hiring panel, Shipyard and Outfitter. They can be used in combination—for example, Shift + Control to buy or sell 100 items at a time. All three used together will provide a whopping 50,000x multiplier.
+
+Multiplier Combinations: | Shift (x5) | Command/Control (x20) | Option/Alt (x500)
+:--- | :--- | :--- | :---
+x5 | x | &nbsp; | &nbsp; | &nbsp;
+x20 | &nbsp; | x | &nbsp; | &nbsp;
+x100 | x | x | &nbsp;
+x500 | &nbsp; | &nbsp; | x
+x2500 | x | &nbsp; | x
+x10000 | &nbsp; | x | x
+x50000 | x | x | x
 
 In addition to the multiplier keys, there are various other shortcuts in the outfitter:
 
 Outfitter: | &nbsp; | First tries: | Then: | And finally:
 :--- | :--- | :--- | :--- | :---
-Buy | B | Install\* from cargo to ship | Install\* from storage to ship | Buy from outfitter to ship
+Buy | B | Install from cargo to ship | Install from storage to ship | Buy from outfitter to ship
 Sell | S | Sell from cargo | Sell from storage | Sell from ship
 Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
 Install | I | Install to ship from cargo | Install to ship from storage | &nbsp;
-Cargo | C | Transfer\* to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
-Store | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
+Cargo | C | Transfer to cargo from planetary storage | Buy from outfitter to planetary storage | &nbsp;
+Store | R | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
 
-\*When you already own it, you won't pay for it again, it'll be installed from cargo or planetary storage rather than paying to install it.
+When you already own it, you won't pay for it again, it'll be installed from cargo or planetary storage rather than paying to install it.
 
 Shipyard: | &nbsp;
 :--- | :---
