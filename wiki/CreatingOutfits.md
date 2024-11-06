@@ -445,6 +445,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"jump fuel"`: how much fuel the ship consumes when using this outfit to jump. The default is 100 for hyperdrives, 150 for scram drives, and 200 for jump drives. Unlike other attributes, the jump fuel of multiple outfits will not stack. Instead, the lowest jump fuel among all installed outfits will be used. **(v. 0.9.7)**
 
+  * `"hyperdrive fuel"`: overrides "jump fuel" (see above) for hyperlane jumps. **(v. 0.10.11)**
+
+  * `"jump drive fuel"`: overrides "jump fuel" (see above) for non-hyperlane jumps. **(v. 0.10.11)**
+
   * `"jump mass cost"`: an additional jump fuel cost per 100 tons of ship mass. Adds to the base jump fuel cost above. **(v. 0.10.0)**
 
   * `"jump base mass"`: a value that subtracts from a ship's mass during the jump mass cost calculation. If a drive's jump base mass is high enough and the ship's mass is low enough, the impact of the jump mass cost is allowed to go negative and begin subtracting from the normal jump fuel cost. Reducing your jump cost in this manner is only allowed to go as low as a cost of 1 fuel per jump. **(v. 0.10.0)**
