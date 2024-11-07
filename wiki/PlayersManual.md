@@ -382,6 +382,8 @@ Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | 
 Cargo | C | Transfer to cargo from planetary storage | Buy from outfitter to and place in cargo | &nbsp;
 Store | R | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
 
+Note: When all three modifiers are used in the outfitter with the keyboard shortcut R on Linux running Gnome, (Ctrl+Alt+Shift+r), this will conflict with the default setting for the screen recorder.  In order to use this shortcut, you will need to remap the screen recorder, e.g: Ctrl+Super+Shift+r.
+
 Shipyard: | &nbsp;
 :--- | :---
 B | Buy ship
