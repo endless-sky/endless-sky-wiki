@@ -47,7 +47,6 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -151,7 +150,6 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -277,12 +275,9 @@ The haze that is created for the background of this system. If no haze is given,
 
 ```html
 link <system>
-	<conditions>
 ```
 
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
-
-Links can have conditions that determine if they are available/visible.
 
 ```html
 asteroid <name> <count#> <energy#>
@@ -312,7 +307,7 @@ raid <fleet> [<min-attraction#> [<max-attraction#>]]
 The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
-"no raid"
+"no raids"
 ```
 
 If present, no raid fleets will ever spawn in this system, whether they be from the system's government or the system itself. **(v. 0.10.3)**

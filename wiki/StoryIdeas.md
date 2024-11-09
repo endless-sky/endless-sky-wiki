@@ -13,7 +13,7 @@ The existing aliens are grouped roughly into tiers, where a heavy warship of a c
 * Tier 1: Humans
 * Tier 1.2: Hai
 * Tier 1.5: Coalition, Remnant, Korath Exiles and Efreti
-* Tier 1.9: Bunrodea
+* Tier 1.9: Bunrodea, Successors
 * Tier 2: Wanderers, Korath Automata, Ka'het
 * Tier 2.5: Heliarch
 * Tier 3: Quarg
