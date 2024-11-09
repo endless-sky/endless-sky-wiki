@@ -159,6 +159,7 @@ mission <name>
 			...
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 		log [<category> <header>] <text>
+		remove log <category> [<header>]
 		dialog <text>
 			<text>...
 		dialog phrase <phrase>
@@ -613,7 +614,7 @@ This specifies what government all the ships connected to this NPC specification
 	...
 ```
 
-Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#basic-fleet-characteristics) page.
+Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#cargo) page.
 
 ```html
 personality <type>...
@@ -683,6 +684,7 @@ A mission can also specify what happens at various key parts of the mission:
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 	log [<category> <header>] <text>
+	remove log <category> [<header>]
 	dialog <text>
 		<text>...
 	dialog phrase <phrase>
@@ -720,7 +722,7 @@ There are eleven events that can trigger a response of some sort:
 * `accept`: if the player agrees to accept a mission.
 * `decline`: if the player decides to decline a mission.
 * `defer`: if the player decides to defer a mission.
-* `fail`: if the mission fails.
+* `fail`: if the mission fails. If the mission fails mid-flight, this only triggers on the next landing. Always triggers instantly when used in place of `on abort`.
 * `abort`: if the mission is aborted by the player. If no `on abort` action exists and the player aborts a mission, then any `on fail` action will be triggered instead.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
@@ -753,6 +755,12 @@ log [<category> <header>] <text>
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+```html
+remove log <category> [<header>]
+```
+
+Beginning with **v. 0.10.11**, this removes a log entry specified by the category and header. With no header provided, it removes the whole category. You can't remove logs with no custom category (those which are sorted by date).
 
 ```html
 dialog <text>

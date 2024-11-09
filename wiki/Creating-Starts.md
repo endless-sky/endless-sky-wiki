@@ -224,7 +224,7 @@ on (display | reveal)
 
 The `on display` and `on reveal` nodes specify display information that is displayed in lieu of the true information if the start is not fully unlocked, as described above.
 
-Note that unlike the true start information, the `on (display | reveal)` information does not need to display information that actually exists or is properly formatted. That is to say, the planet and system provided do not need to be real, and the date, credits, and debt do not need to be formatted as a date or as credit amounts and can simply be descriptors if you so desire.
+Prior to **v. 0.10.11**, date, credit, and debt values in "on display" or "on reveal" do not support automatic formatting and will simply display a raw string. From **v. 0.10.11** onwards, if three tokens are provided for the date, it will be automatically formatted, and numeric values for the credits and debt will also be automatically formatted, the same as the values that are shown when a start is fully unlocked.
 
 If a start has a `to reveal` or `to unlock` node, but does not have an `on display` or `on reveal` node, then the displayed information defaults to "???".
 
