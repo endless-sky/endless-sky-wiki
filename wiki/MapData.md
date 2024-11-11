@@ -47,7 +47,6 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -151,7 +150,6 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -277,12 +275,9 @@ The haze that is created for the background of this system. If no haze is given,
 
 ```html
 link <system>
-	<conditions>
 ```
 
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
-
-Links can have conditions that determine if they are available/visible.
 
 ```html
 asteroid <name> <count#> <energy#>
@@ -312,7 +307,7 @@ raid <fleet> [<min-attraction#> [<max-attraction#>]]
 The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
-"no raid"
+"no raids"
 ```
 
 If present, no raid fleets will ever spawn in this system, whether they be from the system's government or the system itself. **(v. 0.10.3)**
@@ -471,13 +466,21 @@ The [music](#ambient-music) that is played while landed on this planet.
 description <text>
 ```
 
-The description that is shown when first landing on a planet.
+The description that is shown when first landing on a planet. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions):
+```html
+description "This planet is a very nice place."
+   to display
+       not "terrible things happened"
+description "Frog People invaded and the planet is now almost devoid of life."
+   to display
+       has "terrible things happened"
+```
 
 ```html
 spaceport <text>
 ```
 
-The description of the spaceport after clicking the spaceport button.
+The description of the spaceport after clicking the spaceport button. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
 
 ```html
 port [<name>]
@@ -537,6 +540,7 @@ security <security#>
 
 The behavior that this planet has when the player has illegal goods or outfits. The bribe number is a multiplier that modifies the severity of any fines, while the security number is a value between 0 and 1 that dictates the chance of a player's ship being scanned.
 
+If no bribe is specified, then a default bribe of 0.01 is used.
 If no security is specified, then a default security of 0.25 is used. 
 
 ```html
@@ -565,7 +569,7 @@ The number of credits that will be paid to the player per day if this planet has
 threshold <rating#>
 ```
 
-The combat rating that the player must have before being capable of demanding tribute from this planet.
+The combat rating that the player must have before being capable of demanding tribute from this planet. If no threshold is specified, then a default threshold of 4000 is used.
 
 ```html
 fleet <name> <count#>
@@ -663,7 +667,7 @@ music <path>
 
 Both systems and planets can be assigned music that plays while the player is there.
 The music files should be of the '.mp3' format and placed in the 'sounds' folder.
-The path should be the reletive path within the 'sounds' folder without the file extension.
+The path should be the relative path within the 'sounds' folder without the file extension.
 For example, a file named 'machinery.mp3' in a folder 'ambient' inside the 'sounds' folder would be listed in a planet or system definition as:
 ```css
 	music ambient/machinery
