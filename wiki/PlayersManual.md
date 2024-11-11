@@ -381,9 +381,7 @@ Install | I | Install on ship from cargo | Install on ship from storage | &nbsp;
 Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
 Cargo | C | Transfer to cargo from planetary storage | Buy from outfitter to and place in cargo | &nbsp;
 Store | R | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
-
-Note: When all three modifiers are used in the outfitter with the keyboard shortcut R on Linux running Gnome, (Ctrl+Alt+Shift+r), this will conflict with the default setting for the screen recorder.  In order to use this shortcut, you will need to remap the screen recorder, e.g: Ctrl+Super+Shift+r.
-
+    
 Shipyard: | &nbsp;
 :--- | :---
 B | Buy ship
@@ -402,3 +400,9 @@ When viewing a list of items, you can move the selection up and down with the ar
 You can press Escape or Control + W to close most dialogs and panels.
 
 When being offered a special mission, pressing the map key brings up the map with the mission's destination indicated with a large white pointer.
+
+### Note for Linux users: 
+Certain keyboard combinations may be mapped by the window manager and thus will not work without some workarounds:
+- Gnome window manager:
+  - (Control-Alt-Shift-r), this will conflict with the default setting for the screen recorder.  In order to use this shortcut, you will need to remap the screen recorder under Settings to something else, e.g: Control-Super-Shift-r.
+  - (Control-Shift-u) is by default configured to the "Unicode Code Point".  In order to use this shortcut, use ibus-setup and under the Emoji tab, change the shortcut for Unicode code point to something else, e.g.: Super-Shift-u.
