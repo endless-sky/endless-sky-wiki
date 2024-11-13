@@ -85,7 +85,7 @@ When buying a new ship, you can either sell your previous ship first, or buy a s
 
 Some ships have space for "drones" or "fighters." These are small ships that have no hyperdrives or fuel of their own; they can travel from system to system only if carried within a larger ship. This lack of hyperspace capability generally makes them much cheaper than other ships. Drones are smaller than fighters, and require no crew, whereas for each fighter, you will have to pay the salary for one additional crew member. Ships with drone or fighter bays come with the bays empty; you must purchase the fighters or drones separately. You can't use a drone or fighter as your flagship.
 
-If you trade in a ship for one with less cargo or passenger space, and then try to leave the planet, you may have to sell some of your cargo.  If there is not enough room for your passengers or mission-related cargo, you may fail some of your missions as a result.
+If you trade in a ship for one with less cargo or passenger space, and then try to leave the planet, you may have to sell some of your cargo. If there is not enough room for your passengers or mission-related cargo, you may fail some of your missions as a result.
 
 Whenever you sell a ship, all the outfits that were installed in that ship are available for repurchase in the outfitter until you leave the planet. This is especially handy if your old ship had a rare outfit installed and you want to transfer it to your new ship.
 
@@ -404,5 +404,5 @@ When being offered a special mission, pressing the map key brings up the map wit
 ### Note for Linux users: 
 Certain keyboard combinations may be mapped by the window manager and thus will not work without some workarounds:
 - Gnome window manager:
-  - (Control-Alt-Shift-r), this will conflict with the default setting for the screen recorder.  In order to use this shortcut, you will need to remap the screen recorder under Settings to something else, e.g: Control-Super-Shift-r.
-  - (Control-Shift-u) is by default configured to the "Unicode Code Point".  In order to use this shortcut, use ibus-setup and under the Emoji tab, change the shortcut for Unicode code point to something else, e.g.: Super-Shift-u.
+  - (Control-Alt-Shift-r), this will conflict with the default setting for the screen recorder. In order to use this shortcut, you will need to remap the screen recorder under Settings to something else, e.g: Control-Super-Shift-r.
+  - (Control-Shift-u) is by default configured to the "Unicode Code Point". In order to use this shortcut, use ibus-setup and under the Emoji tab, change the shortcut for Unicode code point to something else, e.g.: Super-Shift-u.
