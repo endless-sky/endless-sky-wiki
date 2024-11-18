@@ -48,8 +48,10 @@ ship <model>
 	hull <hull#>
 	position <x#> <y#>
 	...
+	"formation pattern" <formation>
 	system <system>
 	planet <planet>
+	[parked]
 ...
 storage
 	planet <planet>
@@ -345,8 +347,10 @@ ship <model>
 	hull <hull#>
 	position <x#> <y#>
 	...
+	"formation pattern" <formation>
 	system <system>
 	planet <planet>
+	[parked]
 ...
 ```
 
