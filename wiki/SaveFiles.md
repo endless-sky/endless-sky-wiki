@@ -309,6 +309,8 @@ value | coloring property
 "map zoom" <value#>
 ```
 
+Stores the zoom level in the star map.
+
 ```html
 "collapsed category" <category>
 	<collapsed>
