@@ -300,7 +300,7 @@ This pilot's current location.
 [clearance]
 ```
 
-Present if the player has clearance on the current planet. Without clerance, planetary services are unavailable.
+Present if the player has clearance on the current planet. Without clearance, planetary services are unavailable.
 
 ```html
 playtime <time#>
@@ -718,7 +718,7 @@ mission <name>
 ```
 
 This pilot's active missions.
-Normal missions are listed first. Then jobs, however, jobs are still listed as "mission"s here.
+Normal missions are listed first, then jobs. However, jobs are still listed as "mission"s here.
 
 ## Mission cargo and passengers
 
