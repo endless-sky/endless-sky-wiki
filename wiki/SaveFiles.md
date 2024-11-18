@@ -665,6 +665,22 @@ These are discarded on take off.
 ```
 
 ```html
+"sort type" <value#>
+```
+
+```html
+["sort descending"]
+```
+
+```html
+["separate deadline"]
+```
+
+```html
+["separate possible"]
+```
+
+```html
 conditions
 	<condition> <value#>
 	<condition> <value#>
