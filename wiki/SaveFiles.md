@@ -466,7 +466,7 @@ storage
 	...
 ```
 
-**(v. 0.9.13)**
+Lists planets where the player's outfits are currently stored and which outfits and how many are stored there. **(v. 0.9.13)**
 
 ```html
 licenses
