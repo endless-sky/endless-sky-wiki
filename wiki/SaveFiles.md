@@ -636,6 +636,11 @@ Normal missions are listed first. Then jobs, however, jobs are still listed as "
 		...
 ```
 
+Mission cargo and passengers that are currently on ships that are not at the same planet as the player. **(v. 0.10.0)**
+In each entry, the first value is the UUID of the mission these cargo or passengers are associated with, the second is the UUID of the ship they are on, and the third is the number of tons of cargo or number of passengers of that particular mission on that particular ship.
+Mission cargo and passengers not listed here, whether from missions that do not appear, or where the full amount of cargo or number of passengers is not accounted for here, is considered to be on the same planet as the player and will be distributed to available ships on take off, if possible. If not, the player will have to abort the take off, or abort some of their missions.
+Prior to **v. 0.10.0**, mission cargo and passengers on escorts that were not on the same planet as the player were not tracked, and so, upon loading a save file, all mission cargo and passengers would be considered to be on the player's planet, even if they were previously on ships elsewhere.
+
 ```html
 "available job" <name>
 	...
