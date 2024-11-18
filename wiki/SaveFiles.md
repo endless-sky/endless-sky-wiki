@@ -322,7 +322,9 @@ This pilot's reputation with each government.
 	...
 ```
 
-The number of credits this pilot receives each day from planets they have dominated.
+The number of credits this pilot receives each day from planets they have dominated. **(v. 0.10.1)**
+Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
+While the way in which they are stored in the save file was changed, tribute amounts remain accessible and adjustable via [conditions](Player-Conditions#modifiable).
 
 ```html
 ship <model>
