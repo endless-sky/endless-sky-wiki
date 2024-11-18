@@ -353,8 +353,8 @@ ship <model>
 			<commodity> <count#>
 			...
 		outfit
-			<outfit> <count~>
-			<outfit> <count~>
+			<outfit> <count#>
+			<outfit> <count#>
 			...
 	crew <crew#>
 	fuel <fuel#>
