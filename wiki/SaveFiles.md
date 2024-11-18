@@ -292,6 +292,19 @@ The index of the flagship in the player's ship list. Index 0 is the first ship i
 "map coloring" <value#>
 ```
 
+Indicates what property should be used to color systems on the star map.
+Positive values correspond to coloring by commodity values.
+Negative values correspond to other properties:
+value | coloring property
+-- | --
+-1 | Colored by the presence of a shipyard
+-2 | Colored by the presence of an outfitter
+-3 | Colors based on if and how many planets in the system have been visited
+-4 | Only used in shipyard or outfitter view: shows availability of the currently selected ship or outfit
+-5 | Gives systems the [color](CreatingGovernments#color) of their government
+-6 | Colors based on the player's reputation with system governments
+-7 | Systems are colored based on how dangerous they are
+
 ```html
 "map zoom" <value#>
 ```
