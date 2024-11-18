@@ -801,6 +801,8 @@ economy
 
 # Places this pilot has visited
 
+## Systems and planets
+
 ```html
 visited <system>
 visited <system>
@@ -811,6 +813,8 @@ visited <system>
 ```
 
 Systems and planets this pilot has visited.
+
+## Minable harvest locations
 
 ```html
 harvested
