@@ -475,7 +475,9 @@ licenses
 	...
 ```
 
-**(v. 0.10.1)**
+The names of the licenses this pilot currently has. **(v. 0.10.1)**
+Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
+While the way in which they are stored in the save file was changed, the player's licenses remain accessible and adjustable via [conditions](Player-Conditions#modifiable).
 
 ```html
 account
@@ -516,7 +518,8 @@ The number of credits this pilot has.
 ```
 
 The names of salaries this pilot has and the number of credits they receive each day from each.
-Prior to **v. 0.10.1**, this information was stored as conditions.
+Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
+While the way in which they are stored in the save file was changed, the pilot's salaries remain accessible and adjustable via [conditions](Player-Conditions#modifiable).
 
 ```html
 salaries <credits#>
@@ -524,7 +527,8 @@ maintenance <credits#>
 ```
 
 The number of credits owed for overdue crew slaries and maintenance payments.
-Prior to **v. 0.10.1**, this information was stored as conditions.
+Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
+While the way in which they are stored in the save file was changed, the amount of overdue salary and maintenance payments remain accessible via [conditions](Player-Conditions#modifiable).
 
 ```html
 score <score#>
