@@ -372,7 +372,85 @@ ship <model>
 The ships this pilot owns and their installed outfits.
 In addition to many of the child nodes present on [ship definitions](CreatingShips#data), instantiated ships also have additional information.
 
+```html
+name <name>
+```
 
+The name of this particular ship. Either randomly chosen on purchase, set by the player on purchase or edited from the ship info panel, or, if this ship was captured, the name it was given on instantiation.
+
+```html
+	cargo
+		commodities
+			<commodity> <count#>
+			<commodity> <count#>
+			...
+		outfit
+			<outfit> <count#>
+			<outfit> <count#>
+			...
+```
+
+The commoodities and outfits this ship has in its cargo.
+Mission cargo and passengers are tracked elsewhere.
+
+```html
+crew <crew#>
+```
+
+The number of crew currently aboard this ship.
+This may differ from the required crew: if this is the flagship, the player may have hired extra crew.
+If this ship was recently captured, it may have more than its required crew (as non-player ships are assigned a random amount of crew between their required crew and the number of bunks available).
+It is also possible for the flagship or a recently captured ship to be left with fewer crew than required due to losses during combat when attempting to capture.
+
+```html
+fuel <fuel#>
+```
+
+How much fuel this ship currently has. May be below the fuel capacity if some fuel has been consumed (either by interstellar travel or outfits consuming fuel) and has not yet replenished by landing on a planet with refuelling or via ramscoop (or other fuel generating outfit).
+
+```html
+shields <shield#>
+```
+
+The current amount of shield health this ship has remaining.
+
+```html
+hull <hull#>
+```
+
+The current amount of hull health this ship has remaining.
+For ships appearing as mission NPCs, a negative value may be present, indicating that the ship has been destroyed.
+
+```html
+position <x#> <y#>
+```
+
+The position of this ship in the current system.
+
+```html
+"formation pattern" <formation>
+```
+
+???
+
+```html
+system <system>
+```
+
+The name of the system this ship is currently in.
+Ships that are currently being carried will list their carrier's system.
+
+```html
+planet <planet>
+```
+
+If this ship is currently landed on a planet, the name of that planet.
+
+```html
+[parked]
+```
+
+Present if the ship is currently parked. Not present otherwise.
 
 
 ```html
