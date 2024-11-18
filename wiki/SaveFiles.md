@@ -571,6 +571,10 @@ cargo
 		...
 ```
 
+When landed on a planet, the commodities and outfits in cargo on all the player's ships also at that planet is collected into a single storage pool and saved here, instead of saved to individual ships.
+Mission cargo and passengers that are not assigned to a particular ship are also included in this pool.
+All the pooled passengers and cargo are distributed to ships on take off, if possible.
+
 ```html
 basis
 	<commodity> <value#>
