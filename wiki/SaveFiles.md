@@ -227,11 +227,15 @@ plugins
 pilot <first> <last>
 ```
 
+# Basic pilot information
+
 The first and last names of this pilot.
 
 ```html
 date <day#> <month#> <year#>
 ```
+
+# Location and navigation
 
 The in game date of this save file.
 
@@ -288,6 +292,10 @@ The planet to land on after completing the travel plan.
 
 The index of the flagship in the player's ship list. Index 0 is the first ship in the list.
 
+# Interface configurations
+
+## Map settings
+
 ```html
 "map coloring" <value#>
 ```
@@ -311,6 +319,8 @@ value | coloring property
 
 Stores the zoom level in the star map.
 
+## Shop categories
+
 ```html
 "collapsed category" <category>
 	<collapsed>
@@ -323,6 +333,8 @@ Stores the zoom level in the star map.
 
 Categories, such as in the shipyard and outfitter, that the player has collapsed.
 
+# Reputation
+
 ```html
 "reputation with"
 	<government> <reputation#>
@@ -331,6 +343,8 @@ Categories, such as in the shipyard and outfitter, that the player has collapsed
 ```
 
 This pilot's reputation with each government.
+
+# Tribute
 
 ```html
 "tribute received"
@@ -342,6 +356,8 @@ This pilot's reputation with each government.
 The number of credits this pilot receives each day from planets they have dominated. **(v. 0.10.1)**
 Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
 While the way in which they are stored in the save file was changed, tribute amounts remain accessible and adjustable via [conditions](Player-Conditions#modifiable).
+
+# Player ships
 
 ```html
 ship <model>
@@ -372,11 +388,15 @@ ship <model>
 The ships this pilot owns and their installed outfits.
 In addition to many of the child nodes present on [ship definitions](CreatingShips#data), instantiated ships also have additional information.
 
+## Name
+
 ```html
 name <name>
 ```
 
 The name of this particular ship. Either randomly chosen on purchase, set by the player on purchase or edited from the ship info panel, or, if this ship was captured, the name it was given on instantiation.
+
+## Cargo
 
 ```html
 	cargo
@@ -392,6 +412,8 @@ The name of this particular ship. Either randomly chosen on purchase, set by the
 
 The commoodities and outfits this ship has in its cargo.
 Mission cargo and passengers are tracked elsewhere.
+
+## In flight properties
 
 ```html
 crew <crew#>
@@ -433,6 +455,8 @@ The position of this ship in the current system.
 
 ???
 
+## Location
+
 ```html
 system <system>
 ```
@@ -452,6 +476,7 @@ If this ship is currently landed on a planet, the name of that planet.
 
 Present if the ship is currently parked. Not present otherwise.
 
+# Outfit storage
 
 ```html
 storage
@@ -468,6 +493,8 @@ storage
 
 Lists planets where the player's outfits are currently stored and which outfits and how many are stored there. **(v. 0.9.13)**
 
+# Licenses
+
 ```html
 licenses
 	<license>
@@ -478,6 +505,8 @@ licenses
 The names of the licenses this pilot currently has. **(v. 0.10.1)**
 Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
 While the way in which they are stored in the save file was changed, the player's licenses remain accessible and adjustable via [conditions](Player-Conditions#modifiable).
+
+# Finances
 
 ```html
 account
@@ -504,11 +533,15 @@ account
 
 This pilot's financial state.
 
+## Credits
+
 ```html
 credits <credits#>
 ```
 
 The number of credits this pilot has.
+
+## Salaries
 
 ```html
 "salaries income"
@@ -521,6 +554,8 @@ The names of salaries this pilot has and the number of credits they receive each
 Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
 While the way in which they are stored in the save file was changed, the pilot's salaries remain accessible and adjustable via [conditions](Player-Conditions#modifiable).
 
+## Overdue payments
+
 ```html
 salaries <credits#>
 maintenance <credits#>
@@ -530,12 +565,16 @@ The number of credits owed for overdue crew slaries and maintenance payments.
 Prior to **v. 0.10.1**, this information appeared in the save file in the conditions section.
 While the way in which they are stored in the save file was changed, the amount of overdue salary and maintenance payments remain accessible via [conditions](Player-Conditions#modifiable).
 
+## Credit score
+
 ```html
 score <score#>
 ```
 
 This pilot's credit score. The higher the score, the lower the interest rate on mortgages taken out from the bank will be.
 Ranges from 400 to 800.
+
+## Net worth history
 
 ```html
 history
@@ -545,6 +584,8 @@ history
 ```
 
 This pilot's net worth over the last 100 days. Used to determine the maximum mortgage amount offered by the bank.
+
+## Mortgages
 
 ```html
 mortgage (Mortgage | Fine | Debt)
@@ -558,6 +599,9 @@ mortgage ...
 
 The debt this pilot has.
 
+# Cargo and stock
+
+## Cargo
 
 ```html
 cargo
@@ -575,12 +619,16 @@ When landed on a planet, the commodities and outfits in cargo on all the player'
 Mission cargo and passengers that are not assigned to a particular ship are also included in this pool.
 All the pooled passengers and cargo are distributed to ships on take off, if possible.
 
+## Commodity basis
+
 ```html
 basis
 	<commodity> <value#>
 	<commodity> <value#>
 	...
 ```
+
+## Outfits in stock
 
 ```html
 stock
@@ -591,6 +639,8 @@ stock
 
 Outfits not normally sold by the current planet that are in stock because the player has sold them here.
 In stock outfits are cleared on take off.
+
+# Depreciation
 
 ```html
 "fleet depreciation"
@@ -612,6 +662,10 @@ In stock outfits are cleared on take off.
 	...
 ```
 
+# Missions
+
+## Active Missions
+
 ```html
 mission <name>
 	...
@@ -622,6 +676,8 @@ mission <name>
 
 This pilot's active missions.
 Normal missions are listed first. Then jobs, however, jobs are still listed as "mission"s here.
+
+## Mission cargo and passengers
 
 ```html
 "mission cargo"
@@ -641,6 +697,8 @@ In each entry, the first value is the UUID of the mission these cargo or passeng
 Mission cargo and passengers not listed here, whether from missions that do not appear, or where the full amount of cargo or number of passengers is not accounted for here, is considered to be on the same planet as the player and will be distributed to available ships on take off, if possible. If not, the player will have to abort the take off, or abort some of their missions.
 Prior to **v. 0.10.0**, mission cargo and passengers on escorts that were not on the same planet as the player were not tracked, and so, upon loading a save file, all mission cargo and passengers would be considered to be on the player's planet, even if they were previously on ships elsewhere.
 
+## Available jobs and missions
+
 ```html
 "available job" <name>
 	...
@@ -657,6 +715,8 @@ Prior to **v. 0.10.0**, mission cargo and passengers on escorts that were not on
 Instantiated missions that are available at the current planet, but have not yet been offered.
 These are discarded on take off.
 
+## Mission sorting
+
 ```html
 "sort type" <value#>
 ["sort descending"]
@@ -679,6 +739,8 @@ These are discarded on take off.
 ```html
 ["separate possible"]
 ```
+
+# Conditions
 
 ```html
 conditions
@@ -687,12 +749,16 @@ conditions
 	...
 ```
 
+# Gifted ships
+
 ```html
 "gifted ships"
 	<name> <shipID>
 	<name> <shipID>
 	...
 ```
+
+# Upcoming events
 
 ```html
 event
@@ -702,10 +768,14 @@ event
 ...
 ```
 
+# Changes to the universe
+
 ```html
 changes
 	...
 ```
+
+# Economy
 
 ```html
 economy
@@ -719,6 +789,8 @@ economy
 	...
 ```
 
+# Destroyed persons
+
 ```html
 "destroyed" <person>
 "destroyed" <person>
@@ -726,6 +798,8 @@ economy
 ```
 
 [Persons](CreatingPersons) that have been captured or destroyed, either by the player or NPCs.
+
+# Places this pilot has visited
 
 ```html
 visited <system>
@@ -746,6 +820,8 @@ harvested
 ```
 
 Systems where this pilot has harvested outfits from minables, such as minable asteroids, and what items can be found in them.
+
+# Logbook
 
 ```html
 logbook
@@ -772,6 +848,8 @@ There are two types of logbook entry:
 Dated entries are stored by the in game date on which they were added.
 Special entries have a category and a heading.
 
+# Starting conditions
+
 ```
 start <start>
 	system <system>
@@ -783,6 +861,8 @@ start <start>
 
 The name of the start this pilot was created with, as well as the planet and system the player started on, the in game date the pilot started from, and details of the starting state of the "account".
 This 
+
+# Plugins
 
 ```html
 plugins
