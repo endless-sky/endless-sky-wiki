@@ -278,7 +278,7 @@ The player's current travel plan. Systems are listed in reverse order. The last 
 "travel destination" <planet>
 ```
 
-The planet to land on after completing hte travel plan.
+The planet to land on after completing the travel plan.
 
 ```html
 "flagship index" <value#>
