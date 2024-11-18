@@ -781,6 +781,9 @@ start <start>
 		...
 ```
 
+The name of the start this pilot was created with, as well as the planet and system the player started on, the in game date the pilot started from, and details of the starting state of the "account".
+This 
+
 ```html
 plugins
 	<plugin>
