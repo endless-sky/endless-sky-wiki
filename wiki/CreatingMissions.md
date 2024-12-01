@@ -239,9 +239,7 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. If multiple possible missions are minor, these get evaluated in alphabetical order such that the last mission alphabetically is the one that gets offered while the rest are discarded. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically, unless the missions are minor, in which case the one you want to offer should come last alphabetically.
-
-An example of using the mission name to force a certain load order in game is with the set of missions prefixed "FW Pug 2C", where the jump drive variant of the mission is named "FW Pug 2C: **A** Jump Drive" to force it to offer before "FW Pug 2C: **H**yperdrive", as otherwise without the "A" the hyperdrive variant of the mission would have priority.
+The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will default to being offered in alphabetical order if multiple are able to be offered at the same time. The `order` attribute introduced in 0.10.11 allows to change that, it has higher priority when sorting available missions. For more information on mission precedence, see the descriptions of the `order` and `minor` attributes below.
 
 ```html
 name <name>
@@ -328,10 +326,22 @@ This specifies that the mission does not show up in the player's list of mission
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time.  
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, including other minor missions. See the "order" attribute below to learn how to influence precedence if required.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
-Note that `priority` will only affect missions that offer from the spaceport.
+Note that `priority` will only affect missions that offer from the spaceport, outfitter or shipyard.
+
+```html
+order <number#>
+```
+
+This can optionally be used to reorder mission precedence. It defaults to 0 and can be negative. Not allowed for `job` missions, because those are sorted by user preference, nor for `boarding` or `assisting` missions.
+
+Where multiple available missions have the same `order` attribute, precedence is determined by ASCII order of their identifier (not the display name), which sorts lower case letters after uppercase ones.
+
+If a mission is marked with `minor`, higher `order` means higher precedence as only one minor mission can ever "win", the _last_ one after sorting. An example is "Spaceport Reminder Resetter", which should never block other minor missions and therefore has `order -1`.
+
+Therefore, if you have multiple missions with similar names and the same offer conditions, and a deterministic order is desired, whichever one you want to offer first should come first by their `order` attribute, unless the missions are minor, in which case the one you want to offer should come last.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter)
