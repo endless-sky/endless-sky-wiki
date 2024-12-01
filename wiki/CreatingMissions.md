@@ -239,7 +239,7 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will default to being offered in alphabetical order if multiple are able to be offered at the same time. The `order` attribute introduced in 0.10.11 allows to change that, it has higher priority when sorting available missions. For more information on mission precedence, see the descriptions of the `order` and `minor` attributes below.
+The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will default to being offered in alphabetical order if multiple are able to be offered at the same time. The `order` attribute, introduced in 0.10.11, lets you change that; it has higher priority when sorting available missions. For more information on mission precedence, see the descriptions of the `order` and `minor` attributes below.
 
 ```html
 name <name>
