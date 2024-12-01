@@ -326,7 +326,7 @@ This specifies that the mission does not show up in the player's list of mission
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, including other minor missions. See the "order" attribute below to learn how to influence precedence if required.
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, including other `minor` missions. See the `order` attribute below to learn how to influence precedence if required.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
 Note that `priority` will only affect missions that offer from the spaceport, outfitter or shipyard.
