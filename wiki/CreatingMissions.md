@@ -341,7 +341,7 @@ Where multiple available missions have the same `order` attribute, precedence is
 
 If a mission is marked with `minor`, higher `order` means higher precedence as only one minor mission can ever "win", the _last_ one after sorting. An example is "Spaceport Reminder Resetter", which should never block other minor missions and therefore has `order -1`.
 
-Therefore, if you have multiple missions with similar names and the same offer conditions, and a deterministic order is desired, whichever one you want to offer first should come first by their `order` attribute, unless the missions are minor, in which case the one you want to offer should come last.
+Therefore, if you have multiple missions with similar names and the same offer conditions and a deterministic order is desired, whichever one you want to offer first should be first by the `order` attribute, unless the missions are minor, in which case the one you want to offer should come last.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter)
