@@ -335,7 +335,7 @@ Note that `priority` will only affect missions that offer from the spaceport, ou
 order <number#>
 ```
 
-This can optionally be used to reorder mission precedence. It defaults to 0 and can be negative. Not allowed for `job` missions, because those are sorted by user preference, nor for `boarding` or `assisting` missions.
+This can optionally be used to reorder mission precedence. It defaults to 0 and is allowed to be negative. Not allowed for `job` missions (because those are sorted by user preference) nor for `boarding` or `assisting` missions.
 
 Where multiple available missions have the same `order` attribute, precedence is determined by ASCII order of their identifier (not the display name), which sorts lower case letters after uppercase ones.
 
