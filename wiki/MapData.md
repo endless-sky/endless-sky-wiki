@@ -61,6 +61,7 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+		visibility <maxDistance> [<minDistance>]
 		object [<name>]
 			...
 
