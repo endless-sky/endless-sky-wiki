@@ -335,13 +335,13 @@ Note that `priority` will only affect missions that offer from the spaceport, ou
 order <number#>
 ```
 
-This can optionally be used to reorder mission precedence. It defaults to 0 and can be negative. Not allowed for `job` missions, because those are sorted by user preference, nor for `boarding` or `assisting` missions.
+This can optionally be used to reorder mission precedence. It defaults to 0 and can be negative. Higher values get sorted and thus offered first. Not allowed for `job` missions, because those are sorted by user preference, nor for `boarding` or `assisting` missions.
 
 Where multiple available missions have the same `order` attribute, precedence is determined by ASCII order of their identifier (not the display name), which sorts lower case letters after uppercase ones.
 
-If a mission is marked with `minor`, higher `order` means higher precedence as only one minor mission can ever "win", the _last_ one after sorting. An example is "Spaceport Reminder Resetter", which should never block other minor missions and therefore has `order -1`.
+If a mission is marked with `minor`, higher `order` means lower precedence as only one minor mission can ever "win", and the implementation chooses the _last_ one after sorting. An example is "Spaceport Reminder Resetter", which should never block other minor missions and therefore has `order 1`.
 
-Therefore, if you have multiple missions with similar names and the same offer conditions, and a deterministic order is desired, whichever one you want to offer first should come first by their `order` attribute, unless the missions are minor, in which case the one you want to offer should come last.
+Therefore, if you have multiple missions with similar names and the same offer conditions, and a deterministic order is desired, whichever one you want to offer first should come first by having a greater `order` attribute, unless the missions are minor, in which case the one you want to offer should come last.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter)
