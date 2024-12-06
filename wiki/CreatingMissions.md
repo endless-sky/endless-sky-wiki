@@ -239,7 +239,7 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will default to being offered in alphabetical order if multiple are able to be offered at the same time. The `order` attribute, introduced in 0.10.11, lets you change that; it has higher priority when sorting available missions. For more information on mission precedence, see the descriptions of the `order` and `minor` attributes below.
+The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will default to being offered in alphabetical order if multiple are able to be offered at the same time. The `precedence` attribute, introduced in 0.10.11, lets you change that; it has higher priority when sorting available missions. For more information on mission precedence, see the descriptions of the `precedence` and `minor` attributes below.
 
 ```html
 name <name>
@@ -326,22 +326,22 @@ This specifies that the mission does not show up in the player's list of mission
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, including other `minor` missions. See the `order` attribute below to learn how to influence precedence if required.
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, including other `minor` missions. See the `precedence` attribute below to learn how to influence precedence if required.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
 Note that `priority` will only affect missions that offer from the spaceport, outfitter or shipyard.
 
 ```html
-order <number#>
+precedence <number#>
 ```
 
 This can optionally be used to reorder mission precedence. It defaults to 0 and is allowed to be negative. Higher values get sorted and thus offered first. Not allowed for `job` missions (because those are sorted by user preference) nor for `boarding` or `assisting` missions.
 
-Where multiple available missions have the same `order` attribute, precedence is determined by ASCII order of their identifier (not the display name), which sorts lower case letters after uppercase ones.
+Where multiple available missions have the same `precedence` attribute, precedence is determined by ASCII order of their identifier (not the display name), which sorts lower case letters after uppercase ones.
 
-If a mission is marked with `minor`, higher `order` means lower precedence as only one minor mission can ever "win", and the implementation chooses the _last_ one after sorting. An example is "Spaceport Reminder Resetter", which should never block other minor missions and therefore has `order 1`.
+If a mission is marked with `minor`, higher `precedence` means lower precedence as only one minor mission can ever "win", and the implementation chooses the _last_ one after sorting. An example is "Spaceport Reminder Resetter", which should never block other minor missions and therefore has `precedence 1`.
 
-Therefore, if you have multiple missions with similar names and the same offer conditions, and a deterministic order is desired, whichever one you want to offer first should come first by having a greater `order` attribute, unless the missions are minor, in which case the one you want to offer should come last.
+Therefore, if you have multiple missions with similar names and the same offer conditions, and a deterministic order is desired, whichever one you want to offer first should come first by having a greater `precedence` attribute, unless the missions are minor, in which case the one you want to offer should come last.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter)
