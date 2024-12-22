@@ -51,8 +51,20 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+		to spawn
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
+		to spawn
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
@@ -155,8 +167,20 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+		to spawn
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
+		to spawn
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
@@ -297,9 +321,17 @@ A type of commodity sold at the planets in this system and its cost.
 
 ```html
 fleet <name> <period#>
+	to spawn
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
 ```
 
 The name of a [fleet](CreatingFleets) that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
+
+Beginning in v. 0.10.11, fleets can be given to spawn conditions. A fleet will only appear if the to spawn condition is fulfilled.
 
 ```html
 raid <fleet> [<min-attraction#> [<max-attraction#>]]
@@ -315,8 +347,17 @@ If present, no raid fleets will ever spawn in this system, whether they be from 
 
 ```html
 hazard <name> <period#>
+	to spawn
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
 ```
 The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. The origin of any hazards defined here is the system center. **(v. 0.9.13)**
+
+Beginning in v. 0.10.11, hazards can be given to spawn conditions. An hazard will only appear if the to spawn condition is fulfilled.
+
 
 ```html
 "starfield density" <density#>
