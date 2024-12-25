@@ -79,7 +79,7 @@ mission <name>
 	illegal <fine> [<message>]
 	stealth
 	invisible
-	(priority | minor)
+	(priority | minor | non-blocking)
 	(job | landing | assisting | boarding | shipyard | outfitter)
 	autosave
 	"apparent payment" <amount>
@@ -323,13 +323,15 @@ invisible
 This specifies that the mission does not show up in the player's list of missions, and cannot be aborted. Invisible missions also won't show map markers of any kind, such as the mission's destination or any stopovers/waypoints, nor will a message be displayed if the mission fails.
 
 ```html
-(priority | minor)
+(priority | minor | non-blocking)
 ```
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time.  
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
+
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
 
 Note that `priority` will only affect missions that offer from the spaceport.
 
