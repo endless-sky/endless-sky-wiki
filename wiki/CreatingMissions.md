@@ -457,6 +457,8 @@ Beginning with **v. 0.10.11**, this is an integer value which can be used to cha
 
 Note that the way that the game determines which `minor` missions should offer means that the minor mission with the lowest precedence will be the one to offer, and all higher precedence minor missions that could have also offered at the same time will be discarded.
 
+Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical order which is able to offer will be the one that does offer.
+
 # Conditions
 
 ["Conditions"](Player-Conditions) are named values that represent things the player has done. Conditions start out with a value of zero, and can only have integer values. Conditions can have almost any name you want, as long as you make sure not to use the same name in two places. A few names are reserved for special purposes and may be read-only. A list of these reserved conditions can be found [here](Player-Conditions#reserved-conditions-autoconditions).
