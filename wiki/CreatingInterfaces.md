@@ -259,7 +259,7 @@ The "start angle" defines from how many degrees clockwise from a line straight u
 The "span angle" defines how many degrees the ring should be drawn through when fully filled. The default, and maximum, value is 360, where the full ring will correspond to a full circle. The minimum value is 0, in which case, nothing is drawn.
 A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
-Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction. A reversed ring will be filled in the clockwise direction, and a reversed bar will be filled from the top left corner.
+Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction of a bar. A reversed bar will be filled from the top left corner. It is not currently possible to reverse a ring.
 The size determines the thickness of the bar or ring, the default value is 2.
 If no color is given, "active" will be used.
 
