@@ -452,7 +452,7 @@ Additionally, giving it a description will cause the wormhole to create a link o
 "display name" <name>
 ```
 
-Added in **v. 0.10.11**, this name is displayed to the player. If not defined, it defaults to the true name of the planet. Multiple planets can share the same display name.
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the planet. Multiple planets can share the same display name.
 
 ```html
 attributes <attribute>... "requires: <attribute>"
