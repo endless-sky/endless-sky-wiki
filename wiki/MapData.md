@@ -183,7 +183,7 @@ The true name of a system must be unique. Use this name to internally reference 
 "display name" <name>
 ```
 
-Added in **v. 0.10.11**, this name is displayed to the player. If not defined, it defaults to the true name of the system. Multiple systems can share the same display name.
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the system. Multiple systems can share the same display name.
 
 ```html
 inaccessible
