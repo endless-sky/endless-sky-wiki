@@ -79,7 +79,7 @@ mission <name>
 	illegal <fine> [<message>]
 	stealth
 	invisible
-	(priority | minor)
+	(priority | minor | non-blocking)
 	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 	autosave
 	"apparent payment" <amount>
@@ -159,6 +159,7 @@ mission <name>
 			...
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 		log [<category> <header>] <text>
+		remove log <category> [<header>]
 		dialog <text>
 			<text>...
 		dialog phrase <phrase>
@@ -322,13 +323,15 @@ invisible
 This specifies that the mission does not show up in the player's list of missions, and cannot be aborted. Invisible missions also won't show map markers of any kind, such as the mission's destination or any stopovers/waypoints, nor will a message be displayed if the mission fails.
 
 ```html
-(priority | minor)
+(priority | minor | non-blocking)
 ```
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time.  
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
+
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
 
 Note that `priority` will only affect missions that offer from the spaceport.
 
@@ -683,6 +686,7 @@ A mission can also specify what happens at various key parts of the mission:
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 	log [<category> <header>] <text>
+	remove log <category> [<header>]
 	dialog <text>
 		<text>...
 	dialog phrase <phrase>
@@ -753,6 +757,12 @@ log [<category> <header>] <text>
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+```html
+remove log <category> [<header>]
+```
+
+Beginning with **v. 0.10.11**, this removes a log entry specified by the category and header. With no header provided, it removes the whole category. You can't remove logs with no custom category (those which are sorted by date).
 
 ```html
 dialog <text>

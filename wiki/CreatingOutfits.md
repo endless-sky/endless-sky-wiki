@@ -69,13 +69,15 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
-* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once.
+* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once. If a ship does not define any sounds to be played, default sounds will be used. These default sounds have the following names: "jump drive", "hyperdrive", "jump in", "hyperdrive in", "jump out", and "hyperdrive out".
 
   * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive.
 
   * `"jump sound"`: The sound that the flagship's jump drive makes when jumping. For other ships, use `"jump in sound"` and `"jump out sound"` for the sound that is played when other ships jump into or out of the player's current system.
 
   * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
+
+  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
@@ -131,6 +133,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"low shield permeability"`: The permeability of your shields as they approach 0%. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength increases, the permeability of your shields approaches the high shield permeability value. **(v. 0.10.1)**
 
+  * `"cloaked shield permeability"`: The permeability of your shields is increased by this much while you are cloaked. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. This stacks additively with the two permeability attributes above. **(v. 0.10.11)**
+
   * `hull`: an additional number of hull points added to a ship's base hull value.
 
   * `"hull repair rate"`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
@@ -161,29 +165,31 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"hull threshold"`: a hull value that gets added or subtracted from the result of either the default equation or the threshold percentage equation, whichever is used.
 
-* Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the number of seconds it takes for a disabled ship to repair itself. Self-repair could have some costs, for example:
+* Some ships can repair themselves after being disabled. This process occurs some time after the ship was disabled and can have energy and fuel costs. This process is not affected by a ship being overheated.
 
-  * `"disabled recovery energy"` The energy cost required for a disabled ship to repair itself.
+  * `"disabled recovery time"`: the number of frames after becoming disabled a ship must wait before it can recover on its own, if sufficient energy and fuel are available.
 
-  * `"disabled recovery fuel"` The fuel cost required for a disabled ship to repair itself.
+  * `"disabled recovery energy"`: the energy cost required for a disabled ship to repair itself.
 
-  * `"disabled recovery heat"` The heat applied when a disabled ship repairs itself.
+  * `"disabled recovery fuel"`: the fuel cost required for a disabled ship to repair itself.
 
-  * `"disabled recovery ionization"` The ion damage applied when a disabled ship repairs itself.
+  * `"disabled recovery heat"`: the heat applied when a disabled ship repairs itself.
 
-  * `"disabled recovery scrambling"` The scrambling damage applied when a disabled ship repairs itself.
+  * `"disabled recovery ionization"`: the ion damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery disruption"` The disruption damage applied when a disabled ship repairs itself.
+  * `"disabled recovery scrambling"`: the scrambling damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery slowing"` The slowing damage applied when a disabled ship repairs itself.
+  * `"disabled recovery disruption"`: the disruption damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery discharge"` The discharge damage applied when a disabled ship repairs itself.
+  * `"disabled recovery slowing"`: the slowing damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery corrosion"` The corrosion damage applied when a disabled ship repairs itself.
+  * `"disabled recovery discharge"`: the discharge damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery leak"` The leak damage applied when a disabled ship repairs itself.
+  * `"disabled recovery corrosion"`: the corrosion damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery burning"` The burning damage applied when a disabled ship repairs itself.
+  * `"disabled recovery leak"`: the leak damage applied when a disabled ship repairs itself.
+
+  * `"disabled recovery burning"`: the burning damage applied when a disabled ship repairs itself.
 
 * Most of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship according to the equation `stat * (1 + multiplier)`, which means that the default value of 0 means no change, while a value of 1 would be a +100% increase in the stat. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated stat. **(v. 0.9.13)**
   
@@ -405,6 +411,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
 
+  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. **(v. 0.10.10)**
+
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
   * `"scan brightness"`: increases the chance that an illegal outfit will appear on a cargo scan. The cargo scan formula is as follows: `max(1., 2 * (illegal good mass + illegal good scan brightness) / legal good mass) / (1 + scan interference)`. In English, if you have 1 ton of illegal goods and 2 tons of legal goods then you have a 50% chance of your illegal goods being found on a cargo scan. The higher the ratio of legal to illegal goods, the lower your chances of being caught. If you have no legal goods or too many illegal goods then the chance caps out at `1 / (1 + scan interference)`. **(v. 0.10.0)**
@@ -437,6 +445,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"jump fuel"`: how much fuel the ship consumes when using this outfit to jump. The default is 100 for hyperdrives, 150 for scram drives, and 200 for jump drives. Unlike other attributes, the jump fuel of multiple outfits will not stack. Instead, the lowest jump fuel among all installed outfits will be used. **(v. 0.9.7)**
 
+  * `"hyperdrive fuel"`: overrides "jump fuel" (see above) for hyperlane jumps. **(v. 0.10.11)**
+
+  * `"jump drive fuel"`: overrides "jump fuel" (see above) for non-hyperlane jumps. **(v. 0.10.11)**
+
   * `"jump mass cost"`: an additional jump fuel cost per 100 tons of ship mass. Adds to the base jump fuel cost above. **(v. 0.10.0)**
 
   * `"jump base mass"`: a value that subtracts from a ship's mass during the jump mass cost calculation. If a drive's jump base mass is high enough and the ship's mass is low enough, the impact of the jump mass cost is allowed to go negative and begin subtracting from the normal jump fuel cost. Reducing your jump cost in this manner is only allowed to go as low as a cost of 1 fuel per jump. **(v. 0.10.0)**
@@ -463,7 +475,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `cloak`: how quickly a cloaking device cloaks or uncloaks. When cloaking, this amount is added to your cloaking each frame until you reach 1, at which point your ship is fully cloaked. The opposite happens when uncloaking.
 
-  * `cloak by mass": similar to `cloak` except this value is divided by 1/1000 of the ships mass. For a ship with 1000 mass, this value works exactly like the same amount of `cloak`. For a ship with 500 mass, it would be like having twice as much of this value as `cloak`. The result of the division of this value is added to the `cloak` attribute value, so both can be applied to a single ship. For example, a ship with 2000 mass, 0.01 `cloak` and 0.1 `cloak by mass` would have an overall cloak rate of 0.06 units per frame. **(v. 0.10.7)**
+  * `"cloak by mass"`: similar to `cloak` except this value is divided by 1/1000 of the ships mass. For a ship with 1000 mass, this value works exactly like the same amount of `cloak`. For a ship with 500 mass, it would be like having twice as much of this value as `cloak`. The result of the division of this value is added to the `cloak` attribute value, so both can be applied to a single ship. For example, a ship with 2000 mass, 0.01 `cloak` and 0.1 `cloak by mass` would have an overall cloak rate of 0.06 units per frame. **(v. 0.10.7)**
 
   * `"cloak hull threshold"`: the minimum fraction of hull a ship must have remaining in order to be able to cloak. **(v. 0.10.7)**
 
@@ -760,9 +772,17 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 
+  * A non-burst weapon with a reload of 1 or less and a total lifetime of 1 will have a fire rate of "continuous" in its outfit info.
+
+  * The total lifetime is the lifetime of the initial projectile added to the total lifetime of its longest lived submunition, calculated recursively, accounting for the submunitions of the submunition, etc.
+
 * `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The burst will reload fully after `reload * # of shots fired` frames from the first shot of the burst, making the reload time for a full burst `reload * "burst count"` frames. (This is technically the same as a non-burst weapon, as it effectively has a burst count of 1.) The number of frames between the end of a full burst and the start of the next burst is `"burst count" * (reload - "burst reload")`. **(v. 0.9.0)**
 
 * `"burst reload"`: how many frames this weapon takes to reload between projectiles in a burst. This value must be less than the full `reload` value. For example, a weapon with a `reload` of `100`, `"burst count"` of `2` and `"burst reload"` of `5` will fire on the 1st and 6th frames, then on the 201st and 206th frames, and so on. The fraction of time that a burst weapon spends firing is `("burst reload" - 1) / reload`, where the weapon is considered firing on each frame where it has fired a projectile or is reloading the next projectile in the burst, with the final projectile in a burst being the end of the firing period. **(v. 0.9.0)**
+
+  * A weapon with a burst count greater than 1 and a burst reload of 1 or less and a total lifetime of 1 will be labeled as "continuous (x%)" in its outfit info.
+
+  * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
 * `homing`: How good this weapon is at seeking its target:
 
@@ -798,7 +818,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"trigger radius"`: how close a projectile must be to a hostile target to trigger its explosion. This only makes sense to use with weapons with a `"blast radius"` at least as big as their `"trigger radius"`.
 
-* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate.
+* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate. Weapons with a blast radius will not deal damage or apply prospecting to a minable.
 
 [<img src="https://i.imgur.com/Nw81ZjK.png" width="400px">][blastscale]
 
@@ -818,7 +838,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"hull damage"`: how much damage a projectile does to the hull of ships or minables.
 
-  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
+  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage, but not relative hull damage. **(v. 0.9.15)**
 
   * `"minable damage"`: how much damage a projectile does to [minable objects](CreatingMinables). If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
 
@@ -838,7 +858,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"relative disabled damage"`: disabled hull damage that gets scaled according to the max hull of a target. **(v. 0.9.15)**
 
-  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. **(v. 0.9.15)**
+  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. If not present, the value of the relative hull damage is used instead. **(v. 0.9.15)**
 
   * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half.
 
