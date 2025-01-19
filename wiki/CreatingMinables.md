@@ -41,8 +41,9 @@ sprite <sprite>
 	[sprite properties...]
 ```
 
-The sprite that the minable asteroid has.
-Details on additional sprite colonies are available on the [sprite data](SpriteData) page.
+The sprite that the minable asteroid has. Prior to **v. 0.10.11**, only the sprite graphic may be provided; additional properties are not supported.
+Details on additional sprite properties (usable from **v. 0.10.11**) are available on the [sprite data](SpriteData) page. Applying some properties, such as "no repeat" to minables may have undesirable effects.
+By default, the frame rate is randomly assigned to each minable instance, with an upper limit proportional to the energy of the minable. If the sprite properties contain "frame rate" or "frame time" nodes, the given values will be used instead of generating a random value.
 
 ```html
 hull <hull#>

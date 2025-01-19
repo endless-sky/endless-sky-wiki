@@ -79,8 +79,8 @@ mission <name>
 	illegal <fine> [<message>]
 	stealth
 	invisible
-	(priority | minor)
-	(job | landing | assisting | boarding | shipyard | outfitter)
+	(priority | minor | non-blocking)
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -159,6 +159,7 @@ mission <name>
 			...
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 		log [<category> <header>] <text>
+		remove log <category> [<header>]
 		dialog <text>
 			<text>...
 		dialog phrase <phrase>
@@ -322,21 +323,23 @@ invisible
 This specifies that the mission does not show up in the player's list of missions, and cannot be aborted. Invisible missions also won't show map markers of any kind, such as the mission's destination or any stopovers/waypoints, nor will a message be displayed if the mission fails.
 
 ```html
-(priority | minor)
+(priority | minor | non-blocking)
 ```
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time.  
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
+
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
 
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter)
+(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)).
+This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
 
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
@@ -613,7 +616,7 @@ This specifies what government all the ships connected to this NPC specification
 	...
 ```
 
-Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#basic-fleet-characteristics) page.
+Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#cargo) page.
 
 ```html
 personality <type>...
@@ -683,6 +686,7 @@ A mission can also specify what happens at various key parts of the mission:
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 	log [<category> <header>] <text>
+	remove log <category> [<header>]
 	dialog <text>
 		<text>...
 	dialog phrase <phrase>
@@ -720,7 +724,7 @@ There are eleven events that can trigger a response of some sort:
 * `accept`: if the player agrees to accept a mission.
 * `decline`: if the player decides to decline a mission.
 * `defer`: if the player decides to defer a mission.
-* `fail`: if the mission fails.
+* `fail`: if the mission fails. If the mission fails mid-flight, this only triggers on the next landing. Always triggers instantly when used in place of `on abort`.
 * `abort`: if the mission is aborted by the player. If no `on abort` action exists and the player aborts a mission, then any `on fail` action will be triggered instead.
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
@@ -753,6 +757,12 @@ log [<category> <header>] <text>
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+```html
+remove log <category> [<header>]
+```
+
+Beginning with **v. 0.10.11**, this removes a log entry specified by the category and header. With no header provided, it removes the whole category. You can't remove logs with no custom category (those which are sorted by date).
 
 ```html
 dialog <text>
