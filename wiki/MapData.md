@@ -356,7 +356,7 @@ hazard <name> <period#>
 ```
 The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. The origin of any hazards defined here is the system center. **(v. 0.9.13)**
 
-Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. An hazard will only appear if the `to spawn` condition is fulfilled.
+Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
 
 
 ```html
