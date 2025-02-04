@@ -35,7 +35,7 @@ Ideally, each species should have slightly different speech patterns to indicate
 
 * The Quarg occasionally use archaic language constructs, to hint that they're an ancient species (who presumably learned to talk to humans thousands of years ago and haven't kept their grammar books up to date since then).
 
-* Some Hai have better command of the human language than others (particularly the Unfettered). They make occasional grammatical errors, particularly leaving out articles or inserting the where they are not needed. (This is to hint that they speak a language like Latin that does not use articles.)
+* Some Hai have better command of the human language than others (particularly the Unfettered). They make occasional grammatical errors, particularly leaving out articles or inserting them where they are not needed. (This is to hint that they speak a language like Latin that does not use articles.)
 
 * The Wanderers speak in the Hai language to the player which is being translated by a machine, so it occasionally supplies multiple translations for one word when the [meaning, intent] of the Wanderer word cannot be [precisely, completely] mapped into a single human word, or simply due to a lack of understanding of the Hai language on the part of the Wanderers.
 
