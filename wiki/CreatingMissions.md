@@ -210,7 +210,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<planet stopovers>` = a list of all stopover planets (unlike `<stopovers>` this doesn't include any system name, just the planets) **(v. 0.10.1)**
 * `<waypoints>` = a list of all waypoint systems
 * `<marks>` = a list of all marked systems
-* `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block (or, beginning in **v. 0.10.0**, the "apparent payment" of the mission, if one is given), unless the replacement is in an `on *` block or below a conversation `apply` node that has its own payment, in which case that `on *` block's or the most recent `apply`'s payment is used
+* `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block (or, beginning in **v. 0.10.0**, the "apparent payment" of the mission, if one is given), unless the replacement is in an `on *` block or below a conversation `action` node that has its own payment, in which case that `on *` block's or the most recent `action`'s payment is used
 * `<fine>` = "1 credit" or "N credits," where N is the fine amount with the same behavior as `<payment>`; this is not the fine as defined by an `illegal` line
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
 * `<day>` = the deadline in conversational form ("the DDth of Month")
@@ -583,7 +583,7 @@ An NPC will not spawn if its `to spawn` conditions are not met, and any spawned 
 
 Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
-When combined with an `apply` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
+When combined with an `action` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
 on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
