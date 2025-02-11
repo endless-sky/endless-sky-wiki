@@ -24,6 +24,7 @@ galaxy <name>
 		scale <scale#>
 
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -47,7 +48,6 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -62,10 +62,12 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+		visibility <maxDistance> [<minDistance>]
 		object [<name>]
 			...
 
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -128,6 +130,7 @@ The multiplier applied to the dimensions of this galaxy's sprite when displayed 
 
 ```html
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -151,7 +154,6 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
 	asteroid <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
@@ -176,7 +178,13 @@ Systems are the locations that ships are capable of being and can contain planet
 system <name>
 ```
 
-The name of a system must be unique.
+The true name of a system must be unique. Use this name to internally reference systems in missions, events, etc.
+
+```html
+"display name" <name>
+```
+
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the system. Multiple systems can share the same display name.
 
 ```html
 inaccessible
@@ -277,12 +285,9 @@ The haze that is created for the background of this system. If no haze is given,
 
 ```html
 link <system>
-	<conditions>
 ```
 
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
-
-Links can have conditions that determine if they are available/visible.
 
 ```html
 asteroid <name> <count#> <energy#>
@@ -312,7 +317,7 @@ raid <fleet> [<min-attraction#> [<max-attraction#>]]
 The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
-"no raid"
+"no raids"
 ```
 
 If present, no raid fleets will ever spawn in this system, whether they be from the system's government or the system itself. **(v. 0.10.3)**
@@ -338,6 +343,7 @@ object [<name>]
 	period <period#>
 	offset <offset#>
 	hazard <name> <period#>
+	visibility <maxDistance> [<minDistance>]
 	object [<name>]
 		...
 ```
@@ -393,6 +399,12 @@ hazard <name> <period#>
 A system hazard with behavior as described above, only with its origin on this object instead of at the system center. An object can have multiple different hazards attached to it. **(v0.9.15)**
 
 ```
+visibility <maxDistance> [<minDistance>]
+```
+
+The range from which the object is visible. `maxDistance` is the range where the object becomes invisible, and `minDistance` is where it becomes fully visible. If `minDistance` is greater, the object disappears as the player gets closer. **(v0.10.11)**
+
+```
 object [<name>]
 	...
 ```
@@ -403,6 +415,7 @@ Objects are capable of having objects as children. This allows for the creation 
 
 ```html
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -433,7 +446,7 @@ Planets are landable objects, and are where players are capable of buying and se
 planet <name>
 ```
 
-The name of a planet must be unique, and will only be used it there is an object in a system that refers to this same name.
+The true name of a planet must be unique. Use this name to internally reference planets in missions, events, system objects, etc.
 
 If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
 
@@ -442,6 +455,12 @@ If a planet is being used to define a wormhole (i.e. an objects that is named in
 Additionally, giving it a description will cause the wormhole to create a link on the map when it has been discovered.
 
 **Since v. 0.10.0**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
+
+```html
+"display name" <name>
+```
+
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the planet. Multiple planets can share the same display name.
 
 ```html
 attributes <attribute>... "requires: <attribute>"
