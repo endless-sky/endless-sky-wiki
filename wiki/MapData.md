@@ -21,7 +21,6 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a galaxy, 
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
-		scale <scale#>
 
 system <name>
 	"display name" <name>
@@ -97,7 +96,6 @@ planet <name>
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
-		scale <scale#>
 ```
 
 "Galaxies" are what serve as background images on the map. This includes the image of the Milky Way, as well as all the labels on the map for various regions of space.
@@ -119,12 +117,6 @@ sprite <sprite>
 ```
 
 The image that is created at this galaxy's position.
-
-```html
-scale <scale#>
-```
-
-The multiplier applied to the dimensions of this galaxy's sprite when displayed in game. This value defaults to 1.
 
 # Systems
 
