@@ -806,7 +806,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `tracking`: a form of tracking that is constant, regardless of the ship's size, heat, or radar jamming ability.
 
-* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
+* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile will not be targeted by anti-missile.
 
 * The following weapon attributes turn a weapon into a special weapon that behaves differently from other weaponry. By including these attributes, the weapon will only automatically fire on specific targets and cannot be controlled manually. In addition, these special weapon attributes only work on turrets, do not spawn projectiles when they fire (although they will still create effects, and hit effects can be used to mimic a projectile's appearance), and have a range equal to their velocity (the lifetime should always be 1).
 
