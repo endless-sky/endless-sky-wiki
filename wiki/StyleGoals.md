@@ -67,9 +67,9 @@ Endless Sky's writing has a certain tone and voice. A few guidelines for writing
 
 Not the most thrilling part of the game, but it's important to maintain consistency so that your writing is easier to review.
 
-* Use American English for spelling and punctuation (ex. "color" instead of "colour"). This also means that text such as nicknames should be in double quotes (First "The Player" Last instead of First 'The Player' Last).
-* Put periods inside of parentheses for `choice` options or other instances where the text within parentheses is its own independent sentence: (Remain silent.) instead of (Remain silent).
-* Put commas inside of quotation marks: "Hello," he said instead of "Hello", he said. 
+* Use American English for spelling and punctuation (ex. `color` instead of `colour`). This also means that text such as nicknames should be in double quotes (First "The Player" Last instead of First 'The Player' Last).
+* Put periods inside of parentheses for `choice` options or other instances where the text within parentheses is its own independent sentence: `(Remain silent.)` instead of `(Remain silent).`
+* Put commas inside of quotation marks: `"Hello," he said` instead of `"Hello", he said`. 
 * Mentions of specific outfits or ships should be capitalized in dialog and narration. Generic terms for a category of outfits (e.g. nerve gas, laser rifles) should be uncapitalized.
 * Please use the Oxford comma when writing out lists.
 * Endless Sky does not support diacritics, so avoid characters like é or ø.
