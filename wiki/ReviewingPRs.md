@@ -6,7 +6,7 @@ Reviewing pull requests is an important part of maintaining Endless Sky and the 
 
 Reviewing PRs is a great first step to getting involved with Endless Sky as a contributor. To begin reviewing your first PR on Endless Sky, please use the resources provided below. 
 
-1.  Login to your Github account or create one using [this Github guide](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+1. Login to your Github account or create one using [this Github guide](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 2. Follow the steps in [this guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request) to reviewing proposed changes in a PR, using [the Endless Sky repository](https://github.com/endless-sky/endless-sky/pulls).
 
 If you have any questions, please feel free to ask on the game's [Discord server](https://discord.gg/ZeuASSx) or by creating or replying to a [Github discussion post](https://github.com/endless-sky/endless-sky/discussions).
