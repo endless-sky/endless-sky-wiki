@@ -1,6 +1,19 @@
-### Reviewing a pull request
+## Reviewing a pull request
 
 Reviewing pull requests is an important part of maintaining Endless Sky and the main way that new content is added to the game. Your feedback helps contributors improve their work and ensures that new content is the best it can be. [This discussion](https://github.com/endless-sky/endless-sky/discussions/10358) covers some great tips for new reviewers.
+
+### Reviewing your first PR
+
+Reviewing PRs is a great first step to getting involved with Endless Sky as a contributor. To begin reviewing your first PR on Endless Sky, please use the resources provided below. 
+
+1.  Login to your Github account or create one using [this Github guide](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+2. Follow the steps in [this guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request) to reviewing proposed changes in a PR, using [the Endless Sky repository](https://github.com/endless-sky/endless-sky/pulls).
+
+If you have any questions, please feel free to ask on the game's [Discord server](https://discord.gg/ZeuASSx) or by creating or replying to a [Github discussion post](https://github.com/endless-sky/endless-sky/discussions).
+
+### General tips when reviewing PRs
+
+* **Use the [wiki](https://github.com/endless-sky/endless-sky/wiki)**: Our wiki is a great resource for all contributors to Endless Sky. When reviewing PRs that change or add new content to the game (e.g. new ships, outfits, artwork, storylines, etc.) please take a look at the [Style Goals](https://github.com/endless-sky/endless-sky/wiki/StyleGoals) and [Quality Checklist](https://github.com/endless-sky/endless-sky/wiki/QualityChecklist) sections of our wiki to make sure that the content fits with Endless Sky's writing and art style.
 
 * **Always read the PR description**: Read the whole thing, and you have a better chance of avoiding making mistakes in your review because you didn't have the background.
 
