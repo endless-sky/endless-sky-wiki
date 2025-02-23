@@ -358,6 +358,8 @@ sprite <sprite>
 
 The sprite that is created at this object's position.
 
+Note that the sprite path is used to classify stellar objects: if it begins with "star/", it's a star, if it begins with "planet/station", it's a station, while any other object that has a parent object is classified as a moon. These classifications are used (or can be used in future versions) for messages, radar display and/or AI decisions.
+
 ```html
 scale <scale#>
 ```
