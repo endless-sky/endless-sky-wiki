@@ -33,6 +33,6 @@ If you have any questions, please feel free to ask on the game's [Discord server
 
 * **Use @ mentions sparingly**: Use it if you're trying to get the attention of people not involved with the PR, if you're writing a PR yourself and want to credit someone else's work, or if someone hasn't responded to your review request or other comments in a while.
 
-* **You don't have to have an opinion on everything**: Express your opinions, but only when doing so will actual accomplish something productive.
+* **You don't have to have an opinion on everything**: Express your opinions, but only when doing so will actually accomplish something productive.
 
 * **Be creative**: Your role as a reviewer is not to be Grammarly. To be sure, you should definitely catch out any grammar mistakes you can find, but you should also give constructive suggestions. Don't be afraid to tweak the content of a paragraph to make it flow better. If it doesn't fit what the author is going for, they don't have to use your suggestion. But a suggestion is always better than a "fix this."
