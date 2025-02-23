@@ -1,10 +1,10 @@
 ### Reviewing a pull request
 
-Reviewing pull requests is an important part of maintaining Endless Sky and the main way that new content is ultimately added to the game. Your feedback helps contributors improve their work and ensures that new content is the best it can be. [This discussion](https://github.com/endless-sky/endless-sky/discussions/10358) covers some great tips for new reviewers.
+Reviewing pull requests is an important part of maintaining Endless Sky and the main way that new content is added to the game. Your feedback helps contributors improve their work and ensures that new content is the best it can be. [This discussion](https://github.com/endless-sky/endless-sky/discussions/10358) covers some great tips for new reviewers.
 
 * **Always read the PR description**: Read the whole thing, and you have a better chance of avoiding making mistakes in your review because you didn't have the background.
 
-* **Don't do reviews as a way to calm down**: Reviewing others work can be calming, but doing reviews when stressed can also lead you to overreact to relatively small changes. Even if you don't, your reviews will probably be worse than usual.
+* **Don't do reviews as a way to calm down**: Reviewing others' work can be calming, but doing reviews when stressed can also lead you to overreact to relatively small changes. Even if you don't, your reviews will probably be worse than usual.
 
 * **Use the "request changes" button sparingly, or not at all**: In most cases, leaving comments with suggested changes is enough. Developers typically don’t merge PRs with unresolved comments, so there's usually no need to use "suggest changes."
 
@@ -12,7 +12,7 @@ Reviewing pull requests is an important part of maintaining Endless Sky and the 
 
 * **If you keep making the same correction, check it**: The internet is great for searching up weird grammar and punctuation rules, especially when it comes to American vs British English. ES' source files are great for examining existing precedents within the game itself.
 
-* **Review comments for clarity, not conventions**: Comments in data or code files are mainly read by contributors to the repo and are meant to be understood, not grammatically flawless. If you don't understand a comment, by all means suggest a change to it. But if the meaning's clear, there's no need to nitpick small style issues or better yet, remind the PR author in a single summary comment rather than commenting on every instance.
+* **Review comments for clarity, not conventions**: Comments in data or code files are mainly read by contributors to the repo and are meant to be understood, not grammatically flawless. If you don't understand a comment, by all means suggest a change to it. But if the meaning's clear, there's no need to nitpick small style issues; better yet, remind the PR author in a single summary comment rather than commenting on every instance.
 
 * **Partial reviews are still helpful**: You may not be able to review every one of the dozens of files in a large PR. But, you can still look through one or two files and make a couple of suggestions. Pretty much everyone involved will appreciate it, including the final player. 
 
