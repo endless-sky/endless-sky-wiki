@@ -261,7 +261,7 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 		truncate (none | front | middle | back)
 		alignment (left | center | right | justified)
 ```
-Beginning with **v. 0.10.11**, every text element has its "wrapped" counterpart. The difference is that the text is wrapped at the width limit of the element. As for basic text elements, you can specify truncation of the text. Additionally, you can choose how the text should be aligned.
+Beginning with **v. 0.10.13**, every text element has its "wrapped" counterpart. The difference is that the text is wrapped at the width limit of the element. As for basic text elements, you can specify truncation of the text. Additionally, you can choose how the text should be aligned.
 
 ## Bars and rings
 
