@@ -33,7 +33,7 @@ The sprite to use for this affect. Details on this definition can be found on th
 
 As with the sprite attributes, you should only include whichever attributes you actually want to use.
 
-* `zooms`: When the effect is used by an afterburner, it will be zoomed by the zoom factor of the engine point it is being drawn on.
+* `zooms`: When the effect is used by an afterburner, it will be zoomed by the zoom factor of the engine point it is being drawn on. **(v. 0.10.13)**
 * `sound <name>`: When the effect is created, this sound is played. (This happens even if the effect does not define a sprite.)
 * `"sound category" <category>`: What category the effect's sound should play as. Different categories might have different volume levels configured by the user. The category must be either `ui`, `anti-missile`, `weapon`, `engine`, `afterburner`, `jump`, `explosion`, `scan`, `environment` or `alert`. **(v. 0.10.11)**
 * `lifetime <frames#>`: How long the effect should last, in 60ths of a second.
