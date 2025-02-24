@@ -77,7 +77,7 @@ Starting with **v. 0.10.5**, a `payload` can have the following optional childre
 	["relative to system center"]
 ```
 
-Beginning with **v. 0.10.13**, minables can create [effects](CreatingEffects) while orbiting. You can choose an interval (in frames) between spawns. If `"relative to system center"` is set, the effect will face away from the system center (like a comet tail) instead of rotating with the minable.
+Beginning with **v. 0.10.13**, minables can create [effects](CreatingEffects) while orbiting. You can choose an average interval (in frames) between spawns. If `"relative to system center"` is set, the effect will face away from the system center (like a comet tail) instead of rotating with the minable.
 
 ```html
 explode <effect> <count#>
