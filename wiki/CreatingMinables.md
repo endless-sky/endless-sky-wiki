@@ -12,6 +12,8 @@ minable <name>
 		"max drops" <count#>
 		"drop rate" <chance#>
 		"toughness" <value#>
+	"live effect" <effect> [<interval#>]
+		["relative to system center"]
 	explode <effect> <count#>
 ```
 
@@ -70,6 +72,13 @@ Starting with **v. 0.10.5**, a `payload` can have the following optional childre
 * `"max drops"`: the maximum possible number of the outfit that can drop. An alternative location from the drop count next to the outfit name. If a drop count is not specified in either location, the default drop size is 1.
 * `"drop rate"`: a value between 0 and 1 that represents the fraction of the maximum payload count that will survive on average. Defaults to 0.25 if not specified.
 * `"toughness"`: a value greater than 1 which represents the toughness of this payload, which measures how resistant it is to having its drop rate increased by [prospecting weapons](https://github.com/endless-sky/endless-sky/wiki/CreatingOutfits#weapon-attributes).
+
+```html
+"live effect" <effect> [<interval#>]
+	["relative to system center"]
+```
+
+Beginning with **v. 0.10.13**, minables can create [effects](CreatingEffects) while orbiting. You can choose an average interval (in frames) between spawns. If `"relative to system center"` is set, the effect will face away from the system center (like a comet tail) instead of rotating with the minable.
 
 ```html
 explode <effect> <count#>
