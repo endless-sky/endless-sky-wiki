@@ -642,6 +642,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
 
+ * `"empty sound"`: a path to a sound (see the requirements above) that is played when the player attempts to fire a weapon with unmet ammo or fuel requirements. **(v. 0.10.13)**
+
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 
   * For versions **v. 0.9.11** and later, a number following the ammo name will change how many units of that ammo are consumed upon firing the weapon. An ammo usage of 0 is possible, which results in the ammo outfit needing to be installed to fire, but never being consumed.
