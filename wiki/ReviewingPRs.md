@@ -27,7 +27,7 @@ If you have any questions, please feel free to ask on the game's [Discord server
 
 * **Review comments for clarity, not conventions**: Comments in data or code files are mainly read by contributors to the repo and are meant to be understood, not grammatically flawless. If you don't understand a comment, by all means suggest a change to it. But if the meaning's clear, there's no need to nitpick small style issues; better yet, remind the PR author in a single summary comment rather than commenting on every instance.
 
-* **Partial reviews are still helpful**: You may not be able to review every one of the dozens of files in a large PR. But, you can still look through one or two files and make a couple of suggestions. Pretty much everyone involved will appreciate it, including the final player. 
+* **Partial reviews are still helpful**: You may not be able to review every one of the dozens of files in a large PR, but you can still look through one or two files and make a couple of suggestions. Pretty much everyone involved will appreciate it, including the final player. 
 
 * **Balance criticism with positive feedback**: Just because you absolutely hate what a PR is trying to accomplish doesn't mean you can't find something good in it. Scathing criticisms are only going to antagonize the author, as well as anyone who actually really liked that PR.
 
