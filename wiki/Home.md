@@ -22,6 +22,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Quality Checklist](QualityChecklist)
 * [Donating](Donations)
 * [Development Vision](https://github.com/endless-sky/endless-sky/wiki/Endless-Sky's-Vision)
+* [Reviewing PRs](https://github.com/endless-sky/endless-sky/wiki/ReviewingPRs)
 
 ### Creating ships, missions, artwork, etc.
 
