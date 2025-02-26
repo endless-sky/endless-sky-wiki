@@ -242,7 +242,7 @@ ramscoop
 	multiplier <value#>
 ```
 
-Beginning in **v. 0.10.0**, individual systems can be given modifiers which influence fuel gained through the use of ramscoops, adding to the customization that [solar attributes](https://github.com/endless-sky/endless-sky/wiki/MapData#solar-attributes) provide. The `universal` keyword determines whether the universal ramscoop (a minor amount of fuel gain applied to all ships even without the presence of the "ramscoop" attribute) functions in the system, with 1 being true and 0 being false. The `addend` keyword adds (or subtracts) an amount of fuel gained per frame while in the system. If the addend subtracts more fuel than is provided, then no fuel is gained; there is no fuel lost due to a negative addend. The `multiplier` keyword multiplies the fuel normally gained. The multiplier is applied first before the addend. The default values are `universal 1`, `addend 0`, and `multiplier 1`.
+Beginning in **v. 0.10.0**, individual systems can be given modifiers which influence fuel gained through the use of ramscoops, adding to the customization that [solar attributes](MapData#solar-attributes) provide. The `universal` keyword determines whether the universal ramscoop (a minor amount of fuel gain applied to all ships even without the presence of the "ramscoop" attribute) functions in the system, with 1 being true and 0 being false. The `addend` keyword adds (or subtracts) an amount of fuel gained per frame while in the system. If the addend subtracts more fuel than is provided, then no fuel is gained; there is no fuel lost due to a negative addend. The `multiplier` keyword multiplies the fuel normally gained. The multiplier is applied first before the addend. The default values are `universal 1`, `addend 0`, and `multiplier 1`.
 
 
 ```html
@@ -306,7 +306,7 @@ The name of a [fleet](CreatingFleets) that is spawned in this system with a cert
 raid <fleet> [<min-attraction#> [<max-attraction#>]]
 ```
 
-The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
+The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
 "no raids"

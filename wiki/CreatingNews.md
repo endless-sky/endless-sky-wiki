@@ -132,7 +132,7 @@ A `news` datafile definition has 4 definable child elements.
 * `portrait`: The path to a sprite to be displayed in the news message, relative to the `images` directory. Multiple sprites can be provided, and one will be chosen at random when the news message is displayed.
 * `message`: The text to be displayed. For flexibility, this uses the same "phrase" format that the news' name element and ship hails use.
 * `location`: A [location filter](LocationFilters) that is used to identify on which planets this news message can appear. If not provided, or removed, then this news source will not be displayed anywhere. For the full syntax associated with locations filters see [the reference here](LocationFilters).
-* `to show` (optional): A condition set that determines whether this News message can appear. Behaves the same way as `to offer` does for [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). 
+* `to show` (optional): A condition set that determines whether this News message can appear. Behaves the same way as `to offer` does for [missions](CreatingMissions#conditions). 
 
 ```html
 news <name>
