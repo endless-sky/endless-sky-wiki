@@ -81,6 +81,12 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
+Outfits can optionally be ordered in the outfitter screen by using the following attributes, which interact with outfit series as defined in `series.txt`.
+
+* `series`: which outfit series listed in `series.txt` this outfit belongs to.
+
+* `index`: where the outfit is ordered within its series. Lower indices are listed before higher indices. Almost all vanilla outfits have a five-digit `index` value. The first two digits are specific to the species the outfit belongs to (for example, human outfit indices always start with `01`). The remaining three digits are responsible for ordering the outfit within its series, and generally increment by 10 for each outfit in that series.
+
 Unless otherwise stated, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
 
 * These attributes are basic attributes that practically every outfit will have.
