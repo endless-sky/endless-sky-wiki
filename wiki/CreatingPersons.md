@@ -1,4 +1,4 @@
-A "person" is a unique ship or fleet of ships that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. The [syntax](https://github.com/endless-sky/endless-sky/wiki/DataFormat#grammar-specifications) for the definition of a person is:
+A "person" is a unique ship or fleet of ships that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. The [syntax](DataFormat#grammar-specifications) for the definition of a person is:
 
 ```html
 person <name>
