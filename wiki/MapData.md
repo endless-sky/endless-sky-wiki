@@ -47,7 +47,7 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-	asteroid <name> <count#> <energy#>
+	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
@@ -146,7 +146,7 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-	asteroid <name> <count#> <energy#>
+	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
@@ -282,13 +282,13 @@ link <system>
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
 
 ```html
-asteroid <name> <count#> <energy#>
+asteroids <name> <count#> <energy#>
 minables <name> <count#> <energy#>
 ```
 
 The name of the asteroids in this system, as well as the number of the asteroids and their energy. The energy of an asteroid determines how fast it moves and rotates, with higher values meaning faster asteroids. A random value between 0 and the energy value is used for each of the asteroids when they are created, meaning that high energy values may still result in slow asteroids.
 
-If an asteroid is minable, then it uses the `minable` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
+If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
 
 ```html
 trade <commodity> <cost#>
