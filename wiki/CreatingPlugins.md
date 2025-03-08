@@ -90,6 +90,7 @@ Eventually, a plugin server will be set up that will be accessible within the ga
 ```html
 name <name>
 about <description>
+...
 version <version>
 authors
 	<author>
