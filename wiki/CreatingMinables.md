@@ -29,7 +29,7 @@ The name of a minable must be unique.
 "display name" <display name>
 ```
 
-Beginning in **v. 0.10.0**, a minable can have a display name. This is the name that will be displayed to the player, for example, when they target this minable (with and asteroid scanner of some sort equipped). Unlike minable names, minable display names do not need to be unique.
+Beginning in **v. 0.10.0**, a minable can have a display name. This is the name that will be displayed to the player, for example, when they target this minable (with an asteroid scanner of some sort equipped). Unlike minable names, minable display names do not need to be unique.
 If no display name is provided, the name of the minable will be used.
 
 ```html

@@ -21,7 +21,8 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Art and storytelling style](StyleGoals)
 * [Quality Checklist](QualityChecklist)
 * [Donating](Donations)
-* [Development Vision](https://github.com/endless-sky/endless-sky/wiki/Endless-Sky's-Vision)
+* [Development Vision](Endless-Sky's-Vision)
+* [Reviewing PRs](ReviewingPRs)
 
 ### Creating ships, missions, artwork, etc.
 
@@ -49,7 +50,7 @@ These pages generally describe the game syntax in accordance with the [data form
 
 ### Compiling or modifying the source code
 
-* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-cmake.md)
+* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-developer.md)
 * [Contributing to the code](ContributingCode)
 * [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
 
