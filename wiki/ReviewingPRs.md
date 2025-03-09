@@ -13,7 +13,7 @@ If you have any questions, please feel free to ask on the game's [Discord server
 
 ### General tips when reviewing PRs
 
-* **Use the [wiki](https://github.com/endless-sky/endless-sky/wiki)**: Our wiki is a great resource for all contributors to Endless Sky. When reviewing PRs that change or add new content to the game (e.g. new ships, outfits, artwork, storylines, etc.) please take a look at the [Style Goals](https://github.com/endless-sky/endless-sky/wiki/StyleGoals) and [Quality Checklist](https://github.com/endless-sky/endless-sky/wiki/QualityChecklist) sections of our wiki to make sure that the content fits with Endless Sky's writing and art style.
+* **Use the [wiki](https://github.com/endless-sky/endless-sky/wiki)**: Our wiki is a great resource for all contributors to Endless Sky. When reviewing PRs that change or add new content to the game (e.g. new ships, outfits, artwork, storylines, etc.) please take a look at the [Style Goals](StyleGoals) and [Quality Checklist](QualityChecklist) sections of our wiki to make sure that the content fits with Endless Sky's writing and art style.
 
 * **Always read the PR description**: Read the whole thing, and you have a better chance of avoiding making mistakes in your review because you didn't have the background.
 
