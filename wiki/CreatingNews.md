@@ -190,6 +190,17 @@ news "contributing"
 ```
 For additional examples, see [`news.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/human/news.txt).
 
+## Substitutions
+
+Beginning in **v. 0.10.13** news text can contain [text replacements](CreatingSubstitutions).
+Globally provided substitutions will be available, as well as a few hardcoded ones:
+* `<first>` - the pilot's first name.
+* `<last>` - the pilot's surname.
+* `<ship>` - the name of the flagship.
+* `<model>` - the model display name of the flagship.
+* `<date>` - the current date, in the form: "YYYY-MM-DD", "Day, DD Mon YYYY", or "Day Mon DD, YYYY", depending on current user settigns.
+* `<day>` - the current date, in the form: "Month DDth" or "the DDth of Month", depending on user settings.
+
 ## Modifying existing definitions
 
 News can be modified by game [events](CreatingEvents) and plugins. All tokens can be modified, but the most likely use case will be to "activate" or "deactivate" a news source, by modifying its `location` element:
