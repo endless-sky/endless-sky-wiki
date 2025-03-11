@@ -246,7 +246,7 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 ```html
 	(bar | ring) <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
-		color <from color> <to color>
+		color <from color> [<to color>]
 		size <size#>
 		[reversed]
 		[start angle <angle#>]
