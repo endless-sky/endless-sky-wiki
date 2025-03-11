@@ -81,6 +81,12 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
 
+Outfits can optionally be ordered in the outfitter screen by using the following attributes, which interact with outfit series as defined in `series.txt`.
+
+* `series`: which outfit series listed in `series.txt` this outfit belongs to.
+
+* `index`: where the outfit is ordered within its series. Lower indices are listed before higher indices. Almost all vanilla outfits have a five-digit `index` value. The first two digits are specific to the species the outfit belongs to (for example, human outfit indices always start with `01`). The remaining three digits are responsible for ordering the outfit within its series, and generally increment by 10 for each outfit in that series.
+
 Unless otherwise stated, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
 
 * These attributes are basic attributes that practically every outfit will have.
@@ -611,7 +617,9 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
-  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain.
+  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. **(v. 0.10.4)**
+
+  * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
 
 # Weapon attributes
@@ -640,7 +648,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
 
-* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
+* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
 
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 
@@ -720,9 +728,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `inverted`: inverts the distribution of only narrow, medium, or wide inaccuracies, so that projectiles are more likely to appear at the edges of the angle rather than the middle.
 
-* `"turret turn"`: the number of degrees that this turret rotates per frame. (**v. 0.9.7**)
+* `"turret turn"`: the number of degrees that this turret rotates per frame. **(v. 0.9.7)**
 
-* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.)
+* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.) **(v. 0.10.7)**
 
 * The calculation for the range of a weapon involves multiplying its base lifetime by its base velocity. This value is what is used by the AI to determine when to fire the weapon given the distance to the target. The AI will also take any random velocity into account when aiming the weapon in order to properly lead the target. These base values may not always be entirely accurate as to how the AI should use a weapon though. Such situations may include weapons with acceleration and drag values that cause a projectile to travel much faster or slower than the base velocity, or weapons with very high inaccuracies that make using them at range impractical. It can also be the case that a weapon has a blast radius, which will by default cause ships to avoid firing the weapon if their target is close enough where the explosion with damage itself, although removing this behavior may be desired. The following attributes can be used in order to get more favorable results in how the AI uses the weapon:
 
@@ -806,7 +814,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `tracking`: a form of tracking that is constant, regardless of the ship's size, heat, or radar jamming ability.
 
-* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
+* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0 or no value is provided, the projectile will not be targeted by anti-missile.
 
 * The following weapon attributes turn a weapon into a special weapon that behaves differently from other weaponry. By including these attributes, the weapon will only automatically fire on specific targets and cannot be controlled manually. In addition, these special weapon attributes only work on turrets, do not spawn projectiles when they fire (although they will still create effects, and hit effects can be used to mimic a projectile's appearance), and have a range equal to their velocity (the lifetime should always be 1).
 

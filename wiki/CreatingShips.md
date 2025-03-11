@@ -151,7 +151,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
 
-	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle.
+	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle. **(v. 0.10.7)**
+
+	* `"turret turn multiplier"`: modifies the turn rate of the outfit installed on this hardpoint. The final value of the turn rate is `"turret turn" * (1 + "turret turn multiplier"(from ship's attributes) + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
 * `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
 

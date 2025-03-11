@@ -14,7 +14,7 @@ This list gives the default locations of the plugins folder in the resource and 
 
 #### macOS
 * Contents/Resources/plugins/ (within the application bundle)
-* ~/Library/Application Support/endless-sky/plugins
+* ~/Library/Application Support/endless-sky/plugins/
 
 Your plugin should be placed in its own folder (named after the plugin) within one of those "plugins" folders (e.g. the example plugin's `plugin.txt`, `data/`, etc. would be in a folder named "example-plugin" which in turn is placed in the "plugins" folder):
 
@@ -76,7 +76,7 @@ ___
 A plugin folder can contain the following:
 
   * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/). _(required)_
-  * `about.txt`: a plain-text file describing the plugin. Deprecated by plugin.txt. Multi-line descriptions should continue to be provided here.
+  * `about.txt`: a plain-text file describing the plugin. Deprecated by plugin.txt.
   * `plugin.txt`: a plain-text file containing metadata about the plugin. **(v. 0.10.3)**
   * `icon.png`: an image that appears when selecting the plugin in the plugins menu.
   * `data/`: any data files must be placed in this folder, or they will not be loaded.
@@ -90,6 +90,7 @@ Eventually, a plugin server will be set up that will be accessible within the ga
 ```html
 name <name>
 about <description>
+...
 version <version>
 authors
 	<author>
@@ -113,7 +114,7 @@ dependencies
 Introduced in **v. 0.10.3**, the plugin.txt file in the plugin's root folder contains metadata about the plugin. Metadata is formatted in the same way that the data files are, with root nodes, tokens, and child nodes. Allowable metadata nodes are as follows:
 
 * `name`: the name of the plugin to be displayed in the plugins menu. If no name is provided, defaults to the name of the folder that the plugin is from. If multiple plugins with the same `name` metadata are present, only the first reached by the game will be loaded, any subsequent plugins attempting to use the same name will not be loaded by the game.
-* `about`: a description of the plugin to be displayed in the plugins menu. Prior to the creation of the plugin.txt file, the plugin's description was read from an about.txt file.
+* `about`: a description of the plugin to be displayed in the plugins menu. Prior to the creation of the plugin.txt file, the plugin's description was read from an about.txt file. You can add multiple `about` lines to display multiple lines in the game.
 * `version`: the plugin's version number. **(v. 0.10.7)**
 * `authors`: a list of names for the authors of the plugin. **(v. 0.10.7)**
 * `tags`: a list of tags that act as descriptors for the plugin. **(v. 0.10.7)**
