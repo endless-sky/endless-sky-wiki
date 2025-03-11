@@ -619,6 +619,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. **(v. 0.10.4)**
 
+  * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
+
 
 # Weapon attributes
 
