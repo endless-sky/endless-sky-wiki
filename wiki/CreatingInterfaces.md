@@ -43,7 +43,7 @@ interface <name> [<anchor>]
 	(ring | bar) <name>
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
-		[color <color>]
+		[color <from color> [<to color>]]
 		[size <size#>]
 		[reversed]
 		[start angle <angle#>]
@@ -246,7 +246,7 @@ If `color` is defined but either the inactive or hover color is not, the undefin
 ```html
 	(bar | ring) <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
-		color <color>
+		color <from color> <to color>
 		size <size#>
 		[reversed]
 		[start angle <angle#>]
@@ -261,7 +261,8 @@ A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
 Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction of a bar. A reversed bar will be filled from the top left corner. It is not currently possible to reverse a ring.
 The size determines the thickness of the bar or ring, the default value is 2.
-If no color is given, "active" will be used.
+Bars can take a start and end color, and will interpolate between the two.
+If one color is given the whole bar will be that color, and if no color is given, "active" will be used.
 
 ## Lines
 
