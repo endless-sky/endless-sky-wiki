@@ -18,7 +18,7 @@ The existing aliens are grouped roughly into tiers, where a heavy warship of a c
 * Tier 2: Wanderers, Korath Automata, Ka'het
 * Tier 2.5: Heliarch
 * Tier 3: Quarg
-* Tier 5: Drak
+* Tier 4: Drak
 * Tier ???: Pug (they have ships of different tiers depending on who they are fighting)
 
 It is important to note that tiers are not a concrete way to say that "every ship or outfit from X must be better than every ship or outfit from Y because X is of a greater tier than Y." Tiers are instead a general guideline as to the strength of various factions. Lower factions may still have ships or outfits that are "stronger" in some respects than higher factions, and factions of the same tiers should not be neck-and-neck in all ways.
