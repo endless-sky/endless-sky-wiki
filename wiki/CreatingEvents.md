@@ -103,8 +103,14 @@ Update the named `galaxy`, including the `sprite` and position of the sprite on 
 
 ```html
 system <name>
+	inaccessible
+	remove inaccessible
 	hidden
 	remove hidden
+	shrouded
+	remove shrouded
+	"no raids"
+	remove "no raids"
 	pos <x#> <y#>
 	government <gov>
 	remove government
