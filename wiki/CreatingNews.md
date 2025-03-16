@@ -192,13 +192,13 @@ For additional examples, see [`news.txt`](https://github.com/endless-sky/endless
 
 ## Substitutions
 
-Beginning in **v. 0.10.13** news text can contain [text replacements](CreatingSubstitutions).
+Beginning in **v. 0.10.13**, news text can contain [text replacements](CreatingSubstitutions).
 Globally provided substitutions will be available, as well as a few hardcoded ones:
 * `<first>` - the pilot's first name
 * `<last>` - the pilot's surname
-* `<ship>` - the name of the flagship
+* `<ship>` - the user-set name of the flagship
 * `<model>` - the model display name of the flagship
-* `<date>` - the current date, in the form: "YYYY-MM-DD", "Day, DD Mon YYYY", or "Day Mon DD, YYYY", depending on current user settigns
+* `<date>` - the current date, in the form: "YYYY-MM-DD", "Day, DD Mon YYYY", or "Day Mon DD, YYYY", depending on current user settings
 * `<day>` - the current date, in the form: "Month DDth" or "the DDth of Month", depending on user settings
 
 ## Modifying existing definitions
