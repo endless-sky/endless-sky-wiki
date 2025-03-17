@@ -262,7 +262,7 @@ At runtime, the game may only partially complete the bar or ring, or segment it,
 Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction of a bar. A reversed bar will be filled from the top left corner. It is not currently possible to reverse a ring.
 The size determines the thickness of the bar or ring, the default value is 2.
 Bars can take a start and end color, and will interpolate between the two.
-If one color is given the whole bar will be that color, and if no color is given, "active" will be used.
+If one color is given, the whole bar will be that color, and if no color is given, "active" will be used.
 
 ## Lines
 
