@@ -43,6 +43,39 @@ plugins/
 	  ...
 ```
 
+Alternatively, you can use your plugin as a zip file. The plugin's internal structure is the same as before:
+
+```
+plugins/
+|-- example-plugin.zip/
+|   |-- data/
+|   |   |-- jobs.txt
+|   |	 ...
+|   |-- icon.png
+|   |-- plugin.txt
+|   |-- copyright
+|	 ...
+|-- other-plugin/
+	  ...
+```
+
+The game also supports plugins that are zipped together with their directory, though this only works if the zip file's name is same as the plugin directory's name (in this case, `example-plugin.zip` and `example-plugin`):
+
+```
+plugins/
+|-- example-plugin.zip/
+|   |-- example-plugin/
+|   |   |-- data/
+|   |   |   |-- jobs.txt
+|   |   |	 ...
+|   |   |-- icon.png
+|   |   |-- plugin.txt
+|   |   |-- copyright
+|	  |  ...
+|-- other-plugin/
+	  ...
+```
+
 ## Finding errors
 
 Alongside the plugins folder in the config directory, Endless Sky will create a file named "errors.txt".
