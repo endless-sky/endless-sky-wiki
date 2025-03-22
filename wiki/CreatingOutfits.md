@@ -608,6 +608,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
+ 
+  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. **(v. 0.10.13)**
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
