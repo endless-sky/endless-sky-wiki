@@ -3,6 +3,7 @@
 * [Introduction](#introduction)
 * [Text replacements](#text-replacements)
 * [Basic mission characteristics](#basic-mission-characteristics)
+* [Storylines](#storylines)
 * [Conditions](#conditions)
 * [Source and destination filters](#mission-location-filters)
 * [Distance Calculation Settings](#distance-calculation-settings)
@@ -69,6 +70,9 @@ And so on. The sky's the limit. Missions can become very complex. Here is a full
 ```html
 mission <name>
 	name <name>
+	storyline <storyline name>
+		[optional]
+		[failsafe]
 	description <text>
 	blocked <message>
 	deadline [<days> [<multiplier>]]
@@ -447,6 +451,26 @@ substitutions
 ```
 
 Beginning with **v.0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
+
+# Storylines
+
+```html
+storyline <storyline name>
+	[optional]
+	[failsafe]
+```
+
+For missions that are part of a significant storyline within the game, you can mark that officially by adding the storyline tag into the mission. Missions which are `optional` can be declined without losing access to the rest of the storyline; missions which are `failsafe` can be failed without losing access to the rest of the storyline.
+
+You will also need to define the storyline itself:
+
+```html
+storyline <storyline name>
+	color <color>
+	[main]
+```
+
+Each storyline has a name and a color associated with it. For storylines that are considered the "main plot", they need to have the `main` tag as well.
 
 # Conditions
 
