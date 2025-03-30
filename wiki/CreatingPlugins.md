@@ -43,7 +43,7 @@ plugins/
 	  ...
 ```
 
-Starting with **0.10.13**, you can also use your plugin as a zip file. The plugin's internal structure is the same as before:
+Beginning in **0.10.13**, you can also use your plugin as a zip file. The plugin's internal structure is the same as before:
 
 ```
 plugins/
