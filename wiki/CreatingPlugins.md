@@ -59,7 +59,7 @@ plugins/
 	  ...
 ```
 
-The game also supports plugins that are zipped together with their directory, though this only works if the zip file's name is same as the plugin directory's name (in this case, `example-plugin.zip` and `example-plugin`):
+The game also supports plugins that are zipped together with their directory:
 
 ```
 plugins/
