@@ -228,6 +228,8 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
+* `"gaslining"`: not an engine attribute, but standardized use for landing on gas giants.
+
 There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for "tier 1" ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordnance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
 * `"blast radius"` (Typical value: (shields + hull) * .01)
@@ -252,7 +254,7 @@ There is also one special attribute called `weapon` that defines how much damage
 
 It is possible to add custom attributes to outfits/ships by specifying a key:value pair. As an example, when we wanted to add large scale spinal weapons, we added `"spinal mount" 1` as a custom attribute. The total value of attributes for a vessel cannot be below 0. Then on the spinal weapon we added `"spinal mount" -1`, which means it is taking up that slot.
 
-These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `noncorrosive 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
+These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `"noncorrosive" 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
 
 Note that care must be taken to ensure that these custom attributes do not inadvertently duplicate an already-existing attribute.
 
