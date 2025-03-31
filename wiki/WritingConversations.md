@@ -142,8 +142,8 @@ Beginning in **v. 0.10.1**, the values of [player conditions](Player-Conditions)
 
 Given the conditions:
 ```html
-	"abc" 5000
-	"xyz" 5000000
+	"abc" 5000000
+	"xyz" 5000
 ```
 The above example will appear as:
 ```js
