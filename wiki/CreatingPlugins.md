@@ -204,7 +204,7 @@ disable event
 
 Since **v0.10.13**
 
-```bash
+```html
 swizzle <name>
 	[override]
 
@@ -220,7 +220,7 @@ Setting the `override` flag will disable any swizzle masks on a sprite that uses
 
 For example:
 
-```bash
+```html
 swizzle example
 	red   0 1 0 0
 	green 1 0 0 0
