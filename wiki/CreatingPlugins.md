@@ -151,6 +151,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`start`](Creating-Starts): starting conditions for the player.
   * [`system`](MapData#systems): a star system. Generally, these will be created through the [map editor](https://github.com/endless-sky/endless-sky-editor) so that orbital periods, habitable zones, etc. will be consistent.
   * `trade`: a list of commodity names and prices. (For examples, see [`commodities.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/commodities.txt).)
+  * [`swizzle`](#Swizzles): a color matrix that defines how colors are shifted for a sprite or color. Each color channel is
 
 To modify most properties of an existing data element, you only need to include the particular fields you are interested in. For example, to change the government of Kornephoros from "Republic" to "Free Worlds" all you need to write is this:
 
@@ -198,3 +199,35 @@ disable person
 disable event
 	"war begins"
 ```
+
+## Swizzles
+
+Since **v0.10.13**
+
+```bash
+swizzle <name>
+	[override]
+
+	[red   [<red_i> <green_i> <blue_i> [<alpha_i>]]
+	[green [<red_i> <green_i> <blue_i> [<alpha_i>]]
+	[blue  [<red_i> <green_i> <blue_i> [<alpha_i>]]
+	[alpha [<red_i> <green_i> <blue_i> [<alpha_i>]]
+```
+
+A swizzle defines a matrix for shifting colors. The matrix will take an input color, and for every channel it has defined it will take some influence of the input's color channels, forming those into a new color.
+
+Setting the `override` flag will disable any swizzle masks on a sprite that uses this swizzle - this is useful if you want a 'ghost' or 'shadowed' effect and don't want anything to be left unswizzled.
+
+For example:
+
+```bash
+swizzle example
+	red   0 1 0 0
+	green 1 0 0 0
+	blue  0 0 1 0
+	alpha 0 0 0 1
+```
+
+This swizzle switches the red and green channels - this means that any red parts of the original color will become green and vice versa.
+
+See [swizzles.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/swizzles.txt) for more examples.
