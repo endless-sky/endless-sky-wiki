@@ -130,9 +130,9 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"flagship fuel"` returns the absolute amount of fuel the player's flagship currently has. **(v. 0.10.13)**
 * `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checked the attributes on the ship itself, excluding any installed outfits. **(v. 0.10.0)**
 * `"flagship bays: <category>"` returns the number of bays for the given category of ship the player's flagship has.
-* `"flagship bays free: <category>"` returns the number of bays on the player's flagship for the given c ategory of ship that are not occupied. **(v. 0.10.13)**
-* `"flagship bays" returns the total number of bays on the player's flagship. **(v. 0.10.13)**
-* `"flagship bays free" returns the total number of bays on the player's flagship that are not currently occupied. **(v. 0.10.13)**
+* `"flagship bays free: <category>"` returns the number of bays on the player's flagship for the given category of ship that are not occupied. **(v. 0.10.13)**
+* `"flagship bays"` returns the total number of bays on the player's flagship. **(v. 0.10.13)**
+* `"flagship bays free"` returns the total number of bays on the player's flagship that are not currently occupied. **(v. 0.10.13)**
 * `"flagship planet attribute: <attribute>"` returns 1 if the planet that the player's flagship is landed on has the given attribute. Returns 0 if the flagship is not landed or the landed planet doesn't have the given attribute. **(v. 0.10.0)**
 * `"flagship disabled"` returns 1 if the player's flagship is disabled. Returns 0 otherwise. **(v. 0.10.3)**
 * `"days since year start"` is the number of days since the beginning of the current year. **(v. 0.10.0)**
