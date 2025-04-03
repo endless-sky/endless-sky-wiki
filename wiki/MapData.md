@@ -51,7 +51,7 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
-		to spawn
+		[to spawn]
 			<condition> <comp> <value>
 			(has | not) <condition>
 			never
@@ -59,7 +59,7 @@ system <name>
 				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
-		to spawn
+		[to spawn]
 			<condition> <comp> <value>
 			(has | not) <condition>
 			never
@@ -167,7 +167,7 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
-		to spawn
+		[to spawn]
 			<condition> <comp> <value>
 			(has | not) <condition>
 			never
@@ -175,7 +175,7 @@ system <name>
 				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
-		to spawn
+		[to spawn]
 			<condition> <comp> <value>
 			(has | not) <condition>
 			never
@@ -321,7 +321,7 @@ A type of commodity sold at the planets in this system and its cost.
 
 ```html
 fleet <name> <period#>
-	to spawn
+	[to spawn]
 		<condition> <comp> <value>
 		(has | not) <condition>
 		never
@@ -347,7 +347,7 @@ If present, no raid fleets will ever spawn in this system, whether they be from 
 
 ```html
 hazard <name> <period#>
-	to spawn
+	[to spawn]
 		<condition> <comp> <value>
 		(has | not) <condition>
 		never
