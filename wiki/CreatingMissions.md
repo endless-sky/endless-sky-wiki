@@ -79,8 +79,8 @@ mission <name>
 	illegal <fine> [<message>]
 	stealth
 	invisible
-	(priority | minor)
-	(job | landing | assisting | boarding | shipyard | outfitter)
+	(priority | minor | non-blocking)
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -98,6 +98,7 @@ mission <name>
 		<text> <replacement>
 			[<condition set>]
 		...
+	"offer precedence" <value>
 	to (offer | complete | fail | accept)
 		<condition> <comp> <value>
 		(has | not) <condition>
@@ -210,10 +211,10 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<planet stopovers>` = a list of all stopover planets (unlike `<stopovers>` this doesn't include any system name, just the planets) **(v. 0.10.1)**
 * `<waypoints>` = a list of all waypoint systems
 * `<marks>` = a list of all marked systems
-* `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block (or, beginning in **v. 0.10.0**, the "apparent payment" of the mission, if one is given), unless the replacement is in an `on *` block or below a conversation `apply` node that has its own payment, in which case that `on *` block's or the most recent `apply`'s payment is used
+* `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block (or, beginning in **v. 0.10.0**, the "apparent payment" of the mission, if one is given), unless the replacement is in an `on *` block or below a conversation `action` node that has its own payment, in which case that `on *` block's or the most recent `action`'s payment is used
 * `<fine>` = "1 credit" or "N credits," where N is the fine amount with the same behavior as `<payment>`; this is not the fine as defined by an `illegal` line
-* `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
-* `<day>` = the deadline in conversational form ("the DDth of Month")
+* `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY", "Day Mon DD, YYYY", or "YYYY-MM-DD", depending on user settings)
+* `<day>` = the deadline in conversational form ("the DDth of Month" or "Month DDth", depending on user settings)
 * `<npc>` = the name of the last ship in the last `npc` block in the mission description
 * `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
 * `<first>` = your first name
@@ -239,7 +240,7 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. If multiple possible missions are minor, these get evaluated in alphabetical order such that the last mission alphabetically is the one that gets offered while the rest are discarded. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically, unless the missions are minor, in which case the one you want to offer should come last alphabetically.
+The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. If multiple possible missions are minor, these get evaluated in alphabetical order such that the last mission alphabetically is the one that gets offered while the rest are discarded. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically, unless the missions are minor, in which case the one you want to offer should come last alphabetically. Mission names cannot start with numerals.
 
 An example of using the mission name to force a certain load order in game is with the set of missions prefixed "FW Pug 2C", where the jump drive variant of the mission is named "FW Pug 2C: **A** Jump Drive" to force it to offer before "FW Pug 2C: **H**yperdrive", as otherwise without the "A" the hyperdrive variant of the mission would have priority.
 
@@ -323,21 +324,23 @@ invisible
 This specifies that the mission does not show up in the player's list of missions, and cannot be aborted. Invisible missions also won't show map markers of any kind, such as the mission's destination or any stopovers/waypoints, nor will a message be displayed if the mission fails.
 
 ```html
-(priority | minor)
+(priority | minor | non-blocking)
 ```
 
 If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
 
-If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time.  
+If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
+
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
 
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter)
+(job | landing | assisting | boarding | shipyard | outfitter | "job board")
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)).
+This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
 
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
@@ -444,7 +447,17 @@ substitutions
 	...
 ```
 
-Beginning with **v.0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
+Beginning with **v. 0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
+
+```html
+"offer precedence" <value>
+```
+
+Beginning with **v. 0.10.11**, this is an integer value which can be used to change the order that missions are offered. Missions with a higher offer precedence will be offered first. The default precedence value is 0, and this value can be negative. For missions with the same offer precedence, they will be offered in alphabetical order according to the identifier of the mission (i.e. the name of the mission specified on the `mission <name>` line, not the display name of the mission specified by the `name` token).
+
+Note that the way that the game determines which `minor` missions should offer means that the minor mission with the lowest precedence will be the one to offer, and all higher precedence minor missions that could have also offered at the same time will be discarded.
+
+Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical order which is able to offer will be the one that does offer.
 
 # Conditions
 
@@ -581,7 +594,7 @@ An NPC will not spawn if its `to spawn` conditions are not met, and any spawned 
 
 Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
-When combined with an `apply` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
+When combined with an `action` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
 on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
@@ -901,7 +914,7 @@ To change the player's reputation or combat rating, you may alter the `"reputati
 event <name> [<delay#> [<max#>]]
 ```
 
-This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first.
+This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first. Event names cannot start with numerals.
 
 ```html
 fail [<name>]

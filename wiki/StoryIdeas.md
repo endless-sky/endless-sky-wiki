@@ -10,7 +10,7 @@ The existing aliens are grouped roughly into tiers, where a heavy warship of a c
 
 * Tier 0.5: Incipias
 * Tier 0.8: Gegno
-* Tier 1: Humans
+* Tier 1: Humans, Avgi
 * Tier 1.2: Hai
 * Tier 1.5: Coalition, Remnant, Korath Exiles and Efreti
 * Tier 1.9: Bunrodea, Successors

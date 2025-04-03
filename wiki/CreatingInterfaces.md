@@ -40,10 +40,18 @@ interface <name> [<anchor>]
 		[truncate <truncation>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> [<anchor>]
+		[color <color>]
+		width <width#>
+		[truncate <truncation>]
+		[alignment <alignment>]
+		[align [<anchor>]]
+		[pad <x#> <y#>]
 	(ring | bar) <name>
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
-		[color <color>]
+		[color <from color> [<to color>]]
 		[size <size#>]
 		[reversed]
 		[start angle <angle#>]
@@ -241,12 +249,26 @@ hover | "hover"
 
 If `color` is defined but either the inactive or hover color is not, the undefined color will use the given active color.
 
+### Wrapped text elements
+
+```html
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> to <x#> <y#> [<anchor>]
+		size <size#>
+		color <color>
+		inactive <color>
+		hover <color>
+		truncate (none | front | middle | back)
+		alignment (left | center | right | justified)
+```
+Beginning with **v. 0.10.13**, every text element has its "wrapped" counterpart. The difference is that the text is wrapped at the width limit of the element. As for basic text elements, you can specify truncation of the text. Additionally, you can choose how the text should be aligned.
+
 ## Bars and rings
 
 ```html
 	(bar | ring) <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
-		color <color>
+		color <from color> [<to color>]
 		size <size#>
 		[reversed]
 		[start angle <angle#>]
@@ -259,9 +281,10 @@ The "start angle" defines from how many degrees clockwise from a line straight u
 The "span angle" defines how many degrees the ring should be drawn through when fully filled. The default, and maximum, value is 360, where the full ring will correspond to a full circle. The minimum value is 0, in which case, nothing is drawn.
 A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
-Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction. A reversed ring will be filled in the clockwise direction, and a reversed bar will be filled from the top left corner.
+Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction of a bar. A reversed bar will be filled from the top left corner. It is not currently possible to reverse a ring.
 The size determines the thickness of the bar or ring, the default value is 2.
-If no color is given, "active" will be used.
+Bars can take a start and end color, and will interpolate between the two.
+If one color is given, the whole bar will be that color, and if no color is given, "active" will be used.
 
 ## Lines
 

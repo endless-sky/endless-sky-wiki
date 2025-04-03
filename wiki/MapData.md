@@ -21,9 +21,9 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a galaxy, 
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
-		scale <scale#>
 
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -47,7 +47,7 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-	asteroid <name> <count#> <energy#>
+	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
@@ -78,6 +78,7 @@ system <name>
 			...
 
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -107,7 +108,6 @@ planet <name>
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
-		scale <scale#>
 ```
 
 "Galaxies" are what serve as background images on the map. This includes the image of the Milky Way, as well as all the labels on the map for various regions of space.
@@ -130,16 +130,11 @@ sprite <sprite>
 
 The image that is created at this galaxy's position.
 
-```html
-scale <scale#>
-```
-
-The multiplier applied to the dimensions of this galaxy's sprite when displayed in game. This value defaults to 1.
-
 # Systems
 
 ```html
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -163,7 +158,7 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-	asteroid <name> <count#> <energy#>
+	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
@@ -199,7 +194,13 @@ Systems are the locations that ships are capable of being and can contain planet
 system <name>
 ```
 
-The name of a system must be unique.
+The true name of a system must be unique. Use this name to internally reference systems in missions, events, etc.
+
+```html
+"display name" <name>
+```
+
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the system. Multiple systems can share the same display name.
 
 ```html
 inaccessible
@@ -305,13 +306,13 @@ link <system>
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
 
 ```html
-asteroid <name> <count#> <energy#>
+asteroids <name> <count#> <energy#>
 minables <name> <count#> <energy#>
 ```
 
 The name of the asteroids in this system, as well as the number of the asteroids and their energy. The energy of an asteroid determines how fast it moves and rotates, with higher values meaning faster asteroids. A random value between 0 and the energy value is used for each of the asteroids when they are created, meaning that high energy values may still result in slow asteroids.
 
-If an asteroid is minable, then it uses the `minable` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
+If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
 
 ```html
 trade <commodity> <cost#>
@@ -398,6 +399,8 @@ sprite <sprite>
 
 The sprite that is created at this object's position.
 
+Note that the sprite path is used to classify stellar objects: if it begins with "star/", it's a star, if it begins with "planet/station", it's a station, while any other object that has a parent object is classified as a moon. These classifications are used (or can be used in future versions) for messages, radar display and/or AI decisions.
+
 ```html
 scale <scale#>
 ```
@@ -447,6 +450,7 @@ Objects are capable of having objects as children. This allows for the creation 
 
 ```html
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -477,7 +481,7 @@ Planets are landable objects, and are where players are capable of buying and se
 planet <name>
 ```
 
-The name of a planet must be unique, and will only be used it there is an object in a system that refers to this same name.
+The true name of a planet must be unique. Use this name to internally reference planets in missions, events, system objects, etc.
 
 If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
 
@@ -486,6 +490,12 @@ If a planet is being used to define a wormhole (i.e. an objects that is named in
 Additionally, giving it a description will cause the wormhole to create a link on the map when it has been discovered.
 
 **Since v. 0.10.0**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
+
+```html
+"display name" <name>
+```
+
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the planet. Multiple planets can share the same display name.
 
 ```html
 attributes <attribute>... "requires: <attribute>"
