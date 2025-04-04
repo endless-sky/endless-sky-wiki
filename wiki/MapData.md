@@ -73,6 +73,12 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+			[to spawn]
+				<condition> <comp> <value>
+				(has | not) <condition>
+				never
+				(and | or)
+					...
 		visibility <maxDistance> [<minDistance>]
 		object [<name>]
 			...
@@ -184,6 +190,12 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+			[to spawn]
+				<condition> <comp> <value>
+				(has | not) <condition>
+				never
+				(and | or)
+					...
 		object [<name>]
 			...
 ```
@@ -376,6 +388,12 @@ object [<name>]
 	period <period#>
 	offset <offset#>
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	visibility <maxDistance> [<minDistance>]
 	object [<name>]
 		...
