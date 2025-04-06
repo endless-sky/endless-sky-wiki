@@ -193,7 +193,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
-* `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
+* `"category"`: the type of ship, as specified by a `category "ship"` node since **v. 0.9.15**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The existing valid vanilla `"ship"` categories are: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
 
   Since **v. 0.9.15**: also "Space Liner", or "Utility".
   Since **v. 0.10.0**: also "Superheavy".

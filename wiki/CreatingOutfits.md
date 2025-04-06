@@ -17,7 +17,7 @@ Any outfit model you create in Blender should use the camera and lighting settin
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/anti-missile.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/medium%20ion%20thruster.png)
 
-The outfitter view divides outfits into difference categories: "Guns," "Turrets," etc. As another way of ensuring a consistent look, most outfits in a given section point in a certain direction:
+The outfitter view divides outfits into different categories: "Guns," "Turrets," etc. As another way of ensuring a consistent look, most outfits in a given section point in a certain direction:
 
 * Guns: top left.
 * Turrets: top left, and angled slightly up in the Z axis.
@@ -38,7 +38,9 @@ Outfits work by modifying the attributes of your ship. Many of the attributes ar
 
 Most attributes are given as a single number, but there are a few "special" attributes:
 
-* `category`: which outfitter category to show this outfit in. The category must be one of the following if it is to be purchasable:
+* `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
+The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
+The existing valid vanilla outfit categories are the following:
   * "Guns"
   * "Turrets"
   * "Secondary Weapons"
@@ -47,7 +49,10 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Power"
   * "Engines"
   * "Hand to Hand"
-  * "Special"
+  * "Unique" (**v0.10.12**)
+  * "Minerals" (**v0.10.12**)
+  * "Special" (**v0.10.12**)
+  * "Licenses" (**v0.10.12**)
 
 * `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
 
