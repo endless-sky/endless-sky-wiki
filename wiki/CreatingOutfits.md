@@ -47,10 +47,10 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Power"
   * "Engines"
   * "Hand to Hand"
-  * "Unique"
-  * "Minerals"
-  * "Special"
-  * "Licenses"
+  * "Unique" (**v0.10.12**)
+  * "Minerals" (**v0.10.12**)
+  * "Special" (**v0.10.12**)
+  * "Licenses" (**v0.10.12**)
 
 * `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
 
