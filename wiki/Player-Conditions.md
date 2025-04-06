@@ -124,8 +124,15 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"outfit (storage): <outfit>"` is the number of outfits of the given type that you have in storage and local. When landed, local is your current planet. When in orbit, local is any planet in your current system. **(v. 0.10.0)**
 * `"outfit (all storage): <outfit>"` is the number of outfits of the given type that you have in storage anywhere. **(v. 0.10.0)**
 * `"flagship attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. The attribute is multiplied by 1000 because conditions must be integers, while attributes are decimal values, and multiplying by 1000 allows conditions to check for attributes as small as 0.001. The only exception to this is the "cost" attribute, which is already an integer. This includes the attributes from any installed outfits. **(v. 0.10.0)**
+* `"flagship mass"` returns the current total mass of the player's flagship. This includes the mass of the ship itself, the mass of any ships and cargo currently being carried. **(v. 0.10.13)**
+* `"flagship shields"` returns the absolute number of shield hit points the player's flagship currently has. **(v. 0.10.13)**
+* `"flagship hull"` returns the absolute number of hull hit points the player's flagship currently has. **(v. 0.10.13)**
+* `"flagship fuel"` returns the absolute amount of fuel the player's flagship currently has. **(v. 0.10.13)**
 * `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checked the attributes on the ship itself, excluding any installed outfits. **(v. 0.10.0)**
 * `"flagship bays: <category>"` returns the number of bays for the given category of ship the player's flagship has.
+* `"flagship bays free: <category>"` returns the number of bays on the player's flagship for the given category of ship that are not occupied. **Note:** this condition should only be used while the player is in-flight. Its behavior while the player is landed is considered unstable and may change in future versions. **(v. 0.10.13)**
+* `"flagship bays"` returns the total number of bays on the player's flagship. **(v. 0.10.13)**
+* `"flagship bays free"` returns the total number of bays on the player's flagship that are not currently occupied. **Note:** this condition should only be used while the player is in-flight. Its behavior while the player is landed is considered unstable and may change in future versions.  **(v. 0.10.13)**
 * `"flagship planet attribute: <attribute>"` returns 1 if the planet that the player's flagship is landed on has the given attribute. Returns 0 if the flagship is not landed or the landed planet doesn't have the given attribute. **(v. 0.10.0)**
 * `"flagship disabled"` returns 1 if the player's flagship is disabled. Returns 0 otherwise. **(v. 0.10.3)**
 * `"days since year start"` is the number of days since the beginning of the current year. **(v. 0.10.0)**
