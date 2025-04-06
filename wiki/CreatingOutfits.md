@@ -38,7 +38,9 @@ Outfits work by modifying the attributes of your ship. Many of the attributes ar
 
 Most attributes are given as a single number, but there are a few "special" attributes:
 
-* `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category, which may be specified by a category `"outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The existing valid vanilla outfit categories are the following:
+* `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
+The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
+The existing valid vanilla outfit categories are the following:
   * "Guns"
   * "Turrets"
   * "Secondary Weapons"
