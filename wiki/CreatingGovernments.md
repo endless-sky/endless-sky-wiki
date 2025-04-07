@@ -7,7 +7,7 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a governme
 ```html
 government <name>
 	"display name" <other-name>
-	swizzle <value# | name>
+	swizzle <name>
 	color (<r#> <g#> <b#> | <name>)
 	"player reputation" <initial-rep#>
 	reputation
