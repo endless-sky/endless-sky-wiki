@@ -76,7 +76,7 @@ To use this government in NPCs, fleets, or location filters, you would still use
 
 ## Swizzle
 ```html
-swizzle <value# | name>
+swizzle <name>
 ```
 The swizzle of a government defines the default color shift applied to ships of that government.
 
