@@ -801,17 +801,27 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
-* `homing`: How good this weapon is at seeking its target:
+* `homing`: whether or not projectiles fired by this weapon will turn to face its target. In order for a missile to change its trajectory, it also needs a non-zero acceleration value. There are several "child" attributes that can be used to customize the type of homing the projectile has:
+
+  * `intercepts`: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+
+  * `blindspot`: projectile loses its homing ability if no longer facing toward the target.
+
+  * `"throttle control"`: projectile stops thrusting if it misses the target, in order to turn towards it in a tighter loop.
+
+  Prior to **v. 0.10.13**, homing was instead defined as a numerical scale:
 
   * 0: no homing.
 
-  * 1: projectile loses its homing ability if no longer facing toward the target.
+  * 1: weapon has `homing` and `blindspot`.
 
-  * 2: dumb homing (always try to turn to point toward the target).
+  * 2: weapon has `homing`.
 
-  * 3: stop thrusting if you miss the target, in order to turn back towards it in a tighter loop.
+  * 3: weapon has `homing` and `"throttle control"`.
 
-  * 4: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+  * 4: weapon has `homing`, `intercepts`, and `"throttle control"`.
+
+  Homing may still be defined numerically for backwards compatibility.
 
 * Tracking attributes (as of **v. 0.9.1**) control how well a projectile seeks targets, and accept values from 0 to 1:
 
