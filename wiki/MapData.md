@@ -275,7 +275,7 @@ The distance of the "Goldilocks zone" in this system. When selecting a system on
 ```
 
 The distance from the system center at which minable asteroids in this system will orbit.
- **Beginning in v. 0.9.15** a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
+ **Beginning in v. 0.9.15**, a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
  **Beginning in v. 0.10.13**:
 -	The distribution of individual orbits within a belt can be modified. By default, any asteroid within a belt can get as close as 0.4 * `belt radius` to the center of the system, or as far as 4 * `belt radius`, and an individual orbit ellipse can have its long axis a little over twice as long as its short axis.
 -	`max eccentricity` Maximum eccentricity (range 0 to 1, default 0.6).
