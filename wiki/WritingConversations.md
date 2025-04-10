@@ -197,6 +197,8 @@ A branch takes the conversation to one of two different labels depending on a se
 
 The `branch` keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
 
+If the label name is an endpoint, the conversation ends instead of jumping to the label. The corresponding effects for the endpoint are applied.
+
 ```js
 conversation
 	branch "famous"
