@@ -803,7 +803,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `homing`: whether or not projectiles fired by this weapon will turn to face its target. In order for a missile to change its trajectory, it also needs a non-zero acceleration value. There are several "child" attributes that can be used to customize the type of homing the projectile has:
 
-  * `intercepts`: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+  * `leading`: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
 
   * `blindspot`: projectile loses its homing ability if no longer facing toward the target.
 
@@ -819,7 +819,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * 3: weapon has `homing` and `"throttle control"`.
 
-  * 4: weapon has `homing`, `intercepts`, and `"throttle control"`.
+  * 4: weapon has `homing`, `leading`, and `"throttle control"`.
 
   Homing may still be defined numerically for backwards compatibility.
 
