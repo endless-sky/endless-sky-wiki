@@ -124,11 +124,17 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"outfit (storage): <outfit>"` is the number of outfits of the given type that you have in storage and local. When landed, local is your current planet. When in orbit, local is any planet in your current system. **(v. 0.10.0)**
 * `"outfit (all storage): <outfit>"` is the number of outfits of the given type that you have in storage anywhere. **(v. 0.10.0)**
 * `"flagship attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. The attribute is multiplied by 1000 because conditions must be integers, while attributes are decimal values, and multiplying by 1000 allows conditions to check for attributes as small as 0.001. The only exception to this is the "cost" attribute, which is already an integer. This includes the attributes from any installed outfits. **(v. 0.10.0)**
+* `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checks the attributes on the ship itself, excluding any installed outfits. **(v. 0.10.0)**
+* `"ship attribute: <attribute>"` has the same behavior as `"flagship attribute: <attribute>"`, except it looks at every ship in your fleet that is local to the player. Local is defined differently depending on the player's location. **(v. 0.10.13)**
+  * If the player is in orbit, "local" ships are any ships in the same system as the flagship that are also in orbit (i.e. parked ships in-system don't count).
+  * If the player is landed, "local" ships are those on the same planet as the player (i.e. disabled ships in-system don't count). Parked ships are excluded.
+* `"ship base attribute: <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it only checks the attributes on the ships themselves, excluding any installed outfits. **(v. 0.10.13)**
+* `"ship attribute (all): <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it checks every ship in your fleet regardless of location. **(v. 0.10.13)**
+* `"ship base attribute (all): <attribute>"` has the same behavior as `"ship base attribute: <attribute>"`, except it checks every ship in your fleet regardless of location. **(v. 0.10.13)**
 * `"flagship mass"` returns the current total mass of the player's flagship. This includes the mass of the ship itself, the mass of any ships and cargo currently being carried. **(v. 0.10.13)**
 * `"flagship shields"` returns the absolute number of shield hit points the player's flagship currently has. **(v. 0.10.13)**
 * `"flagship hull"` returns the absolute number of hull hit points the player's flagship currently has. **(v. 0.10.13)**
 * `"flagship fuel"` returns the absolute amount of fuel the player's flagship currently has. **(v. 0.10.13)**
-* `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checked the attributes on the ship itself, excluding any installed outfits. **(v. 0.10.0)**
 * `"flagship bays: <category>"` returns the number of bays for the given category of ship the player's flagship has.
 * `"flagship bays free: <category>"` returns the number of bays on the player's flagship for the given category of ship that are not occupied. **Note:** this condition should only be used while the player is in-flight. Its behavior while the player is landed is considered unstable and may change in future versions. **(v. 0.10.13)**
 * `"flagship bays"` returns the total number of bays on the player's flagship. **(v. 0.10.13)**
