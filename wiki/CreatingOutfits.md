@@ -623,7 +623,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
-  * `"gaslining"`: a purely data attribute, used to indicate outfits which provide the ship with the ability to land on gas giants.
+  * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
 
 
 # Weapon attributes
