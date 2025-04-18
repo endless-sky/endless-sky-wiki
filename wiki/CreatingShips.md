@@ -228,7 +228,7 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
-* `"gaslining"`: not an engine attribute, but standardized use for landing on gas giants.
+* `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), standardized to be used for landing on gas giants.
 
 There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for "tier 1" ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordnance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
