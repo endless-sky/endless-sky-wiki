@@ -70,6 +70,7 @@ And so on. The sky's the limit. Missions can become very complex. Here is a full
 mission <name>
 	name <name>
 	description <text>
+	color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
 	blocked <message>
 	deadline [<days> [<multiplier>]]
 	cargo (random | <name>) <number> [<number> [<probability>]]
@@ -255,6 +256,17 @@ description <text>
 ```
 
 This is a short description of the mission, with enough detail to make it clear to the player what they need to do to complete the mission, and what could cause the mission to fail.
+
+```html
+color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
+```
+
+Starting in **v. 0.10.13**, the color used to display the name of a mission in the missions panel can be modified. Colors can either be provided by name to refer to root-defined colors, or RGB values can be provided directly. There are three possible color categories that can be edited:
+* `unavailable`: You don't have enough space for the mission, or it's a mission you've accepted but can't complete at the moment due to remaining objectives.
+* `unselected`: You don't have the mission selected in the missions list, and it's available.
+* `selected`: You do have the mission selected in the missions list, and it's available.
+
+If these are not provided, then the default dim, medium, and bright colors will be used.
 
 ```html
 blocked <message>
