@@ -43,7 +43,7 @@ conversation [<name>]
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
 * `accept`: The player accepts this mission (if one is being offered).
-* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations already occurring in space (e.g. boarding a ship or "completing" an NPC), if a ship initiated the conversation that ship will die.
+* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations already occurring in space and are initiated by an interaction with a ship, that ship will die. This includes conversations created by the `on offer` of boarding missions, the completion of NPC objectives, and, as of **v. 0.10.13**, [NPC actions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#non-player-characters-npcs).
 * `decline`: The mission is declined. (This is also useful for creating conversations that appear when you land or enter a spaceport, but that are intended just to provide flavor, not to lead to a mission.)
 * `flee`: The mission is declined, _and_ the player immediately takes off (for conversations occurring on a planet). For conversations occurring in space, the referenced ship (if any) dies.
 * `defer`: The mission is declined, but it will not be marked as "offered," so it can be offered again at a later date even if it is not a repeating mission.
