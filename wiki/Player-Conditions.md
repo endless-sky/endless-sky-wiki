@@ -132,8 +132,8 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"ship base attribute: <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it only checks the attributes on the ships themselves, excluding any installed outfits. **(v. 0.10.13)**
 * `"ship attribute (all): <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it checks every ship in your fleet regardless of location, including parked ships. **(v. 0.10.13)**
 * `"ship base attribute (all): <attribute>"` has the same behavior as `"ship base attribute: <attribute>"`, except it checks every ship in your fleet regardless of location, including parked ships. **(v. 0.10.13)**
-* `"ship attribute (parked): <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it only checks parked ships local to you. If you are not landed on a planet, then this always returns a value of 0. **(v. 0.10.13)**
-* `"ship base attribute (parked): <attribute>"` has the same behavior as `"ship base attribute: <attribute>"`, except it only checks parked ships local to you. If you are not landed on a planet, then this always returns a value of 0. **(v. 0.10.13)**
+* `"ship attribute (parked): <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it only checks parked ships local to you. If you are not landed on a planet, then this returns a value of 0. **(v. 0.10.13)**
+* `"ship base attribute (parked): <attribute>"` has the same behavior as `"ship base attribute: <attribute>"`, except it only checks parked ships local to you. If you are not landed on a planet, then this returns a value of 0. **(v. 0.10.13)**
 * `"flagship mass"` returns the current total mass of the player's flagship. This includes the mass of the ship itself, the mass of any ships and cargo currently being carried. **(v. 0.10.13)**
 * `"flagship shields"` returns the absolute number of shield hit points the player's flagship currently has. **(v. 0.10.13)**
 * `"flagship hull"` returns the absolute number of hull hit points the player's flagship currently has. **(v. 0.10.13)**
