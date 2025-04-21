@@ -323,6 +323,20 @@ ship "Carrier" "Carrier (No Bays)"
 	remove bays
 ```
 
+# Sales
+
+In order for anyone to buy your new ship, it must be added to one of the "shipyard" objects. For example, if you are writing a plugin, you could include this in one of your data files:
+
+```
+shipyard "Syndicate Advanced"
+	"My Fancy New Ship"
+	"My Other Fine Ship"
+```
+
+Any ships you list will be appended to the ships currently in the list you named. So, the above example would make two new ships available on all planets that have the "Syndicate Advanced" shipyard.
+
+For more information on how shipyard are defined, see the [Creating Shops](Creating-Shops) page.
+
 
 [2xcorvette]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/corvette%402x.png
 [2xfirebird]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/firebird%402x.png
