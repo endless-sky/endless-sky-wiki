@@ -27,6 +27,8 @@ event "label secret space"
 ```
 
 The existing map label have been created with InkScape (https://inkscape.org/).
-Create text with the Zapfino font (you may need to find a download for this), 24-point.
-Set the tracking (i.e. spacing between letters) to 24 px, and the fill color to bbc04030.
-Create a curve and use `Text` -> `Put on Path` to make the text follow that path. Adjust it as appropriate (possibly adjusting the spacing of individual letters to avoid overlapping the map text), then export as a PNG.
+1. Make a screenshot of the map so you can position the text on top of it, and drop that screenshot into a new Inkscape document.
+2. Create text with the Zapfino font (you may need to find a download for this), 24-point.
+3. Set the tracking (i.e. spacing between letters) to 24 px, and the fill color to bbc04030.
+4. Create a curve and use `Text` -> `Put on Path` to make the text follow that path. Adjust it as appropriate (possibly adjusting the spacing of individual letters to avoid overlapping the map text).
+5. Export as a PNG.
