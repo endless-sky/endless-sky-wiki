@@ -23,7 +23,7 @@ location
 (outfitter | shipyard) <name>
 ```
 
-Shops are defined as root nodes with the token `outfitter` or `shipyard`. The former is used for selling outfits while the latter is used for selling ships. Shop names of the same shop type must be unique, and the same shop name appearing in two root nodes will result in both definitions being combined. (i.e. you chould have an outfitter and shipyard with the same name without conflict, but two outfitters with the same name will combine.)
+Shops are defined as root nodes with the token `outfitter` or `shipyard`. The former is used for selling outfits while the latter is used for selling ships. Shop names of the same shop type must be unique, and the same shop name appearing in two root nodes will result in both definitions being combined. (i.e. you could have an outfitter and shipyard with the same name without conflict, but two outfitters with the same name will combine.)
 
 ```html
 stock
@@ -41,6 +41,8 @@ Starting in **v. 0.10.13**, items sold from a shop can be defined under a `stock
 ```
 
 Prior to **v. 0.10.13**, the `stock` node did not exist, and all items sold in a shop were defined as direct children of the root node. This method is still supported for backwards compatibility, and has all the same behavior as the `stock` node described above.
+
+Beginning in **v. 0.10.13**, an outfitter or shipyard is allowed to have an empty stock. This means that a planet can grant access to the outfitter or shipyard, but there won't be any outfits or ships for sale. This can be useful for creating planets that don't sell outfits but have the facilities for you to store outfits or edit the placement of outfits in your fleet, or planets that will buy ships from you but don't sell any. Prior to this update, empty shops would be logged as a data error and not be included on a planet.
 
 # Adding shops to planets
 
@@ -72,6 +74,6 @@ Shops can contain a `to sell` condition set or `location` location filter that s
 
 If a shop has a `to sell` and/or `location` node, but is also included in a `planet` definition, then the `to sell` and `location` nodes will be ignored when you land on that planet and the shop will always be available, while still being able to appear on other planets who haven't listed the shop as permanently available but do match the `to sell` and/or `location` node.
 
-For more information on [condition sets](Player-Conditions) and [location filters](LocationFilters), see the relavent wiki pages.
+For more information on [condition sets](Player-Conditions) and [location filters](LocationFilters), see the relevant wiki pages.
 
 Note that at the moment, shops defined to only conditionally appear are not visible on the map. That is, if a conditional outfitter were to sell an outfit on Luna that is not present in one of the outfitters listed above, that information would not be available on the map.
