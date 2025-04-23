@@ -72,11 +72,25 @@ planet <name>
 	music <sound>
 	description <text>
 	spaceport <text>
+	to know
+		<condition-set>
+	to land
+		<condition-set>
+	to unlock (outfitter | shipyard)
+		<condition-set>
 	port [<name>]
-		recharges <recharge type>...
+		recharges <recharge-type>...
 			...
-		services <service type>...
+		services <service-type>...
 			...
+		to access
+			<condition-set>
+		to bribe
+			<condition-set>
+		to recharge <recharge-type>...
+			<condition-set>
+		to service <recharge-type>...
+			<condition-set>
 		news
 		description <text>
 	government <name>
@@ -415,11 +429,25 @@ planet <name>
 	music <sound>
 	description <text>
 	spaceport <text>
+	to know
+		<condition-set>
+	to land
+		<condition-set>
+	to unlock (outfitter | shipyard)
+		<condition-set>
 	port [<name>]
-		recharges <recharge type>...
+		recharges <recharge-type>...
 			...
-		services <service type>...
+		services <service-type>...
 			...
+		to access
+			<condition-set>
+		to bribe
+			<condition-set>
+		to recharge <recharge-type>...
+			<condition-set>
+		to service <recharge-type>...
+			<condition-set>
 		news
 		description <text>
 	government <name>
@@ -501,11 +529,34 @@ spaceport <text>
 The description of the spaceport after clicking the spaceport button. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
 
 ```html
+to know
+	<condition-set>
+to land
+	<condition-set>
+to unlock (outfitter | shipyard)
+	<condition-set>
+```
+
+Beginning in **v. 0.10.13**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+
+* `to know`: Controls whether the object that the planet is associated with is seen as a landable object. If this is false, the object won't appear landable.
+* `to land`: Controls whether the player can land on the planet. If false, you won't be able to land, and hailing the planet will tell you that you are denied landing access and cannot bribe your way onto the planet.
+* `to unlock (outfitter | shipyard)`: Controls whether the outfitter or shipyard buttons are available after landing. The planet must also have `outfitter` or `shipyard` nodes present in order for the shops to become available.
+
+```html
 port [<name>]
-	recharges <recharge type>...
+	recharges <recharge-type>...
 		...
-	services <service type>...
+	services <service-type>...
 		...
+	to access
+		<condition-set>
+	to bribe
+		<condition-set>
+	to recharge <recharge-type>...
+		<condition-set>
+	to service <recharge-type>...
+		<condition-set>
 	news
 	description <text>
 ```
@@ -531,6 +582,13 @@ If a port has no `services` node, then it will not offer any services. As with `
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
 The description text of a port behaves the same way as the text following a "spaceport" node, and is the text that appears when you click the port button.
+
+Beginning in **v. 0.10.13**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+
+* `to access`: If false, every service that the port provides will be rejected, including all recharging and services, all shops, and even the spaceport button.
+* `to bribe`: If true, you will be required to pay a bribe before landing.
+* `to recharge`: Controls whether individual recharge types are available to the player. A single `to recharge` node can be used to lock multiple recharge types. For example, `to recharge hull shields` would lock both hull and shield repairs. Multiple `to recharge` nodes can be present at once. Only the last set of conditions for a particular recharge type will be used. The recharge type must also be present in the `recharges` node in order for this to have any effect. For example, if `to recharge hull` is true but the port doesn't have `recharges all` or `recharges hull`, then the port still won't repair your ships.
+* `to service`: Controls whether individual service types are available to the player. Behaves the same as `to recharge`, but for service types.
 
 ```html
 government <name>
