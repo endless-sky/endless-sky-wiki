@@ -235,7 +235,7 @@ See [swizzles.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_
 
 ## Shaders
 
-Since **v.0.10.13**
+Since **v.0.10.13**:
 
 Plugins can override the game's shaders, effectively changing how each item is displayed on the screen. New shaders cannot be created, and the overwritten shaders must take the same arguments as those provided by the game. You can find the game's own shaders [here](https://github.com/endless-sky/endless-sky/tree/master/shaders).
 
