@@ -239,6 +239,6 @@ Since **v.0.10.13**
 
 Plugins can override the game's shaders, effectively changing how each item is displayed on the screen. New shaders cannot be created, and the overwritten shaders must take the same arguments as those provided by the game. You can find the game's own shaders [here](https://github.com/endless-sky/endless-sky/tree/master/shaders).
 
-Endless Sky uses shaders written in the [OpenGL Shading Language](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)). Our shaders are either vertex shaders or fragment shaders, which is determined from their file extenion (`.vert` and `.frag`, respectively).
+Endless Sky uses shaders written in the [OpenGL Shading Language](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)). Our shaders are either vertex shaders or fragment shaders, which is determined from their file extension (`.vert` and `.frag`, respectively).
 
 Since the game can run on both OpenGL and OpenGL ES, shaders can be defined for either or both environments. By default, shader files are valid in both environments; exclusive shaders can be created by appending the `.gl` or `.gles` extension to the shader file, resulting in something like `sprite.frag.gles`.
