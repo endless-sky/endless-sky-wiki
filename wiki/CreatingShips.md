@@ -335,7 +335,7 @@ shipyard "Syndicate Advanced"
 
 Any ships you list will be appended to the ships currently in the list you named. So, the above example would make two new ships available on all planets that have the "Syndicate Advanced" shipyard.
 
-For more information on how shipyard are defined, see the [Creating Shops](Creating-Shops) page.
+For more information on how shipyards are defined, see the [Creating Shops](Creating-Shops) page.
 
 
 [2xcorvette]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/corvette%402x.png

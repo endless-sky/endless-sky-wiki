@@ -1,6 +1,6 @@
 # Introduction
 
-Shops are either outfitters or shipyards that sell outfits or ships respectively on a planet. The [syntax](DataFormat#grammar-specifications) for the definition of a shop is:
+Shops are outfitters or shipyards that sell outfits or ships on a planet. The [syntax](DataFormat#grammar-specifications) for the definition of a shop is:
 
 ```html
 (outfitter | shipyard) <name>
@@ -46,7 +46,7 @@ Beginning in **v. 0.10.13**, an outfitter or shipyard is allowed to have an empt
 
 # Adding shops to planets
 
-There are two ways of adding shops to a planet. The first method is to add the shop to the [planet's definitions](MapData), like follows:
+There are two ways of adding shops to a planet. The first method is to add the shop to the [planet's definitions](MapData), as follows:
 
 ```html
 planet Luna
