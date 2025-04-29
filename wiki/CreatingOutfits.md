@@ -913,6 +913,8 @@ outfitter "Syndicate Advanced"
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
 
+For more information on how outfitters are defined, see the [Creating Shops](Creating-Shops) page.
+
 # Balancing
 
 In Escape Velocity, the classic series of games that Endless Sky is patterned after, there were some outfits that were so powerful compared to their size that there was no reason not to install them if you could afford it: for example, outfits that took no space and improved your acceleration and turn rate, or very small outfits that boosted your shields considerably. As a result, those games needed to put a limit on how many of each outfit could be installed.
