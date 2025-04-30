@@ -272,7 +272,7 @@ mission "show the war conversation"
 ```
 The above mission requires the event named "war begins" to have occurred before it can offer.
 
-# Events, savegames, and backwards compatiblity
+# Events, savegames, and backwards compatibility
 
 Prior to **v. 0.10.13**, events that had been triggered would have their entire definition (minus the name) saved to the player's save file in the order that they were triggered. This meant that if an event's definition was changed, the previous version of that event would still exist in the save file, and a compatibility mission would be needed to re-trigger the event if the new event changes were needed in existing save files.
 
