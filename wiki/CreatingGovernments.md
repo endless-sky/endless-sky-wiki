@@ -7,7 +7,7 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a governme
 ```html
 government <name>
 	"display name" <other-name>
-	swizzle <value#>
+	swizzle <name>
 	color (<r#> <g#> <b#> | <name>)
 	"player reputation" <initial-rep#>
 	reputation
@@ -76,9 +76,11 @@ To use this government in NPCs, fleets, or location filters, you would still use
 
 ## Swizzle
 ```html
-swizzle <value#>
+swizzle <name>
 ```
 The swizzle of a government defines the default color shift applied to ships of that government.
+
+Since **v. 0.10.13**, a government's swizzle can be set by name, where the name is a swizzle defined elsewhere. Previous numbered swizzles can be found as examples in [swizzles.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/swizzles.txt).
 
 ## Color
 ```html
