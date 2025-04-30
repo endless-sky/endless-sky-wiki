@@ -17,7 +17,7 @@ Any outfit model you create in Blender should use the camera and lighting settin
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/anti-missile.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/medium%20ion%20thruster.png)
 
-The outfitter view divides outfits into difference categories: "Guns," "Turrets," etc. As another way of ensuring a consistent look, most outfits in a given section point in a certain direction:
+The outfitter view divides outfits into different categories: "Guns," "Turrets," etc. As another way of ensuring a consistent look, most outfits in a given section point in a certain direction:
 
 * Guns: top left.
 * Turrets: top left, and angled slightly up in the Z axis.
@@ -38,7 +38,9 @@ Outfits work by modifying the attributes of your ship. Many of the attributes ar
 
 Most attributes are given as a single number, but there are a few "special" attributes:
 
-* `category`: which outfitter category to show this outfit in. The category must be one of the following if it is to be purchasable:
+* `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
+The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
+The existing valid vanilla outfit categories are the following:
   * "Guns"
   * "Turrets"
   * "Secondary Weapons"
@@ -47,7 +49,10 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Power"
   * "Engines"
   * "Hand to Hand"
-  * "Special"
+  * "Unique" (**v0.10.12**)
+  * "Minerals" (**v0.10.12**)
+  * "Special" (**v0.10.12**)
+  * "Licenses" (**v0.10.12**)
 
 * `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
 
@@ -69,7 +74,7 @@ Most attributes are given as a single number, but there are a few "special" attr
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
-* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once.
+* Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once. If a ship does not define any sounds to be played, default sounds will be used. These default sounds have the following names: "jump drive", "hyperdrive", "jump in", "hyperdrive in", "jump out", and "hyperdrive out".
 
   * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive.
 
@@ -77,7 +82,15 @@ Most attributes are given as a single number, but there are a few "special" attr
 
   * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
 
+  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
+
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
+
+Outfits can optionally be ordered in the outfitter screen by using the following attributes, which interact with outfit series as defined in `series.txt`.
+
+* `series`: which outfit series listed in `series.txt` this outfit belongs to.
+
+* `index`: where the outfit is ordered within its series. Lower indices are listed before higher indices. Almost all vanilla outfits have a five-digit `index` value. The first two digits are specific to the species the outfit belongs to (for example, human outfit indices always start with `01`). The remaining three digits are responsible for ordering the outfit within its series, and generally increment by 10 for each outfit in that series.
 
 Unless otherwise stated, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
 
@@ -131,6 +144,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"low shield permeability"`: The permeability of your shields as they approach 0%. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength increases, the permeability of your shields approaches the high shield permeability value. **(v. 0.10.1)**
 
+  * `"cloaked shield permeability"`: The permeability of your shields is increased by this much while you are cloaked. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. This stacks additively with the two permeability attributes above. **(v. 0.10.11)**
+
   * `hull`: an additional number of hull points added to a ship's base hull value.
 
   * `"hull repair rate"`: the number of hull points regenerated per frame. It takes 1 energy to repair 1 unit of hull.
@@ -161,29 +176,31 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"hull threshold"`: a hull value that gets added or subtracted from the result of either the default equation or the threshold percentage equation, whichever is used.
 
-* Some ships have the ability to repair themselves (after a certain amount of time) once the ship is disabled. The `"disabled recovery time"` attribute gives the number of seconds it takes for a disabled ship to repair itself. Self-repair could have some costs, for example:
+* Some ships can repair themselves after being disabled. This process occurs some time after the ship was disabled and can have energy and fuel costs. This process is not affected by a ship being overheated.
 
-  * `"disabled recovery energy"` The energy cost required for a disabled ship to repair itself.
+  * `"disabled recovery time"`: the number of frames after becoming disabled a ship must wait before it can recover on its own, if sufficient energy and fuel are available.
 
-  * `"disabled recovery fuel"` The fuel cost required for a disabled ship to repair itself.
+  * `"disabled recovery energy"`: the energy cost required for a disabled ship to repair itself.
 
-  * `"disabled recovery heat"` The heat applied when a disabled ship repairs itself.
+  * `"disabled recovery fuel"`: the fuel cost required for a disabled ship to repair itself.
 
-  * `"disabled recovery ionization"` The ion damage applied when a disabled ship repairs itself.
+  * `"disabled recovery heat"`: the heat applied when a disabled ship repairs itself.
 
-  * `"disabled recovery scrambling"` The scrambling damage applied when a disabled ship repairs itself.
+  * `"disabled recovery ionization"`: the ion damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery disruption"` The disruption damage applied when a disabled ship repairs itself.
+  * `"disabled recovery scrambling"`: the scrambling damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery slowing"` The slowing damage applied when a disabled ship repairs itself.
+  * `"disabled recovery disruption"`: the disruption damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery discharge"` The discharge damage applied when a disabled ship repairs itself.
+  * `"disabled recovery slowing"`: the slowing damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery corrosion"` The corrosion damage applied when a disabled ship repairs itself.
+  * `"disabled recovery discharge"`: the discharge damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery leak"` The leak damage applied when a disabled ship repairs itself.
+  * `"disabled recovery corrosion"`: the corrosion damage applied when a disabled ship repairs itself.
 
-  * `"disabled recovery burning"` The burning damage applied when a disabled ship repairs itself.
+  * `"disabled recovery leak"`: the leak damage applied when a disabled ship repairs itself.
+
+  * `"disabled recovery burning"`: the burning damage applied when a disabled ship repairs itself.
 
 * Most of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship according to the equation `stat * (1 + multiplier)`, which means that the default value of 0 means no change, while a value of 1 would be a +100% increase in the stat. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated stat. **(v. 0.9.13)**
   
@@ -405,6 +422,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
 
+  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. **(v. 0.10.10)**
+
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
   * `"scan brightness"`: increases the chance that an illegal outfit will appear on a cargo scan. The cargo scan formula is as follows: `max(1., 2 * (illegal good mass + illegal good scan brightness) / legal good mass) / (1 + scan interference)`. In English, if you have 1 ton of illegal goods and 2 tons of legal goods then you have a 50% chance of your illegal goods being found on a cargo scan. The higher the ratio of legal to illegal goods, the lower your chances of being caught. If you have no legal goods or too many illegal goods then the chance caps out at `1 / (1 + scan interference)`. **(v. 0.10.0)**
@@ -437,11 +456,15 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"jump fuel"`: how much fuel the ship consumes when using this outfit to jump. The default is 100 for hyperdrives, 150 for scram drives, and 200 for jump drives. Unlike other attributes, the jump fuel of multiple outfits will not stack. Instead, the lowest jump fuel among all installed outfits will be used. **(v. 0.9.7)**
 
+  * `"hyperdrive fuel"`: overrides "jump fuel" (see above) for hyperlane jumps. **(v. 0.10.11)**
+
+  * `"jump drive fuel"`: overrides "jump fuel" (see above) for non-hyperlane jumps. **(v. 0.10.11)**
+
   * `"jump mass cost"`: an additional jump fuel cost per 100 tons of ship mass. Adds to the base jump fuel cost above. **(v. 0.10.0)**
 
   * `"jump base mass"`: a value that subtracts from a ship's mass during the jump mass cost calculation. If a drive's jump base mass is high enough and the ship's mass is low enough, the impact of the jump mass cost is allowed to go negative and begin subtracting from the normal jump fuel cost. Reducing your jump cost in this manner is only allowed to go as low as a cost of 1 fuel per jump. **(v. 0.10.0)**
 
-  * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. **(v. 0.9.13)**
+  * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. System-defined jump ranges override outfit-defined ones. **(v. 0.9.13)**
 
 * These attributes can be used to alter the crew stats of a ship.
 
@@ -463,7 +486,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `cloak`: how quickly a cloaking device cloaks or uncloaks. When cloaking, this amount is added to your cloaking each frame until you reach 1, at which point your ship is fully cloaked. The opposite happens when uncloaking.
 
-  * `cloak by mass": similar to `cloak` except this value is divided by 1/1000 of the ships mass. For a ship with 1000 mass, this value works exactly like the same amount of `cloak`. For a ship with 500 mass, it would be like having twice as much of this value as `cloak`. The result of the division of this value is added to the `cloak` attribute value, so both can be applied to a single ship. For example, a ship with 2000 mass, 0.01 `cloak` and 0.1 `cloak by mass` would have an overall cloak rate of 0.06 units per frame. **(v. 0.10.7)**
+  * `"cloak by mass"`: similar to `cloak` except this value is divided by 1/1000 of the ships mass. For a ship with 1000 mass, this value works exactly like the same amount of `cloak`. For a ship with 500 mass, it would be like having twice as much of this value as `cloak`. The result of the division of this value is added to the `cloak` attribute value, so both can be applied to a single ship. For example, a ship with 2000 mass, 0.01 `cloak` and 0.1 `cloak by mass` would have an overall cloak rate of 0.06 units per frame. **(v. 0.10.7)**
 
   * `"cloak hull threshold"`: the minimum fraction of hull a ship must have remaining in order to be able to cloak. **(v. 0.10.7)**
 
@@ -590,6 +613,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
+ 
+  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. **(v. 0.10.13)**
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
@@ -599,7 +624,9 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
-  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain.
+  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. **(v. 0.10.4)**
+
+  * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
 
 # Weapon attributes
@@ -628,7 +655,9 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
 
-* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
+* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
+
+ * `"empty sound"`: a path to a sound (see the requirements above) that is played when the player attempts to fire a weapon that does not have enough ammo or fuel to fire. **(v. 0.10.13)**
 
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 
@@ -708,9 +737,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `inverted`: inverts the distribution of only narrow, medium, or wide inaccuracies, so that projectiles are more likely to appear at the edges of the angle rather than the middle.
 
-* `"turret turn"`: the number of degrees that this turret rotates per frame. (**v. 0.9.7**)
+* `"turret turn"`: the number of degrees that this turret rotates per frame. **(v. 0.9.7)**
 
-* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.)
+* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.) **(v. 0.10.7)**
 
 * The calculation for the range of a weapon involves multiplying its base lifetime by its base velocity. This value is what is used by the AI to determine when to fire the weapon given the distance to the target. The AI will also take any random velocity into account when aiming the weapon in order to properly lead the target. These base values may not always be entirely accurate as to how the AI should use a weapon though. Such situations may include weapons with acceleration and drag values that cause a projectile to travel much faster or slower than the base velocity, or weapons with very high inaccuracies that make using them at range impractical. It can also be the case that a weapon has a blast radius, which will by default cause ships to avoid firing the weapon if their target is close enough where the explosion with damage itself, although removing this behavior may be desired. The following attributes can be used in order to get more favorable results in how the AI uses the weapon:
 
@@ -760,9 +789,17 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `reload`: how many frames this weapon takes to reload: 1 means it fires every turn (e.g. most beam weapons), and 60 means it fires once per second.
 
+  * A non-burst weapon with a reload of 1 or less and a total lifetime of 1 will have a fire rate of "continuous" in its outfit info.
+
+  * The total lifetime is the lifetime of the initial projectile added to the total lifetime of its longest lived submunition, calculated recursively, accounting for the submunitions of the submunition, etc.
+
 * `"burst count"`: how many projectiles this weapon can fire in a row at a higher reload rate (`"burst reload"`). The burst will reload fully after `reload * # of shots fired` frames from the first shot of the burst, making the reload time for a full burst `reload * "burst count"` frames. (This is technically the same as a non-burst weapon, as it effectively has a burst count of 1.) The number of frames between the end of a full burst and the start of the next burst is `"burst count" * (reload - "burst reload")`. **(v. 0.9.0)**
 
 * `"burst reload"`: how many frames this weapon takes to reload between projectiles in a burst. This value must be less than the full `reload` value. For example, a weapon with a `reload` of `100`, `"burst count"` of `2` and `"burst reload"` of `5` will fire on the 1st and 6th frames, then on the 201st and 206th frames, and so on. The fraction of time that a burst weapon spends firing is `("burst reload" - 1) / reload`, where the weapon is considered firing on each frame where it has fired a projectile or is reloading the next projectile in the burst, with the final projectile in a burst being the end of the firing period. **(v. 0.9.0)**
+
+  * A weapon with a burst count greater than 1 and a burst reload of 1 or less and a total lifetime of 1 will be labeled as "continuous (x%)" in its outfit info.
+
+  * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
 * `homing`: How good this weapon is at seeking its target:
 
@@ -786,7 +823,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `tracking`: a form of tracking that is constant, regardless of the ship's size, heat, or radar jamming ability.
 
-* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
+* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0 or no value is provided, the projectile will not be targeted by anti-missile.
 
 * The following weapon attributes turn a weapon into a special weapon that behaves differently from other weaponry. By including these attributes, the weapon will only automatically fire on specific targets and cannot be controlled manually. In addition, these special weapon attributes only work on turrets, do not spawn projectiles when they fire (although they will still create effects, and hit effects can be used to mimic a projectile's appearance), and have a range equal to their velocity (the lifetime should always be 1).
 
@@ -798,7 +835,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"trigger radius"`: how close a projectile must be to a hostile target to trigger its explosion. This only makes sense to use with weapons with a `"blast radius"` at least as big as their `"trigger radius"`.
 
-* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate.
+* `"blast radius"`: all ships (friendly and hostile) within this radius are damaged if this projectile explodes. Note: anything with a blast radius will show up on radar, like missiles do. Beginning in **v. 0.9.9**, any weapon with a blast radius is subject to damage scaling - objects closer to the center of the blast take more damage. Weapons with a trigger radius have their nominal damage boosted a small amount to compensate. Weapons with a blast radius will not deal damage or apply prospecting to a minable.
 
 [<img src="https://i.imgur.com/Nw81ZjK.png" width="400px">][blastscale]
 
@@ -818,7 +855,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"hull damage"`: how much damage a projectile does to the hull of ships or minables.
 
-  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage. **(v. 0.9.15)**
+  * `"disabled damage"`: how much damage a projectile does to hull while the target is disabled. If omitted, the damage dealt while the target is disabled is the same as the normal hull damage. If included, this damage amount overrides the normal hull damage, but not relative hull damage. **(v. 0.9.15)**
 
   * `"minable damage"`: how much damage a projectile does to [minable objects](CreatingMinables). If present, this value is used in lieu of hull damage. **(v. 0.9.15)**
 
@@ -838,7 +875,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"relative disabled damage"`: disabled hull damage that gets scaled according to the max hull of a target. **(v. 0.9.15)**
 
-  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. **(v. 0.9.15)**
+  * `"relative minable damage"`: minable damage that gets scaled according to the max hull of a target minable. If not present, the value of the relative hull damage is used instead. **(v. 0.9.15)**
 
   * `"relative heat damage"`: heat damage that gets scaled according to the max heat capacity of a target (the point at which it becomes overheated). If the target's shields are up, heat damage is cut in half.
 
@@ -875,6 +912,8 @@ outfitter "Syndicate Advanced"
 ```
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
+
+For more information on how outfitters are defined, see the [Creating Shops](Creating-Shops) page.
 
 # Balancing
 

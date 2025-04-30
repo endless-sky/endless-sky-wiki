@@ -131,7 +131,7 @@ A `news` datafile definition has 4 definable child elements.
 * `name`: The name of the [spaceport person](#People) that will appear along with the news message. For flexibility, this uses the same format as creating ship hails, meaning you can define any number of names to be used with the same set of messages.
 * `portrait`: The path to a sprite to be displayed in the news message, relative to the `images` directory. Multiple sprites can be provided, and one will be chosen at random when the news message is displayed.
 * `message`: The text to be displayed. For flexibility, this uses the same "phrase" format that the news' name element and ship hails use.
-* `location` (optional): A [location filter](LocationFilters) that is used to identify on which planets this News message can appear. If not provided, or removed, then this news source will not be displayed anywhere. For the full syntax associated with locations filters see [the reference here](LocationFilters).
+* `location`: A [location filter](LocationFilters) that is used to identify on which planets this news message can appear. If not provided, or removed, then this news source will not be displayed anywhere. For the full syntax associated with locations filters see [the reference here](LocationFilters).
 * `to show` (optional): A condition set that determines whether this News message can appear. Behaves the same way as `to offer` does for [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). 
 
 ```html
@@ -189,6 +189,17 @@ news "contributing"
 			"."
 ```
 For additional examples, see [`news.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/human/news.txt).
+
+## Substitutions
+
+Beginning in **v. 0.10.13**, news text can contain [text replacements](CreatingSubstitutions).
+Globally provided substitutions will be available, as well as a few hardcoded ones:
+* `<first>` - the pilot's first name
+* `<last>` - the pilot's surname
+* `<ship>` - the user-set name of the flagship
+* `<model>` - the model display name of the flagship
+* `<date>` - the current date, in the form: "YYYY-MM-DD", "Day, DD Mon YYYY", or "Day Mon DD, YYYY", depending on current user settings
+* `<day>` - the current date, in the form: "Month DDth" or "the DDth of Month", depending on user settings
 
 ## Modifying existing definitions
 
