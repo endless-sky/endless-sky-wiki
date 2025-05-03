@@ -519,7 +519,7 @@ An example usage of this is allowing a mission to complete when landing on any p
 ```html
 complete at
 	government "Pirate"
-\```
+```
 
 The code for `complete at` runs when the player lands at a planet, but this might change in the future (to allow completing missions elsewhere, possibly mid-flight). If you want to make sure that missions end on a planet in the future, then make sure that the `complete at` filter only contains planet destinations.
 
