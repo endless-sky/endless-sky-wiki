@@ -185,7 +185,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
 
-* `"swizzle"`: the swizzle value that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
+* `"swizzle"`: the name of the swizzle that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
+
+  Since **v. 0.10.13**, you can now use named swizzles. All previous numbered swizzles are still available.
 
 * `"name"`: the name of the particular ship, as seen and/or editable by the player. In general, this field will only be used by content creators for ships gifted to the player by a specific starting scenario. (It is extensively used by the game engine, to save the player's ships' names.)
 
@@ -193,7 +195,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
-* `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
+* `"category"`: the type of ship, as specified by a `category "ship"` node since **v. 0.9.15**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The existing valid vanilla `"ship"` categories are: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
 
   Since **v. 0.9.15**: also "Space Liner", or "Utility".
   Since **v. 0.10.0**: also "Superheavy".
@@ -320,6 +322,20 @@ Beginning with **v. 0.10.0**, variants are also capable of having no bays even i
 ship "Carrier" "Carrier (No Bays)"
 	remove bays
 ```
+
+# Sales
+
+In order for anyone to buy your new ship, it must be added to one of the "shipyard" objects. For example, if you are writing a plugin, you could include this in one of your data files:
+
+```
+shipyard "Syndicate Advanced"
+	"My Fancy New Ship"
+	"My Other Fine Ship"
+```
+
+Any ships you list will be appended to the ships currently in the list you named. So, the above example would make two new ships available on all planets that have the "Syndicate Advanced" shipyard.
+
+For more information on how shipyards are defined, see the [Creating Shops](Creating-Shops) page.
 
 
 [2xcorvette]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/corvette%402x.png
