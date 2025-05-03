@@ -348,7 +348,7 @@ A mission shown when `assisting` or `boarding` will be shown when you repair a f
 
 An `"in flight"` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
 
- All `assisting`, `boarding`, and `"in flight"` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
+All `assisting`, `boarding`, and `"in flight"` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
