@@ -510,7 +510,18 @@ If no source is specified, the mission will be offered whenever its `to offer` c
 
 For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
-Missions don't always need to end at a destination planet, the `complete at` keyword can be used to specify alternative locations where missions can end. The code for `complete at` runs when the player landed at a planet, but this might change in the future (to allow completing missions elsewhere, possibly mid-flight). If you want to make sure that missions end on a planet in the future, then make sure that the `complete at` filter only contains planet destinations.
+Note that the `destination` filter will be evaluated to one single planet that the player must land on in order to complete the mission. Beginning in **v. 0.10.13**, the `complete at` node can be used to specify alternative locations where missions can end. A `complete at` location filter can be used to complete the mission if the player lands at any planet that matches the filter.
+
+If a mission has a `destination` and a `complete at` node, then the `complete at` node will take precedence.
+Only the `destination` will place a marker on the map.
+
+An example usage of this is allowing a mission to complete when landing on any pirate planet, instead of needing to land on one particular pirate planet.
+```html
+complete at
+	government "Pirate"
+\```
+
+The code for `complete at` runs when the player lands at a planet, but this might change in the future (to allow completing missions elsewhere, possibly mid-flight). If you want to make sure that missions end on a planet in the future, then make sure that the `complete at` filter only contains planet destinations.
 
 # Distance calculation settings
 
