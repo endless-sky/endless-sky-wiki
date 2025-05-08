@@ -80,7 +80,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor | non-blocking)
-	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | "in flight")
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -337,7 +337,7 @@ Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not 
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter | "job board" | "in flight")
+(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
@@ -346,9 +346,9 @@ If this mission is to be shown at `landing`, it shows up as soon as you land ins
 
 A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
 
-An `"in flight"` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
+An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
 
-All `assisting`, `boarding`, and `"in flight"` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
+All `assisting`, `boarding`, and `entering` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
