@@ -7,7 +7,8 @@
 * [Source and destination filters](#mission-location-filters)
 * [Distance Calculation Settings](#distance-calculation-settings)
 * [Non-Player Characters (NPCs)](#non-player-characters-npcs)
-* [Triggers](#triggers)
+* [Mission Timers](#mission-timers)
+* [Mission Action Triggers](#mission-action-triggers)
 
 # Introduction
 
@@ -158,6 +159,19 @@ mission <name>
 		fleet <name> [<count>]
 		fleet [<count>]
 			...
+	timer <base-time#> [<random-time#>]
+		pauses
+		optional
+		"activation requirements"
+			peaceful
+			(cloaked | uncloaked)
+			solo
+			idle [<speed#>]
+			system <system name>
+			system
+				<location-filter>
+		on (deactivation | timeup)
+			<action>
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
 		log [<category> <header>] <text>
 		remove log <category> [<header>]
@@ -390,13 +404,13 @@ If a specific destination is given (i.e. `destination <planet>`) and no clearanc
 
 If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag, or, beginning in **v. 0.10.1**, if the mission has the `ignore clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
 
-The `clearance` tag may have child entries that specify a [location filter](#mission-location-filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
+The `clearance` tag may have child entries that specify a [location filter](LocationFilters), the same as the `source` and `destination` tags [described below](#mission-location-filters). In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
 
 ```html
 ignore clearance
 ```
 
-Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a location filter will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
+Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a [location filter](LocationFilters) will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
 
 ```html
 mission "A Mission with Phrases"
@@ -508,12 +522,14 @@ For missions offered by a ship, you must always specify a destination, even if t
 
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
-For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a ["location" filter])(LocationFilters), as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
-Note that the `destination` filter will be evaluated to one single planet that the player must land on in order to complete the mission. Beginning in **v. 0.10.13**, the `complete at` node can be used to specify alternative locations where missions can end. A `complete at` location filter can be used to complete the mission if the player lands at any planet that matches the filter.
+Note that if a location filter is provided for the `destination`, one planet at random in the game that matches the location filter will be chosen as the mission's destination once it is offered.
+
+Beginning in **v. 0.10.13**, the `complete at` node can be used as an alternative method of specifying mission destinations; instead of picking one random planet to mark as the mission destination, every planet that matches the `complete at` location filter can be landed on in order to complete the mission.
 
 If a mission has a `destination` and a `complete at` node, then the `complete at` node will take precedence.
-Only the `destination` will place a marker on the map.
+Note that only the `destination` will place a marker on the map; a `complete at` node will not place a marker on every planet that matches its filter.
 
 An example usage of this is allowing a mission to complete when landing on any pirate planet, instead of needing to land on one particular pirate planet.
 ```html
@@ -703,7 +719,43 @@ fleet [<count#>]
 
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal [`fleet` data entry](CreatingFleets). Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
 
-# Triggers
+# Mission Timers
+
+```html
+timer <base-time#> [<random-time#>]
+	pauses
+	optional
+	"activation requirements"
+		peaceful
+		(cloaked | uncloaked)
+		solo
+		idle [<speed#>]
+		system <system name>
+		system
+			<location-filter>
+	on (deactivation | timeup)
+		<action>
+```
+
+Beginning in **v. 0.10.13**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
+
+By default, timers will run whenever the player is not in hyperspace or taking off from a planet/wormhole. Timers can be given a series of `"activation requirements"` that limit when the timer is running though:
+* `peaceful`: The player cannot be firing any weapons on their flagship.
+* `cloaked`: The player's flagship must be fully cloaked.
+* `uncloaked`: The player's flagship must be fully uncloaked.
+* `solo`: The player must not have any other escorts in the system with them. (Docked fighters don't count as being "in system" for the purposes of this requirement. Deploying the fighters would cause them to count against you, though.)
+* `idle`: The player must not be sending any movement commands to their flagship and must be moving slowly. The default speed limit is a velocity of 5, but an optional value can be provided to this requirement to change how fast/slow the player is allowed to move.
+* `system`: The name of an exact system, or a full [location filter](LocationFilters). The player must be within the named system, or within a system that matches the location filter.
+
+Multiple activation requirements can be applied to the same timer. If at any point the player does not meet the activation requirements, the timer will reset its count back to 0, unless the `pauses` tag is present, in which case the timer will pause.
+
+Timer nodes are able to have triggers that run under certain circumstances:
+* `on deactivation`: Runs the first time, and only the first time, that the timer is deactivated after having been activated.
+* `on timeup`: Runs when the timer as completed.
+
+For more details on triggers/mission actions, see the section below.
+
+# Mission Action Triggers
 
 A mission can also specify what happens at various key parts of the mission:
 
