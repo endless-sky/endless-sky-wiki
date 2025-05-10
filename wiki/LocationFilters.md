@@ -196,5 +196,3 @@ source
 # Testing location filters
 
 Beginning in **v. 0.10.0**, it is possible to test filters by passing `--matches` to the game and then writing a location filter under a `location` node. The output are systems and planets matching the filter.
-
-Note: in order to use this function with location filters traversing wormholes (with the distance calculation settings in **v. 0.10.1**), the game will need to be recompiled with the method `Body::HasSprite()` modified to always return `true`.
