@@ -224,6 +224,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"hull multiplier"`: multiplies the maximum hull value of the ship. **(v. 0.10.3)**
 
+  * `"cloaked regen multiplier"`: multiplies the shield generation value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"shield generation multiplier"`. For example, if both attributes have a value of 0.1, then your shield generation will run at 110% while uncloaked and 110% * 110% = 121% when cloaked. **(v. 0.10.13)**
+
+  * `"cloaked repair multiplier"`: multiplies the hull repair rate value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"hull repair multiplier"`. **(v. 0.10.13)**
+
 * These attributes are generally related to power generators and batteries.
 
   * `"energy capacity"`: how much energy your ship can store.
