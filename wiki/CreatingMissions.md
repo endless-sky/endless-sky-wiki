@@ -334,8 +334,6 @@ In general, any mission that starts a completely new mission string, and that co
 
 Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
 
-Note that `priority` will only affect missions that offer from the spaceport.
-
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter | "job board")
 ```
