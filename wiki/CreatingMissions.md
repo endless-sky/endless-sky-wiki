@@ -338,11 +338,13 @@ Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not 
 (job | landing | assisting | boarding | shipyard | outfitter | "job board")
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
+This specifies where this mission will be shown, if someplace other than the spaceport.
 
-If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
-
-A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+* `job`: it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). Note that `job` missions do not run their `on offer` [action](#triggers) until they are accepted, but dialogs and conversation from the `on offer` will not appear. Place dialogs and conversations in the `on accept` action of a `job` mission instead.
+* `landing`: it shows up as soon as you land instead of waiting for you to visit the spaceport or some other location. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
+* `assisting` or `boarding`: it will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+* `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
+* `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
 
 ```html
 autosave
