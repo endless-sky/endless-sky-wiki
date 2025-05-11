@@ -740,7 +740,7 @@ timer <base-time#> [<random-time#>]
 Beginning in **v. 0.10.13**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
 
 By default, timers will run whenever the player is not in hyperspace or taking off from a planet/wormhole. Timers can be given a series of `"activation requirements"` that limit when the timer is running though:
-* `peaceful`: The player cannot be firing any weapons on their flagship.
+* `peaceful`: The player cannot be firing any weapons on their flagship. (Anti-missile turrets do not count against you.)
 * `cloaked`: The player's flagship must be fully cloaked.
 * `uncloaked`: The player's flagship must be fully uncloaked.
 * `solo`: The player must not have any other escorts in the system with them. (Docked fighters don't count as being "in system" for the purposes of this requirement. Deploying the fighters would cause them to count against you, though.)
