@@ -327,12 +327,12 @@ This specifies that the mission does not show up in the player's list of mission
 (priority | minor | non-blocking)
 ```
 
-If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
+If a mission is marked with `priority`, only other "priority" missions can be offered alongside it, except, beginning in **v. 0.10.13**, missions marked `non-blocking`.
 
 If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
-Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time. In **v. 0.10.13**, this was extended to also allow any number of "non-blocking" missions to offer alongside "priority" missions.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter | "job board")
