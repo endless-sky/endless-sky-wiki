@@ -155,6 +155,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
 * `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
+* `"enemy: <government name>"` will be equal to 1 if you are hostile to the government with the given name (your reputation with the government is negative or you have provoked them), and 0 if they are friendly (your reputation with the government is positive or you have bribed them).
 
 ## Value expressions
 
