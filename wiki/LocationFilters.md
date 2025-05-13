@@ -36,6 +36,7 @@ Location filters can be used for:
 		[<distance calculation settings>]
 	[<modifier>] distance [<min>] <max>
 		[<distance calculation settings>]
+	[<modifier>] visited [planet]
 	neighbor
 		...
 	not
@@ -155,6 +156,12 @@ If one number is given, the planet must be within (or must not be within, or mus
 This is the same as the `near` tag, but gives distances relative to the origin planet. (So, this tag only makes sense within a `destination` filter, not within a `source` filter or a `clearance` filter.) Unlike `near`, `distance` must be provided a maximum value.
 
 Beginning in **v. 0.10.1**, `near` and `distance` filters can have [distance calculation settings](CreatingMissions#distance-calculation-settings) listed directly as children to provide more options for how the distances are calculated.
+
+```html
+[(not|neighbor)] visited [planet]
+```
+
+Beginning in **v. 0.10.13**, the `visited` filter can be used to match systems that you've visited before. If the location filter is being used for locating a planet, such as for mission sources, destinations, or stopovers, then `visited` means that the system that the planet is in must have been visited before, whereas `visited planet` means that the planet itself must have been visited before.
 
 # Not and neighbor modifiers
 
