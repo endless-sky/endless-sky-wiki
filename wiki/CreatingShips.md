@@ -121,6 +121,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
 
+* `description`: a paragraph of text to show in the shipyard. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
+
 * `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
 
 * `"(engine | reverse engine | steering engine)" <x#> <y#> <zoom#>`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). 
