@@ -70,6 +70,7 @@ And so on. The sky's the limit. Missions can become very complex. Here is a full
 mission <name>
 	name <name>
 	description <text>
+	color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
 	blocked <message>
 	deadline [<days> [<multiplier>]]
 	cargo (random | <name>) <number> [<number> [<probability>]]
@@ -106,7 +107,7 @@ mission <name>
 		(and | or)
 			...
 	(source | destination) <planet>
-	(source | destination)
+	(source | destination | complete at)
 		[(not | neighbor)] planet <name>...
 			<name>...
 		[(not | neighbor)] system <name>...
@@ -255,6 +256,17 @@ description <text>
 ```
 
 This is a short description of the mission, with enough detail to make it clear to the player what they need to do to complete the mission, and what could cause the mission to fail.
+
+```html
+color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
+```
+
+Starting in **v. 0.10.13**, the color used to display the name of a mission in the missions panel can be modified. Colors can either be provided by name to refer to root-defined colors, or RGB values can be provided directly. There are three possible color categories that can be edited:
+* `unavailable`: You don't have enough space for the mission, or it's a mission you've accepted but can't complete at the moment due to remaining objectives.
+* `unselected`: You don't have the mission selected in the missions list, and it's available.
+* `selected`: You do have the mission selected in the missions list, and it's available.
+
+If these are not provided, then the default dim, medium, and bright colors will be used.
 
 ```html
 blocked <message>
@@ -498,7 +510,7 @@ to offer
 
 ```html
 (source | destination) <planet>
-(source | destination)
+(source | destination | complete at)
 	<filter>
 ```
 
@@ -509,6 +521,19 @@ For missions offered by a ship, you must always specify a destination, even if t
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
 For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+
+Note that the `destination` filter will be evaluated to one single planet that the player must land on in order to complete the mission. Beginning in **v. 0.10.13**, the `complete at` node can be used to specify alternative locations where missions can end. A `complete at` location filter can be used to complete the mission if the player lands at any planet that matches the filter.
+
+If a mission has a `destination` and a `complete at` node, then the `complete at` node will take precedence.
+Only the `destination` will place a marker on the map.
+
+An example usage of this is allowing a mission to complete when landing on any pirate planet, instead of needing to land on one particular pirate planet.
+```html
+complete at
+	government "Pirate"
+```
+
+The code for `complete at` runs when the player lands at a planet, but this might change in the future (to allow completing missions elsewhere, possibly mid-flight). If you want to make sure that missions end on a planet in the future, then make sure that the `complete at` filter only contains planet destinations.
 
 # Distance calculation settings
 
@@ -555,6 +580,15 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		near <system> [[<min#>] <max#>]
 		distance [<min#>] <max#>
 	planet <name>
+	waypoint [<system>...]
+	waypoint
+		<location filter>...
+	destination [<planet>]
+	destination
+		<location filter>
+	stopover [<planet>...]
+	stopover
+		<location filter>...
 	dialog <text>
 		<text>...
 	conversation <name>
@@ -579,6 +613,8 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. Prior to **v. 0.10.0**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
+* `land`: To complete the mission, the given NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.11)**
+* `outrun`: You cannot complete the mission if the NPC has landed at its final destination. **(v. 0.10.11)**
 
 ```html
 to (spawn | despawn)
@@ -661,6 +697,40 @@ This specifies a [location filter](LocationFilters) for choosing what system the
 planet <name>
 ```
 This specifies the exact name of the starting planet for all ships in the NPC definition. A specified starting planet allows the NPCs to depart from a planet other than that which the player is landed on. If the NPCs do not start in the system in which the named planet is located, or the NPCs have an "entering" personality, this value is ignored.
+
+```html
+waypoint [<system>...]
+waypoint
+	<location filter>...
+```
+
+Beginning with **v. 0.10.11**, NPCs can be given a set of one or more waypoints to navigate to, as above. This overrides all personality-defined travel directives like `staying`. Specifying waypoints causes all ships in the NPC to navigate towards them in the order that they are specified (although systems defined by a [location filter](LocationFilters) will be visited after explicitly named ones). If no value is specified, the mission destination system will be used instead. If a system is inaccessible, it will be removed in-flight. When all waypoints have been visited, the NPC will fall back on any orders defined by its personality.
+
+If an NPC has the `uninterested` personality, it will ignore its waypoints.
+
+```html
+destination [<planet>]
+destination
+	<location filter>
+```
+
+Beginning with **v. 0.10.11**, NPCs can be given a final `destination` planet to land on. If an NPC enters its destination system and has visited all of its `stopover`s (if any are defined), it will land on the selected planet, permanently satisfying the `land` objective and failing the `outrun` objective. If the destination is also the mission destination planet, the NPC will also permanently satisfy the `accompany` objective. The NPC will not take off after landing. If no value is specified, the mission destination planet will be used instead.
+
+If an NPC has the `uninterested` personality, it will not attempt to land on its destination planet. However, if it does land on the planet anyways, it will act the same as an "interested" NPC.
+
+NPCs do not automatically navigate to their destination planet. In order to do so, they require `waypoint`s.
+
+```html
+stopover [<planet>...]
+stopover
+	<location filter>...
+```
+
+Beginning with **v. 0.10.11**, NPCs can be given a set of one or more `stopover` planets to visit. If an NPC enters a system containing a `stopover`, it will temporarily land on that planet. It will not satisfy the `land` objective, nor will it fail the `outrun` objective. Unlike waypoints, and similar to mission stopovers, `stopover` planets can be visited in any order. If no value is specified for a stopover, the mission destination planet will be used instead.
+
+If an NPC has the `uninterested` personality, it will not attempt to land on its stopover planets. However, if it lands on the planet anyways, it will fulfill the stopover.
+
+NPCs do not automatically navigate to stopover planets. In order to do so, they require `waypoint`s.
 
 ```html
 dialog <text>
@@ -767,7 +837,7 @@ log [<category> <header>] <text>
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
-An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. Existing vanilla categories are `"People"`, `"Minor People"`, and `"Factions"`. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
 
 ```html
 remove log <category> [<header>]
