@@ -371,7 +371,6 @@ The name of a [hazard](CreatingHazards) that is created in this system within a 
 
 Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
 
-
 ```html
 "starfield density" <density#>
 ```
