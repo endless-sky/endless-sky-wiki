@@ -144,9 +144,9 @@ No error will be raised if you modify these conditions, but the game will reset 
 
 Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions (and this was extended with boolean operators and built-in functions in **v0.10.14**). For [testable](#testable-condition-sets) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied-condition-sets) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
 
-A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)), basic boolean operators (`and`, `or`), built-in functions (`min`, `max`) and "tokens" which yields a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, commas and parentheses must be separated by spaces for proper parsing.
+A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)), basic boolean operators (`and`, `or`), built-in functions (`min`, `max`), and "tokens," which yield a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, commas, and parentheses must be separated by spaces for proper parsing.
 
-The boolean operators operate on integers, and follow the c++ convention where 0 means false, and any non-zero value means true.
+The boolean operators operate on integers, and follow the C++ convention where 0 means false and any non-zero value means true.
 
 Simply put, a value expression matches the syntax
 ```html
