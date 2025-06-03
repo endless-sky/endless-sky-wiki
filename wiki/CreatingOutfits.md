@@ -891,7 +891,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also had the effect of scrambling damage. This was removed when scrambling damage was made its own damage type in **v. 0.10.0**.
 
-  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - e ^ (scrambling / 100)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
+  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
   * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
 
