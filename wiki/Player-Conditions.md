@@ -88,7 +88,10 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"ship model: <model>"` is the total number of ships of a specific model that you own which are present and active. **(v. 0.10.0)**
 * `"ship model (all): <model>"` is the total number of ships of a specific model that you own across your entire fleet. **(v. 0.10.0)**
 * `"flagship model: <model>"` is the model of your current flagship. **(v. 0.9.15)**
-* `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
+* `"cargo space"` and `"passenger space"` are your local and present (in the same system as you, not disabled, not parked) fleet's total cargo and passenger space (not reduced by the amount you are carrying already). The passenger space of a ship is its total bunks minus its required crew.
+* `"flagship: cargo space"` and `"flagship: passenger space"` are the same as the above, but only for your flagship. **(v. 0.10.14)**
+* `"cargo space free"` and `"passenger space free"` are how much cargo or passenger space your local fleet has free (i.e. subtracting the total amount by how much is currently in use). **(v. 0.10.14)**
+* `"flagship: cargo space free"` and `"flagship: passenger space free"` are the same as the above, but only for your flagship. **(v. 0.10.14)**
 * `"flagship crew"`, `"flagship required crew"`, and `"flagship bunks"` are the current crew, required crew, and bunks of your flagship only (ignoring any passengers you're carrying). **(v. 0.9.11)**
 * `"flagship planet: <planet>"` is the planet your flagship is currently landed on.
 * `"flagship system: <system>"` is the system your flagship is currently in.
