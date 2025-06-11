@@ -220,8 +220,10 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
 * `<first>` = your first name
 * `<last>` = your last name
-* `<ship>` = the name of your flagship
-* `<model>` = the display model of your flagship **(v. 0.10.9)**
+* `<ship>` = the name of your flagship, or the name of an NPC if used in text that is created by an NPC interaction (e.g. a `conversation` created by an NPC action)
+* `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
+* `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
+* `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
 
 These placeholders will be substituted in any text in the following places:
 
