@@ -214,7 +214,7 @@ attributes <attribute>...
 
 The attributes of this system that control what [missions](CreatingMissions) will be offered within it.
 
-If there are no inhabited planets in a system, then it is automatically given an "uninhabited" attribute. 
+If there are no inhabited planets in a system, then it is automatically given an `uninhabited` attribute. 
 
 ```html
 music <sound>
@@ -462,11 +462,11 @@ attributes <attribute>... "requires: <attribute>"
 
 The list of attributes that will be used to determine what [missions](CreatingMissions) should be offered on this planet.
 
-If the "requires: `<attribute>`" phrase is used, then a ship must have the listed attribute in order to land on this planet.
+If the `"requires: <attribute>"` phrase is used, then a ship must have the listed attribute in order to land on this planet.
 
-There are three attributes that get automatically added to a planet: spaceport, shipyard, and outfitter. As their names imply, they are added to a planet if that planet has a spaceport, shipyard, or outfitter. If one tries to give one of these attributes to a planet that does not actually have a spaceport, shipyard, or outfitter, then that attribute will be ignored.
+There are three attributes that get automatically added to a planet: `spaceport`, `shipyard`, and `outfitter`. As their names imply, they are added to a planet if that planet has a spaceport, shipyard, or outfitter. If one tries to give one of these attributes to a planet that does not actually have a spaceport, shipyard, or outfitter, then that attribute will be ignored.
 
-One other special attribute is the "uninhabited" attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
+One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
 landscape <sprite>
@@ -510,7 +510,7 @@ port [<name>]
 	description <text>
 ```
 
-Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the "port" keyword. The "spaceport" keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
+Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the `port` keyword. The `spaceport` keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
 
 If a port is given a name, then that will display on the spaceport button instead of the usual "Spaceport" text.
 
@@ -530,7 +530,7 @@ If a port has no `services` node, then it will not offer any services. As with `
 
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
-The description text of a port behaves the same way as the text following a "spaceport" node, and is the text that appears when you click the port button.
+The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
 
 ```html
 government <name>
@@ -637,7 +637,7 @@ color (<r#> <g#> <b#> | <name>)
 
 Defines the color of the arrows in the map panel and the planet label of a "mappable" wormhole.
 This can either be given as RGB values or can refer to a named stock color.
-By default, the color names "map wormhole" will be used.
+By default, the color named `"map wormhole"` will be used.
 
 # Landing messages
 
