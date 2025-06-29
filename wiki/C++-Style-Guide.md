@@ -462,11 +462,6 @@ For example, perhaps your editor has a "feature" that lets you automatically ins
 ```
 But, those two lines of asterisks are eye-grabbing and completely unnecessary on any editor that supports syntax coloring, and more importantly anyone using a different editor would have to manually type an asterisk at the beginning of every comment line and figure out exactly how many asterisks are in those rows at the top and bottom, in order to be consistent with your code.
 
-## Commit messages
-
-When committing code, include comments describing everything that is changing.
-If you are committing multiple changes, it is best to group them into separate commits that each change one thing, rather than committing them all together.
-
 
 
 # Formatting
@@ -781,6 +776,12 @@ If you must use explicit memory management, always use the C++ keywords `new` an
 
 Do not assume that sizeof(int) or sizeof(void *) will be a certain value.
 Use explicit types like int64_t when necessary, or just use a `long long` if all you care about is that a variable is at least 64 bits, not exactly 64 bits.
+
+## Commit messages
+
+When committing code, include comments describing everything that is changing.
+If you are committing multiple changes, it is best to group them into separate commits that each change one thing, rather than committing them all together.
+This is helpful for reviewers looking at your code, but not strictly required as branches are "squashed" before getting merged into the Endless Sky master branch.
 
 
 
