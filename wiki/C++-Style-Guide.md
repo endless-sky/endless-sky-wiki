@@ -54,8 +54,8 @@ This is just to make it clear that the file is not defining a class.
 
 ## Header file guards
 
-All header files should have #define guards, and they should be in the format "#ifndef MY_CLASS_H_".
-The C++ standard technically does not allow source code files to define macros that start with an underscore or contain a double underscore.
+All header files should have #pragma once guards.
+The C++ standard technically does not allow #pragma once, but all major compilers support it. It is also much easier to use than regular header guards.
 
 ## Header and copyright statement
 
@@ -179,7 +179,9 @@ A class definition should contain the following sections (most of which will be 
 6. private nested classes
 7. private functions
 8. private variables
+
 Anything not listed here (e.g. public non-constant variables, protected variables, etc.) should not be used.
+
 Here is an example class definition, with extra comments added to point out aspects of the formatting:
 ```c++
 class MyClass : public MyBaseClass { // Brace on the same line.
@@ -289,7 +291,7 @@ This section describes how functions should be named and also lays out some wide
 
 ## Function names
 
-Function names should be CapitalizedCamelCase
+Function names should be CapitalizedCamelCase.
 There is no single standard in C++ for whether or not function names are capitalized. But, constructor names must be capitalized, so it makes sense to capitalize the others too. Also, it is easy to distinguish class names from function names or variables based solely on context, but the only easy way to distinguish a function from a function object is by capitalization.
 Exception: function names that match the standard library (such as begin() and end()) may be lower-case.
 
@@ -630,19 +632,19 @@ Fibonacci(int x)
 
 ## Single-line loop bodies
 
-You do not need to use braces if a loop or conditional body is a single expression.
+You should not use braces if a loop or conditional body is a single expression.
 That is:
 ```c++
 if(theThing != done)
     DoTheThing();
 ```
-You can also forgo the braces for something like this:
+You should also forgo the braces for something like this:
 ```c++
 for(int i = 0; i < 10; ++i)
     if(vec[i])
         sum += i;
 ```
-And, you can also do this:
+And, you should also do this:
 ```c++
 for(int i = 0; i < 10; ++i)
     if(vec[i])
