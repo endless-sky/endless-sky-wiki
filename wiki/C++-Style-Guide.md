@@ -13,8 +13,6 @@
 
 # Background
 
-This style guide is also available on the [website](https://endless-sky.github.io/styleguide/styleguide.xml). However, in case of inconsistencies, the version here applies.
-
 Each section of this style guide can be read as a "how to": how to create source code files, how to create classes, etc. The sections are ordered hierarchically, from biggest "units" (files, namespaces, classes) to increasingly smaller ones (variables, comments, formatting). Our style choices are based on a small set of principles:
 
 - Readability is achieved by laying out text in a clear visual hierarchy.
@@ -106,7 +104,7 @@ For example, a header file might contain the following #includes:
 class Angle;
 class Sprite;
 ```
-It is required to alphabetize the lines within each "paragraph" of #includes and forward declarations.
+Alphabetize the lines within each "paragraph" of #includes and forward declarations.
 Forward-declaring classes instead of #including their headers reduces compilation time somewhat because it eliminates dependencies, and should be used whenever possible. The only exceptions are templated classes and the ones provided by the standard library.
 
 ## Order of #includes in a .cpp file
@@ -128,7 +126,7 @@ For example, a .cpp file might contain the following #includes:
 
 #include <set>
 ```
-It is required to alphabetize the lines within each "paragraph" of #includes.
+Alphabetize the lines within each "paragraph" of #includes.
 
 
 
