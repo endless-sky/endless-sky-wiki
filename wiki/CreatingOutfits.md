@@ -809,7 +809,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"throttle control"`: projectile stops thrusting if it misses the target, in order to turn towards it in a tighter loop.
 
-  Prior to **v. 0.10.13**, homing was instead defined as a numerical scale:
+  Prior to **v. 0.10.15**, homing was instead defined as a numerical scale:
 
   * 0: no homing.
 
