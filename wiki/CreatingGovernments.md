@@ -40,6 +40,8 @@ government <name>
 	"friendly disabled hail" <phrase>
 	"hostile hail" <phrase>
 	"hostile disabled hail" <phrase>
+	"bribe acceptance hail" <phrase>
+	"bribe rejection hail" <phrase>
 	language <text>
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	enforces [all]
@@ -265,6 +267,8 @@ Before you can leave your ship, the <government name> authorities show up and be
 "friendly disabled hail" <phrase>
 "hostile hail" <phrase>
 "hostile disabled hail" <phrase>
+"bribe acceptance hail" <phrase>
+"bribe rejection hail" <phrase>
 ```
 These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The [phrases](CreatingPhrases) here should be defined as standalone phrases, e.g.
 ```bash
