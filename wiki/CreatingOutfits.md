@@ -224,6 +224,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"hull multiplier"`: multiplies the maximum hull value of the ship. **(v. 0.10.3)**
 
+  * `"cloaked regen multiplier"`: multiplies the shield generation value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"shield generation multiplier"`. For example, if both attributes have a value of 0.1, then your shield generation will run at 110% while uncloaked and 110% * 110% = 121% when cloaked. **(v. 0.10.13)**
+
+  * `"cloaked repair multiplier"`: multiplies the hull repair rate value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"hull repair multiplier"`. **(v. 0.10.13)**
+
 * These attributes are generally related to power generators and batteries.
 
   * `"energy capacity"`: how much energy your ship can store.
@@ -651,6 +655,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `"hardpoint sprite"`: the sprite (which ought to be very tiny) to draw on top of the hardpoint where this weapon is installed, to show what direction the weapon is pointing in. Generally, this should only be used for turrets, because the gun hardpoints on many ships are already designed to look like guns. This sprite definition can use any of the same animation values as the ship sprite. **(v. 0.9.7)**
 
+ * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
+
 * `"hardpoint offset"`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
@@ -801,17 +807,27 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
-* `homing`: How good this weapon is at seeking its target:
+* `homing`: whether or not projectiles fired by this weapon will turn to face its target. In order for a missile to change its trajectory, it also needs a non-zero acceleration value. There are several "child" attributes that can be used to customize the type of homing the projectile has:
+
+  * `leading`: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+
+  * `blindspot`: projectile loses its homing ability if no longer facing toward the target.
+
+  * `"throttle control"`: projectile stops thrusting if it misses the target, in order to turn towards it in a tighter loop.
+
+  Prior to **v. 0.10.15**, homing was instead defined as a numerical scale:
 
   * 0: no homing.
 
-  * 1: projectile loses its homing ability if no longer facing toward the target.
+  * 1: weapon has `homing` and `blindspot`.
 
-  * 2: dumb homing (always try to turn to point toward the target).
+  * 2: weapon has `homing`.
 
-  * 3: stop thrusting if you miss the target, in order to turn back towards it in a tighter loop.
+  * 3: weapon has `homing` and `"throttle control"`.
 
-  * 4: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+  * 4: weapon has `homing`, `leading`, and `"throttle control"`.
+
+  Homing may still be defined numerically for backwards compatibility.
 
 * Tracking attributes (as of **v. 0.9.1**) control how well a projectile seeks targets, and accept values from 0 to 1:
 
@@ -887,7 +903,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also had the effect of scrambling damage. This was removed when scrambling damage was made its own damage type in **v. 0.10.0**.
 
-  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `scrambling / (energy % * 220)`, where `energy %` is the percentage of energy that the ship has left relative to its energy capacity. The jamming chance caps out at 50%. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
+  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
   * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
 

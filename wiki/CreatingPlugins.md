@@ -108,7 +108,7 @@ ___
 
 A plugin folder can contain the following:
 
-  * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/). _(required)_
+  * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/).
   * `about.txt`: a plain-text file describing the plugin. Deprecated by plugin.txt.
   * `plugin.txt`: a plain-text file containing metadata about the plugin. **(v. 0.10.3)**
   * `icon.png`: an image that appears when selecting the plugin in the plugins menu.
