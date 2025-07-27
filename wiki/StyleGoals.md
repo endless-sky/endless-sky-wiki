@@ -35,7 +35,7 @@ Ideally, each species should have slightly different speech patterns to indicate
 
 * The Quarg occasionally use archaic language constructs, to hint that they're an ancient species (who presumably learned to talk to humans thousands of years ago and haven't kept their grammar books up to date since then).
 
-* Some Hai have better command of the human language than others (particularly the Unfettered). They make occasional grammatical errors, particularly leaving out articles or inserting the where they are not needed. (This is to hint that they speak a language like Latin that does not use articles.)
+* Some Hai have better command of the human language than others (particularly the Unfettered). They make occasional grammatical errors, particularly leaving out articles or inserting them where they are not needed. (This is to hint that they speak a language like Latin that does not use articles.)
 
 * The Wanderers speak in the Hai language to the player which is being translated by a machine, so it occasionally supplies multiple translations for one word when the [meaning, intent] of the Wanderer word cannot be [precisely, completely] mapped into a single human word, or simply due to a lack of understanding of the Hai language on the part of the Wanderers.
 
@@ -44,3 +44,36 @@ Ideally, each species should have slightly different speech patterns to indicate
 * The Coalition, much like the Wanderers, communicate with the player through a translation device. But while the translation device used with the Wanderers has trouble finding the exact human word while maintaining proper grammar, the Coalition translation devices produce the correct words but with improper grammar or sentence structure. Put simply, the Coalition speak like Yoda.
 
 * The Remnant are human, but much of their communication is through sign language, and that communication which isn't sign language, i.e. speech, is heavily influenced by the fact that they normally communicate in sign. One of the ways this changes how the Remnant communicate is with their almost complete lack of contractions. It is also notable that Remnant speech is done through singing, or at least has a song-like tone to it.
+
+### Writing style
+
+Endless Sky's writing has a certain tone and voice. A few guidelines for writing missions include:
+
+* Text should be concise, descriptive, and not overly flowery. It should be functional above all else. That's not to say that Endless Sky can't have interesting or lively narration, but keep in mind that this is a game, not a novel. Please avoid walls of text when writing.
+
+* The "yes, I want this mission" choice in a conversation should usually come first in the list (so it is the default). The option to reject a mission should come last in a choice, so that players do not accidentally decline plot-important missions.
+
+* Don't imply that the player character is a certain gender in conversations. The player character's gender is deliberately left ambiguous and up to the player. 
+
+* Single option choices (i.e. a `choice` in a conversation that contains only one possible response) are heavily discouraged. The point of using `choice` is to give the player the freedom to choose how they want to respond to something. Having only one option defeats this point and effectively railroads the player into 'choosing' to do or say something that they may not want to do. If the player must do something (e.g. they're being physically forced to go somewhere), then simply state that they do so in the narration - using `choice` is unnecessary.
+
+* Generally speaking, avoid telling the player how they feel about a situation, as the player may not feel the same way. Writing such as 'You feel a warm glow when you meet this person' is not appropriate for the game. The narration's description of characters and situations should stay neutral and let the player come to their own conclusions. Similarly, please don't make major decisions for the player when writing conversations - the player should be given a choice on what to say or do in a situation.
+
+* While Endless Sky does touch on heavy subject matter (slavery, war crimes, etc.) the player's direct POV should not be overly graphic, violent, or sexual. Endless Sky is not that kind of game.
+
+* Be sure to go over the [QualityChecklist](https://github.com/endless-sky/endless-sky/wiki/QualityChecklist) when creating missions.
+
+### Punctuation and grammar
+
+Not the most thrilling part of the game, but it's important to maintain consistency so that your writing is easier to review.
+
+* Use American English for spelling and punctuation (ex. `color` instead of `colour`). This also means that text such as nicknames should be in double quotes (First "The Player" Last instead of First 'The Player' Last).
+* Put periods inside of parentheses for `choice` options or other instances where the text within parentheses is its own independent sentence: `(Remain silent.)` instead of `(Remain silent).`
+* Put commas inside of quotation marks: `"Hello," he said` instead of `"Hello", he said`. 
+* Mentions of specific outfits or ships should be capitalized in dialog and narration. Generic terms for a category of outfits (e.g. nerve gas, laser rifles) should be uncapitalized.
+* Please use the Oxford comma when writing out lists.
+* Endless Sky does not support diacritics, so avoid characters like é or ø.
+* En and em dashes should be represented by a hyphen padded on each side by a space `like - this`.
+* All paragraphs of a conversation after the first (normal) one should be tab-indented.
+* In general, use grave ticks (`) for conversation text even if the text doesn't contain double quotes.
+* When in doubt, try searching for examples in Endless Sky's existing missions or asking on the game's [Discord server](https://discord.gg/ZeuASSx)

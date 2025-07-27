@@ -17,7 +17,7 @@ Any outfit model you create in Blender should use the camera and lighting settin
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/anti-missile.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/medium%20ion%20thruster.png)
 
-The outfitter view divides outfits into difference categories: "Guns," "Turrets," etc. As another way of ensuring a consistent look, most outfits in a given section point in a certain direction:
+The outfitter view divides outfits into different categories: "Guns," "Turrets," etc. As another way of ensuring a consistent look, most outfits in a given section point in a certain direction:
 
 * Guns: top left.
 * Turrets: top left, and angled slightly up in the Z axis.
@@ -38,7 +38,9 @@ Outfits work by modifying the attributes of your ship. Many of the attributes ar
 
 Most attributes are given as a single number, but there are a few "special" attributes:
 
-* `category`: which outfitter category to show this outfit in. The category must be one of the following if it is to be purchasable:
+* `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
+The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
+The existing valid vanilla outfit categories are the following:
   * "Guns"
   * "Turrets"
   * "Secondary Weapons"
@@ -47,7 +49,10 @@ Most attributes are given as a single number, but there are a few "special" attr
   * "Power"
   * "Engines"
   * "Hand to Hand"
-  * "Special"
+  * "Unique" (**v0.10.12**)
+  * "Minerals" (**v0.10.12**)
+  * "Special" (**v0.10.12**)
+  * "Licenses" (**v0.10.12**)
 
 * `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
 
@@ -79,7 +84,13 @@ Most attributes are given as a single number, but there are a few "special" attr
 
   * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
 
-* `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
+* `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
+
+Outfits can optionally be ordered in the outfitter screen by using the following attributes, which interact with outfit series as defined in `series.txt`.
+
+* `series`: which outfit series listed in `series.txt` this outfit belongs to.
+
+* `index`: where the outfit is ordered within its series. Lower indices are listed before higher indices. Almost all vanilla outfits have a five-digit `index` value. The first two digits are specific to the species the outfit belongs to (for example, human outfit indices always start with `01`). The remaining three digits are responsible for ordering the outfit within its series, and generally increment by 10 for each outfit in that series.
 
 Unless otherwise stated, other outfit attributes will stack additively between multiple outfits and can only have values greater than 0. The other attributes include the following:
 
@@ -212,6 +223,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"hull fuel multiplier"`: multiplies the hull fuel value of other outfits.
 
   * `"hull multiplier"`: multiplies the maximum hull value of the ship. **(v. 0.10.3)**
+
+  * `"cloaked regen multiplier"`: multiplies the shield generation value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"shield generation multiplier"`. For example, if both attributes have a value of 0.1, then your shield generation will run at 110% while uncloaked and 110% * 110% = 121% when cloaked. **(v. 0.10.13)**
+
+  * `"cloaked repair multiplier"`: multiplies the hull repair rate value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"hull repair multiplier"`. **(v. 0.10.13)**
 
 * These attributes are generally related to power generators and batteries.
 
@@ -602,6 +617,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
+ 
+  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. **(v. 0.10.13)**
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
@@ -611,7 +628,9 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
-  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain.
+  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. **(v. 0.10.4)**
+
+  * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
 
 # Weapon attributes
@@ -636,11 +655,15 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `"hardpoint sprite"`: the sprite (which ought to be very tiny) to draw on top of the hardpoint where this weapon is installed, to show what direction the weapon is pointing in. Generally, this should only be used for turrets, because the gun hardpoints on many ships are already designed to look like guns. This sprite definition can use any of the same animation values as the ship sprite. **(v. 0.9.7)**
 
+ * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
+
 * `"hardpoint offset"`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
 
-* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the loop specifier (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding.
+* `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
+
+ * `"empty sound"`: a path to a sound (see the requirements above) that is played when the player attempts to fire a weapon that does not have enough ammo or fuel to fire. **(v. 0.10.13)**
 
 * `ammo`: if specified, an outfit which provides ammunition for this weapon. Each time it is fired, one outfit of that type is removed from your ship.
 
@@ -720,9 +743,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `inverted`: inverts the distribution of only narrow, medium, or wide inaccuracies, so that projectiles are more likely to appear at the edges of the angle rather than the middle.
 
-* `"turret turn"`: the number of degrees that this turret rotates per frame. (**v. 0.9.7**)
+* `"turret turn"`: the number of degrees that this turret rotates per frame. **(v. 0.9.7)**
 
-* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.)
+* `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.) **(v. 0.10.7)**
 
 * The calculation for the range of a weapon involves multiplying its base lifetime by its base velocity. This value is what is used by the AI to determine when to fire the weapon given the distance to the target. The AI will also take any random velocity into account when aiming the weapon in order to properly lead the target. These base values may not always be entirely accurate as to how the AI should use a weapon though. Such situations may include weapons with acceleration and drag values that cause a projectile to travel much faster or slower than the base velocity, or weapons with very high inaccuracies that make using them at range impractical. It can also be the case that a weapon has a blast radius, which will by default cause ships to avoid firing the weapon if their target is close enough where the explosion with damage itself, although removing this behavior may be desired. The following attributes can be used in order to get more favorable results in how the AI uses the weapon:
 
@@ -784,17 +807,27 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
-* `homing`: How good this weapon is at seeking its target:
+* `homing`: whether or not projectiles fired by this weapon will turn to face its target. In order for a missile to change its trajectory, it also needs a non-zero acceleration value. There are several "child" attributes that can be used to customize the type of homing the projectile has:
+
+  * `leading`: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+
+  * `blindspot`: projectile loses its homing ability if no longer facing toward the target.
+
+  * `"throttle control"`: projectile stops thrusting if it misses the target, in order to turn towards it in a tighter loop.
+
+  Prior to **v. 0.10.15**, homing was instead defined as a numerical scale:
 
   * 0: no homing.
 
-  * 1: projectile loses its homing ability if no longer facing toward the target.
+  * 1: weapon has `homing` and `blindspot`.
 
-  * 2: dumb homing (always try to turn to point toward the target).
+  * 2: weapon has `homing`.
 
-  * 3: stop thrusting if you miss the target, in order to turn back towards it in a tighter loop.
+  * 3: weapon has `homing` and `"throttle control"`.
 
-  * 4: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+  * 4: weapon has `homing`, `leading`, and `"throttle control"`.
+
+  Homing may still be defined numerically for backwards compatibility.
 
 * Tracking attributes (as of **v. 0.9.1**) control how well a projectile seeks targets, and accept values from 0 to 1:
 
@@ -806,7 +839,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `tracking`: a form of tracking that is constant, regardless of the ship's size, heat, or radar jamming ability.
 
-* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0, the projectile cannot be destroyed by anti-missile.
+* `"missile strength"`: how hard a projectile is for an anti-missile to destroy. If this is 0 or no value is provided, the projectile will not be targeted by anti-missile.
 
 * The following weapon attributes turn a weapon into a special weapon that behaves differently from other weaponry. By including these attributes, the weapon will only automatically fire on specific targets and cannot be controlled manually. In addition, these special weapon attributes only work on turrets, do not spawn projectiles when they fire (although they will still create effects, and hit effects can be used to mimic a projectile's appearance), and have a range equal to their velocity (the lifetime should always be 1).
 
@@ -870,7 +903,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also had the effect of scrambling damage. This was removed when scrambling damage was made its own damage type in **v. 0.10.0**.
 
-  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `scrambling / (energy % * 220)`, where `energy %` is the percentage of energy that the ship has left relative to its energy capacity. The jamming chance caps out at 50%. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
+  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
   * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
 
@@ -895,6 +928,8 @@ outfitter "Syndicate Advanced"
 ```
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
+
+For more information on how outfitters are defined, see the [Creating Shops](Creating-Shops) page.
 
 # Balancing
 
