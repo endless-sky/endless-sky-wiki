@@ -13,8 +13,6 @@
 
 # Background
 
-This style guide is also available on the [website](https://github.com/endless-sky/endless-sky/wiki/C++-Style-Guide).
-
 Each section of this style guide can be read as a "how to": how to create source code files, how to create classes, etc. The sections are ordered hierarchically, from biggest "units" (files, namespaces, classes) to increasingly smaller ones (variables, comments, formatting). Our style choices are based on a small set of principles:
 
 - Readability is achieved by laying out text in a clear visual hierarchy.
