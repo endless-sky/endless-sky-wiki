@@ -11,7 +11,7 @@
   * [Sprites, images, and outline](#sprites-images-and-outlines)
   * [Labels, strings, and buttons](#labels-strings-and-buttons)
   * [Bars and rings](#bars-and-rings)
-  * [Lines](#lines)
+  * [Filled areas](#filled-areas)
   * [Pointers](#pointers)
   * [Values](#values)
 
@@ -62,7 +62,7 @@ interface <name> [<anchor>]
 		["orientation angle" <angle#>]
 		["orientation vector" <x#> <y#>]
 		[color <color>]
-	line
+	fill
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 	value <name> <value>
@@ -286,14 +286,14 @@ The size determines the thickness of the bar or ring, the default value is 2.
 Bars can take a start and end color, and will interpolate between the two.
 If one color is given, the whole bar will be that color, and if no color is given, "active" will be used.
 
-## Lines
+## Filled areas
 
 ```html
-	line <name>
+	fill <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 ```
-Defines a line to be drawn with this interface.
+Defines an area to be filled with the specified color while drawing this interface.
 If no color is given, "medium" will be used.
 
 ## Pointers
