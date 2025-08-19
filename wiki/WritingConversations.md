@@ -43,7 +43,7 @@ conversation [<name>]
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
 * `accept`: The player accepts this mission (if one is being offered).
-* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations already occurring in space (e.g. boarding a ship or "completing" an NPC), if a ship initiated the conversation that ship will die.
+* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations occurring in space that are initiated by an interaction with a ship, that ship will die. This includes conversations created by the `on offer` of boarding missions, the completion of NPC objectives, and, as of **v. 0.10.13**, [NPC actions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#non-player-characters-npcs).
 * `decline`: The mission is declined. (This is also useful for creating conversations that appear when you land or enter a spaceport, but that are intended just to provide flavor, not to lead to a mission.)
 * `flee`: The mission is declined, _and_ the player immediately takes off (for conversations occurring on a planet). For conversations occurring in space, the referenced ship (if any) dies.
 * `defer`: The mission is declined, but it will not be marked as "offered," so it can be offered again at a later date even if it is not a repeating mission.
@@ -196,6 +196,8 @@ branch <if true> [<if false>]
 A branch takes the conversation to one of two different labels depending on a set of [testable conditions](Player-Conditions#testable-condition-sets).
 
 The `branch` keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
+
+An endpoint name can be used in place of a label name, in which case, the conversation ends instead of jumping to the label. The corresponding effects for the endpoint are applied. This also means that it is impossible for a `branch` node to branch to a label whose name matches an endpoint.
 
 ```js
 conversation

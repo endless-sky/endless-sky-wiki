@@ -75,12 +75,13 @@ ___
 
 A plugin folder can contain the following:
 
-  * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/). _(required)_
+  * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/).
   * `about.txt`: a plain-text file describing the plugin. Deprecated by plugin.txt.
   * `plugin.txt`: a plain-text file containing metadata about the plugin. **(v. 0.10.3)**
   * `icon.png`: an image that appears when selecting the plugin in the plugins menu.
   * `data/`: any data files must be placed in this folder, or they will not be loaded.
   * `images/`: all images should be placed in here. When specifying sprite paths, they are relative to the `images` directory. For example, `ship/berserker` refers to `${plugin-root}/images/ship/berserker.png`.
+  * `shaders/`: any game shaders overwritten should be placed in here.
   * `sounds/`: all sounds must be placed in here. As with images, the path to a sound is relative to this folder.
 
 Eventually, a plugin server will be set up that will be accessible within the game itself. This server will support basic plugin management, e.g. to get a list of available plugins, download plugins, and check for updates to any plugins that were already downloaded.
@@ -151,6 +152,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`start`](Creating-Starts): starting conditions for the player.
   * [`system`](MapData#systems): a star system. Generally, these will be created through the [map editor](https://github.com/endless-sky/endless-sky-editor) so that orbital periods, habitable zones, etc. will be consistent.
   * `trade`: a list of commodity names and prices. (For examples, see [`commodities.txt`](https://github.com/endless-sky/endless-sky/tree/master/data/commodities.txt).)
+  * [`swizzle`](#Swizzles): a color matrix that defines how colors are shifted.
 
 To modify most properties of an existing data element, you only need to include the particular fields you are interested in. For example, to change the government of Kornephoros from "Republic" to "Free Worlds" all you need to write is this:
 
@@ -198,3 +200,45 @@ disable person
 disable event
 	"war begins"
 ```
+
+## Swizzles
+
+Since **v0.10.13**:
+
+```html
+swizzle <name>
+	[override]
+
+	[red   [<red_i> <green_i> <blue_i> [<alpha_i>]]
+	[green [<red_i> <green_i> <blue_i> [<alpha_i>]]
+	[blue  [<red_i> <green_i> <blue_i> [<alpha_i>]]
+	[alpha [<red_i> <green_i> <blue_i> [<alpha_i>]]
+```
+
+A swizzle defines a matrix for shifting colors. The swizzle will construct a new color channel-by-channel, for each of which it will take some influence of the input's color channels, defined by the `<channel>_i` value.
+
+Setting the `override` flag will disable any swizzle masks on a sprite that uses this swizzle - this is useful if you want a 'ghost' or 'shadowed' effect and don't want anything to be left unswizzled.
+
+For example:
+
+```html
+swizzle example
+	red   0 1 0 0
+	green 1 0 0 0
+	blue  0 0 1 0
+	alpha 0 0 0 1
+```
+
+This swizzle switches the red and green channels - this means that any red parts of the original color will become green and vice versa.
+
+See [swizzles.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/swizzles.txt) for more examples.
+
+## Shaders
+
+Since **v.0.10.13**:
+
+Plugins can override the game's shaders, effectively changing how each item is displayed on the screen. New shaders cannot be created, and the overwritten shaders must take the same arguments as those provided by the game. You can find the game's own shaders [here](https://github.com/endless-sky/endless-sky/tree/master/shaders).
+
+Endless Sky uses shaders written in the [OpenGL Shading Language](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)). Our shaders are either vertex shaders or fragment shaders, which is determined from their file extension (`.vert` and `.frag`, respectively).
+
+Since the game can run on both OpenGL and OpenGL ES, shaders can be defined for either or both environments. By default, shader files are valid in both environments; exclusive shaders can be created by appending the `.gl` or `.gles` extension to the shader file, resulting in something like `sprite.frag.gles`.
