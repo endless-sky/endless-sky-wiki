@@ -70,6 +70,7 @@ And so on. The sky's the limit. Missions can become very complex. Here is a full
 mission <name>
 	name <name>
 	description <text>
+	color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
 	blocked <message>
 	deadline [<days> [<multiplier>]]
 	cargo (random | <name>) <number> [<number> [<probability>]]
@@ -80,7 +81,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor | non-blocking)
-	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -106,7 +107,7 @@ mission <name>
 		(and | or)
 			...
 	(source | destination) <planet>
-	(source | destination)
+	(source | destination | complete at)
 		[(not | neighbor)] planet <name>...
 			<name>...
 		[(not | neighbor)] system <name>...
@@ -219,8 +220,10 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
 * `<first>` = your first name
 * `<last>` = your last name
-* `<ship>` = the name of your flagship
-* `<model>` = the display model of your flagship **(v. 0.10.9)**
+* `<ship>` = the name of your flagship, or the name of an NPC if used in text that is created by an NPC interaction (e.g. a `conversation` created by an NPC action)
+* `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
+* `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
+* `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
 
 These placeholders will be substituted in any text in the following places:
 
@@ -255,6 +258,17 @@ description <text>
 ```
 
 This is a short description of the mission, with enough detail to make it clear to the player what they need to do to complete the mission, and what could cause the mission to fail.
+
+```html
+color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
+```
+
+Starting in **v. 0.10.13**, the color used to display the name of a mission in the missions panel can be modified. Colors can either be provided by name to refer to root-defined colors, or RGB values can be provided directly. There are three possible color categories that can be edited:
+* `unavailable`: You don't have enough space for the mission, or it's a mission you've accepted but can't complete at the moment due to remaining objectives.
+* `unselected`: You don't have the mission selected in the missions list, and it's available.
+* `selected`: You do have the mission selected in the missions list, and it's available.
+
+If these are not provided, then the default dim, medium, and bright colors will be used.
 
 ```html
 blocked <message>
@@ -337,7 +351,7 @@ Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not 
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter | "job board")
+(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
@@ -345,6 +359,10 @@ This specifies where this mission will be shown, if someplace other than the spa
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
 A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+
+An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
+
+All `assisting`, `boarding`, and `entering` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
@@ -498,7 +516,7 @@ to offer
 
 ```html
 (source | destination) <planet>
-(source | destination)
+(source | destination | complete at)
 	<filter>
 ```
 
@@ -509,6 +527,19 @@ For missions offered by a ship, you must always specify a destination, even if t
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
 For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+
+Note that the `destination` filter will be evaluated to one single planet that the player must land on in order to complete the mission. Beginning in **v. 0.10.13**, the `complete at` node can be used to specify alternative locations where missions can end. A `complete at` location filter can be used to complete the mission if the player lands at any planet that matches the filter.
+
+If a mission has a `destination` and a `complete at` node, then the `complete at` node will take precedence.
+Only the `destination` will place a marker on the map.
+
+An example usage of this is allowing a mission to complete when landing on any pirate planet, instead of needing to land on one particular pirate planet.
+```html
+complete at
+	government "Pirate"
+```
+
+The code for `complete at` runs when the player lands at a planet, but this might change in the future (to allow completing missions elsewhere, possibly mid-flight). If you want to make sure that missions end on a planet in the future, then make sure that the `complete at` filter only contains planet destinations.
 
 # Distance calculation settings
 
