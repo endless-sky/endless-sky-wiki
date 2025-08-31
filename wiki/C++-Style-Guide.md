@@ -527,6 +527,19 @@ SCENARIO( "Creating an Account" , "[Account][Creation]" ) {
 ```
 If you are used to putting spaces before the parentheses, rather than trying to adjust your typing you might find it easier to just do a find/replace before committing your code, e.g. replacing `if (` with `if(`, etc. You can also grep the svn diff of your changes for `^+.*\ (` to check if you missed anything.
 
+# Template declarations
+
+Similarly to the above, do not put a space before or after the angle brackets when declaring or using templated classes and functions, or with type casting (static_cast<>(), reinterpret_cast<>(), etc.) operators.
+Put the `template` keyword with the parameter list on a separate line before the name of the class or function:
+```c++
+template<class T>
+class TemplatedContainer {
+public:
+	template<class D>
+	void Convert(TemplatedContainer<D> &other);
+	// ...
+```
+
 ## Return is not a function
 
 The `return` keyword does not require parentheses; use them only when what follows is a complex statement, and put a space after `return` in that case.
