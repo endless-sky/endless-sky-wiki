@@ -51,9 +51,11 @@ government <name>
 		<outfit> <fine>
 		ship <ship> <fine>
 		...
-	atrocities
+	atrocities [<death-sentence-conversation>]
 		<outfit>
+			"death sentence" <conversation>
 		ship <ship>
+			"death sentence" <conversation>
 		...
 ```
 
@@ -227,13 +229,16 @@ illegals
 	[ignore] <outfit> <fine>
 	[ignore] ship <ship> <fine>
 	...
-atrocities
-	[ignore] <outfit>
-	[ignore] ship <ship>
+atrocities [<death-sentence-conversation>]
+	<outfit>
+		"death sentence" <conversation>
+	ship <ship>
+		"death sentence" <conversation>
 	...
 ```
 
 Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list.
+Since **v. 0.10.15**, you can override [death sentences](#death-sentence) of individual atrocities by specifying the name of the conversation that should be used for the whole `atrocities` node or adding the death sentence as a child node of a particular item. If no custom death sentence is set here (or an item has a `remove "death sentence"` child statement), the government's default will be used (see below).
 
 #### Death sentence
 ```html
