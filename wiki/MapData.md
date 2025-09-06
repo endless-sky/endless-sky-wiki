@@ -684,7 +684,7 @@ music <path>
 ```
 
 Both systems and planets can be assigned music that plays while the player is there.
-The music files should be of the '.mp3' format and placed in the 'sounds' folder.
+The music files should be of the '.mp3' or '.flac' format and placed in the 'sounds' folder.
 The path should be the relative path within the 'sounds' folder without the file extension.
 For example, a file named 'machinery.mp3' in a folder 'ambient' inside the 'sounds' folder would be listed in a planet or system definition as:
 ```css
