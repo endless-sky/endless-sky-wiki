@@ -206,7 +206,7 @@ planet <name>
 		...
 	...
 ```
-Update the specified elements of the named `planet`. Note that planetary music can only be in the `.mp3` format.
+Update the specified elements of the named `planet`. Note that planetary music can only be in the `.mp3` or `.flac` format.
 
 ```html
 news

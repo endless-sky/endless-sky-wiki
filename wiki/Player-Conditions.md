@@ -88,7 +88,10 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"ship model: <model>"` is the total number of ships of a specific model that you own which are present and active. **(v. 0.10.0)**
 * `"ship model (all): <model>"` is the total number of ships of a specific model that you own across your entire fleet. **(v. 0.10.0)**
 * `"flagship model: <model>"` is the model of your current flagship. **(v. 0.9.15)**
-* `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
+* `"cargo space"` and `"passenger space"` are your local and present (in the same system as you, not disabled, not parked) fleet's total cargo and passenger space (not reduced by the amount you are carrying already). The passenger space of a ship is its total bunks minus its required crew.
+* `"flagship: cargo space"` and `"flagship: passenger space"` are the same as the above, but only for your flagship. **(v. 0.10.14)**
+* `"cargo space free"` and `"passenger space free"` are how much cargo or passenger space your local fleet has free (i.e. subtracting the total amount by how much is currently in use). **(v. 0.10.14)**
+* `"flagship: cargo space free"` and `"flagship: passenger space free"` are the same as the above, but only for your flagship. **(v. 0.10.14)**
 * `"flagship crew"`, `"flagship required crew"`, and `"flagship bunks"` are the current crew, required crew, and bunks of your flagship only (ignoring any passengers you're carrying). **(v. 0.9.11)**
 * `"flagship planet: <planet>"` is the planet your flagship is currently landed on.
 * `"flagship system: <system>"` is the system your flagship is currently in.
@@ -155,6 +158,13 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
 * `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
+* `"flagship strength"` is the combat strength of your flagship, calculated based on the total cost of its hull and installed outfits. **(v. 0.10.15)**
+* `"player strength"` is the combat strength of your fleet, calculated based on the total cost of ship hulls and installed outfits. This also includes ships in other systems. **(v. 0.10.15)**
+* `"ally strength"` is the combat strength of all friendly ships in the system. This value is 0 if there are no hostiles in the system. **(v. 0.10.15)**
+* `"enemy strength"` is the combat strength of all hostile ships in the system. **(v. 0.10.15)**
+* `"government strength: <government>"` is the combat strength of all ships belonging to that government in the system. **(v. 0.10.15)**
+* `"ally strength: <government>"` is the strength of all ships friendly to that government in the system, or 0 if there are no hostiles. **(v. 0.10.15)**
+* `"enemy strength: <government>"` is the strength of all ships hostile to that government in the system. **(v. 0.10.15)**
 
 ## Value expressions
 

@@ -81,7 +81,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor | non-blocking)
-	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -220,8 +220,10 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
 * `<first>` = your first name
 * `<last>` = your last name
-* `<ship>` = the name of your flagship
-* `<model>` = the display model of your flagship **(v. 0.10.9)**
+* `<ship>` = the name of your flagship, or the name of an NPC if used in text that is created by an NPC interaction (e.g. a `conversation` created by an NPC action)
+* `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
+* `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
+* `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
 
 These placeholders will be substituted in any text in the following places:
 
@@ -349,7 +351,7 @@ Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not 
 Note that `priority` will only affect missions that offer from the spaceport.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter | "job board")
+(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
@@ -357,6 +359,10 @@ This specifies where this mission will be shown, if someplace other than the spa
 If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
 
 A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+
+An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
+
+All `assisting`, `boarding`, and `entering` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
@@ -580,15 +586,6 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		near <system> [[<min#>] <max#>]
 		distance [<min#>] <max#>
 	planet <name>
-	waypoint [<system>...]
-	waypoint
-		<location filter>...
-	destination [<planet>]
-	destination
-		<location filter>
-	stopover [<planet>...]
-	stopover
-		<location filter>...
 	dialog <text>
 		<text>...
 	conversation <name>
@@ -613,8 +610,6 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `accompany`: You can only complete the mission if all members of this NPC are in the same system as you. Prior to **v. 0.10.0**, the `accompany` tag also implicitly had the behavior of the `save` tag. Now, ships that have been destroyed or captured don't count toward the accompany objective, and the `save` tag must be given to npc ships that you want to both be alive and with the player.
 * `capture`: To complete the mission, the player must capture the given NPC. Capturing an NPC also counts as destroying it for the purposes of the mission, so this objective can't be combined with an objective like accompany or save.
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
-* `land`: To complete the mission, the given NPC must have first landed permanently at its destination, or land at the same time that the player does. **(v. 0.10.11)**
-* `outrun`: You cannot complete the mission if the NPC has landed at its final destination. **(v. 0.10.11)**
 
 ```html
 to (spawn | despawn)
@@ -697,40 +692,6 @@ This specifies a [location filter](LocationFilters) for choosing what system the
 planet <name>
 ```
 This specifies the exact name of the starting planet for all ships in the NPC definition. A specified starting planet allows the NPCs to depart from a planet other than that which the player is landed on. If the NPCs do not start in the system in which the named planet is located, or the NPCs have an "entering" personality, this value is ignored.
-
-```html
-waypoint [<system>...]
-waypoint
-	<location filter>...
-```
-
-Beginning with **v. 0.10.11**, NPCs can be given a set of one or more waypoints to navigate to, as above. This overrides all personality-defined travel directives like `staying`. Specifying waypoints causes all ships in the NPC to navigate towards them in the order that they are specified (although systems defined by a [location filter](LocationFilters) will be visited after explicitly named ones). If no value is specified, the mission destination system will be used instead. If a system is inaccessible, it will be removed in-flight. When all waypoints have been visited, the NPC will fall back on any orders defined by its personality.
-
-If an NPC has the `uninterested` personality, it will ignore its waypoints.
-
-```html
-destination [<planet>]
-destination
-	<location filter>
-```
-
-Beginning with **v. 0.10.11**, NPCs can be given a final `destination` planet to land on. If an NPC enters its destination system and has visited all of its `stopover`s (if any are defined), it will land on the selected planet, permanently satisfying the `land` objective and failing the `outrun` objective. If the destination is also the mission destination planet, the NPC will also permanently satisfy the `accompany` objective. The NPC will not take off after landing. If no value is specified, the mission destination planet will be used instead.
-
-If an NPC has the `uninterested` personality, it will not attempt to land on its destination planet. However, if it does land on the planet anyways, it will act the same as an "interested" NPC.
-
-NPCs do not automatically navigate to their destination planet. In order to do so, they require `waypoint`s.
-
-```html
-stopover [<planet>...]
-stopover
-	<location filter>...
-```
-
-Beginning with **v. 0.10.11**, NPCs can be given a set of one or more `stopover` planets to visit. If an NPC enters a system containing a `stopover`, it will temporarily land on that planet. It will not satisfy the `land` objective, nor will it fail the `outrun` objective. Unlike waypoints, and similar to mission stopovers, `stopover` planets can be visited in any order. If no value is specified for a stopover, the mission destination planet will be used instead.
-
-If an NPC has the `uninterested` personality, it will not attempt to land on its stopover planets. However, if it lands on the planet anyways, it will fulfill the stopover.
-
-NPCs do not automatically navigate to stopover planets. In order to do so, they require `waypoint`s.
 
 ```html
 dialog <text>
