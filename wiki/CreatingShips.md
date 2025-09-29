@@ -111,6 +111,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"plural"`: plural version of this ship's model name. If not specified, defaults to the display name with the character "s" added to the end. **(v. 0.9.5)**
 
+* `"variant map name"`: a subtitle that will appear below this ship's name in the map shipyard panel to differentiate it (as a variant) from other variants of the same model that may be for sale. **(v. 0.10.13)**
+
 * `"noun"`: noun to use when referring to this ship, instead of "ship." For example, this can make the game refer to a ship as a "creature" or an "entity." **(v. 0.9.7)**
 
 * `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). Additional sprite properties can be provided as children of this node. See the [sprite data](SpriteData) page for more details.
@@ -118,6 +120,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 * `"thumbnail"`: the shipyard sprite.
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
+
+* `description`: a paragraph of text to show in the shipyard. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
 
 * `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
 
@@ -151,7 +155,11 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
 
-	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle.
+	* `"arc" <minAngle#> <maxAngle#>`: limits to the rotation of installed turrets (minimum and maximum), relative to the base-angle. **(v. 0.10.7)**
+
+	* `"blindspot" <minAngle#> <maxAngle#>`: this turret can't fire when aiming between these angles (relative to the base angle). There can be multiple blindspots defined. **(v. 0.10.13)**
+
+	* `"turret turn multiplier"`: modifies the turn rate of the outfit installed on this hardpoint. The final value of the turn rate is `"turret turn" * (1 + "turret turn multiplier"(from ship's attributes) + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
 * `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
 
@@ -181,7 +189,9 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
 
-* `"swizzle"`: the swizzle value that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
+* `"swizzle"`: the name of the swizzle that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
+
+  Since **v. 0.10.13**, you can now use named swizzles. All previous numbered swizzles are still available.
 
 * `"name"`: the name of the particular ship, as seen and/or editable by the player. In general, this field will only be used by content creators for ships gifted to the player by a specific starting scenario. (It is extensively used by the game engine, to save the player's ships' names.)
 
@@ -189,7 +199,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
-* `"category"`: the type of ship: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
+* `"category"`: the type of ship, as specified by a `category "ship"` node since **v. 0.9.15**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The existing valid vanilla `"ship"` categories are: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
 
   Since **v. 0.9.15**: also "Space Liner", or "Utility".
   Since **v. 0.10.0**: also "Superheavy".
@@ -224,6 +234,8 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
+* `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), standardized to be used for landing on gas giants.
+
 There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for "tier 1" ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordnance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
 * `"blast radius"` (Typical value: (shields + hull) * .01)
@@ -248,7 +260,7 @@ There is also one special attribute called `weapon` that defines how much damage
 
 It is possible to add custom attributes to outfits/ships by specifying a key:value pair. As an example, when we wanted to add large scale spinal weapons, we added `"spinal mount" 1` as a custom attribute. The total value of attributes for a vessel cannot be below 0. Then on the spinal weapon we added `"spinal mount" -1`, which means it is taking up that slot.
 
-These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `noncorrosive 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
+These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `"noncorrosive" 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
 
 Note that care must be taken to ensure that these custom attributes do not inadvertently duplicate an already-existing attribute.
 
@@ -316,6 +328,20 @@ Beginning with **v. 0.10.0**, variants are also capable of having no bays even i
 ship "Carrier" "Carrier (No Bays)"
 	remove bays
 ```
+
+# Sales
+
+In order for anyone to buy your new ship, it must be added to one of the "shipyard" objects. For example, if you are writing a plugin, you could include this in one of your data files:
+
+```
+shipyard "Syndicate Advanced"
+	"My Fancy New Ship"
+	"My Other Fine Ship"
+```
+
+Any ships you list will be appended to the ships currently in the list you named. So, the above example would make two new ships available on all planets that have the "Syndicate Advanced" shipyard.
+
+For more information on how shipyards are defined, see the [Creating Shops](Creating-Shops) page.
 
 
 [2xcorvette]: https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/ship/corvette%402x.png

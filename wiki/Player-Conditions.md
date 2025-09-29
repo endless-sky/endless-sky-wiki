@@ -88,7 +88,10 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"ship model: <model>"` is the total number of ships of a specific model that you own which are present and active. **(v. 0.10.0)**
 * `"ship model (all): <model>"` is the total number of ships of a specific model that you own across your entire fleet. **(v. 0.10.0)**
 * `"flagship model: <model>"` is the model of your current flagship. **(v. 0.9.15)**
-* `"cargo space"` and `"passenger space"` are your fleet's total cargo and passenger space (not reduced by the amount you are carrying already).
+* `"cargo space"` and `"passenger space"` are your local and present (in the same system as you, not disabled, not parked) fleet's total cargo and passenger space (not reduced by the amount you are carrying already). The passenger space of a ship is its total bunks minus its required crew.
+* `"flagship: cargo space"` and `"flagship: passenger space"` are the same as the above, but only for your flagship. **(v. 0.10.14)**
+* `"cargo space free"` and `"passenger space free"` are how much cargo or passenger space your local fleet has free (i.e. subtracting the total amount by how much is currently in use). **(v. 0.10.14)**
+* `"flagship: cargo space free"` and `"flagship: passenger space free"` are the same as the above, but only for your flagship. **(v. 0.10.14)**
 * `"flagship crew"`, `"flagship required crew"`, and `"flagship bunks"` are the current crew, required crew, and bunks of your flagship only (ignoring any passengers you're carrying). **(v. 0.9.11)**
 * `"flagship planet: <planet>"` is the planet your flagship is currently landed on.
 * `"flagship system: <system>"` is the system your flagship is currently in.
@@ -101,6 +104,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"armament deterrence"` is how effective your weapons are at discouraging pirates. Values for single human ships range from `0` for unarmed ships to `8` for the Dreadnought.
 * `"pirate attraction"` is how attractive your fleet is to pirates, calculated as ("cargo attractiveness" - "armament deterrence"). A value of 3 results in raids 5% of the time, and a value of 10 results in raids 34% of the time.
 * `"day"`, `"month"`, and `"year"` are the current date, given as individual variables so you can check for holidays, etc.
+* `"weekday: <day>"` will be 1 if the current day matches the weekday name in the condition, and 0 otherwise. Weekdays are lowercase `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, and `saturday`. **(v. 0.10.13)**
 * `random` is a random number between 0 and 99. This can be used to make a mission only sometimes appear even when all other conditions are met.
 * `"roll: <input>"` will roll a random number from 0 up to, but not including the value of input (in the range `[0, input)`), where "input" can be either an integer or the name of a condition, in which case the value of the condition is used. If the input value is <= 1, then the output will always be 0. **(v. 0.10.3)**
 * `"name: <first> <last>"` is the full name of the pilot. **(v. 0.10.0)**
@@ -124,8 +128,23 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"outfit (storage): <outfit>"` is the number of outfits of the given type that you have in storage and local. When landed, local is your current planet. When in orbit, local is any planet in your current system. **(v. 0.10.0)**
 * `"outfit (all storage): <outfit>"` is the number of outfits of the given type that you have in storage anywhere. **(v. 0.10.0)**
 * `"flagship attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. The attribute is multiplied by 1000 because conditions must be integers, while attributes are decimal values, and multiplying by 1000 allows conditions to check for attributes as small as 0.001. The only exception to this is the "cost" attribute, which is already an integer. This includes the attributes from any installed outfits. **(v. 0.10.0)**
-* `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checked the attributes on the ship itself, excluding any installed outfits. **(v. 0.10.0)**
+* `"flagship base attribute: <attribute>"` is the value of the given attribute on the player's flagship multiplied by 1000. This only checks the attributes on the ship itself, excluding any installed outfits. **(v. 0.10.0)**
+* `"ship attribute: <attribute>"` has the same behavior as `"flagship attribute: <attribute>"`, except it looks at every ship in your fleet that is local to the player. Local is defined differently depending on the player's location. **(v. 0.10.13)**
+  * If the player is in orbit, "local" ships are any ships in the same system as the flagship that are also in orbit (i.e. parked ships in-system don't count).
+  * If the player is landed, "local" ships are those on the same planet as the player (i.e. disabled ships in-system don't count). Parked ships are excluded.
+* `"ship base attribute: <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it only checks the attributes on the ships themselves, excluding any installed outfits. **(v. 0.10.13)**
+* `"ship attribute (all): <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it checks every ship in your fleet regardless of location, including parked ships. **(v. 0.10.13)**
+* `"ship base attribute (all): <attribute>"` has the same behavior as `"ship base attribute: <attribute>"`, except it checks every ship in your fleet regardless of location, including parked ships. **(v. 0.10.13)**
+* `"ship attribute (parked): <attribute>"` has the same behavior as `"ship attribute: <attribute>"`, except it only checks parked ships local to you. If you are not landed on a planet, then this returns a value of 0. **(v. 0.10.13)**
+* `"ship base attribute (parked): <attribute>"` has the same behavior as `"ship base attribute: <attribute>"`, except it only checks parked ships local to you. If you are not landed on a planet, then this returns a value of 0. **(v. 0.10.13)**
+* `"flagship mass"` returns the current total mass of the player's flagship. This includes the mass of the ship itself, the mass of any ships and cargo currently being carried. **(v. 0.10.13)**
+* `"flagship shields"` returns the absolute number of shield hit points the player's flagship currently has. **(v. 0.10.13)**
+* `"flagship hull"` returns the absolute number of hull hit points the player's flagship currently has. **(v. 0.10.13)**
+* `"flagship fuel"` returns the absolute amount of fuel the player's flagship currently has. **(v. 0.10.13)**
 * `"flagship bays: <category>"` returns the number of bays for the given category of ship the player's flagship has.
+* `"flagship bays free: <category>"` returns the number of bays on the player's flagship for the given category of ship that are not occupied. **Note:** this condition should only be used while the player is in-flight. Its behavior while the player is landed is considered unstable and may change in future versions. **(v. 0.10.13)**
+* `"flagship bays"` returns the total number of bays on the player's flagship. **(v. 0.10.13)**
+* `"flagship bays free"` returns the total number of bays on the player's flagship that are not currently occupied. **Note:** this condition should only be used while the player is in-flight. Its behavior while the player is landed is considered unstable and may change in future versions.  **(v. 0.10.13)**
 * `"flagship planet attribute: <attribute>"` returns 1 if the planet that the player's flagship is landed on has the given attribute. Returns 0 if the flagship is not landed or the landed planet doesn't have the given attribute. **(v. 0.10.0)**
 * `"flagship disabled"` returns 1 if the player's flagship is disabled. Returns 0 otherwise. **(v. 0.10.3)**
 * `"days since year start"` is the number of days since the beginning of the current year. **(v. 0.10.0)**
@@ -134,11 +153,18 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"days since start"` is the number of days since the day this pilot started on. If the current date is somehow before the date the pilot started on, this value will be negative. **(v. 0.10.0)**
 * `"hyperjumps to planet: <name>"` and `"hyperjumps to system: <name>"` are the number of hyperdrive-capable jumps it would take to travel from your current location to the specified planet or system. Returns -1 for locations which don't exist or can't be reached. Does not make use of wormholes. **(v. 0.10.0)**
 * `"previous system: <system>"` is 1 if the name provided was the system you were previously in before your current one, 0 otherwise. **(v. 0.10.0)**
-* `"entered system by: (take off | hyperdrive | jump drive | wormhole)"` is the method by which you entered the system you're currently in. If you did not enter the current system by a given method, the condition will return 0. Returns 1 if the method was used. The "take off" method is true after taking off from a planet. The "hyperdrive" method is true if you entered using a hyperdrive. The "jump drive" method is true if you entered using a jump drive. The "wormhole" method is true if you entered via a wormhole. **(v. 0.10.0)**
+* `"entered system by: (takeoff | hyperdrive | jump drive | wormhole)"` is the method by which you entered the system you're currently in. If you did not enter the current system by a given method, the condition will return 0. Returns 1 if the method was used. The "takeoff" method is true after taking off from a planet. The "hyperdrive" method is true if you entered using a hyperdrive. The "jump drive" method is true if you entered using a jump drive. The "wormhole" method is true if you entered via a wormhole. **(v. 0.10.0)**
 * `"raid chance in system: <system>"` is the percent chance that a raid fleet will spawn in the given system given your fleet's current pirate attraction value, multiplied by 1000 in order to put it into a usable integer range. If a system contains no raid fleets, or the player's attraction is too low to spawn a raid fleet, then the result will be 0. For more information on how raid fleets behavior, see the [Creating Governments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid) page. **(v. 0.10.0)**
 * `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
 * `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
+* `"flagship strength"` is the combat strength of your flagship, calculated based on the total cost of its hull and installed outfits. **(v. 0.10.15)**
+* `"player strength"` is the combat strength of your fleet, calculated based on the total cost of ship hulls and installed outfits. This also includes ships in other systems. **(v. 0.10.15)**
+* `"ally strength"` is the combat strength of all friendly ships in the system. This value is 0 if there are no hostiles in the system. **(v. 0.10.15)**
+* `"enemy strength"` is the combat strength of all hostile ships in the system. **(v. 0.10.15)**
+* `"government strength: <government>"` is the combat strength of all ships belonging to that government in the system. **(v. 0.10.15)**
+* `"ally strength: <government>"` is the strength of all ships friendly to that government in the system, or 0 if there are no hostiles. **(v. 0.10.15)**
+* `"enemy strength: <government>"` is the strength of all ships hostile to that government in the system. **(v. 0.10.15)**
 
 ## Value expressions
 

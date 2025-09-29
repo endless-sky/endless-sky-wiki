@@ -21,9 +21,9 @@ The [syntax](DataFormat#grammar-specifications) for the definition of a galaxy, 
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
-		scale <scale#>
 
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -47,13 +47,24 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
-	asteroid <name> <count#> <energy#>
+	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
@@ -62,10 +73,18 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+			[to spawn]
+				<condition> <comp> <value>
+				(has | not) <condition>
+				never
+				(and | or)
+					...
+		visibility <maxDistance> [<minDistance>]
 		object [<name>]
 			...
 
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -95,7 +114,6 @@ planet <name>
 galaxy <name>
 	pos <x#> <y#>
 	sprite <sprite>
-		scale <scale#>
 ```
 
 "Galaxies" are what serve as background images on the map. This includes the image of the Milky Way, as well as all the labels on the map for various regions of space.
@@ -118,16 +136,11 @@ sprite <sprite>
 
 The image that is created at this galaxy's position.
 
-```html
-scale <scale#>
-```
-
-The multiplier applied to the dimensions of this galaxy's sprite when displayed in game. This value defaults to 1.
-
 # Systems
 
 ```html
 system <name>
+	"display name" <name>
 	inaccessible
 	hidden
 	shrouded
@@ -151,13 +164,24 @@ system <name>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-		<conditions>
-	asteroid <name> <count#> <energy#>
+	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
@@ -166,6 +190,12 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+			[to spawn]
+				<condition> <comp> <value>
+				(has | not) <condition>
+				never
+				(and | or)
+					...
 		object [<name>]
 			...
 ```
@@ -176,7 +206,13 @@ Systems are the locations that ships are capable of being and can contain planet
 system <name>
 ```
 
-The name of a system must be unique.
+The true name of a system must be unique. Use this name to internally reference systems in missions, events, etc.
+
+```html
+"display name" <name>
+```
+
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the system. Multiple systems can share the same display name.
 
 ```html
 inaccessible
@@ -214,7 +250,7 @@ attributes <attribute>...
 
 The attributes of this system that control what [missions](CreatingMissions) will be offered within it.
 
-If there are no inhabited planets in a system, then it is automatically given an "uninhabited" attribute. 
+If there are no inhabited planets in a system, then it is automatically given an `uninhabited` attribute. 
 
 ```html
 music <sound>
@@ -277,21 +313,18 @@ The haze that is created for the background of this system. If no haze is given,
 
 ```html
 link <system>
-	<conditions>
 ```
 
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
 
-Links can have conditions that determine if they are available/visible.
-
 ```html
-asteroid <name> <count#> <energy#>
+asteroids <name> <count#> <energy#>
 minables <name> <count#> <energy#>
 ```
 
 The name of the asteroids in this system, as well as the number of the asteroids and their energy. The energy of an asteroid determines how fast it moves and rotates, with higher values meaning faster asteroids. A random value between 0 and the energy value is used for each of the asteroids when they are created, meaning that high energy values may still result in slow asteroids.
 
-If an asteroid is minable, then it uses the `minable` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
+If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
 
 ```html
 trade <commodity> <cost#>
@@ -301,9 +334,17 @@ A type of commodity sold at the planets in this system and its cost.
 
 ```html
 fleet <name> <period#>
+	[to spawn]
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
 ```
 
 The name of a [fleet](CreatingFleets) that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
+
+Beginning in **v. 0.10.11**, fleets can be given `to spawn` conditions. A fleet will only appear if the `to spawn` condition is fulfilled.
 
 ```html
 raid <fleet> [<min-attraction#> [<max-attraction#>]]
@@ -312,15 +353,23 @@ raid <fleet> [<min-attraction#> [<max-attraction#>]]
 The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
-"no raid"
+"no raids"
 ```
 
 If present, no raid fleets will ever spawn in this system, whether they be from the system's government or the system itself. **(v. 0.10.3)**
 
 ```html
 hazard <name> <period#>
+	[to spawn]
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
 ```
 The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. The origin of any hazards defined here is the system center. **(v. 0.9.13)**
+
+Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
 
 ```html
 "starfield density" <density#>
@@ -338,6 +387,13 @@ object [<name>]
 	period <period#>
 	offset <offset#>
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
+	visibility <maxDistance> [<minDistance>]
 	object [<name>]
 		...
 ```
@@ -359,6 +415,8 @@ sprite <sprite>
 ```
 
 The sprite that is created at this object's position.
+
+Note that the sprite path is used to classify stellar objects: if it begins with "star/", it's a star, if it begins with "planet/station", it's a station, while any other object that has a parent object is classified as a moon. These classifications are used (or can be used in future versions) for messages, radar display and/or AI decisions.
 
 ```html
 scale <scale#>
@@ -392,6 +450,14 @@ hazard <name> <period#>
 
 A system hazard with behavior as described above, only with its origin on this object instead of at the system center. An object can have multiple different hazards attached to it. **(v0.9.15)**
 
+Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
+
+```
+visibility <maxDistance> [<minDistance>]
+```
+
+The range from which the object is visible. `maxDistance` is the range where the object becomes invisible, and `minDistance` is where it becomes fully visible. If `minDistance` is greater, the object disappears as the player gets closer. **(v0.10.11)**
+
 ```
 object [<name>]
 	...
@@ -403,6 +469,7 @@ Objects are capable of having objects as children. This allows for the creation 
 
 ```html
 planet <name>
+	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
 	landscape <sprite>
 	music <sound>
@@ -433,7 +500,7 @@ Planets are landable objects, and are where players are capable of buying and se
 planet <name>
 ```
 
-The name of a planet must be unique, and will only be used it there is an object in a system that refers to this same name.
+The true name of a planet must be unique. Use this name to internally reference planets in missions, events, system objects, etc.
 
 If a planet is being used to define a wormhole (i.e. an objects that is named in multiple systems), then giving it a spaceport will cause NPCs to "land" on the wormhole.
 
@@ -444,16 +511,22 @@ Additionally, giving it a description will cause the wormhole to create a link o
 **Since v. 0.10.0**: Create a `wormhole` node and then assign it to the planet using `wormhole <name>` (see below).
 
 ```html
+"display name" <name>
+```
+
+Since **v. 0.10.11**: Specifies the name displayed to the player. If not defined, it defaults to the true name of the planet. Multiple planets can share the same display name.
+
+```html
 attributes <attribute>... "requires: <attribute>"
 ```
 
 The list of attributes that will be used to determine what [missions](CreatingMissions) should be offered on this planet.
 
-If the "requires: `<attribute>`" phrase is used, then a ship must have the listed attribute in order to land on this planet.
+If the `"requires: <attribute>"` phrase is used, then a ship must have the listed attribute in order to land on this planet.
 
-There are three attributes that get automatically added to a planet: spaceport, shipyard, and outfitter. As their names imply, they are added to a planet if that planet has a spaceport, shipyard, or outfitter. If one tries to give one of these attributes to a planet that does not actually have a spaceport, shipyard, or outfitter, then that attribute will be ignored.
+There are three attributes that get automatically added to a planet: `spaceport`, `shipyard`, and `outfitter`. As their names imply, they are added to a planet if that planet has a spaceport, shipyard, or outfitter. If one tries to give one of these attributes to a planet that does not actually have a spaceport, shipyard, or outfitter, then that attribute will be ignored.
 
-One other special attribute is the "uninhabited" attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
+One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
 landscape <sprite>
@@ -497,7 +570,7 @@ port [<name>]
 	description <text>
 ```
 
-Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the "port" keyword. The "spaceport" keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
+Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the `port` keyword. The `spaceport` keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
 
 If a port is given a name, then that will display on the spaceport button instead of the usual "Spaceport" text.
 
@@ -517,7 +590,7 @@ If a port has no `services` node, then it will not offer any services. As with `
 
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
-The description text of a port behaves the same way as the text following a "spaceport" node, and is the text that appears when you click the port button.
+The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
 
 ```html
 government <name>
@@ -624,7 +697,7 @@ color (<r#> <g#> <b#> | <name>)
 
 Defines the color of the arrows in the map panel and the planet label of a "mappable" wormhole.
 This can either be given as RGB values or can refer to a named stock color.
-By default, the color names "map wormhole" will be used.
+By default, the color named `"map wormhole"` will be used.
 
 # Landing messages
 
@@ -679,7 +752,7 @@ music <path>
 ```
 
 Both systems and planets can be assigned music that plays while the player is there.
-The music files should be of the '.mp3' format and placed in the 'sounds' folder.
+The music files should be of the '.mp3' or '.flac' format and placed in the 'sounds' folder.
 The path should be the relative path within the 'sounds' folder without the file extension.
 For example, a file named 'machinery.mp3' in a folder 'ambient' inside the 'sounds' folder would be listed in a planet or system definition as:
 ```css

@@ -40,11 +40,22 @@ interface <name> [<anchor>]
 		[truncate <truncation>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> [<anchor>]
+		[color <color>]
+		width <width#>
+		[truncate <truncation>]
+		[alignment <alignment>]
+		[align [<anchor>]]
+		[pad <x#> <y#>]
 	(ring | bar) <name>
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
-		[color <color>]
+		[color <from color> [<to color>]]
 		[size <size#>]
+		[reversed]
+		[start angle <angle#>]
+		[span angle <angle#>>]
 	pointer
 		from <x#> <y#>
 		to <x#> <y#>
@@ -55,6 +66,9 @@ interface <name> [<anchor>]
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 	value <name> <value>
+	list <name>
+		<value#>
+		...
 ```
 
 # Defining an Interface
@@ -235,20 +249,42 @@ hover | "hover"
 
 If `color` is defined but either the inactive or hover color is not, the undefined color will use the given active color.
 
+### Wrapped text elements
+
+```html
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> to <x#> <y#> [<anchor>]
+		size <size#>
+		color <color>
+		inactive <color>
+		hover <color>
+		truncate (none | front | middle | back)
+		alignment (left | center | right | justified)
+```
+Beginning with **v. 0.10.13**, every text element has its "wrapped" counterpart. The difference is that the text is wrapped at the width limit of the element. As for basic text elements, you can specify truncation of the text. Additionally, you can choose how the text should be aligned.
+
 ## Bars and rings
 
 ```html
 	(bar | ring) <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
-		color <color>
+		color <from color> [<to color>]
 		size <size#>
+		[reversed]
+		[start angle <angle#>]
+		[span angle <angle#>>]
 ```
 Defines a straight line (bar) or circular outline (ring) to be drawn with this interface.
 In the case of a ring, it will be drawn anti-clockwise around the center of its bounding box, with a radius equal to half the width of the bounding box.
+Beginning in **v. 0.10.2**, it is also possible to define the "start angle" and "span angle" for a ring.
+The "start angle" defines from how many degrees clockwise from a line straight up from the center the ring should start filling. The default value is 0, which corresponds to straight up. Values of greater than or equal to zero and less than 360 are allowed.
+The "span angle" defines how many degrees the ring should be drawn through when fully filled. The default, and maximum, value is 360, where the full ring will correspond to a full circle. The minimum value is 0, in which case, nothing is drawn.
 A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
+Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction of a bar. A reversed bar will be filled from the top left corner. It is not currently possible to reverse a ring.
 The size determines the thickness of the bar or ring, the default value is 2.
-If no color is given, "active" will be used.
+Bars can take a start and end color, and will interpolate between the two.
+If one color is given, the whole bar will be that color, and if no color is given, "active" will be used.
 
 ## Lines
 
@@ -274,9 +310,16 @@ Define a pointer to be drawn with this interface.
 The orientation can either be given as an angle in degrees, counting clockwise with 0 being straight up, or a pair of values corresponding to the x and y components of a vector. If no orientation is given, the vector (0, -1) is used.
 If no color is given, "medium" will be used.
 
-## Values
+## Values and lists
 
 ```html
 	value <name> <value#>
 ```
 Stores a numerical value. This can be any real number, which the game can refer to using the given name.
+
+```html
+	list <name>
+		<value#>
+		...
+```
+Stores a list of real numbers, which the game can refer to using the given name **(v. 0.10.5)**.

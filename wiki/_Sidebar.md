@@ -19,6 +19,7 @@
 * [Story Ideas](StoryIdeas)
 * [Donations](Donations)
 * [Development Vision](https://github.com/endless-sky/endless-sky/wiki/Endless-Sky's-Vision)
+* [Reviewing PRs](ReviewingPRs)
 
 **Creation**
 
@@ -48,9 +49,9 @@
 
 **Compiling or modifying the source code**
 
-* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-cmake.md)
+* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-developer.md)
 * [Contributing to the code](ContributingCode)
-* [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
+* [C++ style guide](C++-Style-Guide)
 
 **Descriptions of game engine technology**
 

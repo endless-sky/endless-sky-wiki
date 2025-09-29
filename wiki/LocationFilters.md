@@ -36,6 +36,7 @@ Location filters can be used for:
 		[<distance calculation settings>]
 	[<modifier>] distance [<min>] <max>
 		[<distance calculation settings>]
+	[<modifier>] visited [planet]
 	neighbor
 		...
 	not
@@ -156,6 +157,12 @@ This is the same as the `near` tag, but gives distances relative to the origin p
 
 Beginning in **v. 0.10.1**, `near` and `distance` filters can have [distance calculation settings](CreatingMissions#distance-calculation-settings) listed directly as children to provide more options for how the distances are calculated.
 
+```html
+[(not|neighbor)] visited [planet]
+```
+
+Beginning in **v. 0.10.13**, the `visited` filter can be used to match systems that you've visited before. If the location filter is being used for locating a planet, such as for mission sources, destinations, or stopovers, then `visited` means that the system that the planet is in must have been visited before, whereas `visited planet` means that the planet itself must have been visited before.
+
 # Not and neighbor modifiers
 
 ```html
@@ -196,5 +203,3 @@ source
 # Testing location filters
 
 Beginning in **v. 0.10.0**, it is possible to test filters by passing `--matches` to the game and then writing a location filter under a `location` node. The output are systems and planets matching the filter.
-
-Note: in order to use this function with location filters traversing wormholes (with the distance calculation settings in **v. 0.10.1**), the game will need to be recompiled with the method `Body::HasSprite()` modified to always return `true`.
