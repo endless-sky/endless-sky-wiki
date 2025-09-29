@@ -450,6 +450,8 @@ hazard <name> <period#>
 
 A system hazard with behavior as described above, only with its origin on this object instead of at the system center. An object can have multiple different hazards attached to it. **(v0.9.15)**
 
+Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
+
 ```
 visibility <maxDistance> [<minDistance>]
 ```
