@@ -326,6 +326,7 @@ Show help | F1
 View message log | /
 Deploy / recall fighters | D
 Fleet: Fight my target | F
+Fleet: Toggle hold fire | Y
 Fleet: Gather around me | G
 Fleet: Hold position | H
 Fleet: Toggle ammo usage | U
