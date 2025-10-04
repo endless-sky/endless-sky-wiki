@@ -155,7 +155,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
 
-	* `"inside"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.10.17)**
+	* `"inside"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.10.17)**
 
 	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
 
