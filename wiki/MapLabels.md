@@ -31,4 +31,4 @@ The existing map labels have been created with InkScape (https://inkscape.org/).
 2. Create text with the Zapfino font (you may need to find a download for this), 24-point.
 3. Set the tracking (i.e. spacing between letters) to 24 px, and the fill color to `bbc04030`.
 4. Create a curve and use `Text` -> `Put on Path` to make the text follow that path. Adjust it as appropriate (possibly adjusting the spacing of individual letters to avoid overlapping the map text).
-5. Export your text (do not include tthe map sprite in the background) as a PNG.
+5. Export your text (do not include the map sprite in the background) as a PNG.
