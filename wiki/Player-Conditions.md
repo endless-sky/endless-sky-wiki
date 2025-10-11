@@ -158,15 +158,15 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
 * `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
-* `"gamerule: <rule>[==<value>]"` will return the value of the gamerule of the given name. **(v. 0.10.15)**
+* `"gamerule: <rule>"` will return the value of the gamerule of the given name. **(v. 0.10.16)**
 	* Integer gamerules return their value as-is.
 	* Boolean gamerules return 0 for false and and 1 for true.
 	* Double gamerules return their value multiplied by 1000 and truncated to an integer.
-	* String gamerules can be read using one of two options:
-		* Using the same syntax as the other gamerules, returns 1 if in any setting that is active, and 0 if they have the inactive setting.
-			* For example, `"gamerule: disabled fighters avoid projectiles"` would return 0 if using the "none" setting while returning 1 for all other settings.
-		* You can also test for an exact string value by doing `<rule>==<value>` inside the condition to return 1 if the rule string matches the given value and 0 otherwise.
-			* For example, `"gamerule: disabled fighters avoid projectiles==only player"` would return 1 if this gamerule were using the "only player" setting and 0 if it were something else. Using this syntax on non-string gamerules will always return 0.
+	* String gamerules return a unique integer for each allowed string value:
+      * "disabled fighters avoid projectiles":
+        * None = 0
+        * Only Player = 1
+        * All = 2
 
 ## Value expressions
 
