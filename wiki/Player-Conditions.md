@@ -168,7 +168,7 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"gamerule: <rule>"` will return the value of the gamerule of the given name. **(v. 0.10.16)**
 	* Integer gamerules return their value as-is.
 	* Boolean gamerules return 0 for false and and 1 for true.
-	* Double gamerules return their value multiplied by 1000 and truncated to an integer.
+	* Decimal gamerules return their value multiplied by 1000 and truncated to an integer.
 	* String gamerules return a unique integer for each allowed string value:
       * "disabled fighters avoid projectiles":
         * None = 0
