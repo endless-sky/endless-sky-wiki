@@ -165,6 +165,15 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"government strength: <government>"` is the combat strength of all ships belonging to that government in the system. **(v. 0.10.15)**
 * `"ally strength: <government>"` is the strength of all ships friendly to that government in the system, or 0 if there are no hostiles. **(v. 0.10.15)**
 * `"enemy strength: <government>"` is the strength of all ships hostile to that government in the system. **(v. 0.10.15)**
+* `"gamerule: <rule>"` will return the value of the gamerule of the given name. **(v. 0.10.16)**
+	* Integer gamerules return their value as-is.
+	* Boolean gamerules return 0 for false and and 1 for true.
+	* Decimal gamerules return their value multiplied by 1000 and truncated to an integer.
+	* String gamerules return a unique integer for each allowed string value:
+      * "disabled fighters avoid projectiles":
+        * None = 0
+        * Only Player = 1
+        * All = 2
 
 ## Value expressions
 
