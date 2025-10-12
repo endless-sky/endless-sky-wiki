@@ -158,6 +158,22 @@ No error will be raised if you modify these conditions, but the game will reset 
 * `"installed plugin: <plugin>"` will be equal to 1 if a plugin with the given name is currently loaded, or 0 if no such plugin is loaded. **(v. 0.10.3)**
 * `"person destroyed: <name>"` will be equal to 1 if the person ship of the given name has been destroyed, or 0 if it is still alive. **(v. 0.10.3)**
 * `"landing access: <planet name>"` will be equal to 1 if your flagship has the ability to land on the given planet, 0 otherwise. **(v. 0.10.7)**
+* `"flagship strength"` is the combat strength of your flagship, calculated based on the total cost of its hull and installed outfits. **(v. 0.10.15)**
+* `"player strength"` is the combat strength of your fleet, calculated based on the total cost of ship hulls and installed outfits. This also includes ships in other systems. **(v. 0.10.15)**
+* `"ally strength"` is the combat strength of all friendly ships in the system. This value is 0 if there are no hostiles in the system. **(v. 0.10.15)**
+* `"enemy strength"` is the combat strength of all hostile ships in the system. **(v. 0.10.15)**
+* `"government strength: <government>"` is the combat strength of all ships belonging to that government in the system. **(v. 0.10.15)**
+* `"ally strength: <government>"` is the strength of all ships friendly to that government in the system, or 0 if there are no hostiles. **(v. 0.10.15)**
+* `"enemy strength: <government>"` is the strength of all ships hostile to that government in the system. **(v. 0.10.15)**
+* `"gamerule: <rule>"` will return the value of the gamerule of the given name. **(v. 0.10.16)**
+	* Integer gamerules return their value as-is.
+	* Boolean gamerules return 0 for false and and 1 for true.
+	* Decimal gamerules return their value multiplied by 1000 and truncated to an integer.
+	* String gamerules return a unique integer for each allowed string value:
+      * "disabled fighters avoid projectiles":
+        * None = 0
+        * Only Player = 1
+        * All = 2
 
 ## Value expressions
 

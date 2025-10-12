@@ -341,24 +341,24 @@ This specifies that the mission does not show up in the player's list of mission
 (priority | minor | non-blocking)
 ```
 
-If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
+If a mission is marked with `priority`, (prior to **v. 0.10.13**) only other "priority" missions can be offered alongside it. Beginning in **v. 0.10.13**, missions marked `non-blocking` can also be offered..
 
 If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
-Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
-
-Note that `priority` will only affect missions that offer from the spaceport.
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time. In **v. 0.10.13**, this was extended to also allow any number of "non-blocking" missions to offer alongside "priority" missions.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
+This specifies where this mission will be shown, if someplace other than the spaceport.
 
-If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
-
-A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+* `job`: it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). Note that `job` missions do not run their `on offer` [action](#triggers) until they are accepted, but dialogs and conversations from the `on offer` will not appear. Place dialogs and conversations in the `on accept` action of a `job` mission instead.
+* `landing`: it shows up as soon as you land instead of waiting for you to visit the spaceport or some other location. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
+* `assisting` or `boarding`: it will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch`, `flee`, or `depart`, the ship in question will be destroyed.
+* `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
+* `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
 
 An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
 

@@ -632,6 +632,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
+  * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
+
 
 # Weapon attributes
 
@@ -655,7 +657,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `"hardpoint sprite"`: the sprite (which ought to be very tiny) to draw on top of the hardpoint where this weapon is installed, to show what direction the weapon is pointing in. Generally, this should only be used for turrets, because the gun hardpoints on many ships are already designed to look like guns. This sprite definition can use any of the same animation values as the ship sprite. **(v. 0.9.7)**
 
- * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
+  * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
 
 * `"hardpoint offset"`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 
