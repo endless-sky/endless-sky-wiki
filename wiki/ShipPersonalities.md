@@ -57,6 +57,7 @@ Each ship in the game can have a variety of "personality" flags that control its
 
 * `escort`: this ship will show up in the player's escort list. (Use this for mission NPCs that you are supposed to accompany, for example.)
 * `target`: this ship is highlighted by making it flash in the radar, and in the target display it is labeled as a "mission target." **(v. 0.9.7)**
+* `tracked`: on the map, the system that this ship is located in is marked. **(v. 0.10.17)**
 * `marked`: only attacks player ships, and only player ships will attack it. **(v. 0.9.7)**
 * `mute`: this ship will not talk to you if you hail it (and therefore can't assist you, either). **(v. 0.9.7)**
 * `quiet`: this ship will not send hails to you passively, but will still respond to hails if you hail it directly. **(v. 0.10.7)**
