@@ -56,7 +56,7 @@ Both attributes essentially add reference directions for the formation, from onl
 
 To make formations scalable to any number of ships, a repeat attribute must be applied to the block. Any attribute that exists in a block can be used as a child attribute in `repeat`.
 
-When a block is fully populated with ships, if it has `repeat`, the block will be rendered again with any children of `repeat` added to their corresponding attribiutes in the block.
+When a block is fully populated with ships, if it has `repeat`, the block will be rendered again with any children of `repeat` added to their corresponding attributes in the block.
 
 For instance,
 ```html
