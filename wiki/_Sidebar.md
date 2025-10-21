@@ -41,6 +41,7 @@
 * [Creating phrases](CreatingPhrases)
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
+* [Creating formations](CreatingFormations)
 * [Editing interfaces](CreatingInterfaces)
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
