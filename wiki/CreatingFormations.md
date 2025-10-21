@@ -121,4 +121,4 @@ Blocks can be one of three types: `arc`, `line`, and `position`.
 `position` blocks render a single position at the given coordinates. 
 	`repeat` Unlike other blocks, repeat criteria are written directly onto `repeat`. Both `<x>` and `<y>` must be specified whenever `repeat` is used.
 
-All blocks are rendered from top to bottom before any block is repeated, and all will repeat top to bottm.
+All blocks are rendered from top to bottom before any block is repeated, and all will repeat top to bottom.
