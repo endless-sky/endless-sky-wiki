@@ -65,7 +65,7 @@ For instance,
 ```
 Will render the first position at 0,200 and then 0,400; 0,600; etc.
 
-If no repeat attribute is present, all positions will be filled, and any remaining ships will group at 0,0 underneath the flagship
+If no repeat attribute is present, all positions will be filled, and any remaining ships will group at 0,0 underneath the flagship.
 
 # Positions
 ```html
