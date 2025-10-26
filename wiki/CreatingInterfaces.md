@@ -294,6 +294,7 @@ If one color is given, the whole bar will be that color, and if no color is give
 		color <color>
 ```
 Defines an area to be filled with the specified color while drawing this interface.
+Prior to **v. 0.10.17**, the keyword for this element was "line".
 If no color is given, "medium" will be used.
 
 ## Pointers
