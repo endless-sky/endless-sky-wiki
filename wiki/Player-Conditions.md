@@ -174,6 +174,7 @@ No error will be raised if you modify these conditions, but the game will reset 
         * None = 0
         * Only Player = 1
         * All = 2
+* `"enemy: <government name>"` will be equal to 1 if you are hostile to the government with the given name (your reputation with the government is negative or you have provoked them), and 0 if they are friendly (your reputation with the government is positive or you have bribed them). **(v. 0.10.17)**
 
 ## Value expressions
 
