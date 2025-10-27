@@ -84,7 +84,7 @@ The existing valid vanilla outfit categories are the following:
 
   * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
 
-* `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line.
+* `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
 
 Outfits can optionally be ordered in the outfitter screen by using the following attributes, which interact with outfit series as defined in `series.txt`.
 
@@ -224,6 +224,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"hull multiplier"`: multiplies the maximum hull value of the ship. **(v. 0.10.3)**
 
+  * `"cloaked regen multiplier"`: multiplies the shield generation value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"shield generation multiplier"`. For example, if both attributes have a value of 0.1, then your shield generation will run at 110% while uncloaked and 110% * 110% = 121% when cloaked. **(v. 0.10.13)**
+
+  * `"cloaked repair multiplier"`: multiplies the hull repair rate value of other outfits while a cloak is active. This multiplier stacks multiplicatively with the `"hull repair multiplier"`. **(v. 0.10.13)**
+
 * These attributes are generally related to power generators and batteries.
 
   * `"energy capacity"`: how much energy your ship can store.
@@ -236,11 +240,11 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These attributes will change in effectiveness given how close a ship is to the system center and what type of stars are in the system.
 
-  * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar-attributes) of star(s) in the system.
+  * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. Since **v. 0.10.15**, ramscoops are more effective near the star(s) (**from v. 0.9.0 to v. 0.10.14** near the system center): the fuel gain is multiplied by `.2 + 1.8 / (distance to star / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar-attributes) of star(s) in the system.
 
-  * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar-attributes) of the star(s) in the current system.
+  * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the star(s) (system center before **v. 0.10.15**). As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar-attributes) of the star(s) in the current system.
 
-  * `"solar heat"`: the amount of heat that this outfit produces when your ship is 1250 pixels from the system center. As with solar collection, heat increases up to two times this value the closer you are to the system center and decreases down to 1/5 of this value the farther away you are. This value will also vary based on the [solar power](MapData#solar-attributes) of the star(s) in the current system. **(v. 0.9.12)**
+  * `"solar heat"`: the amount of heat that this outfit produces when your ship is 1250 pixels from the star(s) (system center before **v. 0.10.15**). As with solar collection, heat increases up to two times this value the closer you are to the star(s) and decreases down to 1/5 of this value the farther away you are. This value will also vary based on the [solar power](MapData#solar-attributes) of the star(s) in the current system. **(v. 0.9.12)**
 
 * These attributes alter the fuel capacity and usage of a ship.
 
@@ -628,6 +632,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
+  * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
+
 
 # Weapon attributes
 
@@ -650,6 +656,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
   * `rewind`: the animation plays forward, then reverses, rather than looping back to the beginning when it reaches the end.
 
 * `"hardpoint sprite"`: the sprite (which ought to be very tiny) to draw on top of the hardpoint where this weapon is installed, to show what direction the weapon is pointing in. Generally, this should only be used for turrets, because the gun hardpoints on many ships are already designed to look like guns. This sprite definition can use any of the same animation values as the ship sprite. **(v. 0.9.7)**
+
+  * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
 
 * `"hardpoint offset"`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 
@@ -801,17 +809,27 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * The value of "x" is 100 times the ratio of burst reload and reload. For example, a weapon with a reload of 4 and a burst reload of 1 will be labeled "continuous (25%)".
 
-* `homing`: How good this weapon is at seeking its target:
+* `homing`: whether or not projectiles fired by this weapon will turn to face its target. In order for a missile to change its trajectory, it also needs a non-zero acceleration value. There are several "child" attributes that can be used to customize the type of homing the projectile has:
+
+  * `leading`: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+
+  * `blindspot`: projectile loses its homing ability if no longer facing toward the target.
+
+  * `"throttle control"`: projectile stops thrusting if it misses the target, in order to turn towards it in a tighter loop.
+
+  Prior to **v. 0.10.15**, homing was instead defined as a numerical scale:
 
   * 0: no homing.
 
-  * 1: projectile loses its homing ability if no longer facing toward the target.
+  * 1: weapon has `homing` and `blindspot`.
 
-  * 2: dumb homing (always try to turn to point toward the target).
+  * 2: weapon has `homing`.
 
-  * 3: stop thrusting if you miss the target, in order to turn back towards it in a tighter loop.
+  * 3: weapon has `homing` and `"throttle control"`.
 
-  * 4: rather than moving directly towards the target, calculate an interception point based on the projectile's speed and the target's current speed.
+  * 4: weapon has `homing`, `leading`, and `"throttle control"`.
+
+  Homing may still be defined numerically for backwards compatibility.
 
 * Tracking attributes (as of **v. 0.9.1**) control how well a projectile seeks targets, and accept values from 0 to 1:
 
@@ -887,7 +905,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"ion damage"`: how much ionization is added to a target when struck by this projectile, draining the target's energy over time. If the target's shields are up, incoming ion damage is cut in half. Beginning in **v. 0.9.15**, ionization also had the effect of scrambling damage. This was removed when scrambling damage was made its own damage type in **v. 0.10.0**.
 
-  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `scrambling / (energy % * 220)`, where `energy %` is the percentage of energy that the ship has left relative to its energy capacity. The jamming chance caps out at 50%. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
+  * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
   * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
 
@@ -912,6 +930,8 @@ outfitter "Syndicate Advanced"
 ```
 
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
+
+For more information on how outfitters are defined, see the [Creating Shops](Creating-Shops) page.
 
 # Balancing
 
