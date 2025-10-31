@@ -42,6 +42,7 @@
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
+* [Editing gamerules](Gamerules)
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
