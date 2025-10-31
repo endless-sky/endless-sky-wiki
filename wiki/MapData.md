@@ -326,7 +326,7 @@ The distance of the "Goldilocks zone" in this system. When selecting a system on
 
 The distance from the system center at which minable asteroids in this system will orbit.
  **Beginning in v. 0.9.15**, a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
- **Beginning in v. 0.10.13**:
+ **Beginning in v. 0.10.18**:
 -	The distribution of individual orbits within a belt can be modified. By default, any asteroid within a belt can get as close as 0.4 * `belt radius` to the center of the system, or as far as 4 * `belt radius`, and an individual orbit ellipse can have its long axis a little over twice as long as its short axis.
 -	`max eccentricity` Maximum eccentricity (range 0 to 1, default 0.6).
 -	`scale factor closest periapsis` Factor determining periapsis closest distance relative to radius at high eccentricities (range 0 to 1, default 0.4).
@@ -375,9 +375,9 @@ minables <name> [<count#> [<energy#> [<belt#>]]]
 
 The name of the asteroids in this system, as well as the number of the asteroids and their energy. The energy of an asteroid determines how fast it moves and rotates, with higher values meaning faster asteroids. A random value between 0 and the energy value is used for each of the asteroids when they are created, meaning that high energy values may still result in slow asteroids.
 
-If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
+If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the chosen `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
 
- **Beginning in v. 0.10.13**:
+ **Beginning in v. 0.10.18**:
 -	minables can be assigned to specific belts, all asteroids can have `to spawn` conditions, and the `count`, `energy`, and `belt` arguments can optionally be given as subnodes, to improve readability of more complex definitions.
 -	`<count#>` must be specified either as first token after `name` or using the `count` subnode. It must be an integer greater than zero.
 -	`<energy#>` must be specified either as second token after `name` or using the `energy` subnode. It must be greater than zero.
