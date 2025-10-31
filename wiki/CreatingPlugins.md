@@ -43,6 +43,39 @@ plugins/
 	  ...
 ```
 
+Beginning in **0.10.13**, you can also use your plugin as a zip file. The plugin's internal structure is the same as before:
+
+```
+plugins/
+|-- example-plugin.zip/
+|   |-- data/
+|   |   |-- jobs.txt
+|   |	 ...
+|   |-- icon.png
+|   |-- plugin.txt
+|   |-- copyright
+|	 ...
+|-- other-plugin/
+	  ...
+```
+
+The game also supports plugins that are zipped together with their directory:
+
+```
+plugins/
+|-- example-plugin.zip/
+|   |-- example-plugin/
+|   |   |-- data/
+|   |   |   |-- jobs.txt
+|   |   |	 ...
+|   |   |-- icon.png
+|   |   |-- plugin.txt
+|   |   |-- copyright
+|	  |  ...
+|-- other-plugin/
+	  ...
+```
+
 ## Finding errors
 
 Alongside the plugins folder in the config directory, Endless Sky will create a file named "errors.txt".
@@ -75,12 +108,13 @@ ___
 
 A plugin folder can contain the following:
 
-  * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/). _(required)_
+  * `copyright`: a plain-text file giving copyright information in [Debian copyright format](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/).
   * `about.txt`: a plain-text file describing the plugin. Deprecated by plugin.txt.
   * `plugin.txt`: a plain-text file containing metadata about the plugin. **(v. 0.10.3)**
   * `icon.png`: an image that appears when selecting the plugin in the plugins menu.
   * `data/`: any data files must be placed in this folder, or they will not be loaded.
   * `images/`: all images should be placed in here. When specifying sprite paths, they are relative to the `images` directory. For example, `ship/berserker` refers to `${plugin-root}/images/ship/berserker.png`.
+  * `shaders/`: any game shaders overwritten should be placed in here.
   * `sounds/`: all sounds must be placed in here. As with images, the path to a sound is relative to this folder.
 
 Eventually, a plugin server will be set up that will be accessible within the game itself. This server will support basic plugin management, e.g. to get a list of available plugins, download plugins, and check for updates to any plugins that were already downloaded.
@@ -231,3 +265,13 @@ swizzle example
 This swizzle switches the red and green channels - this means that any red parts of the original color will become green and vice versa.
 
 See [swizzles.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/swizzles.txt) for more examples.
+
+## Shaders
+
+Since **v.0.10.13**:
+
+Plugins can override the game's shaders, effectively changing how each item is displayed on the screen. New shaders cannot be created, and the overwritten shaders must take the same arguments as those provided by the game. You can find the game's own shaders [here](https://github.com/endless-sky/endless-sky/tree/master/shaders).
+
+Endless Sky uses shaders written in the [OpenGL Shading Language](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)). Our shaders are either vertex shaders or fragment shaders, which is determined from their file extension (`.vert` and `.frag`, respectively).
+
+Since the game can run on both OpenGL and OpenGL ES, shaders can be defined for either or both environments. By default, shader files are valid in both environments; exclusive shaders can be created by appending the `.gl` or `.gles` extension to the shader file, resulting in something like `sprite.frag.gles`.
