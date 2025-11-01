@@ -700,6 +700,7 @@ The following attributes are tags (just the word by itself, no value following i
 * `cluster`: makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). Weapons with the anti-missile attribute fire in cluster mode by default. **(v. 0.9.0)**
 
 * `safe`: if the weapon has the blast radius attribute, this tag causes explosions from this weapon's projectiles to not damage allied ships (unless they are explicitly targeted). **(v. 0.9.9)**
+  * For versions **v 0.10.17** and later, `safe` also prevents projectiles fired by a weapon from hitting allied ships if any of the "friendly fire" gamerules are active.
 
 * `phasing`: enables the projectile to only hit the intended target (instead of perhaps colliding with a closer ship in the line of fire). If a ship has no target, then a phasing projectile will hit any hostile ship in the line of fire. Asteroids - even if targeted - are not hit by phasing weaponry. **(v. 0.9.9)**
 
