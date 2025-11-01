@@ -188,8 +188,8 @@ mission <name>
 		fail [<name>]
 		music <name>
 		mute
-		mark <system>
-		unmark <system>
+		mark <system> [<name>]
+		unmark <system> [<name>]
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -755,8 +755,8 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	fail [<name>]
 	music <name>
 	mute
-	mark <system>
-	unmark <system>
+	mark <system> [<name>]
+	unmark <system> [<name>]
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -967,8 +967,10 @@ If you provide `<ambient>` as the track name, then whichever music track is bein
 The `mute` node can be used to stop all music tracks from playing.
 
 ```html
-mark <system>
-unmark <system>
+mark <system> [<name>]
+unmark <system> [<name>]
 ```
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
+
+Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. Only one active mission will be affected by each "mark" or "unmark", the first in the player's list with a matching name. If the first matching mission is not marking a system being "unmark"ed or has already marked a system being "mark"ed, there will be no effect.
