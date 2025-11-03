@@ -973,4 +973,4 @@ unmark <system> [<name>]
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
 
-Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each "mark" or "unmark". If any matching mission is not marking a system being "unmark"ed or has already marked a system being "mark"ed, there will be no effect. If there are no matching missions, there will be no effect.
+Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.
