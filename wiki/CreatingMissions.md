@@ -185,11 +185,11 @@ mission <name>
 		<condition> (++ | --)
 		(set | clear) <condition>
 		event <name> [<delay> [<max>]]
-		fail [<mission name>]
+		fail [<mission-name>]
 		music <name>
 		mute
-		mark <system> [<mission name>]
-		unmark <system> [<mission name>]
+		mark <system> [<mission-name>]
+		unmark <system> [<mission-name>]
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -752,11 +752,11 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	<condition> (++ | --)
 	(set | clear) <condition>
 	event <name> [<delay#> [<max#>]]
-	fail [<mission name>]
+	fail [<mission-name>]
 	music <name>
 	mute
-	mark <system> [<mission name>]
-	unmark <system> [<mission name>]
+	mark <system> [<mission-name>]
+	unmark <system> [<mission-name>]
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -948,7 +948,7 @@ event <name> [<delay#> [<max#>]]
 This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first. Event names cannot start with numerals.
 
 ```html
-fail [<mission name>]
+fail [<mission-name>]
 ```
 
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list. If you have multiple active missions of the same identifier (which may occur for repeatable missions such as jobs), then a `fail` action that specifies the identifier of those missions will fail all of them at once.
@@ -967,8 +967,8 @@ If you provide `<ambient>` as the track name, then whichever music track is bein
 The `mute` node can be used to stop all music tracks from playing.
 
 ```html
-mark <system> [<mission name>]
-unmark <system> [<mission name>]
+mark <system> [<mission-name>]
+unmark <system> [<mission-name>]
 ```
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
