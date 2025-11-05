@@ -28,16 +28,14 @@ sprite <name>
 sprite <name>
 ```
 
-The name of the sprite should be a path relative to the **images** folder, and not including frame numbers, [blending mode specifiers](BlendingModes), or the file extension. For example, the "blaster impact" effect is an animation with four frames:
+The name of the sprite should be a path relative to the **images** folder, and not including [modifier suffixes](ImageFormats#file-names), or the file extension. For example, the "blaster impact" effect is an animation with four frames:
 
 * images/effect/blaster impact+0.png
 * images/effect/blaster impact+1.png
 * images/effect/blaster impact+2.png
 * images/effect/blaster impact+3.png
 
-The `<name>` for this sprite is "effect/blaster impact". The `+` in the file names specifies that the images should use [additive blending](BlendingModes#alpha-blending-vs-additive-blending), and the numbers after the `+` are the frame numbers for the animation.
-
-The current file formats supported for simple images are `.png` and `.jpg`/`.jpeg`/`.jpe`. Since **v. 0.10.15**, you can also use `.avif`/`.avifs` files to store all frames of an animation. In this case, you should only have one file matching the sprite name.
+The `<name>` for this sprite is "effect/blaster impact". The `+` in the file names specifies that the images should use [additive blending](BlendingModes#alpha-blending-vs-additive-blending), and the numbers after the `+` are the frame numbers for the animation. For more details on file naming, see the [Image Formats](ImageFormats) page.
 
 ## Scale
 
