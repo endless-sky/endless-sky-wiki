@@ -1,7 +1,7 @@
 # Table of Contents
 
 * [Introduction](#introduction)
-* [Rule Value Types](#rule-values-types)
+* [Gamerules](#gamerules)
 
 # Introduction
 
