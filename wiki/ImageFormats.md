@@ -1,6 +1,6 @@
 # Image formats supported in Endless Sky
 
-The current file formats supported for simple images are `.png` and `.jpg`/`.jpeg`/`.jpe`. Since **v. 0.10.15**, you can also use `.avif`/`.avifs` files to store all frames of an animation. In this case, you should only have one file matching the sprite name.
+The file formats currently supported for simple images are `.png` and `.jpg`/`.jpeg`/`.jpe`. Since **v. 0.10.15**, you can also use `.avif`/`.avifs` files to store all frames of an animation. In this case, you should only have one file matching the sprite name.
 
 ## File names
 

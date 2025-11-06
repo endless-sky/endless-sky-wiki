@@ -28,7 +28,7 @@ sprite <name>
 sprite <name>
 ```
 
-The name of the sprite should be a path relative to the **images** folder, and not including [modifier suffixes](ImageFormats#file-names), or the file extension. For example, the "blaster impact" effect is an animation with four frames:
+The name of the sprite should be a path relative to the **images** folder, and not including [modifier suffixes](ImageFormats#file-names) or the file extension. For example, the "blaster impact" effect is an animation with four frames:
 
 * images/effect/blaster impact+0.png
 * images/effect/blaster impact+1.png
