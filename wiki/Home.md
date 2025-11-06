@@ -46,6 +46,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating phrases](CreatingPhrases)
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
+* [Creating formations](CreatingFormations)
 * [Editing interfaces](CreatingInterfaces)
 * [Player Conditions](Player-Conditions)
 
