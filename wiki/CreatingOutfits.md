@@ -240,11 +240,11 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These attributes will change in effectiveness given how close a ship is to the system center and what type of stars are in the system.
 
-  * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. **As of v. 0.9.0,** ramscoops are more effective near the system center: the fuel gain is multiplied by `.2 + 1.8 / (distance to center / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar-attributes) of star(s) in the system.
+  * `ramscoop`: fuel regeneration. Each frame, your ship gains fuel proportional to .03 * &radic;("ramscoop"). The square root is so that each additional ramscoop will have less effect than the previous one; otherwise, ramscoops would make weapons and afterburners that run on fuel way too powerful. Since **v. 0.10.15**, ramscoops are more effective near the star(s) (**from v. 0.9.0 to v. 0.10.14** near the system center): the fuel gain is multiplied by `.2 + 1.8 / (distance to star / 1000 + 1)`. From **v. 0.9.0 to v. 0.9.16.1** when very close to the star, even ships with no ramscoop recharge a tiny amount of fuel. Beginning in **v. 0.9.9**, the amount of fuel gained varies based on the [solar wind](MapData#solar-attributes) of star(s) in the system.
 
-  * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the system center. As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar-attributes) of the star(s) in the current system.
+  * `"solar collection"`: the amount of energy that this outfit provides when your ship is 1250 pixels from the star(s) (system center before **v. 0.10.15**). As you come closer, you will harvest up to twice as much power; farther away, and the energy generation slowly tapers off to 1/5 of this value. **(v. 0.9.0)** Beginning in **v. 0.9.9**, the amount of solar energy collected varies based on the [solar power](MapData#solar-attributes) of the star(s) in the current system.
 
-  * `"solar heat"`: the amount of heat that this outfit produces when your ship is 1250 pixels from the system center. As with solar collection, heat increases up to two times this value the closer you are to the system center and decreases down to 1/5 of this value the farther away you are. This value will also vary based on the [solar power](MapData#solar-attributes) of the star(s) in the current system. **(v. 0.9.12)**
+  * `"solar heat"`: the amount of heat that this outfit produces when your ship is 1250 pixels from the star(s) (system center before **v. 0.10.15**). As with solar collection, heat increases up to two times this value the closer you are to the star(s) and decreases down to 1/5 of this value the farther away you are. This value will also vary based on the [solar power](MapData#solar-attributes) of the star(s) in the current system. **(v. 0.9.12)**
 
 * These attributes alter the fuel capacity and usage of a ship.
 
@@ -632,6 +632,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
+  * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
+
 
 # Weapon attributes
 
@@ -655,7 +657,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
 * `"hardpoint sprite"`: the sprite (which ought to be very tiny) to draw on top of the hardpoint where this weapon is installed, to show what direction the weapon is pointing in. Generally, this should only be used for turrets, because the gun hardpoints on many ships are already designed to look like guns. This sprite definition can use any of the same animation values as the ship sprite. **(v. 0.9.7)**
 
- * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
+  * `"inherits parent swizzle"`: the sprite changes its coloration depending on the "swizzle" of the ship where this weapon is installed. **(v. 0.10.15)**
 
 * `"hardpoint offset"`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 

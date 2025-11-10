@@ -326,6 +326,7 @@ Show help | F1
 View message log | /
 Deploy / recall fighters | D
 Fleet: Fight my target | F
+Fleet: Toggle hold fire | Y
 Fleet: Gather around me | G
 Fleet: Hold position | H
 Fleet: Toggle ammo usage | U
@@ -395,6 +396,11 @@ Search (for planet, system, ship, or outfit) | F
 Rotate jump destination | J or Tab
 Add jump destination | Shift + J or Tab
 Compare (two ships or outfits) | Shift + Click
+Switch to ports view | P
+Switch to mission view | I
+Switch to outfitter view | O
+Switch to shipyard view | S
+Switch to starry view | T
 
 When viewing a list of items, you can move the selection up and down with the arrow keys.
 

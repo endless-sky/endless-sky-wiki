@@ -15,7 +15,7 @@ conversation [<name>]
 	name
 	choice
 		<text>
-			[to display]
+			[to (display | activate)]
 				<condition>
 			[<endpoint> | goto <label>]
 		...
@@ -38,7 +38,7 @@ conversation [<name>]
 	...
 ```
 
-# Endpoints, goto and "to display"
+# Endpoints, goto and "to (display | activate)"
 
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
@@ -73,7 +73,9 @@ The conversation stops as soon as an endpoint is encountered, so if you list mul
 
 You can go to labels earlier on in the conversation if you want, but be careful that this does not create an "infinite loop."
 
-Both texts and choices can also be hidden based on a condition that is part of a "to display".
+Both texts and choices can also be hidden based on a condition that is part of a "to display" node.
+
+Beginning in **v. 0.10.17**, choices can be given a "to activate" node. If the conditions of the "to activate" do not pass, then the choice will be drawn with darkened text, and the player will be unable to select it. Make sure that players always have at least one active choice, as otherwise they will be unable to progress.
 
 # Scenes
 

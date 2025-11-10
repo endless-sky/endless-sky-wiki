@@ -13,8 +13,6 @@
 
 # Background
 
-This style guide is also available on the [website](https://endless-sky.github.io/styleguide/styleguide.xml).
-
 Each section of this style guide can be read as a "how to": how to create source code files, how to create classes, etc. The sections are ordered hierarchically, from biggest "units" (files, namespaces, classes) to increasingly smaller ones (variables, comments, formatting). Our style choices are based on a small set of principles:
 
 - Readability is achieved by laying out text in a clear visual hierarchy.
@@ -106,8 +104,8 @@ For example, a header file might contain the following #includes:
 class Angle;
 class Sprite;
 ```
-It is helpful but not required to alphabetize the lines within each "paragraph" of #includes.
-Forward-declaring classes instead of #including their headers reduces compilation time somewhat because it eliminates dependencies. But, compilation times are so short for this project anyways that using forward declarations is not an absolute requirement.
+Alphabetize the lines within each "paragraph" of #includes and forward declarations.
+Forward-declaring classes instead of #including their headers reduces compilation time somewhat because it eliminates dependencies, and should be used whenever possible. The only exceptions are templated classes and the ones provided by the standard library.
 
 ## Order of #includes in a .cpp file
 
@@ -128,7 +126,7 @@ For example, a .cpp file might contain the following #includes:
 
 #include <set>
 ```
-It is helpful but not required to alphabetize the lines within each "paragraph" of #includes.
+Alphabetize the lines within each "paragraph" of #includes.
 
 
 
@@ -447,7 +445,7 @@ This does not include code-like comments, e.g. equations.
 
 ## Multi-line comments
 
-Multi-line comments should only be used for the copyright header.
+Multi-line comments (meaning `/**/`-style comments, not `//`-style comments spanning across multiple lines) should only be used for the copyright header.
 This is mainly so that multi-line comments can be used as a quick and dirty way to comment out blocks of code while developing, but it also makes it much easier to write automated programs that extract all the comment text, e.g. for spell checking the comments.
 
 ## Decorations
@@ -463,11 +461,6 @@ For example, perhaps your editor has a "feature" that lets you automatically ins
  *************************************/
 ```
 But, those two lines of asterisks are eye-grabbing and completely unnecessary on any editor that supports syntax coloring, and more importantly anyone using a different editor would have to manually type an asterisk at the beginning of every comment line and figure out exactly how many asterisks are in those rows at the top and bottom, in order to be consistent with your code.
-
-## SVN commit comments
-
-When committing code to SVN, include comments describing everything that is changing.
-If you are committing multiple changes, it is best to group them into separate commits that each change one thing, rather than committing them all together.
 
 
 
@@ -527,7 +520,20 @@ SCENARIO( "Creating an Account" , "[Account][Creation]" ) {
     }
 }
 ```
-If you are used to putting spaces before the parentheses, rather than trying to adjust your typing you might find it easier to just do a find/replace before committing your code, e.g. replacing `if (` with `if(`, etc. You can also grep the svn diff of your changes for `^+.*\ (` to check if you missed anything.
+If you are used to putting spaces before the parentheses, rather than trying to adjust your typing you might find it easier to just do a find/replace before committing your code, e.g. replacing `if (` with `if(`, etc. You can also run the utils/check_code_style.py script locally to check if you missed anything.
+
+# Template declarations
+
+Similarly to the above, do not put a space before or after the angle brackets when declaring or using templated classes and functions, or with type casting (static_cast<>(), reinterpret_cast<>(), etc.) operators.
+Put the `template` keyword with the parameter list on a separate line before the name of the class or function:
+```c++
+template<class T>
+class TemplatedContainer {
+public:
+	template<class D>
+	void Convert(TemplatedContainer<D> &other);
+	// ...
+```
 
 ## Return is not a function
 
@@ -783,6 +789,12 @@ If you must use explicit memory management, always use the C++ keywords `new` an
 
 Do not assume that sizeof(int) or sizeof(void *) will be a certain value.
 Use explicit types like int64_t when necessary, or just use a `long long` if all you care about is that a variable is at least 64 bits, not exactly 64 bits.
+
+## Commit messages
+
+When committing code, include comments describing everything that is changing.
+If you are committing multiple changes, it is best to group them into separate commits that each change one thing, rather than committing them all together.
+This is helpful for reviewers looking at your code, but not strictly required as branches are "squashed" before getting merged into the Endless Sky master branch.
 
 
 
