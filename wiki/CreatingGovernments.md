@@ -232,8 +232,8 @@ illegals
 	...
 atrocities [<death-sentence-conversation>]
 	"ignore universal"
-	<outfit>
-	ship <ship>
+	[ignore] <outfit>
+	[ignore] ship <ship>
 	...
 ```
 
