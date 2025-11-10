@@ -51,8 +51,20 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
@@ -61,6 +73,12 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+			[to spawn]
+				<condition> <comp> <value>
+				(has | not) <condition>
+				never
+				(and | or)
+					...
 		visibility <maxDistance> [<minDistance>]
 		object [<name>]
 			...
@@ -72,11 +90,25 @@ planet <name>
 	music <sound>
 	description <text>
 	spaceport <text>
+	to know
+		<condition-set>
+	to land
+		<condition-set>
+	to access (outfitter | shipyard)
+		<condition-set>
 	port [<name>]
-		recharges <recharge type>...
+		recharges <recharge-type>...
 			...
-		services <service type>...
+		services <service-type>...
 			...
+		to access
+			<condition-set>
+		to bribe
+			<condition-set>
+		to recharge <recharge-type>...
+			<condition-set>
+		to service <recharge-type>...
+			<condition-set>
 		news
 		description <text>
 	government <name>
@@ -150,8 +182,20 @@ system <name>
 	minables <name> <count#> <energy#>
 	trade <commodity> <cost#>
 	fleet <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	"starfield density" <density#>
 	object [<name>]
 		sprite <sprite>
@@ -160,6 +204,12 @@ system <name>
 		period <period#>
 		offset <offset#>
 		hazard <name> <period#>
+			[to spawn]
+				<condition> <comp> <value>
+				(has | not) <condition>
+				never
+				(and | or)
+					...
 		object [<name>]
 			...
 ```
@@ -233,7 +283,8 @@ departure [<distance#>]
 
 An additional distance at which ships arrive (or depart **(v0.9.17)**) in this system. If just `<distance#>` is provided, then both hyperdrive and jump drive travel into or out of a system has its distance moved. The `link <distance#>` and `jump <distance#>` lines are optional and allow for tweaking of the distance of each jump method. If a distance is given and then a link or jump distance is provided, the link or jump distance will override the distance. If a distance is given without a value and then a link or jump distance is provided, the other travel method will be unaffected.
 
-Negative distances are allowed for link arrival distances, and will cause ships to arrive on the opposite side of the system from where they entered. Non-zero values (i.e. including this variable) will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
+Negative values are allowed for link arrival distances, and will move the point at which the ship enters the system away from the direction it is coming from, rather than towards it as positive values do.
+Providing a value other than zero will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
 
 ```html
 ramscoop
@@ -298,9 +349,17 @@ A type of commodity sold at the planets in this system and its cost.
 
 ```html
 fleet <name> <period#>
+	[to spawn]
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
 ```
 
 The name of a [fleet](CreatingFleets) that is spawned in this system with a certain period. The period of a fleet is the average number of frames between each spawning of this specific fleet, with there being 60 frames in a second. A random number from 0 to `period - 1` is rolled each frame, and if the result lands on 0 then a fleet is spawned.
+
+Beginning in **v. 0.10.11**, fleets can be given `to spawn` conditions. A fleet will only appear if the `to spawn` condition is fulfilled.
 
 ```html
 raid <fleet> [<min-attraction#> [<max-attraction#>]]
@@ -316,8 +375,16 @@ If present, no raid fleets will ever spawn in this system, whether they be from 
 
 ```html
 hazard <name> <period#>
+	[to spawn]
+		<condition> <comp> <value>
+		(has | not) <condition>
+		never
+		(and | or)
+			...
 ```
 The name of a [hazard](CreatingHazards) that is created in this system within a certain period. The period of a hazard follows the same behavior as the period of a fleet. Once a hazard is created, the behavior of the hazard is dictated by the hazard itself. The origin of any hazards defined here is the system center. **(v. 0.9.13)**
+
+Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
 
 ```html
 "starfield density" <density#>
@@ -335,6 +402,12 @@ object [<name>]
 	period <period#>
 	offset <offset#>
 	hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	visibility <maxDistance> [<minDistance>]
 	object [<name>]
 		...
@@ -392,6 +465,8 @@ hazard <name> <period#>
 
 A system hazard with behavior as described above, only with its origin on this object instead of at the system center. An object can have multiple different hazards attached to it. **(v0.9.15)**
 
+Beginning in **v. 0.10.11**, hazards can be given `to spawn` conditions. A hazard will only appear if the `to spawn` condition is fulfilled.
+
 ```
 visibility <maxDistance> [<minDistance>]
 ```
@@ -415,11 +490,25 @@ planet <name>
 	music <sound>
 	description <text>
 	spaceport <text>
+	to know
+		<condition-set>
+	to land
+		<condition-set>
+	to access (outfitter | shipyard)
+		<condition-set>
 	port [<name>]
-		recharges <recharge type>...
+		recharges <recharge-type>...
 			...
-		services <service type>...
+		services <service-type>...
 			...
+		to access
+			<condition-set>
+		to bribe
+			<condition-set>
+		to recharge <recharge-type>...
+			<condition-set>
+		to service <recharge-type>...
+			<condition-set>
 		news
 		description <text>
 	government <name>
@@ -501,11 +590,34 @@ spaceport <text>
 The description of the spaceport after clicking the spaceport button. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
 
 ```html
+to know
+	<condition-set>
+to land
+	<condition-set>
+to access (outfitter | shipyard)
+	<condition-set>
+```
+
+Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+
+* `to know`: Controls whether the object that the planet is associated with is seen as a landable object. If this is false, the object won't appear landable.
+* `to land`: Controls whether the player can land on the planet. If false, you won't be able to land, and hailing the planet will tell you that you are denied landing access and cannot bribe your way onto the planet.
+* `to access (outfitter | shipyard)`: Controls whether the outfitter or shipyard buttons are available after landing. The planet must also have `outfitter` or `shipyard` nodes present in order for the shops to become available.
+
+```html
 port [<name>]
-	recharges <recharge type>...
+	recharges <recharge-type>...
 		...
-	services <service type>...
+	services <service-type>...
 		...
+	to access
+		<condition-set>
+	to bribe
+		<condition-set>
+	to recharge <recharge-type>...
+		<condition-set>
+	to service <recharge-type>...
+		<condition-set>
 	news
 	description <text>
 ```
@@ -531,6 +643,13 @@ If a port has no `services` node, then it will not offer any services. As with `
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
+
+Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+
+* `to access`: Controls whether the player can access anything that is a part of the spaceport upon landing, including any port services, recharging types, either of the shops, and the port button itself.
+* `to bribe`: If true, you will be required to pay a bribe before landing.
+* `to recharge`: Controls whether individual recharge types are available to the player. A single `to recharge` node can be used to lock multiple recharge types. For example, `to recharge hull shields` would lock both hull and shield repairs. Multiple `to recharge` nodes can be present at once. Only the last set of conditions for a particular recharge type will be used. The recharge type must also be present in the `recharges` node in order for this to have any effect. For example, if `to recharge hull` is true but the port doesn't have `recharges all` or `recharges hull`, then the port still won't repair your ships.
+* `to service`: Controls whether individual service types are available to the player. Behaves the same as `to recharge`, but for service types.
 
 ```html
 government <name>
@@ -655,6 +774,7 @@ Landing messages are the message that is shown if attempting to land on an uninh
 star <sprite>
 	power <power#>
 	wind <wind#>
+	icon <icon>
 ```
 
 There are certain attributes that a ship is capable of having that will change in effectiveness based off of the stars in the system.
@@ -677,6 +797,13 @@ wind <wind#>
 
 The wind of a star impacts the effectiveness of a ship's ramscoops.
 
+
+```html
+icon <icon>
+```
+
+The sprite listed here is the sprite of the star icon from the map screen when the starry map view is enabled. **v. 0.10.11**
+
 # Ambient music
 
 ```html
@@ -684,7 +811,7 @@ music <path>
 ```
 
 Both systems and planets can be assigned music that plays while the player is there.
-The music files should be of the '.mp3' format and placed in the 'sounds' folder.
+The music files should be of the '.mp3' or '.flac' format and placed in the 'sounds' folder.
 The path should be the relative path within the 'sounds' folder without the file extension.
 For example, a file named 'machinery.mp3' in a folder 'ambient' inside the 'sounds' folder would be listed in a planet or system definition as:
 ```css

@@ -185,11 +185,11 @@ mission <name>
 		<condition> (++ | --)
 		(set | clear) <condition>
 		event <name> [<delay> [<max>]]
-		fail [<name>]
+		fail [<mission-name>]
 		music <name>
 		mute
-		mark <system>
-		unmark <system>
+		mark <system> [<mission-name>]
+		unmark <system> [<mission-name>]
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -341,24 +341,24 @@ This specifies that the mission does not show up in the player's list of mission
 (priority | minor | non-blocking)
 ```
 
-If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
+If a mission is marked with `priority`, (prior to **v. 0.10.13**) only other "priority" missions can be offered alongside it. Beginning in **v. 0.10.13**, missions marked `non-blocking` can also be offered..
 
 If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
-Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
-
-Note that `priority` will only affect missions that offer from the spaceport.
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time. In **v. 0.10.13**, this was extended to also allow any number of "non-blocking" missions to offer alongside "priority" missions.
 
 ```html
 (job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
+This specifies where this mission will be shown, if someplace other than the spaceport.
 
-If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
-
-A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+* `job`: it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). Note that `job` missions do not run their `on offer` [action](#triggers) until they are accepted, but dialogs and conversations from the `on offer` will not appear. Place dialogs and conversations in the `on accept` action of a `job` mission instead.
+* `landing`: it shows up as soon as you land instead of waiting for you to visit the spaceport or some other location. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
+* `assisting` or `boarding`: it will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch`, `flee`, or `depart`, the ship in question will be destroyed.
+* `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
+* `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
 
 An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
 
@@ -752,11 +752,11 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	<condition> (++ | --)
 	(set | clear) <condition>
 	event <name> [<delay#> [<max#>]]
-	fail [<name>]
+	fail [<mission-name>]
 	music <name>
 	mute
-	mark <system>
-	unmark <system>
+	mark <system> [<mission-name>]
+	unmark <system> [<mission-name>]
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -948,7 +948,7 @@ event <name> [<delay#> [<max#>]]
 This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first. Event names cannot start with numerals.
 
 ```html
-fail [<name>]
+fail [<mission-name>]
 ```
 
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list. If you have multiple active missions of the same identifier (which may occur for repeatable missions such as jobs), then a `fail` action that specifies the identifier of those missions will fail all of them at once.
@@ -967,8 +967,10 @@ If you provide `<ambient>` as the track name, then whichever music track is bein
 The `mute` node can be used to stop all music tracks from playing.
 
 ```html
-mark <system>
-unmark <system>
+mark <system> [<mission-name>]
+unmark <system> [<mission-name>]
 ```
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
+
+Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.

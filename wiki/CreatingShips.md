@@ -149,9 +149,13 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"over"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should be drawn on top of the ship. By default, gun hardpoint sprites are drawn under the ship. **(v. 0.9.15)**
 
+	* `"inside"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.10.17)**
+
 * `"turret" <x#> <y#>`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations¹ listed here. The following lines can be added as a "child" of the turret line:
 
 	* `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
+
+	* `"inside"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.10.17)**
 
 	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
 
@@ -234,6 +238,8 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"engine capacity"`: the amount of that outfit space which is suitable for installing engines. Some ships have lots of engine capacity but not much weapon capacity, or vice versa.
 
+* `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), standardized to be used for landing on gas giants.
+
 There is also one special attribute called `weapon` that defines how much damage your ship does when it explodes. Suggested values for "tier 1" ships are shown in parentheses below; you can make the damage amount less or more depending on whether you want this ship to have a massive explosion (perhaps because it is carrying lots of ordnance) or a tiny one. Higher-tier ships should do less damage relative to their shield and hull values to avoid creating absurdly damaging explosions.
 
 * `"blast radius"` (Typical value: (shields + hull) * .01)
@@ -258,7 +264,7 @@ There is also one special attribute called `weapon` that defines how much damage
 
 It is possible to add custom attributes to outfits/ships by specifying a key:value pair. As an example, when we wanted to add large scale spinal weapons, we added `"spinal mount" 1` as a custom attribute. The total value of attributes for a vessel cannot be below 0. Then on the spinal weapon we added `"spinal mount" -1`, which means it is taking up that slot.
 
-These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `noncorrosive 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
+These attributes can be created directly on ships, outfits, and missions; and can be tested in outfits, missions, and planets. For example, we could make an outfit called "Protective Sheathing" that includes the `"noncorrosive" 1` attribute, and then specify a planet that can only be landed on by ships that have this protective sheathing by adding `"requires: noncorrosive"` to the planet's attributes.
 
 Note that care must be taken to ensure that these custom attributes do not inadvertently duplicate an already-existing attribute.
 
