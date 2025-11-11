@@ -25,7 +25,7 @@ conversation [<name>]
 		(and | or)
 			...
 	action
-		log [<category> <header>] <text>
+		log [<category> <header>] (<text> | scene <image>)
 		outfit <outfit> [<number>]
 		give ship <model> [<name>]
 		payment [<base> [<multiplier>]]
@@ -83,7 +83,7 @@ Beginning in **v. 0.10.17**, choices can be given a "to activate" node. If the c
 scene <image>
 ```
 
-A conversation can contain a `scene` image at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 540 pixels wide.
+A conversation entry can contain a `scene` image at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 540 pixels wide.
 
 [![][engineScene]][engineScene]
 
@@ -223,7 +223,7 @@ conversation
 
 ```html
 action
-	log [<category> <header>] <text>
+	log [<category> <header>] (<text> | scene <image>)
 	outfit <outfit> [<number>]
 	give ship <model> [<name>]
 	payment [<base> [<multiplier>]]

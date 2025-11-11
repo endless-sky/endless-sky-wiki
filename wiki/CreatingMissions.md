@@ -160,7 +160,7 @@ mission <name>
 		fleet [<count>]
 			...
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
-		log [<category> <header>] <text>
+		log [<category> <header>] (<text> | scene <image>)
 		remove log <category> [<header>]
 		dialog <text>
 			<text>...
@@ -727,7 +727,7 @@ A mission can also specify what happens at various key parts of the mission:
 
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
-	log [<category> <header>] <text>
+	log [<category> <header>] (<text> | scene <image>)
 	remove log <category> [<header>]
 	dialog <text>
 		<text>...
@@ -793,12 +793,14 @@ on enter
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
-log [<category> <header>] <text>
+log [<category> <header>] (<text> | scene <image>)
 ```
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. Existing vanilla categories are `"People"`, `"Minor People"`, and `"Factions"`. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+A `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide. Note that no swizzle will be applied to ship images.
 
 ```html
 remove log <category> [<header>]
