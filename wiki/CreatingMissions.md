@@ -987,4 +987,4 @@ message
 	...
 ```
 
-Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the scrolling list at the bottom of the screen. You can either use an existing named definition, or provide your own in this node.
+Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own.
