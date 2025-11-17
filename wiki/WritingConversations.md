@@ -25,7 +25,7 @@ conversation [<name>]
 		(and | or)
 			...
 	action
-		log [<category> <header>] <text>
+		log [<category> <header>] (<text> | scene <image>)
 		outfit <outfit> [<number>]
 		give ship <model> [<name>]
 		payment [<base> [<multiplier>]]
@@ -223,7 +223,7 @@ conversation
 
 ```html
 action
-	log [<category> <header>] <text>
+	log [<category> <header>] (<text> | scene <image>)
 	outfit <outfit> [<number>]
 	give ship <model> [<name>]
 	payment [<base> [<multiplier>]]
