@@ -161,7 +161,7 @@ mission <name>
 		fleet [<count>]
 			...
 	timer <base-time#> [<random-time#>]
-		pauses
+		"pause when inactive"
 		optional
 		"activation requirements"
 			peaceful
@@ -741,7 +741,7 @@ This specifies an entire fleet of ships. The first format refers to one or the s
 
 ```html
 timer <base-time#> [<random-time#>]
-	pauses
+	"pause when inactive"
 	optional
 	"activation requirements"
 		peaceful
@@ -755,7 +755,7 @@ timer <base-time#> [<random-time#>]
 		<action>
 ```
 
-Beginning in **v. 0.10.13**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
+Beginning in **v. 0.10.17**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
 
 By default, timers will run whenever the player is not in hyperspace or taking off from a planet/wormhole. Timers can be given a series of `"activation requirements"` that limit when the timer is running though:
 * `peaceful`: The player cannot be firing any weapons on their flagship. (Anti-missile turrets do not count against you.)
@@ -765,7 +765,7 @@ By default, timers will run whenever the player is not in hyperspace or taking o
 * `idle`: The player must not be sending any movement commands to their flagship and must be moving slowly. The default speed limit is a velocity of 5, but an optional value can be provided to this requirement to change how fast/slow the player is allowed to move.
 * `system`: The name of an exact system, or a full [location filter](LocationFilters). The player must be within the named system, or within a system that matches the location filter.
 
-Multiple activation requirements can be applied to the same timer. If at any point the player does not meet the activation requirements, the timer will reset its count back to 0, unless the `pauses` tag is present, in which case the timer will pause.
+Multiple activation requirements can be applied to the same timer. If at any point the player does not meet the activation requirements, the timer will reset its count back to 0, unless the `"pause when inactive"` tag is present, in which case the timer will pause.
 
 Timer nodes are able to have triggers that run under certain circumstances:
 * `on deactivation`: Runs the first time, and only the first time, that the timer is deactivated after having been activated.
