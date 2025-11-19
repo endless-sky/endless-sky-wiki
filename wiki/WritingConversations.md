@@ -224,8 +224,10 @@ conversation
 ```html
 goto (<label> | <endpoint>)
 ```
+
 Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label or end the conversation with the corresponding endpoint. One use for this is performing actions without changing the text that the player sees:
-```js
+
+```html
 conversation
 	`"I can whip up anything you want," the chef smiles. "So, what's your favorite dish?"`
 	choice
@@ -247,7 +249,8 @@ conversation
 ```
 
 In **any version**, using the `branch` keyword without specifying any conditions will produce the same behavior:
-```js
+
+```html
 	branch later
 	"This text won't display."
 	label later
