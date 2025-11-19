@@ -252,7 +252,7 @@ In **any version**, using the `branch` keyword without specifying any conditions
 
 ```html
 	branch later
-	"This text won't display."
+	`This text won't display.`
 	label later
 	[...]
 ```
