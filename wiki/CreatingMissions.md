@@ -987,4 +987,4 @@ message
 	...
 ```
 
-Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own.
+Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.
