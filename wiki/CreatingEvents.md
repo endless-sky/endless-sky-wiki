@@ -5,6 +5,7 @@ The basic syntax of an event definition is:
 ```html
 event <name>
 	date <day#> <month#> <year#>
+	"save raw changes"
 	visit <system>
 	unvisit <system>
 	"visit planet" <planet>
@@ -283,3 +284,20 @@ mission "show the war conversation"
 			...
 ```
 The above mission requires the event named "war begins" to have occurred before it can offer.
+
+# Events, savegames, and backwards compatibility
+
+Prior to **v. 0.10.17**, events that had been triggered would have all of their data changes (i.e. everything aside from condition assignments and planet/system visitation updates) saved to the player's save file in the order that they were triggered. This meant that if an event's definition was changed, the previous version of that event would still exist in the save file, and a compatibility mission would be needed to re-trigger the event if the new event changes were needed in existing save files.
+
+Starting in **v. 0.10.17**, events are now stored in the save file by saving the name of the event and the date that it occurred on or will occur on, and the game looks up the event definition to determine which changes should be applied to the universe. This allows the vanilla game and plugins to update events and have the changes effect existing save files without needing a compatibility mission, but it also means that event definitions must now be treated like outfits or ships, where deprecated event definitions must remain in the game in order for the game to be able to know what their changes are, and events cannot be simply renamed at will.
+
+Adding the `"save raw changes"` tag to an event will cause it to be saved in the old format, putting all the universe changes (i.e. everything aside from condition assignments and visiting/unvisiting systems) from the event into the save file. This can be used in cases where a plugin event only contains vanilla data and you want to allow the event to continue working after the plugin has been removed (and therefore the definition of the event is gone). A particular example of where this could be used is a plugin that allows you to change the swizzle used by your ships that can persist even after the plugin is removed.
+
+```
+event "Republic Paint Job"
+	"save raw changes"
+	government "Escort"
+		swizzle 0
+```
+
+Since this event *only* refers to vanilla data (i.e. the vanilla "Escort" government), it will not report any errors if the `"save raw changes"` tag is present and the plugin is removed after the event has been triggered. Otherwise, removal of the plugin would cause this event to be reported as missing, as only the name of the event would have been stored.
