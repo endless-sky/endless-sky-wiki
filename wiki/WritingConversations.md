@@ -24,7 +24,7 @@ conversation [<name>]
 		(has | not) <condition>
 		(and | or)
 			...
-	goto (<label> | <endpoint>)
+	goto <label>
 	action
 		log [<category> <header>] (<text> | scene <image>)
 		outfit <outfit> [<number>]
@@ -232,7 +232,7 @@ A branch can be used without any conditions, in which case it will always jump t
 
 # Goto
 ```html
-goto (<label> | <endpoint>)
+goto <label>
 ```
 
 Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label. One use for this is performing actions without changing the text that the player sees:
@@ -258,7 +258,7 @@ conversation
 		decline
 ```
 
-Note that `goto` will always go to a label, even if it has the same name as an endpoint (unlike `branch` which can be used to trigger endpoints.)
+Note that `goto` will always go to a label, even if it has the same name as an endpoint (unlike `branch`, which can be used to trigger endpoints).
 
 # Action
 
