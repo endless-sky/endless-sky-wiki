@@ -24,6 +24,7 @@ conversation [<name>]
 		(has | not) <condition>
 		(and | or)
 			...
+	goto <label>
 	action
 		log [<category> <header>] (<text> | scene <image>)
 		outfit <outfit> [<number>]
@@ -218,6 +219,46 @@ conversation
 	`	He says, "It's Captain <last>, the famous warrior! Barkeep, give <first> a drink on my tab."`
 		decline
 ```
+
+A branch can be used without any conditions, in which case it will always jump to the first label (or endpoint) specified.
+```html
+	branch later
+	`	This text will never display.`
+
+	label later
+	branch decline
+	`	This text also will never display, because "decline" ended the conversation.`
+```
+
+# Goto
+```html
+goto <label>
+```
+
+Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label. One use for this is performing actions without changing the text that the player sees:
+
+```html
+conversation
+	`"I can whip up anything you want," the chef smiles. "So, what's your favorite dish?"`
+	choice
+		`	"Tacos."`
+			goto "tacos"
+		`	"Cookies."`
+	
+	action
+		set "favorite food: cookies"
+	goto "reaction"
+
+	label "tacos"
+	action
+		set "favorite food: tacos"
+
+	label "reaction"
+	`	The chef raises one eyebrow. "Can't say I expected that, but I'll see what I can do."`
+		decline
+```
+
+Note that `goto` will always go to a label, even if it has the same name as an endpoint (unlike `branch`, which can be used to trigger endpoints).
 
 # Action
 
