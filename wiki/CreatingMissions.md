@@ -204,6 +204,9 @@ mission <name>
 		mute
 		mark <system> [<mission-name>]
 		unmark <system> [<mission-name>]
+		message <name>
+		message
+			...
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -809,6 +812,9 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	mute
 	mark <system> [<mission-name>]
 	unmark <system> [<mission-name>]
+	message <name>
+	message
+		...
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -1028,3 +1034,11 @@ unmark <system> [<mission-name>]
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
 
 Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.
+
+```html
+message <name>
+message
+	...
+```
+
+Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.
