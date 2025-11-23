@@ -220,12 +220,22 @@ conversation
 		decline
 ```
 
+A branch can be used without any conditions, in which case it will always jump to the first label (or endpoint) specified.
+```html
+	branch later
+	`	This text will never display.`
+
+	label later
+	branch decline
+	`	This text also will never display, because "decline" ended the conversation.`
+```
+
 # Goto
 ```html
 goto (<label> | <endpoint>)
 ```
 
-Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label or end the conversation with the corresponding endpoint. One use for this is performing actions without changing the text that the player sees:
+Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label. One use for this is performing actions without changing the text that the player sees:
 
 ```html
 conversation
@@ -248,14 +258,7 @@ conversation
 		decline
 ```
 
-In **any version**, using the `branch` keyword without specifying any conditions will produce the same behavior:
-
-```html
-	branch later
-	`This text won't display.`
-	label later
-	[...]
-```
+Note that `goto` will always go to a label, even if it has the same name as an endpoint (unlike `branch` which can be used to trigger endpoints.)
 
 # Action
 
