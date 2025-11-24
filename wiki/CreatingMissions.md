@@ -644,7 +644,7 @@ An NPC will not spawn if its `to spawn` conditions are not met, and any spawned 
 
 Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
-When combined with an `action` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
+When combined with an `action` node in a [`conversation`](WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
 on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
@@ -664,7 +664,7 @@ Starting in **v. 0.10.1**, `on *` nodes can be added to NPCs to trigger actions 
 * `provoke`: Any ship in the NPC is provoked. Will not repeat on subsequent provoke actions.
 * `encounter`: Any ship in the NPC is encountered by your flagship. A ship is encountered if your flagship and the NPC ship are in the same system and are both targetable (i.e. not in hyperspace, not in the middle of taking off from a planet, and not cloaked). Will not repeat on subsequent encounter actions. **(v. 0.10.5)**
 
-For details on actions that can be run by these nodes, see the [Triggers](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#triggers) section.
+For details on actions that can be run by these nodes, see the [Triggers](CreatingMissions#triggers) section.
 
 ```html
 government <name>
@@ -677,7 +677,7 @@ This specifies what government all the ships connected to this NPC specification
 	...
 ```
 
-Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#cargo) page.
+Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](CreatingFleets#cargo) page.
 
 ```html
 personality <type>...
@@ -685,7 +685,7 @@ personality <type>...
 	confusion <amount#>
 ```
 
-This defines the NPC's [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The `confusion` tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
+This defines the NPC's [personality](ShipPersonalities). The `confusion` tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
 
 If an NPC is specified as starting out in your current system and its personality is *not* `staying` or `waiting`, it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is `entering` the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship `staying` in a certain system might be a target you must locate for a "bounty hunting" mission. (Any ship that is not `staying` will actively seek the player out if it is in a different system, unless it is also `uninterested`.)
 
@@ -911,7 +911,7 @@ Beginning in **v. 0.9.15**, if the outfit being gifted has the "map" attribute, 
 give ship <model> [<name>]
 ```
 
-Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase. Beginning in **v. 0.10.9**, substitutions and phrases are expanded in gift ship names.
+Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase. Beginning in **v. 0.10.9**, substitutions and phrases are expanded in gift ship names.
 
 ```html
 (give | take) ship <model> [<name>]

@@ -943,6 +943,6 @@ However, it is still quite possible to do things like buying a bulk freighter an
 
 So, when creating new outfits, it's important to keep in mind not just what you think would be cool, but whether your new outfits will be unbalanced. If you're creating a weapon that is so good that no ship will want to install anything else, that's a balance problem.
 
-[eft]: https://github.com/endless-sky/endless-sky/wiki/CreatingEffects
+[eft]: CreatingEffects
 [cooleff]: https://endless-sky.github.io/images/inefficiency.png
 [blastscale]: https://i.imgur.com/Nw81ZjK.png
