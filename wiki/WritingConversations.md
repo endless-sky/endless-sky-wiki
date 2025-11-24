@@ -15,7 +15,7 @@ conversation [<name>]
 	name
 	choice
 		<text>
-			[to display]
+			[to (display | activate)]
 				<condition>
 			[<endpoint> | goto <label>]
 		...
@@ -24,8 +24,9 @@ conversation [<name>]
 		(has | not) <condition>
 		(and | or)
 			...
+	goto <label>
 	action
-		log [<category> <header>] <text>
+		log [<category> <header>] (<text> | scene <image>)
 		outfit <outfit> [<number>]
 		give ship <model> [<name>]
 		payment [<base> [<multiplier>]]
@@ -38,12 +39,12 @@ conversation [<name>]
 	...
 ```
 
-# Endpoints, goto and "to display"
+# Endpoints, goto and "to (display | activate)"
 
 After any text message, or in response to any choice, the conversation may jump to a different, labeled point in the conversation, or to one of the "endpoints." Each endpoint causes the conversation to end, and also has other effects:
 
 * `accept`: The player accepts this mission (if one is being offered).
-* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations already occurring in space (e.g. boarding a ship or "completing" an NPC), if a ship initiated the conversation that ship will die.
+* `launch`: The mission is accepted, _and_ the player immediately takes off. For conversations occurring on a planet, the player will immediately enter space. For conversations occurring in space that are initiated by an interaction with a ship, that ship will die. This includes conversations created by the `on offer` of boarding missions, the completion of NPC objectives, and, as of **v. 0.10.13**, [NPC actions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#non-player-characters-npcs).
 * `decline`: The mission is declined. (This is also useful for creating conversations that appear when you land or enter a spaceport, but that are intended just to provide flavor, not to lead to a mission.)
 * `flee`: The mission is declined, _and_ the player immediately takes off (for conversations occurring on a planet). For conversations occurring in space, the referenced ship (if any) dies.
 * `defer`: The mission is declined, but it will not be marked as "offered," so it can be offered again at a later date even if it is not a repeating mission.
@@ -73,7 +74,9 @@ The conversation stops as soon as an endpoint is encountered, so if you list mul
 
 You can go to labels earlier on in the conversation if you want, but be careful that this does not create an "infinite loop."
 
-Both texts and choices can also be hidden based on a condition that is part of a "to display".
+Both texts and choices can also be hidden based on a condition that is part of a "to display" node.
+
+Beginning in **v. 0.10.17**, choices can be given a "to activate" node. If the conditions of the "to activate" do not pass, then the choice will be drawn with darkened text, and the player will be unable to select it. Make sure that players always have at least one active choice, as otherwise they will be unable to progress.
 
 # Scenes
 
@@ -142,8 +145,8 @@ Beginning in **v. 0.10.1**, the values of [player conditions](Player-Conditions)
 
 Given the conditions:
 ```html
-	"abc" 5000
-	"xyz" 5000000
+	"abc" 5000000
+	"xyz" 5000
 ```
 The above example will appear as:
 ```js
@@ -197,6 +200,8 @@ A branch takes the conversation to one of two different labels depending on a se
 
 The `branch` keyword is followed by one or two label names. The first is the label to jump to if the subsequent conditions are all true. The second is the one to jump to if any of the conditions are false. If no second label is supplied, the "false" branch simply continues to the next entry in the conversation.
 
+An endpoint name can be used in place of a label name, in which case, the conversation ends instead of jumping to the label. The corresponding effects for the endpoint are applied. This also means that it is impossible for a `branch` node to branch to a label whose name matches an endpoint.
+
 ```js
 conversation
 	branch "famous"
@@ -215,11 +220,51 @@ conversation
 		decline
 ```
 
+A branch can be used without any conditions, in which case it will always jump to the first label (or endpoint) specified.
+```html
+	branch later
+	`	This text will never display.`
+
+	label later
+	branch decline
+	`	This text also will never display, because "decline" ended the conversation.`
+```
+
+# Goto
+```html
+goto <label>
+```
+
+Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label. One use for this is performing actions without changing the text that the player sees:
+
+```html
+conversation
+	`"I can whip up anything you want," the chef smiles. "So, what's your favorite dish?"`
+	choice
+		`	"Tacos."`
+			goto "tacos"
+		`	"Cookies."`
+	
+	action
+		set "favorite food: cookies"
+	goto "reaction"
+
+	label "tacos"
+	action
+		set "favorite food: tacos"
+
+	label "reaction"
+	`	The chef raises one eyebrow. "Can't say I expected that, but I'll see what I can do."`
+		decline
+```
+
+Note that `goto` will always go to a label, even if it has the same name as an endpoint (unlike `branch`, which can be used to trigger endpoints).
+
 # Action
 
 ```html
 action
-	log [<category> <header>] <text>
+	log [<category> <header>] (<text> | scene <image>)
 	outfit <outfit> [<number>]
 	give ship <model> [<name>]
 	payment [<base> [<multiplier>]]

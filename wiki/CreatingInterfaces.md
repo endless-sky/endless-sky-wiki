@@ -11,7 +11,7 @@
   * [Sprites, images, and outline](#sprites-images-and-outlines)
   * [Labels, strings, and buttons](#labels-strings-and-buttons)
   * [Bars and rings](#bars-and-rings)
-  * [Lines](#lines)
+  * [Filled areas](#filled-areas)
   * [Pointers](#pointers)
   * [Values](#values)
 
@@ -40,10 +40,18 @@ interface <name> [<anchor>]
 		[truncate <truncation>]
 		[align [<anchor>]]
 		[pad <x#> <y#>]
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> [<anchor>]
+		[color <color>]
+		width <width#>
+		[truncate <truncation>]
+		[alignment <alignment>]
+		[align [<anchor>]]
+		[pad <x#> <y#>]
 	(ring | bar) <name>
 		center <x#> <y#> [<anchor>]
 		dimensions <x#> <y#>
-		[color <color>]
+		[color <from color> [<to color>]]
 		[size <size#>]
 		[reversed]
 		[start angle <angle#>]
@@ -54,7 +62,7 @@ interface <name> [<anchor>]
 		["orientation angle" <angle#>]
 		["orientation vector" <x#> <y#>]
 		[color <color>]
-	line
+	fill
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 	value <name> <value>
@@ -241,12 +249,26 @@ hover | "hover"
 
 If `color` is defined but either the inactive or hover color is not, the undefined color will use the given active color.
 
+### Wrapped text elements
+
+```html
+	("wrapped label" <text>) | ("wrapped string" <name>) | ("wrapped button" <key> <text>) | ("wrapped dynamic button" <key> <name>)
+		from <x#> <y#> to <x#> <y#> [<anchor>]
+		size <size#>
+		color <color>
+		inactive <color>
+		hover <color>
+		truncate (none | front | middle | back)
+		alignment (left | center | right | justified)
+```
+Beginning with **v. 0.10.13**, every text element has its "wrapped" counterpart. The difference is that the text is wrapped at the width limit of the element. As for basic text elements, you can specify truncation of the text. Additionally, you can choose how the text should be aligned.
+
 ## Bars and rings
 
 ```html
 	(bar | ring) <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
-		color <color>
+		color <from color> [<to color>]
 		size <size#>
 		[reversed]
 		[start angle <angle#>]
@@ -261,16 +283,18 @@ A bar will be drawn from the bottom right corner of its bounding box.
 At runtime, the game may only partially complete the bar or ring, or segment it, for example, the ship hull status ring, or the fuel bar.
 Beginning in **v0.10.3**, "reversed" can be used to invert the fill direction of a bar. A reversed bar will be filled from the top left corner. It is not currently possible to reverse a ring.
 The size determines the thickness of the bar or ring, the default value is 2.
-If no color is given, "active" will be used.
+Bars can take a start and end color, and will interpolate between the two.
+If one color is given, the whole bar will be that color, and if no color is given, "active" will be used.
 
-## Lines
+## Filled areas
 
 ```html
-	line <name>
+	fill <name>
 		from <x#> <y#> to <x#> <y#> [<anchor>]
 		color <color>
 ```
-Defines a line to be drawn with this interface.
+Defines an area to be filled with the specified color while drawing this interface.
+Prior to **v. 0.10.17**, the keyword for this element was "line".
 If no color is given, "medium" will be used.
 
 ## Pointers

@@ -18,7 +18,7 @@ You grew up in a stifling third-floor apartment, sharing a bedroom with two othe
 
 ### The Dirt Belt
 
-Milking cows and baling hay leaves you little time to think about the mysteries of the galaxy beyond your own world. Your family is not rich, but neither is anyone else in your village. Your parents have worked hard to ensure that you will live a life more comfortable than your own, and they taught you that if you try hard enough, you can do anything. Your family most likely believes in a personal God who takes an individual interest in each one of you; you are probably Christian or Jewish, or perhaps Mormon. People in your village warn you about the corruption and poverty of the "big city," which is a nearby settlement with a staggeringly large population (nearly sixty thousand!), most of whom work in dimly lit factories.
+Milking cows and baling hay leaves you little time to think about the mysteries of the galaxy beyond your own world. Your family is not rich, but neither is anyone else in your village. Your parents have worked hard to ensure that you will live a life more comfortable than their own, and they taught you that if you try hard enough, you can do anything. Your family most likely believes in a personal God who takes an individual interest in each one of you; you are probably Christian or Jewish, or perhaps Mormon. People in your village warn you about the corruption and poverty of the "big city," which is a nearby settlement with a staggeringly large population (nearly sixty thousand!), most of whom work in dimly lit factories.
 
 ### The Rim
 

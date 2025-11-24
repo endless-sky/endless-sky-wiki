@@ -103,8 +103,14 @@ Update the named `galaxy`, including the `sprite` and position of the sprite on 
 
 ```html
 system <name>
+	inaccessible
+	remove inaccessible
 	hidden
 	remove hidden
+	shrouded
+	remove shrouded
+	"no raids"
+	remove "no raids"
 	pos <x#> <y#>
 	government <gov>
 	remove government
@@ -124,8 +130,20 @@ system <name>
 	[add] minables <name> <count#> <energy#>
 	remove minables [<name>]
 	[add] fleet <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	remove fleet [<name>]
 	[add] hazard <name> <period#>
+		[to spawn]
+			<condition> <comp> <value>
+			(has | not) <condition>
+			never
+			(and | or)
+				...
 	remove hazard [<name>]
 	[add] object [<planet>]
 		sprite <path>
@@ -200,7 +218,7 @@ planet <name>
 		...
 	...
 ```
-Update the specified elements of the named `planet`. Note that planetary music can only be in the `.mp3` format.
+Update the specified elements of the named `planet`. Note that planetary music can only be in the `.mp3` or `.flac` format.
 
 ```html
 news

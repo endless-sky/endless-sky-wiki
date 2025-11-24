@@ -7,7 +7,8 @@
 * [Source and destination filters](#mission-location-filters)
 * [Distance Calculation Settings](#distance-calculation-settings)
 * [Non-Player Characters (NPCs)](#non-player-characters-npcs)
-* [Triggers](#triggers)
+* [Mission Timers](#mission-timers)
+* [Mission Action Triggers](#mission-action-triggers)
 
 # Introduction
 
@@ -70,6 +71,7 @@ And so on. The sky's the limit. Missions can become very complex. Here is a full
 mission <name>
 	name <name>
 	description <text>
+	color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
 	blocked <message>
 	deadline [<days> [<multiplier>]]
 	cargo (random | <name>) <number> [<number> [<probability>]]
@@ -80,7 +82,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor | non-blocking)
-	(job | landing | assisting | boarding | shipyard | outfitter | "job board")
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -98,6 +100,7 @@ mission <name>
 		<text> <replacement>
 			[<condition set>]
 		...
+	"offer precedence" <value>
 	to (offer | complete | fail | accept)
 		<condition> <comp> <value>
 		(has | not) <condition>
@@ -105,7 +108,7 @@ mission <name>
 		(and | or)
 			...
 	(source | destination) <planet>
-	(source | destination)
+	(source | destination | complete at)
 		[(not | neighbor)] planet <name>...
 			<name>...
 		[(not | neighbor)] system <name>...
@@ -157,8 +160,21 @@ mission <name>
 		fleet <name> [<count>]
 		fleet [<count>]
 			...
+	timer <base-time#> [<random-time#>]
+		"pause when inactive"
+		optional
+		"activation requirements"
+			peaceful
+			(cloaked | uncloaked)
+			solo
+			idle [<speed#>]
+			system <system name>
+			system
+				<location-filter>
+		on (deactivation | timeup)
+			<action>
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
-		log [<category> <header>] <text>
+		log [<category> <header>] (<text> | scene <image>)
 		remove log <category> [<header>]
 		dialog <text>
 			<text>...
@@ -183,11 +199,14 @@ mission <name>
 		<condition> (++ | --)
 		(set | clear) <condition>
 		event <name> [<delay> [<max>]]
-		fail [<name>]
+		fail [<mission-name>]
 		music <name>
 		mute
-		mark <system>
-		unmark <system>
+		mark <system> [<mission-name>]
+		unmark <system> [<mission-name>]
+		message <name>
+		message
+			...
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -212,14 +231,16 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<marks>` = a list of all marked systems
 * `<payment>` = "1 credit" or "N credits," where N is the payment amount from the `on complete` block (or, beginning in **v. 0.10.0**, the "apparent payment" of the mission, if one is given), unless the replacement is in an `on *` block or below a conversation `action` node that has its own payment, in which case that `on *` block's or the most recent `action`'s payment is used
 * `<fine>` = "1 credit" or "N credits," where N is the fine amount with the same behavior as `<payment>`; this is not the fine as defined by an `illegal` line
-* `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY")
-* `<day>` = the deadline in conversational form ("the DDth of Month")
+* `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY", "Day Mon DD, YYYY", or "YYYY-MM-DD", depending on user settings)
+* `<day>` = the deadline in conversational form ("the DDth of Month" or "Month DDth", depending on user settings)
 * `<npc>` = the name of the last ship in the last `npc` block in the mission description
 * `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
 * `<first>` = your first name
 * `<last>` = your last name
-* `<ship>` = the name of your flagship
-* `<model>` = the display model of your flagship **(v. 0.10.9)**
+* `<ship>` = the name of your flagship, or the name of an NPC if used in text that is created by an NPC interaction (e.g. a `conversation` created by an NPC action)
+* `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
+* `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
+* `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
 
 These placeholders will be substituted in any text in the following places:
 
@@ -254,6 +275,17 @@ description <text>
 ```
 
 This is a short description of the mission, with enough detail to make it clear to the player what they need to do to complete the mission, and what could cause the mission to fail.
+
+```html
+color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
+```
+
+Starting in **v. 0.10.13**, the color used to display the name of a mission in the missions panel can be modified. Colors can either be provided by name to refer to root-defined colors, or RGB values can be provided directly. There are three possible color categories that can be edited:
+* `unavailable`: You don't have enough space for the mission, or it's a mission you've accepted but can't complete at the moment due to remaining objectives.
+* `unselected`: You don't have the mission selected in the missions list, and it's available.
+* `selected`: You do have the mission selected in the missions list, and it's available.
+
+If these are not provided, then the default dim, medium, and bright colors will be used.
 
 ```html
 blocked <message>
@@ -326,24 +358,28 @@ This specifies that the mission does not show up in the player's list of mission
 (priority | minor | non-blocking)
 ```
 
-If a mission is marked with `priority`, only other "priority" missions can be offered alongside it.
+If a mission is marked with `priority`, (prior to **v. 0.10.13**) only other "priority" missions can be offered alongside it. Beginning in **v. 0.10.13**, missions marked `non-blocking` can also be offered..
 
 If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
 
-Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time.
-
-Note that `priority` will only affect missions that offer from the spaceport.
+Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time. In **v. 0.10.13**, this was extended to also allow any number of "non-blocking" missions to offer alongside "priority" missions.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter | "job board")
+(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
 ```
 
-This specifies where this mission will be shown, if someplace other than the spaceport. If it is a job, it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). If it is a `"job board"` mission, it will be offered either when pressing the job board button or when opening up the missions panel on the map.
+This specifies where this mission will be shown, if someplace other than the spaceport.
 
-If this mission is to be shown at `landing`, it shows up as soon as you land instead of waiting for you to visit the spaceport. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
+* `job`: it will only appear on the job board (and only if the current planet matches the [source filter](#mission-location-filters)). Note that `job` missions do not run their `on offer` [action](#triggers) until they are accepted, but dialogs and conversations from the `on offer` will not appear. Place dialogs and conversations in the `on accept` action of a `job` mission instead.
+* `landing`: it shows up as soon as you land instead of waiting for you to visit the spaceport or some other location. This can be used, for example, to show a special conversation the first time you land on a particular planet or on any planet belonging to a certain species. It can also be used for a continuation of an active mission.
+* `assisting` or `boarding`: it will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch`, `flee`, or `depart`, the ship in question will be destroyed.
+* `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
+* `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
 
-A mission shown when `assisting` or `boarding` will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch` or `flee`, the ship in question will be destroyed.
+An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
+
+All `assisting`, `boarding`, and `entering` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
@@ -389,13 +425,13 @@ If a specific destination is given (i.e. `destination <planet>`) and no clearanc
 
 If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag, or, beginning in **v. 0.10.1**, if the mission has the `ignore clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
 
-The `clearance` tag may have child entries that specify a [location filter](#mission-location-filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
+The `clearance` tag may have child entries that specify a [location filter](LocationFilters), the same as the `source` and `destination` tags [described below](#mission-location-filters). In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
 
 ```html
 ignore clearance
 ```
 
-Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a location filter will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
+Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a [location filter](LocationFilters) will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
 
 ```html
 mission "A Mission with Phrases"
@@ -446,7 +482,17 @@ substitutions
 	...
 ```
 
-Beginning with **v.0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
+Beginning with **v. 0.9.15**, this specifies custom text replacements that apply only to the text of the mission they're defined within. Substitutions defined within a mission take precedence over global substitutions and are overtaken in precedence by [hardcoded text replacements](#text-replacements). For more information on custom text replacements, see the [creating substitutions](CreatingSubstitutions) page.
+
+```html
+"offer precedence" <value>
+```
+
+Beginning with **v. 0.10.11**, this is an integer value which can be used to change the order that missions are offered. Missions with a higher offer precedence will be offered first. The default precedence value is 0, and this value can be negative. For missions with the same offer precedence, they will be offered in alphabetical order according to the identifier of the mission (i.e. the name of the mission specified on the `mission <name>` line, not the display name of the mission specified by the `name` token).
+
+Note that the way that the game determines which `minor` missions should offer means that the minor mission with the lowest precedence will be the one to offer, and all higher precedence minor missions that could have also offered at the same time will be discarded.
+
+Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical order which is able to offer will be the one that does offer.
 
 # Conditions
 
@@ -487,7 +533,7 @@ to offer
 
 ```html
 (source | destination) <planet>
-(source | destination)
+(source | destination | complete at)
 	<filter>
 ```
 
@@ -497,7 +543,22 @@ For missions offered by a ship, you must always specify a destination, even if t
 
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
-For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a ["location" filter])(LocationFilters), as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+
+Note that if a location filter is provided for the `destination`, one planet at random in the game that matches the location filter will be chosen as the mission's destination once it is offered.
+
+Beginning in **v. 0.10.13**, the `complete at` node can be used as an alternative method of specifying mission destinations; instead of picking one random planet to mark as the mission destination, every planet that matches the `complete at` location filter can be landed on in order to complete the mission.
+
+If a mission has a `destination` and a `complete at` node, then the `complete at` node will take precedence.
+Note that only the `destination` will place a marker on the map; a `complete at` node will not place a marker on every planet that matches its filter.
+
+An example usage of this is allowing a mission to complete when landing on any pirate planet, instead of needing to land on one particular pirate planet.
+```html
+complete at
+	government "Pirate"
+```
+
+The code for `complete at` runs when the player lands at a planet, but this might change in the future (to allow completing missions elsewhere, possibly mid-flight). If you want to make sure that missions end on a planet in the future, then make sure that the `complete at` filter only contains planet destinations.
 
 # Distance calculation settings
 
@@ -679,13 +740,49 @@ fleet [<count#>]
 
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal [`fleet` data entry](CreatingFleets). Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
 
-# Triggers
+# Mission Timers
+
+```html
+timer <base-time#> [<random-time#>]
+	"pause when inactive"
+	optional
+	"activation requirements"
+		peaceful
+		(cloaked | uncloaked)
+		solo
+		idle [<speed#>]
+		system <system name>
+		system
+			<location-filter>
+	on (deactivation | timeup)
+		<action>
+```
+
+Beginning in **v. 0.10.17**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
+
+By default, timers will run whenever the player is not in hyperspace or taking off from a planet/wormhole. Timers can be given a series of `"activation requirements"` that limit when the timer is running though:
+* `peaceful`: The player cannot be firing any weapons on their flagship. (Anti-missile turrets do not count against you.)
+* `cloaked`: The player's flagship must be fully cloaked.
+* `uncloaked`: The player's flagship must be fully uncloaked.
+* `solo`: The player must not have any other escorts in the system with them. (Docked fighters don't count as being "in system" for the purposes of this requirement. Deploying the fighters would cause them to count against you, though.)
+* `idle`: The player must not be sending any movement commands to their flagship and must be moving slowly. The default speed limit is a velocity of 5, but an optional value can be provided to this requirement to change how fast/slow the player is allowed to move.
+* `system`: The name of an exact system, or a full [location filter](LocationFilters). The player must be within the named system, or within a system that matches the location filter.
+
+Multiple activation requirements can be applied to the same timer. If at any point the player does not meet the activation requirements, the timer will reset its count back to 0, unless the `"pause when inactive"` tag is present, in which case the timer will pause.
+
+Timer nodes are able to have triggers that run under certain circumstances:
+* `on deactivation`: Runs the first time, and only the first time, that the timer is deactivated after having been activated.
+* `on timeup`: Runs when the timer as completed.
+
+For more details on triggers/mission actions, see the section below.
+
+# Mission Action Triggers
 
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
-	log [<category> <header>] <text>
+	log [<category> <header>] (<text> | scene <image>)
 	remove log <category> [<header>]
 	dialog <text>
 		<text>...
@@ -710,11 +807,14 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	<condition> (++ | --)
 	(set | clear) <condition>
 	event <name> [<delay#> [<max#>]]
-	fail [<name>]
+	fail [<mission-name>]
 	music <name>
 	mute
-	mark <system>
-	unmark <system>
+	mark <system> [<mission-name>]
+	unmark <system> [<mission-name>]
+	message <name>
+	message
+		...
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -751,12 +851,14 @@ on enter
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
-log [<category> <header>] <text>
+log [<category> <header>] (<text> | scene <image>)
 ```
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
-An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. Existing vanilla categories are `"People"`, `"Minor People"`, and `"Factions"`. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+A `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide. Note that no swizzle will be applied to ship images.
 
 ```html
 remove log <category> [<header>]
@@ -906,7 +1008,7 @@ event <name> [<delay#> [<max#>]]
 This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first. Event names cannot start with numerals.
 
 ```html
-fail [<name>]
+fail [<mission-name>]
 ```
 
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list. If you have multiple active missions of the same identifier (which may occur for repeatable missions such as jobs), then a `fail` action that specifies the identifier of those missions will fail all of them at once.
@@ -925,8 +1027,18 @@ If you provide `<ambient>` as the track name, then whichever music track is bein
 The `mute` node can be used to stop all music tracks from playing.
 
 ```html
-mark <system>
-unmark <system>
+mark <system> [<mission-name>]
+unmark <system> [<mission-name>]
 ```
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
+
+Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.
+
+```html
+message <name>
+message
+	...
+```
+
+Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.

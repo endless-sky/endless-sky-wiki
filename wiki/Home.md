@@ -34,6 +34,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating new ships](CreatingShips)
 * [Creating person ships](CreatingPersons)
 * [Creating outfits and weapons](CreatingOutfits)
+* [Creating shops](Creating-Shops)
 * [Creating effects](CreatingEffects)
 * [Creating systems and planets](MapData)
 * [Creating system hazards](CreatingHazards)
@@ -46,13 +47,14 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
+* [Creating messages](CreatingMessages)
 * [Player Conditions](Player-Conditions)
 
 ### Compiling or modifying the source code
 
-* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-cmake.md)
+* [Build instructions](https://github.com/endless-sky/endless-sky/blob/master/docs/readme-developer.md)
 * [Contributing to the code](ContributingCode)
-* [C++ style guide](https://endless-sky.github.io/styleguide/styleguide.xml)
+* [C++ style guide](C++-Style-Guide)
 
 ### Descriptions of game engine technology
 
