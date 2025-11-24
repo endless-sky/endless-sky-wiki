@@ -30,7 +30,6 @@
 * [Creating new ships](CreatingShips)
 * [Creating person ships](CreatingPersons)
 * [Creating outfits and weapons](CreatingOutfits)
-* [Creating shops](Creating-Shops)
 * [Creating effects](CreatingEffects)
 * [Creating systems and planets](MapData)
 * [Creating system hazards](CreatingHazards)
