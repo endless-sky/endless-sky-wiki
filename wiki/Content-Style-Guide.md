@@ -338,4 +338,4 @@ choice
 
 Since choices are written from the first-person perspective of your character, they should always be in the first person. This includes action choices.
 
-Choices should almost always have at least two options available for the player to choose from. Even if both choices lead to the same outcome (i.e. they go to the same label or next line of text), it is better two have two options to choose from than to only ever give the player a single option.
+Choices should almost always have at least two options available for the player to choose from. Even if both choices lead to the same outcome (i.e. they go to the same label or next line of text), it is better to have two options to choose from than to only ever give the player a single option.
