@@ -6,7 +6,7 @@
 * [Missions](#missions)
   * [Token Order](#token-order)
     * [`mission` Nodes](#mission-nodes)
-    * [`on *` Nodes](#on-*-nodes)
+    * [`on *` Nodes](#on--nodes)
     * [`npc` Nodes](#npc-nodes)
   * [`blocked` Dialogs](#blocked-dialogs)
   * [`on visit` Dialogs](#on-visit-dialogs)
@@ -17,7 +17,7 @@
 
 # Background
 
-Similar to the [C++ style guide](C++-Style-Guide), this page acts as a style guide for all of the game's content (i.e. anything defined in the game's [data format](DataFormat)). For specifics on how different data nodes behave in the game, see the other pages in the wiki relavent to those nodes. The purpose of this page is to define how data should be layed out stylistically as to improve readability and maintainability of all contributed content.
+Similar to the [C++ style guide](C++-Style-Guide), this page acts as a style guide for all of the game's content (i.e. anything defined in the game's [data format](DataFormat)). For specifics on how different data nodes behave in the game, see the other pages in the wiki relevant to those nodes. The purpose of this page is to define how data should be laid out stylistically as to improve readability and maintainability of all contributed content.
 
 Note that many of these style requirements have been developed over the years, so not all of the game's content may adhere to this guide 100%.
 
@@ -336,6 +336,6 @@ choice
 	`	(Raise my hands slowly into the air and find out what she wants.)`
 ```
 
-Since choices are written from the first-person prespective of your character, they should always be in the first person. This includes action choices.
+Since choices are written from the first-person perspective of your character, they should always be in the first person. This includes action choices.
 
 Choices should almost always have at least two options available for the player to choose from. Even if both choices lead to the same outcome (i.e. they go to the same label or next line of text), it is better two have two options to choose from than to only ever give the player a single option.
