@@ -543,7 +543,7 @@ For missions offered by a ship, you must always specify a destination, even if t
 
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
-For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a ["location" filter])(LocationFilters), as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a ["location" filter](LocationFilters), as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
 Note that if a location filter is provided for the `destination`, one planet at random in the game that matches the location filter will be chosen as the mission's destination once it is offered.
 
