@@ -28,6 +28,7 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 
 These pages generally describe the game syntax in accordance with the [data format](DataFormat).
 * [Creating plugins](CreatingPlugins)
+* [Adding images](ImageFormats)
 * [Creating missions](CreatingMissions)
 * [Writing conversations](WritingConversations)
 * [Creating game events](CreatingEvents)
