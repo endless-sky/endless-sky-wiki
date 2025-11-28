@@ -55,7 +55,7 @@
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
-* [Image Formats](ImageFormats)
+* [Image formats](ImageFormats)
 * [Sprite animation parameters](SpriteData)
 
 **Compiling or modifying the source code**
