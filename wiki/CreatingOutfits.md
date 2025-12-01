@@ -745,7 +745,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `inverted`: inverts the distribution of only narrow, medium, or wide inaccuracies, so that projectiles are more likely to appear at the edges of the angle rather than the middle.
 
-* `"turret turn"`: the number of degrees that this turret rotates per frame. **(v. 0.9.7)**
+* `"turret turn"`: the number of degrees that this turret rotates per frame. For a balance guide see [PR #11194](https://github.com/endless-sky/endless-sky/pull/11194), including the comments. **(v. 0.9.7)**
 
 * `"arc"`: limit on the number of degrees that this turret can rotate. (For non-omnidirectional turret weapons.) **(v. 0.10.7)**
 
