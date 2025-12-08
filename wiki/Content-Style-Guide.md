@@ -241,19 +241,17 @@ npc disable "scan cargo" ...
 
 ## `blocked` dialogs
 
-Any mission which meets the following criteria should have a `blocked` dialog:
+Any mission which meets all of the following criteria should generally have a `blocked` dialog:
 
 1. The mission is not the first mission in a chain (i.e. it's continuing from a previous mission).
 2. The mission does not have the `invisible` tag, has an `on offer` conversation or dialog, or is in any way something that is meant to be visible to the player.
 3. The mission has cargo, passengers, a `to accept` node, or anything else that may cause the mission to fail to offer even if the `on offer` conditions are met.
 
-A mission may contain a `blocked` dialog even if it does not meet these criteria, and an exception can be made for missions which use the `to accept` to wait for another mission to complete first.
+A mission may contain a `blocked` dialog even if it does not meet these criteria, and missions which use the `to accept` to wait for another mission to complete first are exempted if there is no other reason why that mission would fail to offer.
 
 ## `on visit` dialogs
 
-Any mission which meets the following criteria must have an `on visit` node that contains a `dialog`:
-
-1. The mission has ANY objective whatsoever that must be met in order for the player to complete the mission upon landing at the destination. This includes but is not limited to the mission having passengers or cargo, an NPC with an objective, stopovers or waypoints, or a `to complete` node.
+Any mission that has an objective that must be met before landing at the destination must have an `on visit` node that contains a `dialog`. This includes ANY reason a mission would not be able to complete when landing, including but not limited to having passengers or cargo on an escort in a different system, an NPC with an uncompleted objective, unvisited stopovers or waypoints, and an unfulfilled `to complete` node.
 
 The `on visit` dialog is what informs the player that they haven't completed the mission despite having reached the destination due to not having completed all of the objectives, and then reiterates all the objectives of the mission that the player may be missing in a concise manner. Many common objectives have predefined `dialog phrase`s made for them. For generic missions like jobs, the relevant `dialog phrase` should be used for the mission's objective. For major storyline missions, the dialog is typically tailored to the mission, such as by mentioning specific character names instead of generically referring to missing passengers or escorts.
 
