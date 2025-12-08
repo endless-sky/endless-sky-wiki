@@ -35,10 +35,10 @@ Consider the following example:
 mission "Example Mission"
 	description `Destroy the "Test Dummy."`
 	source
-		attributes spaceport "deep"
+		attributes "deep" spaceport
 	npc kill
-		personality staying
 		government "Merchant"
+		personality staying
 		ship "Sparrow" "Test Dummy"
 ```
 
@@ -52,10 +52,10 @@ Theoretically speaking, this mission could also be defined as follows:
 "mission" "Example Mission"
 	description "Destroy the 'Test Dummy.'"
 	"source"
-		"attributes" "spaceport" "deep"
+		"attributes" "deep" "spaceport"
 	"npc" "kill"
-		"personality" "staying"
 		"government" "Merchant"
+		"personality" "staying"
 		"ship" "Sparrow" "Test Dummy"
 ```
 Or, since backticks and double quotation marks can both be used to identify a token, like this:
@@ -63,10 +63,10 @@ Or, since backticks and double quotation marks can both be used to identify a to
 `mission` `Example Mission`
 	`name` `Destroy the "Test Dummy."`
 	`source`
-		`attributes` `spaceport` `deep`
+		`attributes` `deep` `spaceport`
 	`npc` `kill`
-		`personality` `staying`
 		`government` `Merchant`
+		`personality` `staying`
 		`ship` `Sparrow` `Test Dummy`
 ```
 
@@ -212,16 +212,17 @@ on *
 ### `npc` nodes
 
 ```html
-# Objectives have no fixed order
+# Objectives in alphabetical order.
 npc disable "scan cargo" ...
 	# The spawn and despawn conditions
 	to spawn
 		...
 	to despawn
 		...
-	# The fleet's personality, government, and where it spawns.
-	personality ...
+	# The fleet's government, personality, and where it spawns.
 	government ...
+	# Personalities should be in alphabetical order.
+	personality ...
 	system ...
 	# Settings for the cargo held by the NPC
 	"cargo settings"
