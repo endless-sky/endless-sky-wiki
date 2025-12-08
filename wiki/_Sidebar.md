@@ -43,6 +43,7 @@
 * [Creating system hazards](CreatingHazards)
 * [Creating minable asteroids](CreatingMinables)
 * [Creating planet sprites](PlanetSprites)
+* [Creating map label sprites](MapLabels)
 * [Creating spaceport news](CreatingNews)
 * [Creating governments](CreatingGovernments)
 * [Creating fleets](CreatingFleets)
@@ -54,6 +55,7 @@
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
+* [Image formats](ImageFormats)
 * [Sprite animation parameters](SpriteData)
 * [Content style guide](Content-Style-Guide)
 

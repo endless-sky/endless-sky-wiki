@@ -45,6 +45,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating system hazards](CreatingHazards)
 * [Creating minable asteroids](CreatingMinables)
 * [Creating planet sprites](PlanetSprites)
+* [Creating map label sprites](MapLabels)
 * [Creating spaceport news](CreatingNews)
 * [Creating governments](CreatingGovernments)
 * [Creating fleets](CreatingFleets)
@@ -57,6 +58,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
 * [Sprite animation parameters](SpriteData)
+* [Image formats](ImageFormats)
 * [Content style guide](Content-Style-Guide)
 
 ### Compiling or modifying the source code
