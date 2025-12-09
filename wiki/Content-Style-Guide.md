@@ -82,6 +82,25 @@ Therefore, the guidelines for when to quote a token are as follows:
 By following these guidelines, content can be easily visually parsed into the aforementioned categories.
 Note that there are a few exceptions to these rules. These exceptions will be highlighted in the sections where they are relevant.
 
+## Alphabetize Lists
+
+If a node accepts a list of string tokens, the tokens should generally be alphabetized. This includes:
+* `attributes` for planets, systems, and source filters.
+* `personality` for NPCs.
+* The child nodes of `commodity` and `phrase`.
+
+Exceptions should be made if the order of the tokens influences how they appear in game. This includes:
+* The child nodes of `category`.
+
+If a file defines a list of objects of the same root node, they should also be alphabetized:
+* `planet`
+* `system`
+
+Exceptions are often made where there are more reasonable ways of ordering the root nodes:
+* `mission` nodes should be grouped by missions in the same storyline, in the order that they are encountered.
+* `ship` nodes are often grouped by category. Sorting within the category can be either alphabetical or by price/size of the ships.
+* `outfit` nodes are often grouped by category. Sorting within the category can be either alphabetical or by outfits of similar types (e.g. all blasters together, then all lasers together, as can be seen in data/human/weapons.txt).
+
 # Missions
 
 The identifiers for missions should generally be defined in the following format: `<storyline>: <arc> <part>`. For example, the mission `"Wanderers: Unfettered Diplomacy 1"` is part  1 of the Unfettered Diplomacy arc in the Wanderers storyline. Sometimes, the "arc" is a single mission long, in which case the "part" number should omitted.
@@ -89,6 +108,8 @@ The identifiers for missions should generally be defined in the following format
 For arcs that branch, a letter or decimal is often used alongside the part number. For example, `"FW Bloodsea 1.1"` and `"FW Bloodsea 1.2"` are each the first mission in the Bloodsea arc of the Free Worlds campaign on branch number 1 and 2 respectively.
 
 For missions that offer alongside other missions but do not themselves progress a storyline or arc, they usually take the form `<storyline>: <arc> <part>: <name>`. For example, `"Deep: Mystery Cubes 3: Escorts"` is used for the mission that spawns the escorts for the mission `"Deep: Mystery Cubes 3"`, while `"Deep: TMBR: Hint"` is used to give the player a hint during the TMBR arc of the Deep storyline.
+
+Mission identifiers should use title casing.
 
 ## Token order
 
@@ -251,11 +272,21 @@ A mission may contain a `blocked` dialog even if it does not meet these criteria
 
 ## `on visit` dialogs
 
-Any mission that has an objective that must be met before landing at the destination must have an `on visit` node that contains a `dialog`. This includes ANY reason a mission would not be able to complete when landing, including but not limited to having passengers or cargo on an escort in a different system, an NPC with an uncompleted objective, unvisited stopovers or waypoints, and an unfulfilled `to complete` node.
+Any mission that has an objective that must be met before landing at the destination must have an `on visit` node that contains a `dialog`. This includes ANY reason a mission would not be able to complete when landing, including but not limited to having passengers or cargo on an escort in a different system, an NPC with an uncompleted objective, unvisited stopovers or waypoints, or an unfulfilled `to complete` node.
 
 The `on visit` dialog is what informs the player that they haven't completed the mission despite having reached the destination due to not having completed all of the objectives, and then reiterates all the objectives of the mission that the player may be missing in a concise manner. Many common objectives have predefined `dialog phrase`s made for them. For generic missions like jobs, the relevant `dialog phrase` should be used for the mission's objective. For major storyline missions, the dialog is typically tailored to the mission, such as by mentioning specific character names instead of generically referring to missing passengers or escorts.
 
+# Events
+
+Event identifiers should be all lowercase and generally share a prefix with the storyline that triggers them. For example, all events from the Wanderers campaign follow the form `"wanderers: <event name>"`.
+
+# Conditions
+
+Conditions set by missions should be all lowercase and generally share a prefix with the storyline or mission that creates/uses them.
+
 # Conversations
+
+## Ordering
 
 The nodes of a conversation should be ordered in such a way as to allow the conversation to be read from top to bottom without having to loop back up to a prior point in the conversation definition where possible.
 
@@ -297,6 +328,79 @@ conversation
 		decline
 ```
 
+In cases where a loop can occur within a conversation (e.g. a `choice` leads to text with a `goto` that points back up to the same `choice`), then the order of the labeled sections should match the order of the choices that lead to them.
+```
+conversation
+	label loop
+	`This choice will loop.`
+	choice
+		`	"I don't believe you."`
+		`	"Let me test that."`
+			goto test
+		`	"Let me out!"`
+			goto end
+	
+	`	Well believe it.`
+		goto loop
+	
+	label test
+	`	Testing it now.`
+		goto loop
+	
+	label end
+	`	Ok.`
+```
+
+Loops within conversations should generally be avoided if there is no reason to have them, such as when asking a character a list of questions. If the player wants to re-read an answer they were given, then they can scroll up in the conversation instead of being able to continually repaet the same choice. This can be done by using `apply` nodes to set conditions after a choice is taken, and `to display` nodes to remove a choice if a condition is set. When this is done and there is no intention to use a condition after the conversation is over, the mission should clear the conditions as to not have them take up space in the save file.
+```
+conversation
+	label loop
+	`This choice will loop.`
+	choice
+		`	"I don't believe you."`
+			to display
+				not "nonbeliever"
+		`	"Let me test that."`
+			goto test
+			to display
+				not "test"
+		`	"Let me out!"`
+			goto end
+	
+	apply
+		set "nonbeliever"
+	`	Well believe it.`
+		goto loop
+	
+	label test
+	apply
+		set "test"
+	`	Testing it now.`
+		goto loop
+	
+	apply
+		clear "test"
+		clear "nonbeliever"
+	label end
+	`	Ok.`
+```
+
+## Writing Style
+
+Except in special circumstances, text within data files must:
+* Be written in American English.
+* Follow established written English conventions and rules.
+* Be legible and understandable for both:
+	* the player, who are exposed to the effects of these data files in game, and
+	* for the contributor, who reads and edits these data files while contributing to Endless Sky.
+
+Some additional writing conventions include:
+* The player character should always be referred to with they/them pronouns.
+* Use the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) when listing items (e.g. "a, b, and c" instead of "a, b and c").
+* If a paragraph ends in a quotation and the following paragraph starts with a quotation from the same character, the first paragraph should not have a quotation mark at the end. (The [multi-paragraph quotation rule](https://english.stackexchange.com/questions/96608/why-does-the-multi-paragraph-quotation-rule-exist).)
+
+It is important to remember that Endless Sky is a video game, not a novel. Conversations should not be exceedingly long or overly detailed. Long sections of text should be broken up by `choice` nodes as to keep the player engaged. If a particular stretch of conversation requires the player to scroll down to read the entire thing, then it is far too long. Rarely should a stretch of conversation between choices take up more than half of the conversation panel (on a 1920x1080 monitor). A full conversation should not take more than a few minutes to read through at a reasonable pace.
+
 ## Text
 
 The text nodes of a conversation should always be surrounded by backticks, even if a particular line of text does not contain a quotation. (This is an exception to the general [token quoting rules](#when-and-how-to-quote-tokens).)
@@ -335,6 +439,25 @@ choice
 	`	(Raise my hands slowly into the air and find out what she wants.)`
 ```
 
-Since choices are written from the first-person perspective of your character, they should always be in the first person. This includes action choices.
+Choices are written from the first-person perspective of your character. This includes action choices.
 
 Choices should almost always have at least two options available for the player to choose from. Even if both choices lead to the same outcome (i.e. they go to the same label or next line of text), it is better to have two options to choose from than to only ever give the player a single option.
+
+When a choice has an option to accept a mission and an option to decline the mission, the accept option should generaly come first while the decline option is last. If there are additional options for giving the player more information, they should go between the accept and decline options. An exception should be made if the player makes a choice that to decline the mission if the mission asks them a second time to confirm that they're sure.
+
+```
+`"Accept this mission?"`
+# Accept, then decline.
+choice
+	`	"I'll do it."`
+		acceot
+	`	"Not interested."`
+
+`	"Are you sure?"`
+# Decline, then accept, since the player voiced their disinterest before.
+choice
+	`	"Yes, I'm sure."`
+		decline
+	`	"Actually, I will take it."`
+		accept
+```
