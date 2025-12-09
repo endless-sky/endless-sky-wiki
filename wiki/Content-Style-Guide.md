@@ -443,14 +443,14 @@ Choices are written from the first-person perspective of your character. This in
 
 Choices should almost always have at least two options available for the player to choose from. Even if both choices lead to the same outcome (i.e. they go to the same label or next line of text), it is better to have two options to choose from than to only ever give the player a single option.
 
-When a choice has an option to accept a mission and an option to decline the mission, the accept option should generaly come first while the decline option is last. If there are additional options for giving the player more information, they should go between the accept and decline options. An exception should be made if the player makes a choice that to decline the mission if the mission asks them a second time to confirm that they're sure.
+When a choice has an option to accept a mission and an option to decline the mission, the accept option should generally come first while the decline option is last. If there are additional options for giving the player more information, they should go between the accept and decline options. An exception should be made if the player makes a choice that to decline the mission if the mission asks them a second time to confirm that they're sure.
 
 ```
 `"Accept this mission?"`
 # Accept, then decline.
 choice
 	`	"I'll do it."`
-		acceot
+		accept
 	`	"Not interested."`
 
 `	"Are you sure?"`
