@@ -57,8 +57,8 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Player Conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)
-* [Sprite animation parameters](SpriteData)
 * [Image formats](ImageFormats)
+* [Sprite animation parameters](SpriteData)
 * [Content style guide](Content-Style-Guide)
 
 ### Compiling or modifying the source code
