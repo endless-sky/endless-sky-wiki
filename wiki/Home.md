@@ -3,10 +3,14 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 ### Playing Endless Sky
 
 * [Player's manual](PlayersManual)
+* [Community Glossary](Glossary)
+
+### Community
+
+* [Reporting bugs and requesting new features](https://github.com/endless-sky/endless-sky/blob/master/docs/CONTRIBUTING.md)
+* [Community Discord](https://discord.gg/ZeuASSx)
 * [GitHub Discussions](https://github.com/endless-sky/endless-sky/discussions)
 * [Steam Forums](https://steamcommunity.com/app/404410/discussions/)
-* [Community Discord](https://discord.gg/ZeuASSx)
-* [Reporting bugs and requesting new features](https://github.com/endless-sky/endless-sky/blob/master/docs/CONTRIBUTING.md)
 
 ### Story
 
@@ -20,7 +24,8 @@ Welcome to the Endless Sky wiki! Whether you're just looking for more informatio
 * [Development Roadmap](DevelopmentRoadmap)
 * [Art and storytelling style](StyleGoals)
 * [Quality Checklist](QualityChecklist)
-* [Donating](Donations)
+* [Story Ideas](StoryIdeas)
+* [Donations](Donations)
 * [Development Vision](Endless-Sky's-Vision)
 * [Reviewing PRs](ReviewingPRs)
 
@@ -40,6 +45,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating system hazards](CreatingHazards)
 * [Creating minable asteroids](CreatingMinables)
 * [Creating planet sprites](PlanetSprites)
+* [Creating map label sprites](MapLabels)
 * [Creating spaceport news](CreatingNews)
 * [Creating governments](CreatingGovernments)
 * [Creating fleets](CreatingFleets)
@@ -47,8 +53,13 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
+* [Creating messages](CreatingMessages)
 * [Editing gamerules](Gamerules)
 * [Player Conditions](Player-Conditions)
+* [Ship personalities](ShipPersonalities)
+* [Location filters](LocationFilters)
+* [Image formats](ImageFormats)
+* [Sprite animation parameters](SpriteData)
 
 ### Compiling or modifying the source code
 

@@ -7,7 +7,8 @@
 * [Source and destination filters](#mission-location-filters)
 * [Distance Calculation Settings](#distance-calculation-settings)
 * [Non-Player Characters (NPCs)](#non-player-characters-npcs)
-* [Triggers](#triggers)
+* [Mission Timers](#mission-timers)
+* [Mission Action Triggers](#mission-action-triggers)
 
 # Introduction
 
@@ -159,8 +160,21 @@ mission <name>
 		fleet <name> [<count>]
 		fleet [<count>]
 			...
+	timer <base-time#> [<random-time#>]
+		"pause when inactive"
+		optional
+		"activation requirements"
+			peaceful
+			(cloaked | uncloaked)
+			solo
+			idle [<speed#>]
+			system <system name>
+			system
+				<location-filter>
+		on (deactivation | timeup)
+			<action>
 	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
-		log [<category> <header>] <text>
+		log [<category> <header>] (<text> | scene <image>)
 		remove log <category> [<header>]
 		dialog <text>
 			<text>...
@@ -185,11 +199,14 @@ mission <name>
 		<condition> (++ | --)
 		(set | clear) <condition>
 		event <name> [<delay> [<max>]]
-		fail [<name>]
+		fail [<mission-name>]
 		music <name>
 		mute
-		mark <system>
-		unmark <system>
+		mark <system> [<mission-name>]
+		unmark <system> [<mission-name>]
+		message <name>
+		message
+			...
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -408,13 +425,13 @@ If a specific destination is given (i.e. `destination <planet>`) and no clearanc
 
 If the destination is specified via a filter, the filter will not match planets you cannot land on unless this mission contains a `clearance` tag, or, beginning in **v. 0.10.1**, if the mission has the `ignore clearance` tag. *Omitting the tag may make it impossible for a particular mission to be offered.* Beginning with **v 0.9.13**, stopover or destination filters that explicitly list planets for which the player needs clearance as an option in the filter's `planet` list will now match these previously forbidden destinations.
 
-The `clearance` tag may have child entries that specify a [location filter](#mission-location-filters), the same as the `source` and `destination` tags described below. In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
+The `clearance` tag may have child entries that specify a [location filter](LocationFilters), the same as the `source` and `destination` tags [described below](#mission-location-filters). In this case, you have clearance on all planets that match that filter, in addition to on the destination planet.
 
 ```html
 ignore clearance
 ```
 
-Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a location filter will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
+Beginning in **v. 0.10.1**, a mission can be given the `ignore clearance` tag to override the behavior described above. A destination or stopovers specified by a [location filter](LocationFilters) will be able to select planets the player does not have permission to land on. Unlike when `clearance` is given, however, the mission will not itself allow the player to land on the selected planet if they would not otherwise be able to. They will need to find their own way. This allows the creation of missions that require the player to land at a randomly selected hostile (Pirate, for example) world by offering a bribe.
 
 ```html
 mission "A Mission with Phrases"
@@ -526,12 +543,14 @@ For missions offered by a ship, you must always specify a destination, even if t
 
 If no source is specified, the mission will be offered whenever its `to offer` conditions are satisfied; this can be used to create a mission that is offered as soon as you complete another.
 
-For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a "location" filter, as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
+For the source and destination, you can either specify one particular planet, or give a set of constraints that the planet must match. These sets of constraints are referred to as a [location filter](LocationFilters), as they are applied to the game's ships, systems, and planets in order to conditionally select locations for mission events.
 
-Note that the `destination` filter will be evaluated to one single planet that the player must land on in order to complete the mission. Beginning in **v. 0.10.13**, the `complete at` node can be used to specify alternative locations where missions can end. A `complete at` location filter can be used to complete the mission if the player lands at any planet that matches the filter.
+Note that if a location filter is provided for the `destination`, one planet at random in the game that matches the location filter will be chosen as the mission's destination once it is offered.
+
+Beginning in **v. 0.10.13**, the `complete at` node can be used as an alternative method of specifying mission destinations; instead of picking one random planet to mark as the mission destination, every planet that matches the `complete at` location filter can be landed on in order to complete the mission.
 
 If a mission has a `destination` and a `complete at` node, then the `complete at` node will take precedence.
-Only the `destination` will place a marker on the map.
+Note that only the `destination` will place a marker on the map; a `complete at` node will not place a marker on every planet that matches its filter.
 
 An example usage of this is allowing a mission to complete when landing on any pirate planet, instead of needing to land on one particular pirate planet.
 ```html
@@ -625,7 +644,7 @@ An NPC will not spawn if its `to spawn` conditions are not met, and any spawned 
 
 Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
-When combined with an `action` node in a [`conversation`](https://github.com/endless-sky/endless-sky/wiki/WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
+When combined with an `action` node in a [`conversation`](WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
 ```html
 on (kill | board | assist | disable | "scan cargo" | "scan outfits" | capture | provoke | destroy | encounter)
@@ -645,7 +664,7 @@ Starting in **v. 0.10.1**, `on *` nodes can be added to NPCs to trigger actions 
 * `provoke`: Any ship in the NPC is provoked. Will not repeat on subsequent provoke actions.
 * `encounter`: Any ship in the NPC is encountered by your flagship. A ship is encountered if your flagship and the NPC ship are in the same system and are both targetable (i.e. not in hyperspace, not in the middle of taking off from a planet, and not cloaked). Will not repeat on subsequent encounter actions. **(v. 0.10.5)**
 
-For details on actions that can be run by these nodes, see the [Triggers](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#triggers) section.
+For details on actions that can be run by these nodes, see the [Triggers](CreatingMissions#triggers) section.
 
 ```html
 government <name>
@@ -658,7 +677,7 @@ This specifies what government all the ships connected to this NPC specification
 	...
 ```
 
-Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](https://github.com/endless-sky/endless-sky/wiki/CreatingFleets#cargo) page.
+Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fleets can. If an NPC spawns a fleet that contains cargo settings, but the NPC also has cargo settings, then the NPC overrides the fleet. More details about cargo settings can be found on the [Creating Fleets](CreatingFleets#cargo) page.
 
 ```html
 personality <type>...
@@ -666,7 +685,7 @@ personality <type>...
 	confusion <amount#>
 ```
 
-This defines the NPC's [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities). The `confusion` tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
+This defines the NPC's [personality](ShipPersonalities). The `confusion` tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
 
 If an NPC is specified as starting out in your current system and its personality is *not* `staying` or `waiting`, it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is `entering` the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship `staying` in a certain system might be a target you must locate for a "bounty hunting" mission. (Any ship that is not `staying` will actively seek the player out if it is in a different system, unless it is also `uninterested`.)
 
@@ -721,13 +740,49 @@ fleet [<count#>]
 
 This specifies an entire fleet of ships. The first format refers to one or the standard fleets, such as "pirate raid" or "Small Republic". The second format gives a custom fleet, using the same syntax as normal [`fleet` data entry](CreatingFleets). Every ship in the fleet will have the requirements given in the first line (such as `kill` or `save`). Optionally, you can specify a count to create more than one copy of the fleet.
 
-# Triggers
+# Mission Timers
+
+```html
+timer <base-time#> [<random-time#>]
+	"pause when inactive"
+	optional
+	"activation requirements"
+		peaceful
+		(cloaked | uncloaked)
+		solo
+		idle [<speed#>]
+		system <system name>
+		system
+			<location-filter>
+	on (deactivation | timeup)
+		<action>
+```
+
+Beginning in **v. 0.10.17**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
+
+By default, timers will run whenever the player is not in hyperspace or taking off from a planet/wormhole. Timers can be given a series of `"activation requirements"` that limit when the timer is running though:
+* `peaceful`: The player cannot be firing any weapons on their flagship. (Anti-missile turrets do not count against you.)
+* `cloaked`: The player's flagship must be fully cloaked.
+* `uncloaked`: The player's flagship must be fully uncloaked.
+* `solo`: The player must not have any other escorts in the system with them. (Docked fighters don't count as being "in system" for the purposes of this requirement. Deploying the fighters would cause them to count against you, though.)
+* `idle`: The player must not be sending any movement commands to their flagship and must be moving slowly. The default speed limit is a velocity of 5, but an optional value can be provided to this requirement to change how fast/slow the player is allowed to move.
+* `system`: The name of an exact system, or a full [location filter](LocationFilters). The player must be within the named system, or within a system that matches the location filter.
+
+Multiple activation requirements can be applied to the same timer. If at any point the player does not meet the activation requirements, the timer will reset its count back to 0, unless the `"pause when inactive"` tag is present, in which case the timer will pause.
+
+Timer nodes are able to have triggers that run under certain circumstances:
+* `on deactivation`: Runs the first time, and only the first time, that the timer is deactivated after having been activated.
+* `on timeup`: Runs when the timer as completed.
+
+For more details on triggers/mission actions, see the section below.
+
+# Mission Action Triggers
 
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
 on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
-	log [<category> <header>] <text>
+	log [<category> <header>] (<text> | scene <image>)
 	remove log <category> [<header>]
 	dialog <text>
 		<text>...
@@ -752,11 +807,14 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	<condition> (++ | --)
 	(set | clear) <condition>
 	event <name> [<delay#> [<max#>]]
-	fail [<name>]
+	fail [<mission-name>]
 	music <name>
 	mute
-	mark <system>
-	unmark <system>
+	mark <system> [<mission-name>]
+	unmark <system> [<mission-name>]
+	message <name>
+	message
+		...
 ```
 
 There are eleven events that can trigger a response of some sort:
@@ -793,12 +851,14 @@ on enter
 Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
-log [<category> <header>] <text>
+log [<category> <header>] (<text> | scene <image>)
 ```
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. Existing vanilla categories are `"People"`, `"Minor People"`, and `"Factions"`. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
+
+A `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide. Note that no swizzle will be applied to ship images.
 
 ```html
 remove log <category> [<header>]
@@ -851,7 +911,7 @@ Beginning in **v. 0.9.15**, if the outfit being gifted has the "map" attribute, 
 give ship <model> [<name>]
 ```
 
-Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase. Beginning in **v. 0.10.9**, substitutions and phrases are expanded in gift ship names.
+Starting in **v. 0.9.13**, missions can gift ships to the player. The named ship model is given to the player. This ship model can be a [ship variant](CreatingShips#variants). It is optional that the given ship has a name, but if no name is provided then a random name will be generated from the civilian phrase. Beginning in **v. 0.10.9**, substitutions and phrases are expanded in gift ship names.
 
 ```html
 (give | take) ship <model> [<name>]
@@ -948,7 +1008,7 @@ event <name> [<delay#> [<max#>]]
 This specifies that the given event happens at this point in the mission. Events may permanently alter planets or solar systems. If a delay is given, the event will occur that number of days from now. If both a minimum and a maximum delay is given, the number of days from now will be chosen randomly from within that interval. If no delay is given, the event will occur on the next day. Beginning in **v. 0.10.7**, events that are given a delay of 0 will be applied instantly, without requiring a day change to occur first. Event names cannot start with numerals.
 
 ```html
-fail [<name>]
+fail [<mission-name>]
 ```
 
 This causes the named mission (or this mission, if no name is given) to fail immediately. The name should be the unique mission name that is used in condition strings, etc., not the "display name" that is shown to the player. This can be used, for example, to create a mission which gives you an item or payment if it is accepted, but is not actually added to your mission list. If you have multiple active missions of the same identifier (which may occur for repeatable missions such as jobs), then a `fail` action that specifies the identifier of those missions will fail all of them at once.
@@ -967,8 +1027,18 @@ If you provide `<ambient>` as the track name, then whichever music track is bein
 The `mute` node can be used to stop all music tracks from playing.
 
 ```html
-mark <system>
-unmark <system>
+mark <system> [<mission-name>]
+unmark <system> [<mission-name>]
 ```
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
+
+Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.
+
+```html
+message <name>
+message
+	...
+```
+
+Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.

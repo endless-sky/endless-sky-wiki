@@ -48,10 +48,12 @@ government <name>
 	"travel restrictions"
 		{filter specification...}
 	illegals
+		"ignore universal"
 		<outfit> <fine>
 		ship <ship> <fine>
 		...
-	atrocities
+	atrocities ["death sentence" <death-sentence-conversation>]
+		"ignore universal"
 		<outfit>
 		ship <ship>
 		...
@@ -224,16 +226,19 @@ The fine token controls the "leniency" of the government with respect to the fin
 
 ```html
 illegals
+	"ignore universal"
 	[ignore] <outfit> <fine>
 	[ignore] ship <ship> <fine>
 	...
-atrocities
+atrocities ["death sentence" <death-sentence-conversation>]
+	"ignore universal"
 	[ignore] <outfit>
 	[ignore] ship <ship>
 	...
 ```
 
-Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list.
+Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list. If "ignore universal" (**v. 0.10.17**) is added to an illegals/atrocities list, this government will only take action for its custom-defined illegals/atrocities.
+Since **v. 0.10.17**, you can override [death sentences](#death-sentence) of individual atrocities by specifying the name of the conversation that should be used for the `atrocities` node. If no custom death sentence is set here, the government's default will be used (see below). If you want to have multiple custom death sentences on a single government, you can specify additional atrocity lists with `add atrocities "death sentence" <another-death-sentence>` nodes.
 
 #### Death sentence
 ```html
@@ -331,7 +336,7 @@ Beginning in **v. 0.10.0**, governments are allowed to have multiple raid fleets
 
 If multiple raid fleets are capable of spawning at the same time, each fleet checks if it can spawn up to 10 times as described above (meaning that multiple potential raid fleets can greatly increase the chance of any single fleet spawning). The likelihood of a single fleet spawning is determined by how far above that fleet's minimum attractiveness you are. Additionally, raid fleets will also take into account the strengths and spawn rates of normal fleets in the system. If a system has fleet spawns that are hostile to the raid fleet but not to the player, that will decrease the chance of the raid spawning. If a system has fleets that are hostile to the player but not the raid fleet, that will increase the chance of the raid spawning. If a system fleet is either friendly or hostile to both the raid and the player, it has no effect on the raid's spawn chance.
 
-Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`, and `"pirate attraction"` [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#read-only), with the last condition being the value used to determine if fleets should spawn.
+Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`, and `"pirate attraction"` [conditions](Player-Conditions#read-only), with the last condition being the value used to determine if fleets should spawn.
 
 #### Enforcement zones
 ```html
@@ -370,4 +375,4 @@ If a system was 2 jumps from the system Sol, but neighbored a Daelaam-controlled
 	{filter specification...}
 ```
 
-Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters). These travel restrictions do not apply to mission NPCs that follow the player. Random fleet spawns can be made to ignore these travel restrictions by giving them the `unrestricted` [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities#non-combat-goals).
+Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters). These travel restrictions do not apply to mission NPCs that follow the player. Random fleet spawns can be made to ignore these travel restrictions by giving them the `unrestricted` [personality](ShipPersonalities#non-combat-goals).
