@@ -17,7 +17,7 @@
 
 # Background
 
-Similar to the [C++ style guide](C++-Style-Guide), this page acts as a style guide for all of the game's content (i.e. anything defined in the game's [data format](DataFormat)). For specifics on how different data nodes behave in the game, see the other pages in the wiki relevant to those nodes. The purpose of this page is to define how data should be laid out stylistically as to improve readability and maintainability of all contributed content.
+Similar to the [C++ style guide](C++-Style-Guide), this page acts as a style guide for all of the game's content (i.e. anything defined in the game's [data format](DataFormat)). For specifics on how different data nodes behave in the game, see the other pages in the wiki relevant to those nodes. The purpose of this page is to define how data should be laid out stylistically so as to improve readability and maintainability of all contributed content.
 
 Note that many of these style requirements have been developed over the years, so not all of the game's content may adhere to this guide 100%.
 
@@ -33,7 +33,7 @@ Tokens in the data format can be categorized in one of three ways:
 Consider the following example:
 ```html
 mission "Example Mission"
-	description `Destroy the "Test Dummy."`
+	description `Destroy the "<npc>."`
 	source
 		attributes "deep" spaceport
 	npc kill
@@ -43,14 +43,14 @@ mission "Example Mission"
 ```
 
 In this mission, each token would fall into the three categories as follows:
-1. Engine keywords: `mission`, `source`, `attributes`, `npc`, `personality` `government` `ship`. These are all roots of particular objects in the game. `mission` is the root of a [Mission](CreatingMissions), `source` of a [LocationFilter](LocationFilters), `npc` of an [NPC](CreatingMissions#non-player-characters-npcs), etc.
-2. Engine-defined values: `spaceport`, `kill`, `staying`. The former is an engine-defined planet attribute. Any planet with a spaceport will have this attribute automatically added to it. The latter two are an [NPC objective]() and [NPC personality](), respectively.
+1. Engine keywords: `mission`, `description`, `source`, `attributes`, `npc`, `personality` `government` `ship`. These are all roots of particular objects in the game. `mission` is the root of a [Mission](CreatingMissions), `source` of a [LocationFilter](LocationFilters), `npc` of an [NPC](CreatingMissions#non-player-characters-npcs), etc.
+2. Engine-defined values: `spaceport`, `kill`, `staying`. The former is an engine-defined planet attribute. Any planet with a spaceport will have this attribute automatically added to it. The latter two are an NPC objective and NPC personality, respectively.
 3. User-defined values: `"Example Mission"`, `"deep"`, `"Merchant"`, `"Sparrow"`, `"Test Dummy"`. All of these refer to different names of things in the game, none of which have any meaning to the engine aside from how they relate to something defined somewhere else in the game data (in the case of `"deep"`, `"Merchant"`, and `"Sparrow"` being the reference names of a planet attribute, government, and ship respectively), or how they are referred to from elsewhere (in the case of `"Example Mission"` being the identifier of the mission and `"Test Dummy"` being the given name of the NPC).
 
 Theoretically speaking, this mission could also be defined as follows:
 ```html
 "mission" "Example Mission"
-	description "Destroy the 'Test Dummy.'"
+	description "Destroy the '<npc>.'"
 	"source"
 		"attributes" "deep" "spaceport"
 	"npc" "kill"
@@ -61,7 +61,7 @@ Theoretically speaking, this mission could also be defined as follows:
 Or, since backticks and double quotation marks can both be used to identify a token, like this:
 ```html
 `mission` `Example Mission`
-	`name` `Destroy the "Test Dummy."`
+	`name` `Destroy the "<npc>."`
 	`source`
 		`attributes` `deep` `spaceport`
 	`npc` `kill`
@@ -70,7 +70,7 @@ Or, since backticks and double quotation marks can both be used to identify a to
 		`ship` `Sparrow` `Test Dummy`
 ```
 
-The additional quotation marks everywhere makes such a mission unnecessarily visually busy. There is also a question of whether to use single-quotes or double-quoets for quotations inside of a token. (i.e. `'Test Dummy'` vs `"Test Dummy"`.
+The additional quotation marks everywhere makes such a mission unnecessarily visually busy. There is also a question of whether to use single-quotes or double-quoets for quotations inside of a token. (i.e. `'Test Dummy'` vs `"Test Dummy"`).
 
 Therefore, the guidelines for when to quote a token are as follows:
 1. All multi-word tokens must be in double quotation marks or backticks (as that is what defines a multi-word token in the first place).
@@ -99,7 +99,7 @@ If a file defines a list of objects of the same root node, they should also be a
 Exceptions are often made where there are more reasonable ways of ordering the root nodes:
 * `mission` nodes should be grouped by missions in the same storyline, in the order that they are encountered.
 * `ship` nodes are often grouped by category. Sorting within the category can be either alphabetical or by price/size of the ships.
-* `outfit` nodes are often grouped by category. Sorting within the category can be either alphabetical or by outfits of similar types (e.g. all blasters together, then all lasers together, as can be seen in data/human/weapons.txt).
+* `outfit` nodes are often grouped by category. Sorting within the category can be either alphabetical or by outfits of similar types (e.g. all blasters together, then all lasers together, as can be seen in `data/human/weapons.txt`).
 
 # Missions
 
@@ -208,7 +208,7 @@ mission "<name>"
 on *
 	# Put logs first:
 	log ...
-	# Then any condition changes first:
+	# Then any condition changes:
 	<condition> <assignment>
 	# Then any events:
 	event ...
@@ -318,7 +318,6 @@ conversation
 		`	"I choose this one."`
 		`	"I choose that one."`
 			goto that
-	label this
 	`	I see that you have chosen this.`
 		goto end
 	label that
@@ -351,7 +350,7 @@ conversation
 	`	Ok.`
 ```
 
-Loops within conversations should generally be avoided if there is no reason to have them, such as when asking a character a list of questions. If the player wants to re-read an answer they were given, then they can scroll up in the conversation instead of being able to continually repaet the same choice. This can be done by using `apply` nodes to set conditions after a choice is taken, and `to display` nodes to remove a choice if a condition is set. When this is done and there is no intention to use a condition after the conversation is over, the mission should clear the conditions as to not have them take up space in the save file.
+Loops within conversations should generally be avoided if there is no reason to have them, such as when asking a character a list of questions. If the player wants to re-read an answer they were given, then they can scroll up in the conversation instead of being able to continually repaet the same choice. This can be done by using `action` nodes to set conditions after a choice is taken, and `to display` nodes to remove a choice if a condition is set. When this is done and there is no intention to use a condition after the conversation is over, the mission should clear the conditions as to not have them take up space in the save file.
 ```
 conversation
 	label loop
@@ -367,21 +366,21 @@ conversation
 		`	"Let me out!"`
 			goto end
 	
-	apply
+	action
 		set "nonbeliever"
 	`	Well believe it.`
 		goto loop
 	
 	label test
-	apply
+	action
 		set "test"
 	`	Testing it now.`
 		goto loop
 	
-	apply
-		clear "test"
-		clear "nonbeliever"
 	label end
+	action
+		clear "nonbeliever"
+		clear "test"
 	`	Ok.`
 ```
 
@@ -391,13 +390,13 @@ Except in special circumstances, text within data files must:
 * Be written in American English.
 * Follow established written English conventions and rules.
 * Be legible and understandable for both:
-	* the player, who are exposed to the effects of these data files in game, and
-	* for the contributor, who reads and edits these data files while contributing to Endless Sky.
+	* the players, who are exposed to the effects of these data files in game, and
+	* for the contributors, who read and edit these data files.
 
 Some additional writing conventions include:
 * The player character should always be referred to with they/them pronouns.
 * Use the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) when listing items (e.g. "a, b, and c" instead of "a, b and c").
-* If a paragraph ends in a quotation and the following paragraph starts with a quotation from the same character, the first paragraph should not have a quotation mark at the end. (The [multi-paragraph quotation rule](https://english.stackexchange.com/questions/96608/why-does-the-multi-paragraph-quotation-rule-exist).)
+* If a paragraph ends in a quotation and the following paragraph starts with a quotation from the same character, the first paragraph should not have a quotation mark at the end. (AKA the [multi-paragraph quotation rule](https://english.stackexchange.com/questions/96608/why-does-the-multi-paragraph-quotation-rule-exist).)
 
 It is important to remember that Endless Sky is a video game, not a novel. Conversations should not be exceedingly long or overly detailed. Long sections of text should be broken up by `choice` nodes as to keep the player engaged. If a particular stretch of conversation requires the player to scroll down to read the entire thing, then it is far too long. Rarely should a stretch of conversation between choices take up more than half of the conversation panel (on a 1920x1080 monitor). A full conversation should not take more than a few minutes to read through at a reasonable pace.
 
