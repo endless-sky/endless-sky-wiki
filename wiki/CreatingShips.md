@@ -187,7 +187,61 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"final explode"`: the same as `"explode"`, but defines an effect that is only included in the final ship explosion, not in the small explosions leading up to that. **(v. 0.9.0)**
 
-* `"leak" <effect> [<openPeriod#>] [<closePeriod#>]`: an effect to create when the ship is dying. The open period of the leak is the random chance each frame (1 / openPeriod) that a new leak will start, while the close period is the random chance each frame (1 / closePeriod) that an active leak will end. Differs from `"explode"` in that leak effects are emitted from the edge of the ship's sprite, as if the ship's atmosphere is leaking as it dies.
+* `"leak" <effect> [<openPeriod#>] [<closePeriod#>]`: an effect to create when the ship is dying. The open period of the leak is the random chance each frame (1 / openPeriod) that a new leak will start, while the close period is the random chance each frame (1 / closePeriod) that an active leak will end. Differs from `"explode"` in that leak effects are emitted from the edge of the ship's sprite, as if the ship's atmosphere is leaking as it dies. Beginning in **v. 0.10.17**, this supports the following child nodes:
+
+  * `(active | disabled | exploding | "always on")...`: tags that influence when the leak effect appears. Multiple different tags can be provided at once. By default, leaks only appear when the ship is exploding.
+
+    * `active`: This leak appears while the ship is active (i.e. not disabled and not exploding).
+
+    * `disabled`: This leak appears while the ship is disabled.
+
+    * `exploding`: This leak appears while the ship is in the process of exploding.
+
+    * `"always on"`: This leak is always active. Synonymous with listing the other three states.
+
+* `"live spark" <effect> [<amount#>]`: Defines an effect that should appear on the ship body similar to how DoT effects or jump drive effects do. The amount can be a decimal value. If not provided, the amount is 1. Supports the following child nodes: **(v. 0.10.17)**
+
+  * `period <frames#> [<random#>]`: The number of frames, with a random addition, between when new sparks are spawned. If not provided, the frames are 1 and the random is 0.
+
+  * `(over | under)`: Whether the sparks are spawned above or below the ship sprite. Default is `over`.
+
+  * `(active | disabled | exploding | "always on")...`: Same as for `leak`, except the default is `active`.
+
+* `"live effect" <effect> [<amount#>]`: Defines an effect that should appear at a specific location on the ship. The amount must be an integer. If not provided, the amount is 1. Supports the following child nodes: **(v. 0.10.17)**
+
+  * `position <x#> <y#>`: The position on the ship where the effect will be spawned. Default is (0, 0).
+
+  * `angle <x#>`: An optional angle to spawn the effect at. Default is 0 degrees.
+
+  * `period <frames#> [<random#>]`: The number of frames, with a random addition, between when new effects are spawned. If not provided, the frames are 1 and the random is 0.
+
+  * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
+
+  * `(active | disabled | exploding | "always on")...`: Same as for `leak`, except the default is `active`.
+
+* `decor`: Defines a sprite that appears somewhere on the ship. Can be similar in appearance to a hardpoint sprite for a turret, except it isn't tied to a weapon. Supports the following child nodes: **(v. 0.10.17)**
+
+  * `position <x#> <y#>`: The position on the ship where the decor will be placed. Default is (0, 0).
+
+  * `(static | rotating | moving | targeting) <x#>`: Controls the behavior of the decor.
+
+    * `static`: the decor never moves, with its facing angle relative to the ship always being equal to the given value. The value is optional for only this token, and will default to 0 if not present.
+
+    * `rotating`: the decor constantly rotates at the same rate.
+
+    * `moving`: the decor swings around randomly, similar to an opportunistic turret with no target.
+
+    * `targeting`: the decor swings around randomly if there is no target, but otherwise points toward the ship or asteroid being targeted by the ship.
+
+      * For these last three, the value is the rotation speed of the decor, similar to the turn rate of a turret. For `rotating`, the value is allowed to be negative to cause it to constantly rotate in the opposite direction.
+
+  * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
+
+  * `(active | disabled | exploding | "always on")...`: Same as for `leak`, except the default is `active`. Instead of controlling the appearance of the decor, these tags control when the decor moves.
+
+  * `synced`: If present, all the `decor` on a ship will be synced when the ship is placed. This really only matters for `rotating` decor to allow multiple decorations with the same rotation speed to always be pointing in the same direction as one another. If not present, decorations are given a random facing angle when the ship is placed.
+
+* `"synced effects"`: If present, all live sparks, live effects, and decorations will be synced with one another when the ship is placed. This means that if multiple ships in a fleet all have the same live sparks or effects with the same periods and no random period, then they will all create the effects in unison with one another. The same is true for rotating decor with the same rotation speed. **(v. 0.10.17)**
 
 * `"never disabled"`: If this tag is included (no value need be specified for it), this ship never becomes disabled due to its hull dropping too low. This means that it cannot be plundered. *This tag is not "inherited" by variants of a ship.*
 
