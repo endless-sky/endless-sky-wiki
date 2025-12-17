@@ -189,7 +189,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"leak" <effect> [<openPeriod#>] [<closePeriod#>]`: an effect to create when the ship is dying. The open period of the leak is the random chance each frame (1 / openPeriod) that a new leak will start, while the close period is the random chance each frame (1 / closePeriod) that an active leak will end. Differs from `"explode"` in that leak effects are emitted from the edge of the ship's sprite, as if the ship's atmosphere is leaking as it dies. Beginning in **v. 0.10.17**, this supports the following child nodes:
 
-  * `(active | disabled | exploding | "always on")...`: tags that influence when the leak effect appears. Multiple different tags can be provided at once. By default, leaks only appear when the ship is exploding.
+  * `(active | disabled | exploding | "always on")`: tags that influence when the leak effect appears. Multiple different tags can be provided at once on separate lines. By default, leaks only appear when the ship is exploding.
 
     * `active`: This leak appears while the ship is active (i.e. not disabled and not exploding).
 
@@ -205,7 +205,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * `(over | under)`: Whether the sparks are spawned above or below the ship sprite. Default is `over`.
 
-  * `(active | disabled | exploding | "always on")...`: Same as for `leak`, except the default is `active`.
+  * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`.
 
 * `"live effect" <effect> [<amount#>]`: Defines an effect that should appear at a specific location on the ship. The amount must be an integer. If not provided, the amount is 1. Supports the following child nodes: **(v. 0.10.17)**
 
@@ -217,7 +217,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
 
-  * `(active | disabled | exploding | "always on")...`: Same as for `leak`, except the default is `active`.
+  * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`.
 
 * `decor`: Defines a sprite that appears somewhere on the ship. Can be similar in appearance to a hardpoint sprite for a turret, except it isn't tied to a weapon. Supports the following child nodes: **(v. 0.10.17)**
 
@@ -237,7 +237,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
 
-  * `(active | disabled | exploding | "always on")...`: Same as for `leak`, except the default is `active`. Instead of controlling the appearance of the decor, these tags control when the decor moves.
+  * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`. Instead of controlling the appearance of the decor, these tags control when the decor moves.
 
   * `synced`: If present, all the `decor` on a ship will be synced when the ship is placed. This really only matters for `rotating` decor to allow multiple decorations with the same rotation speed to always be pointing in the same direction as one another. If not present, decorations are given a random facing angle when the ship is placed.
 
