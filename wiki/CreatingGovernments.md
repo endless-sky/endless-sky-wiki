@@ -21,14 +21,16 @@ government <name>
 		...
 	"default attitude"  <rep-modifier#>
 	"penalty for"
-		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+		(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#>
+		(none | provoke | atrocity)
 		...
 	"foreign penalties for"
 		<government>
 		...
 	"custom penalties for"
 		<government>
-			(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+			(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#>
+			(none | provoke | atrocity)
 			...
 		...
 	"provoked on scan"
@@ -112,7 +114,8 @@ Beginning in **v. 0.10.1**, there also exists a `reputation` node which has vari
 #### Penalty for
 ```html
 "penalty for"
-	(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+	(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#>
+	(none | provoke | atrocity)
 	...
 ```
 The "penalty for" token introduces a description block that configures the reputation impact of various in-flight player actions. For example, the block
@@ -151,7 +154,8 @@ Beginning in **v. 0.10.0**, governments can be made to use the "penalty for" val
 ```html
 "custom penalties for"
 	<government>
-		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+		(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#>
+		(none | provoke | atrocity)
 		...
 	...
 ```
@@ -166,6 +170,16 @@ A government can be made to use both "foreign penalties for" and "custom penalti
 ```
 
 Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships. In **v. 0.10.0** and onward, the provocation happens when you complete the scan.
+
+Since **v. 0.10.17**, any penalty can have a special effect defined such as `none`, `provoke` and `atrocity`, allowing to control which actions have the those respective effects, or even nullifying it. This can be applied for the government itself or how it relates to other governments, when combined with "custom penalties for".
+Here is an example usage
+```bash
+"penalty for"
+	scan 1 provoke
+	capture 10 atrocity
+	provoke 0 none
+```
+Which would have the effect of giving the government "provoked on scan", as well as making capturing their ships an atrocity, and removing the provoke effect upon shooting them.
 
 #### Crew strength modifiers
 ```html
