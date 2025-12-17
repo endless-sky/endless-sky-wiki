@@ -151,6 +151,14 @@ mission <name>
 				<name>...
 			near <system> [[<min>] <max>]
 			distance [<min>] <max>
+		placement
+			position <x#> <y#>
+			distnace <distance#> [<angle#>]
+			orbit <distance#> <period#> [<offset#>]
+			spread <distance#>
+			velocity <speed#> <angle#>
+			weapon
+				...
 		dialog <text>
 			<text>...
 		conversation <name>
@@ -604,6 +612,14 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 			<name>...
 		near <system> [[<min#>] <max#>]
 		distance [<min#>] <max#>
+	placement
+		position <x#> <y#>
+		distnace <distance#> [<angle#>]
+		orbit <distance#> <period#> [<offset#>]
+		spread <distance#>
+		velocity <speed#> <angle#>
+		weapon
+			...
 	planet <name>
 	dialog <text>
 		<text>...
@@ -711,6 +727,29 @@ This specifies a [location filter](LocationFilters) for choosing what system the
 planet <name>
 ```
 This specifies the exact name of the starting planet for all ships in the NPC definition. A specified starting planet allows the NPCs to depart from a planet other than that which the player is landed on. If the NPCs do not start in the system in which the named planet is located, or the NPCs have an "entering" personality, this value is ignored.
+
+```html
+placement
+	position <x#> <y#>
+	distnace <distance#> [<angle#>]
+	orbit <distance#> <period#> [<offset#>]
+	spread <distance#>
+	velocity <speed#> <angle#>
+	weapon
+		...
+```
+
+Beginning in **v. 0.10.17**, NPCs can given a `placement` node that controls how they are placed into the system they spawn in. This node has the following children:
+* `position <x#> <y#>`: The exact X and Y coordinates to place the NPC into the system.
+* `distance <distance#> [<angle#>]` The exact distance from the system center to place the NPC with a set angle, or a random angle if no angle is provided.
+* `orbit <distance#> <period#> [<offset#>]`: An orbital distance, period, and optional offset to place the NPC at. If you copy the distance, period, and offset of a stellar object in a system, the NPC will be spawned on top of that planet on whatever date the NPCs are spawned.
+	* The above three nodes are mutually exclusive with one another. If any of them are provided (and no `velocity` node is provided), then the ships in the NPC will start with a velocity of 0.
+	* If no `placement` node is present, or none of the above child nodes are specified, then the placement of the NPCs will be randomized to be close to one of the objects in the system.
+* `spread <distance#>`: If an NPC only contains one ship, then it will be placed exactly at the center of the point in the system defined by one of the child nodes defined above. All other ships will be spawned at a random point within a circle around the center with a radius equal to the spread distance. If not specified, the default spread distance is 500 units.
+* `velocity <speed#> <angle#>`: The velocity to place the ships in the NPC with, measured as a speed and angle. If not specified, the angle will be randomized and the speed wil be randomized to some point between 0 and the ship's max speed.
+* `weapon`: A [weapon definition](CreatingOutfits#weapon-attributes) to be applied as damage to the ships in the NPC when they are placed into their system.
+
+Note that, aside from `weapon`, the child nodes of `placement` will only be used if the NPC is placed already flying in the system it spawns within. This means that NPCs with the `entering` personality or that lack the `waiting` personality in systems where they have a friendly planet to depart from will not have their spawning placement changed. Any present `weapon` node is always applied regardless of where the NPC spawns.
 
 ```html
 dialog <text>
