@@ -153,7 +153,7 @@ mission <name>
 			distance [<min>] <max>
 		placement
 			position <x#> <y#>
-			distnace <distance#> [<angle#>]
+			distance <distance#> [<angle#>]
 			orbit <distance#> <period#> [<offset#>]
 			spread <distance#>
 			velocity <speed#> <angle#>
@@ -614,7 +614,7 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		distance [<min#>] <max#>
 	placement
 		position <x#> <y#>
-		distnace <distance#> [<angle#>]
+		distance <distance#> [<angle#>]
 		orbit <distance#> <period#> [<offset#>]
 		spread <distance#>
 		velocity <speed#> <angle#>
@@ -731,7 +731,7 @@ This specifies the exact name of the starting planet for all ships in the NPC de
 ```html
 placement
 	position <x#> <y#>
-	distnace <distance#> [<angle#>]
+	distance <distance#> [<angle#>]
 	orbit <distance#> <period#> [<offset#>]
 	spread <distance#>
 	velocity <speed#> <angle#>
@@ -746,7 +746,7 @@ Beginning in **v. 0.10.17**, NPCs can given a `placement` node that controls how
 	* The above three nodes are mutually exclusive with one another. If any of them are provided (and no `velocity` node is provided), then the ships in the NPC will start with a velocity of 0.
 	* If no `placement` node is present, or none of the above child nodes are specified, then the placement of the NPCs will be randomized to be close to one of the objects in the system.
 * `spread <distance#>`: If an NPC only contains one ship, then it will be placed exactly at the center of the point in the system defined by one of the child nodes defined above. All other ships will be spawned at a random point within a circle around the center with a radius equal to the spread distance. If not specified, the default spread distance is 500 units.
-* `velocity <speed#> <angle#>`: The velocity to place the ships in the NPC with, measured as a speed and angle. If not specified, the angle will be randomized and the speed wil be randomized to some point between 0 and the ship's max speed.
+* `velocity <speed#> <angle#>`: The velocity to place the ships in the NPC with, measured as a speed and angle. If not specified, the angle will be randomized and the speed will be randomized to some point between 0 and the ship's max speed.
 * `weapon`: A [weapon definition](CreatingOutfits#weapon-attributes) to be applied as damage to the ships in the NPC when they are placed into their system.
 
 Note that, aside from `weapon`, the child nodes of `placement` will only be used if the NPC is placed already flying in the system it spawns within. This means that NPCs with the `entering` personality or that lack the `waiting` personality in systems where they have a friendly planet to depart from will not have their spawning placement changed. Any present `weapon` node is always applied regardless of where the NPC spawns.
