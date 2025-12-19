@@ -167,10 +167,11 @@ A government can be made to use both "foreign penalties for" and "custom penalti
 
 Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships. In **v. 0.10.0** and onward, the provocation happens when you complete the scan.
 
-Beginning in **v. 0.10.17**, penalty actions can define additional special effects that occur in addition to the reputation change. These can be applied for the government itself, or how it relates to other governments when combined with `"custom penalties for"`.
+Beginning in **v. 0.10.17**, penalty actions can define special effects that occur in addition to the reputation change. These can be applied for the government itself, or how it relates to other governments when combined with `"custom penalties for"`.
 * `none`: No effect is applied aside from the reputation change. The default behavior of all actions aside from the `provoke` and `atrocity` actions.
 * `provoke`: Taking this action provokes the government, causing them to become hostile to you for the day. This is the default behavior of the `provoke` action if no other special effect is provided. Has no effect if the reputation penalty for an action is negative.
 * `atrocity`: Taking this action is considered an atrocity by the government, causing you to lose all reputation with them and become hostile. This is the default behavior of the `atrocity` action if no other special effect is provided. Has no effect if the reputation penalty for an action is less that 0.05.
+
 Here is an example usage:
 ```bash
 "penalty for"
