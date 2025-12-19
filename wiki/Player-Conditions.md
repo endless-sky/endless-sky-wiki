@@ -16,7 +16,7 @@ never
 (and | or)
 	...
 ```
-The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write `has <condition>` instead of `<condition> != 0`, or `not <condition>` instead of `<condition> == 0`. The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed. Using the `and` and `or` keywords allows specifying a nested set of testable conditions. 
+The `<comp>` comparison operator can be `==`, `!=`, `<`, `>`, `<=`, or `>=`. As a special shortcut, you can write `has <condition>` instead of `<condition> != 0`, or `not <condition>` instead of `<condition> == 0`. The "never" condition always evaluates to false, so it can be used to create a mission that can never succeed. Using the `and` and `or` keywords allows specifying a nested set of testable conditions.
 
 A testable condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true, you can use an "or" sub-clause. Within an "or" clause you can have additional "and" clauses and so on, allowing you to check any arbitrary logical combination. For example, if you want a conversation label to be reached if "(has A or (has B and has C)) and (has D)" is true, you would set the branch conditions as such:
 
@@ -179,9 +179,11 @@ No error will be raised if you modify these conditions, but the game will reset 
 
 ## Value expressions
 
-Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions. For [testable](#testable-condition-sets) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied-condition-sets) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
+Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions (and this was extended with boolean operators and built-in functions in **v0.10.17**). For [testable](#testable-condition-sets) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied-condition-sets) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
 
-A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)) and "tokens" which yields a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, and parentheses must be separated by spaces for proper parsing.
+A "value expression" is a combination of the basic algebraic operators (`+`, `-`, `*`, `/`, [`%`](https://reference.wolfram.com/language/ref/Mod.html)), basic boolean operators (`and`, `or`), built-in functions (`min`, `max`), and "tokens," which yield a single result when evaluated. Tokens can be integer constants, other conditions, or even additional value expressions. Parentheses may be used to control the order of mathematical operations. In all cases, tokens, operators, commas, and parentheses must be separated by spaces for proper parsing.
+
+The boolean operators operate on integers, and follow the C++ convention where 0 means false and any non-zero value means true.
 
 Simply put, a value expression matches the syntax
 ```html
@@ -218,4 +220,13 @@ and allows one to easily use other condition values when testing or applying con
 400 % 3
 # this evaluates to 4
 400 % 11
+
+# functions, both evaluate to 10
+max ( 10 , -20 , -30 )
+min ( 10 , 20 , 30 )
+
+# boolean expressions
+1 and 2 and 0
+"event: war started" and "event: war end" and "visited: Earth"
+("visited: Earth" and "visited: Luna") or "visited: Dune"
 ```
