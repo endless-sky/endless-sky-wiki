@@ -33,6 +33,7 @@ government <name>
 		...
 	"provoked on scan"
 	bribe <percentage#>
+	"bribe threshold" <reputation#>
 	fine <percentage#>
 	"death sentence" <conversation>
 	"send untranslated hails"
@@ -227,6 +228,15 @@ bribe <percentage#>
 ```
 
 The bribe token controls the fraction of the player's fleet's worth that must be paid in order to receive temporary forgiveness of hostile actions. If 0, then the government cannot be bribed by the player.
+
+## Bribe threshold
+
+```html
+"bribe threshold" <reputation#>
+```
+
+Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, ships of this government will not accept bribes when the player's reputation is below this value.
+The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
 
 ## Fine
 
