@@ -40,6 +40,10 @@ government <name>
 	"friendly disabled hail" <phrase>
 	"hostile hail" <phrase>
 	"hostile disabled hail" <phrase>
+	"ship bribe acceptance hail" <phrase>
+	"ship bribe rejection hail" <phrase>
+	"planet bribe acceptance hail" <phrase>
+	"planet bribe rejection hail" <phrase>
 	language <text>
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	enforces [all]
@@ -284,6 +288,10 @@ Before you can leave your ship, the <government name> authorities show up and be
 "friendly disabled hail" <phrase>
 "hostile hail" <phrase>
 "hostile disabled hail" <phrase>
+"ship bribe acceptance hail" <phrase>
+"ship bribe rejection hail" <phrase>
+"planet bribe acceptance hail" <phrase>
+"planet bribe rejection hail" <phrase>
 ```
 These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The [phrases](CreatingPhrases) here should be defined as standalone phrases, e.g.
 ```bash
@@ -303,6 +311,9 @@ If not specified, defaults are provided for disabled ships of all governments. T
 No defaults are provided for non-disabled hails (meaning if not specified, the ships will not randomly "chat" while the player is in-flight).
 
 In order to receive hails from a ship, you must share a language with its government. Languages are discussed in more detail below. Beginning in **v. 0.10.1**, the only exception to this is if the government has the `"send untranslated hails"` token, which allows its ships to send hails even if you do not share a language.
+
+Beginning in **v0.10.17**, you can use `"ship bribe acceptance hail"` and `"planet bribe acceptance hail"` to customize the text that appears to the player when they offer a bribe. If not specified, it defaults to "It's a pleasure doing business with you."
+You can also use `"ship bribe rejection hail"` and `"planet bribe rejection hail"` to customize the text that appears to the player when their bribe is rejected. If not specified, it defaults to "I do not want your money."
 
 ## Language
 ```html
