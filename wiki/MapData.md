@@ -692,6 +692,7 @@ wormhole <name>
 tribute <credits#>
 	threshold <rating#>
 	fleet <name> <count#>
+	"daily reputation penalty" <amount#>
 ```
 
 The player is capable of demanding tribute from certain planets. If no tribute is specified, then the planet will always respond negatively to the player's demand for tribute.
@@ -713,6 +714,12 @@ fleet <name> <count#>
 ```
 
 The fleet that is spawned from this planet if the player demands tribute from it, and how many times that fleet is spawned. More than one type of fleet is capable of being spawned from a planet when demanding tribute.
+
+```html
+"daily reputation penalty" <amount#>
+```
+
+The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.10.17)**
 
 # Wormholes
 
