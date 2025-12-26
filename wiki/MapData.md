@@ -116,6 +116,7 @@ planet <name>
 	outfitter <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
+	"bribe threshold" <reputation#>
 	security <security#>
 	tribute <credits#>
 		threshold <rating#>
@@ -516,6 +517,7 @@ planet <name>
 	outfitter <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
+	"bribe threshold" <reputation#>
 	security <security#>
 	wormhole <name>
 	tribute <credits#>
@@ -679,6 +681,13 @@ The behavior that this planet has when the player has illegal goods or outfits. 
 
 If no bribe is specified, then a default bribe of 0.01 is used.
 If no security is specified, then a default security of 0.25 is used. 
+
+```html
+"bribe fraction" <reputation#>
+```
+
+Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, this planet will not accept bribes to provide landing clearance when the player's reputation is below this value.
+The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
 
 ```html
 wormhole <name>
