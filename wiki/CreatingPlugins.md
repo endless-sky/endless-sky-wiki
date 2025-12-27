@@ -164,6 +164,7 @@ All of the metadata for a plugin will be appended to the plugin's description wh
 
 The game data in Endless Sky includes the following elements, sometimes referred to as "root-level" nodes or tokens:
 
+  * `overwrite`: a special node with no value or children that tells the game to completely overwrite the next object that is loaded. The object with the matching identifier will have all of its values reset to their default before loading the new definition you provide. If you want to overwrite multiple objects, then this node should be present above each of them. **(v. 0.10.17)**
   * `color`: a named color in premultiplied RGBA format, to be used in the user interface. The format is: `color "name" <red#> <green#> <blue#> <alpha#>`. By setting alpha to 0 you can define a color that uses additive mixing, and you can also use [other blending modes](BlendingModes).
   * [`conversation`](WritingConversations): a conversation to be shown in a mission event.
   * [`effect`](CreatingEffects): an animation that is used purely for visual effect and does not interact with objects in the game. (For example, the explosions shown when a projectile strikes something.)
