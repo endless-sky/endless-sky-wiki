@@ -85,7 +85,7 @@ When buying a new ship, you can either sell your previous ship first, or buy a s
 
 Some ships have space for "drones" or "fighters." These are small ships that have no hyperdrives or fuel of their own; they can travel from system to system only if carried within a larger ship. This lack of hyperspace capability generally makes them much cheaper than other ships. Drones are smaller than fighters, and require no crew, whereas for each fighter, you will have to pay the salary for one additional crew member. Ships with drone or fighter bays come with the bays empty; you must purchase the fighters or drones separately. You can't use a drone or fighter as your flagship.
 
-If you trade in a ship for one with less cargo or passenger space, and then try to leave the planet, you may have to sell some of your cargo.  If there is not enough room for your passengers or mission-related cargo, you may fail some of your missions as a result.
+If you trade in a ship for one with less cargo or passenger space, and then try to leave the planet, you may have to sell some of your cargo. If there is not enough room for your passengers or mission-related cargo, you may fail some of your missions as a result.
 
 Whenever you sell a ship, all the outfits that were installed in that ship are available for repurchase in the outfitter until you leave the planet. This is especially handy if your old ship had a rare outfit installed and you want to transfer it to your new ship.
 
@@ -352,25 +352,43 @@ Trading panel: | &nbsp;
 :--- | :---
 Buy | +, Return, or Space
 Sell | -, Delete, or Backspace
-Buy / sell 5x | Shift
-Buy / sell 20x | Control / Command
-Buy / sell 500x | Option / Alt
 Buy / sell all | Shift + B / S
 View commodity price map | Map key
 
-The multiplier modifiers (Shift = 5x, Command / Control = 20x, and Option / Alt = 500x) also work in the hiring panel, the shipyard, and the outfitter. And, they can be combined together - for example, Shift + Control to buy or sell 100 items at a time.
+Multipliers: | &nbsp;
+:--- | :---
+5x | Shift
+20x | Control or Command
+500x | Option or Alt
+
+These multipliers work in the Trading panel, Hiring panel, Shipyard and Outfitter. They can be used in combination - for example, Shift + Control to buy or sell 100 items at a time. All three used together will provide a whopping 50,000x multiplier.
+
+Multiplier Combinations: | Shift (x5) | Command/Control (x20) | Option/Alt (x500)
+:--- | :--- | :--- | :---
+x5 | x | &nbsp; | &nbsp; | &nbsp;
+x20 | &nbsp; | x | &nbsp; | &nbsp;
+x100 | x | x | &nbsp;
+x500 | &nbsp; | &nbsp; | x
+x2500 | x | &nbsp; | x
+x10000 | &nbsp; | x | x
+x50000 | x | x | x
 
 In addition to the multiplier keys, there are various other shortcuts in the outfitter:
 
-Outfitter: | &nbsp;
+Outfitter: | &nbsp; | First tries: | Then: | And finally:
+:--- | :--- | :--- | :--- | :---
+Buy | B | Buy from outfitter and install on ship | &nbsp; | &nbsp;
+Sell | S | Sell from cargo | Sell from storage | Sell from ship
+Install | I | Install on ship from cargo | Install on ship from storage | &nbsp;
+Uninstall | U | Uninstall from ship to cargo | Uninstall, overflow to storage | &nbsp;
+Cargo | C | Transfer to cargo from planetary storage | Buy from outfitter to and place in cargo | &nbsp;
+Store | R | Retain in storage from cargo | Uninstall from ship to retain in storage | &nbsp;
+    
+Shipyard: | &nbsp;
 :--- | :---
-Buy | B
-Sell | S
-Send to cargo | C
-Install | I
-Uninstall | U
-
-The Buy and Sell shortcuts here are also available in the shipyard.
+B | Buy ship
+S | Sell ship with outfits
+R | Sell ship but retain outfits in planetary storage
 
 Map panels: | &nbsp;
 :--- | :---
@@ -389,3 +407,9 @@ When viewing a list of items, you can move the selection up and down with the ar
 You can press Escape or Control + W to close most dialogs and panels.
 
 When being offered a special mission, pressing the map key brings up the map with the mission's destination indicated with a large white pointer.
+
+### Note for Linux users: 
+Certain keyboard combinations may be mapped by the window manager and thus will not work without some workarounds:
+- Gnome window manager:
+  - (Control-Alt-Shift-r), this will conflict with the default setting for the screen recorder. In order to use this shortcut, you will need to remap the screen recorder under Settings to something else, e.g: Control-Super-Shift-r.
+  - (Control-Shift-u) is by default configured to the "Unicode Code Point". In order to use this shortcut, use ibus-setup and under the Emoji tab, change the shortcut for Unicode code point to something else, e.g.: Super-Shift-u.
