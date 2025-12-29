@@ -361,7 +361,7 @@ Multipliers: | &nbsp;
 20x | Control or Command
 500x | Option or Alt
 
-These multipliers work in the Trading panel, Hiring panel, Shipyard and Outfitter. They can be used in combination—for example, Shift + Control to buy or sell 100 items at a time. All three used together will provide a whopping 50,000x multiplier.
+These multipliers work in the Trading panel, Hiring panel, Shipyard and Outfitter. They can be used in combination - for example, Shift + Control to buy or sell 100 items at a time. All three used together will provide a whopping 50,000x multiplier.
 
 Multiplier Combinations: | Shift (x5) | Command/Control (x20) | Option/Alt (x500)
 :--- | :--- | :--- | :---
