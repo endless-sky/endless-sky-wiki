@@ -235,7 +235,7 @@ The bribe token controls the fraction of the player's fleet's worth that must be
 "bribe threshold" <reputation#>
 ```
 
-Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, ships of this government will not accept bribes when the player's reputation is below this value.
+Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, ships of this government will not accept bribes when the player's reputation is below this value. This value does not affect the player's ability to bribe planets.
 The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
 
 ## Fine
