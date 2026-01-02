@@ -212,6 +212,7 @@ planet <name>
 	[(add | remove)] outfitter <name>
 	"required reputation" <rep-for-landing#>
 	bribe <percentage#>
+	[remove] "bribe threshold" <reputation#>
 	security <percentage#>
 	tribute <value#>
 		threshold <needed-combat-rating#>
