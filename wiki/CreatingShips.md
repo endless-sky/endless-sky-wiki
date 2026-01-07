@@ -123,7 +123,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `description`: a paragraph of text to show in the shipyard. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
 
-* `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`
+* `"outfits"`: a list of names of outfits that are installed in this ship by default. To add multiple copies of one outfit, add a number after the name: `"Energy Blaster" 2`. If a second number is supplied, then the first number will be used in the shipyard and when a ship is gifted to the player, and the second number will be used when that ship spawns as an NPC or as part of a random fleet. This can be used to make random NPC ships spawn with partially empty ammo racks, such as `"Meteor Missile" 30 10`. 
 
 * `"(engine | reverse engine | steering engine)" <x#> <y#> <zoom#>`: the (x, y) coordinates, relative to the center of the sprite, where engine flares should appear. Positive y is up; negative y is down (e.g. `engine -12 -105`). There should be a separate `engine` line for each engine (usually two). 
 
@@ -300,7 +300,7 @@ ship "Bastion" "Bastion (Laser)"
 	turret "Heavy Laser Turret"
 ```
 
-In this case, all four guns are the same type (heavy lasers), so there is no need to specify their order, but the order of the turrets must be specified. The turret (x, y) positions need not be specified, because they are given in the original ship descriptor. By only providing the bare minimum information in the variant, we can avoid needing to update all the variants if, say, the ship sprite changes and the turret positions move.
+In this case, all four guns are the same type (heavy lasers), so there is no need to specify their order, but the order of the turrets must be specified. The turret (x, y) positions need not be specified, because they are given in the original ship descriptor. Weapons with two outfit counts declared should not be included when specifying order, as the game will not be able to assign that weapon to that hardpoint when initializing the version without the weapon. By only providing the bare minimum information in the variant, we can avoid needing to update all the variants if, say, the ship sprite changes and the turret positions move.
 
 A variant can define new weapon hardpoints, but if so **the new set of points completely replaces the old ones**. That is, if you want your new variant to have two extra guns, you'll need to copy the base ship's list of guns and turrets, and then add two more gun lines. Similarly, if you define any new engine points the old engine points are discarded. And, if you define a new bay location (drone or fighter), all previous "drone" and "fighter" locations are discarded.
 
