@@ -17,7 +17,7 @@ confusion <name>
 ```html
 confusion <name>
 ```
-The name of a confusion profile must be unique. Using this name, fleets, mission NPCs, and governments can all use a single confusion profile. If a confusion profile is nested within the definition of another object, it does not require a name. To maintain backwards compatability, confusion profiles cannot have a name consisting solely of numbers.
+The name of a confusion profile must be unique. Using this name, fleets, mission NPCs, and governments can all use a single confusion profile. If a confusion profile is nested within the definition of another object, it does not require a name. To maintain backwards compatibility, confusion profiles cannot have a name consisting solely of numbers.
 
 ```html
 "max confusion" <value>
@@ -58,5 +58,5 @@ confusion
 	"lose focus time" 120
 ```
 
-## Backwards compatability
+## Backwards compatibility
 Prior to **v. 0.10.17**, confusion was defined as a single value. To prevent old plugins from breaking, confusions defined as `confusion <value>` will use the confusion profile except with the `"max confusion"` replaced by `<value>`.
