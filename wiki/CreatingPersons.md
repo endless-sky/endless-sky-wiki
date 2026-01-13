@@ -5,9 +5,10 @@ person <name>
 	frequency <frequency#>
 	government <government>
 	personality [<type>...]
-		confusion <amount#>
 		<type>...
-		...
+		confusion <name>
+		confusion
+			...
 	system
 		system [<name>...]
 			<name>...
@@ -46,12 +47,13 @@ This is the person's government. This can be a normal government, or a special o
 
 ```html
 personality [<type>...]
-	confusion <amount#>
 	<type>...
-	...
+	confusion <name>
+	confusion
+		...
 ```
 
-This defines the [personality characteristics](ShipPersonalities). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
+This defines the [personality characteristics](ShipPersonalities) and [confusion profile](CreatingConfusions).
 
 ```html
 system
