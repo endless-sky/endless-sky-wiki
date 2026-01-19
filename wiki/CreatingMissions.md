@@ -834,7 +834,7 @@ There are eleven events that can trigger a response of some sort:
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * `waypoint`: you have visited the last of the systems that are specified as a "waypoint" for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, a [location filter](LocationFilters) in the trigger body under a `system` node can be provided, triggering upon entering the first mtaching system. Otherwise, this triggers as soon as your ship takes off from the current planet.
-* `land [<planet>]`: you land on the given planet for the first time since this mission was accepted. If no planet is specified, a [location filter](LocationFilters) in the trigger body under a `planet` node can be provided, triggering upon landing on the first matching planet. Otherwise, this triggers upon the first landing on any planet. **(v. 0.10.17)**
+* `land [<planet>]`: you land on the given planet for the first time since this mission was accepted. If no planet is specified, a [location filter](LocationFilters) in the trigger body under a `planet` node can be provided, triggering upon landing on the first matching planet. Otherwise, this triggers upon the first landing on any planet. Note that if both an `on stopover` and `on land` action could trigger on the same landing, only the `on stopover` action will occur. **(v. 0.10.17)**
 * `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 * `disabled`: if the player's flagship becomes disabled. (**v. 0.10.3**)
 
