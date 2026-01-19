@@ -523,6 +523,13 @@ planet <name>
 	tribute <credits#>
 		threshold <rating#>
 		fleet <name> <count#>
+	"tribute hails"
+		"already paying" <phrase>
+		"undefined" <phrase>
+		"unworthy" <phrase>
+		"fleet launching" <phrase>
+		"fleet undefeated" <phrase>
+		"surrendered" <phrase>
 ```
 
 Planets are landable objects, and are where players are capable of buying and selling ships, finding jobs, and discovering missions.
@@ -729,6 +736,30 @@ The fleet that is spawned from this planet if the player demands tribute from it
 ```
 
 The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.10.17)**
+
+```html
+"tribute hails"
+	"already paying" <phrase>
+	"undefined" <phrase>
+	"unworthy" <phrase>
+	"fleet launching" <phrase>
+	"fleet undefeated" <phrase>
+	"surrendered" <phrase>
+```
+
+With these hails, you can customize how a planet responds when the player demands tribute from it. Tribute hails defined on a planet will override tribute hails defined by the government. **(v0.10.17)**
+The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
+The default values if a key is not provided are:
+```bash
+"already paying" "We are already paying you as much as we can afford."
+"undefined" "Please don't joke about that sort of thing."
+"unworthy" "You're not worthy of our time."
+"fleet launching" "Our defense fleet will make short work of you."
+"fleet undefeated" "We're not ready to surrender yet."
+"surrendered" "We surrender. We will pay you <credits> per day to leave us alone."
+```
+Note that you still need to use phrases and not sentences.
+
 
 # Wormholes
 

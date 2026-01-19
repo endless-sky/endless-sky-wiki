@@ -46,11 +46,11 @@ government <name>
 	"planet bribe acceptance hail" <phrase>
 	"planet bribe rejection hail" <phrase>
 	"tribute hails"
-		"overpriced" <phrase>
-		"not defined" <phrase>
+		"already paying" <phrase>
+		"undefined" <phrase>
 		"unworthy" <phrase>
-		"accepted" <phrase>
-		"unready" <phrase>
+		"fleet launching" <phrase>
+		"fleet undefeated" <phrase>
 		"surrendered" <phrase>
 	language <text>
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
@@ -310,11 +310,11 @@ Before you can leave your ship, the <government name> authorities show up and be
 "planet bribe acceptance hail" <phrase>
 "planet bribe rejection hail" <phrase>
 "tribute hails"
-	"overpriced" <phrase>
-	"not defined" <phrase>
+	"already paying" <phrase>
+	"undefined" <phrase>
 	"unworthy" <phrase>
-	"accepted" <phrase>
-	"unready" <phrase>
+	"fleet launching" <phrase>
+	"fleet undefeated" <phrase>
 	"surrendered" <phrase>
 
 ```
@@ -342,14 +342,14 @@ The default text on acceptance if no phrase is provided is: "It's a pleasure doi
 The default text on rejection if no phrase is provided is: "I do not want your money."
 
 Starting from **v. 0.10.17**, you can customize the way a planet responds when the player demands tribute, instead of having the values be hardcoded.
-The `surrendered` phrase should have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
+The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
 The default values if a key is not provided are:
 ```bash
-"overpriced" "We are already paying you as much as we can afford."
-"not defined" "Please don't joke about that sort of thing."
+"already paying" "We are already paying you as much as we can afford."
+"undefined" "Please don't joke about that sort of thing."
 "unworthy" "You're not worthy of our time."
-"accepted" "Our defense fleet will make short work of you."
-"unready" "We're not ready to surrender yet."
+"fleet launching" "Our defense fleet will make short work of you."
+"fleet undefeated" "We're not ready to surrender yet."
 "surrendered" "We surrender. We will pay you <credits> per day to leave us alone."
 ```
 Note that you still need to use phrases and not sentences.
