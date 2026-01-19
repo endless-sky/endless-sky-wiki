@@ -82,7 +82,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor | non-blocking)
-	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering | transition)
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -368,7 +368,7 @@ In general, any mission that starts a completely new mission string, and that co
 Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time. In **v. 0.10.13**, this was extended to also allow any number of "non-blocking" missions to offer alongside "priority" missions.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
+(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering | transition)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport.
@@ -378,10 +378,10 @@ This specifies where this mission will be shown, if someplace other than the spa
 * `assisting` or `boarding`: it will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch`, `flee`, or `depart`, the ship in question will be destroyed.
 * `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
 * `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
+* `entering`: it will be offered after you have finished taking off from a planet or wormhole, or after you have finished jumping into a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
+* `transition`: it will be offered after you have transitioned to a new system or immediately after departing from a planet. This differs from `entering` in that an `entering` mission waits until you have regained control of your ship, while `transition` mission offer while you are still in the process of jumping between systems or taking off from a planet. **(v. 0.10.17)**
 
-An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
-
-All `assisting`, `boarding`, and `entering` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
+All `assisting`, `boarding`, `entering`, and `transition` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
