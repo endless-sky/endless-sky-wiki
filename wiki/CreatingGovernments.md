@@ -45,6 +45,13 @@ government <name>
 	"ship bribe rejection hail" <phrase>
 	"planet bribe acceptance hail" <phrase>
 	"planet bribe rejection hail" <phrase>
+	"tribute hails"
+		"overpriced" <phrase>
+		"not defined" <phrase>
+		"unworthy" <phrase>
+		"accepted" <phrase>
+		"unready" <phrase>
+		"surrendered" <phrase>
 	language <text>
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	enforces [all]
@@ -302,6 +309,14 @@ Before you can leave your ship, the <government name> authorities show up and be
 "ship bribe rejection hail" <phrase>
 "planet bribe acceptance hail" <phrase>
 "planet bribe rejection hail" <phrase>
+"tribute hails"
+	"overpriced" <phrase>
+	"not defined" <phrase>
+	"unworthy" <phrase>
+	"accepted" <phrase>
+	"unready" <phrase>
+	"surrendered" <phrase>
+
 ```
 These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The [phrases](CreatingPhrases) here should be defined as standalone phrases, e.g.
 ```bash
@@ -325,6 +340,19 @@ In order to receive hails from a ship, you must share a language with its govern
 Beginning in **v. 0.10.17**, you can use `"ship bribe acceptance hail"`, `"ship bribe rejection hail"`, `"planet bribe acceptance hail"`, and `"planet bribe rejection hail"` to customize the text that appears to the player when a bribe is accepted or rejected by a ship or planet.
 The default text on acceptance if no phrase is provided is: "It's a pleasure doing business with you."
 The default text on rejection if no phrase is provided is: "I do not want your money."
+
+Starting from **v. 0.10.17**, you can customize the way a planet responds when the player demands tribute, instead of having the values be hardcoded.
+The `surrendered` phrase should have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
+The default values if a key is not provided are:
+```bash
+"overpriced" "We are already paying you as much as we can afford."
+"not defined" "Please don't joke about that sort of thing."
+"unworthy" "You're not worthy of our time."
+"accepted" "Our defense fleet will make short work of you."
+"unready" "We're not ready to surrender yet."
+"surrendered" "We surrender. We will pay you <credits> per day to leave us alone."
+```
+Note that you still need to use phrases and not sentences.
 
 ## Language
 ```html
