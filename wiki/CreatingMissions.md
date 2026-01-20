@@ -82,7 +82,7 @@ mission <name>
 	stealth
 	invisible
 	(priority | minor | non-blocking)
-	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
+	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering | transition)
 	autosave
 	"apparent payment" <amount>
 	boarding
@@ -173,7 +173,9 @@ mission <name>
 				<location-filter>
 		on (deactivation | timeup)
 			<action>
-	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
+	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
+		[system | planet]
+			<filter>
 		log [<category> <header>] (<text> | scene <image>)
 		remove log <category> [<header>]
 		dialog <text>
@@ -366,7 +368,7 @@ In general, any mission that starts a completely new mission string, and that co
 Beginning in **v. 0.10.11**, if a mission is marked `non-blocking`, it will not prevent "minor" missions from offering alongside it. Any number of "non-blocking" missions may be offered at the same time as a "minor" mission, though no more than one "minor" mission will offer at a time. In **v. 0.10.13**, this was extended to also allow any number of "non-blocking" missions to offer alongside "priority" missions.
 
 ```html
-(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering)
+(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering | transition)
 ```
 
 This specifies where this mission will be shown, if someplace other than the spaceport.
@@ -376,10 +378,10 @@ This specifies where this mission will be shown, if someplace other than the spa
 * `assisting` or `boarding`: it will be shown when you repair a friendly ship or plunder a hostile ship, respectively. **These missions are never shown when boarding a ship that you have boarded before, that belongs to you, or that is an NPC in an active mission.** In either case, if the `on offer` conversation results in a conversation exit code of `launch`, `flee`, or `depart`, the ship in question will be destroyed.
 * `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
 * `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
+* `entering`: it will be offered after you have finished taking off from a planet or wormhole, or after you have finished jumping into a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
+* `transition`: it will be offered after you have transitioned to a new system or immediately after departing from a planet. This differs from `entering` in that an `entering` mission waits until you have regained control of your ship, while `transition` mission offer while you are still in the process of jumping between systems or taking off from a planet. **(v. 0.10.17)**
 
-An `entering` mission is offered after you have taken off from a planet or wormhole, or after you have finished jumping to a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
-
-All `assisting`, `boarding`, and `entering` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
+All `assisting`, `boarding`, `entering`, and `transition` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
 ```html
 autosave
@@ -781,7 +783,9 @@ For more details on triggers/mission actions, see the section below.
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | daily | disabled)
+on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
+	[system | planet]
+		<filter>
 	log [<category> <header>] (<text> | scene <image>)
 	remove log <category> [<header>]
 	dialog <text>
@@ -829,7 +833,8 @@ There are eleven events that can trigger a response of some sort:
 * `visit`: you land on the mission's destination, and it has not failed, but you have also not yet done whatever is needed for it to succeed.
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * `waypoint`: you have visited the last of the systems that are specified as a "waypoint" for this mission.
-* `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, this triggers as soon as your ship takes off from the current planet.
+* `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, a [location filter](LocationFilters) in the trigger body under a `system` node can be provided, triggering upon entering the first mtaching system. Otherwise, this triggers as soon as your ship takes off from the current planet.
+* `land [<planet>]`: you land on the given planet for the first time since this mission was accepted. If no planet is specified, a [location filter](LocationFilters) in the trigger body under a `planet` node can be provided, triggering upon landing on the first matching planet. Otherwise, this triggers upon the first landing on any planet. Note that if both an `on stopover` and `on land` action could trigger on the same landing, only the `on stopover` action will occur. **(v. 0.10.17)**
 * `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 * `disabled`: if the player's flagship becomes disabled. (**v. 0.10.3**)
 
