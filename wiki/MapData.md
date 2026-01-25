@@ -600,7 +600,7 @@ to access (outfitter | shipyard)
 	<condition-set>
 ```
 
-Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
 * `to know`: Controls whether the object that the planet is associated with is seen as a landable object. If this is false, the object won't appear landable.
 * `to land`: Controls whether the player can land on the planet. If false, you won't be able to land, and hailing the planet will tell you that you are denied landing access and cannot bribe your way onto the planet.
@@ -646,7 +646,7 @@ By default, ports don't display spaceport news when you enter them. To display n
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
 
-Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
 * `to access`: Controls whether the player can access anything that is a part of the spaceport upon landing, including any port services, recharging types, either of the shops, and the port button itself.
 * `to bribe`: If true, you will be required to pay a bribe before landing.
@@ -686,7 +686,7 @@ If no security is specified, then a default security of 0.25 is used.
 "bribe fraction" <reputation#>
 ```
 
-Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, this planet will not accept bribes to provide landing clearance when the player's reputation is below this value.
+Beginning in **v. 0.11.0**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, this planet will not accept bribes to provide landing clearance when the player's reputation is below this value.
 The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
 
 ```html
@@ -728,7 +728,7 @@ The fleet that is spawned from this planet if the player demands tribute from it
 "daily reputation penalty" <amount#>
 ```
 
-The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.10.17)**
+The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.11.0)**
 
 # Wormholes
 

@@ -172,7 +172,7 @@ A government can be made to use both "foreign penalties for" and "custom penalti
 
 Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships. In **v. 0.10.0** and onward, the provocation happens when you complete the scan.
 
-Beginning in **v. 0.10.17**, penalty actions can define special effects that occur in addition to the reputation change. These can be applied for the government itself, or how it relates to other governments when combined with `"custom penalties for"`.
+Beginning in **v. 0.11.0**, penalty actions can define special effects that occur in addition to the reputation change. These can be applied for the government itself, or how it relates to other governments when combined with `"custom penalties for"`.
 * `none`: No effect is applied aside from the reputation change. The default behavior of all actions aside from the `provoke` and `atrocity` actions.
 * `provoke`: Taking this action provokes the government, causing them to become hostile to you for the day. This is the default behavior of the `provoke` action if no other special effect is provided. Has no effect if the reputation penalty for an action is negative.
 * `atrocity`: Taking this action is considered an atrocity by the government, causing you to lose all reputation with them and become hostile. This is the default behavior of the `atrocity` action if no other special effect is provided. Has no effect if the reputation penalty for an action is less that 0.05.
@@ -239,7 +239,7 @@ The bribe token controls the fraction of the player's fleet's worth that must be
 "bribe threshold" <reputation#>
 ```
 
-Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, ships of this government will not accept bribes when the player's reputation is below this value. This value does not affect the player's ability to bribe planets.
+Beginning in **v. 0.11.0**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, ships of this government will not accept bribes when the player's reputation is below this value. This value does not affect the player's ability to bribe planets.
 The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
 
 ## Fine
@@ -265,8 +265,8 @@ atrocities ["death sentence" <death-sentence-conversation>]
 	...
 ```
 
-Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list. If "ignore universal" (**v. 0.10.17**) is added to an illegals/atrocities list, this government will only take action for its custom-defined illegals/atrocities.
-Since **v. 0.10.17**, you can override [death sentences](#death-sentence) of individual atrocities by specifying the name of the conversation that should be used for the `atrocities` node. If no custom death sentence is set here, the government's default will be used (see below). If you want to have multiple custom death sentences on a single government, you can specify additional atrocity lists with `add atrocities "death sentence" <another-death-sentence>` nodes.
+Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list. If "ignore universal" (**v. 0.11.0**) is added to an illegals/atrocities list, this government will only take action for its custom-defined illegals/atrocities.
+Since **v. 0.11.0**, you can override [death sentences](#death-sentence) of individual atrocities by specifying the name of the conversation that should be used for the `atrocities` node. If no custom death sentence is set here, the government's default will be used (see below). If you want to have multiple custom death sentences on a single government, you can specify additional atrocity lists with `add atrocities "death sentence" <another-death-sentence>` nodes.
 
 #### Death sentence
 ```html
@@ -322,7 +322,7 @@ No defaults are provided for non-disabled hails (meaning if not specified, the s
 
 In order to receive hails from a ship, you must share a language with its government. Languages are discussed in more detail below. Beginning in **v. 0.10.1**, the only exception to this is if the government has the `"send untranslated hails"` token, which allows its ships to send hails even if you do not share a language.
 
-Beginning in **v. 0.10.17**, you can use `"ship bribe acceptance hail"`, `"ship bribe rejection hail"`, `"planet bribe acceptance hail"`, and `"planet bribe rejection hail"` to customize the text that appears to the player when a bribe is accepted or rejected by a ship or planet.
+Beginning in **v. 0.11.0**, you can use `"ship bribe acceptance hail"`, `"ship bribe rejection hail"`, `"planet bribe acceptance hail"`, and `"planet bribe rejection hail"` to customize the text that appears to the player when a bribe is accepted or rejected by a ship or planet.
 The default text on acceptance if no phrase is provided is: "It's a pleasure doing business with you."
 The default text on rejection if no phrase is provided is: "I do not want your money."
 

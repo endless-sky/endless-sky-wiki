@@ -6,7 +6,7 @@
 
 # Introduction
 
-Beginning in **v. 0.10.17**, messages that were previously hardcoded into the game engine can be customized. The [syntax](DataFormat#grammar-specifications) for the definition of a message or message category is:
+Beginning in **v. 0.11.0**, messages that were previously hardcoded into the game engine can be customized. The [syntax](DataFormat#grammar-specifications) for the definition of a message or message category is:
 
 ```html
 message <name>
