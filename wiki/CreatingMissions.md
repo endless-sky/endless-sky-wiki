@@ -379,7 +379,7 @@ This specifies where this mission will be shown, if someplace other than the spa
 * `shipyard` or `outfitter`: it will be shown when you enter the shipyard or outfitter respectively. **(v. 0.10.0)**
 * `"job board"`: it will be offered either when pressing the job board button or when opening up the missions panel on the map. Note that this is separate from the `job` location, which causes the mission to appear as a job. This instead offer the mission like a normal mission, just upon entering the job board panel. **(v. 0.10.11)**
 * `entering`: it will be offered after you have finished taking off from a planet or wormhole, or after you have finished jumping into a system. The `source` filter can be used to filter which systems the mission can offer in, instead of filtering for planets. **(v. 0.10.13)**
-* `transition`: it will be offered after you have transitioned to a new system or immediately after departing from a planet. This differs from `entering` in that an `entering` mission waits until you have regained control of your ship, while `transition` mission offer while you are still in the process of jumping between systems or taking off from a planet. **(v. 0.10.17)**
+* `transition`: it will be offered after you have transitioned to a new system or immediately after departing from a planet. This differs from `entering` in that an `entering` mission waits until you have regained control of your ship, while `transition` mission offer while you are still in the process of jumping between systems or taking off from a planet. **(v. 0.11.0)**
 
 All `assisting`, `boarding`, `entering`, and `transition` missions must explicitly define a destination, as they have no source planet to implicitly set as the destination.
 
@@ -760,7 +760,7 @@ timer <base-time#> [<random-time#>]
 		<action>
 ```
 
-Beginning in **v. 0.10.17**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
+Beginning in **v. 0.11.0**, missions can be given `timer` nodes. Number nodes must at least be given an integer value that is the number of frames that need to pass in order for the timer to be considered completed. Unless the `optional` child node is provided, completion of timers becomes a mission objective. Timers can be given an optional second value that is a random number of frames that can be added to the timer. For example, if a mission contained `timer 600 600`, then the timer would tick for anywhere from 600 to 1200 frames (10 to 20 seconds) before being completed.
 
 By default, timers will run whenever the player is not in hyperspace or taking off from a planet/wormhole. Timers can be given a series of `"activation requirements"` that limit when the timer is running though:
 * `peaceful`: The player cannot be firing any weapons on their flagship. (Anti-missile turrets do not count against you.)
@@ -834,7 +834,7 @@ There are eleven events that can trigger a response of some sort:
 * `stopover`: you have landed on the last of the planets that are specified as a "stopover" point for this mission.
 * `waypoint`: you have visited the last of the systems that are specified as a "waypoint" for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, a [location filter](LocationFilters) in the trigger body under a `system` node can be provided, triggering upon entering the first mtaching system. Otherwise, this triggers as soon as your ship takes off from the current planet.
-* `land [<planet>]`: you land on the given planet for the first time since this mission was accepted. If no planet is specified, a [location filter](LocationFilters) in the trigger body under a `planet` node can be provided, triggering upon landing on the first matching planet. Otherwise, this triggers upon the first landing on any planet. Note that if both an `on stopover` and `on land` action could trigger on the same landing, only the `on stopover` action will occur. **(v. 0.10.17)**
+* `land [<planet>]`: you land on the given planet for the first time since this mission was accepted. If no planet is specified, a [location filter](LocationFilters) in the trigger body under a `planet` node can be provided, triggering upon landing on the first matching planet. Otherwise, this triggers upon the first landing on any planet. Note that if both an `on stopover` and `on land` action could trigger on the same landing, only the `on stopover` action will occur. **(v. 0.11.0)**
 * `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
 * `disabled`: if the player's flagship becomes disabled. (**v. 0.10.3**)
 
@@ -1038,7 +1038,7 @@ unmark <system> [<mission-name>]
 
 Beginning in **v. 0.10.7**, the `mark` node can be used to mark new systems while the mission is active, while `unmark` can be used to unmark systems that have been marked, removing their marker from the map.
 
-Beginning in **v. 0.10.17**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.
+Beginning in **v. 0.11.0**, it is possible to mark or unmark systems in other active missions by giving the identifier of that mission. All instances of the named mission in the player's active mission list will be affected by each `mark` or `unmark`. If any matching mission is not marking a system being `unmark`ed or has already marked a system being `mark`ed, there will be no effect. If there are no matching missions, there will be no effect.
 
 ```html
 message <name>
@@ -1046,4 +1046,4 @@ message
 	...
 ```
 
-Beginning in **v. 0.10.17**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.
+Beginning in **v. 0.11.0**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.
