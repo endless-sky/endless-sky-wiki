@@ -19,6 +19,6 @@ The general naming pattern of sprites used in Endless Sky looks like this:
 
 * `<size>` can be omitted, or one of the following:
   * `@2x`, which means the file is a high-resolution sprite and should be used when a high-DPI display is detected by the game or main zoom factor is high enough,
-  * `@1x`, indicating that it's important to keep the sprite in its original resolution (for example when the sprite represents a UI element) even when sprite reduction is enabled **(v. 0.10.17)**.
+  * `@1x`, indicating that it's important to keep the sprite in its original resolution (for example when the sprite represents a UI element) even when sprite reduction is enabled **(v. 0.11.0)**.
 
 * `<extension>` is one of the supported image format extensions (listed above).
