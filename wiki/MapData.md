@@ -760,7 +760,6 @@ The default values if a key is not provided are:
 ```
 Note that you still need to use phrases and not sentences.
 
-
 # Wormholes
 
 ```
