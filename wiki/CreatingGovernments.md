@@ -341,7 +341,7 @@ Beginning in **v. 0.10.17**, you can use `"ship bribe acceptance hail"`, `"ship 
 The default text on acceptance if no phrase is provided is: "It's a pleasure doing business with you."
 The default text on rejection if no phrase is provided is: "I do not want your money."
 
-Starting from **v. 0.10.17**, you can customize the way a planet responds when the player demands tribute, instead of having the values be hardcoded.
+Starting from **v. 0.11.1**, you can customize the way a planet responds when the player demands tribute, instead of having the values be hardcoded.
 The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
 The default values if a key is not provided are:
 ```bash

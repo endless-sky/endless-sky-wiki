@@ -747,7 +747,7 @@ The amount of reputation with the planet's government that is subtracted every d
 	"surrendered" <phrase>
 ```
 
-With these hails, you can customize how a planet responds when the player demands tribute from it. Tribute hails defined on a planet will override tribute hails defined by the government. **(v0.10.17)**
+With these hails, you can customize how a planet responds when the player demands tribute from it. Tribute hails defined on a planet will override tribute hails defined by the government. **(v0.11.1)**
 The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
 The default values if a key is not provided are:
 ```bash
