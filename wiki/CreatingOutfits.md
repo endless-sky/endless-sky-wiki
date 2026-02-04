@@ -622,7 +622,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
-  * `"optical jamming"`: how much resistance this ship has to optical tracking. The missile's chance of maintaining its lock is proportional to its `"optical tracking"` value divided by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
+  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceieved mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
