@@ -243,6 +243,13 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
 * `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
 * `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
+* `<start planet>` = the display name of the planet you started on **(v. 0.11.1)**
+* `<start system>` = the display name of the system containing the planet you started on **(v. 0.11.1)**
+* `<start date>` = the date you started the game, in a short form **(v. 0.11.1)**
+* `<start long date>` = the date you started the game, in a more verbose form **(v. 0.11.1)**
+* `<start credits>` = the amount of credits you started with **(v. 0.11.1)**
+* `<start credit score>` = your starting credit score **(v. 0.11.1)**
+* `<start debt>` = the total amount of debt, of all kinds, that you started with **(v. 0.11.1)**
 
 These placeholders will be substituted in any text in the following places:
 
