@@ -111,6 +111,7 @@ planet <name>
 			<condition-set>
 		news
 		description <text>
+		landscape <sprite>
 	government <name>
 	shipyard <name>
 	outfitter <name>
@@ -629,6 +630,7 @@ port [<name>]
 		<condition-set>
 	news
 	description <text>
+	landscape <sprite>
 ```
 
 Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the `port` keyword. The `spaceport` keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
@@ -652,6 +654,8 @@ If a port has no `services` node, then it will not offer any services. As with `
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
+
+A `landscape` node can be used to provide a single custom sprite to display when the player clicks the Spaceport button.
 
 Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
