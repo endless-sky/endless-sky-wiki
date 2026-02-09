@@ -29,7 +29,7 @@ There are four different types of gamerule in terms of what the value of the gam
 * Boolean: The value must be given as the words "true" or "false", or the numbers 1 or 0.
 * Enum: The value is a string, and the rule has a list of allowable string values that it can have.
 
-Some rules may also have no value at all, represented by the string "unset".
+Some rules may also have no value at all ("optional"), represented by the string "unset".
 
 These are the gamerules that are currently available:
 
@@ -56,8 +56,11 @@ The depreciated value of an item that is "age" days old is calculated with the f
 ## System Behavior
 
 * `"universal ramscoop"`: A boolean rule that controls whether the universal ramscoop is active on all ships. This ramscoop provides a very small amount of fuel to every ship regardless of whether it has an actual ramscoop installed. The strength of this ramscoop falls off much more strongly than normal ramscoops, requiring you to be as close to a star as possible to have any real gain in fuel. Having this enabled prevents needing to reload your save file if you run out of fuel and no NPCs spawn in the system.
-* `"system arrival min"`: A decimal rule whose value can be any number, or "unset". Represents the minimum arrival distance for all systems. Applies to both hyperdrive and jump drive travel. If the system has a defined arrival distance greater than this value, then it will be used instead. If this gamerule has a value of "unset", then the value defined by the system will always be used.
+* `"system arrival min"`: An optional decimal rule whose value can be any number. Represents the minimum arrival distance for all systems. Applies to both hyperdrive and jump drive travel. If the system has a defined arrival distance greater than this value, then it will be used instead. If this gamerule has a value of "unset", then the value defined by the system will always be used.
 * `"system departure min"`: A decimal rule whose value must be greater than or equal to 0. Represents the minimum departure distance for all systems. A ship can only jump out of a system if it is farther from the system center than the departure distance. If a system has a defined departure distance greater than this value, then it will be used instead.
+* `"habitable based arrival distance"`: A boolean rule that controls whether systems that do not define their own arrival distance use the habitable distance as their arrival distance. **(v. 0.11.1)**
+* `"habitable arrival min"`: An optional decimal rule that determines the minimum arrival distance when the arrival distance is being generated from the habitable distance. **(v. 0.11.1)**
+* `"habitable arrival max"`: An optional decimal rule that determines the maximum arrival distance when the arrival distance is being generated from the habitable distance. **(v. 0.11.1)**
 * `"fleet multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0%, 1 = 100%, 1.5 = 150%, and so on. Represents a global fleet spawn rate multiplier for random fleet spawns within systems.
 
 ## Miscellaneous
