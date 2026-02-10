@@ -86,7 +86,9 @@ system <name>
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -567,10 +569,15 @@ There are three attributes that get automatically added to a planet: `spaceport`
 One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
-landscape <sprite>
+[add] landscape <sprite>...
+	<sprite> [<weight>]
+	...
+```
+```html
+remove landscape <sprite>...
 ```
 
-The landscape image that is shown when landed on this planet.
+The weighted set of landscape images, one of which will be randomly shown when landed on this planet. If neither "add" nor "remove" are specified, the previous list of images is cleared and replaced with the new list. Sprites listed on the same line as "landscape" will have a weight of 1.
 
 ```html
 music <sound>
