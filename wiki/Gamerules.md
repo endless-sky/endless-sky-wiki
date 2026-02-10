@@ -5,6 +5,7 @@
 	* [Depreciation](#depreciation)
 	* [Person Ships](#person-ships)
 	* [NPC Behavior](#npc-behavior)
+	* [Ship Locking](#ship-locking)
 	* [System Behavior](#system-behavior)
 	* [Miscellaneous](#miscellaneous)
 
@@ -52,6 +53,12 @@ The depreciated value of an item that is "age" days old is calculated with the f
 
 * `"npc max mining time"`: An integer rule whose value must be greater than or equal to 0. Randomly spawned NPCs with the `mining` personality will spend this many frames mining in the current system before deciding to do something else. The purpose of this limit is so that NPC ships can be seen by the player to show how to mine without stripping the system bare of minable asteroids. This limit does not apply to mining ships that are spawned by a mission.
 * `"universal frugal threshold"`: A decimal rule whose value must be between 0 and 1, inclusive, where 0 = 0% and 1 = 100%. Ships with the `frugal` personality will only use weapons that consume ammo or fuel while their health (shields + hull - the hull level when they become disabled) is at or below this percentage, or if the hostiles in the system are considerably stronger than them.
+
+## Ship Locking
+
+* `"lock on capture"`: A boolean rule that controls whether or not ships become "locked" when captured. A locked ship cannot be your flagship, fire its weapons, hold any passengers, recharge its shields or hull, pick up flotsam, repair or refuel other ships, or activate its cloaking device.
+* `"rewiring cost multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. Locked ships can be unlocked at a shipyard by rewiring them. The cost of rewiring is a percentage of the base hull's value before depreciation.
+* `"locked ship value multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. The hull of a locked ship will sell for the `"locked ship value multiplier"` multiplied by the `"depreciation min"`.
 
 ## System Behavior
 
