@@ -46,6 +46,7 @@ system <name>
 	"invisible fence" <distance#>
 	"jump range" <distance#>
 	haze <sprite>
+		[sprite properties...]
 	link <system>
 	asteroids <name> <count#> <energy#>
 	minables <name> <count#> <energy#>
@@ -326,6 +327,8 @@ haze <sprite>
 ```
 
 The haze that is created for the background of this system. If no haze is given, then the default blue haze is used.
+
+Beginning in **v. 0.11.1**, hazes can be animated and can be provided all the normal [sprite animation properties](SpriteData#animation-parameters).
 
 ```html
 link <system>
