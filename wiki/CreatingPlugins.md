@@ -237,7 +237,7 @@ disable event
 
 ## Swizzles
 
-Since **v0.10.13**:
+Since **v. 0.10.13**:
 
 ```html
 swizzle <name>
@@ -278,3 +278,5 @@ Endless Sky uses shaders written in the [OpenGL Shading Language](https://www.kh
 Since the game can run on both OpenGL and OpenGL ES, shaders can be defined for either or both environments. By default, shader files are valid in both environments; exclusive shaders can be created by appending the `.gl` or `.gles` extension to the shader file, resulting in something like `sprite.frag.gles`.
 
 Since **v. 0.11.0**, plugins can provide shaders compatible with OpenGL 2 if the player's machine doesn't support the standard OpenGL 3. To maintain compatibility with the game's code, in this situation `sampler2DArray` uniforms are replaced with `sampler3D`s.
+
+For cross-platform compatibility purposes, the game automatically adds a `#version` declaration, deducing the correct string based on what is reported by OpenGL. Since **v. 0.11.1**, you can specify a fixed `#version` declaration, and disable the automatic detection by adding `//autoversion off` in a separate line anywhere in your shader file.
