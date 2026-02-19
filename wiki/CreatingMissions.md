@@ -243,6 +243,8 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
 * `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
 * `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
+* `<previous planet>` = the most recent planet the player has landed on **(v. 0.11.1)**
+* `<previous system>` = the system the player was in prior to the current one **(v. 0.11.1)**
 
 These placeholders will be substituted in any text in the following places:
 
