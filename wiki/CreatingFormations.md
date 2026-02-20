@@ -1,5 +1,7 @@
 # CreatingFormations
 
+Formations are special arrangements of ships around the player or the flagship of an NPC fleet.
+
 The syntax for the definition of a formation is:
 
 ```html
@@ -8,6 +10,7 @@ formation <name>
 	rotatable <degree of symmetry>
 	arc
 		start <x> <y>
+		anchor <x> <y>
 		angle <angle>
 		skip (first | last)
 		positions <positions>
@@ -32,11 +35,13 @@ formation <name>
 
 If a formation is symmetrical, the definition can include an axis or degree of symmetry. In the event of escorts losing their formation, such as when the flagship rotates faster than the escorts can move, they will re-establish the formation referenced from the nose or one of the symmetry directions, whichever is closer.
 
+When the flagship of the formation is in motion, orientation of the formation is referenced to the direction of motion, not the direction of the flagship.
+
 ```html
 	flippable x y
 ```
 
-The `flippable` attribute allows the x or y (or both) axis to be specified as an axis of symmetry.
+The `flippable` attribute allows the x or y (or both) axis to be specified as an axis of reflection. Escorts will re-establish a mirror of the formation if direction suddenly changes.
 
 ```html
 	rotatable <degree>
@@ -44,7 +49,7 @@ The `flippable` attribute allows the x or y (or both) axis to be specified as an
 
 `rotatable` specifies a degree of rotational symmetry for the formation, such as 90 for squares, and 1 for circles.
 
-Both attributes essentially add reference directions for the formation, from only one pointing out the nose to any axis or multiple of degrees thereof.
+Both attributes essentially create new formations that escorts will fill if they are easier to get to than the original formation.
 
 # Repeats
 
@@ -56,7 +61,7 @@ Both attributes essentially add reference directions for the formation, from onl
 
 To make formations scalable to any number of ships, a repeat attribute must be applied to the block. Any attribute that exists in a block can be used as a child attribute in `repeat`.
 
-When a block is fully populated with ships, if it has `repeat`, the block will be rendered again with any children of `repeat` added to their corresponding attributes in the block.
+When a block is fully populated with ships, if it has `repeat`, the block will be rendered again with any children of `repeat` summed with the original attributes. Each time that the block repeats, the values in `repeat` are added on top of the previous repetition. This applies to `positions`,`start`,`end`,`skip`
 
 For instance,
 ```html
@@ -69,9 +74,10 @@ If no repeat attribute is present, all positions will be filled, and any remaini
 
 # Positions
 ```html
-	positions 2
-	repeat
+	<block>
 		positions 2
+		repeat
+			positions 2
 ```
 
 The `positions` attribute is used in `arc` or `line` to specify the number of positions that can be filled along the shape. Positions are spread out evenly across the shape, starting at each end.
@@ -80,22 +86,24 @@ The `positions` attribute is used in `arc` or `line` to specify the number of po
 
 Blocks can be one of three types: `arc`, `line`, and `position`.
 
-<degrees> are clockwise
+<degrees> is positive clockwise, negative counter-clockwise
 <x> is positive right, negative left
 <y> is positive back, negative forward
 
 ```html
 	arc
 		start <x> <y>
+		anchor <x> <y>
 		angle <degrees>
 		skip (first | last)
 		positions <positions>
 		repeat
 			...
 ```
-`arc` populates an arc around the player.
+`arc` populates an arc around the flagship.
 	`start`: Specifies the start location of the arc.
-	`angle`: Arc distance, referenced clockwise around the player at a constant distance.
+	`anchor`: Specifies a location to render the arc from relative to the flagship. This defaults effectively to `anchor 0 0` if not specified. Arcs can be made relative to some other point other than the flagship.
+	`angle`: Arc distance, referenced clockwise around the flagship at a constant distance.
 	`skip (first | last)`: Prevents the filling of either the first or last position in a block. Useful for when starting points overlap, such as a 360 arc.
 	`positions`: Number of positions in the shape, modified by `skip`
 
