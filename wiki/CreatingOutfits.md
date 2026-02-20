@@ -693,6 +693,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
 
+* `"exclude submunition damage"`: exclude the damage from the submunitions of this weapon's projectiles when dealing damage to a target. **(v. 0.11.1)**
+
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
 * `stream`: makes a weapon fire in "stream" mode (multiple copies of this weapon take turns firing) even if it is susceptible to anti-missile. Most weapons fire in stream mode by default. **(v. 0.9.0)**
