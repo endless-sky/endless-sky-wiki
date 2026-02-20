@@ -685,7 +685,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"die effect"`: created if this projectile reaches the end of its lifetime without hitting anything.
 
-* `"submunition" "<weapon>" <count#>`: if the projectile reaches its end of life, create a new set of projectiles based on the given weapon outfit. The damage and hit force associated with a parent projectile is the sum of both its own damage and hit force attributes, and those of its submunitions, except in the case of self-referential submunitions where only the damage of the parent projectile is used. A count can also be provided to increase the number of new projectiles created. The following lines can optionally be added as a "child" of the submunition:
+* `"submunition" "<weapon>" <count#>`: if the projectile reaches its end of life (either because its lifetime runs out, its target is within its `"split range"`, or, starting in **v. 0.11.1**, a target is within its `"trigger radius"` or it is a ship explosion), create a new set of projectiles based on the given weapon outfit. The damage and hit force associated with a parent projectile is the sum of both its own damage and hit force attributes, and those of its submunitions, except in the case of self-referential submunitions where only the damage of the parent projectile is used. A count can also be provided to increase the number of new projectiles created. The following lines can optionally be added as a "child" of the submunition:
 
   * `"facing" <angle#>`: an angle in degrees that is added to the parent projectile's angle to determine the submunition projectile's angle. Excluding this line means that the submunition always generates with the same angle as the parent projectile. **(v. 0.9.15)**
 
