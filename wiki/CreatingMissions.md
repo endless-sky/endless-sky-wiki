@@ -223,7 +223,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<bunks>` = the number of passengers
 * `<passengers>` = "passenger" or "passengers"
 * `<fare>` = "a passenger" or "N passengers," where N is the number of passengers
-* `<origin>` = planet (or ship) where the mission was offered
+* `<origin>` = the name of the planet that the mission was offered on, or the name of the ship you boarded for `boarding` and `assisting` missions, or the name of the system for `entering` and `transition` missions
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>` in the `<system>` system"
