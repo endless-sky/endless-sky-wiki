@@ -184,7 +184,7 @@ mission <name>
 		conversation <name>
 		conversation
 			...
-		outfit <outfit> [<number>]
+		outfit <outfit> [(<number> | <condition>)]
 		require <outfit> [<number>]
 		(give | take) ship <model> [<name>]
 			count <count>
@@ -192,11 +192,11 @@ mission <name>
 			unconstrained
 			"with outfits"
 			"requires outfits"
-		payment [<base> [<multiplier>]]
-		fine <amount>
-		debt <amount>
-			interest <amount>
-			term <days>
+		payment [(<base> | <condition>)] [(<multiplier> | <condition>)]]
+		fine (<amount> | <condition>)
+		debt (<amount> | <condition>)
+			interest (<amount> | <condition>)
+			term (<days> | <condition>)
 		<condition> (= | += | -=) <value>
 		<condition> (++ | --)
 		(set | clear) <condition>
@@ -794,7 +794,7 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	conversation <name>
 	conversation
 		...
-	outfit <outfit> [<count#>]
+	outfit <outfit> [(<count#> | <condition>)]
 	require <outfit>
 	(give | take) ship <model> [<name>]
 		count <count>
@@ -802,11 +802,11 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 		unconstrained
 		"with outfits"
 		"requires outfits"
-	payment [<base> [<multiplier>]]
-	fine <amount>
-	debt <amount>
-		interest <amount>
-		term <days>
+	payment [(<base> | <condition>)] [(<multiplier> | <condition>)]]
+	fine (<amount> | <condition>)
+	debt (<amount> | <condition>)
+		interest (<amount> | <condition>)
+		term (<days> | <condition>)
 	<condition> (= | += | -=) <value#>
 	<condition> (++ | --)
 	(set | clear) <condition>
@@ -900,7 +900,7 @@ As with the dialogs, text substitution is done throughout the conversation.
 The syntax for conversations is described [here](WritingConversations).
 
 ```html
-outfit <outfit> [<number#>]
+outfit <outfit> [(<number#> | <condition>)]
 require <outfit> [<number#>]
 ```
 
@@ -911,6 +911,8 @@ If the outfit cannot be installed due to lack of space, a warning message will b
 The `require` keyword checks that the player has at least one of the named outfit, but does not take it away. For example, this could be used in the `on offer` phase to only offer a mission to players who have a "Jump Drive". Starting with **v. 0.9.9**, a specific quantity can be required, including 0 (i.e. the player cannot have any). If a non-zero quantity is specified, then the player's flagship is checked alongside the cargo holds of all in-system escorts, or only the flagship's cargo if this is a boarding mission. If a quantity of zero is specified, then the player cannot have that outfit anywhere on any of their ships.
 
 Beginning in **v. 0.9.15**, if the outfit being gifted has the "map" attribute, then the player will be given the information from that map as if they had purchased it from the outfitter. If an outfit with the "map" attribute is being required by a mission and the required value is 0, then the player must have the nearest systems that match the size of the map outfit unvisited, but if the required value is greater than 0 then the nearest systems must be visited.
+
+Beginning in **v. 0.11.1**, a player condition can be used to determine the number of outfits to be give (or taken).
 
 ```html
 give ship <model> [<name>]
@@ -958,7 +960,7 @@ If `"with outfits"` is specified, any outfits present on the base model specifie
 Note: while it may currently be possible to take a ship while the player is in flight, the behavior when this is done should be considered undefined and subject to change.
 
 ```html
-payment [<base#> [<multiplier#>]]
+payment [(<base#> | <condition>) [(<multiplier#> | <condition>)]]
 ```
 
 This specifies the payment for a mission, which depends on the number of jumps between the source and destination and the amount of cargo and passengers. If the mission has waypoints or stopovers then the number of jumps needed to visit all waypoints and stopovers before reaching the destination is used. The exact formula is used to determine the final payment:
@@ -978,21 +980,27 @@ Multiple instances of `payment` are acceptable and useful in certain circumstanc
 
 Normally, a `payment` value would only be given in the "on complete" section, but you can also have a negative value to be subtracted if the player fails the mission, or you could use a "payment" to advance the player some money when they first accept a mission. If the "on complete" payment is negative, the player cannot complete the mission if they have fewer than that number of credits.
 
+Beginning in **v. 0.11.1**, a player condition can be used to determine the payment base or multiplier.
+
 ```html
 fine <amount#>
 ```
 
 This specifies the fine for a mission, a high interest (0.006%, equivalent to a credit score of 0), short term (60 days) mortgage that must be paid.
 
+Beginning in **v. 0.11.1**, a player condition can be used to determine the fine amount.
+
 ```html
-debt <amount>
-	interest <amount>
-	term <days>
+debt (<amount> | <condition>)
+	interest (<amount> | <condition>)
+	term (<days> | <condition>)
 ```
 
 Beginning in **v. 0.10.7**, mission actions may give debt to the player. Debt behaves similarly to a mortgage from the bank, except you receive no credits up front (unless your action also uses a `payment` node). A mission action may contain multiple `debt` nodes. This node has two optional children:
 * `interest`: the interest rate of the debt where a value of 1 = 1%. Must currently be within the [range](https://en.wikipedia.org//wiki/Interval_(mathematics)) [0, 0.999]. If not present, uses your credit score to determine the interest rate in the same way that a normal mortgage would. May be explicitly set to 0%.
 * `term`: the number of days that the debt must be paid within. Defaults to 365 days if not present.
+
+Beginning in **v. 0.11.1**, a player condition can be used to determine the debt amount, interest or term. If a player condition is used for debt interest, the value supplied shall be an integer and be divided by 1000 to obtain the interest (thus the supported range is [0, 999]. The amount and term is evaluated as integers. 
 
 ```html
 <condition> (= | += | -=) <value#>
