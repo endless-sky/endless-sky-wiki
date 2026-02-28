@@ -691,7 +691,15 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
-  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
+  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. Accepted values are:
+
+    * `natural`: the projectile died because its lifetime ran out. This also applies to projectiles that split into submunitions early due to the `"split range"` attribute. **(v. 0.10.9)**
+
+    * `anti-missile`: the projectile was destroyed by an anti-missile system. **(v. 0.10.9)**
+
+    * `explosion`: the projectile was destroyed in an explosion, either due to its `"trigger radius"` being set off, it reached the end of its lifetime and has the `"fused"` attribute, or because it was a ship explosion. **(v. 0.11.1)**
+
+    * `collision`: the projectile was destroyed when it collided with an object. **(v. 0.11.1)**
 
 * `"exclude submunition damage"`: exclude the damage from the submunitions of this weapon's projectiles when dealing damage to a target. **(v. 0.11.1)**
 
