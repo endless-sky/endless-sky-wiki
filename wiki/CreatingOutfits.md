@@ -685,13 +685,21 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"die effect"`: created if this projectile reaches the end of its lifetime without hitting anything.
 
-* `"submunition" "<weapon>" <count#>`: if the projectile reaches its end of life (either because its lifetime runs out, its target is within its `"split range"`, or, starting in **v. 0.11.1**, a target is within its `"trigger radius"` or it is a ship explosion), create a new set of projectiles based on the given weapon outfit. The damage and hit force associated with a parent projectile is the sum of both its own damage and hit force attributes, and those of its submunitions, except in the case of self-referential submunitions where only the damage of the parent projectile is used. A count can also be provided to increase the number of new projectiles created. The following lines can optionally be added as a "child" of the submunition:
+* `"submunition" "<weapon>" <count#>`: if the projectile reaches its end of life, create a new set of projectiles based on the given weapon outfit. The damage and hit force associated with a parent projectile is the sum of both its own damage and hit force attributes, and those of its submunitions, except in the case of self-referential submunitions where only the damage of the parent projectile is used. A count can also be provided to increase the number of new projectiles created. The following lines can optionally be added as a "child" of the submunition:
 
   * `"facing" <angle#>`: an angle in degrees that is added to the parent projectile's angle to determine the submunition projectile's angle. Excluding this line means that the submunition always generates with the same angle as the parent projectile. **(v. 0.9.15)**
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
-  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
+  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. Accepted values are:
+
+    * `natural`: the projectile died because its lifetime ran out. This also applies to projectiles that split into submunitions early due to the `"split range"` attribute. **(v. 0.10.9)**
+
+    * `anti-missile`: the projectile was destroyed by an anti-missile system. **(v. 0.10.9)**
+
+    * `explosion`: the projectile was destroyed in an explosion, either due to its `"trigger radius"` being set off, it reached the end of its lifetime and has the `"fused"` attribute, or because it was a ship explosion. **(v. 0.11.1)**
+
+    * `collision`: the projectile was destroyed when it collided with an object. **(v. 0.11.1)**
 
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
