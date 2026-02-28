@@ -604,7 +604,11 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These are miscellaneous attributes capable of being added to outfits.
 
-  * `"ammo"`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. **(v. 0.9.5)**
+  * `"ammo" <name>`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. **(v. 0.9.5)**
+  
+    * Prior to **v. 0.11.1**, an outfit could only have one `ammo` node.
+
+  * `linked <name>`: considers the other outfit of the given name to be linked to this outfit. If this outfit is sold, the linked outfits will also be sold if doing so is necessary to keep any attributes within a valid range. **(v. 0.11.1)**
 
   * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems (use `drag reduction` instead).
 
