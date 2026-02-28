@@ -101,7 +101,7 @@ mission <name>
 			[<condition set>]
 		...
 	"offer precedence" <value>
-	to (offer | complete | fail | accept)
+	to (init | offer | complete | fail | accept)
 		<condition> <comp> <value>
 		(has | not) <condition>
 		never
@@ -173,7 +173,7 @@ mission <name>
 				<location-filter>
 		on (deactivation | timeup)
 			<action>
-	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
+	on (init | offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
 		[system | planet]
 			<filter>
 		log [<category> <header>] (<text> | scene <image>)
@@ -503,7 +503,7 @@ Missions with the `job`, `boarding`, or `assisting` tags are not affected by thi
 Conditions are checked at several times when processing a mission: when determining whether the mission can be offered right now (in the `to offer` tag), and when determining whether it has been completed (in the `to complete` tag) or failed (in the `to fail` tag), and, beginning in **v. 0.10.0**, determining whether it can be accepted (in the `to accept` tag):
 
 ```html
-to (offer | complete | fail | accept)
+to (init | offer | complete | fail | accept)
 	<condition> <comp> <value>
 	(has | not) <condition>
 	never
@@ -518,6 +518,8 @@ Conditions can be changed when you are offered a mission or when you accept, dec
 A mission will not be offered if any of the `to fail` conditions are met, and will fail if it is active and one of those conditions changes so that it is satisfied. Using the `random` keyword in a `to fail` tag is possible, but not recommended.
 
 Beginning in **v. 0.10.0**, missions can be given `to accept` conditions. For jobs, if the mission can offer then it will appear on the jobs board, but if it can't be accepted then it will appear grayed out with the "accept mission" button unable to be clicked. For non-job missions, if the mission's `to offer` conditions passed but the `to accept` conditions do not, then the `blocked` dialog will appear, if it exists.
+
+Beginning in **v. 0.11.1**, missions can be given `to init` conditions. This check is performed when the mission is instantiated, before other checks such as source / destination planet calculations. In contrast, `to offer` conditions are checked after all missions have been initialized. Combined with `on init` actions, this allows missions to communicate with conditions of other missions further in the mission list, potentially blocking or allowing to be instantiated and offered.
 
 The condition set is satisfied only if every condition listed is true. If instead you want it to succeed if any of the listed conditions are true (e.g. you have completed mission A *or* mission B), you can use an `or` sub-clause. Within an `or` clause you can have `and` clauses (and so on), allowing you to check any arbitrary logical combination. For example, if you want a mission to be offered if "(has A or (has B and has C)) and (has D)":
 
@@ -783,7 +785,7 @@ For more details on triggers/mission actions, see the section below.
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
+on (init | offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
 	[system | planet]
 		<filter>
 	log [<category> <header>] (<text> | scene <image>)
@@ -823,6 +825,7 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 
 There are eleven events that can trigger a response of some sort:
 
+* `init`: when the mission is successfully instantiated, after source / destination planet calculations. No dialog or conversation can be played by this trigger. Triggers before the next mission's instantiation (including `to init` check), allowing conditions to be communicated to other missions while the mission list is populated. (**v. 0.11.1**)
 * `offer`: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission.
 * `complete`: when the mission is completed. This is when the player gets paid.
 * `accept`: if the player agrees to accept a mission.
