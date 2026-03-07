@@ -229,6 +229,12 @@ It is highly recommended that when outfitting your ship, you pay attention to th
 
 Heat may also be used as a weapon. Pirates, in particular, are notorious for running their ships hot, and you may be able to find some weapons that heat up the target ship in addition to damaging it. For a pirate vessel coming in with all guns blazing, that little extra bit of heat may be enough to push it over the edge. Heat weapons are most effective on ships whose shields are down.
 
+## Presets
+
+The outfitter also has a section where you can create, manage, and *apply* "Presets" to your vessels. As your fleet grows, you may find yourself wishing you could simply draw up a blueprint and tell your subordinates how to outfit any given ship, and then tell them to apply it to *all* your ships. The Presets system allows you to do that. It will not spawn outfits from the ether, and it will not give you the outfits for free. You must still source them from from wherever you would have sourced them if you were using the outfitter normally.
+
+These blueprints can also be traded with other pilots. Perhaps you might discover powerful ship loadouts created by other captains...
+
 # Combat
 
 A hundred years ago, in the golden age of the Republic, piracy had been all but eliminated. The slave trading cartels were defeated, Navy ships patrolled every system from Betelgeuse to Tarazed, and most of the remaining pirate outposts were hidden underground bases on resource-poor worlds. But a few centers of pirate activity survived, and with the recent economic downturn and expansion of colonies into new systems, the Navy is stretched too thin to patrol everywhere at once. So, in every corner of the galaxy except for the Deep, there are worlds owned entirely by pirate clans who give neither respect nor revenue to the Republic.
