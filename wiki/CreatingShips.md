@@ -85,7 +85,7 @@ The size of the thumbnail should depend on the size of the ship. Drones may be 1
 
 You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
 
-The specifics of modelling and texturing ships is contained within the [creating models](CreatingModels) page.
+The specifics of modeling and texturing ships is contained within the [creating models](CreatingModels) page.
 
 # Data
 

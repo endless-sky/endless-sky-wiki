@@ -26,7 +26,7 @@ In a few cases, it's ambiguous which direction something should point in. For ex
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/outfit/huge%20ion%20steering%402x.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/outfit/security%20station%402x.png)
 
-Most outfits are created using Blender. The [creating models](CreatingModels) page contains more detail on modelling and texturing outfits.
+Most outfits are created using Blender. The [creating models](CreatingModels) page contains more detail on modeling and texturing outfits.
 
 Another open source program, [Inkscape](https://inkscape.org), is used for some outfits such as licenses, as well as the vector graphics in the user interface.
 
