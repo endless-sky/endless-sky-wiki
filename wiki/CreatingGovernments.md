@@ -153,7 +153,7 @@ The "scan" penalty was added in **v. 0.9.15** and applies after successfully sca
 The "provoke" penalty was added in **v. 0.9.15** and applies after attacking a ship that was previously friendly.
 
 ```html
-"use foreign penalties for"
+"foreign penalties for"
 	<government>
 	...
 ```
