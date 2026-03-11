@@ -75,7 +75,7 @@ Each ship can optionally specify a "thumbnail" image to be used for it in the sh
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)][2xaerie]
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)][2xhawk]
 
-If a model lacks a dedicated thumbnail rendering mode (such as an older model), thumbnails can be rendered with the following setup:
+If a model lacks a dedicated thumbnail rendering mode, thumbnails can be rendered with the following setup:
 
 * Camera position: (12, 22, 18)
 * Camera angle: (55, 0, 150)
