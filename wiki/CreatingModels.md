@@ -15,8 +15,8 @@ Models should be made using Blender 2.80+. Models made in 2.79 and prior will lo
 # Templates
 These templates provide the lighting, scene, and render settings that should be used by every model in the game:
 
-* [Ship template](/templates/shiptemplate.blend)
-* [Outfit template](/templates/outfittemplate.blend)
+* [Ship template](https://raw.githubusercontent.com/endless-sky/endless-sky-wiki/master/templates/shiptemplate.blend)
+* [Outfit template](https://raw.githubusercontent.com/endless-sky/endless-sky-wiki/master/templates/outfittemplate.blend)
 
 Using these templates will ensure your sprites are stylistically consistent with the rest of the game.
 
