@@ -175,12 +175,26 @@ system <name>
 		multiplier <value#>
 	habitable <distance#>
 	belt <distance#> [<weight#>]
+		"max eccentricity" <value#>
+		"scale factor closest periapsis" <value#>
+		"scale factor closest apoapsis" <value#>
+		"scale factor farthest periapsis" <value#>
+		"scale factor farthest apoapsis" <value#>
 	"invisible fence" <distance#>
 	"jump range" <distance#>
 	haze <sprite>
 	link <system>
-	asteroids <name> <count#> <energy#>
-	minables <name> <count#> <energy#>
+	asteroids <name> [<count#> [<energy#>]]
+		count <count#>
+		energy <energy#>
+		to spawn
+			<conditions>...
+	minables <name> [<count#> [<energy#> [<belt#>]]]
+		count <count#>
+		energy <energy#>
+		belt <belt#>
+		to spawn
+			<conditions>...
 	trade <commodity> <cost#>
 	fleet <name> <period#>
 		[to spawn]
@@ -304,10 +318,24 @@ habitable <distance#>
 The distance of the "Goldilocks zone" in this system. When selecting a system on the map, the orbits of the objects in the system will be colored in relation to their distance from this value. If an object's distance is near this value, its orbit will be green. If an object's distance is farther than this value, then its orbit will fade from light to dark blue the further it is. If an object's distance if closer than this value, then its orbit will fade from yellow to red the closer to the system center it is.
 
 ```html
-belt <distance#> [<weight#>]
+	belt <distance#> [<weight#>]
+		"max eccentricity" <value#>
+		"scale factor closest periapsis" <value#>
+		"scale factor closest apoapsis" <value#>
+		"scale factor farthest periapsis" <value#>
+		"scale factor farthest apoapsis" <value#>
 ```
 
-The distance from the system center at which minable asteroids in this system will orbit. **Beginning in v. 0.9.15** a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
+The distance from the system center at which minable asteroids in this system will orbit.
+ **Beginning in v. 0.9.15**, a system can define multiple asteroid belts for a single system. Each belt can be given a weight that functions similarly to fleet [variants](CreatingFleets#variants), defining the probability that any given asteroid will appear in that belt. If no weight is given then a default weight of 1 is used.
+ **Beginning in v. 0.10.18**:
+-	The distribution of individual orbits within a belt can be modified. By default, any asteroid within a belt can get as close as 0.4 * `belt radius` to the center of the system, or as far as 4 * `belt radius`, and an individual orbit ellipse can have its long axis a little over twice as long as its short axis.
+-	`max eccentricity` Maximum eccentricity (range 0 to 1, default 0.6).
+-	`scale factor closest periapsis` Factor determining periapsis closest distance relative to radius at high eccentricities (range 0 to 1, default 0.4).
+-	`scale factor closest apoapsis` Factor determining apoapsis closest distance relative to radius at low eccentricities (range 0 to 1, default 0.8, must be greater or equal to the previous value).
+-	`scale factor farthest periapsis` Factor determining periapsis farthest distance relative to radius at low eccentricities (at least 1, default 1.3).
+-	`scale factor farthest apoapsis` Factor determining apoapsis farthest distance relative to radius at high eccentricities (at least 1, default 4, must be greater or equal to the previous value).
+-	Generally, just modify `max eccentricity` down for more similar orbits or up for more chaotic orbits, and shift the `scale factor`s closer to 1 proportionally to get tighter orbits, or away from 1 to get "looser" orbits. Feel free to experiment.
 
 ```html
 "invisible fence" <distance#>
@@ -334,13 +362,31 @@ link <system>
 The name of a system that this system is linked to. Linked systems can be traveled between using a hyperdrive or jump drive regardless of the distance. Systems can be linked to multiple other systems at once.
 
 ```html
-asteroids <name> <count#> <energy#>
-minables <name> <count#> <energy#>
+asteroids <name> [<count#> [<energy#>]]
+	count <count#>
+	energy <energy#>
+	to spawn
+		<conditions>...
+minables <name> [<count#> [<energy#> [<belt#>]]]
+	count <count#>
+	energy <energy#>
+	belt <belt#>
+	to spawn
+		<conditions>...
 ```
 
 The name of the asteroids in this system, as well as the number of the asteroids and their energy. The energy of an asteroid determines how fast it moves and rotates, with higher values meaning faster asteroids. A random value between 0 and the energy value is used for each of the asteroids when they are created, meaning that high energy values may still result in slow asteroids.
 
-If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the system's `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
+If an asteroid is minable, then it uses the `minables` keyword. Unlike normal asteroids, which travel randomly throughout the system and are [tiled](TiledAsteroids), minable asteroids will orbit around the chosen `belt` distance. Note that minable asteroids names refer to a defined [minable](CreatingMinables), while normal asteroid names refer to the sprite name.
+
+ **Beginning in v. 0.10.18**:
+-	minables can be assigned to specific belts, all asteroids can have `to spawn` conditions, and the `count`, `energy`, and `belt` arguments can optionally be given as subnodes, to improve readability of more complex definitions.
+-	`<count#>` must be specified either as first token after `name` or using the `count` subnode. It must be an integer greater than zero.
+-	`<energy#>` must be specified either as second token after `name` or using the `energy` subnode. It must be greater than zero.
+-	`<belt#>` can be specified either as third token after `name` or using the `belt` subnode. The default is to pick a belt randomly using the belt's weights. I given, it is an index into the belt specifications in order of definition, beginning at 1.
+-	`<to spawn>` is optional and uses standard condition sets as described e.g. for [NPCs](CreatingMissions#non-player-characters-npcs). The conditions are evaluated once each time you enter a system.
+-	Note that when changing belts and/or minables in [events](CreatingEvents), pay attention not to assign belts to minables before the belt exists, or an error will be logged to `errors.txt`. Using `to spawn` instead is preferable.
+
 
 ```html
 trade <commodity> <cost#>
