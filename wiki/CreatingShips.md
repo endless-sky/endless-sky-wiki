@@ -193,6 +193,14 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
 
+* `"locked"`: If this tag is included (no value need be specified for it), this ship will spawn with its computers locked, just like if a ship is captured with the [`"lock on capture"` gamerule](Gamerules) active. *This tag is not "inherited" by variants of a ship.* **(v. 0.11.1)**
+
+* `"always locked"`: If this tag is included, (no value need be specified for it), then if this ship ever becomes "locked", it cannot be rewired at a shipyard. *This tag is not "inherited" by variants of a ship.* **(v. 0.11.1)**
+
+* `"never locked"`: If this tag is included, (no value need be specified for it), then this ship will not become locked if it is captured. *This tag is not "inherited" by variants of a ship.* **(v. 0.11.1)**
+
+* `"rewiring multiplier"`: The multiplier applied to the rewiring costs of a ship. This stacks multiplicatively with the [`"rewiring cost multiplier"` gamerule](Gamerules) as well as the [`"rewiring multiplier"` of the current shipyard's government](CreatingGovernments). If this is negative, the `"rewiring multiplier"` is treated as though it is equal to 0. **(v. 0.11.1)**
+
 * `"swizzle"`: the name of the swizzle that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
 
   Since **v. 0.10.13**, you can now use named swizzles. All previous numbered swizzles are still available.
