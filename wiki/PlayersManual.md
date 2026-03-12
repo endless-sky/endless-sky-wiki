@@ -229,9 +229,9 @@ It is highly recommended that when outfitting your ship, you pay attention to th
 
 Heat may also be used as a weapon. Pirates, in particular, are notorious for running their ships hot, and you may be able to find some weapons that heat up the target ship in addition to damaging it. For a pirate vessel coming in with all guns blazing, that little extra bit of heat may be enough to push it over the edge. Heat weapons are most effective on ships whose shields are down.
 
-## Presets
+## Loadouts
 
-The outfitter also has a section where you can create, manage, and *apply* "Presets" to your vessels. As your fleet grows, you may find yourself wishing you could simply draw up a blueprint and tell your subordinates how to outfit any given ship, and then tell them to apply it to *all* your ships. The Presets system allows you to do that. It will not spawn outfits from the ether, and it will not give you the outfits for free. You must still source them from from wherever you would have sourced them if you were using the outfitter normally.
+The outfitter also has a section where you can create, manage, and *apply* "Loadouts" to your vessels. As your fleet grows, you may find yourself wishing you could simply draw up a blueprint and tell your subordinates how to outfit any given ship, and then tell them to apply it to *all* your ships. The Loadouts system allows you to do that. It will not spawn outfits from the ether, and it will not give you the outfits for free. You must still source them from from wherever you would have sourced them if you were using the outfitter normally.
 
 These blueprints can also be traded with other pilots. Perhaps you might discover powerful ship loadouts created by other captains...
 
