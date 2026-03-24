@@ -352,7 +352,8 @@ Trading panel: | &nbsp;
 :--- | :---
 Buy | +, Return, or Space
 Sell | -, Delete, or Backspace
-Buy / sell all | Shift + B / S
+Buy all | U or Shift + B
+Sell all | E or Shift + S
 Sell minables | M
 Sell outfits | F
 View commodity price map | Map key
