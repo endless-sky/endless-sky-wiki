@@ -655,7 +655,7 @@ By default, ports don't display spaceport news when you enter them. To display n
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
 
-A `landscape` node can be used to provide a single custom sprite to display when the player clicks the Spaceport button.
+Beginning in **v. 0.11.1**, a `landscape` node can be used to provide a single custom sprite to display when the player clicks the Spaceport button.
 
 Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
