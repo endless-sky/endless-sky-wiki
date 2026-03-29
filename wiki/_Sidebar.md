@@ -58,6 +58,7 @@
 * [Location filters](LocationFilters)
 * [Image formats](ImageFormats)
 * [Sprite animation parameters](SpriteData)
+* [Content style guide](Content-Style-Guide)
 
 **Compiling or modifying the source code**
 
