@@ -489,7 +489,9 @@ Objects are capable of having objects as children. This allows for the creation 
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -569,15 +571,12 @@ There are three attributes that get automatically added to a planet: `spaceport`
 One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
-[add] landscape <sprite>...
+landscape <sprite>...
 	<sprite> [<weight>]
 	...
 ```
-```html
-remove landscape <sprite>...
-```
 
-The weighted set of landscape images, one of which will be randomly shown when landed on this planet. If neither "add" nor "remove" are specified, the previous list of images is cleared and replaced with the new list. Sprites listed on the same line as "landscape" will have a weight of 1.
+The landscape image that is shown when landed on this planet. Beginning in **v. 0.11.1**, planets can have more than one landscape image, with the landscape image shown upon landing being picked randomly from the list of possible images. If landscape images are provided in line with the `landscape` node, then each image has an equal chance of being displayed. If provided as child nodes, each sprite can be given a weight. Weighted landscape sprites are chosen in the same manner as weighted variants in [fleets](CreatingFleets).
 
 ```html
 music <sound>
