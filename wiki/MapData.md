@@ -86,7 +86,9 @@ system <name>
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -111,6 +113,7 @@ planet <name>
 			<condition-set>
 		news
 		description <text>
+		landscape <sprite>
 	government <name>
 	shipyard <name>
 	outfitter <name>
@@ -487,7 +490,9 @@ Objects are capable of having objects as children. This allows for the creation 
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -567,10 +572,12 @@ There are three attributes that get automatically added to a planet: `spaceport`
 One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
-landscape <sprite>
+landscape <sprite>...
+	<sprite> [<weight>]
+	...
 ```
 
-The landscape image that is shown when landed on this planet.
+The landscape image that is shown when landed on this planet. Beginning in **v. 0.11.1**, planets can have more than one landscape image, with the landscape image shown upon landing being picked randomly from the list of possible images. If landscape images are provided in line with the `landscape` node, then each image has an equal chance of being displayed. If provided as child nodes, each sprite can be given a weight. Weighted landscape sprites are chosen in the same manner as weighted variants in [fleets](CreatingFleets).
 
 ```html
 music <sound>
@@ -629,6 +636,7 @@ port [<name>]
 		<condition-set>
 	news
 	description <text>
+	landscape <sprite>
 ```
 
 Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the `port` keyword. The `spaceport` keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
@@ -652,6 +660,8 @@ If a port has no `services` node, then it will not offer any services. As with `
 By default, ports don't display spaceport news when you enter them. To display news, add the `news` token.
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
+
+Beginning in **v. 0.11.1**, a `landscape` node can be used to provide a single custom sprite to display when the player clicks the Spaceport button.
 
 Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 

@@ -223,7 +223,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<bunks>` = the number of passengers
 * `<passengers>` = "passenger" or "passengers"
 * `<fare>` = "a passenger" or "N passengers," where N is the number of passengers
-* `<origin>` = planet (or ship) where the mission was offered
+* `<origin>` = the name of the planet that the mission was offered on, or the name of the ship you boarded for `boarding` and `assisting` missions, or the name of the system for `entering` and `transition` missions
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>` in the `<system>` system"
@@ -247,6 +247,13 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<current system>` = the system that the player is currently in **(v. 0.11.1)**
 * `<previous planet>` = the planet that the player was landed on prior to the current one **(v. 0.11.1)**
 * `<previous system>` = the system the player was in prior to the current one **(v. 0.11.1)**
+* `<start planet>` = the display name of the planet you started on **(v. 0.11.1)**
+* `<start system>` = the display name of the system containing the planet you started on **(v. 0.11.1)**
+* `<start date>` = the date you started the game, in a short form **(v. 0.11.1)**
+* `<start long date>` = the date you started the game, in a more verbose form **(v. 0.11.1)**
+* `<start credits>` = the amount of credits you started with **(v. 0.11.1)**
+* `<start credit score>` = your starting credit score **(v. 0.11.1)**
+* `<start debt>` = the total amount of debt, of all kinds, that you started with **(v. 0.11.1)**
 
 These placeholders will be substituted in any text in the following places:
 
