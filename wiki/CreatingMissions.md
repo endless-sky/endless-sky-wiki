@@ -867,7 +867,7 @@ on enter
 	...
 ``` 
 
-Beginning in **v. 0.10.17**, mission triggers may define more than one action for a single trigger. This is done by defining the same trigger node multiple times:
+Beginning in **v. 0.11.x**, mission triggers may define more than one action for a single trigger. This is done by defining the same trigger node multiple times:
 ```
 on complete
 	# Do something
@@ -1084,11 +1084,11 @@ to trigger
 			...
 ```
 
-Beginning in **v. 0.10.17**, an action can be configured to run only if the `to trigger` condition passes. The condition will be evaluated at the moment the trigger fires, and if it is false, then the action will not run. If multiple actions are defined for the same trigger, the first one that passes its `to trigger` check will "block" the others, preventing them from running. If the trigger is a type which can occur more than once (such as `on enter`), then it will check the `to trigger` condition every time until one of its actions succeeds.
+Beginning in **v. 0.11.x**, an action can be configured to run only if the `to trigger` condition passes. The condition will be evaluated at the moment the trigger fires, and if it is false, then the action will not run. If multiple actions are defined for the same trigger, the first one that passes its `to trigger` check will "block" the others, preventing them from running. If the trigger is a type which can occur more than once (such as `on enter`), then it will check the `to trigger` condition every time until one of its actions succeeds.
 
 ```html
 non-blocking
 ```
-Beginning in **v. 0.10.17**, a successful action will block other actions on that same trigger from running. This can be overridden by marking the action as `non-blocking`, in which case that action will never block other actions. `non-blocking` cannot be used with the `on offer` trigger.
+Beginning in **v. 0.11.x**, a successful action will block other actions on that same trigger from running. This can be overridden by marking the action as `non-blocking`, in which case that action will never block other actions. `non-blocking` cannot be used with the `on offer` trigger.
 
 If all actions on a trigger are non-blocking, and the trigger is a type which can occur more than once (such as `on enter`), then that trigger will run its actions every time the trigger happens, for as long as the mission is active (or longer, if `can trigger after failure` is present.)
