@@ -27,7 +27,7 @@ sprite <name>
 	[sprite properties...]
 ```
 
-The sprite to use for this affect. Details on this definition can be found on the [sprite data](SpriteData) page.
+The sprite to use for this effect. Details on this definition can be found on the [sprite data](SpriteData) page.
 
 # Other attributes
 

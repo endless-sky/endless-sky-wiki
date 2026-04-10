@@ -576,6 +576,7 @@ This is mainly as a reminder that `const int *x` means that *x is a const int, n
 ```c++
 int* x, y; // x is a pointer, but y is an int! Probably not what you intended.
 ```
+If you need a const pointer to a const int, write `const int *const x`.
 
 ## Unary operators
 

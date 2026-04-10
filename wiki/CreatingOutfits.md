@@ -76,7 +76,7 @@ The existing valid vanilla outfit categories are the following:
 
 * Beginning with **v. 0.9.13**, the sound and effects of a drive can be customized. If multiple drives are installed that each have their own sounds and effects, then all sounds and effects are played at once. If a ship does not define any sounds to be played, default sounds will be used. These default sounds have the following names: "jump drive", "hyperdrive", "jump in", "hyperdrive in", "jump out", and "hyperdrive out".
 
-  * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive. If a ship has multiple jump effects on it (such as from different outfits, or one outfit could have multiple jump effects), then the number of effects created is evenly spread across each unique effect name. For example, if one outfit had `"jump effect" "A"` and another had both `"jump effect" "A"` and `"jump effect" "B"`, then relative to an outfit with no effects, the ship would create half of effect A and half of effect B. If a ship is jumping and none of its outfits have a `"jump effect"` attribute, then the default "jump drive" effect name is used. Beginning with **v. 0.10.17**, this attribute can take an optional second value which is a fraction of the normal number of effects that should be created when jumping. For example, `"jump effect" "jump drive" 0.5` would create 50% as many effects compared to normal. This value does stack additively with multiple outfits, up to a maximum of 100%. Not specifying this optional value uses the default of 100%.
+  * `"jump effect"`: the [effect](CreatingEffects) that is created on a ship when using a jump drive. If a ship has multiple jump effects on it (such as from different outfits, or one outfit could have multiple jump effects), then the number of effects created is evenly spread across each unique effect name. For example, if one outfit had `"jump effect" "A"` and another had both `"jump effect" "A"` and `"jump effect" "B"`, then relative to an outfit with no effects, the ship would create half of effect A and half of effect B. If a ship is jumping and none of its outfits have a `"jump effect"` attribute, then the default "jump drive" effect name is used. Beginning with **v. 0.11.0**, this attribute can take an optional second value which is a fraction of the normal number of effects that should be created when jumping. For example, `"jump effect" "jump drive" 0.5` would create 50% as many effects compared to normal. This value does stack additively with multiple outfits, up to a maximum of 100%. Not specifying this optional value uses the default of 100%.
 
   * `"jump sound"`: The sound that the flagship's jump drive makes when jumping. For other ships, use `"jump in sound"` and `"jump out sound"` for the sound that is played when other ships jump into or out of the player's current system.
 
@@ -622,7 +622,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
-  * `"optical jamming"`: how much resistance this ship has to optical tracking. The missile's chance of maintaining its lock is proportional to its `"optical tracking"` value divided by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
+  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceived mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
@@ -692,6 +692,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
   * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
+
+* `"exclude submunition damage"`: exclude the damage from the submunitions of this weapon's projectiles when dealing damage to a target. **(v. 0.11.1)**
 
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
@@ -918,6 +920,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
   * `"leak damage"`: how much leak is added to a target when struck by this projectile, draining the target's fuel over time. If the target's shields are up, all incoming leak damage is ignored. **(v. 0.9.15)**
 
   * `"burn damage"`: how much burn is added to a target when struck by this projectile, increasing the target's heat over time. If the target's shields are up, incoming burn damage is cut in half. **(v. 0.9.15)**
+
+* `"triggers nuke alert"`: when an enemy fires this projectile, an alert triggers for the player. **(v. 0.11.1)**
 
 # Sales
 

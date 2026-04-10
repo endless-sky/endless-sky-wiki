@@ -54,6 +54,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating text substitutions](CreatingSubstitutions)
 * [Editing interfaces](CreatingInterfaces)
 * [Creating messages](CreatingMessages)
+* [Editing gamerules](Gamerules)
 * [Player Conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
 * [Location filters](LocationFilters)

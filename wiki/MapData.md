@@ -86,7 +86,9 @@ system <name>
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -111,6 +113,7 @@ planet <name>
 			<condition-set>
 		news
 		description <text>
+		landscape <sprite>
 	government <name>
 	shipyard <name>
 	outfitter <name>
@@ -487,7 +490,9 @@ Objects are capable of having objects as children. This allows for the creation 
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -523,6 +528,13 @@ planet <name>
 	tribute <credits#>
 		threshold <rating#>
 		fleet <name> <count#>
+	"tribute hails"
+		"already paying" <phrase>
+		"undefined" <phrase>
+		"unworthy" <phrase>
+		"fleet launching" <phrase>
+		"fleet undefeated" <phrase>
+		"surrendered" <phrase>
 ```
 
 Planets are landable objects, and are where players are capable of buying and selling ships, finding jobs, and discovering missions.
@@ -560,10 +572,12 @@ There are three attributes that get automatically added to a planet: `spaceport`
 One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
-landscape <sprite>
+landscape <sprite>...
+	<sprite> [<weight>]
+	...
 ```
 
-The landscape image that is shown when landed on this planet.
+The landscape image that is shown when landed on this planet. Beginning in **v. 0.11.1**, planets can have more than one landscape image, with the landscape image shown upon landing being picked randomly from the list of possible images. If landscape images are provided in line with the `landscape` node, then each image has an equal chance of being displayed. If provided as child nodes, each sprite can be given a weight. Weighted landscape sprites are chosen in the same manner as weighted variants in [fleets](CreatingFleets).
 
 ```html
 music <sound>
@@ -600,7 +614,7 @@ to access (outfitter | shipyard)
 	<condition-set>
 ```
 
-Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
 * `to know`: Controls whether the object that the planet is associated with is seen as a landable object. If this is false, the object won't appear landable.
 * `to land`: Controls whether the player can land on the planet. If false, you won't be able to land, and hailing the planet will tell you that you are denied landing access and cannot bribe your way onto the planet.
@@ -622,6 +636,7 @@ port [<name>]
 		<condition-set>
 	news
 	description <text>
+	landscape <sprite>
 ```
 
 Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the `port` keyword. The `spaceport` keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
@@ -646,7 +661,9 @@ By default, ports don't display spaceport news when you enter them. To display n
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
 
-Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+Beginning in **v. 0.11.1**, a `landscape` node can be used to provide a single custom sprite to display when the player clicks the Spaceport button.
+
+Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
 * `to access`: Controls whether the player can access anything that is a part of the spaceport upon landing, including any port services, recharging types, either of the shops, and the port button itself.
 * `to bribe`: If true, you will be required to pay a bribe before landing.
@@ -686,7 +703,7 @@ If no security is specified, then a default security of 0.25 is used.
 "bribe fraction" <reputation#>
 ```
 
-Beginning in **v. 0.10.17**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, this planet will not accept bribes to provide landing clearance when the player's reputation is below this value.
+Beginning in **v. 0.11.0**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, this planet will not accept bribes to provide landing clearance when the player's reputation is below this value.
 The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
 
 ```html
@@ -728,7 +745,30 @@ The fleet that is spawned from this planet if the player demands tribute from it
 "daily reputation penalty" <amount#>
 ```
 
-The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.10.17)**
+The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.11.0)**
+
+```html
+"tribute hails"
+	"already paying" <phrase>
+	"undefined" <phrase>
+	"unworthy" <phrase>
+	"fleet launching" <phrase>
+	"fleet undefeated" <phrase>
+	"surrendered" <phrase>
+```
+
+With these hails, you can customize how a planet responds when the player demands tribute from it. Tribute hails defined on a planet will override tribute hails defined by the government. **(v0.11.1)**
+The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
+The default values if a key is not provided are:
+```bash
+"already paying" "We are already paying you as much as we can afford."
+"undefined" "Please don't joke about that sort of thing."
+"unworthy" "You're not worthy of our time."
+"fleet launching" "Our defense fleet will make short work of you."
+"fleet undefeated" "We're not ready to surrender yet."
+"surrendered" "We surrender. We will pay you <credits> per day to leave us alone."
+```
+Note that you still need to use phrases and not sentences.
 
 # Wormholes
 

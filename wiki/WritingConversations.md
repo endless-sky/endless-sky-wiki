@@ -76,7 +76,7 @@ You can go to labels earlier on in the conversation if you want, but be careful 
 
 Both texts and choices can also be hidden based on a condition that is part of a "to display" node.
 
-Beginning in **v. 0.10.17**, choices can be given a "to activate" node. If the conditions of the "to activate" do not pass, then the choice will be drawn with darkened text, and the player will be unable to select it. Make sure that players always have at least one active choice, as otherwise they will be unable to progress.
+Beginning in **v. 0.11.0**, choices can be given a "to activate" node. If the conditions of the "to activate" do not pass, then the choice will be drawn with darkened text, and the player will be unable to select it. Make sure that players always have at least one active choice, as otherwise they will be unable to progress.
 
 # Scenes
 
@@ -235,7 +235,7 @@ A branch can be used without any conditions, in which case it will always jump t
 goto <label>
 ```
 
-Beginning in **v. 0.10.17** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label. One use for this is performing actions without changing the text that the player sees:
+Beginning in **v. 0.11.0** the `goto` keyword can be used as a conversation node on its own. When used this way, it will take the conversation to the specified label. One use for this is performing actions without changing the text that the player sees:
 
 ```html
 conversation

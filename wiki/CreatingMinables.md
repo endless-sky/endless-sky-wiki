@@ -15,6 +15,8 @@ minable <name>
 	"live effect" <effect> [<interval#>]
 		["relative to system center"]
 	explode <effect> <count#>
+	attributes
+		...
 ```
 
 Minable asteroids are asteroids that are capable of being destroyed, and orbit around the system center instead of traveling in a single direction like normal, indestructible asteroids. Once destroyed, these asteroids will drop outfits that can be picked up.
@@ -85,3 +87,17 @@ explode <effect> <count#>
 ```
 
 The [effect](CreatingEffects) that is created when this asteroid is destroyed, and how many times it is created. A minable asteroid can have multiple explosion effects.
+
+```html
+attributes
+	...
+```
+
+Beginning with **v. 0.11.1**, minables can have an [attributes](CreatingOutfits) node.
+
+Only the following attributes have an influence on the minable's behavior:
+* Attributes that influence the tracking capabilities of missiles targeting the minable:
+	* `mass`
+	* `"heat capacity"`
+	* `"optical jamming"`
+	* `"radar jamming"`
