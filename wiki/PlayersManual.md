@@ -289,6 +289,8 @@ Key bindings can be viewed and changed by clicking on the "Preferences..." butto
 
 ## Default key bindings
 
+### Navigation
+
 Command | Default key
 :--- | :---
 Forward thrust | Up
@@ -301,11 +303,24 @@ Auto steer | E
 Land on planet / station | L
 Initiate hyperspace jump | J
 Jump as a fleet | Shift + J
-Fire primary weapons | Tab
-Select secondary weapon | W
-Fire secondary weapon | Q
-Toggle cloaking device | C
-Mouse turning (hold) | Left Alt
+
+### Fleet
+
+Command | Default key
+:--- | :---
+Deploy / recall fighters | D
+Fleet: Fight my target | F
+Fleet: Toggle hold fire | Y
+Fleet: Gather around me | G
+Fleet: Change formation | Shift + G
+Fleet: Hold position | H
+Fleet: Toggle ammo usage | U
+Fleet: Harvest flotsam | Z
+
+### Targeting
+
+Command | Default key
+:--- | :---
 Select nearest hostile ship | R
 Select nearest ship | Shift + R
 Select next ship | N
@@ -316,6 +331,23 @@ Board selected ship / cycle boarding target | B
 Board disabled escort | Shift + B
 Select nearest asteroid | V
 Scan selected ship | S
+
+### Weapons
+
+Command | Default key
+:--- | :---
+Fire primary weapons | Tab
+Toggle turret tracking | (not set)
+Select secondary weapon | W
+Fire secondary weapon | Q
+Toggle cloaking device | C
+Mouse turning (hold) | Left Alt
+Turret aim override (hold) | (not set)
+
+### Interface
+
+Command | Default key
+:--- | :---
 Show main menu | Escape
 View star map | M
 View player info | I
@@ -324,13 +356,8 @@ Toggle fast-forward | Caps Lock
 Pause | P
 Show help | F1
 View message log | /
-Deploy / recall fighters | D
-Fleet: Fight my target | F
-Fleet: Toggle hold fire | Y
-Fleet: Gather around me | G
-Fleet: Hold position | H
-Fleet: Toggle ammo usage | U
-Fleet: Harvest flotsam | Z
+Toggle performance info | F3
+
 
 ## Keyboard shortcuts
 
