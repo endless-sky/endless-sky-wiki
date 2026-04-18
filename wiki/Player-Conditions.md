@@ -167,7 +167,6 @@ Ship/fleet strength:
 * `"government strength: <government>"` is the combat strength of all ships belonging to that government in the system. **(v. 0.10.15)**
 * `"ally strength: <government>"` is the strength of all ships friendly to that government in the system, or 0 if there are no hostiles. **(v. 0.10.15)**
 * `"enemy strength: <government>"` is the strength of all ships hostile to that government in the system. **(v. 0.10.15)**
-* `"enemy: <government name>"` will be equal to 1 if you are hostile to the government with the given name (your reputation with the government is negative or you have provoked them), and 0 if they are friendly (your reputation with the government is positive or you have bribed them). **(v. 0.11.0)**
 
 Pilot information:
 * `"name: <first> <last>"` is the full name of the pilot. **(v. 0.10.0)**
@@ -202,6 +201,7 @@ Other:
         * None = 0
         * Only Player = 1
         * All = 2
+* `"enemy: <government name>"` will be equal to 1 if you are hostile to the government with the given name (your reputation with the government is negative or you have provoked them), and 0 if they are friendly (your reputation with the government is positive or you have bribed them). **(v. 0.11.0)**
 
 ## Value expressions
 
