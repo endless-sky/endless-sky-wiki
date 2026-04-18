@@ -76,6 +76,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"combat rating"` is your current combat rating (based on the strength of all the ships your fleet has disabled).
 * `"tribute: <planet>"` is the amount of tribute that you are receiving from the given planet.
 * `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.10.0)**
+* `"pilot: <condition>` is any condition which gets set in the pilot file associated with your current save. Pilot conditions can be set and accessed by all save files from the same pilot. **(v. 0.11.1)**
 
 ### Read-only
 
@@ -172,6 +173,9 @@ Pilot information:
 * `"name: <first> <last>"` is the full name of the pilot. **(v. 0.10.0)**
 * `"first name: <first>"` is just the first name. **(v. 0.10.0)**
 * `"last name: <last>` is just the last name. **(v. 0.10.0)**
+* `"original name: <first> <last>"` is the original full name of the pilot. **(v. 0.11.1)**
+* `"original first name: <first>"` is just the original first name. **(v. 0.11.1)**
+* `"original last name: <last>` is just the original last name. **(v. 0.11.1)**
 
 Account information:
 * `"net worth"` is your net worth, the sum of the worth of all your ships and outfits plus your current account balance minus any outstanding mortgages, fines, salaries, or maintenance.
