@@ -316,6 +316,7 @@ Fleet: Change formation | Shift + G
 Fleet: Hold position | H
 Fleet: Toggle ammo usage | U
 Fleet: Harvest flotsam | Z
+Fleet: Scan my target | (not set)
 
 ### Targeting
 
