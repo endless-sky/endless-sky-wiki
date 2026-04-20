@@ -77,6 +77,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"tribute: <planet>"` is the amount of tribute that you are receiving from the given planet.
 * `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.10.0)**
 * `"pilot: <condition>` is any condition which gets set in the pilot file associated with your current save. Pilot conditions can be set and accessed by all save files from the same pilot. **(v. 0.11.1)**
+* `"max escort count"`, `"max escort crew"`, and `"admin cap"` determine your current fleet capacity for the corresponding fleet size limitation [gamerule](Gamerules). Even if the current fleet size limitation gamerule is "none", these will return the values that would be your fleet capacity if the corresponding limitation were active. **(v. 0.11.1)**
 
 ### Read-only
 
