@@ -8,10 +8,6 @@
 
 # Outfit graphics
 
-The thumbnail graphics for all the outfits in the game are created using two free, open source programs: [Blender](https://www.blender.org/) for creating the 3D models, and [GIMP](https://www.gimp.org/) for post-processing the rendered images to look more grungy and less artificial. (Another open source program, [Inkscape](https://inkscape.org), is used for the vector graphics in the user interface.) You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
-
-Any outfit model you create in Blender should use the camera and lighting settings from [this template](https://raw.githubusercontent.com/EndlessSkyCommunity/EndlessSky-Discord-Bot/master/data/templates/outfittemplate.blend). That will ensure that your new thumbnails do not look out of place next to the existing ones. The template is set up with sunlight coming from a certain angle and with the image rendered in an orthographic projection along the XYZ diagonal, so that a cube in your model will line up exactly with the cubical grid used as a backdrop for the outfits.
-
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/particle%20cannon.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/meteor%20launcher.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/anti-missile.png)
@@ -30,7 +26,9 @@ In a few cases, it's ambiguous which direction something should point in. For ex
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/outfit/huge%20ion%20steering%402x.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/outfit/security%20station%402x.png)
 
-As with [ships](CreatingShips), it is often easier to add texture and color variation to the outfit images in GIMP rather than trying to texture map all the surfaces in Blender. And, also as with the ship graphics, be sure that your GIMP file is at least high enough resolution to create an "@2x" high resolution version.
+Most outfits are created using Blender. The [creating models](CreatingModels) page contains more detail on modeling and texturing outfits.
+
+Another open source program, [Inkscape](https://inkscape.org), is used for some outfits such as licenses, as well as the vector graphics in the user interface.
 
 # Outfit attributes
 
