@@ -474,7 +474,9 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `bunks`: additional crew / passenger space.
 
-  * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty).
+  * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty). If a ship has the `automaton` attribute, then the required crew will be treated as if it is 0 regardless of the actual value.
+
+  * `"mandatory crew"`: behaves similarly to `"required crew"` in that it adds to the crew of the ship, except it still has effect even when the `automaton` attribute is present. Useful for outfits that must be manned and cannot be automated. **(v. 0.11.2)**
 
   * `"crew equivalent"`: adds to the crew value of the ship when government reputation changes are applied for interacting with their ships. For example, a ship with a crew of 10 and a crew equivalent of 5 would be treated as if it had a crew of 15 for reputation hits, or a drone with a crew of 0 that normally doesn't incur a reputation hit for being destroyed can be given a crew equivalent of 1 so that a government cares about the destruction of its drones. This attribute is able to be negative, reducing the impact of interacting with a ship. Intended to be applied directly to ship hulls, rather than being on an outfit that the player could see. **(v. 0.9.15)**
 

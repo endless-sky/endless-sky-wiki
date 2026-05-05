@@ -220,7 +220,7 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"required crew"`: the number of crew members needed to operate the ship without anything failing.
 
-* `"automaton"`: if set to 1, this ship is allowed to have a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. **(v. 0.9.0)**
+* `"automaton"`: if set to 1, this ship is treated as if it has a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. Automata cannot be piloted as a flagship. **(v. 0.9.0)**
 
 * `"bunks"`: the maximum number of people on the ship, including crew and passengers.
 
