@@ -279,4 +279,4 @@ Since the game can run on both OpenGL and OpenGL ES, shaders can be defined for 
 
 Since **v. 0.11.0**, plugins can provide shaders compatible with OpenGL 2 if the player's machine doesn't support the standard OpenGL 3. To maintain compatibility with the game's code, in this situation `sampler2DArray` uniforms are replaced with `sampler3D`s.
 
-For cross-platform compatibility purposes, the game automatically adds a `#version` declaration, deducing the correct string based on what is reported by OpenGL. Since **v. 0.11.1**, you can specify a fixed `#version` declaration, and disable the automatic detection by adding `//autoversion off` in a separate line anywhere in your shader file.
+For cross-platform compatibility purposes, the game automatically adds a `#version` declaration, deducing the correct string based on what is reported by OpenGL. Since **v. 0.11.2**, you can specify a fixed `#version` declaration, and disable the automatic detection by adding `//autoversion off` in a separate line anywhere in your shader file.
