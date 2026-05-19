@@ -62,4 +62,12 @@ Each ship in the game can have a variety of "personality" flags that control its
 * `mute`: this ship will not talk to you if you hail it (and therefore can't assist you, either). **(v. 0.9.7)**
 * `quiet`: this ship will not send hails to you passively, but will still respond to hails if you hail it directly. **(v. 0.10.7)**
 
-In addition to these flags, the personality also stores a "confusion." This is a random error that is added to a ship's targeting systems, to make it look a bit more random and organic; otherwise, all AI ships would always fire at the exact center of their target, which looks rather unrealistic. The confusion value is the maximum error in pixels, and defaults to 10. Generally I use a value of 10 for military ships, 20 for pirates, 30 for skilled merchants and 40 for ordinary merchants.
+### Confusion
+
+Confusion is provided as a "child" node under `personality`.
+```html
+confusion <name>
+confusion
+	...
+```
+"Confusion" sets the [confusion settings](CreatingConfusions) of ships using this personality, overriding any confusion settings provided by the ships' government. Personalities can refer to a preexisting confusion profile, or can define their own custom confusion within themselves, using the same syntax as normal `confusion` data entry.

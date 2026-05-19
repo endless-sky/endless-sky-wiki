@@ -55,6 +55,7 @@
 * [Editing gamerules](Gamerules)
 * [Player conditions](Player-Conditions)
 * [Ship personalities](ShipPersonalities)
+* [Creating confusion profiles](CreatingConfusions)
 * [Location filters](LocationFilters)
 * [Image formats](ImageFormats)
 * [Sprite animation parameters](SpriteData)
