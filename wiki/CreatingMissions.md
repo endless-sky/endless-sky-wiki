@@ -919,7 +919,7 @@ dialog phrase <phrase>
 
 This gives a message to be displayed in a dialog message to the user. If the trigger is `on offer`, the dialog will have "accept" and "decline" buttons. Otherwise, it is a purely informational message and only an "okay" button is shown.
 
-Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions). Prior to **v. 0.11.2**, `to display` nodes were evaluated the moment the mission was created. Now, they are evaluated the moment the dialog is displayed, meaning that dialogs can react to condition changes that occured during the mission.
+Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions). Prior to **v. 0.11.2**, `to display` nodes were evaluated the moment the mission was created. Now, they are evaluated the moment the dialog is displayed, meaning that dialogs can react to condition changes that occurred during the mission.
 
 `dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs. Phrases can also be provided as child nodes that either refer to a named phrase or define a full phrase in place. The `to display` node can be used for named phrases, but not phrases defined in place.
 
