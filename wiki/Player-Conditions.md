@@ -207,6 +207,7 @@ Other:
         * Only Player = 1
         * All = 2
 * `"enemy: <government name>"` will be equal to 1 if you are hostile to the government with the given name (your reputation with the government is negative or you have provoked them), and 0 if they are friendly (your reputation with the government is positive or you have bribed them). **(v. 0.11.0)**
+* `scheduled event: <name>`, if the event with the given name is scheduled to occur, returns the number of days until it will occur. If multiple events of the same name are scheduled, the earliest event will be used. If an event is not scheduled, returns 0. **(v. 0.11.2)**
 
 ## Value expressions
 
