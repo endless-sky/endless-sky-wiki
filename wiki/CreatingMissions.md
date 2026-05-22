@@ -153,6 +153,11 @@ mission <name>
 			distance [<min>] <max>
 		dialog <text>
 			<text>...
+			phrase <phrase>
+				...
+			to display
+				<conditions>
+		dialog phrase <phrase>
 		conversation <name>
 		conversation
 			...
@@ -180,6 +185,10 @@ mission <name>
 		remove log <category> [<header>]
 		dialog <text>
 			<text>...
+			phrase <phrase>
+				...
+			to display
+				<conditions>
 		dialog phrase <phrase>
 		conversation <name>
 		conversation
@@ -622,6 +631,11 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 	planet <name>
 	dialog <text>
 		<text>...
+		phrase <phrase>
+			...
+		to display
+			<conditions>
+	dialog phrase <phrase>
 	conversation <name>
 	conversation
 		...
@@ -730,6 +744,11 @@ This specifies the exact name of the starting planet for all ships in the NPC de
 ```html
 dialog <text>
 	<text>...
+	phrase <phrase>
+		...
+	to display
+		<conditions>
+dialog phrase <phrase>
 conversation <name>
 conversation
 	...
@@ -803,6 +822,10 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	remove log <category> [<header>]
 	dialog <text>
 		<text>...
+		phrase <phrase>
+			...
+		to display
+			<conditions>
 	dialog phrase <phrase>
 	conversation <name>
 	conversation
@@ -887,14 +910,18 @@ Beginning with **v. 0.10.11**, this removes a log entry specified by the categor
 ```html
 dialog <text>
 	<text>...
+	phrase <phrase>
+		...
+	to display
+		<conditions>
 dialog phrase <phrase>
 ```
 
 This gives a message to be displayed in a dialog message to the user. If the trigger is `on offer`, the dialog will have "accept" and "decline" buttons. Otherwise, it is a purely informational message and only an "okay" button is shown.
 
-Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
+Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions). Prior to **v. 0.11.2**, `to display` nodes were evaluated the moment the mission was created. Now, they are evaluated the moment the dialog is displayed, meaning that dialogs can react to condition changes that occurred during the mission.
 
-`dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs.
+`dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs. Phrases can also be provided as child nodes that either refer to a named phrase or define a full phrase in place. The `to display` node can be used for named phrases, but not phrases defined in place. Phrases will be converted into a single line of text once the mission is instantiated, meaning that repeat displays of the same dialog (such as through an `on visit` node) will display the same message every time for the same mission.
 
 As mentioned previously, text replacement is done on keywords like "`<destination>`" and "`<payment>`" within the dialog text.
 
