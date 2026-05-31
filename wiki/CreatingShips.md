@@ -135,7 +135,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"angle" <degrees#>`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
 
-	* `"gimble" <degrees#>`: an additional angle added to the base angle when the ship is both thrusting (forward or backward) and turning at the same time. **(v. 0.10.5)**
+	* `"gimbal" <degrees#>`: an additional angle added to the base angle when the ship is both thrusting (forward or backward) and turning at the same time. **(v. 0.10.5)**
 
 	* `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite instead of under it.
 
