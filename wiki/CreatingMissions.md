@@ -407,7 +407,7 @@ This specifies that a snapshot named "autosave" should be created when this miss
 lastsafesave
 ```
 
-This specifies that a snapshot named "lastsafesave" should be created when this mission is accepted. A last safe save can be created while in space. LastSafeSaveLabel will be appended to the file name to differentiate it from other saves created by other missions to avoid conflicts. (Addded in **v. 0.11.3**)
+This specifies that a snapshot named "lastsafesave" should be created when this mission is accepted. A last safe save can be created while in space. LastSafeSaveLabel will be appended to the file name to differentiate it from other saves created by other missions to avoid conflicts. (Added in **v. 0.11.3**)
 
 ```html
 "apparent payment" <amount>
