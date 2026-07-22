@@ -917,7 +917,7 @@ outfit <outfit> [<number#>]
 require <outfit> [<number#>]
 ```
 
-At this point in the mission, the named ship outfit (or some number of them, if a number is given) is installed in the player's flagship, or placed in the player's cargo if the flagship has no outfit space for it. If the number is negative, outfits are taken away, checking the player's flagship and the cargo holds of all in-system ships, or only the flagship's cargo if this is a boarding mission. If a mission removes outfits in its "complete" phase, it cannot be completed unless that outfit exists. This makes it possible to loan the player an outfit for the duration of a mission, or to require that the player disable a non-NPC ship and steal a particular piece of technology from it.
+At this point in the mission, the named ship outfit (or some number of them, if a number is given) is installed in the player's flagship, or placed in the player's cargo if the flagship has no outfit space for it. If the number is negative, outfits are taken away, checking the player's flagship and the cargo holds of all in-system ships, or only the flagship's cargo if this is trigger is occurring while in flight or while boarding. If a mission removes outfits in its "complete" phase, it cannot be completed unless that outfit exists. This makes it possible to loan the player an outfit for the duration of a mission, or to require that the player disable a non-NPC ship and steal a particular piece of technology from it.
 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
 
