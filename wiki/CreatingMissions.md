@@ -84,7 +84,7 @@ mission <name>
 	(priority | minor | non-blocking)
 	(job | landing | assisting | boarding | shipyard | outfitter | "job board" | entering | transition)
 	autosave <austoSaveLabel>
-	lastsafesave <lastSafeSaveLabel>
+	"create checkpoint" <checkpointLabel>
 	"apparent payment" <amount>
 	boarding
 		"override capture"
@@ -404,10 +404,10 @@ autosave
 This specifies that a snapshot named "autosave" should be created when this mission is accepted. If a snapshot with this name already exists, it will be overwritten.  Beginning in **v. 0.11.3**, autosave can be appended with a token <autoSaveLabel> which allows for named autosave files to mitigate conflicts.
 
 ```html
-lastsafesave
+"create checkpoint"
 ```
 
-This specifies that a snapshot named "lastsafesave" should be created when this mission is accepted. A last safe save can be created while in space. LastSafeSaveLabel will be appended to the file name to differentiate it from other saves created by other missions to avoid conflicts. (Added in **v. 0.11.3**)
+This specifies that a snapshot named "checkpoint" should be created when this mission is accepted. A checkpoint can be created while in space. <checkpointLabel> will be appended to the file name to differentiate it from other checkpoints created by other missions to avoid conflicts. (Added in **v. 0.11.3**)
 
 ```html
 "apparent payment" <amount>
