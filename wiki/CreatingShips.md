@@ -135,7 +135,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"angle" <degrees#>`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
 
-	* `"gimble" <degrees#>`: an additional angle added to the base angle when the ship is both thrusting (forward or backward) and turning at the same time. **(v. 0.10.5)**
+	* `"gimbal" <degrees#>`: an additional angle added to the base angle when the ship is both thrusting (forward or backward) and turning at the same time. **(v. 0.10.5)**
 
 	* `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite instead of under it.
 
@@ -193,6 +193,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
 
+* `"administrative cost"`: If the fleet size limitation [gamerule](Gamerules) is set to "administrative capacity", then this is the cost of this ship toward your fleet capacity. **(v. 0.11.1)**
+
 * `"swizzle"`: the name of the swizzle that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
 
   Since **v. 0.10.13**, you can now use named swizzles. All previous numbered swizzles are still available.
@@ -218,7 +220,7 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"required crew"`: the number of crew members needed to operate the ship without anything failing.
 
-* `"automaton"`: if set to 1, this ship is allowed to have a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. **(v. 0.9.0)**
+* `"automaton"`: if set to 1, this ship is treated as if it has a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. Automata cannot be piloted as a flagship. **(v. 0.9.0)**
 
 * `"bunks"`: the maximum number of people on the ship, including crew and passengers.
 
