@@ -863,7 +863,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `anti-missile`: turns the weapon into an anti-missile turret and measures the weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
 
-  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The mass of the flotsam does not influence the velocity that it is pulled in with; all flotsam is treated as if it is 5 tons when measuring the pull force. **(v. 0.10.5)**
+  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The mass of the flotsam does not influence the velocity that it is pulled in with. **(v. 0.10.5)**
   
     * Prior to **v. 0.11.3**, the pull velocity of a flotsam was divided by its mass. 
 
