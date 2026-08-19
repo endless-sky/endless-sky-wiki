@@ -619,6 +619,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.10.0)**
 
   * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
+  
+  * `"can jettison"`: if set to 1, this outfit is able to be jettisoned from the ship info panel while in flight. **(v. 0.11.3)**
 
   * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
 
