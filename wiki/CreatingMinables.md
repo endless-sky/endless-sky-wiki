@@ -101,3 +101,9 @@ Only the following attributes have an influence on the minable's behavior:
 	* `"heat capacity"`
 	* `"optical jamming"`
 	* `"radar jamming"`
+* Damage protection and DoT resistance: (**v. 0.11.3**)
+	* `"hull protection"`, `"heat protection"`, `"corrosion protection"`, `"burn protection"`
+	* `"corrosion resistance"`, `"burn resistance"`, and the associated cost attributes.
+* Heat related attributes: (**v. 0.11.3**)
+	* `"heat dissipation"`
+	* `"overheat damage threshold"` and `"overheat damage rate"`.
