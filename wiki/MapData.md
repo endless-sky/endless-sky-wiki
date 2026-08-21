@@ -290,6 +290,8 @@ An additional distance at which ships arrive (or depart **(v0.9.17)**) in this s
 Negative values are allowed for link arrival distances, and will move the point at which the ship enters the system away from the direction it is coming from, rather than towards it as positive values do.
 Providing a value other than zero will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
 
+Beginning in **v. 0.11.3**, systems can have their arrival distance be automatically calculated to match their habitable distance (within a certain range) using [gamerules](Gamerules#system-behavior). These rules are on by default in vanilla, so new systems contributed to the main game do not need to define an arrival distance except for special purposes.
+
 ```html
 ramscoop
 	universal <value#>
