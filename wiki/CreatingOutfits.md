@@ -474,7 +474,9 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `bunks`: additional crew / passenger space.
 
-  * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty).
+  * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty). If a ship has the `automaton` attribute, then the required crew will be treated as if it is 0 regardless of the actual value.
+
+  * `"mandatory crew"`: behaves similarly to `"required crew"` in that it adds to the crew of the ship, except it still has effect even when the `automaton` attribute is present. Useful for outfits that must be manned and cannot be automated. **(v. 0.11.2)**
 
   * `"crew equivalent"`: adds to the crew value of the ship when government reputation changes are applied for interacting with their ships. For example, a ship with a crew of 10 and a crew equivalent of 5 would be treated as if it had a crew of 15 for reputation hits, or a drone with a crew of 0 that normally doesn't incur a reputation hit for being destroyed can be given a crew equivalent of 1 so that a government cares about the destruction of its drones. This attribute is able to be negative, reducing the impact of interacting with a ship. Intended to be applied directly to ship hulls, rather than being on an outfit that the player could see. **(v. 0.9.15)**
 
@@ -604,7 +606,11 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These are miscellaneous attributes capable of being added to outfits.
 
-  * `"ammo"`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. **(v. 0.9.5)**
+  * `ammo <name>`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. You will also be prompted to purchase this ammo when available upon entering the outfitter if you have room for more. **(v. 0.9.5)**
+  
+    * Prior to **v. 0.11.1**, an outfit could only have one `ammo` node.
+
+  * `linked <name>`: considers the other outfit of the given name to be linked to this outfit. If this outfit is sold, the linked outfits will also be sold if doing so is necessary to keep any attributes within a valid range. Unlike the `ammo` attribute described above, you will not be prompted to buy linked outfits that you have room for. **(v. 0.11.1)**
 
   * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems (use `drag reduction` instead).
 
@@ -613,6 +619,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.10.0)**
 
   * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
+  
+  * `"can jettison"`: if set to 1, this outfit is able to be jettisoned from the ship info panel while in flight. **(v. 0.11.3)**
 
   * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
 
@@ -691,7 +699,17 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
-  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
+  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. Accepted values are:
+
+    * `natural`: the projectile died because its lifetime ran out. This also applies to projectiles that split into submunitions early due to the `"split range"` attribute. **(v. 0.10.9)**
+
+    * `anti-missile`: the projectile was destroyed by an anti-missile system. **(v. 0.10.9)**
+
+    * `explosion`: the projectile was destroyed in an explosion, either due to its `"trigger radius"` being set off, it reached the end of its lifetime and has the `"fused"` attribute, or because it was a ship explosion. **(v. 0.11.1)**
+
+    * `collision`: the projectile was destroyed when it collided with an object. **(v. 0.11.1)**
+
+* `"exclude submunition damage"`: exclude the damage from the submunitions of this weapon's projectiles when dealing damage to a target. **(v. 0.11.1)**
 
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
@@ -847,7 +865,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `anti-missile`: turns the weapon into an anti-missile turret and measures the weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
 
-  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the base velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The actual pull velocity is divided by the mass of the flotsam that is being pulled. **(v. 0.10.5)**
+  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The mass of the flotsam does not influence the velocity that it is pulled in with. **(v. 0.10.5)**
+  
+    * Prior to **v. 0.11.3**, the pull velocity of a flotsam was divided by its mass. 
 
 * `"split range"`: when the projectile is within this range of its target, it will split into its submunitions. (If no target was selected when the weapon was fired, this does nothing.)
 

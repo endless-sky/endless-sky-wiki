@@ -207,6 +207,9 @@ planet <name>
 	description <text>
 	spaceport <text>
 	government <name>
+	[(add | remove)] landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	[(add | remove)] attributes <value>...
 	[(add | remove)] shipyard <name>
 	[(add | remove)] outfitter <name>

@@ -34,7 +34,7 @@ The various parts of a person definition are described below.
 frequency <frequency#>
 ```
 
-At random intervals, averaging once every 10 minutes, there is an opportunity for a person to be created. The game looks for every person who has not already appeared since the last time the player took off from a planet, and who has not been killed by the player. It picks a random person to create based on the relative frequencies of all available special persons, which default to 100 if no value is given. That is, a person with a frequency of 200 is twice as likely to appear as one with the default frequency of 100.
+At random intervals, averaging once every 20 minutes (although this can vary based on the user's gamerules), there is an opportunity for a person to be created. The game looks for every person who has not already appeared since the last time the player took off from a planet, and who has not been killed by the player. It picks a random person to create based on the relative frequencies of all available special persons, which default to 100 if no value is given. That is, a person with a frequency of 200 is twice as likely to appear as one with the default frequency of 100.
 
 To reduce the rate of persons being created if there are not many of them, there is also a chance that no person will be created, and that chance has a frequency of 1000. So, for example, if there are only two persons in the game and they both have a frequency of 100, they each have a 100 / (100 * 2 + 1000) = 8.3% chance of appearing in a given ten-minute interval.
 
