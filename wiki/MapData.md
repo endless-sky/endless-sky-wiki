@@ -8,7 +8,7 @@
   * [Tribute](#tribute)
 * [Wormholes](#wormholes)
 * [Landing Messages](#landing-messages)
-* [Solar Attributes](#solar-attributes)
+* [Stellar Object Attributes](#stellar-object-attributes)
 * [Ambient Music](#ambient-music)
 
 # Introduction
@@ -306,6 +306,8 @@ habitable <distance#>
 
 The distance of the "Goldilocks zone" in this system. When selecting a system on the map, the orbits of the objects in the system will be colored in relation to their distance from this value. If an object's distance is near this value, its orbit will be green. If an object's distance is farther than this value, then its orbit will fade from light to dark blue the further it is. If an object's distance if closer than this value, then its orbit will fade from yellow to red the closer to the system center it is.
 
+Beginning in **v. 0.11.3**, this token can be excluded from the system and it will be automatically calculated based off of the stars in the system. See [stellar object attributes](#stellar-object-attributes) for more details.
+
 ```html
 belt <distance#> [<weight#>]
 ```
@@ -456,6 +458,8 @@ period <period#>
 ```
 
 The number of days that it takes this object to orbit around the system center. Objects only move when the day changes, meaning that they will not move while the player is launched and in the system.
+
+Beginning in **v. 0.11.3**, this token can be excluded from the object and it will be automatically calculated based off of the body or bodies that this object orbits. See [stellar object attributes](#stellar-object-attributes) for more details.
 
 ```html
 offset <offset#>
@@ -824,16 +828,21 @@ By default, the color named `"map wormhole"` will be used.
 
 Landing messages are the message that is shown if attempting to land on an uninhabited object. The text of a landing message is what is shown, while the children of a landing message are the sprites that show this message.
 
-# Solar attributes
+# Stellar object attributes
+
+Attributes of stellar objects (stars, planets, and moons) can influence the behavior of other objects and ships within a system.
 
 ```html
 star <sprite>
 	power <power#>
 	wind <wind#>
 	icon <icon>
-```
+	habitable <distance#>
+	mass <mass#>
 
-There are certain attributes that a ship is capable of having that will change in effectiveness based off of the stars in the system.
+"planet mass" <mass#>
+	<sprite>
+```
 
 ```html
 star <sprite>
@@ -859,6 +868,35 @@ icon <icon>
 ```
 
 The sprite listed here is the sprite of the star icon from the map screen when the starry map view is enabled. **v. 0.10.11**
+
+
+```html
+habitable <distance#>
+```
+
+Beginning in **v. 0.11.3**, this defines the habitable distance for any system that contains this star sprite. This will only be used if the system doesn't already defined its own habitable distance. For systems with multiple stars, their values add together.
+
+```html
+mass <mass#>
+```
+
+Beginning in **v. 0.11.3**, this defines the mass of the star, for use in determining the orbital periods of objects that orbit it that do not already define their own orbital period. Orbital periods will be calculated as `sqrt(distance^3) / total star mass`, where the total star mass is the sum of all the stars in the system. For multi-star systems, the orbital period of the stars is `sqrt(pow(total star distance, 3.) / total star mass)`, where total star distance is the sum of the distances of each star from the system center.
+
+When adding up the total star mass, a star is any object whose sprite is within the `images/star/` folder. If none of the objects in a system have a sprite from this folder, the first object in the system is treated as a star for these calculations.
+
+For content creation purposes, the original calculations for mass and habitable distance were `mass = (radius^3) * 0.25` and `habitable = (radius^3) * 0.04`, where `radius` is the pixel radius of the star sprite. These exact calculations have not been used for some time after we revamped our star graphics and added a lot of new star types, but it can still be helpful as a means of inputting false radii to output values that follow a reasonable progression. New stars should instead scale their value relative to similar stars that already exist.
+
+```html
+"planet mass" <mass#>
+	<sprite>
+	...
+```
+
+Beginning in **v. 0.11.3**, this defines the mass of a list of planets, for use in determining the orbital periods of its moons that do not already define their own orbital period. Orbital periods will be calculated as `sqrt(distance^3) / parent planet mass`. You can list multiple sprites as children of this node that all share the same mass. Only sprites who will have moons orbiting them that don't set their own orbital period need to have a defined mass.
+
+For content creation purposes, the calculation we use for determining the mass of a planet is `(radius^3) * 0.015` where `radius` is the pixel radius of the planet sprite.
+
+For both stars and planets, the values need not exactly match the provided calculations. For example, you could have an object that appears large but is hollow and so has a low mass, or a star that is nearing the end of its life and expanding, therefore resulting in a further habitable distance but a similar mass to visually smaller stars. Barring such exceptions, using these calculations and comparing to existing objects within the game can be used as a baseline for new objects.
 
 # Ambient music
 
