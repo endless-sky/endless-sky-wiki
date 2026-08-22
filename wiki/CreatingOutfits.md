@@ -140,6 +140,14 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"delayed shield fuel"`: shield fuel that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
+  * `"docked shield generation"`: shield generation that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
+  * `"docked shield energy"`: shield energy that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
+  * `"docked shield heat"`: shield heat that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
+  * `"docked shield fuel"`: shield fuel that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
   * `"high shield permeability"`: The permeability of your shields while they are at 100% strength. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength drops, the permeability of your shields approaches the low shield permeability value. **(v. 0.10.1)**
 
   * `"low shield permeability"`: The permeability of your shields as they approach 0%. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength increases, the permeability of your shields approaches the high shield permeability value. **(v. 0.10.1)**
@@ -167,6 +175,14 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"delayed hull heat"`: hull heat that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
   * `"delayed hull fuel"`: hull fuel that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"docked hull repair rate"`: hull repair rate that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
+  * `"docked hull energy"`: hull energy that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
+  * `"docked hull heat"`: hull heat that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
+
+  * `"docked hull fuel"`: hull fuel that is only applied to fighters docked within a carrier. **(v. 0.11.3)**
 
 * These attributes change the point at which a ship becomes disabled. The default point at which a ship becomes disabled is dictated by the equation `hull * max(.15, min(.45, 10. / sqrt(hull)))`. **(v. 0.9.13)**
 
