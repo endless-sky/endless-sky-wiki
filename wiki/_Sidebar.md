@@ -50,6 +50,7 @@
 * [Creating phrases](CreatingPhrases)
 * [Creating starts](Creating-Starts)
 * [Creating text substitutions](CreatingSubstitutions)
+* [Creating formations](CreatingFormations)
 * [Editing interfaces](CreatingInterfaces)
 * [Creating messages](CreatingMessages)
 * [Editing gamerules](Gamerules)
