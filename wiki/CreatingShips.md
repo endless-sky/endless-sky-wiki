@@ -117,7 +117,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). Additional sprite properties can be provided as children of this node. See the [sprite data](SpriteData) page for more details.
 
-* `"thumbnail"`: the shipyard sprite.
+* `"thumbnail"`: the shipyard sprite. Beginning in **v. 0.11.3**, thumbnails can be animated. See the [sprite data](SpriteData) page for more details.
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
 

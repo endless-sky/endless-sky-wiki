@@ -54,7 +54,9 @@ The existing valid vanilla outfit categories are the following:
   * "Special" (**v0.10.12**)
   * "Licenses" (**v0.10.12**)
 
-* `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
+* `"display name"`: an alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often. **(v. 0.10.0)**
+
+* `"plural"`: plural version of this outfit's name. If not specified, defaults to the display name with the character "s" added to the end. **(v. 0.9.5)**
 
 * `"flotsam sprite"`: the image that is drawn when this outfit is dropped in space, either because it was jettisoned by a ship or because it was the payload of a minable asteroid. If no flotsam sprite is given, then the default flotsam box is used.
 
@@ -70,7 +72,7 @@ The existing valid vanilla outfit categories are the following:
 
 * `"afterburner effect"`: the [effect](CreatingEffects) that is created for every frame that the afterburner is firing. Afterburner effects can last for multiple frames, leaving a trail behind the ship.
 
-* `thumbnail`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite.
+* `thumbnail`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite. Beginning in **v. 0.11.3**, thumbnails can be animated. See the [sprite data](SpriteData) page for more details.
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
