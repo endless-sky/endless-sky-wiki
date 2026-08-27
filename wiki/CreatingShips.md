@@ -69,37 +69,23 @@ The name has to contain @sw at the end: `@sw.png`. If this is for a @2x sprite, 
 
 If you have multiple frames and wish to give the ship a swizzle mask, then each individual frame must have a mask image defined for it. So `ship-0@sw.png` would be the mask for the first frame and `ship-01@sw.png` would be the mask for the second frame. Beginning in **v. 0.10.5**, if you have multiple frames but only a single swizzle mask is defined as `ship@sw.png` (i.e. without any frame specifier), that swizzle mask will be applied to all frames of the ship.
 
-## Artistic tricks
-
-Making a full texture-mapped 3D model can be a lot of work, and since all the ships in this game are only shown from directly overhead and at relatively low resolution, it can be overkill. I've found that the fastest way to create good-looking ship images is to use a 3D design program (such as Blender) for rendering the shape of the ship and the basic colors of the different parts of it, but then using an image manipulation program (such as GIMP) for some post-processing.
-
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/corvette.png)][2xcorvette]
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/firebird.png)][2xfirebird]
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/gunboat.png)][2xgunboat]
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/leviathan.png)][2xlevi]
-
-Editing images in GIMP, some easy ways to make the models look more detailed and less "artificial" include:
-
-* Find a public domain metal texture. Paste it into a separate layer, setting the layer's blending mode to "overlay" and adding an alpha channel to the layer if necessary. Erase portions of the texture so that it is only applied to certain parts of the ship. Repeat with other textures until each part of the ship is covered by at least one.
-* In a layer set to "multiply" mode, spray-paint with black to add extra shadows to the left side of the image and to other areas as you see fit. It often also looks good to add dark patches near the engine outlets, to make that part of the ship look a bit "burnt."
-* Spray-painting dark patches at a few corners or edges can also help make the metal look reflective.
-* In the "multiply" layer, spray paint with red over the yellow or orange paint sections to make the color less uniform.
-
-At a bare minimum, you should edit ship images at a large enough resolution to provide an "@2x" version for high-dpi monitors. Be sure to save the final version of your 3D model, too!
-
-## Shipyard thumbnails
-
-Each ship can optionally specify a "thumbnail" image to be used for it in the shipyard instead of the overhead view. For consistency, thumbnail images should be rendered with the following setup:
-
-* Camera position: (12, 22, 18)
-* Camera angle: (55, 0, 150)
-* Sun angle: (0, 55, 10)
+Each ship can optionally specify a "thumbnail" image to be used for it in the shipyard instead of the overhead view.
 
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/vanguard.png)][2xvan]
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)][2xaerie]
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)][2xhawk]
 
+If a model lacks a dedicated thumbnail rendering mode, thumbnails can be rendered with the following setup:
+
+* Camera position: (12, 22, 18)
+* Camera angle: (55, 0, 150)
+* Sun angle: (0, 55, 10)
+
 The size of the thumbnail should depend on the size of the ship. Drones may be 100&times;100 pixels or even smaller; capital ships can be up to 250&times;250 pixels or possibly slightly larger for unusually big ships. To figure out the appropriate size, find some other ships that are about the same size as your ship in the overhead view, and then make the thumbnail the same size (i.e. about the same number of non-transparent pixels) as their thumbnails.
+
+You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
+
+The specifics of modeling and texturing ships is contained within the [creating models](CreatingModels) page.
 
 # Data
 
