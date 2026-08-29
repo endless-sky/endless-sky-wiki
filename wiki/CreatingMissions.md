@@ -182,6 +182,13 @@ mission <name>
 		[system | planet]
 			<filter>
 		log [<category> <header>] (<text> | scene <image>)
+			(<text> | scene <image>)
+			mark <system>...
+				<system>
+				...
+			circle <system>...
+				<system>
+				...
 		remove log <category> [<header>]
 		dialog <text>
 			<text>...
@@ -819,6 +826,13 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	[system | planet]
 		<filter>
 	log [<category> <header>] (<text> | scene <image>)
+		(<text> | scene <image>)
+		mark <system>...
+			<system>
+			...
+		circle <system>...
+			<system>
+			...
 	remove log <category> [<header>]
 	dialog <text>
 		<text>...
@@ -893,13 +907,22 @@ Some of the events below usually only make sense for certain triggers. In partic
 
 ```html
 log [<category> <header>] (<text> | scene <image>)
+	(<text> | scene <image>)
+	mark <system>...
+		<system>
+		...
+	circle <system>...
+		<system>
+		...
 ```
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. Existing vanilla categories are `"People"`, `"Minor People"`, and `"Factions"`. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
 
-A `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide. Note that no swizzle will be applied to ship images.
+Beginning in **v. 0.11.0**, a `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide, as the image is not scaled to match the size of the UI. Note that no swizzle will be applied to ship images, and these images cannot be animated at the moment.
+
+Beginning in **v. 0.11.3**, logbooks can include systems to mark or circle. When the player selects this log from the logbook, the listed systems will be marked or circled on the map. Additionally, all dated log entries will recored the system that player was located in when the entry was written.
 
 ```html
 remove log <category> [<header>]
