@@ -74,9 +74,9 @@ The depreciated value of an item that is "age" days old is calculated with the f
 
 ## Hardcore Settings
 
-* `"permadeath mode"`: An enum rule that controls whether permadeath is active an how it behaves. Has the following values:. **(v. 0.11.3)**
+* `"permadeath mode"`: An enum rule that controls whether permadeath is active an how it behaves. **(v. 0.11.3)**
   * `"off"`: Permadeath mode is off.
-  * `"lock on death"`: The pilot bcomes locked upon the death of the player. Locked pilots cannot have their save files loaded.
+  * `"lock on death"`: The pilot becomes locked upon the death of the player. Locked pilots cannot have their save files loaded.
   * `"delete on death"`: The pilot's save files will be deleted upon the death of the player. The pilot profile will be retained with information about the player's moment of death, which can be reviewed from the load manu.
   * `"lock on takeoff"`: The pilot becomes locked when you take off from a planet, and is unlocked when you land again. The pilot will remain locked if the game closes while you aren't landed.
   * `"delete on takeoff"`: The pilot's save files will be deleted when you take off from a planet. Save files are only retained if you leave the game while landed.
