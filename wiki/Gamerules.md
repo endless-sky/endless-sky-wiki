@@ -72,6 +72,17 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"habitable arrival max"`: An optional decimal rule that determines the maximum arrival distance when the arrival distance is being generated from the habitable distance. **(v. 0.11.3)**
 * `"fleet multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0%, 1 = 100%, 1.5 = 150%, and so on. Represents a global fleet spawn rate multiplier for random fleet spawns within systems.
 
+## Hardcore Settings
+
+* `"permadeath mode"`: An enum rule that controls whether permadeath is active an how it behaves. **(v. 0.11.3)**
+  * `"off"`: Permadeath mode is off.
+  * `"lock on death"`: The pilot becomes locked upon the death of the player. Locked pilots cannot have their save files loaded.
+  * `"delete on death"`: The pilot's save files will be deleted upon the death of the player. The pilot profile will be retained with information about the player's moment of death, which can be reviewed from the load manu.
+  * `"lock on takeoff"`: The pilot becomes locked when you take off from a planet, and is unlocked when you land again. The pilot will remain locked if the game closes while you aren't landed.
+  * `"delete on takeoff"`: The pilot's save files will be deleted when you take off from a planet. Save files are only retained if you leave the game while landed.
+* `"restricted save loading"`: A boolean rule that, if true, prevents you from loading save files when you aren't landed on a planet. Forced to on if the permadeath mode is set to "lock on takeoff" or "delete on takeoff". **(v. 0.11.3)**
+* `"single save file"`: A boolean rule that controls whether you are restricted to only having a single save file. Prevents the creation of autosaves and snapshots if active. Forced to on if the permadeath mode is set to "delete on takeoff". **(v. 0.11.3)**
+
 ## Miscellaneous
 
 * `"lock gamerules"`: A boolean rule that controls whether gamerules can be altered after a pilot has been created. If true, the gamerules button will not appear on the main menu for that pilot.
