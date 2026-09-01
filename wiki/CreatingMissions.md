@@ -161,7 +161,7 @@ mission <name>
 		conversation <name>
 		conversation
 			...
-		ship <model> <name>
+		ship <model> [<name>]
 		fleet <name> [<count>]
 		fleet [<count>]
 			...
@@ -639,7 +639,7 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 	conversation <name>
 	conversation
 		...
-	ship <model> <name>
+	ship <model> [<name>]
 	fleet <name> [<count#>]
 	fleet [<count#>]
 		...
@@ -759,10 +759,10 @@ This defines a dialog or conversation to be shown when you have first satisfied 
 If you want to retrieve passengers or cargo by boarding a ship, set up the mission so that you are considered to be carrying them from the very start (for example, the cargo might be called "reserved mission space" or "mission cargo"). Otherwise, it would be possible for the player to board a ship and then discover they do not have enough cargo or passenger space to complete the mission.
 
 ```html
-ship <model> <name>
+ship <model> [<name>]
 ```
 
-This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name. Beginning in **v. 0.10.9**, phrases and substitutions are expanded NPC ship names.
+This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name. A ship with no given name will use the model name as the ship name. Beginning in **v. 0.10.9**, phrases and substitutions are expanded NPC ship names.
 
 If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed. When loading NPCs from saved games, the rest of the game data has finished loading, but this is not otherwise guaranteed.
 
