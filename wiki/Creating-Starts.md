@@ -36,7 +36,7 @@ start [<identifier>]
 	conversation
 		{conversation specification...}
 	[remove conversation]
-	ship <model>
+	ship <model> [<name>]
 		{ship specification...}
 	[remove ships]
 	[remove ship <model>]
@@ -161,10 +161,19 @@ The number of days over which the loan or fine will be paid off. Once zero, the 
 Beginning with **v. 0.9.9**, a start may optionally provide one or more ships to the player. If present, the initial game screen for the new pilot will be the planet panel, rather than the shipyard (as the player no longer needs to purchase a ship).
 
 ```html
-ship <model>
+ship <model> [<name>]
 	{ship specification...}
 ```
 To provide a ship for the new pilot, the entire [ship definition](CreatingShips) is required.
+
+When no name is present, a random name will be chosen from the "civilian" phrase, which is the same phrase used for naming merchants.
+
+Prior to **v. 0.11.13**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
+
+For example, the following would not work previously, but now does:
+```html
+ship "Shuttle"
+```
 
 ### Displayed details
 
