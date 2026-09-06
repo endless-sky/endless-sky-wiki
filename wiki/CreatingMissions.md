@@ -922,7 +922,7 @@ An example of how one might use the log category and header includes creating a 
 
 Beginning in **v. 0.11.0**, a `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide, as the image is not scaled to match the size of the UI. Note that no swizzle will be applied to ship images, and these images cannot be animated at the moment.
 
-Beginning in **v. 0.11.3**, logbooks can include systems to mark or circle. When the player selects this log from the logbook, the listed systems will be marked or circled on the map. Additionally, all dated log entries will recored the system that player was located in when the entry was written.
+Beginning in **v. 0.11.3**, logbooks can include systems to mark or circle. When the player selects this log from the logbook, the listed systems will be marked or circled on the map. Additionally, all dated log entries will recorded the system that player was located in when the entry was written.
 
 ```html
 remove log <category> [<header>]
