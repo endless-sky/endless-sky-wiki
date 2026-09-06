@@ -86,7 +86,7 @@ This is a definition of the person's ship, using the same format as all other [s
 
 Starting in **v. 0.9.13,** escorts are able to have their ship name specified. Any ship without a given name will use the name of the person.
 
-Prior to **v. 0.11.13**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
+Prior to **v. 0.11.3**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
 
 For example, the following would not work previously, but now does:
 ```html

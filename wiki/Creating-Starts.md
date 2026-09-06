@@ -168,7 +168,7 @@ To provide a ship for the new pilot, the entire [ship definition](CreatingShips)
 
 When no name is present, a random name will be chosen from the "civilian" phrase, which is the same phrase used for naming merchants.
 
-Prior to **v. 0.11.13**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
+Prior to **v. 0.11.3**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
 
 For example, the following would not work previously, but now does:
 ```html
