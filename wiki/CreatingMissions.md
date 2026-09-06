@@ -748,7 +748,7 @@ placement
 		...
 ```
 
-Beginning in **v. 0.11.13**, NPCs can be given a `placement` node that controls how they are placed into the system they spawn in. This node has the following children:
+Beginning in **v. 0.11.3**, NPCs can be given a `placement` node that controls how they are placed into the system they spawn in. This node has the following children:
 * `position <x#> <y#>`: The exact X and Y coordinates to place the NPC into the system.
 * `distance <distance#> [<angle#>]` The exact distance from the system center to place the NPC with a set angle, or a random angle if no angle is provided.
 * `orbit`: An orbit to place the NPC at, with the same `distance`, `period`, and `offset` child nodes as [objects in systems](MapData#objects). If you copy the distance, period, and offset of a stellar object in a system, the NPC will be spawned on top of that planet on whatever date the NPCs are spawned.
