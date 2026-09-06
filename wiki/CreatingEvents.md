@@ -191,7 +191,10 @@ fleet <name>
 		outfitters <outfitter>...
 	[(add | remove)] personality [<flag>...]
 	personality [<flag>...]
-		confusion <value#>
+		[<flag>...]
+		[confusion <name>]
+		[confusion]
+			...
 	[add] variant [<weight#>]
 		<ship> <count#>
 		...
