@@ -19,7 +19,7 @@
 
 Similar to the [C++ style guide](C++-Style-Guide), this page acts as a style guide for all of the game's content (i.e. anything defined in the game's [data format](DataFormat)). For specifics on how different data nodes behave in the game, see the other pages in the wiki relevant to those nodes. The purpose of this page is to define how data should be laid out stylistically so as to improve readability and maintainability of all contributed content.
 
-Note that many of these style requirements have been developed over the years, so not all of the game's content may adhere to this guide 100%.
+Note that many of these style requirements have been developed over the years, so not all of the game's existing content necessarily adheres to this guide 100%.
 
 # General Guidelines
 
@@ -70,7 +70,7 @@ Or, since backticks and double quotation marks can both be used to identify a to
 		`ship` `Sparrow` `Test Dummy`
 ```
 
-The additional quotation marks everywhere makes such a mission unnecessarily visually busy. There is also a question of whether to use single-quotes or double-quoets for quotations inside of a token. (i.e. `'Test Dummy'` vs `"Test Dummy"`).
+The additional quotation marks everywhere makes such a mission unnecessarily visually busy. There is also a question of whether to use single-quotes or double-quotes for quotations inside of a token. (i.e. `'Test Dummy'` vs `"Test Dummy"`).
 
 Therefore, the guidelines for when to quote a token are as follows:
 1. All multi-word tokens must be in double quotation marks or backticks (as that is what defines a multi-word token in the first place).
