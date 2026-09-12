@@ -634,7 +634,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceived mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
-  * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship is based off of this value instead of the mass of the ship. **(v. 0.11.3)**
+  * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship uses this value in place of the mass of the ship. **(v. 0.11.3)**
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
