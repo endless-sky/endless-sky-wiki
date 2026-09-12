@@ -634,7 +634,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceived mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
-  * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship uses this value in place of the mass of the ship. **(v. 0.11.3)**
+  * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship uses this value in place of the number of pixels in the ship's sprite. **(v. 0.11.3)**
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
@@ -858,6 +858,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
   * `"infrared tracking"`: how well this projectile tracks targets based on their heat. That is, hot targets will be easier to track. 
 
   * `"optical tracking"`: how well this projectile tracks objects based on their size. That is, large targets will be easier to track.
+  
+    * Prior to **v. 0.11.3**, a ship's "size" for use in optical tracking was its current mass. After this version, a ship's size is the number of pixels in the sprite that aren't entirely transparent. This value is then divided by 16 before being used. For ships with multiple frames of animation, the average number of pixels across all frames is used.
 
   * `"radar tracking"`: how well this projectile tracks targets using radar (which ships can resist if they have `"radar jamming"`).
 
