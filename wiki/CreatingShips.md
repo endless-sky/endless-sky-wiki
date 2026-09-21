@@ -293,7 +293,7 @@ ship "Bastion" "Bastion (Laser)"
 		"Supercapacitor" 4
 		"D94-YV Shield Generator"
 		"Water Coolant System"
-		"Mass Expansion"
+		"Outfits Expansion"
 		"A370 Atomic Thruster"
 		"A525 Atomic Steering"
 		"Hyperdrive"
