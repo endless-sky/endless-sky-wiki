@@ -203,3 +203,12 @@ source
 # Testing location filters
 
 Beginning in **v. 0.10.0**, it is possible to test filters by passing `--matches` to the game and then writing a location filter under a `location` node. The output are systems and planets matching the filter.
+
+## Linux Example (heredoc)
+
+```bash
+endless_sky --matches <<EOF
+location
+  government "Syndicate"
+EOF
+```
