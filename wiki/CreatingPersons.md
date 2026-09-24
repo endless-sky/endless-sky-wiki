@@ -1,7 +1,9 @@
-A "person" is a unique ship or fleet of ships that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. The [syntax](DataFormat#grammar-specifications) for the definition of a person is:
+A "person" is a unique ship or fleet of ships that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. A person is killed when the flagship of the person's fleet is destroyed or captured. The [syntax](DataFormat#grammar-specifications) for the definition of a person is:
 
 ```html
 person <name>
+	"never dies"
+	"must destroy all"
 	frequency <frequency#>
 	government <government>
 	personality [<type>...]
@@ -30,6 +32,18 @@ person <name>
 ```
 
 The various parts of a person definition are described below.
+
+```html
+"never dies"
+```
+
+Beginning in **v. 0.11.3**, the presence of this tag means that the person can never be killed. You may destroy every ship in the person's fleet, but that will not prevent it from respawning.
+
+```html
+"must destroy all"
+```
+
+Beginning in **v. 0.11.3**, the presence of this tag means that you must destroy every ship in the person's fleet in order to kill the person, as opposed to the default behavior of only needing to kill the flagship.
 
 ```html
 frequency <frequency#>
