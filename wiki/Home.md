@@ -59,6 +59,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Ship personalities](ShipPersonalities)
 * [Creating confusion profiles](CreatingConfusions)
 * [Location filters](LocationFilters)
+* [Creating models](CreatingModels)
 * [Image formats](ImageFormats)
 * [Sprite animation parameters](SpriteData)
 
