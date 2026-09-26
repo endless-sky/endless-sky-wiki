@@ -207,6 +207,8 @@ The data files use indentation, like in the Python language, to define sub-entri
 
   * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`.
 
+  * `"start delay"`: A number of frames that needs to elapse after the ship is placed before this spark can start appearing.
+
 * `"live effect" <effect> [<amount#>]`: Defines an effect that should appear at a specific location on the ship. The amount must be an integer. If not provided, the amount is 1. Supports the following child nodes: **(v. 0.11.3)**
 
   * `position <x#> <y#>`: The position on the ship where the effect will be spawned. Default is (0, 0).
@@ -218,6 +220,8 @@ The data files use indentation, like in the Python language, to define sub-entri
   * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
 
   * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`.
+
+  * `"start delay"`: A number of frames that needs to elapse after the ship is placed before this effect can start appearing.
 
 * `"static decor" <x#> <y#>`: Defines a sprite that appears somewhere on the ship. Can be similar in appearance to a hardpoint sprite for a turret, except it isn't tied to a weapon. Supports the following child nodes: **(v. 0.11.3)**
 
@@ -240,6 +244,8 @@ The data files use indentation, like in the Python language, to define sub-entri
   * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`. Instead of controlling the appearance of the decor, these tags control when the decor moves.
 
   * `synced`: If present, all the `decor` on a ship will be synced when the ship is placed. This really only matters for `rotating` decor to allow multiple decorations with the same rotation speed to always be pointing in the same direction as one another. If not present, decorations are given a random facing angle when the ship is placed.
+
+  * `"start delay"`: A number of frames that needs to elapse after the ship is placed before this decor's animation will start.
 
 * `"synced effects"`: If present, all live sparks, live effects, and decorations will be synced with one another when the ship is placed. This means that if multiple ships in a fleet all have the same live sparks or effects with the same periods and no random period, then they will all create the effects in unison with one another. The same is true for rotating decor with the same rotation speed. **(v. 0.11.3)**
 
