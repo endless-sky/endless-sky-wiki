@@ -78,7 +78,7 @@ If you make substantial additions or changes to a file, please add your name to 
 
 ## Placement of #includes
 
-All #includes in a file should be placed prior to anything else except for the #ifndef guards.
+All #includes in a file should be placed prior to anything else except for the copyright header and #pragma once guards.
 This is so it is immediately clear which files a given file includes.
 
 ## Order of #includes in a .h file
@@ -90,6 +90,8 @@ Within a .h file, the #includes should be broken into "paragraphs" each separate
 4. Non-standard third-party libraries.
 5. Standard libraries.
 6. Optionally, forward declarations of anything that can be forward-declared.
+
+Platform-specific #includes inside #ifdef blocks can have separate "paragraphs".
 
 For example, a header file might contain the following #includes:
 ```c++
@@ -118,6 +120,8 @@ Within a .cpp file, the #includes should be broken into "paragraphs" each separa
 3. Files in the "endless-sky" code base that provide compatibility between different library variants: "opengl.h" and "SDL.h".
 4. Non-standard third-party libraries.
 5. Standard libraries.
+
+Platform-specific #includes inside #ifdef blocks can have separate "paragraphs".
 
 For example, a .cpp file might contain the following #includes:
 ```c++
