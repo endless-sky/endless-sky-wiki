@@ -78,17 +78,20 @@ If you make substantial additions or changes to a file, please add your name to 
 
 ## Placement of #includes
 
-All #includes in a file should be placed prior to anything else except for the #ifndef guards.
+All #includes in a file should be placed prior to anything else except for the copyright header and #pragma once guards.
 This is so it is immediately clear which files a given file includes.
 
 ## Order of #includes in a .h file
 
 Within a .h file, the #includes should be broken into "paragraphs" each separated by a single blank line:
 1. Classes that this file's class inherits from.
-2. Other files in the "endless-sky" code base.
-3. Non-standard third-party libraries.
-4. Standard libraries.
-5. Optionally, forward declarations of anything that can be forward-declared.
+2. Other files in the "endless-sky" code base, except for the ones listed below.
+3. Files in the "endless-sky" code base that provide compatibility between different library variants: "opengl.h" and "SDL.h".
+4. Non-standard third-party libraries.
+5. Standard libraries.
+6. Optionally, forward declarations of anything that can be forward-declared.
+
+Platform-specific #includes inside #ifdef blocks can have separate "paragraphs".
 
 For example, a header file might contain the following #includes:
 ```c++
@@ -96,6 +99,8 @@ For example, a header file might contain the following #includes:
 
 #include "Point.h"
 #include "Shader.h"
+
+#include "SDL.h"
 
 #include <GL/glew.h>
 
@@ -111,9 +116,12 @@ Forward-declaring classes instead of #including their headers reduces compilatio
 
 Within a .cpp file, the #includes should be broken into "paragraphs" each separated by a single blank line:
 1. This file's corresponding .h.
-2. Other files in the "endless-sky" code base.
-3. Non-standard third-party libraries.
-4. Standard libraries.
+2. Other files in the "endless-sky" code base, except for the ones listed below.
+3. Files in the "endless-sky" code base that provide compatibility between different library variants: "opengl.h" and "SDL.h".
+4. Non-standard third-party libraries.
+5. Standard libraries.
+
+Platform-specific #includes inside #ifdef blocks can have separate "paragraphs".
 
 For example, a .cpp file might contain the following #includes:
 ```c++
@@ -121,6 +129,8 @@ For example, a .cpp file might contain the following #includes:
 
 #include "Angle.h"
 #include "Sprite.h"
+
+#include "opengl.h"
 
 #include <SDL/SDL.h>
 
