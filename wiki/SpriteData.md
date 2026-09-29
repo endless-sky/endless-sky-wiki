@@ -19,6 +19,7 @@ sprite <name>
 	["random start frame"]
 	["no repeat"]
 	["rewind"]
+	["no frame tweening"]
 	"center" <x#> <y#>
 ```
 
@@ -56,6 +57,7 @@ You can also specify various attributes of the animation. These should be left o
 * `"random start frame"`: start at a random frame of the animation.
 * `"no repeat"`: once the animation has played through once, stay on the last frame until the effect disappears. If this is not defined, the animation loops.
 * `"rewind"`: once the animation has played through to the last frame, play it in reverse. If `"no repeat"` is also defined, the animation will play forward once, then backward once, then stop at the first frame.
+* `"no frame tweening"`: disables [frame tweening](AnimationTweening). **v. 0.11.5**
 
 ## Center
 
