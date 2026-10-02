@@ -293,9 +293,7 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. If multiple possible missions are minor, these get evaluated in alphabetical order such that the last mission alphabetically is the one that gets offered while the rest are discarded. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically, unless the missions are minor, in which case the one you want to offer should come last alphabetically. Mission names cannot start with numerals.
-
-An example of using the mission name to force a certain load order in game is with the set of missions prefixed "FW Pug 2C", where the jump drive variant of the mission is named "FW Pug 2C: **A** Jump Drive" to force it to offer before "FW Pug 2C: **H**yperdrive", as otherwise without the "A" the hyperdrive variant of the mission would have priority.
+The mission name must be unique. Mission names cannot start with numerals.
 
 ```html
 name <name>
@@ -521,11 +519,11 @@ Beginning with **v. 0.9.15**, this specifies custom text replacements that apply
 "offer precedence" <value>
 ```
 
-Beginning with **v. 0.10.11**, this is an integer value which can be used to change the order that missions are offered. Missions with a higher offer precedence will be offered first. The default precedence value is 0, and this value can be negative. For missions with the same offer precedence, they will be offered in alphabetical order according to the identifier of the mission (i.e. the name of the mission specified on the `mission <name>` line, not the display name of the mission specified by the `name` token).
+Beginning with **v. 0.10.11**, this is an integer value which can be used to change the order that missions are offered. Missions with a higher offer precedence will be offered first. The default precedence value is 0, and this value can be negative. For missions with the same offer precedence, they will be offered in alphabetical order (more specifically, ASCII lexical ordering) according to the identifier of the mission (i.e. the name of the mission specified on the `mission <name>` line, not the display name of the mission specified by the `name` token). This was also the behavior prior to the addition of this node.
 
-Note that the way that the game determines which `minor` missions should offer means that the minor mission with the lowest precedence will be the one to offer, and all higher precedence minor missions that could have also offered at the same time will be discarded.
+Prior to **v. 0.11.4**, the way that the game determined which `minor` missions should offer if multiple minor missions were capable of offering at the same time meant that the mission with the lowest precedence would be the one to offer, and all higher precedence missions that could have also offered at the same time would be discarded. This was changed in **v. 0.11.4** so that the minor mission with the highest precedence is the one to offer.
 
-Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical order which is able to offer will be the one that does offer.
+Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical (ASCII lexical) order which is able to offer will be the one that does offer.
 
 # Conditions
 
