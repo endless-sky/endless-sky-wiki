@@ -65,7 +65,7 @@ Beginning in **v. 0.9.15**, minables can have an amount of health up to their "r
 ```html
 payload <outfit> [[<min drops#>] <max drops#>]
 	"max drops" <count#>
-	"min drops: <count#>
+	"min drops" <count#>
 	"drop rate" <chance#>
 	"toughness" <value#>
 ```
