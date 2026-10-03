@@ -130,6 +130,7 @@ mission <name>
 		["all wormholes" | "only unrestricted wormholes" | "no wormholes"]
 		"assumes jump drive"
 	npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
+		"in flight spawning"
 		to (spawn | despawn)
 			<condition> <comp> <value>
 			(has | not) <condition>
@@ -616,6 +617,7 @@ NPCs are ships that are associated with the mission in some way. This includes f
 
 ```html
 npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
+	"in flight spawning"
 	to (spawn | despawn)
 		<condition> <comp> <value>
 		(has | not) <condition>
@@ -671,6 +673,7 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
 
 ```html
+"in flight spawning"
 to (spawn | despawn)
 	<condition> <comp> <value>
 	(has | not) <condition>
@@ -682,7 +685,9 @@ Starting in **v. 0.9.13**, `to (spawn | despawn)` works similarly to `to (offer 
 
 An NPC will not spawn if its `to spawn` conditions are not met, and any spawned NPC will despawn if its `to despawn` conditions are met. NPCs will only spawn once the player departs from a planet and despawn once the player lands, but these conditions are evaluated at multiple points: after accepting the mission, on each departure, on each system jump, and on each landing.
 
-Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
+Beginning in **v. 0.11.3**, the `"in flight spawning"` tag can be included. Since spawn conditions are checked on each system jump, having this tag present means that the NPCs will spawn as the player jumps into the next system if its spawn conditions are met. Without this tag, NPCs will continue to only spawn in after departing from a planet.
+
+Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been flagged for despawning. (Remember that an NPC is only despawned when you land, but it could be flagged for despawning earlier than that by the multiple points that the conditions are evaluated.) This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
 When combined with an `action` node in a [`conversation`](WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
