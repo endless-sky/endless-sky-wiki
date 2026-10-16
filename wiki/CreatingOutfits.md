@@ -436,7 +436,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"scan concealment"`: prevents an equivalent mass of illegal goods from being scanned. For example, if you had 6 tons of illegal goods and a scan concealment of 5, then only 1 ton of goods would be able to be scanned. The "mass" of illegal goods includes the scan brightness of those goods. **(v. 0.10.0)**
 
-  * `inscrutable`: if a ship has a nonzero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
+  * `inscrutable`: if a ship has a non-zero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
 
   * `"asteroid scan power"`: the asteroid scanning range is 100 times the square root of this number. This allows you to identify and target minable asteroids. **(v. 0.9.9)**
 
@@ -751,7 +751,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"random velocity"`: a random amount up to this number will be added to the projectile's initial velocity. **(v. 0.9.0)**
 
-* `acceleration`: projectile's acceleration, per frame. If this is nonzero, it should be coupled with a nonzero `drag` to limit the projectile's total speed.
+* `acceleration`: projectile's acceleration, per frame. If this is non-zero, it should be coupled with a non-zero `drag` to limit the projectile's total speed.
 
 * `drag`: percent loss of speed per frame. For example, a projectile with an acceleration of 1 and a drag of .1 will have a maximum speed (acceleration / drag) of 10.
 
