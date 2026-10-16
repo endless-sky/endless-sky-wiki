@@ -472,6 +472,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. System-defined jump ranges override outfit-defined ones. **(v. 0.9.13)**
 
+  * `"jump time"`: the number of frames that the jump animation takes. The animation is split into two parts. The first half is after the jump has been initiated up until traveling to the next system, and the second half is after entering the next system up until control of the ship is regained. The default jump time is 100 frames, meaning 100 frames to change systems, then 100 frames to regain control. Similar to jump fuel, jump time is tied to the outfit instead of being added across outfits. The jump time used will be that of the drive that was used to make the jump. **(v. 0.11.5)**
+
 * These attributes can be used to alter the crew stats of a ship.
 
   * `bunks`: additional crew / passenger space.
