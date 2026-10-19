@@ -86,7 +86,7 @@ The depreciated value of an item that is "age" days old is calculated with the f
 ## Capture Settings
 
 * `"capture profit sharing"`: An enum rule that controls the behavior of profit sharing the value of captured ships. **(v. 0.11.5)**
-  * `"off"`: You keeo the full value of ships you capture.
+  * `"off"`: You keep the full value of ships you capture.
   * `"dead crew"`: Death benefits must be paid to the families of crew members who died in the process of capturing a ship. A minimum payment per casualty may also be applied regardless of a successful capture.
   * `"living crew"`: Living crew members must be paid a bonus based on the value of captured ships.
   * `"all crew"`: Both dead and living crew must be paid according to the rules stated above.
