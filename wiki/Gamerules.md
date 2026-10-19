@@ -83,6 +83,19 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"restricted save loading"`: A boolean rule that, if true, prevents you from loading save files when you aren't landed on a planet. Forced to on if the permadeath mode is set to "lock on takeoff" or "delete on takeoff". **(v. 0.11.3)**
 * `"single save file"`: A boolean rule that controls whether you are restricted to only having a single save file. Prevents the creation of autosaves and snapshots if active. Forced to on if the permadeath mode is set to "delete on takeoff". **(v. 0.11.3)**
 
+## Capture Settings
+
+* `"capture profit sharing"`: An enum rule that controls the behavior of profit sharing the value of captured ships. **(v. 0.11.5)**
+  * `"off"`: You keeo the full value of ships you capture.
+  * `"dead crew"`: Death benefits must be paid to the families of crew members who died in the process of capturing a ship. A minimum payment per casualty may also be applied regardless of a successful capture.
+  * `"living crew"`: Living crew members must be paid a bonus based on the value of captured ships.
+  * `"all crew"`: Both dead and living crew must be paid according to the rules stated above.
+* `"capture captain shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that you receive toward the value of captured ships. **(v. 0.11.5)**
+* `"capture dead crew shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that each family of a dead crew member recevies toward the value of captured ships. **(v. 0.11.5)**
+* `"capture living crew shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that each surviving crew member recevies toward the value of captured ships. **(v. 0.11.5)**
+* `"capture minimum death benefit"`: An integer rule with a value greater than or equal to zero that controls a minimum number of credits that must be paid to the families of dead crew members, even if capture of a ship was unsuccessful. **(v. 0.11.5)**
+* `"capture value basis"`: An optional decimal rule with a value greater than or equal to 0 that controls what percentage of the value of a captured ship is used to determine the size of a share. If unset, then the sale value of the ship (as defined by the `"depreciation min"` rule) is used. **(v. 0.11.5)**
+
 ## Miscellaneous
 
 * `"lock gamerules"`: A boolean rule that controls whether gamerules can be altered after a pilot has been created. If true, the gamerules button will not appear on the main menu for that pilot.
