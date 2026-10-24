@@ -933,13 +933,19 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (-1 * scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
-  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
+  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. Disruption damage is not applied to ships whose shields have been depleted. **(v. 0.9.0)**
+  
+    * Prior to **v. 0.10.1**, disruption damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"slowing damage"`: how much slowness is added to a target when struck by this projectile. Slowness multiplies the ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. If the target's shields are up, incoming slowing damage is cut in half. **(v. 0.9.0)**
 
-  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Incoming discharge damage always has maximum effect regardless of the state of the target's shields. **(v. 0.9.15)**
+  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Discharge damage is not applied to ships whose shields have been depleted. **(v. 0.9.15)**
+  
+    * Prior to **v. 0.10.1**, discharge damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"corrosion damage"`: how much corrosion is added to a target when struck by this projectile, draining the target's hull over time. If the target's shields are up, all incoming corrosion damage is ignored. **(v. 0.9.15)**
+  
+    * Prior to **v. 0.10.1**, discharge damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"leak damage"`: how much leak is added to a target when struck by this projectile, draining the target's fuel over time. If the target's shields are up, all incoming leak damage is ignored. **(v. 0.9.15)**
 
