@@ -252,11 +252,13 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"docked energy generation"`: energy generated each frame and applied only to docked fighters. **(v. 0.11.3)**
 
+  * `"docked energy heat"`: heat generated each frame while applying `"docked energy generation"` to docked fighters. **(v. 0.11.3)**
+
   * `"energy consumption"`: energy consumed each frame. **(v. 0.9.7)**
 
   * `"heat generation"`: how much heat this outfit generates every turn, regardless of whether it is working at full capacity or not. For example, a power generator will create its full amount of heat even if your batteries are fully charged and the energy it creates is just being thrown away.
 
-  * `"docked heat generation"`: heat generated each frame while applying `"docked energy generation"` to docked fighters. **(v. 0.11.3)**
+  * `"docked heat generation"`: heat generated each frame while any fighters are docked. **(v. 0.11.3)**
 
 * These attributes will change in effectiveness given how close a ship is to the system center and what type of stars are in the system.
 
