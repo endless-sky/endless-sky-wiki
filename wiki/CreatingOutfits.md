@@ -632,7 +632,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
-  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceived mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
+  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the optical size of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
   * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship uses this value in place of the number of pixels in the ship's sprite. **(v. 0.11.3)**
 
