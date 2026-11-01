@@ -675,7 +675,7 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
 
-* `decorative`: If present, the weapon is purely decorative. It will consume a weapon hardpoint and display its hardpoint sprite, but it will not be used as a weapon anywhere else, such as displaying weapon stats in the outfitter. **(v. 0.11.4)**
+* `decorative`: If present, the weapon is purely decorative. It will consume a weapon hardpoint and display its hardpoint sprite, but it will not be used as a weapon anywhere else, such as displaying weapon stats in the outfitter. **(v. 0.11.5)**
 
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
 
