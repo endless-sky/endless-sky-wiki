@@ -84,7 +84,7 @@ The existing valid vanilla outfit categories are the following:
 
   * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
 
-  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
+  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. Any positive non-zero value will enable this behavior. **(v. 0.10.10)**
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
 
@@ -428,7 +428,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
 
-  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. **(v. 0.10.10)**
+  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. Any positive non-zero value will enable this behavior. **(v. 0.10.10)**
 
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
@@ -436,7 +436,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"scan concealment"`: prevents an equivalent mass of illegal goods from being scanned. For example, if you had 6 tons of illegal goods and a scan concealment of 5, then only 1 ton of goods would be able to be scanned. The "mass" of illegal goods includes the scan brightness of those goods. **(v. 0.10.0)**
 
-  * `inscrutable`: if a ship has a nonzero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
+  * `inscrutable`: if a ship has a non-zero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
 
   * `"asteroid scan power"`: the asteroid scanning range is 100 times the square root of this number. This allows you to identify and target minable asteroids. **(v. 0.9.9)**
 
@@ -632,7 +632,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
-  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceived mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
+  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the optical size of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
 
   * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship uses this value in place of the number of pixels in the ship's sprite. **(v. 0.11.3)**
 
@@ -674,6 +674,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 * `"hardpoint offset"`: The distance, in screen pixels, between the center of the hardpoint sprite and the point that projectiles should emerge from. Assuming the gun barrel is at the very top of the sprite, this will be 25% of the sprite's height in pixels. The weapon's range is effectively increased by this amount. **(v. 0.9.7)**
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
+
+* `decorative`: If present, the weapon is purely decorative. It will consume a weapon hardpoint and display its hardpoint sprite, but it will not be used as a weapon anywhere else, such as displaying weapon stats in the outfitter. **(v. 0.11.4)**
 
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
 
@@ -751,7 +753,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"random velocity"`: a random amount up to this number will be added to the projectile's initial velocity. **(v. 0.9.0)**
 
-* `acceleration`: projectile's acceleration, per frame. If this is nonzero, it should be coupled with a nonzero `drag` to limit the projectile's total speed.
+* `acceleration`: projectile's acceleration, per frame. If this is non-zero, it should be coupled with a non-zero `drag` to limit the projectile's total speed.
 
 * `drag`: percent loss of speed per frame. For example, a projectile with an acceleration of 1 and a drag of .1 will have a maximum speed (acceleration / drag) of 10.
 
@@ -933,13 +935,19 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (-1 * scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
-  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
+  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. Disruption damage is not applied to ships whose shields have been depleted. **(v. 0.9.0)**
+  
+    * Prior to **v. 0.10.1**, disruption damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"slowing damage"`: how much slowness is added to a target when struck by this projectile. Slowness multiplies the ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. If the target's shields are up, incoming slowing damage is cut in half. **(v. 0.9.0)**
 
-  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Incoming discharge damage always has maximum effect regardless of the state of the target's shields. **(v. 0.9.15)**
+  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Discharge damage is not applied to ships whose shields have been depleted. **(v. 0.9.15)**
+  
+    * Prior to **v. 0.10.1**, discharge damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"corrosion damage"`: how much corrosion is added to a target when struck by this projectile, draining the target's hull over time. If the target's shields are up, all incoming corrosion damage is ignored. **(v. 0.9.15)**
+  
+    * Prior to **v. 0.10.1**, discharge damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"leak damage"`: how much leak is added to a target when struck by this projectile, draining the target's fuel over time. If the target's shields are up, all incoming leak damage is ignored. **(v. 0.9.15)**
 

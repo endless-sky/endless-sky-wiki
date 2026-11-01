@@ -78,6 +78,7 @@ The game manages these conditions, but you are able to adjust the value in conve
 * `"global: <condition>"` is any condition which gets set in the "global conditions.txt" file. Global conditions can be set and accessed by all player save files. **(v. 0.10.0)**
 * `"pilot: <condition>` is any condition which gets set in the pilot file associated with your current save. Pilot conditions can be set and accessed by all save files from the same pilot. **(v. 0.11.1)**
 * `"max escort count"`, `"max escort crew"`, and `"admin cap"` determine your current fleet capacity for the corresponding fleet size limitation [gamerule](Gamerules). Even if the current fleet size limitation gamerule is "none", these will return the values that would be your fleet capacity if the corresponding limitation were active. **(v. 0.11.1)**
+* `"credits"` is the number of credits you currently have in your account. **(Read-only before v. 0.11.4)**
 
 ### Read-only
 
@@ -181,7 +182,6 @@ Pilot information:
 
 Account information:
 * `"net worth"` is your net worth, the sum of the worth of all your ships and outfits plus your current account balance minus any outstanding mortgages, fines, salaries, or maintenance.
-* `"credits"` is the number of credits you currently have in your account.
 * `"unpaid mortgages"`, `"unpaid fines"`, `"unpaid salaries"`, and `"unpaid maintenance"` are the value of your current outstanding mortgages, fines, salaries, and maintenance.
 * `"credit score"` is the credit score you have with the bank.
 
