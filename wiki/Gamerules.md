@@ -72,6 +72,13 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"habitable arrival max"`: An optional decimal rule that determines the maximum arrival distance when the arrival distance is being generated from the habitable distance. **(v. 0.11.3)**
 * `"fleet multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0%, 1 = 100%, 1.5 = 150%, and so on. Represents a global fleet spawn rate multiplier for random fleet spawns within systems.
 
+## Raid Fleet Behavior
+
+* `"raid fleet roll chance"`: A double gamerule that controls the chance that a raid fleet spawn attempt occurs. A random number between 0 and 1 is rolled, and if it is less than this value, only then does it roll the individual fleet spawn attempts. When set to 0%, the `"raid chance in system: <system>"` condition always returns 0, but the `"pirate attraction"` condition will still return non-zero values. It will also hide the piracy threat information from the player info panel. **(v. 0.11.5)**
+* `"raid attraction multiplier"`: A double gamerule that multiplies against the raid attraction level of your fleet. **(v. 0.11.5)**
+* `"raid deterrence multiplier"`: A double gamerule that multiplies against the raid deterrence level of your fleet. **(v. 0.11.5)**
+* `"raid fleet spawn attempts"`: An integer gamerule that determines how many raid fleet spawn attempts occur each time you enter a system. **(v. 0.11.5)**
+
 ## Hardcore Settings
 
 * `"permadeath mode"`: An enum rule that controls whether permadeath is active an how it behaves. **(v. 0.11.3)**
@@ -88,4 +95,7 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"lock gamerules"`: A boolean rule that controls whether gamerules can be altered after a pilot has been created. If true, the gamerules button will not appear on the main menu for that pilot.
 * `"disabled fighters avoid projectiles"`: An enum rule whose allowed values are "all", "none", and "only player". Controls which carried ships (fighters and drones), when disabled, will not be hit by projectiles unless they are directly targeted. Fighters and drones are fragile ships that can be difficult and/or tedious to replace for the player, so this gamerule is a means of increasing their survivability without increasing their combat effectiveness. Disabled carried ships can still be hit by explosions, whether from weapons or exploding ships.
 * `"universal ammo restocking"`: A boolean rule that controls whether the ammo for most secondary weapons that you have installed or in your cargo will be available for purchase at any outfitter, even if that outfitter does not normally sell ammo of that type. The description of each secondary weapon will indicate whether it can be restocked anywhere when this rule is true.
-* `"spawn raid fleets"`: A boolean rule that controls whether raid fleets spawn when your pirate attraction is too high. When off, the `"raid chance in system: <system>"` condition always returns 0, but the `"pirate attraction"` condition will still return non-zero values. It will also hide the piracy threat information from the player info panel.
+
+## Deprecated Gamerules:
+
+* `"spawn raid fleets"`: A boolean rule that controls whether raid fleets spawn when your pirate attraction is too high. Added in **v. 0.11.1** and replaced in **v. 0.11.5** by `"raid fleet roll chance"`. `true` was converted to 100% and `false` to 0%.
