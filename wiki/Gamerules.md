@@ -88,11 +88,11 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"capture profit sharing"`: An enum rule that controls the behavior of profit sharing the value of captured ships. **(v. 0.11.5)**
   * `"off"`: You keep the full value of ships you capture.
   * `"dead crew"`: Death benefits must be paid to the families of crew members who died in the process of capturing a ship. A minimum payment per casualty may also be applied regardless of a successful capture.
-  * `"living crew"`: Living crew members must be paid a bonus based on the value of captured ships.
-  * `"all crew"`: Both dead and living crew must be paid according to the rules stated above.
+  * `"surviving crew"`: Surviving crew members must be paid a bonus based on the value of captured ships.
+  * `"all crew"`: Both dead and surviving crew must be paid according to the rules stated above.
 * `"capture captain shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that you receive toward the value of captured ships. **(v. 0.11.5)**
 * `"capture dead crew shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that each family of a dead crew member receives toward the value of captured ships. **(v. 0.11.5)**
-* `"capture living crew shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that each surviving crew member receives toward the value of captured ships. **(v. 0.11.5)**
+* `"capture surviving crew shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that each surviving crew member receives toward the value of captured ships. **(v. 0.11.5)**
 * `"capture minimum death benefit"`: An integer rule with a value greater than or equal to zero that controls a minimum number of credits that must be paid to the families of dead crew members, even if capture of a ship was unsuccessful. **(v. 0.11.5)**
 * `"capture value basis"`: An optional decimal rule with a value greater than or equal to 0 that controls what percentage of the value of a captured ship is used to determine the size of a share. If unset, then the sale value of the ship (as defined by the `"depreciation min"` rule) is used. **(v. 0.11.5)**
 
