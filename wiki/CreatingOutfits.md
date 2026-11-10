@@ -698,6 +698,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
 
+  * `nondepreciable`: if present, the outfit (or ship, if specified on a ship hull) does not lose value due to depreciation. **(v. 0.11.5)**
+
+  * `unremovable`: if present, the outfit cannot be removed after it has been installed. **(v. 0.11.5)**
+
   * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. **(v. 0.11.5)**
 
   * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. **(v. 0.11.5)**
