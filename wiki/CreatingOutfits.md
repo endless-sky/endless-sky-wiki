@@ -312,6 +312,36 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"thrusting disruption"`: disruption accumulated each frame when thrusting. **(v. 0.9.15)**
 
+  * `"inertialess thrust"`: grants the ship inertialess flight. Inertialess flight causes the ship to always travel in the direction it is facing, with the flight speed controlled by increasing the throttle as the forward key is held and decreasing it as the back key is held. Replaces normal thrust behavior entirely if present. Has the same behavior with acceleration and max speed as normal thrust. **(v. 0.11.5)**
+
+  * `"inertialess braking"`: controls how quickly a ship can decrease the inertialess flight throttle. If not present, then the `"inertialess thrust"` attribute is used for both acceleration and deceleration. **(v. 0.11.5)**
+
+  * `"inertialess flight energy"`: energy cost per frame of using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight heat"`: heat generated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight shields"`: shields consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight hull"`: hull consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight fuel "`: fuel consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight discharge"`: discharge accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight corrosion"`: corrosion accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight ion"`: ionization accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight scramble"`: scrambling accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.10.0)**
+
+  * `"inertialess flight leakage"`: leakage accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight burn"`: burn accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight slowing"`: slowing accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight disruption"`: disruption accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
   * `turn`: your ship's turn rate is (turn / mass) degrees per frame.
 
   * `"turning energy"`:  energy cost per frame of turning.
@@ -667,6 +697,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
   * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
+
+  * `"instant braking"`: if present, the ship will immediately come to a full stop if a stop command is sent. **(v. 0.11.5)**
+
+  * `immovable`: if present, the ship will not experience hit force or firing force, only allowing it to be moved by the force of its own engines. **(v. 0.11.5)**
 
 
 # Weapon attributes
