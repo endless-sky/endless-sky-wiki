@@ -993,7 +993,7 @@ For more information on how outfitters are defined, see the [Creating Shops](Cre
 
 # Displaying capacity attributes
 
-Custom outfit attributes may be used to represent capacities of other outfits that can be installed. For example, secondary weapons like the Meteor Missile Launcher have `"meteor capacity"` on the launcher, and each Meteor Missile you purchase remove 1 from this capacity. Since attributes can't go negative by default, this limits the number of missiles that can be installed. For some capacity attributes, it is helpful for them to be displayed in the UI. Beginning in **v. 0.11.5**, custom capacity attributes can be added to the UI using the `"display capacities"` node detailed below. See [capacities.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/capacities.txt) for the vanilla capacities that get displayed in the UI.
+Custom outfit attributes may be used to represent capacities of other outfits that can be installed. For example, secondary weapons like the Meteor Missile Launcher have `"meteor capacity"` on the launcher, and each Meteor Missile you purchase removes 1 from this capacity. Since attributes can't go negative by default, this limits the number of missiles that can be installed. For some capacity attributes, it is helpful for them to be displayed in the UI. Beginning in **v. 0.11.5**, custom capacity attributes can be added to the UI using the `"display capacities"` node detailed below. See [capacities.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/capacities.txt) for the vanilla capacities that get displayed in the UI.
 
 ```html
 "display capacities"
