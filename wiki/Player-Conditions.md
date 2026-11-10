@@ -210,6 +210,40 @@ Other:
 * `"enemy: <government name>"` will be equal to 1 if you are hostile to the government with the given name (your reputation with the government is negative or you have provoked them), and 0 if they are friendly (your reputation with the government is positive or you have bribed them). **(v. 0.11.0)**
 * `scheduled event: <name>`, if the event with the given name is scheduled to occur, returns the number of days until it will occur. If multiple events of the same name are scheduled, the earliest event will be used. If an event is not scheduled, returns 0. **(v. 0.11.3)**
 
+### Custom read-only conditions
+
+Beginning with **v. 0.11.5**, custom read-only conditions can be defined within game data using the following syntax.
+
+```html
+condition <name>
+	<condition-set>
+```
+
+Conditions named in this way can then be referenced anywhere a normal condition can be. Conditions defined in the game data are even able to reference other game data defined conditions, although if a loop is detected, every condition in the loop will be invalidated and always return false.
+
+This can be used to shorten complex condition sets into an alias that can be more easily used in multiple locations. Below is an example of using this feature to determine if the player has a jump drive that could be taken using `outfit "Jump Drive" -1` without having to give them a replacement hyperdrive.
+
+```
+condition "spare jump drive"
+	has "outfit (removable): Jump Drive"
+	or
+		has "outfit (cargo): Jump Drive"
+		"flagship attribute: jump drive" > 1000
+		has "flagship attribute: hyperdrive"
+
+mission "Example"
+	on offer
+		conversation
+			branch spare
+				has "spare jump drive"
+			`You do not have a spare jump drive, so a hyperdrive will be given to you.`
+				decline
+			
+			label spare
+			`You do have a spare jump drive, so you won't be given a hyperdrive.`
+				decline
+```
+
 ## Value expressions
 
 Beginning with **v0.9.11**, support was added for simple algebra in both types of conditions (and this was extended with boolean operators and built-in functions in **v0.11.0**). For [testable](#testable-condition-sets) conditions, these "value expressions" can appear on either side of the comparison operator, while [applied](#applied-condition-sets) conditions can only use value expressions on the right-hand side of the mutation operator. (This is because an applied condition must store the condition value with a name, and the result of evaluating a value expression is an integer, not a name.)
