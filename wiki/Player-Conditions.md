@@ -219,7 +219,7 @@ condition <name>
 	<condition-set>
 ```
 
-Conditions named in this way can then be referenced anywhere a normal condition can be. Conditions defined in the game data are even able to reference other game data defined conditions, although if a loop is detected, every condition in the loop will be invalidated and always return false.
+Conditions named in this way can then be referenced anywhere a normal condition can be. Conditions defined in the game data are even able to reference other game data defined conditions, although if a loop is detected, every condition in the loop will be invalidated and always return false. Conditions with a name matching one of those described above will be ignored and continue to use their engine-defined behavior.
 
 This can be used to shorten complex condition sets into an alias that can be more easily used in multiple locations. Below is an example of using this feature to determine if the player has a jump drive that could be taken using `outfit "Jump Drive" -1` without having to give them a replacement hyperdrive.
 
