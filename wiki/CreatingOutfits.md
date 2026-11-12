@@ -1029,6 +1029,30 @@ Any outfits you list will be appended to the outfits currently in the list you n
 
 For more information on how outfitters are defined, see the [Creating Shops](Creating-Shops) page.
 
+# Displaying capacity attributes
+
+Custom outfit attributes may be used to represent capacities of other outfits that can be installed. For example, secondary weapons like the Meteor Missile Launcher have `"meteor capacity"` on the launcher, and each Meteor Missile you purchase removes 1 from this capacity. Since attributes can't go negative by default, this limits the number of missiles that can be installed. For some capacity attributes, it is helpful for them to be displayed in the UI. Beginning in **v. 0.11.5**, custom capacity attributes can be added to the UI using the `"display capacities"` node detailed below. See [capacities.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/capacities.txt) for the vanilla capacities that get displayed in the UI.
+
+```html
+"display capacities"
+	<attribute> <display-name> [<precedence>]
+		(required | optional)
+```
+
+The `"display capacities"` node is defined as a list of attributes that should be displayed in the UI. These will be displayed in the ship info details as seen in the outfitter and shipyard, and may also appear in the ship info panel accessible when selecting a ship in the player info panel.
+
+```html
+<attribute> <display-name> [<precedence>]
+```
+
+The attribute that is being tracked as a capacity and the display name used in the ship info. An optional precedence can be provided to modify the ordering of the capacities. If two capacities share the same precedence, they will be sorted in alphabetical order by their display name. This precedence can be excluded, in which case a precedence will be assigned to the attribute, adding one to the precedence of the attribute that was loaded previously.
+
+```html
+(required | optional)
+```
+
+Every capacity is either `required` or `optional`. Required capacities always display in the UI, even if they are 0. Optional categories don't display if their total is 0 or if viewing the ship in the ship info panel. Capacities default to optional if neither token is provided.
+
 # Balancing
 
 In Escape Velocity, the classic series of games that Endless Sky is patterned after, there were some outfits that were so powerful compared to their size that there was no reason not to install them if you could afford it: for example, outfits that took no space and improved your acceleration and turn rate, or very small outfits that boosted your shields considerably. As a result, those games needed to put a limit on how many of each outfit could be installed.
