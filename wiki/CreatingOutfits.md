@@ -294,7 +294,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"thrusting hull"`: hull consumed each frame when thrusting. **(v. 0.9.15)**
 
-  * `"thrusting fuel "`: fuel consumed each frame when thrusting. **(v. 0.9.15)**
+  * `"thrusting fuel"`: fuel consumed each frame when thrusting. **(v. 0.9.15)**
 
   * `"thrusting discharge"`: discharge accumulated each frame when thrusting. **(v. 0.9.15)**
 
@@ -312,6 +312,36 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"thrusting disruption"`: disruption accumulated each frame when thrusting. **(v. 0.9.15)**
 
+  * `"inertialess thrust"`: grants the ship inertialess flight. Inertialess flight causes the ship to always travel in the direction it is facing, with the flight speed controlled by increasing the throttle as the forward key is held and decreasing it as the back key is held. Replaces normal thrust behavior entirely if present. Has the same behavior with acceleration and max speed as normal thrust. **(v. 0.11.5)**
+
+  * `"inertialess braking"`: controls how quickly a ship can decrease the inertialess flight throttle. If not present, then the `"inertialess thrust"` attribute is used for both acceleration and deceleration. **(v. 0.11.5)**
+
+  * `"inertialess flight energy"`: energy cost per frame of using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight heat"`: heat generated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight shields"`: shields consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight hull"`: hull consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight fuel"`: fuel consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight discharge"`: discharge accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight corrosion"`: corrosion accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight ion"`: ionization accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight scramble"`: scrambling accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.10.0)**
+
+  * `"inertialess flight leakage"`: leakage accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight burn"`: burn accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight slowing"`: slowing accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight disruption"`: disruption accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
   * `turn`: your ship's turn rate is (turn / mass) degrees per frame.
 
   * `"turning energy"`:  energy cost per frame of turning.
@@ -322,7 +352,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"turning hull"`: hull consumed each frame when turning. **(v. 0.9.15)**
 
-  * `"turning fuel "`: fuel consumed each frame when turning. **(v. 0.9.15)**
+  * `"turning fuel"`: fuel consumed each frame when turning. **(v. 0.9.15)**
 
   * `"turning discharge"`: discharge accumulated each frame when turning. **(v. 0.9.15)**
 
@@ -350,7 +380,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"reverse thrusting hull"`: hull consumed each frame when reverse thrusting. **(v. 0.9.15)**
 
-  * `"reverse thrusting fuel "`: fuel consumed each frame when reverse thrusting. **(v. 0.9.15)**
+  * `"reverse thrusting fuel"`: fuel consumed each frame when reverse thrusting. **(v. 0.9.15)**
 
   * `"reverse thrusting discharge"`: discharge accumulated each frame when reverse thrusting. **(v. 0.9.15)**
 
@@ -671,6 +701,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `nondepreciable`: if present, the outfit (or ship, if specified on a ship hull) does not lose value due to depreciation. **(v. 0.11.5)**
 
   * `unremovable`: if present, the outfit cannot be removed after it has been installed. **(v. 0.11.5)**
+
+  * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. **(v. 0.11.5)**
+
+  * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. **(v. 0.11.5)**
 
 
 # Weapon attributes
