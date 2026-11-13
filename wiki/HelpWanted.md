@@ -14,10 +14,6 @@ At the moment, the greatest need is for beta testers, but you can also contribut
 
   * Creating new aliens: each species should have a different set of [ships](CreatingShips) and [weapons](CreatingOutfits), a [region of space](https://github.com/endless-sky/endless-sky-editor) that they inhabit, and a story line to go with them.
 
-### Programming tasks
-
-  * Linux: Debian package maintainer.
-
 ### Testing
 
   * Try different operating systems, including various Linux distributions and different Mac and Windows versions.
