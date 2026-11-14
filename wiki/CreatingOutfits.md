@@ -678,7 +678,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   
   * `"can jettison"`: if set, this outfit is able to be jettisoned from the ship info panel while in flight. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.11.3)**
 
-  * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.15)**
+  * `minable`: if present, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
  
