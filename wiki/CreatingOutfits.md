@@ -34,7 +34,7 @@ Another open source program, [Inkscape](https://inkscape.org), is used for some 
 
 Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two shield generators, your shield regeneration doubles.
 
-Most attributes are given as a single number, but there are a few "special" attributes:
+The majority of attributes are given as a single number. Beginning in **v0.11.5**, some attributes can be "boolean attributes" and do not need a number. There are also a few "special" attributes that take something other than a number as their value:
 
 * `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
 The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
@@ -112,7 +112,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These attributes alter the legality of an outfit.
 
-  * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on a planet, you are immediately captured and imprisoned for life.
+  * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on a planet, you are immediately captured and imprisoned for life. As of **v. 0.11.5**, this is a boolean attribute.
 
   * `illegal`: the fine, in credits, for being caught using this outfit.
 
@@ -500,15 +500,15 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"capture defense"`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
 
-  * `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand-to-hand weapons and outfit expansions). **(v. 0.9.0)**
+  * `unplunderable`: if present, this outfit cannot be plundered (for example, for hand-to-hand weapons and outfit expansions). As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.0)**
 
 * The following attributes are used to allow an outfit to grant the ability to jump between systems, and alter the behavior of jumping.
 
-  * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
+  * `hyperdrive`: set this if an outfit is a hyperdrive. As of **v. 0.11.5**, this is a boolean attribute.
 
   * `"scram drive"`: a scram drive can engage as long as your ship is moving in the direction of the target system. This value is how much your ship can be drifting relative to that vector and still be allowed to jump.
 
-  * `"jump drive"`: set this to 1 if this outfit is a jump drive.
+  * `"jump drive"`: set this if this outfit is a jump drive. As of **v. 0.11.5**, this is a boolean attribute.
 
   * `"jump speed"`: how slow your ship must be moving in order to jump.
 
@@ -568,19 +568,19 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"cloak phasing"`: the chance that a projectile will phase through this ship while cloaked. **(v. 0.10.7)**
 
-  * `"cloaked communication"`: when not 0, allows the player to hail other ships or planets while cloaked. **(v. 0.10.7)**
+  * `"cloaked communication"`: if set, allows the player to hail other ships or planets while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked afterburner"`: when not 0, allows a ship to fire afterburners while cloaked. **(v. 0.10.7)**
+  * `"cloaked afterburner"`: if set, allows a ship to fire afterburners while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked boarding"`: when not 0, allows a ship to board other ships while cloaked. **(v. 0.10.7)**
+  * `"cloaked boarding"`: if set, allows a ship to board other ships while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked deployment"`: when not 0, allows a ship to deploy or recall carried ships. **(v. 0.10.7)**
+  * `"cloaked deployment"`: if set, allows a ship to deploy or recall carried ships. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked firing"`: when not 0, allows a ship to fire weapons while cloaked. If this value is negative, the remains fully cloaked while firing. A positive value represents how much cloaking is reduced by for each time a weapon is fired. **(v. 0.10.7)**
+  * `"cloaked firing"`: if set, allows a ship to fire weapons while cloaked. If this value is negative, the remains fully cloaked while firing. A positive value represents how much cloaking is reduced by for each time a weapon is fired. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked pickup"`: when not 0, allows a ship to pick up flotsam while cloaked. **(v. 0.10.7)**
+  * `"cloaked pickup"`: if set, allows a ship to pick up flotsam while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked scanning"`: when not 0, allows a ship to scan other ships while cloaked. **(v. 0.10.7)**
+  * `"cloaked scanning"`: if set, allows a ship to scan other ships while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
 * These attributes grant resistance against special status effects.
 
@@ -674,15 +674,17 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.10.0)**
 
-  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
+  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute. Deprecated and replaced with the boolean attribute `uninstallable` in **v. 0.11.5**.
   
-  * `"can jettison"`: if set to 1, this outfit is able to be jettisoned from the ship info panel while in flight. **(v. 0.11.3)**
+  * `uninstallable`: if present, this outfit cannot be installed. This is a boolean attribute. **(v. 0.11.5)**
 
-  * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
+  * `"can jettison"`: if set, this outfit is able to be jettisoned from the ship info panel while in flight. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.11.3)**
+
+  * `minable`: if present, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
  
-  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. **(v. 0.10.13)**
+  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.13)**
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
@@ -694,7 +696,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
-  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. **(v. 0.10.4)**
+  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.4)**
 
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
@@ -702,11 +704,11 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `nondepreciable`: if present, the outfit (or ship, if specified on a ship hull) does not lose value due to depreciation. **(v. 0.11.5)**
 
-  * `unremovable`: if present, the outfit cannot be removed after it has been installed. **(v. 0.11.5)**
+  * `unremovable`: if present, the outfit cannot be removed after it has been installed. This is a boolean attribute. **(v. 0.11.5)**
 
-  * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. **(v. 0.11.5)**
+  * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. This is a boolean attribute. **(v. 0.11.5)**
 
-  * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. **(v. 0.11.5)**
+  * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. This is a boolean attribute. **(v. 0.11.5)**
 
 
 # Weapon attributes
