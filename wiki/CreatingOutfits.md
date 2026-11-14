@@ -674,7 +674,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.10.0)**
 
-  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
+  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute. Deprecated and replaced with the boolean attribute `uninstallable` in **v. 0.11.5**.
   
   * `"can jettison"`: if set to 1, this outfit is able to be jettisoned from the ship info panel while in flight. **(v. 0.11.3)**
 
@@ -707,6 +707,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. **(v. 0.11.5)**
 
   * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. **(v. 0.11.5)**
+
+  * `uninstallable`: if present, this outfit cannot be installed. **(v. 0.11.5)**
 
 
 # Weapon attributes
