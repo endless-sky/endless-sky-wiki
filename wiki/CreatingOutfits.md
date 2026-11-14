@@ -34,7 +34,7 @@ Another open source program, [Inkscape](https://inkscape.org), is used for some 
 
 Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two shield generators, your shield regeneration doubles.
 
-The majority of attributes are given as a single number. Beginning in **v0.11.5**, some attributes can be "boolean attributes" and do not need a number. There are also a few "special" attributes:
+The majority of attributes are given as a single number. Beginning in **v0.11.5**, some attributes can be "boolean attributes" and do not need a number. There are also a few "special" attributes that take something other than a number as their value:
 
 * `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
 The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
