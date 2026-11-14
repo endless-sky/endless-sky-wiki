@@ -36,7 +36,7 @@ start [<identifier>]
 	conversation
 		{conversation specification...}
 	[remove conversation]
-	ship <model>
+	ship <model> [<name>]
 		{ship specification...}
 	[remove ships]
 	[remove ship <model>]
@@ -161,10 +161,19 @@ The number of days over which the loan or fine will be paid off. Once zero, the 
 Beginning with **v. 0.9.9**, a start may optionally provide one or more ships to the player. If present, the initial game screen for the new pilot will be the planet panel, rather than the shipyard (as the player no longer needs to purchase a ship).
 
 ```html
-ship <model>
+ship <model> [<name>]
 	{ship specification...}
 ```
 To provide a ship for the new pilot, the entire [ship definition](CreatingShips) is required.
+
+When no name is present, a random name will be chosen from the "civilian" phrase, which is the same phrase used for naming merchants.
+
+Prior to **v. 0.11.3**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
+
+For example, the following would not work previously, but now does:
+```html
+ship "Shuttle"
+```
 
 ### Displayed details
 
@@ -195,14 +204,14 @@ Any lines that do not match one of the above syntax definitions will be parsed a
 
 ### Conditional starts
 
-Beginning in **v. 0.10.0**, starts can be made to conditionally appear or unlock based on a player's global conditions (see `"global: "` on the [Player Conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#modifiable) page).
+Beginning in **v. 0.10.0**, starts can be made to conditionally appear or unlock based on a player's global conditions (see `"global: "` on the [Player Conditions](Player-Conditions#modifiable) page).
 
 ```html
 to (display | reveal | unlock)
 	<condition-set>
 ```
 
-The `to (display | reveal | unlock)` nodes are similar to the `to offer` and other `to *` nodes of [missions](https://github.com/endless-sky/endless-sky/wiki/CreatingMissions#conditions). Any conditions specified here refer to global conditions, and do not need or allow the use of the `"global: "` prefix, since the global conditions are accessed directly and are the only conditions able to be used.
+The `to (display | reveal | unlock)` nodes are similar to the `to offer` and other `to *` nodes of [missions](CreatingMissions#conditions). Any conditions specified here refer to global conditions, and do not need or allow the use of the `"global: "` prefix, since the global conditions are accessed directly and are the only conditions able to be used.
 
 * `to display`: if these conditions are false, the start will not appear on the starts list.
 * `to reveal`: if these conditions are false and the `to display` conditions are true, the start will appear on the starts list, but display the `on display` information.

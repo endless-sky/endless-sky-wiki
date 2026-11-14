@@ -15,7 +15,7 @@ A "location filter" is a set of constraints that are used to select a planet, sy
 Location filters can be used for:
 * [Mission](CreatingMissions) source, destination, stopovers, and waypoints.
 * [Mission](CreatingMissions#non-player-characters-npcs) NPC systems.
-* [Mission](CreatingMissions#triggers) "on enter" systems.
+* [Mission](CreatingMissions#triggers) "on enter" systems and "on land" planets.
 * [Government](CreatingGovernments#enforcement-zones) enforcement zones.
 * [News](CreatingNews) locations.
 * [Person](CreatingPersons) spawn systems.
@@ -203,3 +203,12 @@ source
 # Testing location filters
 
 Beginning in **v. 0.10.0**, it is possible to test filters by passing `--matches` to the game and then writing a location filter under a `location` node. The output are systems and planets matching the filter.
+
+## Linux Example (heredoc)
+
+```bash
+endless_sky --matches <<EOF
+location
+  government "Syndicate"
+EOF
+```

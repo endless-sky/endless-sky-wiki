@@ -13,13 +13,13 @@ If you have any questions, please feel free to ask on the game's [Discord server
 
 ### General tips when reviewing PRs
 
-* **Use the [wiki](https://github.com/endless-sky/endless-sky/wiki)**: Our wiki is a great resource for all contributors to Endless Sky. When reviewing PRs that change or add new content to the game (e.g. new ships, outfits, artwork, storylines, etc.) please take a look at the [Style Goals](https://github.com/endless-sky/endless-sky/wiki/StyleGoals) and [Quality Checklist](https://github.com/endless-sky/endless-sky/wiki/QualityChecklist) sections of our wiki to make sure that the content fits with Endless Sky's writing and art style.
+* **Use the [wiki](https://github.com/endless-sky/endless-sky/wiki)**: Our wiki is a great resource for all contributors to Endless Sky. When reviewing PRs that change or add new content to the game (e.g. new ships, outfits, artwork, storylines, etc.) please take a look at the [Style Goals](StyleGoals) and [Quality Checklist](QualityChecklist) sections of our wiki to make sure that the content fits with Endless Sky's writing and art style.
 
 * **Always read the PR description**: Read the whole thing, and you have a better chance of avoiding making mistakes in your review because you didn't have the background.
 
 * **Don't do reviews as a way to calm down**: Reviewing others' work can be calming, but doing reviews when stressed can also lead you to overreact to relatively small changes. Even if you don't, your reviews will probably be worse than usual.
 
-* **Use the "request changes" button sparingly, or not at all**: In most cases, leaving comments with suggested changes is enough. Developers typically don’t merge PRs with unresolved comments, so there's usually no need to use "suggest changes."
+* **Use the "request changes" button sparingly, or not at all**: In most cases, leaving comments with suggested changes is enough. Developers typically don't merge PRs with unresolved comments, so there's usually no need to use "suggest changes."
 
 * **Don't review draft PRs. Draft PRs are still a work in progress**: Any feedback you give is likely to be outdated by the time the PR is ready for review, leading to unwanted notifications and overwritten reviews.
 

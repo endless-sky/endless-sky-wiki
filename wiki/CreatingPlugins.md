@@ -164,6 +164,7 @@ All of the metadata for a plugin will be appended to the plugin's description wh
 
 The game data in Endless Sky includes the following elements, sometimes referred to as "root-level" nodes or tokens:
 
+  * `overwrite`: a special node with no value or children that tells the game to completely overwrite the next object that is loaded. The object with the matching identifier will have all of its values reset to their default before loading the new definition you provide. If you want to overwrite multiple objects, then this node should be present above each of them. **(v. 0.11.0)**
   * `color`: a named color in premultiplied RGBA format, to be used in the user interface. The format is: `color "name" <red#> <green#> <blue#> <alpha#>`. By setting alpha to 0 you can define a color that uses additive mixing, and you can also use [other blending modes](BlendingModes).
   * [`conversation`](WritingConversations): a conversation to be shown in a mission event.
   * [`effect`](CreatingEffects): an animation that is used purely for visual effect and does not interact with objects in the game. (For example, the explosions shown when a projectile strikes something.)
@@ -172,7 +173,7 @@ The game data in Endless Sky includes the following elements, sometimes referred
   * [`galaxy`](MapData): a sprite that should be shown in the background of the map. This includes the text labels as well as the galaxy image itself.
   * [`government`](CreatingGovernments): the characteristics of a particular government.
   * [`hazard`](CreatingHazards): a weapon that can deal damage to ships in a system when active.
-  * `interface`: the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/interfaces.txt).)
+  * [`interface`](CreatingInterfaces): the layout of a user interface element. (For examples, see [`interfaces.txt`](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/interfaces.txt).)
   * [`mission`](CreatingMissions): a definition of a job or mission that can be offered to the player.
   * [`news`](CreatingNews): a definition of information that is provided to the player when visiting a spaceport.
   * [`outfit`](CreatingOutfits): an outfit that you can purchase. This includes weapons.
@@ -236,7 +237,7 @@ disable event
 
 ## Swizzles
 
-Since **v0.10.13**:
+Since **v. 0.10.13**:
 
 ```html
 swizzle <name>
@@ -268,10 +269,14 @@ See [swizzles.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_
 
 ## Shaders
 
-Since **v.0.10.13**:
+Since **v. 0.10.13**:
 
 Plugins can override the game's shaders, effectively changing how each item is displayed on the screen. New shaders cannot be created, and the overwritten shaders must take the same arguments as those provided by the game. You can find the game's own shaders [here](https://github.com/endless-sky/endless-sky/tree/master/shaders).
 
 Endless Sky uses shaders written in the [OpenGL Shading Language](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)). Our shaders are either vertex shaders or fragment shaders, which is determined from their file extension (`.vert` and `.frag`, respectively).
 
 Since the game can run on both OpenGL and OpenGL ES, shaders can be defined for either or both environments. By default, shader files are valid in both environments; exclusive shaders can be created by appending the `.gl` or `.gles` extension to the shader file, resulting in something like `sprite.frag.gles`.
+
+Since **v. 0.11.0**, plugins can provide shaders compatible with OpenGL 2 if the player's machine doesn't support the standard OpenGL 3. To maintain compatibility with the game's code, in this situation `sampler2DArray` uniforms are replaced with `sampler3D`s.
+
+For cross-platform compatibility purposes, the game automatically adds a `#version` declaration, deducing the correct string based on what is reported by OpenGL. Since **v. 0.11.2**, you can specify a fixed `#version` declaration, and disable the automatic detection by adding `//autoversion off` in a separate line anywhere in your shader file.

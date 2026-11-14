@@ -69,37 +69,23 @@ The name has to contain @sw at the end: `@sw.png`. If this is for a @2x sprite, 
 
 If you have multiple frames and wish to give the ship a swizzle mask, then each individual frame must have a mask image defined for it. So `ship-0@sw.png` would be the mask for the first frame and `ship-01@sw.png` would be the mask for the second frame. Beginning in **v. 0.10.5**, if you have multiple frames but only a single swizzle mask is defined as `ship@sw.png` (i.e. without any frame specifier), that swizzle mask will be applied to all frames of the ship.
 
-## Artistic tricks
-
-Making a full texture-mapped 3D model can be a lot of work, and since all the ships in this game are only shown from directly overhead and at relatively low resolution, it can be overkill. I've found that the fastest way to create good-looking ship images is to use a 3D design program (such as Blender) for rendering the shape of the ship and the basic colors of the different parts of it, but then using an image manipulation program (such as GIMP) for some post-processing.
-
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/corvette.png)][2xcorvette]
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/firebird.png)][2xfirebird]
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/gunboat.png)][2xgunboat]
-[![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/ship/leviathan.png)][2xlevi]
-
-Editing images in GIMP, some easy ways to make the models look more detailed and less "artificial" include:
-
-* Find a public domain metal texture. Paste it into a separate layer, setting the layer's blending mode to "overlay" and adding an alpha channel to the layer if necessary. Erase portions of the texture so that it is only applied to certain parts of the ship. Repeat with other textures until each part of the ship is covered by at least one.
-* In a layer set to "multiply" mode, spray-paint with black to add extra shadows to the left side of the image and to other areas as you see fit. It often also looks good to add dark patches near the engine outlets, to make that part of the ship look a bit "burnt."
-* Spray-painting dark patches at a few corners or edges can also help make the metal look reflective.
-* In the "multiply" layer, spray paint with red over the yellow or orange paint sections to make the color less uniform.
-
-At a bare minimum, you should edit ship images at a large enough resolution to provide an "@2x" version for high-dpi monitors. Be sure to save the final version of your 3D model, too!
-
-## Shipyard thumbnails
-
-Each ship can optionally specify a "thumbnail" image to be used for it in the shipyard instead of the overhead view. For consistency, thumbnail images should be rendered with the following setup:
-
-* Camera position: (12, 22, 18)
-* Camera angle: (55, 0, 150)
-* Sun angle: (0, 55, 10)
+Each ship can optionally specify a "thumbnail" image to be used for it in the shipyard instead of the overhead view.
 
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/vanguard.png)][2xvan]
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/aerie.png)][2xaerie]
 [![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/thumbnail/hawk.png)][2xhawk]
 
+If a model lacks a dedicated thumbnail rendering mode, thumbnails can be rendered with the following setup:
+
+* Camera position: (12, 22, 18)
+* Camera angle: (55, 0, 150)
+* Sun angle: (0, 55, 10)
+
 The size of the thumbnail should depend on the size of the ship. Drones may be 100&times;100 pixels or even smaller; capital ships can be up to 250&times;250 pixels or possibly slightly larger for unusually big ships. To figure out the appropriate size, find some other ships that are about the same size as your ship in the overhead view, and then make the thumbnail the same size (i.e. about the same number of non-transparent pixels) as their thumbnails.
+
+You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
+
+The specifics of modeling and texturing ships is contained within the [creating models](CreatingModels) page.
 
 # Data
 
@@ -117,7 +103,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"sprite"`: specifies which sprite the ship uses, relative to the "images/" folder, minus the frame number and any extension (e.g. "ship/newship" refers to "images/ship/newship-#.png"). Additional sprite properties can be provided as children of this node. See the [sprite data](SpriteData) page for more details.
 
-* `"thumbnail"`: the shipyard sprite.
+* `"thumbnail"`: the shipyard sprite. Beginning in **v. 0.11.3**, thumbnails can be animated. See the [sprite data](SpriteData) page for more details.
 
 * `"attributes"`: a list of characteristics of the ship, defined as key-value pairs.
 
@@ -135,7 +121,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"angle" <degrees#>`: the angle at which this flare will be pointed relative to the ship. The default angle for reverse engine flares is 180 degrees that of normal engine flares.
 
-	* `"gimble" <degrees#>`: an additional angle added to the base angle when the ship is both thrusting (forward or backward) and turning at the same time. **(v. 0.10.5)**
+	* `"gimbal" <degrees#>`: an additional angle added to the base angle when the ship is both thrusting (forward or backward) and turning at the same time. **(v. 0.10.5)**
 
 	* `"over"`: a single keyword with no value that specifies that the flare should be drawn on top of the ship sprite instead of under it.
 
@@ -149,13 +135,13 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"over"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should be drawn on top of the ship. By default, gun hardpoint sprites are drawn under the ship. **(v. 0.9.15)**
 
-	* `"inside"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.10.17)**
+	* `"inside"`: a single keyword with no value that specifies that the gun's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.11.0)**
 
 * `"turret" <x#> <y#>`: the (x, y) coordinates of any turrets. The number of turret outfits cannot exceed the number of turret locations¹ listed here. The following lines can be added as a "child" of the turret line:
 
 	* `"under"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should be drawn under the ship. By default, turret hardpoint sprites are drawn over the ship. **(v. 0.9.15)**
 
-	* `"inside"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.10.17)**
+	* `"inside"`: a single keyword with no value that specifies that the turret's hardpoint sprite, should it have one, should not be drawn. Projectile sprites are still generated normally. **(v. 0.11.0)**
 
 	* `"angle" <angle#>`: the base-angle the turret is pointing at when it is idle.
 
@@ -187,11 +173,73 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 * `"final explode"`: the same as `"explode"`, but defines an effect that is only included in the final ship explosion, not in the small explosions leading up to that. **(v. 0.9.0)**
 
-* `"leak" <effect> [<openPeriod#>] [<closePeriod#>]`: an effect to create when the ship is dying. The open period of the leak is the random chance each frame (1 / openPeriod) that a new leak will start, while the close period is the random chance each frame (1 / closePeriod) that an active leak will end. Differs from `"explode"` in that leak effects are emitted from the edge of the ship's sprite, as if the ship's atmosphere is leaking as it dies.
+* `"leak" <effect> [<openPeriod#>] [<closePeriod#>]`: an effect to create when the ship is dying. The open period of the leak is the random chance each frame (1 / openPeriod) that a new leak will start, while the close period is the random chance each frame (1 / closePeriod) that an active leak will end. Differs from `"explode"` in that leak effects are emitted from the edge of the ship's sprite, as if the ship's atmosphere is leaking as it dies. Beginning in **v. 0.11.3**, this supports the following child nodes:
+
+  * `(active | disabled | exploding | "always on")`: tags that influence when the leak effect appears. Multiple different tags can be provided at once on separate lines. By default, leaks only appear when the ship is exploding.
+
+    * `active`: This leak appears while the ship is active (i.e. not disabled and not exploding).
+
+    * `disabled`: This leak appears while the ship is disabled.
+
+    * `exploding`: This leak appears while the ship is in the process of exploding.
+
+    * `"always on"`: This leak is always active. Synonymous with listing the other three states.
+
+* `"live spark" <effect> [<amount#>]`: Defines an effect that should appear on the ship body similar to how DoT effects or jump drive effects do. The amount can be a decimal value. If not provided, the amount is 1. Supports the following child nodes: **(v. 0.11.3)**
+
+  * `period <frames#> [<random#>]`: The number of frames, with a random addition, between when new sparks are spawned. If not provided, the frames are 1 and the random is 0.
+
+  * `(over | under)`: Whether the sparks are spawned above or below the ship sprite. Default is `over`.
+
+  * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`.
+
+  * `"start delay"`: A number of frames that needs to elapse after the ship is placed before this spark can start appearing.
+
+* `"live effect" <effect> [<amount#>]`: Defines an effect that should appear at a specific location on the ship. The amount must be an integer. If not provided, the amount is 1. Supports the following child nodes: **(v. 0.11.3)**
+
+  * `position <x#> <y#>`: The position on the ship where the effect will be spawned. Default is (0, 0).
+
+  * `angle <x#>`: An optional angle to spawn the effect at. Default is 0 degrees.
+
+  * `period <frames#> [<random#>]`: The number of frames, with a random addition, between when new effects are spawned. If not provided, the frames are 1 and the random is 0.
+
+  * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
+
+  * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`.
+
+  * `"start delay"`: A number of frames that needs to elapse after the ship is placed before this effect can start appearing.
+
+* `"static decor" <x#> <y#>`: Defines a sprite that appears somewhere on the ship. Can be similar in appearance to a hardpoint sprite for a turret, except it isn't tied to a weapon. Supports the following child nodes: **(v. 0.11.3)**
+
+  * `position <x#> <y#>`: The position on the ship where the decor will be placed. Default is (0, 0). Can also be defined as values of the root node.
+
+  * `(static | rotating | moving | targeting) <x#>`: Controls the behavior of the decor.
+
+    * `static`: the decor never moves, with its facing angle relative to the ship always being equal to the given value. The value is optional for only this token, and will default to 0 if not present.
+
+    * `rotating`: the decor constantly rotates at the same rate.
+
+    * `moving`: the decor swings around randomly, similar to an opportunistic turret with no target.
+
+    * `targeting`: the decor swings around randomly if there is no target, but otherwise points toward the ship or asteroid being targeted by the ship.
+
+      * For these last three, the value is the rotation speed of the decor, similar to the turn rate of a turret. For `rotating`, the value is allowed to be negative to cause it to constantly rotate in the opposite direction.
+
+  * `(over | under)`: Whether the effects are spawned above or below the ship sprite. Default is `over`.
+
+  * `(active | disabled | exploding | "always on")`: Same as for `leak`, except the default is `active`. Instead of controlling the appearance of the decor, these tags control when the decor moves.
+
+  * `synced`: If present, all the `decor` on a ship will be synced when the ship is placed. This really only matters for `rotating` decor to allow multiple decorations with the same rotation speed to always be pointing in the same direction as one another. If not present, decorations are given a random facing angle when the ship is placed.
+
+  * `"start delay"`: A number of frames that needs to elapse after the ship is placed before this decor's animation will start.
+
+* `"synced effects"`: If present, all live sparks, live effects, and decorations will be synced with one another when the ship is placed. This means that if multiple ships in a fleet all have the same live sparks or effects with the same periods and no random period, then they will all create the effects in unison with one another. The same is true for rotating decor with the same rotation speed. **(v. 0.11.3)**
 
 * `"never disabled"`: If this tag is included (no value need be specified for it), this ship never becomes disabled due to its hull dropping too low. This means that it cannot be plundered. *This tag is not "inherited" by variants of a ship.*
 
 * `"uncapturable"`: If this tag is included (no value need be specified for it), this ship can be boarded but cannot be captured. This can be used to mark things that are not really "ships," e.g. a derelict hulk that you can plunder but that cannot be repaired to fly on its own. *This tag is not "inherited" by variants of a ship.* **(v. 0.9.0)**
+
+* `"administrative cost"`: If the fleet size limitation [gamerule](Gamerules) is set to "administrative capacity", then this is the cost of this ship toward your fleet capacity. **(v. 0.11.1)**
 
 * `"swizzle"`: the name of the swizzle that this ship uses, overriding the ship's government swizzle. **(v. 0.9.7)**
 
@@ -218,7 +266,7 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 
 * `"required crew"`: the number of crew members needed to operate the ship without anything failing.
 
-* `"automaton"`: if set to 1, this ship is allowed to have a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. **(v. 0.9.0)**
+* `"automaton"`: if set to 1, this ship is treated as if it has a `"required crew"` of 0. Ships with the "Drone" category are automatically automata unless `"automaton"` is defined and set to 0. Automata cannot be piloted as a flagship. **(v. 0.9.0)**
 
 * `"bunks"`: the maximum number of people on the ship, including crew and passengers.
 
@@ -291,7 +339,7 @@ ship "Bastion" "Bastion (Laser)"
 		"Supercapacitor" 4
 		"D94-YV Shield Generator"
 		"Water Coolant System"
-		"Mass Expansion"
+		"Outfits Expansion"
 		"A370 Atomic Thruster"
 		"A525 Atomic Steering"
 		"Hyperdrive"

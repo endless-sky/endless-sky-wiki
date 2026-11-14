@@ -16,23 +16,27 @@ government <name>
 		max <maximum-rep#>
 	"crew attack" <atk#>
 	"crew defense" <def#>
+	confusion <name>
+	confusion
+		...
 	"attitude toward"
 		<government> <rep-modifier#>
 		...
 	"default attitude"  <rep-modifier#>
 	"penalty for"
-		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+		(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#> [none | provoke | atrocity]
 		...
 	"foreign penalties for"
 		<government>
 		...
 	"custom penalties for"
 		<government>
-			(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+			(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#> [none | provoke | atrocity]
 			...
 		...
 	"provoked on scan"
 	bribe <percentage#>
+	"bribe threshold" <reputation#>
 	fine <percentage#>
 	"death sentence" <conversation>
 	"send untranslated hails"
@@ -40,6 +44,17 @@ government <name>
 	"friendly disabled hail" <phrase>
 	"hostile hail" <phrase>
 	"hostile disabled hail" <phrase>
+	"ship bribe acceptance hail" <phrase>
+	"ship bribe rejection hail" <phrase>
+	"planet bribe acceptance hail" <phrase>
+	"planet bribe rejection hail" <phrase>
+	"tribute hails"
+		"already paying" <phrase>
+		"undefined" <phrase>
+		"unworthy" <phrase>
+		"fleet launching" <phrase>
+		"fleet undefeated" <phrase>
+		"surrendered" <phrase>
 	language <text>
 	raid <fleet> [<min-attraction#> [<max-attraction#>]]
 	enforces [all]
@@ -48,10 +63,12 @@ government <name>
 	"travel restrictions"
 		{filter specification...}
 	illegals
+		"ignore universal"
 		<outfit> <fine>
 		ship <ship> <fine>
 		...
-	atrocities
+	atrocities ["death sentence" <death-sentence-conversation>]
+		"ignore universal"
 		<outfit>
 		ship <ship>
 		...
@@ -110,7 +127,7 @@ Beginning in **v. 0.10.1**, there also exists a `reputation` node which has vari
 #### Penalty for
 ```html
 "penalty for"
-	(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+	(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#> [none | provoke | atrocity]
 	...
 ```
 The "penalty for" token introduces a description block that configures the reputation impact of various in-flight player actions. For example, the block
@@ -139,7 +156,7 @@ The "scan" penalty was added in **v. 0.9.15** and applies after successfully sca
 The "provoke" penalty was added in **v. 0.9.15** and applies after attacking a ship that was previously friendly.
 
 ```html
-"use foreign penalties for"
+"foreign penalties for"
 	<government>
 	...
 ```
@@ -149,7 +166,7 @@ Beginning in **v. 0.10.0**, governments can be made to use the "penalty for" val
 ```html
 "custom penalties for"
 	<government>
-		(assist | disable | board | capture | destroy | atrocity | scan) <rep-modifier#>
+		(assist | disable | board | capture | destroy | atrocity | scan | provoke) <rep-modifier#> [none | provoke | atrocity]
 		...
 	...
 ```
@@ -165,6 +182,20 @@ A government can be made to use both "foreign penalties for" and "custom penalti
 
 Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added to governments. This tag causes a government to become temporarily hostile when you begin a cargo or outfits scan on one of their ships. In **v. 0.10.0** and onward, the provocation happens when you complete the scan.
 
+Beginning in **v. 0.11.0**, penalty actions can define special effects that occur in addition to the reputation change. These can be applied for the government itself, or how it relates to other governments when combined with `"custom penalties for"`.
+* `none`: No effect is applied aside from the reputation change. The default behavior of all actions aside from the `provoke` and `atrocity` actions.
+* `provoke`: Taking this action provokes the government, causing them to become hostile to you for the day. This is the default behavior of the `provoke` action if no other special effect is provided. Has no effect if the reputation penalty for an action is negative.
+* `atrocity`: Taking this action is considered an atrocity by the government, causing you to lose all reputation with them and become hostile. This is the default behavior of the `atrocity` action if no other special effect is provided. Has no effect if the reputation penalty for an action is less that 0.05.
+
+Here is an example usage:
+```bash
+"penalty for"
+	scan 1 provoke
+	capture 10 atrocity
+	provoke 0 none
+```
+This would have the effect of giving the government `"provoked on scan"`, as well as making capturing their ships an atrocity, and removing the provoke effect upon shooting them.
+
 #### Crew strength modifiers
 ```html
 "crew attack" <atk#>
@@ -172,6 +203,14 @@ Beginning in **v. 0.9.15**, the valueless tag `"provoked on scan"` can be added 
 ```
 The "crew attack" and "crew defense" tokens allow customizing the base crew combat attributes of this government's ships when they engage in [boarding combat](PlayersManual#boarding-plundering-and-capturing-ships).
 The default values for "crew attack" and "crew defense" are 1.0 and 2.0, respectively, and negative numbers will be treated as though they are 0.
+
+### Confusion
+```html
+confusion <name>
+confusion
+	...
+```
+Beginning in **v. 0.11.3**, the "confusion" token sets the default [confusion settings](CreatingConfusions) of ships belonging to this government. Governments can refer to a preexisting confusion profile, or can define their own custom confusion within themselves, using the same syntax as normal `confusion` data entry.
 
 #### Attitude toward
 ```html
@@ -212,6 +251,15 @@ bribe <percentage#>
 
 The bribe token controls the fraction of the player's fleet's worth that must be paid in order to receive temporary forgiveness of hostile actions. If 0, then the government cannot be bribed by the player.
 
+## Bribe threshold
+
+```html
+"bribe threshold" <reputation#>
+```
+
+Beginning in **v. 0.11.0**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, ships of this government will not accept bribes when the player's reputation is below this value. This value does not affect the player's ability to bribe planets.
+The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
+
 ## Fine
 
 ```html
@@ -224,16 +272,19 @@ The fine token controls the "leniency" of the government with respect to the fin
 
 ```html
 illegals
+	"ignore universal"
 	[ignore] <outfit> <fine>
 	[ignore] ship <ship> <fine>
 	...
-atrocities
+atrocities ["death sentence" <death-sentence-conversation>]
+	"ignore universal"
 	[ignore] <outfit>
 	[ignore] ship <ship>
 	...
 ```
 
-Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list.
+Defines which outfits (**v. 0.10.0**) or ships (**v. 0.10.5**) the government considers illegal or atrocities for the player to have. If an outfit or ship has the "illegal" or "atrocity" attribute on it (therefore giving it default illegal/atrocity behavior to all governments), then using the "ignore" keyword before listing the outfit or ship causes the government to ignore that item's base attributes. If an outfit or ship has the "illegal" attribute but the government definition also defines the item as illegal, then the fine amount from the government definition will be used. If an outfit or ship is considered an atrocity by default but you wish for a government to only fine its ownership, then you must add the item as ignored in the atrocities list and give it a fine value in the illegals list. If "ignore universal" (**v. 0.11.0**) is added to an illegals/atrocities list, this government will only take action for its custom-defined illegals/atrocities.
+Since **v. 0.11.0**, you can override [death sentences](#death-sentence) of individual atrocities by specifying the name of the conversation that should be used for the `atrocities` node. If no custom death sentence is set here, the government's default will be used (see below). If you want to have multiple custom death sentences on a single government, you can specify additional atrocity lists with `add atrocities "death sentence" <another-death-sentence>` nodes.
 
 #### Death sentence
 ```html
@@ -265,6 +316,17 @@ Before you can leave your ship, the <government name> authorities show up and be
 "friendly disabled hail" <phrase>
 "hostile hail" <phrase>
 "hostile disabled hail" <phrase>
+"ship bribe acceptance hail" <phrase>
+"ship bribe rejection hail" <phrase>
+"planet bribe acceptance hail" <phrase>
+"planet bribe rejection hail" <phrase>
+"tribute hails"
+	"already paying" <phrase>
+	"undefined" <phrase>
+	"unworthy" <phrase>
+	"fleet launching" <phrase>
+	"fleet undefeated" <phrase>
+	"surrendered" <phrase>
 ```
 These tokens allow customization of the text generation when the player communicates with ships of this government, based on their current reputation and the state of the ship issuing the hail. The [phrases](CreatingPhrases) here should be defined as standalone phrases, e.g.
 ```bash
@@ -284,6 +346,23 @@ If not specified, defaults are provided for disabled ships of all governments. T
 No defaults are provided for non-disabled hails (meaning if not specified, the ships will not randomly "chat" while the player is in-flight).
 
 In order to receive hails from a ship, you must share a language with its government. Languages are discussed in more detail below. Beginning in **v. 0.10.1**, the only exception to this is if the government has the `"send untranslated hails"` token, which allows its ships to send hails even if you do not share a language.
+
+Beginning in **v. 0.11.0**, you can use `"ship bribe acceptance hail"`, `"ship bribe rejection hail"`, `"planet bribe acceptance hail"`, and `"planet bribe rejection hail"` to customize the text that appears to the player when a bribe is accepted or rejected by a ship or planet.
+The default text on acceptance if no phrase is provided is: "It's a pleasure doing business with you."
+The default text on rejection if no phrase is provided is: "I do not want your money."
+
+Beginning in **v. 0.11.1**, you can customize the way a planet responds when the player demands tribute, instead of having the values be hardcoded.
+The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
+The default values if a key is not provided are:
+```bash
+"already paying" "We are already paying you as much as we can afford."
+"undefined" "Please don't joke about that sort of thing."
+"unworthy" "You're not worthy of our time."
+"fleet launching" "Our defense fleet will make short work of you."
+"fleet undefeated" "We're not ready to surrender yet."
+"surrendered" "We surrender. We will pay you <credits> per day to leave us alone."
+```
+Note that you still need to use phrases and not sentences.
 
 ## Language
 ```html
@@ -331,7 +410,7 @@ Beginning in **v. 0.10.0**, governments are allowed to have multiple raid fleets
 
 If multiple raid fleets are capable of spawning at the same time, each fleet checks if it can spawn up to 10 times as described above (meaning that multiple potential raid fleets can greatly increase the chance of any single fleet spawning). The likelihood of a single fleet spawning is determined by how far above that fleet's minimum attractiveness you are. Additionally, raid fleets will also take into account the strengths and spawn rates of normal fleets in the system. If a system has fleet spawns that are hostile to the raid fleet but not to the player, that will decrease the chance of the raid spawning. If a system has fleets that are hostile to the player but not the raid fleet, that will increase the chance of the raid spawning. If a system fleet is either friendly or hostile to both the raid and the player, it has no effect on the raid's spawn chance.
 
-Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`, and `"pirate attraction"` [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions#read-only), with the last condition being the value used to determine if fleets should spawn.
+Attraction is described by the `"cargo attractiveness"`, `"armament deterrence"`, and `"pirate attraction"` [conditions](Player-Conditions#read-only), with the last condition being the value used to determine if fleets should spawn.
 
 #### Enforcement zones
 ```html
@@ -370,4 +449,4 @@ If a system was 2 jumps from the system Sol, but neighbored a Daelaam-controlled
 	{filter specification...}
 ```
 
-Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters). These travel restrictions do not apply to mission NPCs that follow the player. Random fleet spawns can be made to ignore these travel restrictions by giving them the `unrestricted` [personality](https://github.com/endless-sky/endless-sky/wiki/ShipPersonalities#non-combat-goals).
+Beginning in **v. 0.10.3**, governments can be given travel restrictions which prevent fleets from that government from traveling to systems or landing on planets that match the [location filter](LocationFilters). These travel restrictions do not apply to mission NPCs that follow the player. Random fleet spawns can be made to ignore these travel restrictions by giving them the `unrestricted` [personality](ShipPersonalities#non-combat-goals).

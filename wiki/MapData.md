@@ -8,7 +8,7 @@
   * [Tribute](#tribute)
 * [Wormholes](#wormholes)
 * [Landing Messages](#landing-messages)
-* [Solar Attributes](#solar-attributes)
+* [Stellar Object Attributes](#stellar-object-attributes)
 * [Ambient Music](#ambient-music)
 
 # Introduction
@@ -86,7 +86,9 @@ system <name>
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -111,11 +113,13 @@ planet <name>
 			<condition-set>
 		news
 		description <text>
+		landscape <sprite>
 	government <name>
 	shipyard <name>
 	outfitter <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
+	"bribe threshold" <reputation#>
 	security <security#>
 	tribute <credits#>
 		threshold <rating#>
@@ -283,7 +287,10 @@ departure [<distance#>]
 
 An additional distance at which ships arrive (or depart **(v0.9.17)**) in this system. If just `<distance#>` is provided, then both hyperdrive and jump drive travel into or out of a system has its distance moved. The `link <distance#>` and `jump <distance#>` lines are optional and allow for tweaking of the distance of each jump method. If a distance is given and then a link or jump distance is provided, the link or jump distance will override the distance. If a distance is given without a value and then a link or jump distance is provided, the other travel method will be unaffected.
 
-Negative distances are allowed for link arrival distances, and will cause ships to arrive on the opposite side of the system from where they entered. Non-zero values (i.e. including this variable) will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
+Negative values are allowed for link arrival distances, and will move the point at which the ship enters the system away from the direction it is coming from, rather than towards it as positive values do.
+Providing a value other than zero will cause ships to jump into the system from a distance relative to the system center, as opposed to jumping in relative to a target planet.
+
+Beginning in **v. 0.11.3**, systems can have their arrival distance be automatically calculated to match their habitable distance (within a certain range) using [gamerules](Gamerules#system-behavior). These rules are on by default in vanilla, so new systems contributed to the main game do not need to define an arrival distance except for special purposes.
 
 ```html
 ramscoop
@@ -292,7 +299,7 @@ ramscoop
 	multiplier <value#>
 ```
 
-Beginning in **v. 0.10.0**, individual systems can be given modifiers which influence fuel gained through the use of ramscoops, adding to the customization that [solar attributes](https://github.com/endless-sky/endless-sky/wiki/MapData#solar-attributes) provide. The `universal` keyword determines whether the universal ramscoop (a minor amount of fuel gain applied to all ships even without the presence of the "ramscoop" attribute) functions in the system, with 1 being true and 0 being false. The `addend` keyword adds (or subtracts) an amount of fuel gained per frame while in the system. If the addend subtracts more fuel than is provided, then no fuel is gained; there is no fuel lost due to a negative addend. The `multiplier` keyword multiplies the fuel normally gained. The multiplier is applied first before the addend. The default values are `universal 1`, `addend 0`, and `multiplier 1`.
+Beginning in **v. 0.10.0**, individual systems can be given modifiers which influence fuel gained through the use of ramscoops, adding to the customization that [solar attributes](MapData#solar-attributes) provide. The `universal` keyword determines whether the universal ramscoop (a minor amount of fuel gain applied to all ships even without the presence of the "ramscoop" attribute) functions in the system, with 1 being true and 0 being false. The `addend` keyword adds (or subtracts) an amount of fuel gained per frame while in the system. If the addend subtracts more fuel than is provided, then no fuel is gained; there is no fuel lost due to a negative addend. The `multiplier` keyword multiplies the fuel normally gained. The multiplier is applied first before the addend. The default values are `universal 1`, `addend 0`, and `multiplier 1`.
 
 
 ```html
@@ -300,6 +307,8 @@ habitable <distance#>
 ```
 
 The distance of the "Goldilocks zone" in this system. When selecting a system on the map, the orbits of the objects in the system will be colored in relation to their distance from this value. If an object's distance is near this value, its orbit will be green. If an object's distance is farther than this value, then its orbit will fade from light to dark blue the further it is. If an object's distance if closer than this value, then its orbit will fade from yellow to red the closer to the system center it is.
+
+Beginning in **v. 0.11.3**, this token can be excluded from the system and it will be automatically calculated based off of the stars in the system. See [stellar object attributes](#stellar-object-attributes) for more details.
 
 ```html
 belt <distance#> [<weight#>]
@@ -364,7 +373,7 @@ Beginning in **v. 0.10.11**, fleets can be given `to spawn` conditions. A fleet 
 raid <fleet> [<min-attraction#> [<max-attraction#>]]
 ```
 
-The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](https://github.com/endless-sky/endless-sky/wiki/CreatingGovernments#raid). **(v. 0.10.3)**
+The name of a [fleet](CreatingFleets) that is spawned in this system when the player's raid attraction is high enough. More details on raid fleets can be found in [CreatingGovernments](CreatingGovernments#raid). **(v. 0.10.3)**
 
 ```html
 "no raids"
@@ -452,6 +461,8 @@ period <period#>
 
 The number of days that it takes this object to orbit around the system center. Objects only move when the day changes, meaning that they will not move while the player is launched and in the system.
 
+Beginning in **v. 0.11.3**, this token can be excluded from the object and it will be automatically calculated based off of the body or bodies that this object orbits. See [stellar object attributes](#stellar-object-attributes) for more details.
+
 ```html
 offset <offset#>
 ```
@@ -485,7 +496,9 @@ Objects are capable of having objects as children. This allows for the creation 
 planet <name>
 	"display name" <name>
 	attributes <attribute>... "requires: <attribute>"
-	landscape <sprite>
+	landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	music <sound>
 	description <text>
 	spaceport <text>
@@ -515,11 +528,19 @@ planet <name>
 	outfitter <name>
 	"required reputation" <reputation#>
 	bribe <bribe#>
+	"bribe threshold" <reputation#>
 	security <security#>
 	wormhole <name>
 	tribute <credits#>
 		threshold <rating#>
 		fleet <name> <count#>
+	"tribute hails"
+		"already paying" <phrase>
+		"undefined" <phrase>
+		"unworthy" <phrase>
+		"fleet launching" <phrase>
+		"fleet undefeated" <phrase>
+		"surrendered" <phrase>
 ```
 
 Planets are landable objects, and are where players are capable of buying and selling ships, finding jobs, and discovering missions.
@@ -557,10 +578,12 @@ There are three attributes that get automatically added to a planet: `spaceport`
 One other special attribute is the `uninhabited` attribute. If listed, then the planet's trading, job board, bank, and hire crew panels will be gone, the planet will show as uninhabited on the map, and the planet will be incapable of fining the player unless a security value is provided.
 
 ```html
-landscape <sprite>
+landscape <sprite>...
+	<sprite> [<weight>]
+	...
 ```
 
-The landscape image that is shown when landed on this planet.
+The landscape image that is shown when landed on this planet. Beginning in **v. 0.11.1**, planets can have more than one landscape image, with the landscape image shown upon landing being picked randomly from the list of possible images. If landscape images are provided in line with the `landscape` node, then each image has an equal chance of being displayed. If provided as child nodes, each sprite can be given a weight. Weighted landscape sprites are chosen in the same manner as weighted variants in [fleets](CreatingFleets).
 
 ```html
 music <sound>
@@ -597,7 +620,7 @@ to access (outfitter | shipyard)
 	<condition-set>
 ```
 
-Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a planet based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
 * `to know`: Controls whether the object that the planet is associated with is seen as a landable object. If this is false, the object won't appear landable.
 * `to land`: Controls whether the player can land on the planet. If false, you won't be able to land, and hailing the planet will tell you that you are denied landing access and cannot bribe your way onto the planet.
@@ -619,6 +642,7 @@ port [<name>]
 		<condition-set>
 	news
 	description <text>
+	landscape <sprite>
 ```
 
 Beginning in **v. 0.10.5**, how exactly the port of a planet behaves can be controlled more precisely using the `port` keyword. The `spaceport` keyword is still supported and is shorthand for a port named "Spaceport" with all recharge and service capabilities.
@@ -643,7 +667,9 @@ By default, ports don't display spaceport news when you enter them. To display n
 
 The description text of a port behaves the same way as the text following a `spaceport` node, and is the text that appears when you click the port button.
 
-Beginning in **v. 0.10.17**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
+Beginning in **v. 0.11.1**, a `landscape` node can be used to provide a single custom sprite to display when the player clicks the Spaceport button.
+
+Beginning in **v. 0.11.0**, condition sets can be used to further control the behavior of a port based on the player's current [conditions](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions).
 
 * `to access`: Controls whether the player can access anything that is a part of the spaceport upon landing, including any port services, recharging types, either of the shops, and the port button itself.
 * `to bribe`: If true, you will be required to pay a bribe before landing.
@@ -680,6 +706,13 @@ If no bribe is specified, then a default bribe of 0.01 is used.
 If no security is specified, then a default security of 0.25 is used. 
 
 ```html
+"bribe fraction" <reputation#>
+```
+
+Beginning in **v. 0.11.0**, a minimum reputation for accepting bribes can be provided. If this value is set to anything other than zero, this planet will not accept bribes to provide landing clearance when the player's reputation is below this value.
+The default value is zero, so bribes can be accepted regardless of how low the player's reputation may be.
+
+```html
 wormhole <name>
 ```
 
@@ -691,6 +724,7 @@ wormhole <name>
 tribute <credits#>
 	threshold <rating#>
 	fleet <name> <count#>
+	"daily reputation penalty" <amount#>
 ```
 
 The player is capable of demanding tribute from certain planets. If no tribute is specified, then the planet will always respond negatively to the player's demand for tribute.
@@ -712,6 +746,35 @@ fleet <name> <count#>
 ```
 
 The fleet that is spawned from this planet if the player demands tribute from it, and how many times that fleet is spawned. More than one type of fleet is capable of being spawned from a planet when demanding tribute.
+
+```html
+"daily reputation penalty" <amount#>
+```
+
+The amount of reputation with the planet's government that is subtracted every day while the player receives tribute. **(v. 0.11.0)**
+
+```html
+"tribute hails"
+	"already paying" <phrase>
+	"undefined" <phrase>
+	"unworthy" <phrase>
+	"fleet launching" <phrase>
+	"fleet undefeated" <phrase>
+	"surrendered" <phrase>
+```
+
+With these hails, you can customize how a planet responds when the player demands tribute from it. Tribute hails defined on a planet will override tribute hails defined by the government. **(v0.11.1)**
+The `surrendered` phrase should always have a `<credits>` substitution for the planet to tell the player how much money they will receive per day.
+The default values if a key is not provided are:
+```bash
+"already paying" "We are already paying you as much as we can afford."
+"undefined" "Please don't joke about that sort of thing."
+"unworthy" "You're not worthy of our time."
+"fleet launching" "Our defense fleet will make short work of you."
+"fleet undefeated" "We're not ready to surrender yet."
+"surrendered" "We surrender. We will pay you <credits> per day to leave us alone."
+```
+Note that you still need to use phrases and not sentences.
 
 # Wormholes
 
@@ -767,16 +830,21 @@ By default, the color named `"map wormhole"` will be used.
 
 Landing messages are the message that is shown if attempting to land on an uninhabited object. The text of a landing message is what is shown, while the children of a landing message are the sprites that show this message.
 
-# Solar attributes
+# Stellar object attributes
+
+Attributes of stellar objects (stars, planets, and moons) can influence the behavior of other objects and ships within a system.
 
 ```html
 star <sprite>
 	power <power#>
 	wind <wind#>
 	icon <icon>
-```
+	habitable <distance#>
+	mass <mass#>
 
-There are certain attributes that a ship is capable of having that will change in effectiveness based off of the stars in the system.
+"planet mass" <mass#>
+	<sprite>
+```
 
 ```html
 star <sprite>
@@ -802,6 +870,35 @@ icon <icon>
 ```
 
 The sprite listed here is the sprite of the star icon from the map screen when the starry map view is enabled. **v. 0.10.11**
+
+
+```html
+habitable <distance#>
+```
+
+Beginning in **v. 0.11.3**, this defines the habitable distance for any system that contains this star sprite. This will only be used if the system doesn't already defined its own habitable distance. For systems with multiple stars, their values add together.
+
+```html
+mass <mass#>
+```
+
+Beginning in **v. 0.11.3**, this defines the mass of the star, for use in determining the orbital periods of objects that orbit it that do not already define their own orbital period. Orbital periods will be calculated as `sqrt(distance^3) / total star mass`, where the total star mass is the sum of all the stars in the system. For multi-star systems, the orbital period of the stars is `sqrt(pow(total star distance, 3.) / total star mass)`, where total star distance is the sum of the distances of each star from the system center.
+
+When adding up the total star mass, a star is any object whose sprite is within the `images/star/` folder. If none of the objects in a system have a sprite from this folder, the first object in the system is treated as a star for these calculations.
+
+For content creation purposes, the original calculations for mass and habitable distance were `mass = (radius^3) * 0.25` and `habitable = (radius^3) * 0.04`, where `radius` is the pixel radius of the star sprite. These exact calculations have not been used for some time after we revamped our star graphics and added a lot of new star types, but it can still be helpful as a means of inputting false radii to output values that follow a reasonable progression. New stars should instead scale their value relative to similar stars that already exist.
+
+```html
+"planet mass" <mass#>
+	<sprite>
+	...
+```
+
+Beginning in **v. 0.11.3**, this defines the mass of a list of planets, for use in determining the orbital periods of its moons that do not already define their own orbital period. Orbital periods will be calculated as `sqrt(distance^3) / parent planet mass`. You can list multiple sprites as children of this node that all share the same mass. Only sprites who will have moons orbiting them that don't set their own orbital period need to have a defined mass.
+
+For content creation purposes, the calculation we use for determining the mass of a planet is `(radius^3) * 0.015` where `radius` is the pixel radius of the planet sprite.
+
+For both stars and planets, the values need not exactly match the provided calculations. For example, you could have an object that appears large but is hollow and so has a low mass, or a star that is nearing the end of its life and expanding, therefore resulting in a further habitable distance but a similar mass to visually smaller stars. Barring such exceptions, using these calculations and comparing to existing objects within the game can be used as a baseline for new objects.
 
 # Ambient music
 

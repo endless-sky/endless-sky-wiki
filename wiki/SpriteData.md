@@ -19,6 +19,8 @@ sprite <name>
 	["random start frame"]
 	["no repeat"]
 	["rewind"]
+	["no frame tweening"]
+	["reverse"]
 	"center" <x#> <y#>
 ```
 
@@ -28,16 +30,14 @@ sprite <name>
 sprite <name>
 ```
 
-The name of the sprite should be a path relative to the **images** folder, and not including frame numbers, [blending mode specifiers](BlendingModes), or the file extension. For example, the "blaster impact" effect is an animation with four frames:
+The name of the sprite should be a path relative to the **images** folder, and not including [modifier suffixes](ImageFormats#file-names) or the file extension. For example, the "blaster impact" effect is an animation with four frames:
 
 * images/effect/blaster impact+0.png
 * images/effect/blaster impact+1.png
 * images/effect/blaster impact+2.png
 * images/effect/blaster impact+3.png
 
-The `<name>` for this sprite is "effect/blaster impact". The `+` in the file names specifies that the images should use [additive blending](BlendingModes#alpha-blending-vs-additive-blending), and the numbers after the `+` are the frame numbers for the animation.
-
-The current file formats supported for simple images are `.png` and `.jpg`/`.jpeg`/`.jpe`. Since **v. 0.10.15**, you can also use `.avif`/`.avifs` files to store all frames of an animation. In this case, you should only have one file matching the sprite name.
+The `<name>` for this sprite is "effect/blaster impact". The `+` in the file names specifies that the images should use [additive blending](BlendingModes#alpha-blending-vs-additive-blending), and the numbers after the `+` are the frame numbers for the animation. For more details on file naming, see the [Image Formats](ImageFormats) page.
 
 ## Scale
 
@@ -58,6 +58,8 @@ You can also specify various attributes of the animation. These should be left o
 * `"random start frame"`: start at a random frame of the animation.
 * `"no repeat"`: once the animation has played through once, stay on the last frame until the effect disappears. If this is not defined, the animation loops.
 * `"rewind"`: once the animation has played through to the last frame, play it in reverse. If `"no repeat"` is also defined, the animation will play forward once, then backward once, then stop at the first frame.
+* `"no frame tweening"`: disables [frame tweening](AnimationTweening). **(v. 0.11.4)**
+* `"reverse"`: the animation plays in reverse relative to how the frames are ordered in the images folder, starting from the last frame and counting down to the first frame. **(v. 0.11.5)**
 
 ## Center
 

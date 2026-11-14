@@ -77,9 +77,8 @@ interface <name> [<anchor>]
 interface <name> [<anchor>]
 ```
 This marks the beginning of this interface definition and defines the name by which the game code can refer to this interface.
-If an interface with this name has previously been defined when this one is loaded, the previously loaded definition will be discarded,
-meaning plugins can completely override interface definitions.
-This line may optionally set an anchor. This is equivalent to the first line of the interface definition setting the same anchor point:
+Duplicate definitions of the same named interface node will stack their changes together. For plugins that are modifying a vanilla interface definition where you want to replace the previous definition completely, use the [`overwrite` root node](CreatingPlugins#creating-or-overriding-data-elements). On versions before **v. 0.11.4**, the previously loaded definition was always discarded.
+This line may optionally set an anchor, which is equivalent to the first line of the interface definition setting the same anchor point:
 ```html
 interface <name>
 	anchor [<anchor>]
@@ -294,7 +293,7 @@ If one color is given, the whole bar will be that color, and if no color is give
 		color <color>
 ```
 Defines an area to be filled with the specified color while drawing this interface.
-Prior to **v. 0.10.17**, the keyword for this element was "line".
+Prior to **v. 0.11.0**, the keyword for this element was "line".
 If no color is given, "medium" will be used.
 
 ## Pointers

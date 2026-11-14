@@ -1,13 +1,16 @@
-A "person" is a unique ship or fleet of ships that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. The [syntax](https://github.com/endless-sky/endless-sky/wiki/DataFormat#grammar-specifications) for the definition of a person is:
+A "person" is a unique ship or fleet of ships that will occasionally appear at random. Each person has a customized ship and its own set of things it might say to the player. If the player kills a person, that person will never appear to that particular pilot again. A person is killed when the flagship of the person's fleet is destroyed or captured. The [syntax](DataFormat#grammar-specifications) for the definition of a person is:
 
 ```html
 person <name>
+	"never dies"
+	"must destroy all"
 	frequency <frequency#>
 	government <government>
 	personality [<type>...]
-		confusion <amount#>
 		<type>...
-		...
+		confusion <name>
+		confusion
+			...
 	system
 		system [<name>...]
 			<name>...
@@ -22,7 +25,7 @@ person <name>
 			<text>
 			...
 		...
-	ship <modelName> [<name>]
+	ship <model> [<name>]
 		{ship definition...}
 	[ship]
 		...
@@ -31,10 +34,22 @@ person <name>
 The various parts of a person definition are described below.
 
 ```html
+"never dies"
+```
+
+Beginning in **v. 0.11.3**, the presence of this tag means that the person can never be killed. You may destroy every ship in the person's fleet, but that will not prevent it from respawning.
+
+```html
+"must destroy all"
+```
+
+Beginning in **v. 0.11.3**, the presence of this tag means that you must destroy every ship in the person's fleet in order to kill the person, as opposed to the default behavior of only needing to kill the flagship.
+
+```html
 frequency <frequency#>
 ```
 
-At random intervals, averaging once every 10 minutes, there is an opportunity for a person to be created. The game looks for every person who has not already appeared since the last time the player took off from a planet, and who has not been killed by the player. It picks a random person to create based on the relative frequencies of all available special persons, which default to 100 if no value is given. That is, a person with a frequency of 200 is twice as likely to appear as one with the default frequency of 100.
+At random intervals, averaging once every 20 minutes (although this can vary based on the user's gamerules), there is an opportunity for a person to be created. The game looks for every person who has not already appeared since the last time the player took off from a planet, and who has not been killed by the player. It picks a random person to create based on the relative frequencies of all available special persons, which default to 100 if no value is given. That is, a person with a frequency of 200 is twice as likely to appear as one with the default frequency of 100.
 
 To reduce the rate of persons being created if there are not many of them, there is also a chance that no person will be created, and that chance has a frequency of 1000. So, for example, if there are only two persons in the game and they both have a frequency of 100, they each have a 100 / (100 * 2 + 1000) = 8.3% chance of appearing in a given ten-minute interval.
 
@@ -46,12 +61,13 @@ This is the person's government. This can be a normal government, or a special o
 
 ```html
 personality [<type>...]
-	confusion <amount#>
 	<type>...
-	...
+	confusion <name>
+	confusion
+		...
 ```
 
-This defines the [personality characteristics](ShipPersonalities). The confusion value is generally not used, but it is meant to control how accurately a ship fires its weapons. (It defaults to 10, meaning the ship's aim may be off by up to 10 pixels.)
+This defines the [personality characteristics](ShipPersonalities) and, beginning in **v. 0.11.3**, the [confusion profile](CreatingConfusions).
 
 ```html
 system
@@ -78,8 +94,17 @@ phrase
 This defines what the person says if you hail them, or at random intervals if they decide to hail you. The phrase should be a collection of one or more "words," each of which is chosen from one or more options. If you want different options, you can define more than one "phrase" that the person might use. (See the "hails.txt" data file for examples of how this works.)
 
 ```html
-ship <modelName> [<name>]
+ship <model> [<name>]
 	{ship definition...}
 ```
 
-This is a definition of the person's ship, using the same format as all other [ship definitions](CreatingShips). Starting in **v. 0.9.9,** multiple ships may be defined to create a person that is the leader of a fleet (such as in an interceptor squadron, or a carrier commanding a flotilla of fightercraft). The person is considered destroyed when the first ship in the list is either destroyed or captured - any escorts that did not survive are replaced when the person next spawns. Starting in **v. 0.9.13,** escorts are able to have their ship name specified, otherwise they will use the name of the person. The first ship in the list will always use the name of the person.
+This is a definition of the person's ship, using the same format as all other [ship definitions](CreatingShips). Starting in **v. 0.9.9,** multiple ships may be defined to create a person that is the leader of a fleet (such as in an interceptor squadron, or a carrier commanding a flotilla of fightercraft). The person is considered destroyed when the first ship in the list is either destroyed or captured - any escorts that did not survive are replaced when the person next spawns.
+
+Starting in **v. 0.9.13,** escorts are able to have their ship name specified. Any ship without a given name will use the name of the person.
+
+Prior to **v. 0.11.3**, it was required that either a name be provided next to the model or that ship specification details be provided. This would then be created as a brand new ship model, or a variant of the model from the `<model>` token with the variant name matching the given name. After this update, a ship can be provided as only a model with no given name or extra specifications, and the ship definition matching that model name will be used.
+
+For example, the following would not work previously, but now does:
+```html
+ship "Shuttle"
+```

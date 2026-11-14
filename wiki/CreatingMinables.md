@@ -8,13 +8,16 @@ minable <name>
 		[sprite properties...]
 	hull <hull#>
 	"random hull" <hull#>
-	payload <outfit> <count#>
+	payload <outfit> [[<min-drops#>] <max-drops#>]
 		"max drops" <count#>
+		"min drops" <count#>
 		"drop rate" <chance#>
 		"toughness" <value#>
 	"live effect" <effect> [<interval#>]
 		["relative to system center"]
 	explode <effect> <count#>
+	attributes
+		...
 ```
 
 Minable asteroids are asteroids that are capable of being destroyed, and orbit around the system center instead of traveling in a single direction like normal, indestructible asteroids. Once destroyed, these asteroids will drop outfits that can be picked up.
@@ -60,18 +63,20 @@ The amount of hull damage that must be applied to this asteroid before it is des
 Beginning in **v. 0.9.15**, minables can have an amount of health up to their "random hull" value added on top of their base hull.
 
 ```html
-payload <outfit> <count#>
+payload <outfit> [[<min-drops#>] <max-drops#>]
 	"max drops" <count#>
+	"min drops" <count#>
 	"drop rate" <chance#>
 	"toughness" <value#>
 ```
 
-The [outfit](CreatingOutfits) that is dropped by this asteroid after being destroyed. The count is the maximum possible number of the outfit that can drop, but when an asteroid is destroyed, only 25% of the payload will survive on average by default. A minable asteroid can have multiple payloads.
+The [outfit](CreatingOutfits) that is dropped by this asteroid after being destroyed. The `min-drops` value is the minimum guaranteed number of the outfit that will drop, the `max-drops` value is the maximum possible number of the outfit that can drop. By default, the expected number of outfits dropped is `min-drops` plus 25% of the difference between `max-drops` and `min-drops`. Prior to **v. 0.11.4**, only one value could be provided, which represented the maximum number of drops, and the minimum was always 0. A minable asteroid can have multiple payloads.
 
 Starting with **v. 0.10.5**, a `payload` can have the following optional children:
-* `"max drops"`: the maximum possible number of the outfit that can drop. An alternative location from the drop count next to the outfit name. If a drop count is not specified in either location, the default drop size is 1.
-* `"drop rate"`: a value between 0 and 1 that represents the fraction of the maximum payload count that will survive on average. Defaults to 0.25 if not specified.
-* `"toughness"`: a value greater than 1 which represents the toughness of this payload, which measures how resistant it is to having its drop rate increased by [prospecting weapons](https://github.com/endless-sky/endless-sky/wiki/CreatingOutfits#weapon-attributes).
+* `"min drops"`: the minimum guaranteed number of the outfit that the minable will drop. An alternative way to specify the min drop count is to add it in `payload` row before the max drop count. If a min drop count is not specified in either location, the default is 0. **(v. 0.11.4)**
+* `"max drops"`: the maximum possible number of the outfit that can drop. An alternative location for the max drop count is next to the outfit name. If a max drop count is not specified in either location, the default is 1.
+* `"drop rate"`: a value between 0 and 1 that represents the fraction of the maximum payload count that will survive on average over the guaranteed minimum payload count. Defaults to 0.25 if not specified.
+* `"toughness"`: a value greater than 1 which represents the toughness of this payload, which measures how resistant it is to having its drop rate increased by [prospecting weapons](CreatingOutfits#weapon-attributes).
 
 ```html
 "live effect" <effect> [<interval#>]
@@ -85,3 +90,23 @@ explode <effect> <count#>
 ```
 
 The [effect](CreatingEffects) that is created when this asteroid is destroyed, and how many times it is created. A minable asteroid can have multiple explosion effects.
+
+```html
+attributes
+	...
+```
+
+Beginning with **v. 0.11.1**, minables can have an [attributes](CreatingOutfits) node.
+
+Only the following attributes have an influence on the minable's behavior:
+* Attributes that influence the tracking capabilities of missiles targeting the minable:
+	* `mass`
+	* `"heat capacity"`
+	* `"optical jamming"`
+	* `"radar jamming"`
+* Damage protection and DoT resistance: (**v. 0.11.3**)
+	* `"hull protection"`, `"heat protection"`, `"corrosion protection"`, `"burn protection"`
+	* `"corrosion resistance"`, `"burn resistance"`, and the associated cost attributes.
+* Heat related attributes: (**v. 0.11.3**)
+	* `"heat dissipation"`
+	* `"overheat damage threshold"` and `"overheat damage rate"`.
