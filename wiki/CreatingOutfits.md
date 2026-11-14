@@ -676,6 +676,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute. Deprecated and replaced with the boolean attribute `uninstallable` in **v. 0.11.5**.
   
+  * `uninstallable`: if present, this outfit cannot be installed. This is a boolean attribute. **(v. 0.11.5)**
+
   * `"can jettison"`: if set, this outfit is able to be jettisoned from the ship info panel while in flight. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.11.3)**
 
   * `minable`: if present, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.15)**
@@ -707,8 +709,6 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. This is a boolean attribute. **(v. 0.11.5)**
 
   * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. This is a boolean attribute. **(v. 0.11.5)**
-
-  * `uninstallable`: if present, this outfit cannot be installed. This is a boolean attribute. **(v. 0.11.5)**
 
 
 # Weapon attributes
