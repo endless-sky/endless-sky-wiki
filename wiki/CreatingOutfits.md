@@ -787,6 +787,8 @@ The following attributes are tags (just the word by itself, no value following i
 
 * `safe`: if the weapon has the blast radius attribute, this tag causes explosions from this weapon's projectiles to not damage allied ships (unless they are explicitly targeted). **(v. 0.9.9)**
 
+    * For versions **v 0.11.5** and later, `safe` also prevents projectiles fired by a weapon from hitting allied ships if any of the "friendly fire" [gamerules](Gamerules) are active.
+
 * `phasing`: enables the projectile to only hit the intended target (instead of perhaps colliding with a closer ship in the line of fire). If a ship has no target, then a phasing projectile will hit any hostile ship in the line of fire. Asteroids - even if targeted - are not hit by phasing weaponry. **(v. 0.9.9)**
 
 * `"no damage scaling"`: prevents any damage scaling associated with blast damage from being applied: the nominal damage and hit force values are dealt at the center of the blast and at the very edges. **(v. 0.9.9)**
