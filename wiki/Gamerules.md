@@ -78,9 +78,9 @@ The depreciated value of an item that is "age" days old is calculated with the f
 
 ## Raid Fleet Behavior
 
-* `"raid fleet roll chance"`: A double gamerule that controls the chance that a raid fleet spawn attempt occurs. A random number between 0 and 1 is rolled, and if it is less than this value, only then does it roll the individual fleet spawn attempts. When set to 0%, the `"raid chance in system: <system>"` condition always returns 0, but the `"pirate attraction"` condition will still return non-zero values. It will also hide the piracy threat information from the player info panel. **(v. 0.11.5)**
-* `"raid attraction multiplier"`: A double gamerule that multiplies against the raid attraction level of your fleet. **(v. 0.11.5)**
-* `"raid deterrence multiplier"`: A double gamerule that multiplies against the raid deterrence level of your fleet. **(v. 0.11.5)**
+* `"raid fleet roll chance"`: A decimal rule that controls the chance that a raid fleet spawn attempt occurs. A random number between 0 and 1 is rolled, and if it is less than this value, only then does it roll the individual fleet spawn attempts. When set to 0%, the `"raid chance in system: <system>"` condition always returns 0, but the `"pirate attraction"` condition will still return non-zero values. It will also hide the piracy threat information from the player info panel. **(v. 0.11.5)**
+* `"raid attraction multiplier"`: A decimal rule that multiplies against the raid attraction level of your fleet. **(v. 0.11.5)**
+* `"raid deterrence multiplier"`: A decimal rule that multiplies against the raid deterrence level of your fleet. **(v. 0.11.5)**
 * `"raid fleet spawn attempts"`: An integer gamerule that determines how many raid fleet spawn attempts occur each time you enter a system. **(v. 0.11.5)**
 
 ## Hardcore Settings
@@ -93,6 +93,14 @@ The depreciated value of an item that is "age" days old is calculated with the f
   * `"delete on takeoff"`: The pilot's save files will be deleted when you take off from a planet. Save files are only retained if you leave the game while landed.
 * `"restricted save loading"`: A boolean rule that, if true, prevents you from loading save files when you aren't landed on a planet. Forced to on if the permadeath mode is set to "lock on takeoff" or "delete on takeoff". **(v. 0.11.3)**
 * `"single save file"`: A boolean rule that controls whether you are restricted to only having a single save file. Prevents the creation of autosaves and snapshots if active. Forced to on if the permadeath mode is set to "delete on takeoff". **(v. 0.11.3)**
+
+## Friendly Fire Settings
+
+* `"friendly fire same gov probability"`: A decimal rule that controls the percent probability that a projectile will collide with a ship belonging to the same government. Can go from 0 (0%, no friendly fire) up to 1 (100%, guaranteed friendly fire). Slower projectiles will have a lower chance of friendly fire so that their overall likelihood of a collision is similar to that of a hitscan weapon like a beam, as a slow-moving projectile that doesn't cause friendly fire on one frame could still overlap with a ship can cause friendly fire on the next frame. Weapons with the `"safe"` attribute are exempt from friendly fire. **(v. 0.11.5)**
+* `"friendly fire allied gov probability"`: A decimal rule like `"friendly fire same gov probability"`, but applies to friendly ships of a different government. Friendlies hit this way will not be provoked. If the friendly ship was explicitly targeted, provocation will work as usual. **(v. 0.11.5)**
+* `"friendly fire fighter prob multiplier"`: A decimal rule with a value between 0 (0%) and 1 (100%) that applies to carried ships to multiply against either of the two rules above to determine the probability of a fighter experiencing or causing friendly fire. **(v. 0.11.5)**
+* `"friendly fire carrier exception"`: A boolean rule that, if true, causes carrier groups to become immune to friendly fire. Carriers cannot hit their own fighters and fighters cannot hit their own carriers or other fighters from the same carrier. **(v. 0.11.5)** 
+* `"friendly fire damage multiplier"`: A decimal rule  with a value between 0 (0%) and 1 (100%) that acts as a multiplier on the damage dealt by friendly fire. This only affects accidental friendly fire; targeted ships will take full damage. Blast damage is not affected either. **(v. 0.11.5)**
 
 ## Capture Settings
 
