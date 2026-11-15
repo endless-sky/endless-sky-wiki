@@ -16,6 +16,10 @@ government <name>
 		max <maximum-rep#>
 	"crew attack" <atk#>
 	"crew defense" <def#>
+  "rewiring multiplier" <modifier#>
+	confusion <name>
+	confusion
+		...
 	"attitude toward"
 		<government> <rep-modifier#>
 		...
@@ -153,7 +157,7 @@ The "scan" penalty was added in **v. 0.9.15** and applies after successfully sca
 The "provoke" penalty was added in **v. 0.9.15** and applies after attacking a ship that was previously friendly.
 
 ```html
-"use foreign penalties for"
+"foreign penalties for"
 	<government>
 	...
 ```
@@ -203,9 +207,17 @@ The default values for "crew attack" and "crew defense" are 1.0 and 2.0, respect
 
 #### Rewiring multiplier
 ```html
-"rewiring multiplier" <rewiring-multiplier#>
+"rewiring multiplier" <modifier#>
 ```
 Beginning in **v. 0.11.5**, the "rewiring multiplier" token determines how much rewiring a locked ship should cost at shipyards controlled by this government. This stacks multiplicatively with the [`"rewiring cost multiplier"` gamerule](Gamerules) as well as the [`"rewiring multiplier"` of the locked ship](CreatingShips).
+
+### Confusion
+```html
+confusion <name>
+confusion
+	...
+```
+Beginning in **v. 0.11.3**, the "confusion" token sets the default [confusion settings](CreatingConfusions) of ships belonging to this government. Governments can refer to a preexisting confusion profile, or can define their own custom confusion within themselves, using the same syntax as normal `confusion` data entry.
 
 #### Attitude toward
 ```html

@@ -4,10 +4,10 @@ Shops are outfitters or shipyards that sell outfits or ships on a planet. The [s
 
 ```html
 (outfitter | shipyard) <name>
-to sell
-	<condition set>
-location
-	<location filter>
+	to sell
+		<condition set>
+	location
+		<location filter>
 	stock
 		[remove]
 		[remove] <item>

@@ -77,9 +77,8 @@ interface <name> [<anchor>]
 interface <name> [<anchor>]
 ```
 This marks the beginning of this interface definition and defines the name by which the game code can refer to this interface.
-If an interface with this name has previously been defined when this one is loaded, the previously loaded definition will be discarded,
-meaning plugins can completely override interface definitions.
-This line may optionally set an anchor. This is equivalent to the first line of the interface definition setting the same anchor point:
+Duplicate definitions of the same named interface node will stack their changes together. For plugins that are modifying a vanilla interface definition where you want to replace the previous definition completely, use the [`overwrite` root node](CreatingPlugins#creating-or-overriding-data-elements). On versions before **v. 0.11.4**, the previously loaded definition was always discarded.
+This line may optionally set an anchor, which is equivalent to the first line of the interface definition setting the same anchor point:
 ```html
 interface <name>
 	anchor [<anchor>]

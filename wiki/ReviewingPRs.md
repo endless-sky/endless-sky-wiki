@@ -19,7 +19,7 @@ If you have any questions, please feel free to ask on the game's [Discord server
 
 * **Don't do reviews as a way to calm down**: Reviewing others' work can be calming, but doing reviews when stressed can also lead you to overreact to relatively small changes. Even if you don't, your reviews will probably be worse than usual.
 
-* **Use the "request changes" button sparingly, or not at all**: In most cases, leaving comments with suggested changes is enough. Developers typically don’t merge PRs with unresolved comments, so there's usually no need to use "suggest changes."
+* **Use the "request changes" button sparingly, or not at all**: In most cases, leaving comments with suggested changes is enough. Developers typically don't merge PRs with unresolved comments, so there's usually no need to use "suggest changes."
 
 * **Don't review draft PRs. Draft PRs are still a work in progress**: Any feedback you give is likely to be outdated by the time the PR is ready for review, leading to unwanted notifications and overwritten reviews.
 

@@ -8,10 +8,6 @@
 
 # Outfit graphics
 
-The thumbnail graphics for all the outfits in the game are created using two free, open source programs: [Blender](https://www.blender.org/) for creating the 3D models, and [GIMP](https://www.gimp.org/) for post-processing the rendered images to look more grungy and less artificial. (Another open source program, [Inkscape](https://inkscape.org), is used for the vector graphics in the user interface.) You can download the original Blender and GIMP files for any of the graphics [here](https://github.com/EndlessSkyCommunity/endless-sky-assets/).
-
-Any outfit model you create in Blender should use the camera and lighting settings from [this template](https://raw.githubusercontent.com/EndlessSkyCommunity/EndlessSky-Discord-Bot/master/data/templates/outfittemplate.blend). That will ensure that your new thumbnails do not look out of place next to the existing ones. The template is set up with sunlight coming from a certain angle and with the image rendered in an orthographic projection along the XYZ diagonal, so that a cube in your model will line up exactly with the cubical grid used as a backdrop for the outfits.
-
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/particle%20cannon.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/meteor%20launcher.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/outfit/anti-missile.png)
@@ -30,13 +26,15 @@ In a few cases, it's ambiguous which direction something should point in. For ex
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/outfit/huge%20ion%20steering%402x.png)
 ![](https://raw.githubusercontent.com/endless-sky/endless-sky-high-dpi/master/images/outfit/security%20station%402x.png)
 
-As with [ships](CreatingShips), it is often easier to add texture and color variation to the outfit images in GIMP rather than trying to texture map all the surfaces in Blender. And, also as with the ship graphics, be sure that your GIMP file is at least high enough resolution to create an "@2x" high resolution version.
+Most outfits are created using Blender. The [creating models](CreatingModels) page contains more detail on modeling and texturing outfits.
+
+Another open source program, [Inkscape](https://inkscape.org), is used for some outfits such as licenses, as well as the vector graphics in the user interface.
 
 # Outfit attributes
 
 Outfits work by modifying the attributes of your ship. Many of the attributes are in units of heat or energy per frame; a frame is 1/60th of a second. All attributes stack. For example, if you install two shield generators, your shield regeneration doubles.
 
-Most attributes are given as a single number, but there are a few "special" attributes:
+The majority of attributes are given as a single number. Beginning in **v0.11.5**, some attributes can be "boolean attributes" and do not need a number. There are also a few "special" attributes that take something other than a number as their value:
 
 * `category`: which outfitter category to show this outfit in. The outfit given must be a valid outfit category.
 The list of available categories is specified by a `category "outfit"` node **(v. 0.9.15)**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example.
@@ -54,7 +52,9 @@ The existing valid vanilla outfit categories are the following:
   * "Special" (**v0.10.12**)
   * "Licenses" (**v0.10.12**)
 
-* `"display name"`: An alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often.
+* `"display name"`: an alternative name to display in the UI for this outfit, can be used for renaming outfits if that ever becomes needed. This attribute should typically not be set, since we don't plan on renaming outfits often. **(v. 0.10.0)**
+
+* `"plural"`: plural version of this outfit's name. If not specified, defaults to the display name with the character "s" added to the end. **(v. 0.9.5)**
 
 * `"flotsam sprite"`: the image that is drawn when this outfit is dropped in space, either because it was jettisoned by a ship or because it was the payload of a minable asteroid. If no flotsam sprite is given, then the default flotsam box is used.
 
@@ -70,7 +70,7 @@ The existing valid vanilla outfit categories are the following:
 
 * `"afterburner effect"`: the [effect](CreatingEffects) that is created for every frame that the afterburner is firing. Afterburner effects can last for multiple frames, leaving a trail behind the ship.
 
-* `thumbnail`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite.
+* `thumbnail`: the thumbnail image to use for the outfit in the outfitter. Outfit thumbnails should be no larger than 360x360 for the @2x sprite and 180x180 for the normal-resolution sprite. Beginning in **v. 0.11.3**, thumbnails can be animated. See the [sprite data](SpriteData) page for more details.
 
 * `licenses`: a list of names of licenses you need to buy this outfit. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. **(v. 0.9.7)** (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
@@ -82,7 +82,7 @@ The existing valid vanilla outfit categories are the following:
 
   * `"hyperdrive sound"`: The same as `"jump sound"`, but for hyperdrives. Also has a `"hyperdrive in sound"` and `"hyperdrive out sound"` for other ships jumping into or out of the current system.
 
-  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. **(v. 0.10.10)**
+  * `"silent jumps"`: Prevents hyperdrive/jump sounds from being played, even the default sounds that are played when no other sound is defined. Any positive non-zero value will enable this behavior. **(v. 0.10.10)**
 
 * `description`: a paragraph of text to show in the outfitter. To define multiple paragraphs, you can add more than one "description" line. Beginning in **v. 0.10.13**, outfit descriptions can have `to display` child nodes that conditionally determine whether a line of the description should be displayed using a [condition set](https://github.com/endless-sky/endless-sky/wiki/Player-Conditions). For examples of this in use, see the description node of [planets](https://github.com/endless-sky/endless-sky/wiki/MapData#planets).
 
@@ -112,7 +112,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These attributes alter the legality of an outfit.
 
-  * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on a planet, you are immediately captured and imprisoned for life.
+  * `atrocity`: if you are caught carrying this outfit, the government that scanned you turns hostile. If the scan happens when you are landed on a planet, you are immediately captured and imprisoned for life. As of **v. 0.11.5**, this is a boolean attribute.
 
   * `illegal`: the fine, in credits, for being caught using this outfit.
 
@@ -139,6 +139,14 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"delayed shield heat"`: shield heat that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
 
   * `"delayed shield fuel"`: shield fuel that is only active when the above shield delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"docked shield generation"`: shield generation that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
+
+  * `"docked shield energy"`: shield energy that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
+
+  * `"docked shield heat"`: shield heat that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
+
+  * `"docked shield fuel"`: shield fuel that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
 
   * `"high shield permeability"`: The permeability of your shields while they are at 100% strength. A shield which is permeable allows some damage to bleed through to the hull. For example, a permeability of 10% means that 90% of the damage hits the shields and 10% hits the hull. As shield strength drops, the permeability of your shields approaches the low shield permeability value. **(v. 0.10.1)**
 
@@ -167,6 +175,14 @@ Unless otherwise stated, other outfit attributes will stack additively between m
   * `"delayed hull heat"`: hull heat that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
 
   * `"delayed hull fuel"`: hull fuel that is only active when the above repair delay timers have hit zero. **(v. 0.10.7)**
+
+  * `"docked hull repair rate"`: hull repair rate that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
+
+  * `"docked hull energy"`: hull energy that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
+
+  * `"docked hull heat"`: hull heat that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
+
+  * `"docked hull fuel"`: hull fuel that is only applied to fighters docked within a carrier. **(v. 0.11.5)**
 
 * These attributes change the point at which a ship becomes disabled. The default point at which a ship becomes disabled is dictated by the equation `hull * max(.15, min(.45, 10. / sqrt(hull)))`. **(v. 0.9.13)**
 
@@ -234,9 +250,15 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"energy generation"`: energy generated each frame. If you do not have any energy capacity, this energy does not carry over from frame to frame.
 
+  * `"docked energy generation"`: energy generated each frame and applied only to docked fighters. **(v. 0.11.5)**
+
+  * `"docked energy heat"`: heat generated each frame while applying `"docked energy generation"` to docked fighters. **(v. 0.11.5)**
+
   * `"energy consumption"`: energy consumed each frame. **(v. 0.9.7)**
 
   * `"heat generation"`: how much heat this outfit generates every turn, regardless of whether it is working at full capacity or not. For example, a power generator will create its full amount of heat even if your batteries are fully charged and the energy it creates is just being thrown away.
+
+  * `"docked heat generation"`: heat generated each frame while any fighters are docked. **(v. 0.11.5)**
 
 * These attributes will change in effectiveness given how close a ship is to the system center and what type of stars are in the system.
 
@@ -258,6 +280,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"fuel generation"`: fuel produced per frame. **(v. 0.9.9)**
 
+  * `"docked fuel generation"`: fuel produced per frame for refueling docked fighters. **(v. 0.11.5)**
+
 * These attributes are used to turn an outfit into an engine for ship movement.
 
   * `thrust`: your ship's acceleration per frame equals thrust / mass, and your ship's max speed is thrust / drag.
@@ -270,7 +294,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"thrusting hull"`: hull consumed each frame when thrusting. **(v. 0.9.15)**
 
-  * `"thrusting fuel "`: fuel consumed each frame when thrusting. **(v. 0.9.15)**
+  * `"thrusting fuel"`: fuel consumed each frame when thrusting. **(v. 0.9.15)**
 
   * `"thrusting discharge"`: discharge accumulated each frame when thrusting. **(v. 0.9.15)**
 
@@ -288,6 +312,36 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"thrusting disruption"`: disruption accumulated each frame when thrusting. **(v. 0.9.15)**
 
+  * `"inertialess thrust"`: grants the ship inertialess flight. Inertialess flight causes the ship to always travel in the direction it is facing, with the flight speed controlled by increasing the throttle as the forward key is held and decreasing it as the back key is held. Replaces normal thrust behavior entirely if present. Has the same behavior with acceleration and max speed as normal thrust. **(v. 0.11.5)**
+
+  * `"inertialess braking"`: controls how quickly a ship can decrease the inertialess flight throttle. If not present, then the `"inertialess thrust"` attribute is used for both acceleration and deceleration. **(v. 0.11.5)**
+
+  * `"inertialess flight energy"`: energy cost per frame of using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight heat"`: heat generated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight shields"`: shields consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight hull"`: hull consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight fuel"`: fuel consumed each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight discharge"`: discharge accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight corrosion"`: corrosion accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight ion"`: ionization accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight scramble"`: scrambling accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.10.0)**
+
+  * `"inertialess flight leakage"`: leakage accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight burn"`: burn accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight slowing"`: slowing accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
+  * `"inertialess flight disruption"`: disruption accumulated each frame when using inertialess flight at full throttle. Scales proportionally with the amount of throttle currently being applied. **(v. 0.11.5)**
+
   * `turn`: your ship's turn rate is (turn / mass) degrees per frame.
 
   * `"turning energy"`:  energy cost per frame of turning.
@@ -298,7 +352,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"turning hull"`: hull consumed each frame when turning. **(v. 0.9.15)**
 
-  * `"turning fuel "`: fuel consumed each frame when turning. **(v. 0.9.15)**
+  * `"turning fuel"`: fuel consumed each frame when turning. **(v. 0.9.15)**
 
   * `"turning discharge"`: discharge accumulated each frame when turning. **(v. 0.9.15)**
 
@@ -326,7 +380,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"reverse thrusting hull"`: hull consumed each frame when reverse thrusting. **(v. 0.9.15)**
 
-  * `"reverse thrusting fuel "`: fuel consumed each frame when reverse thrusting. **(v. 0.9.15)**
+  * `"reverse thrusting fuel"`: fuel consumed each frame when reverse thrusting. **(v. 0.9.15)**
 
   * `"reverse thrusting discharge"`: discharge accumulated each frame when reverse thrusting. **(v. 0.9.15)**
 
@@ -426,7 +480,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"outfit scan opacity"`: increases the time required for other ships to perform an outfit scan on the ship with this attribute. A value of one has the same influence on the time taken as adding one more ton of outfit space to scan. **(v. 0.10.3)**
 
-  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. **(v. 0.10.10)**
+  * `"silent scans"`: prevents the playing of scan sounds, even the default ones, when a ship is performing a scan. Any positive non-zero value will enable this behavior. **(v. 0.10.10)**
 
   * `"scan interference"`: your odds of a scan of your ship discovering anything illegal you have are equal to `1 / (1 + scan interference)`. For example, if "scan interference" is 3 you evade 75% of scans.
 
@@ -434,7 +488,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"scan concealment"`: prevents an equivalent mass of illegal goods from being scanned. For example, if you had 6 tons of illegal goods and a scan concealment of 5, then only 1 ton of goods would be able to be scanned. The "mass" of illegal goods includes the scan brightness of those goods. **(v. 0.10.0)**
 
-  * `inscrutable`: if a ship has a nonzero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
+  * `inscrutable`: if a ship has a non-zero value for this attribute, you cannot scan its outfits. **(v. 0.9.7)**
 
   * `"asteroid scan power"`: the asteroid scanning range is 100 times the square root of this number. This allows you to identify and target minable asteroids. **(v. 0.9.9)**
 
@@ -446,15 +500,15 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"capture defense"`: this outfit can be wielded by a crew member and adds this amount to their base strength of 2 when defending against boarders.
 
-  * `unplunderable`: if set to 1, this outfit cannot be plundered (for example, for hand-to-hand weapons and outfit expansions). **(v. 0.9.0)**
+  * `unplunderable`: if present, this outfit cannot be plundered (for example, for hand-to-hand weapons and outfit expansions). As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.0)**
 
 * The following attributes are used to allow an outfit to grant the ability to jump between systems, and alter the behavior of jumping.
 
-  * `hyperdrive`: set this to 1 if an outfit is a hyperdrive.
+  * `hyperdrive`: set this if an outfit is a hyperdrive. As of **v. 0.11.5**, this is a boolean attribute.
 
   * `"scram drive"`: a scram drive can engage as long as your ship is moving in the direction of the target system. This value is how much your ship can be drifting relative to that vector and still be allowed to jump.
 
-  * `"jump drive"`: set this to 1 if this outfit is a jump drive.
+  * `"jump drive"`: set this if this outfit is a jump drive. As of **v. 0.11.5**, this is a boolean attribute.
 
   * `"jump speed"`: how slow your ship must be moving in order to jump.
 
@@ -470,11 +524,15 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"jump range"`: how far a ship can jump when using this outfit. The default jump range is 100. As with jump fuel, jump range does not stack between outfits. The outfit with the highest jump range will dictate the farthest a ship can jump. If a ship has multiple outfits with varying jump ranges, the one with the lowest jump fuel that is capable of making the given jump will be used. System-defined jump ranges override outfit-defined ones. **(v. 0.9.13)**
 
+  * `"jump duration"`: the number of frames that the jump animation takes. The animation is split into two parts. The first half is after the jump has been initiated up until traveling to the next system, and the second half is after entering the next system up until control of the ship is regained. The default jump duration is 100 frames, meaning 100 frames to change systems, then 100 frames to regain control. Similar to jump fuel, jump duration is tied to the outfit instead of being added across outfits. The jump duration used will be that of the drive that was used to make the jump. **(v. 0.11.5)**
+
 * These attributes can be used to alter the crew stats of a ship.
 
   * `bunks`: additional crew / passenger space.
 
-  * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty).
+  * `"required crew"`: turrets (and maybe other high-end outfits) can increase your crew requirements. It might also make sense to provide outfits, such as an android crew replacement, that reduce crew requirements (in exchange for energy consumption or some other penalty). If a ship has the `automaton` attribute, then the required crew will be treated as if it is 0 regardless of the actual value.
+
+  * `"mandatory crew"`: behaves similarly to `"required crew"` in that it adds to the crew of the ship, except it still has effect even when the `automaton` attribute is present. Useful for outfits that must be manned and cannot be automated. **(v. 0.11.2)**
 
   * `"crew equivalent"`: adds to the crew value of the ship when government reputation changes are applied for interacting with their ships. For example, a ship with a crew of 10 and a crew equivalent of 5 would be treated as if it had a crew of 15 for reputation hits, or a drone with a crew of 0 that normally doesn't incur a reputation hit for being destroyed can be given a crew equivalent of 1 so that a government cares about the destruction of its drones. This attribute is able to be negative, reducing the impact of interacting with a ship. Intended to be applied directly to ship hulls, rather than being on an outfit that the player could see. **(v. 0.9.15)**
 
@@ -510,19 +568,19 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"cloak phasing"`: the chance that a projectile will phase through this ship while cloaked. **(v. 0.10.7)**
 
-  * `"cloaked communication"`: when not 0, allows the player to hail other ships or planets while cloaked. **(v. 0.10.7)**
+  * `"cloaked communication"`: if set, allows the player to hail other ships or planets while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked afterburner"`: when not 0, allows a ship to fire afterburners while cloaked. **(v. 0.10.7)**
+  * `"cloaked afterburner"`: if set, allows a ship to fire afterburners while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked boarding"`: when not 0, allows a ship to board other ships while cloaked. **(v. 0.10.7)**
+  * `"cloaked boarding"`: if set, allows a ship to board other ships while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked deployment"`: when not 0, allows a ship to deploy or recall carried ships. **(v. 0.10.7)**
+  * `"cloaked deployment"`: if set, allows a ship to deploy or recall carried ships. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked firing"`: when not 0, allows a ship to fire weapons while cloaked. If this value is negative, the remains fully cloaked while firing. A positive value represents how much cloaking is reduced by for each time a weapon is fired. **(v. 0.10.7)**
+  * `"cloaked firing"`: if set, allows a ship to fire weapons while cloaked. If this value is negative, the remains fully cloaked while firing. A positive value represents how much cloaking is reduced by for each time a weapon is fired. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked pickup"`: when not 0, allows a ship to pick up flotsam while cloaked. **(v. 0.10.7)**
+  * `"cloaked pickup"`: if set, allows a ship to pick up flotsam while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
-  * `"cloaked scanning"`: when not 0, allows a ship to scan other ships while cloaked. **(v. 0.10.7)**
+  * `"cloaked scanning"`: if set, allows a ship to scan other ships while cloaked. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.7)**
 
 * These attributes grant resistance against special status effects.
 
@@ -604,7 +662,11 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * These are miscellaneous attributes capable of being added to outfits.
 
-  * `"ammo"`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. **(v. 0.9.5)**
+  * `ammo <name>`: if an outfit is not a weapon but is able to carry ammunition, that outfit should specify the ammo that it holds. This makes it so that if you sell the outfit carrying the ammunition, it will automatically sell any ammunition that would go over capacity instead of preventing the sale of the outfit. You will also be prompted to purchase this ammo when available upon entering the outfitter if you have room for more. **(v. 0.9.5)**
+  
+    * Prior to **v. 0.11.1**, an outfit could only have one `ammo` node.
+
+  * `linked <name>`: considers the other outfit of the given name to be linked to this outfit. If this outfit is sold, the linked outfits will also be sold if doing so is necessary to keep any attributes within a valid range. Unlike the `ammo` attribute described above, you will not be prompted to buy linked outfits that you have room for. **(v. 0.11.1)**
 
   * `drag`: please do not create outfits that reduce a ship's drag, because if the drag becomes zero or negative it can cause problems (use `drag reduction` instead).
 
@@ -612,27 +674,41 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"inertia reduction"`: Reduces a ship's mass for the purposes of acceleration, turn, and hit force. The resulting inertial mass is given by: `mass / (1 + reduction)`. This does not impact mass' other effects, such as its effect on heat capacity or optical tracking. **(v. 0.10.0)**
 
-  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute.
+  * `installable`: if set to a value below zero, this outfit cannot be installed. **From v. 0.9.0 to v. 0.9.15,** the trading panel displayed these outfits as "harvested materials." Starting in **v. 0.9.15** this behavior is handled by the `minable` attribute. Deprecated and replaced with the boolean attribute `uninstallable` in **v. 0.11.5**.
+  
+  * `uninstallable`: if present, this outfit cannot be installed. This is a boolean attribute. **(v. 0.11.5)**
 
-  * `minable`: if positive, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." **(v. 0.9.15)**
+  * `"can jettison"`: if set, this outfit is able to be jettisoned from the ship info panel while in flight. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.11.3)**
+
+  * `minable`: if present, the text "This item is mined from asteroids," will appear on the outfit in the outfitter. The trading panel will also display these outfits as "harvested materials." As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.9.15)**
 
   * `map`: number of hyperlinked star systems that are mapped by this outfit.
  
-  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. **(v. 0.10.13)**
+  * `"map minables"`: if present in addition to `map`, the minables inside the mapped star systems will be recorded in the outfitter map key. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.13)**
 
   * `"radar jamming"`: how much resistance this ship has to radar tracking. The missile's chance of maintaining its lock is proportional to its `"radar tracking"` value divided by (1 + the ship's `"radar jamming"`). **(v. 0.9.1)**
 
-  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the perceived mass of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
+  * `"optical jamming"`: how much resistance this ship has to optical tracking. Optical jamming reduces the optical size of a ship, dividing it by (1 + the ship's `"optical jamming"`). **(v. 0.10.0)**
+
+  * `"optical size"`: if present, the effectiveness of optical tracking projectiles against this ship uses this value in place of the number of pixels in the ship's sprite. **(v. 0.11.3)**
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
-  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. **(v. 0.10.4)**
+  * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.4)**
 
   * `"turret turn multiplier"`: modifies turn rates of all turrets installed on the ship. The final value of a turret's turn rate is `"turret turn" * (1 + "turret turn multiplier" + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
   * `"gaslining"`: a [custom attribute](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#custom-attributes), used to indicate outfits which allow the ship to land on gas giants.
+
+  * `nondepreciable`: if present, the outfit (or ship, if specified on a ship hull) does not lose value due to depreciation. **(v. 0.11.5)**
+
+  * `unremovable`: if present, the outfit cannot be removed after it has been installed. This is a boolean attribute. **(v. 0.11.5)**
+
+  * `"instant braking"`: if present and a stop command is sent, the ship will immediately come to a full stop. This is a boolean attribute. **(v. 0.11.5)**
+
+  * `immovable`: if present, the ship will not experience hit force or firing force, and can only be moved by its own engines. This is a boolean attribute. **(v. 0.11.5)**
 
 
 # Weapon attributes
@@ -663,6 +739,8 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * For versions **v. 0.9.9** and later, can be an *x, y* coordinate relative to the center of the hardpoint sprite, e.g. `"hardpoint offset" -1.2 8.7`, in order to accommodate asymmetric hardpoint sprites. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward."
 
+* `decorative`: If present, the weapon is purely decorative. It will consume a weapon hardpoint and display its hardpoint sprite, but it will not be used as a weapon anywhere else, such as displaying weapon stats in the outfitter. **(v. 0.11.5)**
+
 * `sound`: a path to a sound, relative to the "sounds" folder, and not including the extension or the specifiers (e.g. "laser", not "sounds/laser~.wav"). The sound file must be a mono (not stereo) WAV file with 16-bit, 44100 Hz encoding. Adding `~` to the file name makes it loop. Since **v. 0.10.11**, you can also provide an `@3x` sound that is played in fast-forward mode (e.g. `laser@3x~.wav`).
 
  * `"empty sound"`: a path to a sound (see the requirements above) that is played when the player attempts to fire a weapon that does not have enough ammo or fuel to fire. **(v. 0.10.13)**
@@ -691,7 +769,17 @@ An outfit that provides a weapon contains an extra set of attributes inside a `w
 
   * `"offset" <x#> <y#>`: an *x,y* coordinate pair that cause the submunition projectile's generated location to be shifted from the parent projectile's death location by the given number of units in the x and y directions. Axes orientation is the standard Cartesian, where `+x` is "rightward" and `+y` is "upward." **(v. 0.9.15)**
 
-  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Accepted values are: `natural` for natural death of the source projectile, and `anti-missile` for destruction of the source projectile by an anti-missile system. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. **(v. 0.10.9)**
+  * `"spawn on" <type>...`: a list defining when the submunition can spawn. Omitting this line means that the submunition is spawned only when the parent projectile dies naturally. Accepted values are:
+
+    * `natural`: the projectile died because its lifetime ran out. This also applies to projectiles that split into submunitions early due to the `"split range"` attribute. **(v. 0.10.9)**
+
+    * `anti-missile`: the projectile was destroyed by an anti-missile system. **(v. 0.10.9)**
+
+    * `explosion`: the projectile was destroyed in an explosion, either due to its `"trigger radius"` being set off, it reached the end of its lifetime and has the `"fused"` attribute, or because it was a ship explosion. **(v. 0.11.1)**
+
+    * `collision`: the projectile was destroyed when it collided with an object. **(v. 0.11.1)**
+
+* `"exclude submunition damage"`: exclude the damage from the submunitions of this weapon's projectiles when dealing damage to a target. **(v. 0.11.1)**
 
 The following attributes are tags (just the word by itself, no value following it) which alter how a weapon fires or the behavior of its projectiles.
 
@@ -700,6 +788,8 @@ The following attributes are tags (just the word by itself, no value following i
 * `cluster`: makes a weapon fire in "cluster" mode (all copies of the weapon fire at the same time, rather than alternating). Weapons with the anti-missile attribute fire in cluster mode by default. **(v. 0.9.0)**
 
 * `safe`: if the weapon has the blast radius attribute, this tag causes explosions from this weapon's projectiles to not damage allied ships (unless they are explicitly targeted). **(v. 0.9.9)**
+
+    * For versions **v 0.11.5** and later, `safe` also prevents projectiles fired by a weapon from hitting allied ships if any of the "friendly fire" [gamerules](Gamerules) are active.
 
 * `phasing`: enables the projectile to only hit the intended target (instead of perhaps colliding with a closer ship in the line of fire). If a ship has no target, then a phasing projectile will hit any hostile ship in the line of fire. Asteroids - even if targeted - are not hit by phasing weaponry. **(v. 0.9.9)**
 
@@ -729,7 +819,7 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
 * `"random velocity"`: a random amount up to this number will be added to the projectile's initial velocity. **(v. 0.9.0)**
 
-* `acceleration`: projectile's acceleration, per frame. If this is nonzero, it should be coupled with a nonzero `drag` to limit the projectile's total speed.
+* `acceleration`: projectile's acceleration, per frame. If this is non-zero, it should be coupled with a non-zero `drag` to limit the projectile's total speed.
 
 * `drag`: percent loss of speed per frame. For example, a projectile with an acceleration of 1 and a drag of .1 will have a maximum speed (acceleration / drag) of 10.
 
@@ -836,6 +926,8 @@ Ordinary weapon attributes (those that take a number as an argument) include:
   * `"infrared tracking"`: how well this projectile tracks targets based on their heat. That is, hot targets will be easier to track. 
 
   * `"optical tracking"`: how well this projectile tracks objects based on their size. That is, large targets will be easier to track.
+  
+    * Prior to **v. 0.11.3**, a ship's "size" for use in optical tracking was its current mass. After this version, a ship's size is the number of pixels in the sprite that aren't entirely transparent. This value is then divided by 16 before being used. For ships with multiple frames of animation, the average number of pixels across all frames is used.
 
   * `"radar tracking"`: how well this projectile tracks targets using radar (which ships can resist if they have `"radar jamming"`).
 
@@ -847,7 +939,9 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `anti-missile`: turns the weapon into an anti-missile turret and measures the weapon's ability to shoot down missiles. The anti-missile succeeds if a random integer less than this value is greater than a random integer less than the missile's strength.
 
-  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the base velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The actual pull velocity is divided by the mass of the flotsam that is being pulled. **(v. 0.10.5)**
+  * `"tractor beam"`: turns the weapon into a flotsam tractor beam and measures the velocity with which this weapon pulls in flotsam. Flotsam includes dumped cargo, destroyed minable payloads, and other dropped goods in space. The mass of the flotsam does not influence the velocity that it is pulled in with. **(v. 0.10.5)**
+  
+    * Prior to **v. 0.11.3**, the pull velocity of a flotsam was divided by its mass. 
 
 * `"split range"`: when the projectile is within this range of its target, it will split into its submunitions. (If no target was selected when the weapon was fired, this does nothing.)
 
@@ -907,13 +1001,19 @@ Ordinary weapon attributes (those that take a number as an argument) include:
 
   * `"scrambling damage"`: how much scrambling is added to a target when struck by this projectile, causing its weapons to have a chance to jam. If the target's shields are up, incoming scrambling damage is cut in half. The jamming chance is equivalent to `1 - 2 ^ (-1 * scrambling / 70)`. Jammed weapons must go through another reload cycle before being able to attempt to fire again. **(v. 0.10.0)**
 
-  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. If the target's shields are up, incoming disruption damage is cut in half. **(v. 0.9.0)**
+  * `"disruption damage"`: how much "shield disruption" is added to a target when struck by this projectile. Shield disruption causes a ship's shields to only block `1 / (1 + .01 * disruption)` of incoming weapon damage, while the rest pierces through the shields and damages the hull. For example, if a ship has accumulated 10 disruption, about 9% of damage will leak through to the hull. Disruption damage is not applied to ships whose shields have been depleted. **(v. 0.9.0)**
+  
+    * Prior to **v. 0.10.1**, disruption damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"slowing damage"`: how much slowness is added to a target when struck by this projectile. Slowness multiplies the ship's turn rate and acceleration by `1 / (1 + .05 * slowness)`. If the target's shields are up, incoming slowing damage is cut in half. **(v. 0.9.0)**
 
-  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Incoming discharge damage always has maximum effect regardless of the state of the target's shields. **(v. 0.9.15)**
+  * `"discharge damage"`: how much discharge is added to a target when struck by this projectile, draining the target's shields over time. Discharge damage is not applied to ships whose shields have been depleted. **(v. 0.9.15)**
+  
+    * Prior to **v. 0.10.1**, discharge damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"corrosion damage"`: how much corrosion is added to a target when struck by this projectile, draining the target's hull over time. If the target's shields are up, all incoming corrosion damage is ignored. **(v. 0.9.15)**
+  
+    * Prior to **v. 0.10.1**, discharge damage dealt 50% damage while a target's shields were active and 100% while its shields were down. Prior to **v. 0.11.4**, this was changed to 100% damage while a target's shields were up and 50% while its shields were down.
 
   * `"leak damage"`: how much leak is added to a target when struck by this projectile, draining the target's fuel over time. If the target's shields are up, all incoming leak damage is ignored. **(v. 0.9.15)**
 
@@ -934,6 +1034,30 @@ outfitter "Syndicate Advanced"
 Any outfits you list will be appended to the outfits currently in the list you named. So, the above example would make two new outfits available on all planets that have the "Syndicate Advanced" outfits.
 
 For more information on how outfitters are defined, see the [Creating Shops](Creating-Shops) page.
+
+# Displaying capacity attributes
+
+Custom outfit attributes may be used to represent capacities of other outfits that can be installed. For example, secondary weapons like the Meteor Missile Launcher have `"meteor capacity"` on the launcher, and each Meteor Missile you purchase removes 1 from this capacity. Since attributes can't go negative by default, this limits the number of missiles that can be installed. For some capacity attributes, it is helpful for them to be displayed in the UI. Beginning in **v. 0.11.5**, custom capacity attributes can be added to the UI using the `"display capacities"` node detailed below. See [capacities.txt](https://github.com/endless-sky/endless-sky/blob/master/data/_ui/capacities.txt) for the vanilla capacities that get displayed in the UI.
+
+```html
+"display capacities"
+	<attribute> <display-name> [<precedence>]
+		(required | optional)
+```
+
+The `"display capacities"` node is defined as a list of attributes that should be displayed in the UI. These will be displayed in the ship info details as seen in the outfitter and shipyard, and may also appear in the ship info panel accessible when selecting a ship in the player info panel.
+
+```html
+<attribute> <display-name> [<precedence>]
+```
+
+The attribute that is being tracked as a capacity and the display name used in the ship info. An optional precedence can be provided to modify the ordering of the capacities. If two capacities share the same precedence, they will be sorted in alphabetical order by their display name. This precedence can be excluded, in which case a precedence will be assigned to the attribute, adding one to the precedence of the attribute that was loaded previously.
+
+```html
+(required | optional)
+```
+
+Every capacity is either `required` or `optional`. Required capacities always display in the UI, even if they are 0. Optional categories don't display if their total is 0 or if viewing the ship in the ship info panel. Capacities default to optional if neither token is provided.
 
 # Balancing
 

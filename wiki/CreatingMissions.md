@@ -130,6 +130,7 @@ mission <name>
 		["all wormholes" | "only unrestricted wormholes" | "no wormholes"]
 		"assumes jump drive"
 	npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
+		"in flight spawning"
 		to (spawn | despawn)
 			<condition> <comp> <value>
 			(has | not) <condition>
@@ -142,7 +143,9 @@ mission <name>
 			...
 		personality <type>...
 			<type>...
-			confusion <amount>
+			confusion <name>
+			confusion
+				...
 		system <system>
 		system
 			system <name>...
@@ -151,12 +154,28 @@ mission <name>
 				<name>...
 			near <system> [[<min>] <max>]
 			distance [<min>] <max>
+		placement
+			position <x#> <y#>
+			distance <distance#> [<angle#>]
+			orbit
+				distance <distance#>
+				period <period#>
+				offset <offset#>
+			spread <distance#>
+			velocity <speed#> <angle#>
+			weapon [<random-scaling#>]
+				...
 		dialog <text>
 			<text>...
+			phrase <phrase>
+				...
+				to display
+					<conditions>
+		dialog phrase <phrase>
 		conversation <name>
 		conversation
 			...
-		ship <model> <name>
+		ship <model> [<name>]
 		fleet <name> [<count>]
 		fleet [<count>]
 			...
@@ -177,9 +196,20 @@ mission <name>
 		[system | planet]
 			<filter>
 		log [<category> <header>] (<text> | scene <image>)
+			(<text> | scene <image>)
+			mark <system>...
+				<system>
+				...
+			circle <system>...
+				<system>
+				...
 		remove log <category> [<header>]
 		dialog <text>
 			<text>...
+			phrase <phrase>
+				...
+				to display
+					<conditions>
 		dialog phrase <phrase>
 		conversation <name>
 		conversation
@@ -223,7 +253,7 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<bunks>` = the number of passengers
 * `<passengers>` = "passenger" or "passengers"
 * `<fare>` = "a passenger" or "N passengers," where N is the number of passengers
-* `<origin>` = planet (or ship) where the mission was offered
+* `<origin>` = the name of the planet that the mission was offered on, or the name of the ship you boarded for `boarding` and `assisting` missions, or the name of the system for `entering` and `transition` missions
 * `<planet>` = destination planet
 * `<system>` = destination system
 * `<destination>` = "`<planet>` in the `<system>` system"
@@ -239,10 +269,23 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
 * `<first>` = your first name
 * `<last>` = your last name
+* `<original first>` = your original first name, from when the pilot was first created **(v. 0.11.1)**
+* `<original last>` = your original last name, from when the pilot was first created **(v. 0.11.1)**
 * `<ship>` = the name of your flagship, or the name of an NPC if used in text that is created by an NPC interaction (e.g. a `conversation` created by an NPC action)
 * `<model>` = the display model of your flagship, or the display model of an NPC if used in text that is created by an NPC interaction **(v. 0.10.9)**
 * `<flagship>` = the name of your flagship in all scenarios **(v. 0.10.14)**
 * `<flagship model>` = the display model of your flagship in all scenarios **(v. 0.10.14)**
+* `<current planet>` = the planet that the player is currently landed on **(v. 0.11.1)**
+* `<current system>` = the system that the player is currently in **(v. 0.11.1)**
+* `<previous planet>` = the planet that the player was landed on prior to the current one **(v. 0.11.1)**
+* `<previous system>` = the system the player was in prior to the current one **(v. 0.11.1)**
+* `<start planet>` = the display name of the planet you started on **(v. 0.11.1)**
+* `<start system>` = the display name of the system containing the planet you started on **(v. 0.11.1)**
+* `<start date>` = the date you started the game, in a short form **(v. 0.11.1)**
+* `<start long date>` = the date you started the game, in a more verbose form **(v. 0.11.1)**
+* `<start credits>` = the amount of credits you started with **(v. 0.11.1)**
+* `<start credit score>` = your starting credit score **(v. 0.11.1)**
+* `<start debt>` = the total amount of debt, of all kinds, that you started with **(v. 0.11.1)**
 
 These placeholders will be substituted in any text in the following places:
 
@@ -262,9 +305,7 @@ Missions can also make use of custom text replacements through use of the `subst
 mission <name>
 ```
 
-The mission name must be unique. Missions are stored by the game in alphabetical order (more specifically, ASCII lexical ordering), meaning that missions will also offer in alphabetical order if multiple are able to be offered at the same time. If multiple possible missions are minor, these get evaluated in alphabetical order such that the last mission alphabetically is the one that gets offered while the rest are discarded. Therefore, if you have multiple missions with similar names and the same offer conditions, whichever one you want to offer first should come first alphabetically, unless the missions are minor, in which case the one you want to offer should come last alphabetically. Mission names cannot start with numerals.
-
-An example of using the mission name to force a certain load order in game is with the set of missions prefixed "FW Pug 2C", where the jump drive variant of the mission is named "FW Pug 2C: **A** Jump Drive" to force it to offer before "FW Pug 2C: **H**yperdrive", as otherwise without the "A" the hyperdrive variant of the mission would have priority.
+The mission name must be unique. Mission names cannot start with numerals.
 
 ```html
 name <name>
@@ -360,7 +401,7 @@ This specifies that the mission does not show up in the player's list of mission
 (priority | minor | non-blocking)
 ```
 
-If a mission is marked with `priority`, (prior to **v. 0.10.13**) only other "priority" missions can be offered alongside it. Beginning in **v. 0.10.13**, missions marked `non-blocking` can also be offered..
+If a mission is marked with `priority`, (prior to **v. 0.10.13**) only other "priority" missions can be offered alongside it. Beginning in **v. 0.10.13**, missions marked `non-blocking` can also be offered at the same time. Note that this tag's primary intent is for use in the intro missions to prevent other missions from interrupting the player while they are going through the tutorial. Misuse of this tag can very easily result in breaking mission chains. For example, if you have mission chains A and B, the next mission in both chains has the same source, and chain A's next mission has `priority`, then chain A's next mission offering will prevent chain B's mission from offering. This then creates a confusing break in the narrative of chain B. If you are using `priority` to prevent mission chains from conflicting with one another, then it is often far better to instead change the offer conditions of the missions to prevent a conflict, such as by preventing chain B from starting if chain A is active.
 
 If a mission is marked with `minor`, it will be offered only if no other missions are being offered at the same time, except, beginning in **v. 0.10.11**, missions marked `non-blocking`.
 In general, any mission that starts a completely new mission string, and that could instead be offered at a later date, should be marked "minor." Missions continuing a string should not be marked "minor."
@@ -490,11 +531,11 @@ Beginning with **v. 0.9.15**, this specifies custom text replacements that apply
 "offer precedence" <value>
 ```
 
-Beginning with **v. 0.10.11**, this is an integer value which can be used to change the order that missions are offered. Missions with a higher offer precedence will be offered first. The default precedence value is 0, and this value can be negative. For missions with the same offer precedence, they will be offered in alphabetical order according to the identifier of the mission (i.e. the name of the mission specified on the `mission <name>` line, not the display name of the mission specified by the `name` token).
+Beginning with **v. 0.10.11**, this is an integer value which can be used to change the order that missions are offered. Missions with a higher offer precedence will be offered first. The default precedence value is 0, and this value can be negative. For missions with the same offer precedence, they will be offered in alphabetical order (more specifically, ASCII lexical ordering) according to the identifier of the mission (i.e. the name of the mission specified on the `mission <name>` line, not the display name of the mission specified by the `name` token). This was also the behavior prior to the addition of this node.
 
-Note that the way that the game determines which `minor` missions should offer means that the minor mission with the lowest precedence will be the one to offer, and all higher precedence minor missions that could have also offered at the same time will be discarded.
+Prior to **v. 0.11.5**, the way that the game determined which `minor` missions should offer if multiple minor missions were capable of offering at the same time meant that the mission with the lowest precedence would be the one to offer, and all higher precedence missions that could have also offered at the same time would be discarded. This was changed in **v. 0.11.5** so that the minor mission with the highest precedence is the one to offer.
 
-Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical order which is able to offer will be the one that does offer.
+Missions with the `job`, `boarding`, or `assisting` tags are not affected by this token. All available jobs will appear in the jobs board in whatever order is determined by the job sorting that the player has chosen. Only a single `boarding` or `assisting` mission can offer at a time, and the first mission in alphabetical (ASCII lexical) order which is able to offer will be the one that does offer.
 
 # Conditions
 
@@ -585,6 +626,7 @@ NPCs are ships that are associated with the mission in some way. This includes f
 
 ```html
 npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | evade | accompany | capture | provoke)...
+	"in flight spawning"
 	to (spawn | despawn)
 		<condition> <comp> <value>
 		(has | not) <condition>
@@ -597,7 +639,9 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 		...
 	personality <type>...
 		<type>...
-		confusion <amount#>
+		confusion <name>
+		confusion
+			...
 	system (<system> | destination)
 	system
 		system <name>...
@@ -606,13 +650,29 @@ npc (save | kill | board | assist | disable | "scan cargo" | "scan outfits" | ev
 			<name>...
 		near <system> [[<min#>] <max#>]
 		distance [<min#>] <max#>
+	placement
+		position <x#> <y#>
+		distance <distance#> [<angle#>]
+		orbit
+			distance <distance#>
+			period <period#>
+			offset <offset#>
+		spread <distance#>
+		velocity <speed#> <angle#>
+		weapon [<random-scaling#>]
+			...
 	planet <name>
 	dialog <text>
 		<text>...
+		phrase <phrase>
+			...
+			to display
+				<conditions>
+	dialog phrase <phrase>
 	conversation <name>
 	conversation
 		...
-	ship <model> <name>
+	ship <model> [<name>]
 	fleet <name> [<count#>]
 	fleet [<count#>]
 		...
@@ -633,6 +693,7 @@ Each `npc` tag may have one or more tags following it, specifying what the playe
 * `provoke`: To complete the mission, the player must provoke the given NPC. Provocation occurs when an NPC is friendly and is made hostile by the player attacking it.
 
 ```html
+"in flight spawning"
 to (spawn | despawn)
 	<condition> <comp> <value>
 	(has | not) <condition>
@@ -644,7 +705,9 @@ Starting in **v. 0.9.13**, `to (spawn | despawn)` works similarly to `to (offer 
 
 An NPC will not spawn if its `to spawn` conditions are not met, and any spawned NPC will despawn if its `to despawn` conditions are met. NPCs will only spawn once the player departs from a planet and despawn once the player lands, but these conditions are evaluated at multiple points: after accepting the mission, on each departure, on each system jump, and on each landing.
 
-Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been despawned. This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
+Beginning in **v. 0.11.3**, the `"in flight spawning"` tag can be included. Since spawn conditions are checked on each system jump, having this tag present means that the NPCs will spawn as the player jumps into the next system if its spawn conditions are met. Without this tag, NPCs will continue to only spawn in after departing from a planet.
+
+Should an NPC have a `to (spawn | despawn)` as well as an objective (e.g. `save`), then the objective of the NPC will be ignored if the NPC has not yet spawned or has been flagged for despawning. (Remember that an NPC is only despawned when you land, but it could be flagged for despawning earlier than that by the multiple points that the conditions are evaluated.) This means that you can potentially create secondary or alternative objectives for missions (e.g. you must either complete this NPC objective, or go to this planet to despawn the NPCs instead, and in the reverse, you must go to this planet, or go to some other planet to spawn NPCs with a new objective).
 
 When combined with an `action` node in a [`conversation`](WritingConversations), this can allow the choices a player makes in a conversation to alter whether NPCs spawn after the mission is accepted.
 
@@ -684,10 +747,12 @@ Beginning in **v. 0.10.1**, NPCs can manipulate their cargo similarly to how fle
 ```html
 personality <type>...
 	<type>...
-	confusion <amount#>
+	confusion <name>
+	confusion
+		...
 ```
 
-This defines the NPC's [personality](ShipPersonalities). The `confusion` tag is a special value, giving the inaccuracy in pixels of the ship's targeting systems; the default value is 10 pixels.
+This defines the NPC's [personality](ShipPersonalities). Beginning in **v. 0.11.3**, a [confusion profile](CreatingConfusions) may also be referenced or defined by a `confusion` node within the `personaility` node, overriding any confusion settings provided by the NPCs government.
 
 If an NPC is specified as starting out in your current system and its personality is *not* `staying` or `waiting`, it will take off from the planet along with you (e.g. a ship you are escorting). A ship that is `entering` the current system might, for example, be a pirate raid chasing the fleet you are escorting, and a ship `staying` in a certain system might be a target you must locate for a "bounty hunting" mission. (Any ship that is not `staying` will actively seek the player out if it is in a different system, unless it is also `uninterested`.)
 
@@ -715,8 +780,39 @@ planet <name>
 This specifies the exact name of the starting planet for all ships in the NPC definition. A specified starting planet allows the NPCs to depart from a planet other than that which the player is landed on. If the NPCs do not start in the system in which the named planet is located, or the NPCs have an "entering" personality, this value is ignored.
 
 ```html
+placement
+	position <x#> <y#>
+	distance <distance#> [<angle#>]
+	orbit
+		distance <distance#>
+		period <period#>
+		offset <offset#>
+	spread <distance#>
+	velocity <speed#> <angle#>
+	weapon [<random-scaling#>]
+		...
+```
+
+Beginning in **v. 0.11.5**, NPCs can be given a `placement` node that controls how they are placed into the system they spawn in. This node has the following children:
+* `position <x#> <y#>`: The exact X and Y coordinates to place the NPC into the system.
+* `distance <distance#> [<angle#>]` The exact distance from the system center to place the NPC with a set angle, or a random angle if no angle is provided.
+* `orbit`: An orbit to place the NPC at, with the same `distance`, `period`, and `offset` child nodes as [objects in systems](MapData#objects). If you copy the distance, period, and offset of a stellar object in a system, the NPC will be spawned on top of that planet on whatever date the NPCs are spawned.
+	* The above three nodes are mutually exclusive with one another. If any of them are provided (and no `velocity` node is provided), then the ships in the NPC will start with a velocity of 0.
+	* If no `placement` node is present, or none of the above child nodes are specified, then the placement of the NPCs will be randomized to be close to one of the objects in the system.
+* `spread <distance#>`: If an NPC only contains one ship, then it will be placed exactly at the center of the point in the system defined by one of the child nodes defined above. All other ships will be spawned at a random point within a circle around the center with a radius equal to the spread distance. If not specified, the default spread distance is 500 units.
+* `velocity <speed#> <angle#>`: The velocity to place the ships in the NPC with, measured as a speed and angle. If not specified, the angle will be randomized and the speed will be randomized to some point between 0 and the ship's max speed.
+* `weapon`: A [weapon definition](CreatingOutfits#weapon-attributes) to be applied as damage to the ships in the NPC when they are placed into their system. An optional numeric value can be given alongside the `weapon` node that specifies a random scaling, measured as a fraction of the base damage. For example, a weapon that has `"hull damage" 100` and is given a random scaling of 1.5 will deal somewhere between 100 and (1 + 1.5) * 100 = 250 damage. This random value is rerolled for each ship in the NPC. The damage is dealt as if a single projectile with the given weapons stats hit each ship in the NPC. This means that the actual impact on the ship is subject to the attributes of the ship being impacted, and the ship's shields will mitigate or eliminate the effect of certain damage types if the weapon does not have shield piercing.
+
+Note that, aside from `weapon`, the child nodes of `placement` will only be used if the NPC is placed already flying in the system it spawns within. This means that NPCs with the `entering` personality or that lack the `waiting` personality in systems where they have a friendly planet to depart from will not have their spawning placement changed. Any present `weapon` node is always applied regardless of where the NPC spawns.
+
+```html
 dialog <text>
 	<text>...
+	phrase <phrase>
+		...
+		to display
+			<conditions>
+dialog phrase <phrase>
 conversation <name>
 conversation
 	...
@@ -727,10 +823,10 @@ This defines a dialog or conversation to be shown when you have first satisfied 
 If you want to retrieve passengers or cargo by boarding a ship, set up the mission so that you are considered to be carrying them from the very start (for example, the cargo might be called "reserved mission space" or "mission cargo"). Otherwise, it would be possible for the player to board a ship and then discover they do not have enough cargo or passenger space to complete the mission.
 
 ```html
-ship <model> <name>
+ship <model> [<name>]
 ```
 
-This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name. Beginning in **v. 0.10.9**, phrases and substitutions are expanded NPC ship names.
+This specifies a single ship as an NPC. The first argument is the model type (or named variant), such as "Falcon", or "Star Barge (Armed)". The second is the ship's name. A ship with no given name will use the model name as the ship name. Beginning in **v. 0.10.9**, phrases and substitutions are expanded NPC ship names.
 
 If you want to customize an NPC (for example, having it start out with a particular cargo), you will need to define a variant of the ship and then reference that variant here. Placing the entire ship definition within the NPC definition is supported (because that is how NPC ships are loaded from a saved game) but will not work properly if the ship definition contains any outfits that are not defined yet when the mission definition is parsed. When loading NPCs from saved games, the rest of the game data has finished loading, but this is not otherwise guaranteed.
 
@@ -787,9 +883,20 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	[system | planet]
 		<filter>
 	log [<category> <header>] (<text> | scene <image>)
+		(<text> | scene <image>)
+		mark <system>...
+			<system>
+			...
+		circle <system>...
+			<system>
+			...
 	remove log <category> [<header>]
 	dialog <text>
 		<text>...
+		phrase <phrase>
+			...
+			to display
+				<conditions>
 	dialog phrase <phrase>
 	conversation <name>
 	conversation
@@ -857,13 +964,22 @@ Some of the events below usually only make sense for certain triggers. In partic
 
 ```html
 log [<category> <header>] (<text> | scene <image>)
+	(<text> | scene <image>)
+	mark <system>...
+		<system>
+		...
+	circle <system>...
+		<system>
+		...
 ```
 
 This creates a log entry in the player's log book, which is found on the player info page. Log entries are capable of having an optional category and header that they go under. If no category is given, then the log entry's header will be the date that the log was given, while the category will be the year.
 
 An example of how one might use the log category and header includes creating a category of logs on the various factions of the game, with the headers being each of the factions. Existing vanilla categories are `"People"`, `"Minor People"`, and `"Factions"`. If a log is given with a category and header that already has an entry, then the new log will go below the existing entry under the same header.
 
-A `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide. Note that no swizzle will be applied to ship images.
+Beginning in **v. 0.11.0**, a `scene` image can be specified at any point. This will generally be an image from images/scene/, but you can use other images as well, such as ship images or planet images. The image should be no more than 400 pixels wide, as the image is not scaled to match the size of the UI. Note that no swizzle will be applied to ship images, and these images cannot be animated at the moment.
+
+Beginning in **v. 0.11.3**, logbooks can include systems to mark or circle. When the player selects this log from the logbook, the listed systems will be marked or circled on the map. Additionally, all dated log entries will recorded the system that player was located in when the entry was written.
 
 ```html
 remove log <category> [<header>]
@@ -874,14 +990,18 @@ Beginning with **v. 0.10.11**, this removes a log entry specified by the categor
 ```html
 dialog <text>
 	<text>...
+	phrase <phrase>
+		...
+		to display
+			<conditions>
 dialog phrase <phrase>
 ```
 
 This gives a message to be displayed in a dialog message to the user. If the trigger is `on offer`, the dialog will have "accept" and "decline" buttons. Otherwise, it is a purely informational message and only an "okay" button is shown.
 
-Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line can also be given a `to display` node with a [condition set](Player-Conditions).
+Each token following the `dialog` tag will be a separate paragraph. The first token may appear either on the same line or indented on a subsequent line. Beginning in **v. 0.10.9**, each line of text can also be given a `to display` node with a [condition set](Player-Conditions). Prior to **v. 0.11.3**, `to display` nodes were evaluated the moment the mission was created. Now, they are evaluated the moment the dialog is displayed, meaning that dialogs can react to condition changes that occurred during the mission.
 
-`dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs.
+`dialog phrase` can be used to create a single phrase that is used for multiple dialogs, instead of needing to copy and paste the same dialog over and over again. An example of where this is used in game is for `on visit` dialogs. Phrases can also be provided as child nodes that either refer to a named phrase or define a full phrase in place. The `to display` node can be used for named phrases, but not phrases defined in place. Phrases will be converted into a single line of text once the mission is instantiated, meaning that repeat displays of the same dialog (such as through an `on visit` node) will display the same message every time for the same mission.
 
 As mentioned previously, text replacement is done on keywords like "`<destination>`" and "`<payment>`" within the dialog text.
 
@@ -904,7 +1024,7 @@ outfit <outfit> [<number#>]
 require <outfit> [<number#>]
 ```
 
-At this point in the mission, the named ship outfit (or some number of them, if a number is given) is installed in the player's flagship, or placed in the player's cargo if the flagship has no outfit space for it. If the number is negative, outfits are taken away, checking the player's flagship and the cargo holds of all in-system ships, or only the flagship's cargo if this is a boarding mission. If a mission removes outfits in its "complete" phase, it cannot be completed unless that outfit exists. This makes it possible to loan the player an outfit for the duration of a mission, or to require that the player disable a non-NPC ship and steal a particular piece of technology from it.
+At this point in the mission, the named ship outfit (or some number of them, if a number is given) is installed in the player's flagship, or placed in the player's cargo if the flagship has no outfit space for it. If the number is negative, outfits are taken away, checking the player's flagship and the cargo holds of all in-system ships, or only the flagship's cargo if this is trigger is occurring while in flight or while boarding. If a mission removes outfits in its "complete" phase, it cannot be completed unless that outfit exists. This makes it possible to loan the player an outfit for the duration of a mission, or to require that the player disable a non-NPC ship and steal a particular piece of technology from it.
 
 If the outfit cannot be installed due to lack of space, a warning message will be shown so the player knows that the outfit is not actually active (and may in fact be lost if they leave the planet).
 

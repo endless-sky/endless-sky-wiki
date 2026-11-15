@@ -191,7 +191,10 @@ fleet <name>
 		outfitters <outfitter>...
 	[(add | remove)] personality [<flag>...]
 	personality [<flag>...]
-		confusion <value#>
+		[<flag>...]
+		[confusion <name>]
+		[confusion]
+			...
 	[add] variant [<weight#>]
 		<ship> <count#>
 		...
@@ -207,6 +210,9 @@ planet <name>
 	description <text>
 	spaceport <text>
 	government <name>
+	[(add | remove)] landscape <sprite>...
+		<sprite> [<weight>]
+		...
 	[(add | remove)] attributes <value>...
 	[(add | remove)] shipyard <name>
 	[(add | remove)] outfitter <name>
