@@ -16,6 +16,7 @@ government <name>
 		max <maximum-rep#>
 	"crew attack" <atk#>
 	"crew defense" <def#>
+  "rewiring multiplier" <modifier#>
 	confusion <name>
 	confusion
 		...
@@ -203,6 +204,12 @@ This would have the effect of giving the government `"provoked on scan"`, as wel
 ```
 The "crew attack" and "crew defense" tokens allow customizing the base crew combat attributes of this government's ships when they engage in [boarding combat](PlayersManual#boarding-plundering-and-capturing-ships).
 The default values for "crew attack" and "crew defense" are 1.0 and 2.0, respectively, and negative numbers will be treated as though they are 0.
+
+#### Rewiring multiplier
+```html
+"rewiring multiplier" <modifier#>
+```
+Beginning in **v. 0.11.5**, the "rewiring multiplier" token determines how much rewiring a locked ship should cost at shipyards controlled by this government. This stacks multiplicatively with the [`"rewiring cost multiplier"` gamerule](Gamerules) as well as the [`"rewiring multiplier"` of the locked ship](CreatingShips).
 
 ### Confusion
 ```html

@@ -5,6 +5,7 @@
 	* [Depreciation](#depreciation)
 	* [Person Ships](#person-ships)
 	* [NPC Behavior](#npc-behavior)
+	* [Ship Locking](#ship-locking)
 	* [System Behavior](#system-behavior)
 	* [Miscellaneous](#miscellaneous)
 
@@ -114,6 +115,9 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"capture surviving crew shares"`: A decimal rule with a value greater than or equal to zero that controls the number of shares that each surviving crew member receives toward the value of captured ships. **(v. 0.11.5)**
 * `"capture minimum death benefit"`: An integer rule with a value greater than or equal to zero that controls a minimum number of credits that must be paid to the families of dead crew members, even if capture of a ship was unsuccessful. **(v. 0.11.5)**
 * `"capture value basis"`: An optional decimal rule with a value greater than or equal to 0 that controls what percentage of the value of a captured ship is used to determine the size of a share. If unset, then the sale value of the ship (as defined by the `"depreciation min"` rule) is used. **(v. 0.11.5)**
+* `"lock on capture"`: A boolean rule that controls whether or not ships become "locked" when captured. A locked ship cannot be your flagship, fire its weapons, hold any passengers or cargo, recharge its shields or hull, repair or refuel other ships, use its fighter or drone bays, or activate its cloaking device. **(v. 0.11.5)**
+* `"rewiring cost multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. Locked ships can be unlocked at a shipyard by rewiring them. The cost of rewiring is a percentage of the base hull's value before depreciation. **(v. 0.11.5)**
+* `"locked ship value multiplier"`: A decimal rule whose value must be between 0 and 1, where 0 = 0% and 1 = 100%. The hull of a locked ship will sell for the `"locked ship value multiplier"` multiplied by the value of the ship with depreciation (if depreciation is active). **(v. 0.11.5)**
 
 ## Miscellaneous
 
