@@ -205,7 +205,7 @@ The default values for "crew attack" and "crew defense" are 1.0 and 2.0, respect
 ```html
 "rewiring multiplier" <rewiring-multiplier#>
 ```
-The "rewiring multiplier" token determines how much rewiring a locked ship should cost at shipyards controlled by this government. This stacks multiplicatively with the [`"rewiring cost multiplier"` gamerule](Gamerules) as well as the [`"rewiring multiplier"` of the locked ship](CreatingShips).
+Beginning in **v. 0.11.5**, the "rewiring multiplier" token determines how much rewiring a locked ship should cost at shipyards controlled by this government. This stacks multiplicatively with the [`"rewiring cost multiplier"` gamerule](Gamerules) as well as the [`"rewiring multiplier"` of the locked ship](CreatingShips).
 
 #### Attitude toward
 ```html

@@ -56,9 +56,9 @@ The depreciated value of an item that is "age" days old is calculated with the f
 
 ## Ship Locking
 
-* `"lock on capture"`: A boolean rule that controls whether or not ships become "locked" when captured. A locked ship cannot be your flagship, fire its weapons, hold any passengers, recharge its shields or hull, pick up flotsam, repair or refuel other ships, or activate its cloaking device.
-* `"rewiring cost multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. Locked ships can be unlocked at a shipyard by rewiring them. The cost of rewiring is a percentage of the base hull's value before depreciation.
-* `"locked ship value multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. The hull of a locked ship will sell for the `"locked ship value multiplier"` multiplied by the `"depreciation min"`.
+* `"lock on capture"`: A boolean rule that controls whether or not ships become "locked" when captured. A locked ship cannot be your flagship, fire its weapons, hold any passengers or cargo, recharge its shields or hull, repair or refuel other ships, use its fighter or drone bays, or activate its cloaking device. **(v. 0.11.5)**
+* `"rewiring cost multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. Locked ships can be unlocked at a shipyard by rewiring them. The cost of rewiring is a percentage of the base hull's value before depreciation. **(v. 0.11.5)**
+* `"locked ship value multiplier"`: A decimal rule whose value must be between 0 and 1, where 0 = 0% and 1 = 100%. The hull of a locked ship will sell for the `"locked ship value multiplier"` multiplied by the value of the ship with depreciation (if depreciation is active). **(v. 0.11.5)**
 
 ## System Behavior
 
