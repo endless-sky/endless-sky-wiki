@@ -235,6 +235,7 @@ In the case of a label, the given text will be drawn directly.
 With a string, a name is given, and the game sets the text at runtime, selecting this text location with that name.
 A button is similar to a label, except it also accepts a key token. The first character of this token will be sent as keyboard input if the bounding box for this button is clicked while it is visible and active.
 A dynamic button **(v. 0.10.5)** is a combination of a button and a string element. It has the functionality of a button, but its caption is retrieved at runtime.
+Beginning in **v. 0.11.5**, the "key" for a button can instead be provided as the name of a command, matching the name of the commands as seen in the preferences panel. For example, `button "Initiate hyperspace jump"` would always send the jump command, regardless of which key, if any, that command is mapped to.
 
 Size defines the font size of the text. The vanilla game supports 14 and 18.
 
