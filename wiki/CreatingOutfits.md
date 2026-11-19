@@ -803,6 +803,8 @@ The following attributes are tags (just the word by itself, no value following i
 
 * `"no ship collisions"`: this weapon's projectiles won't run collision detection against ships (unless this weapon is also `phasing` and has a target, in which case it will still detect collisions against the target). Weapons with a trigger radius will still explode when within range of an enemy. **(v. 0.10.7)**
 
+* `"no disabled ship collisions"`: this weapon's projectiles won't collide with disabled ships, unless the ship was explicitly targeted and fired upon while it was disabled. Projectiles in-flight when a ship becomes disabled will not be impacted. **(v. 0.11.5)**
+
 * `"no asteroid collisions"`: this weapon's projectiles won't run collision detection against tiled asteroids. **(v. 0.10.7)**
 
 * `"no minable collisions"`: this weapon's projectiles won't run collision detection against minable objects. **(v. 0.10.7)**
