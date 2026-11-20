@@ -262,20 +262,20 @@ The `attributes` key should be followed by a list of ship attributes, ideally li
 * `"category"`: the type of ship, as specified by a `category "ship"` node since **v. 0.9.15**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. Over the years, several additions have been made to the list of vanilla categories.
 
   * `"Transport"`
-  * `"Space Liner"` (**v. 0.9.15**)
+  * `"Space Liner"` **(v. 0.9.15)**
   * `"Light Freighter"`
   * `"Heavy Freighter"`
-  * `"Utility"` (**v. 0.9.15**)
+  * `"Utility"` **(v. 0.9.15)**
   * `"Interceptor"`
   * `"Light Warship"`
   * `"Medium Warship"`
   * `"Heavy Warship"`
-  * `"Superheavy"` (**v. 0.10.0**)
+  * `"Superheavy"` **(v. 0.10.0)**
   * `"Fighter"`
   * `"Drone"`
-  * `"Unclassified"` (**v. 0.10.13**)
-  * `"Unclassified Minor"` (**v. 0.10.13**)
-  * `"Game Mechanics"` (**v. 0.10.13**)
+  * `"Unclassified"` **(v. 0.10.13)**
+  * `"Unclassified Minor"` **(v. 0.10.13)**
+  * `"Game Mechanics"` **(v. 0.10.13)**
 
 * `"licenses"`: a list of names of licenses you need to buy this ship. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
