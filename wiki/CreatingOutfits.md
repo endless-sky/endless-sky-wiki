@@ -220,7 +220,7 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
 * Or a ship can self destruct after being disabled.
 
-  * `"self destruct time"`: a disabled ship will self destruct if it is not repaired after this many frames. **(v. 0.11.5)**
+  * `"self destruct time"`: a disabled ship will self destruct if it is not repaired after this many frames. Has no effect on ships owned by the player. **(v. 0.11.5)**
 
   * `"random self destruct time"`: a random number of frames added to the `"self destruct time"` when a ship becomes disabled. **(v. 0.11.5)**
 
