@@ -222,6 +222,8 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"self destruct time"`: a disabled ship will self destruct if it is not repaired after this many frames. **(v. 0.11.5)**
 
+  * `"random self destruct time"`: a random number of frames added to the `"self destruct time"` when a ship becomes disabled. **(v. 0.11.5)**
+
 * Most of the above shield and hull attributes also have "multiplier" attributes that will alter what value they have on a ship according to the equation `stat * (1 + multiplier)`, which means that the default value of 0 means no change, while a value of 1 would be a +100% increase in the stat. These attributes are capable of having negative values down to -1 (meaning -100%), where negative values result in reducing the value of the associated stat. **(v. 0.9.13)**
   
   * `"shield generation multiplier"`: multiplies the shield generation value of other outfits. 
