@@ -694,7 +694,9 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
   * `"self destruct"`: a value between 0 and 1, representing the probability that a ship will self-destruct when you try to plunder it or, after succeeding in boarding it without it self-destructing, try to capture it. That is, the probability of successfully boarding a ship with self-destruct is `(1 - "self destruct")`, and the probability of both boarding and capturing it is `(1 - "self destruct")^2`. **(v. 0.9.0)**
 
-  * `"board self destruct"`: a value between 0 and 1 that behaves like `"self destruct"`, but it is only checked when boarding a ship. Takes precedence over `"self destruct"` if both attributes are present. **(v. 0.11.5)**
+    * As of **v. 0.11.5**, this attribute is ignored if it is present on the player's ships.
+
+  * `"board self destruct"`: a value between 0 and 1 that behaves like `"self destruct"`, but it is only checked when boarding a ship. Takes precedence over `"self destruct"` if both attributes are present. Ignored if present on the player's ship. **(v. 0.11.5)**
 
   * `"capture self destruct"`: a value between 0 and 1 that behaves like `"self destruct"`, but it is only checked when attempting to capture a ship. Takes precedence over `"self destruct"` if both attributes are present. **(v. 0.11.5)**
 
