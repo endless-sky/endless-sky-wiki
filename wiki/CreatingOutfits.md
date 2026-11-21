@@ -696,6 +696,10 @@ Unless otherwise stated, other outfit attributes will stack additively between m
 
     * As of **v. 0.11.5**, this attribute is ignored if it is present on the player's ships.
 
+  * `"board self destruct"`: a value between 0 and 1 that behaves like `"self destruct"`, but it is only checked when boarding a ship. Takes precedence over `"self destruct"` if both attributes are present. Ignored if present on the player's ship. **(v. 0.11.5)**
+
+  * `"capture self destruct"`: a value between 0 and 1 that behaves like `"self destruct"`, but it is only checked when attempting to capture a ship. Takes precedence over `"self destruct"` if both attributes are present. **(v. 0.11.5)**
+
   * `"landing speed"`: a value between 0 and 1, representing progress made per frame when landing or taking off. This value is added every frame when landing or taking off from a planet or wormhole until reaching 1, at which point you'll be landed on the planet if landing or be able to control your ship if taking off. If a ship lacks this attribute, then a default value of 0.02 (50 frames to land/take off) is used. **(v. 0.10.0)**
 
   * `unique`: if present, the outfit is considered to be unique. When disowning a ship with a unique outfit or when launching from a planet that has unique outfits in stock that will be lost when you depart, a warning will be provided telling you that you will lose the unique outfits. Intended for use on outfits that are limited in quantity within a single save file; stuff that once lost, the player will never be able to reobtain. As of **v. 0.11.5**, this is a boolean attribute. **(v. 0.10.4)**
