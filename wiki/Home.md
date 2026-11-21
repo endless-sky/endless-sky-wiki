@@ -62,6 +62,7 @@ These pages generally describe the game syntax in accordance with the [data form
 * [Creating models](CreatingModels)
 * [Image formats](ImageFormats)
 * [Sprite animation parameters](SpriteData)
+* [Content style guide](Content-Style-Guide)
 
 ### Compiling or modifying the source code
 
