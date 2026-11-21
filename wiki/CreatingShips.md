@@ -151,7 +151,7 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 	* `"turret turn multiplier"`: modifies the turn rate of the outfit installed on this hardpoint. The final value of the turn rate is `"turret turn" * (1 + "turret turn multiplier"(from ship's attributes) + "turret turn multiplier"(on hardpoint))`. **(v. 0.10.13)**
 
-* `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"` and `"Fighter"`.
+* `bay <category> <x#> <y#>`: specify a bay of the given ship category at the given (x, y) coordinates, e.g. `bay "Drone" -14 64`. The bay given must be a valid carried category, as specified by a `category "bay type"` node. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The only valid vanilla bay types are `"Drone"`, `"Fighter"`, and `"Unclassified Minor"`.
 
   * The following lines can be added as a "child" of the bay line:
 
@@ -259,10 +259,23 @@ The data files use indentation, like in the Python language, to define sub-entri
 
 The `attributes` key should be followed by a list of ship attributes, ideally listed in the following order:
 
-* `"category"`: the type of ship, as specified by a `category "ship"` node since **v. 0.9.15**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. The existing valid vanilla `"ship"` categories are: "Transport", "Light Freighter", "Heavy Freighter", "Interceptor", "Light Warship", "Medium Warship", "Heavy Warship", "Fighter", or "Drone".
+* `"category"`: the type of ship, as specified by a `category "ship"` node since **v. 0.9.15**. See [categories.txt](https://github.com/endless-sky/endless-sky/blob/master/data/categories.txt) for an example. Over the years, several additions have been made to the list of vanilla categories.
 
-  Since **v. 0.9.15**: also "Space Liner", or "Utility".
-  Since **v. 0.10.0**: also "Superheavy".
+  * `"Transport"`
+  * `"Space Liner"` **(v. 0.9.15)**
+  * `"Light Freighter"`
+  * `"Heavy Freighter"`
+  * `"Utility"` **(v. 0.9.15)**
+  * `"Interceptor"`
+  * `"Light Warship"`
+  * `"Medium Warship"`
+  * `"Heavy Warship"`
+  * `"Superheavy"` **(v. 0.10.0)**
+  * `"Fighter"`
+  * `"Drone"`
+  * `"Unclassified"` **(v. 0.10.13)**
+  * `"Unclassified Minor"` **(v. 0.10.13)**
+  * `"Game Mechanics"` **(v. 0.10.13)**
 
 * `"licenses"`: a list of names of licenses you need to buy this ship. For each `<name>` specified, the [`license: <name>` condition](Player-Conditions) must be set for the player to buy this ship. (If you make an outfit named `"<name> License"`, that condition variable will automatically be set when you buy that outfit.)
 
