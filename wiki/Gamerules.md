@@ -82,7 +82,7 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"take off protection"`: An enum rule that controls what types of fleets can already be spawned in when you take off from a planet. **(v. 0.11.5)**
   * `"off"`: Any fleet can be spawned in when you take off from a planet.
   * `"loose"`: Fleets hostile to the government of the system you're in won't be spawned in. For example, pirate fleets won't be pre-spawned in Republic systems, but they can still be pre-spawned in pirate systems. Disables raid fleets on take off regardless of the raid fleet's relationship with the system government.
-  * `"strict"`: Fleets hostile to the player won't be spawned in when you take off, even if you're in a hostile system. Also disabled raid fleets on take off.
+  * `"strict"`: Fleets hostile to the player won't be spawned in when you take off, even if you're in a hostile system. Also disables raid fleets on take off.
 * `"take off protection duration"`: An integer rule that controls the number of frames after taking off where hostile fleets are prevented from spawning. This protection is lost the moment you jump into another system. **(v. 0.11.5)**
 
 ## Raid Fleet Behavior
