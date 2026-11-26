@@ -979,8 +979,6 @@ on enter
 	...
 ``` 
 
-Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
-
 ```html
 log [<category> <header>] (<text> | scene <image>)
 	(<text> | scene <image>)
