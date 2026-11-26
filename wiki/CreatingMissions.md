@@ -192,7 +192,7 @@ mission <name>
 				<location-filter>
 		on (deactivation | timeup)
 			<action>
-	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
+	on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled | deadline)
 		[system | planet]
 			<filter>
 		log [<category> <header>] (<text> | scene <image>)
@@ -879,7 +879,7 @@ For more details on triggers/mission actions, see the section below.
 A mission can also specify what happens at various key parts of the mission:
 
 ```html
-on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled)
+on (offer | complete | accept | decline | defer | fail | abort | visit | stopover | waypoint | enter [<system>] | land [<planet>] | daily | disabled | deadline)
 	[system | planet]
 		<filter>
 	log [<category> <header>] (<text> | scene <image>)
@@ -928,9 +928,9 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 		...
 ```
 
-There are eleven events that can trigger a response of some sort:
+Here are the events that can trigger a response:
 
-* `offer`: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission.
+* `offer`: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission. (If the mission is a `job`, then `on offer` will trigger when the mission is accepted, although `on accept` will also trigger, so it's better to just move any desired actions into the `on accept`.)
 * `complete`: when the mission is completed. This is when the player gets paid.
 * `accept`: if the player agrees to accept a mission.
 * `decline`: if the player decides to decline a mission.
@@ -942,8 +942,27 @@ There are eleven events that can trigger a response of some sort:
 * `waypoint`: you have visited the last of the systems that are specified as a "waypoint" for this mission.
 * `enter [<system>]`: your ship enters the given system for the first time since this mission was accepted. If no system is specified, a [location filter](LocationFilters) in the trigger body under a `system` node can be provided, triggering upon entering the first mtaching system. Otherwise, this triggers as soon as your ship takes off from the current planet.
 * `land [<planet>]`: you land on the given planet for the first time since this mission was accepted. If no planet is specified, a [location filter](LocationFilters) in the trigger body under a `planet` node can be provided, triggering upon landing on the first matching planet. Otherwise, this triggers upon the first landing on any planet. Note that if both an `on stopover` and `on land` action could trigger on the same landing, only the `on stopover` action will occur. **(v. 0.11.0)**
-* `daily`: every time the date advanced (every jump between systems and departure from a planet). (**v. 0.9.15**)
-* `disabled`: if the player's flagship becomes disabled. (**v. 0.10.3**)
+* `daily`: every time the date advances (i.e. every jump between systems and departure from a planet). **(v. 0.9.15)**
+* `disabled`: if the player's flagship becomes disabled. **(v. 0.10.3)**
+* `deadline`: if the mission has a deadline that has elapsed and caused the mission to fail. **(v. 0.11.5)**
+
+A mission is capable of having multiple `enter` and `land` triggers, but can only have one of every other trigger type. If multiple `enter` or `land` triggers are provided that do not have a specific system, planet, or location filter that they trigger by, then they will run one at a time in the order they are defined on subsequent triggers. For example:
+```
+on enter
+	dialog "This will appear the first time you depart from the mission's source."
+on enter
+	dialog "This will appear after you jump the first time."
+on enter
+	# Nothing happens on the second jump.
+on enter
+	dialog "Welcome to your third jump."
+```
+
+Note that some triggers are incapable of generating `dialog`s or `conversation`s under certain circumstances. These triggers include:
+* `offer` if the mission is also a `job`. (The job's `on accept` node should be used instead.)
+* `accept` if the mission is not a `job`.
+* `decline` and `defer` under any circumstance.
+* `daily` under any circumstance prior to **v. 0.11.5**.
 
 Beginning in **v. 0.10.9**, most of these triggers will not activate when the mission is already failed. In some cases, it still might be useful to keep track of the player until they land even if the mission failed. In these cases, you can make the triggers work by using `"can trigger after failure"`.
 ```html
@@ -959,8 +978,6 @@ on enter
 		<filter>
 	...
 ``` 
-
-Some of the events below usually only make sense for certain triggers. In particular, dialogs and conversations can be shown when a mission is offered, but not in response to it being accepted or declined; just add the appropriate text to the offer conversation instead.
 
 ```html
 log [<category> <header>] (<text> | scene <image>)
