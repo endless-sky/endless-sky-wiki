@@ -75,7 +75,15 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"habitable based arrival distance"`: A boolean rule that controls whether systems that do not define their own arrival distance use the habitable distance as their arrival distance. **(v. 0.11.3)**
 * `"habitable arrival min"`: An optional decimal rule that determines the minimum arrival distance when the arrival distance is being generated from the habitable distance. **(v. 0.11.3)**
 * `"habitable arrival max"`: An optional decimal rule that determines the maximum arrival distance when the arrival distance is being generated from the habitable distance. **(v. 0.11.3)**
+
+## Fleet Spawn Behavior
+
 * `"fleet multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0%, 1 = 100%, 1.5 = 150%, and so on. Represents a global fleet spawn rate multiplier for random fleet spawns within systems.
+* `"take off protection"`: An enum rule that controls what types of fleets can already be spawned in when you take off from a planet. **(v. 0.11.5)**
+  * `"off"`: Any fleet can be spawned in when you take off from a planet.
+  * `"loose"`: Fleets hostile to the government of the system you're in won't be spawned in. For example, pirate fleets won't be pre-spawned in Republic systems, but they can still be pre-spawned in pirate systems. Disables raid fleets on take off regardless of the raid fleet's relationship with the system government.
+  * `"strict"`: Fleets hostile to the player won't be spawned in when you take off, even if you're in a hostile system. Also disables raid fleets on take off.
+* `"take off protection duration"`: An integer rule that controls the number of frames after taking off where hostile fleets are prevented from spawning. This protection is lost the moment you jump into another system. **(v. 0.11.5)**
 
 ## Raid Fleet Behavior
 
