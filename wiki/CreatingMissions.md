@@ -928,7 +928,7 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 		...
 ```
 
-These are the following triggers:
+Here are the events that can trigger a response:
 
 * `offer`: when the initial mission is offered. This is the place to put the conversation or dialog that introduces the mission. (If the mission is a `job`, then `on offer` will trigger when the mission is accepted, although `on accept` will also trigger, so it's better to just move any desired actions into the `on accept`.)
 * `complete`: when the mission is completed. This is when the player gets paid.
