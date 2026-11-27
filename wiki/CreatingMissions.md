@@ -239,6 +239,8 @@ mission <name>
 		message <name>
 		message
 			...
+		clearance grant <planet> [(full | limited) [<message>]]
+		clearance revoke <planet>
 ```
 
 Each of these parts of the mission description is described in detail below.
@@ -458,9 +460,9 @@ clearance [<message>]
 	[{filter specification...}]
 ```
 
-This gives you landing clearance on the destination planet, even if normally you would not be allowed to land there, or would have to pay a bribe.
+This gives you landing clearance on the destination and stopover planets of the mission, even if normally you would not be allowed to land there or would have to pay a bribe.
 
-If a `clearance` tag appears followed by a message, if you hail your destination planet that message will be shown as the initial text, landing permission will be granted, and you will not have to pay a bribe. The message will be shown even for friendly planets so that this can be used to customize their hail, e.g. "Welcome back, Captain `<last>`! Everyone's waiting for you at the spaceport."
+If a `clearance` tag appears followed by a message and you hail the destination or stopover planet, that message will be shown as the hail text, landing permission will be granted, and you will not have to pay a bribe. The message will be shown even for friendly planets so that this can be used to customize their hail, e.g. "Welcome back, Captain `<last>`! Everyone's waiting for you at the spaceport."
 
 If a `clearance` tag appears with no message, clearance is automatically granted without needing to hail the planet. You can use this, for example, if the mission involves secretly landing on a planet under the cover of darkness and the last thing you want to do is inform the authorities that you're coming.
 
@@ -926,6 +928,8 @@ on (offer | complete | accept | decline | defer | fail | abort | visit | stopove
 	message <name>
 	message
 		...
+	clearance grant <planet> [(full | limited) [<message>]]
+	clearance revoke <planet>
 ```
 
 Here are the events that can trigger a response:
@@ -1184,3 +1188,51 @@ message
 ```
 
 Beginning in **v. 0.11.0**, actions can send [messages](CreatingMessages) to the list at the bottom of the screen. You can use either an existing named definition or provide your own. Messages defined as phrases can choose a different text from the phrase each time this action is run, but they cannot use custom substitutions defined by this mission.
+
+```html
+clearance grant <planet> [(full | limited) [<message>]]
+clearance revoke <planet>
+```
+
+Beginning in **v. 0.11.5**, actions can grant clearance to planets. Unlike the `clearance` tag described above that is a direct child of the `mission`, clearance granted in this manner will persistent beyond the mission ending. Clearance access can either be "full", which is the default if no clearance level is named and allows full access to a planet's services after landing, or "limited," which is equivalent to having the `infiltrating` tag present and restricts your access to the planet's services while landed. Note that clearance is checked before checking if you have the reputation necessary to land on a planet, meaning that granting limited clearance to a planet that the player already has access to will restrict their access to that planet's services. An optional message can also be provided to the clearance, which will require the player to hail the planet before they can land. Omission of this message means that the planet can be landed on without hailing it.
+
+Clearance granted in this way can then be revoked by a separate action later on.
+
+One of the primary purposes of granting and revoking clearance in this manner instead of using the `clearance` tag for a mission destination is if the next mission in the chain is able to be blocked. Take the following example.
+
+```
+mission "Example A"
+	passenger 1
+	destination "Scary Castle"
+	clearance
+
+mission "Example B"
+	source "Scary Castle"
+	passenger 2
+	blocked "Bet you didn't bring an extra bunk."
+	to offer
+		has "Example A: done"
+```
+
+If two missions were structured in this manner and the player is unable to land on "Scary Castle" without clearance, then mission B being blocked by a lack of passenger space will require the player to depart from the planet in order to go get more bunk space. Upon attempting to return to the planet, the clearance that was granted by the first mission will no longer be present, causing the player to be locked out of this storyline.
+
+In this case, the missions should instead use the clearance action.
+
+```
+mission "Example A"
+	passenger 1
+	destination "Scary Castle"
+	on accept
+		clearance grant "Scary Castle"
+
+mission "Example B"
+	source "Scary Castle"
+	passenger 2
+	blocked "Bet you didn't bring an extra bunk."
+	to offer
+		has "Example A: done"
+	on offer
+		clearance revoke "Scary Castle"
+```
+
+Clearance is granted by the first mission after it has been accepted by the player, and is only revoked by the second mission after confirming that the player has enough passenger space and the second mission has offered.
