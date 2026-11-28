@@ -73,6 +73,8 @@ mission <name>
 	description <text>
 	color (unavailable | unselected | selected) (<color-name> | <#r> <#g> <#b>)
 	blocked <message>
+	"reminder name" <name>
+	reminder <message>
 	deadline [<days> [<multiplier>]]
 	cargo (random | <name>) <number> [<number> [<probability>]]
 		illegal <fine> [<message>]
@@ -337,6 +339,25 @@ blocked <message>
 This is a short message that is displayed to the player if this mission's `to offer` conditions pass, but either the `to accept` conditions do not, the `on offer` or `on accept` actions can't be done (which may be the result of `require`, `outfit <outfit> -1`, or some other action), or the player does not have enough cargo space or bunks available. (This does not count cargo space occupied by ordinary commodities, or bunks occupied by crew, because you will automatically sell / fire them if a special mission is offered.) The message uses all the standard text substitutions given above, as well as `<capacity>`, which is a string describing how much additional capacity you need (e.g. "another bunk and 14 more tons of cargo space"), as well as `<conditions>`, which evaluates to "do not meet" if there is a `to accept` that you fail, or "meet" if you pass the `to accept`.
 
 Prior to **v. 0.10.0**, only the lack of space for the mission would trigger its blocked dialog.
+
+```html
+"reminder name" <name>
+reminder <message>
+```
+
+Beginning in **v. 0.11.5**, missions can be given reminder text. If present, a mission that is available but not yet accepted will appear on your map as an active mission with this text as the mission's description. Similar to the `blocked` message, this message is capable of using the `<capacity>` text substitution, displaying as "X bunk(s) and Y ton(s) of cargo space."
+
+A reminder will be displayed if the following criteria are met:
+* The mission offers from a specific planet (instead of from a location filter), meaning it can't offer in space. If a mission is given a reminder node and does not meet this criteria, a warning will be printed to the error logs.
+* The mission's `to offer` conditions are met.
+* The mission has no `to fail` node, or the `to fail` conditions aren't met.
+* The mission wasn't offered before, or has remaining offer chances if the mission has a limited number of `repeat`s.
+
+It is good practice to add a reminder to every mission that meets any of the following criteria:
+* The mission has a `blocked` dialog.
+* The mission offers from the spaceport and is a continuation of a mission chain.
+
+The `"reminder name"` is the name that the mission appears with when its reminder is being displayed. If not present, then the mission's display name is used.
 
 ```html
 deadline [<days#> [<multiplier#>]]
