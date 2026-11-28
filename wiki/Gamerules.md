@@ -127,12 +127,29 @@ The depreciated value of an item that is "age" days old is calculated with the f
 * `"rewiring cost multiplier"`: A decimal rule whose value must be greater than or equal to 0, where 0 = 0% and 1 = 100%. Locked ships can be unlocked at a shipyard by rewiring them. The cost of rewiring is a percentage of the base hull's value before depreciation. **(v. 0.11.5)**
 * `"locked ship value multiplier"`: A decimal rule whose value must be between 0 and 1, where 0 = 0% and 1 = 100%. The hull of a locked ship will sell for the `"locked ship value multiplier"` multiplied by the value of the ship with depreciation (if depreciation is active). **(v. 0.11.5)**
 
+## Crossfire Settings
+
+Crossfire is defined as a projectile collision that occurs against a ship that was not the intended target of the projectile. A ship which is immune to crossfire will therefore only collide with projectiles that were directly targeted at it. Note that this does not apply immunity to explosions that happen near a ship.
+
+Projectiles that were fired at a ship prior to it being disabled will lose their targeting and collision with the ship if it is disabled while the projectile is in flight and the ship is protected by crossfire immunity.
+
+* `"crossfire disabled only"`: A boolean gamerule that controls whether crossfire immunity is only applied to disabled ships if true, or all ships if false. This rule applies to projectiles fired by non-carriable ships. **(v. 0.11.5)**
+* `"crossfire carriable disabled only"`: A boolean gamerule that controls whether crossfire immunity is only applied to disabled ships if true, or all ships if false. This rule applies to projectiles fired by carriable ships. **(v. 0.11.5)**
+* `"crossfire receiving immunity"`: An enum rule that controls which non-carriable ships are immune to receiving crossfire. **(v. 0.11.5)**
+* `"crossfire carriable receiving immunity"`: An enum rule that controls which carriable ships are immune to receiving crossfire. **(v. 0.11.5)**
+* `"crossfire creating immunity"`: An enum rule that controls which non-carriable ships are immune to creating crossfire. **(v. 0.11.5)**
+* `"crossfire carriable creating immunity"`: An enum rule that controls which carriable ships are immune to creating crossfire. **(v. 0.11.5)**
+* The four above enum rules share the same values:
+  * `"none"`: all ships can receive/create crossfire.
+  * `"only player"`: player-owned ships are immune to receiving/creating crossfire.
+  * `"all"`: all ships are immune receiving/creating crossfire.
+
 ## Miscellaneous
 
 * `"lock gamerules"`: A boolean rule that controls whether gamerules can be altered after a pilot has been created. If true, the gamerules button will not appear on the main menu for that pilot.
-* `"disabled fighters avoid projectiles"`: An enum rule whose allowed values are "all", "none", and "only player". Controls which carried ships (fighters and drones), when disabled, will not be hit by projectiles unless they are directly targeted. Fighters and drones are fragile ships that can be difficult and/or tedious to replace for the player, so this gamerule is a means of increasing their survivability without increasing their combat effectiveness. Disabled carried ships can still be hit by explosions, whether from weapons or exploding ships.
 * `"universal ammo restocking"`: A boolean rule that controls whether the ammo for most secondary weapons that you have installed or in your cargo will be available for purchase at any outfitter, even if that outfitter does not normally sell ammo of that type. The description of each secondary weapon will indicate whether it can be restocked anywhere when this rule is true.
 
 ## Deprecated Gamerules:
 
 * `"spawn raid fleets"`: A boolean rule that controls whether raid fleets spawn when your pirate attraction is too high. Added in **v. 0.11.1** and replaced in **v. 0.11.5** by `"raid fleet roll chance"`. `true` was converted to 100% and `false` to 0%.
+* `"disabled fighters avoid projectiles"`: An enum rule that was renamed to `"crossfire carriable receiving immunity"` in **v. 0.11.5**.
