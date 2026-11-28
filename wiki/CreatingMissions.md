@@ -348,7 +348,7 @@ reminder <message>
 Beginning in **v. 0.11.5**, missions can be given reminder text. If present, a mission that is available but not yet accepted will appear on your map as an active mission with this text as the mission's description. Similar to the `blocked` message, this message is capable of using the `<capacity>` text substitution, displaying as "X bunk(s) and Y ton(s) of cargo space."
 
 A reminder will be displayed if the following criteria are met:
-* The mission offers from a specific planet (instead of from a location filter) and is not `invisible`. If a mission is given a reminder node and does not meet these criteria, a warning will be printed to the error logs.
+* The mission offers from a specific planet (instead of from a location filter), meaning it can't offer in space. If a mission is given a reminder node and does not meet this criteria, a warning will be printed to the error logs.
 * The mission's `to offer` conditions are met.
 * The mission has no `to fail` node, or the `to fail` conditions aren't met.
 * The mission wasn't offered before, or has remaining offer chances if the mission has a limited number of `repeat`s.
