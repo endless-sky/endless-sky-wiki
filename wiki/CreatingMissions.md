@@ -265,8 +265,8 @@ Certain characteristics of a mission, such as the cargo or the destination plane
 * `<fine>` = "1 credit" or "N credits," where N is the fine amount with the same behavior as `<payment>`; this is not the fine as defined by an `illegal` line
 * `<date>` = the deadline for the mission (in the format "Day, DD Mon YYYY", "Day Mon DD, YYYY", or "YYYY-MM-DD", depending on user settings)
 * `<day>` = the deadline in conversational form ("the DDth of Month" or "Month DDth", depending on user settings)
-* `<npc>` = the name of the last ship in the last `npc` block in the mission description
-* `<npc model>` = the model of the last ship in the last `npc` block in the mission description **(v. 0.10.0)**
+* `<npc>` = the name of the first ship in the last `npc` block in the mission definition
+* `<npc model>` = the model of the first ship in the last `npc` block in the mission definition **(v. 0.10.0)**
 * `<first>` = your first name
 * `<last>` = your last name
 * `<original first>` = your original first name, from when the pilot was first created **(v. 0.11.1)**
